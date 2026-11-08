@@ -9,10 +9,12 @@ page, one-account-one-upvote, and threaded discussion — with every project rec
 open, versioned JSON on NEAR itself, and a read-only API that lets AI agents discover
 projects without browser automation.
 
-> **Status: data layer live on mainnet.** All 275 NEAR Hackathon submissions are stored
-> as `nearhunt/project/1` records under `nearhunt.near` — three transactions, no smart contract,
-> verified readable 275/275 through the public FastData indexer, and a re-run of the importer
-> writes nothing. The web app is next.
+> **Status: data layer live on mainnet; read-only web app merged.** All 275 NEAR Hackathon
+> submissions are stored as `nearhunt/project/1` records under `nearhunt.near` — three
+> transactions, no smart contract, verified readable 275/275 through the public FastData indexer,
+> and a re-run of the importer writes nothing. The directory and project pages are built
+> (Next.js 16, app router) and merged; production still serves a temporary placeholder until the
+> next deploy. Votes, discussion and the account page are Day 2–3 work.
 > See [`docs/phase-0-spike.md`](docs/phase-0-spike.md) and [`schema/`](schema/).
 
 ---
@@ -53,6 +55,7 @@ anyone, with no bespoke contract to deploy or audit.
 | Indexing | FastData indexer (no custom block scanning) | verified |
 | Smart contract | none — deliberately | proven unnecessary |
 | Cache | Valkey, optional, never a source of truth | deferred |
+| Web app | Next.js 16 app router at the repo root; reads through `lib/projects.ts` with a 60 s server cache | merged, not yet deployed |
 
 No contract, no storage deposits, no custom indexer: the canonical record is the chain, and
 the read API is a cache that anyone can rebuild.
@@ -77,8 +80,15 @@ schema/
   README.md                        how to read records from chain, and the rules
 types/
   nearhunt.ts                TypeScript mirrors of the record and the KV envelope
+app/                         Next.js 16 app router: directory (/) and project page (/p/[id])
+  components/                cards, search, sort and track controls, sidebar
 lib/
   kv.mjs                     reads from the KV API, scoped to the writer
+  projects.ts                cached server read used by both pages
+  listing.mjs                drops tombstones and malformed rows, adds chain provenance
+  directory.mjs              search, track filter, sort and URL state
+  project-view.mjs           project-page helpers: safe links, record rows, metadata
+  social.mjs                 the #nearhunt sidebar feed, validated and reduced to plain text
   import-plan.mjs            diff of feed vs chain: what the importer would write
 scripts/
   import.mjs                 hackathon feed → on-chain project records (dry run by default)
@@ -93,13 +103,17 @@ Run it:
 
 ```bash
 npm install
+npm run dev                             # http://localhost:3000
 npm test                                # unit tests, no network
 node scripts/import.mjs                 # dry run: diff the feed against chain, writes nothing
 node scripts/import.mjs --execute --yes # write the diff (needs a key; see docs/runbooks/keys.md)
 npm run validate:schema                 # verify every record already on chain
 ```
 
-The data layer is live; the web app (`web/`) is the next thing to be built against it.
+The data layer and the read-only pages are live in code. The production deployment still serves
+the placeholder from `web/` (removed from the tree; its history is at commit `4e0b5af`); before
+deploying the app from the repo root, set the Vercel project's framework preset to Next.js — it
+was created as `Other` for the placeholder.
 
 ## Related project — Baby Shark
 

@@ -33,9 +33,11 @@ npm-debug.log*
 tmp/
 scratch/
 docs/mockups/.tmp/
+
+# next.js / vercel (the project link carries project and org ids)
 next-env.d.ts
 *.tsbuildinfo
-.vercel
+.vercel/
 
 # agent worktrees (local only)
 .claude/worktrees/

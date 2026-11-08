@@ -18,9 +18,10 @@ https://claude.ai/artifact/TheVd1qg4LzCRzStJvKPKe (private until shared).
 **Nothing on chain needs undoing, and the chain matches the feed.** 275 records on chain, 275 in
 the feed, 275/275 valid against the schema, 0 foreign rows, 0 tombstones. A re-run writes nothing.
 
-What's missing is the product itself, plus Day 1 onwards. Keys for `nearhunt.near` live on the
-operator's machine by the owner's decision of 8 Nov — the gate is approval of each write, not the
-machine.
+The read-only product is now built: the directory and project pages are merged on `main` (Day 1).
+What is missing is voting, discussion and the account page (Days 2–3), a production deploy, and
+Days 4–5. Keys for `nearhunt.near` live on the operator's machine by the owner's decision of 8 Nov
+— the gate is approval of each write, not the machine.
 
 Evidence for everything above, reproduced 8 Nov evening:
 
@@ -116,8 +117,16 @@ Notes from building it, with the evidence in the commit messages:
   Connect**, and the skills win on any mismatch with this plan (AGENTS.md §2a). The
   `near-api-js` skill documents v7 while `package.json` pins ^5.1.1; the upgrade belongs with
   NH-30, where wallet code first needs it.
+- Known gap, found in review: if the KV API is unreachable the directory and project pages return
+  500. The near.social sidebar degrades to a "not responding" note, but the project read has no
+  error state. Cover it with the Day 3 states (NH-80/82) before the demo.
+- The `web/` placeholder was retired in the merge; its source stays in history at `4e0b5af`.
+  Production still serves that deployment until the app is deployed from the repo root.
 
 ### Board 1 — Directory (home) · Day 1
+
+**Status: done 8 Nov** — NH-10–NH-16 are on `main`; evidence in the Day 1 status block above.
+Preview and production deploys are still pending (see Open decisions).
 
 | ID | P | Item |
 |---|---|---|
@@ -130,6 +139,8 @@ Notes from building it, with the evidence in the commit messages:
 | NH-16 | P2 | "How it works on NEAR" and "Built for agents" cards |
 
 ### Board 2 — Project page · Days 1–3
+
+**Status: NH-20 and NH-21 done 8 Nov.** NH-22–NH-24 remain for Days 2–3.
 
 | ID | P | Item |
 |---|---|---|
@@ -225,3 +236,6 @@ Settled on 8 Nov: NEAR Connect for login (NH-30); NH-06 dropped; the NH-93 4-key
 applied; hosting and DNS are Hermes's. Still open:
 
 1. **Treasury account** for NH-94: create one (e.g. `treasury.nearhunt.near`) with a key held by the owner, not Hermes. It never signs imports.
+2. **Deploy the app (Hermes):** the Vercel project `near-hunt` was created with framework preset
+   `Other` for the placeholder and its root directory is `.`. Set the preset to Next.js, then
+   deploy from the repo root; the current production deployment is still the placeholder.
