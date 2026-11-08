@@ -81,5 +81,9 @@ project is absent.
 
 - Write `project/` keys to `social` on behalf of other people. Records in the shared namespace
   must be authored by the people they describe; bulk imports stay in `nearhunt.near`.
+  **Under review (8 Nov):** NEAR Hunt's roadmap now separates *submitting* a project (anyone,
+  Product Hunt style) from *claiming* it (the makers). If the owner picks option (a) in
+  `docs/PLAN.md` → Open decisions, this section changes to "the author is the submitter; makers
+  confirm with `member/{author}/{slug}`", and bulk imports still stay in `nearhunt.near`.
 - Ship this before the maintainers accept it. Until then the near.social indexer reports these
   keys as `ignored`, so nothing breaks, but nothing shows up in the app either.

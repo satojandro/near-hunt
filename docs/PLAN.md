@@ -75,7 +75,7 @@ near account list-keys nearhunt.near network-config mainnet now   # 1 key, full 
 | Where upvotes live | `nearhunt.near`, key `vote/{submission_id}`; the voter is the writer (`predecessor_id`) | The indexer keeps one row per writer per key, so one account gets one vote and nobody can vote as someone else. This replaces `vote/{id}/{voter}`. |
 | Where comments live | **near.social**: replies to one post per project by `nearhunt.near` | They show up in feeds and notifications and grow near.social activity. This reverses the earlier "own namespace" recommendation. |
 | Identity | near.social profiles (name, avatar, about) | People arrive with an identity they already have. |
-| Projects as a near.social data object | **In hackathon scope** (owner, 8 Nov evening; reverses the earlier "out of scope"). NH-100 sends the proposal; NH-101 lets builders publish `project/{slug}` on `social` from their own accounts. NEAR Hunt still never writes `project/` to `social` itself | See [`proposals/social-kv-project.md`](proposals/social-kv-project.md). |
+| Projects as a near.social data object | **In hackathon scope** (owner, 8 Nov evening; reverses the earlier "out of scope"). NH-100 sends the proposal; NH-101 lets anyone submit a project and NH-105 lets makers claim one, each from their own account. NEAR Hunt still never writes `project/` to `social` itself | See [`proposals/social-kv-project.md`](proposals/social-kv-project.md). |
 | Domain | **nearhunt.xyz** (bought 8 Nov). Pages at `nearhunt.xyz/p/{submission_id}`, skill at `nearhunt.xyz/SKILL.md`, schema `$id` under `nearhunt.xyz/schema/` | Owner's decision |
 | Donations to NEAR Hunt | A small "Support NEAR Hunt" link in the footer and on the open data page (NH-94, P2). It pays a **separate treasury account**, never `nearhunt.near`, and it never appears next to an upvote button | Low cost and on-brand, but it must not read as paying for votes, and the data-publishing key should not also hold funds |
 | Sponsored placements | **Built before the 14th (NH-104), switched on no earlier than 18 Nov** (results). One clearly labelled slot, outside the rankings, published on chain. Turning it on during judging needs a new owner decision | Paid visibility during judging would undercut "votes are community signals" |
@@ -92,7 +92,7 @@ near account list-keys nearhunt.near network-config mainnet now   # 1 key, full 
 | 3 (11 Nov) | near.social discussion, account page, states | 2, 3, 6, 8 |
 | 4 (12 Nov) | Open data, API, SKILL.md, proposal draft | 4 |
 | 5 (13 Nov) | README, demo, submission | — |
-| 6 (10 Nov) | Standards and claims: NH-100, NH-101 | 2 |
+| 6 (10 Nov) | Standards, open submission and claims: NH-100, NH-101, NH-105 | 1, 2 |
 | 7 (11 Nov) | Funding and mirroring: NH-102, NH-103 | 2, 4 |
 | 8 (12 Nov) | Sponsored slot (built, off): NH-104; Day 5 prep | 1, 2 |
 | — (13 Nov) | Day 5 submission (NH-90–NH-92) runs on 13 Nov as before | — |
@@ -101,7 +101,7 @@ near account list-keys nearhunt.near network-config mainnet now   # 1 key, full 
 Priority: **P0** = needed to submit · **P1** = should ship · **P2** = only if time allows.
 **Cut line:** if Day 3 slips, drop P2 items first, then NH-23, NH-50–53 and NH-15.
 Days 6–8 (NH-100–NH-104, added 8 Nov evening) sit **below** the Day 5 P0s: if submission work
-slips, they stop first, in the order NH-104, NH-103, NH-102, NH-101, NH-100.
+slips, they stop first, in the order NH-104, NH-103, NH-102, NH-105, NH-101, NH-100.
 
 ---
 
@@ -344,7 +344,8 @@ lets an agent write on anyone's behalf.
 | ID | P | Item | Done when | Depends on / approval |
 |---|---|---|---|---|
 | NH-100 | P1 | Take the `project/` proposal to the near.social maintainers. First: answer the proposal's open question (how a builder proves they own submission X), add a section mapping NEAR Hunt listings to the proposed record, and find the channel the maintainers take proposals in | The proposal is submitted and the link is recorded here and on `/open-data` (badge goes from "Draft" to "Submitted") | Owner approves the final text and channel. **Acceptance is the maintainers' call and is not expected by the 14th**; until then their indexer reports `project/` as `ignored` |
-| NH-101 | P1 | Builder claim flow: on `/p/{id}` a builder publishes their own `project/{slug}` to `social` from their wallet (wallet confirmation, like replies), with a `sources` entry for the submission. NEAR Hunt reads it back and shows "claimed by {account}". Replaces NH-24's "coming after the hackathon" copy | A testnet or a real builder's record shows on the listing as claimed, with the proof status | Builders sign their own writes; no agent writes. Needs NH-100's ownership proof: until it is verifiable, show "claimed by {account}, unverified". Reading claim rows from `social` is a new read path next to `readProjects()` (AGENTS.md §3 covers project records only), and it keeps only the row's `predecessor_id` |
+| NH-101 | P1 | **Open submission** (Product Hunt's "hunt"): any signed-in account submits a project it did not necessarily build. The submitter is the record's `predecessor_id` and is shown as "submitted by {account}", never as its maker. Fields as in the proposal's v1 record; `team` may list makers, shown as "listed by {submitter}". `/submit` form plus the new listings in the directory next to the imported ones | A testnet account submits a project; it appears in the directory and on `/p/…` with its submitter; a second submission of the same project from another account shows both, flagged as a possible duplicate | Users sign their own writes; no agent writes. **Where submissions live is an open owner decision** (see Open decisions). Anyone can submit, so NEAR Hunt needs a hide list and a written policy for it before launch (shared with NH-103's moderation story). Submissions are read by a new reader next to `readProjects()` that keeps each row's `predecessor_id` (AGENTS.md §3 covers imported records only) |
+| NH-105 | P1 | **Claim** (Product Hunt's "I'm a maker"): a maker confirms they built a listed project, whoever submitted it, including the 308 imported listings. The maker writes the proposal's confirmation edge `member/{author}/{slug}` → `{}` from their own account; a listing shows "made by {account}" only for accounts that wrote the edge. A claimed maker can then publish their own description, which NEAR Hunt shows ahead of the submitter's. Replaces NH-24's "coming after the hackathon" copy | A testnet maker claims an imported listing and a community submission; both show the maker, and an edge written for a project that does not exist is ignored | Makers sign their own writes. **Self-claims are unverified** until NH-100's ownership question is answered: the badge reads "claimed by {account}, unverified" until then. Depends on NH-101 for community listings; works on imported listings without it |
 
 **Day 7 (11 Nov) — funding and mirroring**
 
@@ -363,8 +364,9 @@ lets an agent write on anyone's behalf.
 
 AI scoring, Valkey and agent writes. Mainnet key prefixes are limited to `project/`, `vote/` and
 `sponsor/` (NH-104) on `nearhunt.near`, standard near.social posts, and `project/{slug}` on
-`social` written by builders from their own accounts (NH-101). Funding links (NH-102) and the
-claim flow (NH-101) moved into scope on 8 Nov evening.
+user-authored submission and claim keys written from the users' own accounts (NH-101, NH-105;
+exact keys pending the open decision below). Funding links (NH-102), open submission (NH-101) and
+the claim flow (NH-105) moved into scope on 8 Nov evening.
 
 ## Open decisions for the owner
 
@@ -374,4 +376,16 @@ project and points at it from Namecheap (apex `A 216.198.79.1` + `64.29.17.1`, `
 `4b4d19b81c5a6949.vercel-dns-017.com`, 308 → apex); Vercel reports both domains
 `configured_correctly` and the site serves over HTTPS. Still open:
 
-1. **Treasury account** for NH-94: create one (e.g. `treasury.nearhunt.near`) with a key held by the owner, not Hermes. It never signs imports.
+1. **Where community submissions (NH-101) and claims (NH-105) live.** This also changes the NH-100
+   proposal, which today says a `project/` record must be written by the people it describes.
+   - **(a) On `social`, `project/{slug}` by the submitter (recommended).** One shared record any
+     near.social client can read once accepted; the proposal changes to "author = submitter,
+     makers confirm with `member/{author}/{slug}`". Cost: one wallet confirmation per submission
+     and per claim (the login key covers `nearhunt.near` only); near.social itself ignores the keys
+     until the maintainers accept them.
+   - **(b) On `nearhunt.near`, `submission/{slug}` and `member/…` by the user** (like `vote/`).
+     Signs with the existing login key, so no wallet pop-up, and needs nobody's acceptance. Cost:
+     the data is NEAR Hunt's format, not a near.social one, and has to be migrated if the proposal
+     is accepted.
+
+2. **Treasury account** for NH-94: create one (e.g. `treasury.nearhunt.near`) with a key held by the owner, not Hermes. It never signs imports.
