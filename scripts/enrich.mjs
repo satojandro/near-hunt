@@ -18,6 +18,7 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 import { DEFAULT_ACCOUNT, readProjects } from '../lib/kv.mjs';
 import { buildEnrichment, summarize, tweetIdFromUrl } from '../lib/enrichment.mjs';
+import { verifyRepos } from '../lib/repo-check.mjs';
 
 const args = process.argv.slice(2);
 const flag = (name) => args.includes(name);
@@ -33,6 +34,8 @@ const DELAY_MS = Number(value('--delay', '300'));
 const CACHE_DIR = value('--cache', 'data/enrichment/x-posts');
 const THREADS_FILE = value('--threads', null);
 const OUT = value('--out', 'data/enrichment/proposal.json');
+// A repository link is only published when it answers `git ls-remote` at proposal time.
+const CHECK_REPOS = !args.includes('--no-check-repos');
 
 const SYNDICATION = 'https://cdn.syndication.twimg.com/tweet-result';
 const MAX_PARENTS = 6;
@@ -156,6 +159,30 @@ async function main() {
     fetched++;
     if (fetched % 25 === 0) console.log(`  ...${fetched} posts`);
     if (!threads[project.submission_id]) await delay(DELAY_MS);
+  }
+
+  if (CHECK_REPOS) {
+    const urls = results.map((r) => r.repository_url).filter(Boolean);
+    if (urls.length) {
+      process.stdout.write(`\nchecking ${urls.length} repositories with git ls-remote…`);
+      const reachable = await verifyRepos(urls);
+      const checkedAt = new Date().toISOString();
+      let dropped = 0;
+      for (const r of results) {
+        if (!r.repository_url) continue;
+        if (reachable.get(r.repository_url)) {
+          r.repository_verified = true;
+          r.repository_verified_at = checkedAt;
+        } else {
+          r.repository_unverified = r.repository_url;
+          r.repository_url = null;
+          r.repository_source = null;
+          dropped += 1;
+          if (!r.description && !r.links?.length) r.status = 'nothing-recoverable';
+        }
+      }
+      console.log(` ${urls.length - dropped}/${urls.length} answered, ${dropped} dropped.`);
+    }
   }
 
   const summary = summarize(results);

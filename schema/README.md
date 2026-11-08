@@ -57,6 +57,29 @@ the row as well as where it lives.
 }
 ```
 
+## Enrichment fields
+
+The importer only owns the fields the hackathon feed supplies. A separate, approval-gated pass
+(`scripts/enrich.mjs`) fills the unknowns from the builder's own X post and thread. These fields
+are additions allowed by `additionalProperties: true`; they are not part of the versioned schema
+object, and a consumer that ignores them loses nothing.
+
+| Field | Meaning |
+|---|---|
+| `description` | The builder's own post text, verbatim and cleaned (t.co and leading @mentions removed). Also used by the "About" card. |
+| `description_source` | X post URL the text came from. |
+| `repository_url` | A GitHub repository the builder linked, only when `git ls-remote` answered at proposal time. |
+| `repository_source` | X post URL that linked the repository. |
+| `repository_verified_at` | ISO time of that liveness check. |
+| `repository_unverified` | A linked repository that did not answer; kept for review, never published in `repository_url`. |
+| `repository_candidates` | Several unrelated repos were linked, so `repository_url` stays null rather than guessing. |
+| `links` | Other product URLs the builder posted, `{ url, source_post_id }`. |
+| `enrichment` | Provenance: `{ method, sources: [post URLs], retrieved_at, fields }`. |
+
+Policy: no AI rewriting, no repository guessed from a name. A builder can ask for their text to be
+removed — the owner rewrites the record, which updates the latest value (the older value remains in
+public history).
+
 ## Rules that matter when you consume this
 
 **Null means unknown, never empty.** The hackathon feed publishes only a name, tracks and a
