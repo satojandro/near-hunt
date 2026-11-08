@@ -7,33 +7,31 @@ https://claude.ai/artifact/TheVd1qg4LzCRzStJvKPKe (private until shared).
 
 ## Where things stand (re-audited 2026-11-08 evening, by Hermes)
 
-`nearhunt.near` has exactly four transactions:
+`nearhunt.near` has one funding transfer and five project-import transactions:
 
 1. a 1 NEAR funding transfer (block 223,583,069);
 2. 256 `project/…` records (block 223,583,277);
 3. 15 `project/…` records (block 223,583,288);
-4. 4 `project/…` records — tx `8rX5McjBeiitsRAhQsY7sqWbTQ9nXXHBDYwCJyQuGhfk`, authorized by the
-   owner and applied on 8 Nov (`NEAR Claim Check`, `Potluck`, `Swarmpad`, `Q-day`).
+4. 4 `project/…` records — tx `8rX5McjBeiitsRAhQsY7sqWbTQ9nXXHBDYwCJyQuGhfk`
+   (`NEAR Claim Check`, `Potluck`, `Swarmpad`, `Q-day`);
+5. 5 `project/…` records — tx `79cSKJkLzZw7mbpaKGFMrX5fpRjkxwcCrgbiNNekhVMF`
+   (`SpendGuard`, `AgentGuard`, `Hallmark`, `Autonomous Treasury Mesh`, `near-agent-guard`),
+   applied 8 Nov after the owner approved that exact 5-key diff.
 
-**Nothing on chain needs undoing.** 275 records on chain, all 275 valid against the schema, 0
-foreign rows, 0 tombstones. The feed has since grown to 277, so a re-run now plans two new keys
-below — it still writes nothing without approval.
+**The chain matches the feed.** 280 records on chain, 280 in the feed, all 280 valid against the
+schema, 0 foreign rows, 0 tombstones. A re-run writes nothing.
 
-The read-only product is now built: the directory and project pages are merged on `main` (Day 1).
-The chain holds 275 records while the feed now reports **277**: two submissions (`SpendGuard`,
-`AgentGuard`) are not imported yet, and `node scripts/import.mjs` plans them as 2 keys, 1086 bytes,
-1 transaction. That write is **waiting on owner authorization** — nothing was signed. The app is
-deployed at **https://near-hunt.vercel.app** (8 Nov): `/`, `/?q=…` and `/p/{id}` return 200 and an
-unknown id returns 404. What is missing is voting, discussion and the account page (Days 2–3),
-Days 4–5, and DNS on nearhunt.xyz. Keys for `nearhunt.near` live on the operator's machine by the
-owner's decision of 8 Nov — the gate is approval of each write, not the machine.
+The read-only product is built and deployed at **https://near-hunt.vercel.app** (Day 1), and Day 2's
+connect + upvote is merged and deployed. What is missing is discussion and the account page
+(Day 3), Days 4–5, and DNS on nearhunt.xyz. Keys for `nearhunt.near` live on the operator's machine
+by the owner's decision of 8 Nov — the gate is approval of each write, not the machine.
 
-Evidence for everything above, reproduced 8 Nov evening:
+Evidence, reproduced 8 Nov evening after the catch-up:
 
 ```bash
-npm test                  # 58 pass, 0 fail
-npm run validate:schema   # 275 records on chain, 275 valid, 0 foreign rows, 0 tombstones
-node scripts/import.mjs   # 2 new (feed 277), 0 changed, 275 unchanged — nothing signed
+npm test                  # 140 pass, 0 fail
+npm run validate:schema   # 280 records on chain, 280 valid, 0 foreign rows, 0 tombstones
+node scripts/import.mjs   # 0 new, 0 changed, 280 unchanged — nothing to write
 node scripts/import.mjs --check-key   # every candidate key with its on-chain permission
 near account list-keys nearhunt.near network-config mainnet now   # 1 key, full access
 ```
@@ -138,9 +136,10 @@ proposal time. No AI rewriting, no repository guessed from a name. Sources are s
 the owner rewrites the record.
 
 **Status:** proposal generated, nothing written. `node scripts/enrich.mjs --threads
-data/enrichment/threads.json` reads 275 records and 86 captured threads and proposes **260
-descriptions, 97 verified repositories and 109 link sets** (1 repository dropped after failing the
-liveness check). Applying it is a separately approved write:
+data/enrichment/threads.json` reads the chain records (275 when this proposal was generated; 280
+after the catch-up, so rerun it) and proposes **260 descriptions, 97 verified repositories and 109
+link sets** (1 repository dropped after failing the liveness check). Applying it is a separately
+approved write:
 `node scripts/import.mjs --enrichment data/enrichment/proposal.json` — as of 8 Nov that is 5 new +
 260 changed records, **265 keys, 261,743 bytes, 5 transactions**. Rerun `enrich.mjs` after the
 feed catch-up so the newest submissions are included.

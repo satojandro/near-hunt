@@ -9,13 +9,12 @@ page, one-account-one-upvote, and threaded discussion — with every project rec
 open, versioned JSON on NEAR itself, and a read-only API that lets AI agents discover
 projects without browser automation.
 
-> **Status: data layer live on mainnet; read-only web app deployed.** All 275 NEAR Hackathon
-> submissions that have been imported are stored as `nearhunt/project/1` records under
-> `nearhunt.near` — three transactions, no smart contract, verified readable 275/275 through the
-> public FastData indexer. The feed has since grown to 277; the importer plans the two new records
-> and waits for the owner's authorization. The directory and project pages are live at
-> **https://near-hunt.vercel.app** (nearhunt.xyz DNS still points at parking, not Vercel).
-> Votes, discussion and the account page are Day 2–3 work.
+> **Status: data layer live on mainnet; read-only web app deployed.** All 280 NEAR Hackathon
+> submissions are stored as `nearhunt/project/1` records under `nearhunt.near` — five import
+> transactions plus the funding transfer, no smart contract, verified readable 280/280 through the
+> public FastData indexer, and a re-run of the importer writes nothing. The directory, project
+> pages and connect/upvote flow are live at **https://near-hunt.vercel.app**. Discussion and the
+> account page are Day 3 work.
 > See [`docs/phase-0-spike.md`](docs/phase-0-spike.md) and [`schema/`](schema/).
 
 ---
@@ -49,7 +48,7 @@ anyone, with no bespoke contract to deploy or audit.
 
 | Concern | Choice | Status |
 |---|---|---|
-| Project records | FastData KV writes (`__fastdata_kv`) to `nearhunt.near` | **live on mainnet** (275 records) |
+| Project records | FastData KV writes (`__fastdata_kv`) to `nearhunt.near` | **live on mainnet** (280 records) |
 | Upvotes | `vote/{project_id}` keys written by the voter, so one vote per account | designed, not built |
 | Reading records | `https://kv.main.fastnear.com`, scoped to records written by `nearhunt.near` | verified |
 | Discussion | near.social `social-kv/1` replies to one post per project | designed, not built |
