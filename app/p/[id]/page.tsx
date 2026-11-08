@@ -13,15 +13,19 @@ import UpvotedBy from '@/app/components/project/UpvotedBy';
 import UpvoteButton from '@/app/components/vote/UpvoteButton';
 import SimilarProjects from '@/app/components/project/SimilarProjects';
 import ClaimCard from '@/app/components/project/ClaimCard';
+import StaleBanner from '@/app/components/states/StaleBanner';
 import s from '@/app/components/project/project.module.css';
 
 type Props = { params: Promise<{ id: string }> };
 
 // No loading.tsx on purpose: a streamed fallback would commit a 200 before notFound() can set 404.
+// If the KV API is unreachable and there is no copy to serve, getProject throws and ./error.tsx
+// says the project could not be loaded (never "not found").
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
-  const project = await getProject(id);
+  const project = await getProject(id).catch(() => undefined);
+  if (project === undefined) return { title: 'Project unavailable', robots: { index: false } };
   if (!project) return { title: 'Project not found', robots: { index: false } };
   const description = metaDescription(project, trackLabel);
   return {
@@ -46,6 +50,7 @@ export default async function ProjectPage({ params }: Props) {
 
   return (
     <main className={`container ${s.page}`}>
+      <StaleBanner />
       <nav aria-label="Breadcrumb" className={s.crumbs}>
         <Link href="/">Projects</Link>
         <span aria-hidden="true">/</span>
@@ -74,6 +79,12 @@ export default async function ProjectPage({ params }: Props) {
           <ClaimCard />
         </aside>
       </div>
+      {/* NH-71: the same UpvoteButton in a bar pinned to the bottom on phones; hidden on desktop. */}
+      {votesAvailable ? (
+        <div className={s.stickyVote}>
+          <UpvoteButton projectId={project.submission_id} initialCount={count} variant="page" projectName={project.name} />
+        </div>
+      ) : null}
     </main>
   );
 }

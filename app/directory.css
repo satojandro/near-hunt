@@ -91,16 +91,6 @@
   font-weight: 600; font-size: 15px; color: var(--text-muted); background: none;
 }
 
-/* Empty state */
-.dir-empty {
-  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-card);
-  padding: 28px 24px; color: var(--text-muted);
-}
-.dir-empty p { margin: 0 0 8px; }
-.dir-empty-title { color: var(--text); font-family: var(--font-display); font-size: 18px; font-weight: 600; }
-.dir-empty-actions { display: flex; flex-wrap: wrap; gap: 4px 20px; margin-bottom: 0 !important; }
-.dir-empty-actions a { font-weight: 600; min-height: 44px; display: inline-flex; align-items: center; }
-
 /* Phone (board 5) */
 @media (max-width: 640px) {
   .dir-hero { padding-top: 24px; }
@@ -108,6 +98,8 @@
   .dir-lede { font-size: 15px; }
   .dir-controls { padding-top: 18px; gap: 12px; }
   .dir-search { max-width: none; }
+  /* 16 px stops iOS Safari zooming the page when the search field takes focus. */
+  .dir-search input { font-size: 16px; }
   .dir-tab { min-height: 44px; }
   .dir-tabs { flex: 1 1 auto; }
   .dir-tab { flex: 1 1 0; justify-content: center; }
