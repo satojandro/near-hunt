@@ -11,24 +11,37 @@ keys is a separate approval and is never implied by an import approval.
 
 ## A. Mainnet writes as `nearhunt.near`: owner approval for each
 
-- [ ] **A1. Import 1 new project record.** The feed reports 281 projects and the chain holds 280.
-      The new one is `project/04749b49-1ec8-469d-91b8-4ee173e2bc9f` "AgentGuard": a second project
-      with that name, with a different id from `00ed3eb4-…` and `24ab3074-…`.
+- [x] **A1. Import 1 new project record.** Done while Day 3 was being built: `project/04749b49-…`
+      "AgentGuard" is on chain at block 223,606,742, written by `nearhunt.near`.
       ```bash
-      node scripts/import.mjs            # expect: new 1, changed 0, unchanged 280 → 1 key, 544 bytes, 1 tx
-      node scripts/import.mjs --execute --yes   # only after approval
-      npm run validate:schema            # expect 281 valid, 0 foreign rows, 0 tombstones
+      npm run validate:schema   # 281 records, 281 valid, 0 foreign rows
+      node scripts/import.mjs   # new 0, changed 0, unchanged 281
       ```
-- [ ] **A2. NH-40 project posts on near.social** (posts to `social.near` as `nearhunt.near`),
-      at most 40 per batch and never all 281. The discussion branch is still being built: once it
-      lands, `node scripts/social-posts.mjs --limit 40` prints the batch (account, contract, tx
-      count, bytes, exact payloads) and has **no execute path**. Hermes posts it after approval.
+- [ ] **A2. NH-40 project posts on near.social**, posted as `nearhunt.near`, at most 40 per batch,
+      never all 281. Per near.social's skill.md (social-kv/1) the receiver is **`social`** (mainnet
+      only; there is no testnet indexer), method `__fastdata_kv`, gas 1 Ggas, deposit 0, one post per
+      transaction. The receipt fails with `CodeDoesNotExist` by design. Confirm each post with
+      `GET https://api2.near.social/v1/tx/{hash}` and never resend.
+      ```bash
+      node scripts/social-posts.mjs --limit 40   # dry run: 40 posts, 40 tx, 10,917 bytes, every payload printed
+      ```
+      The script has **no execute path**: `--execute` exits 2. Hermes signs the printed payloads
+      after approval.
+      - [ ] **First, D1 (DNS):** near.social builds each post's link card from
+            `https://nearhunt.xyz/p/{id}`, and the domain is still parked.
       - [ ] Owner approves the printed batch.
-      - [ ] If `nearhunt.near`'s only key is the full-access key, decide which key signs the posts
-            (a new function-call key for `social.near` is a **separate** approval).
-- [ ] **A3. Write `social_post` back into the posted projects' records.** The importer keeps the
-      field but does not set it, so this runs after A2 using the overlay the discussion branch
-      adds. It is a normal `project/` import: dry run, approval, `--execute --yes`.
+      - [ ] Decide which key signs. `nearhunt.near` has one full-access key today. A function-call
+            key for receiver `social` is a **separate** approval.
+      - [ ] Save the confirmed references as `data/social-posts.json` (the overlay format
+            `scripts/social-posts.mjs` prints).
+- [ ] **A3. Write `social_post` back into the posted projects' records.** This runs after A2, as a
+      normal `project/` import with the overlay. The overlay only fills an empty `social_post` with
+      a `nearhunt.near/{id}` reference. It never replaces an existing one; a mismatch shows as a `!`
+      line in the dry run.
+      ```bash
+      node scripts/import.mjs --social-posts data/social-posts.json   # dry run: expect "~ changed: social_post" per posted project
+      node scripts/import.mjs --social-posts data/social-posts.json --execute --yes   # only after approval
+      ```
 
 ## B. Owner decisions (no signing yet)
 
@@ -61,7 +74,8 @@ nobody has run them yet.
       (`https://near.social/mob.near/widget/ProfileEditor`; nobody has seen it render yet).
 - [ ] **C5. Reply to a project thread** (NH-42), once A2 has posted at least one project. Check
       the reply appears in the thread and on near.social, and that a rejected or rate-limited
-      reply keeps the draft (NH-83).
+      reply keeps the draft (NH-83). This also confirms the wallet accepts a 1 Ggas call to `social`
+      and returns a transaction hash; that path has only been unit-tested.
 
 ## D. Not signing, but still Hermes's
 

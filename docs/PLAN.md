@@ -186,7 +186,7 @@ Production deploy done 8 Nov at `https://near-hunt.vercel.app`; `nearhunt.xyz` D
 
 | ID | P | Item |
 |---|---|---|
-| NH-40 | P0 | Project posts from `nearhunt.near`, created by the server the first time someone opens a thread, plus a daily "spotlight" drip of at most 40. Never all 271 at once. The post reference is stored in `social_post` (NH-05) |
+| NH-40 | P0 | Project posts from `nearhunt.near`: a daily "spotlight" drip of at most 40, never all at once. Per near.social's skill.md (social-kv/1, AGENTS.md §2a) a post is `{"post/{ms}": {text}}` sent with `__fastdata_kv` to receiver **`social`** (mainnet only), confirmed via `/v1/tx/{hash}`. The post reference is stored in `social_post` (NH-05) via `scripts/import.mjs --social-posts`. **Prep done 8 Nov:** `scripts/social-posts.mjs` prints the batch and has no execute path; posting is Hermes's after approval ([`runbooks/day3-signing-checklist.md`](runbooks/day3-signing-checklist.md)). "Created by the server the first time someone opens a thread" is **not built**: it needs a server-held `nearhunt.near` key, which is an owner decision |
 | NH-41 | P0 | Read the thread: `GET api2.near.social/v1/posts/nearhunt.near/{post_id}/replies` |
 | NH-42 | P0 | Reply composer: `post/{ms}` with `reply_to`/`root`, plus the `reply/…` backlink in the same action; confirmed via `/v1/tx/{hash}` |
 | NH-43 | P1 | Reply counts on cards; "Most discussed" sort |
