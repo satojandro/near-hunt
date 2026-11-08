@@ -97,7 +97,11 @@ nobody has run them yet.
 
 ## D. Not signing, but still Hermes's
 
-- [ ] **D1. DNS for nearhunt.xyz:** add the domain to the `near-hunt` Vercel project, then set
-      Namecheap DNS (apex `A 76.76.21.21`, `www` CNAME `cname.vercel-dns.com`).
-- [ ] **D2. Deploy `main`.** Day 3 is merged (`3a7189f`); this deploy ships it. Nothing on Vercel
-      changes until it runs.
+- [x] **D1. DNS for nearhunt.xyz:** done 8 Nov. The domain is on the `near-hunt` Vercel project;
+      Namecheap now carries apex `A 216.198.79.1` + `64.29.17.1` and `www` CNAME
+      `4b4d19b81c5a6949.vercel-dns-017.com`. Vercel reports both `configured_correctly`;
+      `www` 308-redirects to the apex and `http` 308s to `https`. TLS is Let's Encrypt for
+      `nearhunt.xyz` (issued 8 Nov, expires 6 Feb 2027).
+- [x] **D2. Deploy `main`.** Done 8 Nov: Day 3 shipped in the same deploy as Day 4
+      (`near-hunt-k15gdqx9a`, then `near-hunt-a6o1ss5f9` for the DNS/SKILL.md copy). Deploys are
+      manual (`vercel --prod`) — the project has no git integration.
