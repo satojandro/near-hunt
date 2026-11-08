@@ -122,6 +122,18 @@ during migration. This is the same choice near.social made with `post2/`.
 
 ## Cost of the whole dataset
 
-271 records, 139,421 bytes, in two transactions. No contract, no storage deposit — the
+275 records, 128,270 bytes of record JSON, in three transactions. No contract, no storage
+deposit — the
 records are FastData KV writes, which the indexer captures whether or not the receipt
 succeeds (it never does: `nearhunt.near` has no contract).
+
+Reproduce both numbers:
+
+```bash
+npm run validate:schema
+
+node -e "import('./lib/kv.mjs').then(async({readProjects})=>{
+  const rows=await readProjects();
+  console.log(rows.length, rows.reduce((n,r)=>n+Buffer.byteLength(JSON.stringify(r.value)),0));
+})"
+```

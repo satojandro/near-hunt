@@ -23,10 +23,14 @@
  *
  * Usage:
  *   node scripts/import.mjs                       # dry run: fetch, diff against chain, report
- *   node scripts/import.mjs --check-key           # resolve and load the signer key, sign nothing
+ *   node scripts/import.mjs --check-key           # resolve the signer key and print its permission
  *   node scripts/import.mjs --execute --yes       # sign and broadcast the diff
  *   node scripts/import.mjs --account X --network testnet
  *   node scripts/import.mjs --execute --yes --key-file path/to/limited-key.json
+ *
+ * Before signing, the importer asks the RPC what the key is allowed to do. A `FullAccess` key
+ * is refused with a non-zero exit, because an import needs only `__fastdata_kv` on one
+ * receiver; pass --accept-full-access to override that on purpose.
  *
  * Requires a NEAR credentials file for the signing account, in either shape the CLIs write
  * (both are resolved, see resolveKeyFile): a flat ~/.near-credentials/{network}/{account}.json
@@ -42,6 +46,7 @@ import { join } from 'node:path';
 import { connect, keyStores, KeyPair, transactions, utils } from 'near-api-js';
 import { readProjects, KV_HOSTS } from '../lib/kv.mjs';
 import { planImport, toBatches, canonical, MAX_KEYS_PER_CALL } from '../lib/import-plan.mjs';
+import { describePermission, isFullAccess, importKeyDecision } from '../lib/key-permission.mjs';
 
 // ---------------------------------------------------------------------------
 // Configuration
@@ -69,6 +74,7 @@ const NETWORK = flag('network', 'mainnet');
 const ACCOUNT = flag('account', 'nearhunt.near');
 const KEY_FILE_FLAG = flag('key-file', undefined);
 const CHECK_KEY = args.includes('--check-key');
+const ACCEPT_FULL_ACCESS = args.includes('--accept-full-access');
 const CREDENTIALS_ROOT = join(homedir(), '.near-credentials');
 const NODE_URL =
   NETWORK === 'mainnet' ? 'https://rpc.mainnet.near.org' : 'https://rpc.testnet.near.org';
@@ -127,21 +133,16 @@ async function keyFilesIn(dir) {
 
 /**
  * A near-cli-rs keychain directory can hold several keys (full access, function call, old
- * rotated keys). There is no way to tell from the file which is which, so a single file is
- * taken as-is and several files are reported: the newest wins, and every candidate is
- * printed so --key-file can be used to pin the right one.
+ * rotated keys). Every candidate is reported with the permission its key holds on chain, so
+ * the choice is visible rather than implied; the newest file is chosen unless --key-file pins
+ * one.
  */
-async function pickFromDirectory(dir) {
-  const files = await keyFilesIn(dir);
-  if (files.length <= 1) return files[0] ?? null;
-
+async function newestFirst(files) {
   const dated = await Promise.all(
     files.map(async (file) => ({ file, mtimeMs: (await stat(file)).mtimeMs })),
   );
-  dated.sort((a, b) => b.mtimeMs - a.mtimeMs);
-  console.warn(`  ! ${files.length} key files in ${dir}; using the newest. Pass --key-file to pick one:`);
-  for (const { file } of dated) console.warn(`      ${file}`);
-  return dated[0].file;
+  dated.sort((a, b) => b.mtimeMs - a.mtimeMs || a.file.localeCompare(b.file));
+  return dated.map((d) => d.file);
 }
 
 /**
@@ -150,17 +151,23 @@ async function pickFromDirectory(dir) {
  *   ~/.near-credentials/{network}/{account}.json                     (older near-cli)
  *   ~/.near-credentials/{network}/{account}/{public-key}.json        (near-cli-rs)
  *
- * The flat file wins when both exist, so behaviour for existing setups never changes.
- * On failure the message lists every path that was tried.
+ * The flat file wins when both exist, so behaviour for existing setups never changes. Every
+ * candidate found is returned alongside the pick, so the caller can print what each key is
+ * allowed to do on chain. On failure the message lists every path that was tried.
+ *
+ * @returns {Promise<{path: string, candidates: string[]}>}
  */
 async function resolveKeyFile({ network, account, explicit }) {
   if (explicit) {
     const info = await statOrNull(explicit);
-    if (info?.isFile()) return explicit;
+    if (info?.isFile()) return { path: explicit, candidates: [explicit] };
     if (info?.isDirectory()) {
-      const picked = await pickFromDirectory(explicit);
-      if (picked) return picked;
-      throw new Error(`--key-file ${explicit} is a directory with no .json file inside it`);
+      const files = await keyFilesIn(explicit);
+      if (!files.length) {
+        throw new Error(`--key-file ${explicit} is a directory with no .json file inside it`);
+      }
+      const ordered = await newestFirst(files);
+      return { path: ordered[0], candidates: ordered };
     }
     throw new Error(`--key-file ${explicit} does not exist`);
   }
@@ -169,12 +176,15 @@ async function resolveKeyFile({ network, account, explicit }) {
   const flat = `${base}.json`;
   const tried = [flat];
 
-  if ((await statOrNull(flat))?.isFile()) return flat;
+  const flatExists = (await statOrNull(flat))?.isFile();
+  const dirInfo = await statOrNull(base);
+  const dirFiles = dirInfo?.isDirectory() ? await newestFirst(await keyFilesIn(base)) : [];
+
+  if (flatExists) return { path: flat, candidates: [flat, ...dirFiles] };
 
   tried.push(base);
-  if ((await statOrNull(base))?.isDirectory()) {
-    const picked = await pickFromDirectory(base);
-    if (picked) return picked;
+  if (dirInfo?.isDirectory()) {
+    if (dirFiles.length) return { path: dirFiles[0], candidates: dirFiles };
     throw new Error(
       `no key file for ${account} on ${network}. Tried:\n  ${tried.join('\n  ')}\n` +
         `  (${base} exists but holds no .json file)`,
@@ -196,13 +206,50 @@ async function readKeyPair(path) {
   return { path, accountId: raw.account_id ?? null, keyPair: KeyPair.fromString(secret) };
 }
 
-async function loadSigner(near, accountId) {
-  const path = await resolveKeyFile({ network: NETWORK, account: accountId, explicit: KEY_FILE_FLAG });
-  const { keyPair } = await readKeyPair(path);
-
-  await near.connection.signer.keyStore.setKey(NETWORK, accountId, keyPair);
-  return keyPair.getPublicKey();
+/**
+ * Ask the RPC what the key may do. `permission` is either "FullAccess" or
+ * `{ FunctionCall: { receiver_id, method_names, allowance } }`.
+ *
+ * A credentials file cannot answer this: the file holds a secret, the chain holds the
+ * authority. Reading it costs one read-only RPC call against the same node the importer
+ * already talks to.
+ */
+async function queryPermission(near, accountId, publicKey) {
+  const accessKey = await near.connection.provider.query({
+    request_type: 'view_access_key',
+    finality: 'final',
+    account_id: accountId,
+    public_key: publicKey,
+  });
+  return accessKey.permission ?? null;
 }
+
+/**
+ * Print every candidate file with the permission its public key actually holds on chain.
+ * The chosen file is marked `*`. Returns the chosen permission, or null when it could not
+ * be read (an unpublished key, or an RPC failure).
+ */
+async function reportKeyCandidates(near, { candidates, chosen, accountId }) {
+  console.log('key candidates:');
+  let chosenPermission = null;
+
+  for (const file of candidates) {
+    const mark = file === chosen ? '*' : ' ';
+    let described;
+    try {
+      const { keyPair } = await readKeyPair(file);
+      const permission = await queryPermission(near, accountId, keyPair.getPublicKey().toString());
+      described = `permission: ${describePermission(permission)}`;
+      if (file === chosen) chosenPermission = permission;
+    } catch (err) {
+      described = `permission: unknown (${err.message})`;
+    }
+    console.log(`  ${mark} ${file}  ${described}`);
+  }
+
+  return chosenPermission;
+}
+
 
 /**
  * Send one batch and return the transaction hash.
@@ -279,18 +326,35 @@ function printPlan(plan) {
 async function main() {
   const nowIso = new Date().toISOString();
 
-  // Resolve and load the signer without touching the chain or signing anything. This is
-  // what makes the key-path rules in docs/runbooks/keys.md testable before a real import.
+  // Resolve the signer, print what the key is allowed to do, and sign nothing. This is what
+  // makes the key rules in docs/runbooks/keys.md testable before a real import.
   if (CHECK_KEY) {
-    const path = await resolveKeyFile({
+    const near = await connect({
+      networkId: NETWORK,
+      nodeUrl: NODE_URL,
+      keyStore: new keyStores.InMemoryKeyStore(),
+    });
+    const { path, candidates } = await resolveKeyFile({
       network: NETWORK,
       account: ACCOUNT,
       explicit: KEY_FILE_FLAG,
     });
     const { accountId, keyPair } = await readKeyPair(path);
-    console.log(`key file: ${path}`);
-    console.log(`account:  ${accountId ?? ACCOUNT}`);
-    console.log(`public:   ${keyPair.getPublicKey().toString()}`);
+    const permission = await reportKeyCandidates(near, {
+      candidates,
+      chosen: path,
+      accountId: accountId ?? ACCOUNT,
+    });
+
+    console.log(`key file:   ${path}`);
+    console.log(`account:    ${accountId ?? ACCOUNT}`);
+    console.log(`public:     ${keyPair.getPublicKey().toString()}`);
+    console.log(`permission: ${describePermission(permission)}`);
+    if (isFullAccess(permission)) {
+      console.warn(
+        '  ! full access — --execute will refuse this key unless --accept-full-access is passed.',
+      );
+    }
     console.log('resolved and parsed — nothing signed, nothing sent.');
     return;
   }
@@ -329,8 +393,31 @@ async function main() {
     nodeUrl: NODE_URL,
     keyStore: new keyStores.InMemoryKeyStore(),
   });
-  const publicKey = await loadSigner(near, ACCOUNT);
-  console.log(`signer:  ${ACCOUNT} (${publicKey.toString()})`);
+  const { path, candidates } = await resolveKeyFile({
+    network: NETWORK,
+    account: ACCOUNT,
+    explicit: KEY_FILE_FLAG,
+  });
+  const { keyPair } = await readKeyPair(path);
+  const permission = await reportKeyCandidates(near, {
+    candidates,
+    chosen: path,
+    accountId: ACCOUNT,
+  });
+
+  // Refuse to sign an import with a key that can drain or delete the account. This runs
+  // before the signer is installed and before any transaction is built.
+  const decision = importKeyDecision({
+    permission,
+    keyPath: path,
+    acceptFullAccess: ACCEPT_FULL_ACCESS,
+  });
+  if (!decision.allowed) throw new Error(decision.reason);
+  if (decision.warning) console.warn(`  ! ${decision.warning}`);
+
+  await near.connection.signer.keyStore.setKey(NETWORK, ACCOUNT, keyPair);
+  const publicKey = keyPair.getPublicKey();
+  console.log(`signer:  ${ACCOUNT} (${publicKey.toString()}) — ${describePermission(permission)}`);
 
   const hashes = [];
   for (const [i, batch] of batches.entries()) {

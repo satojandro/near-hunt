@@ -7,35 +7,28 @@ https://claude.ai/artifact/TheVd1qg4LzCRzStJvKPKe (private until shared).
 
 ## Where things stand (re-audited 2026-11-08 evening, by Hermes)
 
-`nearhunt.near` has exactly three transactions:
+`nearhunt.near` has exactly four transactions:
 
 1. a 1 NEAR funding transfer (block 223,583,069);
 2. 256 `project/…` records (block 223,583,277);
-3. 15 `project/…` records (block 223,583,288).
+3. 15 `project/…` records (block 223,583,288);
+4. 4 `project/…` records — tx `8rX5McjBeiitsRAhQsY7sqWbTQ9nXXHBDYwCJyQuGhfk`, authorized by the
+   owner and applied on 8 Nov (`NEAR Claim Check`, `Potluck`, `Swarmpad`, `Q-day`).
 
-**Nothing on chain needs undoing.** What's missing is the product itself, plus the guardrails
-listed under Day 0.
+**Nothing on chain needs undoing, and the chain matches the feed.** 275 records on chain, 275 in
+the feed, 275/275 valid against the schema, 0 foreign rows, 0 tombstones. A re-run writes nothing.
 
-The chain is now **behind** the feed. The hackathon feed has grown from 271 to **275**
-submissions; the dry run finds 4 new, 0 changed, 271 unchanged, 0 missing:
-
-```
-+ project/e8d8d832-2a1f-4026-afba-111e6bd7316b  "NEAR Claim Check"
-+ project/d7468e54-2c34-4138-8613-a587af2d3f1b  "Potluck"
-+ project/a395a485-5c23-43ac-b1b5-5e27887c3124  "Swarmpad"
-+ project/0328a53c-46b1-4ae4-a6be-c802af786094  "Q-day"
-would write: 4 keys, 2051 bytes, 1 transaction
-```
-
-That write was **approved by the owner on 9 Nov** (NH-93). It is applied from the machine that
-holds the key (Hermes), not from a cloud agent session.
+What's missing is the product itself, plus Day 1 onwards. Keys for `nearhunt.near` live on the
+operator's machine by the owner's decision of 8 Nov — the gate is approval of each write, not the
+machine.
 
 Evidence for everything above, reproduced 8 Nov evening:
 
 ```bash
-npm test                  # 15 pass, 0 fail
-npm run validate:schema   # 271 records, 271 valid, 0 foreign rows, 0 tombstones
-node scripts/import.mjs   # 4 new, 0 changed, 271 unchanged, 0 missing
+npm test                  # 23 pass, 0 fail
+npm run validate:schema   # 275 records, 275 valid, 0 foreign rows, 0 tombstones
+node scripts/import.mjs   # 0 new, 0 changed, 275 unchanged — nothing to write
+node scripts/import.mjs --check-key   # every candidate key with its on-chain permission
 near account list-keys nearhunt.near network-config mainnet now   # 1 key, full access
 ```
 
@@ -51,12 +44,14 @@ near account list-keys nearhunt.near network-config mainnet now   # 1 key, full 
 | Domain | **nearhunt.xyz** (bought 8 Nov). Pages at `nearhunt.xyz/p/{submission_id}`, skill at `nearhunt.xyz/SKILL.md`, schema `$id` under `nearhunt.xyz/schema/` | Owner's decision |
 | Donations to NEAR Hunt | A small "Support NEAR Hunt" link in the footer and on the open data page (NH-94, P2). It pays a **separate treasury account**, never `nearhunt.near`, and it never appears next to an upvote button | Low cost and on-brand, but it must not read as paying for votes, and the data-publishing key should not also hold funds |
 | Sponsored placements | **Not before results are announced (18 Nov).** After that: one clearly labelled slot, outside the rankings, published on chain (NH-104) | Paid visibility during judging would undercut "votes are community signals" |
+| Wallets | **Meteor** (web/extension/mobile) via wallet-selector. **MyNearWallet is dropped** — it entered sunset Phase 3 on 1 Nov 2026 and refuses every dApp request | Verified 8 Nov: `window.mnwSunset = {phase:3}`, `/sign` answers "MyNearWallet can no longer approve app requests". See [`spikes/2026-11-08-nh-35-wallet-tx-to-contractless-receiver.md`](spikes/2026-11-08-nh-35-wallet-tx-to-contractless-receiver.md) |
+| Vote signing | **One wallet approval at login adds a function-call key** (receiver `nearhunt.near`, method `__fastdata_kv`); the app signs votes locally and treats the receipt's `CodeDoesNotExist` as success, confirmed by the KV read | Wallets do broadcast to a contract-less receiver, but a wallet-confirmed vote shows a failure dialog every time. Path and evidence: the NH-35 spike |
 
 ## Roadmap at a glance
 
 | Day | Theme | Boards |
 |---|---|---|
-| 0 (8 Nov) | Guardrails and schema fixes — **done** (NH-06 dropped 9 Nov, handled by the owner with Hermes) | — |
+| 0 (8 Nov) | Guardrails and schema fixes — **code done** | — |
 | 1 (9 Nov) | Directory and project page, read-only — **code done** | 1, 2, 5 |
 | 2 (10 Nov) | Connect and upvote | 7, 2 |
 | 3 (11 Nov) | near.social discussion, account page, states | 2, 3, 6, 8 |
@@ -74,10 +69,11 @@ Priority: **P0** = needed to submit · **P1** = should ship · **P2** = only if 
 ### Day 0 — guardrails (no board)
 
 **Status (8 Nov evening):** NH-01 to NH-05 are **done and verified by Hermes**: `npm test`
-is 15/15 green, `npm run validate:schema` reads 271/271 valid with 0 foreign rows, and the
-importer dry run is idempotent (4 new, 0 changed, 271 unchanged). NH-07 and NH-08 closed the
-same evening. NH-06 was **dropped on 9 Nov** by the owner: key custody is handled with Hermes, and
-keys may live on the Mac Mini (AGENTS.md §2).
+is 23/23 green, `npm run validate:schema` reads 275/275 valid with 0 foreign rows, and the
+importer dry run is idempotent (0 new, 0 changed, 275 unchanged). NH-07, NH-08 and NH-09
+closed the same evening. **NH-06 was withdrawn by the owner on 8 Nov**: keys for
+`nearhunt.near` stay where the importer runs, and the gate is prior authorization of each write, not
+machine custody. See [`runbooks/keys.md`](runbooks/keys.md).
 
 | ID | P | Item | Done when |
 |---|---|---|---|
@@ -85,24 +81,24 @@ keys may live on the Mac Mini (AGENTS.md §2).
 | NH-02 | P0 | Importer diffs against chain: writes only new or changed keys, keeps `updated_at` when the content is unchanged, requires `--execute --yes`, never tombstones | **Done** — `lib/import-plan.mjs` + 10 tests; a re-run with no changes writes nothing |
 | NH-03 | P0 | `AGENTS.md`: no mainnet transaction without a dry-run diff a human has approved; every docs claim comes with the command that proves it | **Done** — file committed |
 | NH-04 | P1 | Fix the docs drift (README table, spike "account undecided", the duplicated paragraph in the research doc) | **Done** |
-| NH-05 | P1 | Schema touch-ups: real `$id`; optional `social_post` field (the project's near.social post reference); document that `source.url` is the generic listing; written specs for the `vote/` and near.social comment conventions | **Done** — `$id` is `nearhunt.xyz`; `npm run validate:schema` still passes 271/271 |
-| NH-06 | — | ~~Key custody split between MacBook and Mac Mini~~ | **Dropped 9 Nov (owner).** Key handling is the owner's, with Hermes; keys may live on the Mac Mini. See AGENTS.md §2 |
+| NH-05 | P1 | Schema touch-ups: real `$id`; optional `social_post` field (the project's near.social post reference); document that `source.url` is the generic listing; written specs for the `vote/` and near.social comment conventions | **Done** — `$id` is `nearhunt.xyz`; `npm run validate:schema` passes 275/275 |
+| NH-06 | — | ~~Keys must leave the agent machine~~ | **Withdrawn by the owner, 8 Nov 2026.** Keys stay on the operator's machine; every mainnet write needs prior authorization for that specific write. Recorded in `AGENTS.md` §2 and `runbooks/keys.md` |
 | NH-07 | P1 | `scripts/import.mjs` defaults to `~/.near-credentials/{net}/{account}.json`, but near-cli-rs `save-to-legacy-keychain` writes `~/.near-credentials/{net}/{account}/{public-key}.json`. Resolve both, or fail with the exact path it looked for | **Done** — `resolveKeyFile()` takes the flat file when present, else the newest `.json` in the account directory, and the error lists every path tried. `node scripts/import.mjs --check-key` resolves and parses the key without signing: it prints `~/.near-credentials/mainnet/nearhunt.near.json` here, and against a fake `HOME` with only a near-cli-rs directory it prints that nested file. `--key-file <dir>` works too |
 | NH-08 | P2 | `scripts/render-mockups.mjs` needs Playwright + Chromium, which is not in `devDependencies` | **Done** — the Playwright dependency is gone: the script drives the installed Chrome/Chromium over the DevTools protocol using Node's built-in WebSocket, and exits with an install hint (or `CHROME_PATH`) when no browser is found. `npm run render:mockups` on this machine re-rendered all 9 boards; the generated `html/` is byte-identical to the committed files and every PNG keeps its exact 2× dimensions |
-| NH-09 | P1 | The importer cannot tell a full-access key from a function-call key, and `resolveKeyFile()` prefers the flat file — so a leftover full-access credential silently signs an import. Query `view_access_key` for the resolved public key and print the permission; refuse to sign with full access unless `--accept-full-access` is passed | `--check-key` prints `FunctionCall` or `full access` for the resolved key, and an import with a full-access key exits non-zero |
+| NH-09 | P1 | The importer cannot tell a full-access key from a function-call key, and `resolveKeyFile()` prefers the flat file — so a leftover full-access credential silently signs an import. Query `view_access_key` for the resolved public key and print the permission; refuse to sign with full access unless `--accept-full-access` is passed | **Done** — `queryPermission()` reads `view_access_key` on the same RPC the importer already uses; `--check-key` prints each candidate file with `permission: full access` or `permission: FunctionCall(<receiver>, <methods>)` and marks the chosen one. Verified against `nearhunt.testnet`, where all three shapes resolve: the flat file `full access`, one nested key `FunctionCall(nearhunt.testnet, __fastdata_kv)`, one nested `full access`. `--execute --yes` with the flat full-access file plans the write, prints the candidates, then exits 1 with a refusal naming `docs/runbooks/keys.md`, before the signer is installed or a transaction built; `--accept-full-access` is the explicit override. The permission decision is unit-tested from stubbed RPC responses (8 new network-free tests; `npm test` is 23/23) |
 
-### Day 1 status (9 Nov, by Claude)
+### Day 1 status (8 Nov, by Claude; merged by Hermes)
 
-Code for NH-10 (scaffold; preview deploys wait on open decision 3), NH-11–NH-16, NH-20 and NH-21
-is merged on `claude/wizardly-darwin-ugh6wq`. Read-only: nothing was signed or written, and no key
-was present on the machine that built it. Hosting and deploys are Hermes's (owner decision, 9 Nov).
+Code for NH-10–NH-16, NH-20 and NH-21 is on `main`. Read-only: nothing was signed or written, and
+no key was present on the machine that built it. Hosting and deploys are Hermes's (owner decision,
+8 Nov).
 
 ```bash
-npm test                  # 50 pass, 0 fail
+npm test                  # 58 pass, 0 fail
 npm run typecheck         # exit 0
 npm run build             # routes: ƒ /, ƒ /p/[id]
-npm run validate:schema   # all 271 records conform to nearhunt/project/1
-node scripts/import.mjs   # dry run: the same 4 new keys as above, 2051 bytes, nothing signed
+npm run validate:schema   # 275 records, all conform to nearhunt/project/1
+node scripts/import.mjs   # dry run: 0 new, 0 changed, 275 unchanged — nothing to write
 ```
 
 Notes from building it, with the evidence in the commit messages:
@@ -116,7 +112,7 @@ Notes from building it, with the evidence in the commit messages:
   (a single row, writer-scoped). Block heights link to Pikespeak because nearblocks.io answers
   automated checks with a Cloudflare challenge.
 - For Day 2 (NH-30): the `near-dapp` skill and the NEAR docs recommend NEAR Connect
-  (`@hot-labs/near-connect`, `near-connect-hooks`) over Wallet Selector. **Decided 9 Nov: NEAR
+  (`@hot-labs/near-connect`, `near-connect-hooks`) over Wallet Selector. **Decided 8 Nov: NEAR
   Connect**, and the skills win on any mismatch with this plan (AGENTS.md §2a). The
   `near-api-js` skill documents v7 while `package.json` pins ^5.1.1; the upgrade belongs with
   NH-30, where wallet code first needs it.
@@ -147,12 +143,12 @@ Notes from building it, with the evidence in the commit messages:
 
 | ID | P | Item | Done when |
 |---|---|---|---|
-| NH-30 | P0 | Wallet login with **NEAR Connect** (`@hot-labs/near-connect` + `near-connect-hooks`, per the `near-dapp` skill; replaces Wallet Selector, owner decision 9 Nov). A function-call access key covers **one** receiver, so the login key targets `nearhunt.near` (votes, frequent) and near.social posts go through a wallet confirmation | Login and logout work in at least two NEAR Connect wallets (e.g. HOT and Meteor) |
-| NH-31 | P0 | Upvote: write `{"vote/{id}": {}}` to `nearhunt.near`. The count updates instantly, is confirmed against the indexer, and rolls back on timeout. The "wallet will say failed" warning is shown | One account's vote counts once, however many times it votes |
+| NH-30 | P0 | Wallet login with **NEAR Connect** (`@hot-labs/near-connect` + `near-connect-hooks`, per the `near-dapp` skill; replaces Wallet Selector, owner decision 8 Nov). A function-call access key covers **one** receiver, so the login key targets `nearhunt.near` (votes, frequent) and near.social posts go through a wallet confirmation | Login and logout work in at least two NEAR Connect wallets (e.g. HOT and Meteor) |
+| NH-31 | P0 | Upvote: write `{"vote/{id}": {}}` to `nearhunt.near`. The count updates instantly, is confirmed against the indexer, and rolls back on timeout. The receipt failure is expected and never retried | One account's vote counts once, however many times it votes |
 | NH-32 | P0 | Remove an upvote: write `null` | Count drops; profile list updates |
 | NH-33 | P0 | Tally: for each project, an exact-key query across writers, ignoring nulls and projects that don't exist; cached | Matches a manual KV query |
 | NH-34 | P1 | After voting, a prefilled "Post to near.social" with `#nearhunt` and a link back | Post appears on near.social |
-| NH-35 | P0 | **Spike first thing on Day 2:** do wallets accept a transaction to a receiver with no contract? If not, fall back to adding the function-call key at login | Decision recorded |
+| NH-35 | P0 | **Spike first thing on Day 2:** do wallets accept a transaction to a receiver with no contract? If not, fall back to adding the function-call key at login | **Done 8 Nov** — yes: signed, broadcast, indexed; the receipt fails and the wallet only reports it afterwards. MyNearWallet is retired and removed. Decision + evidence: [`spikes/2026-11-08-nh-35-wallet-tx-to-contractless-receiver.md`](spikes/2026-11-08-nh-35-wallet-tx-to-contractless-receiver.md) |
 
 ### Board 2/6 — near.social discussion · Day 3
 
@@ -205,7 +201,7 @@ Notes from building it, with the evidence in the commit messages:
 | NH-90 | P0 | Rewrite the README to match what runs: live URL, 3-command local run, what is on chain where |
 | NH-91 | P0 | README names Baby Shark, and Baby Shark's README names NEAR Hunt |
 | NH-92 | P0 | Demo video or screenshots, plus an X post tagging `@NEARProtocol` `#NEARHackathon` |
-| NH-93 | P0 | Final dry-run import; a human approves and applies any diff. **The 4-key diff was approved by the owner on 9 Nov**; Hermes applies it |
+| NH-93 | P0 | Final dry-run import; a human approves and applies any diff | **Done 8 Nov** — 4 records applied in tx `8rX5McjBeiitsRAhQsY7sqWbTQ9nXXHBDYwCJyQuGhfk`, 4/4 verified against the indexer, schema 275/275 |
 | NH-94 | P2 | "Support NEAR Hunt" link (footer and open data page) to a separate treasury account, labelled "supports the site, not any project" |
 
 ### After the hackathon
@@ -225,7 +221,7 @@ beyond `vote/` on `nearhunt.near` and standard near.social posts.
 
 ## Open decisions for the owner
 
-Settled on 9 Nov: NEAR Connect for login (NH-30); NH-06 dropped; the NH-93 4-key import
-approved; hosting and DNS are Hermes's. Still open:
+Settled on 8 Nov: NEAR Connect for login (NH-30); NH-06 dropped; the NH-93 4-key import
+applied; hosting and DNS are Hermes's. Still open:
 
-1. **Treasury account** for NH-94: create one (e.g. `treasury.nearhunt.near`) with a key held by a human, not Hermes.
+1. **Treasury account** for NH-94: create one (e.g. `treasury.nearhunt.near`) with a key held by the owner, not Hermes. It never signs imports.
