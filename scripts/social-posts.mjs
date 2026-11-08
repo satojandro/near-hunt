@@ -58,4 +58,6 @@ if (asJson) {
   console.log(JSON.stringify(plan.overlay, null, 2));
   console.log('\nDRY RUN — nothing signed. Execution is reserved for the operator (Hermes) after a human approves');
   console.log('this exact batch; it needs a key that can sign for nearhunt.near on receiver `social`.');
+  console.log('Before posting, check that https://nearhunt.xyz/p/… serves the app: near.social builds each');
+  console.log("post's link card from that URL, so a parked domain would show up in every post.");
 }
