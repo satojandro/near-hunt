@@ -10,7 +10,7 @@ interface ReadOpts {
 }
 
 export declare function readLatest(
-  opts: ReadOpts & { account: string; writer?: string; keyPrefix?: string },
+  opts: ReadOpts & { account: string; writer?: string; keyPrefix?: string; key?: string },
 ): Promise<KvEntry[]>;
 export declare function readProjects(opts?: ReadOpts): Promise<KvEntry[]>;
 export declare function readForeignProjectRows(opts?: ReadOpts): Promise<KvEntry[]>;

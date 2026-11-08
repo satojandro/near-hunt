@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { getProjects } from '@/lib/projects';
+import { getVoteCounts } from '@/lib/votes';
 import { buildHref, directoryView, formatFetchedUtc, type SearchParamsRecord, type Votes } from '@/lib/directory.mjs';
 import { trackLabel } from '@/lib/tracks.mjs';
 import Sidebar from '@/app/components/sidebar/Sidebar';
@@ -11,11 +12,14 @@ import './directory.css';
 // Directory: search (NH-12), track chips (NH-13), sort (NH-14). All state lives in the URL
 // (`?q=&track=&sort=`) and is rendered on the server.
 export default async function Home({ searchParams }: { searchParams: Promise<SearchParamsRecord> }) {
-  const [{ items, fetched_at, account }, params] = await Promise.all([getProjects(), searchParams]);
+  const [{ items, fetched_at, account }, params, tally] = await Promise.all([
+    getProjects(), searchParams, getVoteCounts(),
+  ]);
 
-  // Vote counts by submission_id. Votes arrive with account connect (NH-33, Day 2); until then
-  // this is empty and every card shows 0. Nothing here is invented.
-  const votes: Votes = {};
+  // Vote counts by submission_id (NH-33): active `vote/{id}` rows under the vote account, one per
+  // voter, counted only for live projects. If the votes read fails the map is empty and the
+  // status line says the tally is unavailable; the directory itself still renders.
+  const votes: Votes = tally.counts;
 
   const { state, total, results, chips } = directoryView(items, params, votes);
   const fetched = formatFetchedUtc(fetched_at);
@@ -52,7 +56,9 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
               : `Showing ${results.length} of ${total} projects`}
             {state.track ? ` in ${trackLabel(state.track)}` : ''}
             {state.q ? ` matching “${state.q}”` : ''}
-            {noVotesYet && results.length > 0 ? ' · no votes yet, so this is newest first' : ''}
+            {!tally.available
+              ? ' · upvote counts are unavailable right now'
+              : noVotesYet && results.length > 0 ? ' · no votes yet, so this is newest first' : ''}
           </p>
 
           {results.length > 0 ? (

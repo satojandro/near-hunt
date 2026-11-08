@@ -2,7 +2,7 @@ import type { ListingItem } from './listing.mjs';
 
 export type DirectorySort = 'upvoted' | 'newest';
 export type SearchParamsRecord = Record<string, string | string[] | undefined>;
-/** submission_id -> vote count. Empty until NH-33. */
+/** submission_id -> vote count (NH-33 tally; missing = 0). */
 export type Votes = Record<string, number>;
 
 export interface DirectoryState {
