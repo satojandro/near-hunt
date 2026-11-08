@@ -75,10 +75,10 @@ near account list-keys nearhunt.near network-config mainnet now   # 1 key, full 
 | Where upvotes live | `nearhunt.near`, key `vote/{submission_id}`; the voter is the writer (`predecessor_id`) | The indexer keeps one row per writer per key, so one account gets one vote and nobody can vote as someone else. This replaces `vote/{id}/{voter}`. |
 | Where comments live | **near.social**: replies to one post per project by `nearhunt.near` | They show up in feeds and notifications and grow near.social activity. This reverses the earlier "own namespace" recommendation. |
 | Identity | near.social profiles (name, avatar, about) | People arrive with an identity they already have. |
-| Projects as a near.social data object | **Out of hackathon scope** (owner agreed 8 Nov). The draft proposal stays in the repo; no `project/` writes to `social` before 14 Nov | See [`proposals/social-kv-project.md`](proposals/social-kv-project.md). |
+| Projects as a near.social data object | **In hackathon scope** (owner, 8 Nov evening; reverses the earlier "out of scope"). NH-100 sends the proposal; NH-101 lets builders publish `project/{slug}` on `social` from their own accounts. NEAR Hunt still never writes `project/` to `social` itself | See [`proposals/social-kv-project.md`](proposals/social-kv-project.md). |
 | Domain | **nearhunt.xyz** (bought 8 Nov). Pages at `nearhunt.xyz/p/{submission_id}`, skill at `nearhunt.xyz/SKILL.md`, schema `$id` under `nearhunt.xyz/schema/` | Owner's decision |
 | Donations to NEAR Hunt | A small "Support NEAR Hunt" link in the footer and on the open data page (NH-94, P2). It pays a **separate treasury account**, never `nearhunt.near`, and it never appears next to an upvote button | Low cost and on-brand, but it must not read as paying for votes, and the data-publishing key should not also hold funds |
-| Sponsored placements | **Not before results are announced (18 Nov).** After that: one clearly labelled slot, outside the rankings, published on chain (NH-104) | Paid visibility during judging would undercut "votes are community signals" |
+| Sponsored placements | **Built before the 14th (NH-104), switched on no earlier than 18 Nov** (results). One clearly labelled slot, outside the rankings, published on chain. Turning it on during judging needs a new owner decision | Paid visibility during judging would undercut "votes are community signals" |
 | Wallets | **Meteor** (web/extension/mobile) via wallet-selector. **MyNearWallet is dropped** — it entered sunset Phase 3 on 1 Nov 2026 and refuses every dApp request | Verified 8 Nov: `window.mnwSunset = {phase:3}`, `/sign` answers "MyNearWallet can no longer approve app requests". See [`spikes/2026-11-08-nh-35-wallet-tx-to-contractless-receiver.md`](spikes/2026-11-08-nh-35-wallet-tx-to-contractless-receiver.md) |
 | Vote signing | **One wallet approval at login adds a function-call key** (receiver `nearhunt.near`, method `__fastdata_kv`); the app signs votes locally and treats the receipt's `CodeDoesNotExist` as success, confirmed by the KV read | Wallets do broadcast to a contract-less receiver, but a wallet-confirmed vote shows a failure dialog every time. Path and evidence: the NH-35 spike |
 
@@ -92,10 +92,16 @@ near account list-keys nearhunt.near network-config mainnet now   # 1 key, full 
 | 3 (11 Nov) | near.social discussion, account page, states | 2, 3, 6, 8 |
 | 4 (12 Nov) | Open data, API, SKILL.md, proposal draft | 4 |
 | 5 (13 Nov) | README, demo, submission | — |
-| 6 (14 Nov) | Buffer | — |
+| 6 (10 Nov) | Standards and claims: NH-100, NH-101 | 2 |
+| 7 (11 Nov) | Funding and mirroring: NH-102, NH-103 | 2, 4 |
+| 8 (12 Nov) | Sponsored slot (built, off): NH-104; Day 5 prep | 1, 2 |
+| — (13 Nov) | Day 5 submission (NH-90–NH-92) runs on 13 Nov as before | — |
+| 9 (14 Nov) | Buffer | — |
 
 Priority: **P0** = needed to submit · **P1** = should ship · **P2** = only if time allows.
 **Cut line:** if Day 3 slips, drop P2 items first, then NH-23, NH-50–53 and NH-15.
+Days 6–8 (NH-100–NH-104, added 8 Nov evening) sit **below** the Day 5 P0s: if submission work
+slips, they stop first, in the order NH-104, NH-103, NH-102, NH-101, NH-100.
 
 ---
 
@@ -327,20 +333,38 @@ node scripts/import.mjs   # 29 new (feed 310), 0 changed, 281 unchanged — pend
 | NH-93 | P0 | Final dry-run import; a human approves and applies any diff | **Done 8 Nov** — 4 records applied in tx `8rX5McjBeiitsRAhQsY7sqWbTQ9nXXHBDYwCJyQuGhfk`, 4/4 verified against the indexer, schema 275/275 |
 | NH-94 | P2 | "Support NEAR Hunt" link (footer and open data page) to a separate treasury account, labelled "supports the site, not any project" |
 
-### After the hackathon
+### Days 6–8 — moved into scope (owner, 8 Nov evening)
 
-| ID | Item |
-|---|---|
-| NH-100 | Take the `project/` proposal to the near.social maintainers |
-| NH-101 | Builder claim flow: builders publish their own `project/{slug}` on `social`; NEAR Hunt links it to the imported listing |
-| NH-102 | Baby Shark "Fund this project" link (`external_campaigns`) |
-| NH-103 | Optional near.social mirroring for every project, once there's a moderation story |
-| NH-104 | Sponsored slot: one per page at most, labelled "Sponsored", never inside the ranked list and never affecting rank. Each placement is published as an on-chain record by NEAR Hunt (sponsor, dates, amount). No tracking scripts. Written sponsor policy first |
+The owner moved the whole former "After the hackathon" list into scope. The rules in `AGENTS.md`
+are unchanged: every mainnet write below still needs its own approved dry run, and nothing here
+lets an agent write on anyone's behalf.
+
+**Day 6 (10 Nov) — standards and claims**
+
+| ID | P | Item | Done when | Depends on / approval |
+|---|---|---|---|---|
+| NH-100 | P1 | Take the `project/` proposal to the near.social maintainers. First: answer the proposal's open question (how a builder proves they own submission X), add a section mapping NEAR Hunt listings to the proposed record, and find the channel the maintainers take proposals in | The proposal is submitted and the link is recorded here and on `/open-data` (badge goes from "Draft" to "Submitted") | Owner approves the final text and channel. **Acceptance is the maintainers' call and is not expected by the 14th**; until then their indexer reports `project/` as `ignored` |
+| NH-101 | P1 | Builder claim flow: on `/p/{id}` a builder publishes their own `project/{slug}` to `social` from their wallet (wallet confirmation, like replies), with a `sources` entry for the submission. NEAR Hunt reads it back and shows "claimed by {account}". Replaces NH-24's "coming after the hackathon" copy | A testnet or a real builder's record shows on the listing as claimed, with the proof status | Builders sign their own writes; no agent writes. Needs NH-100's ownership proof: until it is verifiable, show "claimed by {account}, unverified". Reading claim rows from `social` is a new read path next to `readProjects()` (AGENTS.md §3 covers project records only), and it keeps only the row's `predecessor_id` |
+
+**Day 7 (11 Nov) — funding and mirroring**
+
+| ID | P | Item | Done when | Depends on / approval |
+|---|---|---|---|---|
+| NH-102 | P2 | Baby Shark "Fund this project" link: fill `external_campaigns` (already in the schema) from Baby Shark campaigns that name a submission, and render it as an outbound link on `/p/{id}` | Each linked campaign opens the right Baby Shark page; no NEAR Hunt account holds funds | Baby Shark must expose campaigns with a submission reference. Filling the field is an import change, so it is a mainnet write with its own dry run and approval |
+| NH-103 | P2 | Optional near.social mirroring for every project. **Moderation story first:** a written policy (what is mirrored, who can ask for removal, how a post is retracted) in `docs/runbooks/` | Policy merged; mirroring runs through the NH-40 drip | Each post batch is an owner approval (AGENTS.md §1). The drip cap stays at 40/day, so mirroring all 308 projects does **not** finish by the 14th: at most about 200 more posts fit from 10 to 14 Nov |
+
+**Day 8 (12 Nov) — sponsored slot, built but off**
+
+| ID | P | Item | Done when | Depends on / approval |
+|---|---|---|---|---|
+| NH-104 | P2 | Sponsored slot: one per page at most, labelled "Sponsored", never inside the ranked list and never affecting rank. Each placement is published as an on-chain record by NEAR Hunt (sponsor, dates, amount). No tracking scripts. Written sponsor policy first | Policy merged; slot renders from a record on **testnet**, behind a flag that is off in production | New key prefix `sponsor/` on `nearhunt.near` (allowed below). Going live is not before 18 Nov (Decisions taken). Each placement record is a mainnet write with its own approval |
 
 ## Explicitly out of scope until after the 14th
 
-AI scoring, Valkey, agent writes, funding links, claim flow, and any new mainnet key prefix
-beyond `vote/` on `nearhunt.near` and standard near.social posts.
+AI scoring, Valkey and agent writes. Mainnet key prefixes are limited to `project/`, `vote/` and
+`sponsor/` (NH-104) on `nearhunt.near`, standard near.social posts, and `project/{slug}` on
+`social` written by builders from their own accounts (NH-101). Funding links (NH-102) and the
+claim flow (NH-101) moved into scope on 8 Nov evening.
 
 ## Open decisions for the owner
 
