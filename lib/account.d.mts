@@ -27,8 +27,8 @@ export declare function readAccountVoteRows(opts: {
 export interface AccountUpvote<P> {
   id: string;
   block_height: number;
-  /** Nanoseconds since epoch, or null. */
-  block_timestamp: number | null;
+  /** Nanoseconds since epoch as an exact decimal string, or null. */
+  block_timestamp: string | null;
   project: P;
 }
 export declare function accountUpvotes<P extends { submission_id: string }>(

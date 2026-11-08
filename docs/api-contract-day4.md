@@ -28,7 +28,7 @@ Errors: `{ "error": "<code>", "message": "<text>" }` with codes `not_found` (404
 `track`: exact track slug. `q`: case-insensitive substring on name and description.
 
 `ProjectSummary` = the `ListingItem` fields (record fields + `submission_id`, `key`, `account`,
-`block_height`, `block_timestamp`) plus `votes: number | null` (null when the vote read failed) and
+`block_height`, `block_timestamp` — nanoseconds as an exact decimal string) plus `votes: number | null` (null when the vote read failed) and
 `url` (`https://nearhunt.xyz/p/{submission_id}`). `Project` = `ProjectSummary` plus
 `record_url` (the KV single-key URL `https://kv.main.fastnear.com/v0/latest/nearhunt.near/nearhunt.near/project/{id}`).
 

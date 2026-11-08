@@ -125,3 +125,13 @@ test('a failed votes read is an error, not zero votes', async () => {
   const impl = async () => ({ ok: false, status: 502, json: async () => ({}) });
   await assert.rejects(readVoteRows({ account: 'nearhunt.near', network: 'mainnet', fetchImpl: impl }), /502/);
 });
+
+test('latestPerWriter breaks a same-block tie on exact nanosecond strings', async () => {
+  const { latestPerWriter } = await import('../lib/votes.mjs');
+  // These two differ only past 2^53: as numbers they would be equal.
+  const a = { predecessor_id: 'a.near', key: 'vote/x', value: null, block_height: 5, block_timestamp: '1794155090502512652' };
+  const b = { predecessor_id: 'a.near', key: 'vote/x', value: {}, block_height: 5, block_timestamp: '1794155090502512653' };
+  assert.equal(Number(a.block_timestamp), Number(b.block_timestamp));
+  assert.deepEqual(latestPerWriter([a, b]), [b]);
+  assert.deepEqual(latestPerWriter([b, a]), [b]);
+});

@@ -10,8 +10,8 @@ export interface ListingItem extends Project {
   /** Namespace account, `nearhunt.near`. */
   account: string;
   block_height: number;
-  /** Nanoseconds since epoch, as the KV API reports it. */
-  block_timestamp: number | null;
+  /** Nanoseconds since epoch as an exact decimal string (the KV API's digits), or null. */
+  block_timestamp: string | null;
 }
 
 export declare function toListing(entries: KvEntry[]): ListingItem[];

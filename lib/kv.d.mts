@@ -14,3 +14,5 @@ export declare function readLatest(
 ): Promise<KvEntry[]>;
 export declare function readProjects(opts?: ReadOpts): Promise<KvEntry[]>;
 export declare function readForeignProjectRows(opts?: ReadOpts): Promise<KvEntry[]>;
+/** JSON.parse that keeps each `entries[].block_timestamp` as the API's exact decimal digits. */
+export declare function parseKvJson(text: string): { entries?: KvEntry[]; page_token?: string | null } & Record<string, unknown>;

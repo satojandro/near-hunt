@@ -257,7 +257,7 @@ are built. NH-63 has one of its two runs. The shared API shape is in
 [`api-contract-day4.md`](api-contract-day4.md). Read-only: nothing was signed or written.
 
 ```bash
-npm test                  # 213 pass, 0 fail (17 new in test/api.test.mjs)
+npm test                  # 217 pass, 0 fail (17 new in test/api.test.mjs, 4 for block_timestamp)
 npm run typecheck         # exit 0
 npm run build             # adds ƒ /open-data and ƒ /api/projects, /[id], /[id]/votes, /[id]/discussion
 npm run validate:schema   # 281 records, all conform to nearhunt/project/1
@@ -281,8 +281,11 @@ node scripts/import.mjs   # 29 new (feed 310), 0 changed, 281 unchanged — pend
   Its feedback was applied to SKILL.md: the stale "no votes" line, `demo_url` is usually the X post
   (real links are in `links`), near-duplicate submissions, the vote value, and where
   `repository_url` comes from. **Still open: the Hermes run against the deployed site.**
-- Found, not fixed: `block_timestamp` (ns) exceeds 2^53 and loses precision in JSON; SKILL.md
-  says to use `block_height`. The schema README's "Cost of the whole dataset" still says 275
+- **Fixed:** `block_timestamp` (ns) is above 2^53, so `res.json()` rounded it in every KV read.
+  `lib/kv.mjs` `parseKvJson` keeps the API's exact digits as a decimal string, vote tie-breaks
+  compare them as BigInt, and the server cache keys moved to `-v2`. Live check, Veto:
+  `/api/projects/21996773-…` → `"1794135497728714191"`, equal to the KV API's own digits.
+- Found, not fixed: the schema README's "Cost of the whole dataset" still says 275
   records / 128,270 bytes.
 
 | ID | P | Item |

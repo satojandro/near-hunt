@@ -56,7 +56,7 @@ const readCachedProjects = unstable_cache(
       throw err;
     }
   },
-  ['nearhunt-projects-v1'],
+  ['nearhunt-projects-v2'],
   { revalidate: PROJECTS_REVALIDATE_SECONDS, tags: ['projects'] },
 );
 

@@ -27,7 +27,7 @@ const getVoteRows = unstable_cache(
       predecessor_id, key, value, block_height, block_timestamp,
     }));
   },
-  ['nearhunt-votes-v1', NETWORK, VOTE_ACCOUNT],
+  ['nearhunt-votes-v2', NETWORK, VOTE_ACCOUNT],
   { revalidate: VOTES_REVALIDATE_SECONDS, tags: ['votes'] },
 );
 

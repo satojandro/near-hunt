@@ -94,7 +94,7 @@ Returns `{ items: ProjectSummary[], next_cursor: string | null, meta }`.
       "key": "project/21996773-48fa-43e9-aedc-684fdd2e4425",
       "account": "nearhunt.near",
       "block_height": 223606742,
-      "block_timestamp": 1794135497728714191,
+      "block_timestamp": "1794135497728714191",
       "votes": 0,
       "url": "https://nearhunt.xyz/p/21996773-48fa-43e9-aedc-684fdd2e4425"
     }
@@ -113,10 +113,12 @@ Returns `{ items: ProjectSummary[], next_cursor: string | null, meta }`.
 Every `meta` object is informational: read what you need and ignore the rest. The record
 fields come straight from the chain (the example is the live record for Veto, with the
 description shortened here). The API adds `submission_id`, `key`, `account`, `block_height`,
-`block_timestamp` (nanoseconds), `votes` and `url`.
+`block_timestamp` (nanoseconds, as a decimal string), `votes` and `url`.
 
-- **Use `block_height`, not `block_timestamp`.** The nanosecond timestamps are larger than 2^53,
-  so most JSON parsers silently round them. Treat `block_timestamp` as approximate at best.
+- **`block_timestamp` is a string.** Nanosecond timestamps are larger than 2^53, so a JSON number
+  would be rounded by most parsers. The API sends the exact digits as a string; parse it with a
+  big-integer type (`BigInt` in JavaScript, `int` in Python) or divide the string's value by
+  10^6 for milliseconds. To order records, `block_height` is still the simpler key.
 - `votes` is `null` when the vote read failed. That means "unknown", not zero. In that case
   `meta.votes_available` is `false` and `sort=votes` falls back to newest first.
 - `meta.total` is the number of projects matching your filters.
@@ -276,6 +278,9 @@ KV responses are `{ "entries": [...], "page_token"?: string }`. Each entry looks
   "value": { "schema": "nearhunt/project/1", "name": "Veto: on-chain spending firewall for AI agents on NEAR", "…": "…" }
 }
 ```
+
+Here the KV API sends `block_timestamp` as a bare JSON number above 2^53; if you need it exactly,
+read it from the raw text (for example `jq` 1.7+ keeps the digits) rather than a default parser.
 
 To page, send the same body again with `"page_token": "<value from the last response>"` until no
 `page_token` comes back. Drop any entry whose `predecessor_id` is not `nearhunt.near` or whose

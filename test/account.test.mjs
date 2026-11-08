@@ -123,7 +123,7 @@ test('accountUpvotes: active votes by this writer on live projects, newest block
   assert.deepEqual(out.map((v) => v.id), ['new', 'mid', 'old']);
   assert.equal(out[0].project.submission_id, 'new');
   assert.equal(out[0].block_height, 30);
-  assert.equal(out[0].block_timestamp, 3_000_000_000);
+  assert.equal(out[0].block_timestamp, '3000000000');
   assert.equal(out[1].block_timestamp, null);
 });
 
@@ -142,4 +142,10 @@ test('nsToMs', () => {
   assert.equal(nsToMs(1794130685534821468), 1794130685534);
   assert.equal(nsToMs(null), null);
   assert.equal(nsToMs('x'), null);
+});
+
+test('nsToMs is exact for decimal-string nanoseconds', () => {
+  assert.equal(nsToMs('1794155090502512652'), 1794155090502);
+  assert.equal(nsToMs(null), null);
+  assert.equal(nsToMs('0'), null);
 });
