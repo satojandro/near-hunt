@@ -136,13 +136,12 @@ proposal time. No AI rewriting, no repository guessed from a name. Sources are s
 the owner rewrites the record.
 
 **Status:** proposal generated, nothing written. `node scripts/enrich.mjs --threads
-data/enrichment/threads.json` reads the chain records (275 when this proposal was generated; 280
-after the catch-up, so rerun it) and proposes **260 descriptions, 97 verified repositories and 109
-link sets** (1 repository dropped after failing the liveness check). Applying it is a separately
-approved write:
-`node scripts/import.mjs --enrichment data/enrichment/proposal.json` — as of 8 Nov that is 5 new +
-260 changed records, **265 keys, 261,743 bytes, 5 transactions**. Rerun `enrich.mjs` after the
-feed catch-up so the newest submissions are included.
+data/enrichment/threads.json` reads the 280 chain records and proposes **264 descriptions, 98
+verified repositories and 110 link sets** (1 repository dropped after failing the liveness check).
+Applying it is a separately approved write:
+`node scripts/import.mjs --enrichment data/enrichment/proposal.json` — as of 8 Nov that is 1 new +
+264 changed records, **265 keys, 263,470 bytes, 5 transactions**. Rerun `enrich.mjs` after any feed
+catch-up so the newest submissions are included.
 
 ### Board 1 — Directory (home) · Day 1
 
