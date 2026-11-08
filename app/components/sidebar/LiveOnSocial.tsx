@@ -92,3 +92,27 @@ export default async function LiveOnSocial({
     </section>
   );
 }
+
+/** NH-80: placeholder while the feed loads. Same card and heading, so nothing shifts. */
+export function LiveOnSocialSkeleton({ rows = 3 }: { rows?: number }) {
+  return (
+    <section className={styles.card} aria-labelledby="live-on-social-title" aria-busy="true">
+      <div className={styles.head}>
+        <h2 className={styles.title} id="live-on-social-title">Live on near.social</h2>
+      </div>
+      <p className="visually-hidden">Loading near.social posts…</p>
+      <ul className={styles.feed} aria-hidden="true">
+        {Array.from({ length: rows }, (_, i) => (
+          <li key={i} className={styles.post}>
+            <span className={`${styles.avatar} ${styles.bone}`} />
+            <span className={styles.postBody}>
+              <span className={styles.bone} style={{ height: 12, width: '45%' }} />
+              <span className={styles.bone} style={{ height: 10, width: '90%', marginTop: 8 }} />
+              <span className={styles.bone} style={{ height: 10, width: '70%', marginTop: 6 }} />
+            </span>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}

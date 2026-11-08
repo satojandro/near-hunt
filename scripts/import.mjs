@@ -27,6 +27,7 @@
  *   node scripts/import.mjs --execute --yes       # sign and broadcast the diff
  *   node scripts/import.mjs --account X --network testnet
  *   node scripts/import.mjs --execute --yes --key-file path/to/limited-key.json
+ *   node scripts/import.mjs --social-posts data/social-posts.json   # NH-40: fill empty social_post (dry run)
  *
  * Before signing, the importer asks the RPC what the key is allowed to do. A `FullAccess` key
  * is refused with a non-zero exit, because an import needs only `__fastdata_kv` on one
@@ -84,6 +85,7 @@ const KEY_FILE_FLAG = flag('key-file', undefined);
 const CHECK_KEY = args.includes('--check-key');
 const ACCEPT_FULL_ACCESS = args.includes('--accept-full-access');
 const ENRICHMENT_FILE = flag('enrichment', undefined);
+const SOCIAL_POSTS_FILE = flag('social-posts', undefined);
 const REFRESH_ENRICHED = args.includes('--refresh-enriched');
 const CREDENTIALS_ROOT = join(homedir(), '.near-credentials');
 const NODE_URL =
@@ -321,6 +323,7 @@ function printPlan(plan) {
   if (update.length > 20) console.log(`  ~ … ${update.length - 20} more`);
   for (const k of missingFromFeed.slice(0, 20)) console.log(`  ? ${k}  no longer in the feed`);
   for (const k of deletedOnChain.slice(0, 20)) console.log(`  x ${k}  in the feed but tombstoned on chain`);
+  for (const c of plan.socialPostConflicts ?? []) console.log(`  ! ${c.key}  social_post not set: ${c.reason}`);
 }
 
 // ---------------------------------------------------------------------------
@@ -386,7 +389,17 @@ async function main() {
     );
   }
 
-  const plan = planImport({ submissions: projects, existing, nowIso, enrichment, refreshEnriched: REFRESH_ENRICHED });
+  // Optional NH-40 overlay: submission_id -> "nearhunt.near/{post_id}" for root posts that
+  // /v1/tx confirmed. Fills social_post only where it is still empty; never replaces one.
+  let socialPosts = {};
+  if (SOCIAL_POSTS_FILE) {
+    socialPosts = JSON.parse(await readFile(SOCIAL_POSTS_FILE, 'utf8'));
+    console.log(`social:  ${Object.keys(socialPosts).length} post references from ${SOCIAL_POSTS_FILE}`);
+  }
+
+  const plan = planImport({
+    submissions: projects, existing, nowIso, enrichment, socialPosts, refreshEnriched: REFRESH_ENRICHED,
+  });
   printPlan(plan);
 
   const writes = [...plan.create, ...plan.update];

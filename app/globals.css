@@ -104,6 +104,7 @@ a:hover { color: var(--accent-hover); }
   .connect-btn { font-size: 14px; padding: 0 12px; white-space: nowrap; }
   .account-btn { max-width: 170px; font-size: 14px; }
 }
-@media (max-width: 360px) {
+/* Phones: "Connect" alone, as in MobileDirectory.png, leaves the brand room on small screens. */
+@media (max-width: 480px) {
   .connect-btn .connect-long { display: none; }
 }

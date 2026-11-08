@@ -19,6 +19,7 @@ import { NearProvider, useNearWallet } from 'near-connect-hooks';
 import { NETWORK, VOTE_ACCOUNT, VOTE_METHOD } from '@/lib/network.mjs';
 import { SIGN_IN_OPTIONS, connectorOptions } from '@/lib/wallets.mjs';
 import { castVote, readAccountVotes, type CastResult, type SignAndSend } from '@/lib/vote-client.mjs';
+import { votesChanged } from '@/app/actions/votes';
 
 /** Where function-call-key-plugin keeps the login key (documented in its README). */
 const PLUGIN_STORAGE_KEY = 'access_key::plugin';
@@ -140,7 +141,7 @@ function Inner({ children }: { children: React.ReactNode }) {
   const cast = useCallback(
     (projectId: string, upvote: boolean, opts?: { onWalletFallback?: () => void }) => {
       const send = nearRef.current.signAndSendTransaction as unknown as SignAndSend;
-      return castVote({
+      const result = castVote({
         signAndSendTransaction: send,
         // The login key is missing on chain or out of allowance: forget it, so the plugin hands the
         // next send to the wallet, and send this vote once through the wallet.
@@ -160,6 +161,15 @@ function Inner({ children }: { children: React.ReactNode }) {
         upvote,
         methodName: VOTE_METHOD,
       });
+      // Once the index shows the vote, expire the server's cached tally so every page reads the
+      // new count on its next render instead of up to 20 s later. Fire-and-forget: a failed
+      // invalidation only means the old 20 s lag, and must never turn a counted vote into an error.
+      // No router.refresh(): the buttons already show the vote optimistically, and re-rendering
+      // them with the new server count on top of their local adjustment would count it twice.
+      result.then((res) => {
+        if (res.outcome === 'confirmed') votesChanged().catch(() => {});
+      }, () => {});
+      return result;
     },
     [],
   );

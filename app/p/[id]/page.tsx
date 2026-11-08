@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { getProject } from '@/lib/projects';
+import { getProject, getProjects } from '@/lib/projects';
 import { getVoters } from '@/lib/votes';
 import { trackLabel } from '@/lib/tracks.mjs';
 import { metaDescription } from '@/lib/project-view.mjs';
@@ -11,15 +11,22 @@ import LinksCard from '@/app/components/project/LinksCard';
 import RecordCard from '@/app/components/project/RecordCard';
 import UpvotedBy from '@/app/components/project/UpvotedBy';
 import UpvoteButton from '@/app/components/vote/UpvoteButton';
+import SimilarProjects from '@/app/components/project/SimilarProjects';
+import ClaimCard from '@/app/components/project/ClaimCard';
+import StaleBanner from '@/app/components/states/StaleBanner';
+import Discussion from '@/app/components/discussion/Discussion';
 import s from '@/app/components/project/project.module.css';
 
 type Props = { params: Promise<{ id: string }> };
 
 // No loading.tsx on purpose: a streamed fallback would commit a 200 before notFound() can set 404.
+// If the KV API is unreachable and there is no copy to serve, getProject throws and ./error.tsx
+// says the project could not be loaded (never "not found").
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
-  const project = await getProject(id);
+  const project = await getProject(id).catch(() => undefined);
+  if (project === undefined) return { title: 'Project unavailable', robots: { index: false } };
   if (!project) return { title: 'Project not found', robots: { index: false } };
   const description = metaDescription(project, trackLabel);
   return {
@@ -39,9 +46,12 @@ export default async function ProjectPage({ params }: Props) {
   // NH-33: active votes for this project (one per voter account). `available` is false when the
   // votes read failed; the page still renders, without a number.
   const { voters, count, available: votesAvailable } = await getVoters(project.submission_id);
+  // NH-23: the same cached list getProject just read.
+  const { items: allProjects } = await getProjects();
 
   return (
     <main className={`container ${s.page}`}>
+      <StaleBanner />
       <nav aria-label="Breadcrumb" className={s.crumbs}>
         <Link href="/">Projects</Link>
         <span aria-hidden="true">/</span>
@@ -61,14 +71,21 @@ export default async function ProjectPage({ params }: Props) {
         <div className={s.main}>
           <AboutCard description={project.description} />
           <LinksCard project={project} />
-          {/* NH-41/42: discussion thread goes here. */}
+          <Discussion projectId={project.submission_id} socialPost={project.social_post} />
         </div>
         <aside className={s.side} aria-label="Record details">
           <RecordCard project={project} />
           <UpvotedBy voters={voters} available={votesAvailable} />
-          {/* NH-23 (Similar projects), NH-24 (Claim) go here. */}
+          <SimilarProjects project={project} all={allProjects} />
+          <ClaimCard />
         </aside>
       </div>
+      {/* NH-71: the same UpvoteButton in a bar pinned to the bottom on phones; hidden on desktop. */}
+      {votesAvailable ? (
+        <div className={s.stickyVote}>
+          <UpvoteButton projectId={project.submission_id} initialCount={count} variant="page" projectName={project.name} />
+        </div>
+      ) : null}
     </main>
   );
 }

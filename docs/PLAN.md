@@ -24,22 +24,30 @@ https://claude.ai/artifact/TheVd1qg4LzCRzStJvKPKe (private until shared).
 
 **The chain matches the feed.** 281 records on chain, 281 in the feed, all 281 valid against the
 schema, 0 foreign rows, 0 tombstones. 264 records carry the builder's own description and 98 a
-verified repository. Both dry runs (plain and with `--enrichment`) write nothing. One record
-(`AgentGuard`, id `04749b49…`) is not enriched yet: the proposal gained it after the write, so it is
-a pending 1-key update.
+verified repository. A plain dry run writes nothing. One correction is measured and **not written**:
+19 keys — 18 descriptions that ended in a dangling link label (`Repo:`, `Demo: Code:`) plus the
+`AgentGuard` record — via `--refresh-enriched`, 18,944 bytes in 1 transaction. It needs its own
+approval before it runs.
 
 The read-only product is built and deployed at **https://near-hunt.vercel.app** (Day 1), and Day 2's
-connect + upvote is merged and deployed. What is missing is discussion and the account page
-(Day 3), Days 4–5, and DNS on nearhunt.xyz. Keys for `nearhunt.near` live on the operator's machine
-by the owner's decision of 8 Nov — the gate is approval of each write, not the machine.
+connect + upvote is merged and deployed. Day 3 — near.social discussion, the account page, the
+outage and stale-data states, the 390 px pass and the vote-count refresh — is built, tested and
+verified on `claude/great-planck-f8gtb9`; it merges once the human gates in
+[`runbooks/day3-signing-checklist.md`](runbooks/day3-signing-checklist.md) (A2–A3, B1–B4, C1–C5,
+D1–D2) are resolved. What is missing is Days 4–5 and DNS on nearhunt.xyz. Keys for `nearhunt.near`
+live on the operator's machine by the owner's decision of 8 Nov — the gate is approval of each
+write, not the machine.
 
-Evidence, reproduced 8 Nov evening after the enrichment write:
+Evidence, reproduced 8 Nov evening after the enrichment write; the test count and the NH-40 dry run
+were re-run on the Day 3 head:
 
 ```bash
-npm test                  # 144 pass, 0 fail
+npm test                  # 196 pass, 0 fail
+node scripts/social-posts.mjs   # NH-40 dry run: 40 posts / 40 tx / 10,917 bytes; --execute exits 2
 npm run validate:schema   # 281 records on chain, 281 valid, 0 foreign rows, 0 tombstones
 node scripts/import.mjs   # 0 new, 0 changed, 281 unchanged — nothing to write
-node scripts/import.mjs --enrichment data/enrichment/proposal.json   # 0 new, 1 changed — pending
+node scripts/import.mjs --enrichment data/enrichment/proposal.json --refresh-enriched   # 19 keys, 18,944 bytes, 1 tx — pending
+node scripts/import.mjs --social-posts data/social-posts.json   # after A2: fills social_post only, never replaces one
 node scripts/import.mjs --check-key   # every candidate key with its on-chain permission
 near account list-keys nearhunt.near network-config mainnet now   # 1 key, full access
 ```
@@ -196,7 +204,7 @@ Production deploy done 8 Nov at `https://near-hunt.vercel.app`; `nearhunt.xyz` D
 
 | ID | P | Item |
 |---|---|---|
-| NH-40 | P0 | Project posts from `nearhunt.near`, created by the server the first time someone opens a thread, plus a daily "spotlight" drip of at most 40. Never all 281 at once. The post reference is stored in `social_post` (NH-05) |
+| NH-40 | P0 | Project posts from `nearhunt.near`: a daily "spotlight" drip of at most 40, never all 281 at once. Per near.social's skill.md (social-kv/1, AGENTS.md §2a) a post is `{"post/{ms}": {text}}` sent with `__fastdata_kv` to receiver **`social`** (mainnet only), gas 1 Ggas, deposit 0, confirmed via `/v1/tx/{hash}`. The post reference is stored in `social_post` (NH-05) via `scripts/import.mjs --social-posts`. **Prep done 8 Nov:** `scripts/social-posts.mjs` prints the batch and has no execute path; posting is Hermes's after approval ([`runbooks/day3-signing-checklist.md`](runbooks/day3-signing-checklist.md)), and it needs a function-call key scoped to `social`, which is a separate approval. "Created by the server the first time someone opens a thread" is **not built**: it needs a server-held `nearhunt.near` key, which is an owner decision |
 | NH-41 | P0 | Read the thread: `GET api2.near.social/v1/posts/nearhunt.near/{post_id}/replies` |
 | NH-42 | P0 | Reply composer: `post/{ms}` with `reply_to`/`root`, plus the `reply/{root_author}/{root_id}/{ms}` backlink in the same action; confirmed via `/v1/tx/{hash}` |
 | NH-43 | P1 | Reply counts on cards; "Most discussed" sort |

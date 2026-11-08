@@ -1,0 +1,88 @@
+/* Discussion (NH-41/42/83, mockup board 2: docs/mockups/png/Project.png). Uses the tokens in app/globals.css. */
+
+.card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-card);
+  padding: 24px 28px; min-width: 0;
+}
+.head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 16px; margin: 0 0 16px; }
+.title { font-family: var(--font-display); font-weight: 600; font-size: 20px; margin: 0; }
+.titleCount { color: var(--text-muted); font-weight: 500; }
+.open { color: var(--social); font-weight: 600; font-size: 14px; display: inline-flex; align-items: center; min-height: 44px; margin: -12px 0; }
+
+.note { margin: 0; color: var(--text-muted); font-size: 15px; }
+.note + .note { margin-top: 8px; }
+.alert {
+  margin: 0 0 16px; padding: 12px 14px; border-radius: var(--radius); font-size: 14px;
+  background: #FFF6E5; border: 1px solid #F2D49B; color: #5C4200;
+}
+.alert strong { color: #3D2C00; }
+.ok { background: var(--accent-soft); border-color: #B7E2CF; color: #0B4B36; }
+.ok strong { color: #073B2A; }
+.empty { padding: 4px 0; }
+.empty .note a { color: var(--social); font-weight: 600; }
+
+/* Composer */
+.composer {
+  display: flex; flex-direction: column; gap: 8px; margin: 0 0 20px;
+  border: 1px solid var(--border-strong); border-radius: var(--radius); padding: 12px 14px;
+}
+.composer:focus-within { border-color: var(--text-muted); }
+.composerLabel { font-size: 13px; color: var(--text-muted); }
+.composerLabel strong { color: var(--text); }
+.textarea {
+  font: inherit; font-size: 15px; border: 0; resize: vertical; outline: none; color: var(--text);
+  background: transparent; min-height: 72px; width: 100%;
+}
+.composerFoot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; }
+.hint { font-size: 13px; color: var(--text-muted); min-width: 0; overflow-wrap: anywhere; }
+.counter { font-variant-numeric: tabular-nums; }
+.over { color: #B42318; font-weight: 600; }
+.btn {
+  font: inherit; font-weight: 600; font-size: 15px; background: var(--text); color: #fff; border: 0;
+  border-radius: var(--radius); min-height: 44px; padding: 0 18px; cursor: pointer;
+}
+.btn:disabled { opacity: 0.55; cursor: not-allowed; }
+.btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.btnQuiet {
+  font: inherit; font-weight: 600; font-size: 15px; background: var(--surface); color: var(--text);
+  border: 1px solid var(--border-strong); border-radius: var(--radius); min-height: 44px; padding: 0 18px; cursor: pointer;
+}
+.signedOut { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; margin: 0 0 20px; padding: 12px 14px; border: 1px dashed var(--border-strong); border-radius: var(--radius); }
+
+/* Thread */
+.list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 18px; }
+.reply { display: flex; gap: 12px; min-width: 0; }
+.pending { opacity: 0.75; }
+.avatar {
+  width: 40px; height: 40px; border-radius: 50%; flex-shrink: 0; object-fit: cover;
+  background: var(--surface-muted); color: var(--social); font-weight: 600; font-size: 15px;
+  display: flex; align-items: center; justify-content: center;
+}
+.body { min-width: 0; flex: 1 1 auto; }
+.meta { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 6px; font-size: 14px; color: var(--text-muted); }
+.name { color: var(--text); font-weight: 600; }
+.text { margin: 4px 0 0; font-size: 15px; color: var(--text); white-space: pre-wrap; overflow-wrap: anywhere; }
+.text a { color: var(--social); }
+.actions { display: flex; flex-wrap: wrap; gap: 4px 16px; margin-top: 4px; font-size: 13px; color: var(--text-muted); }
+.actions a { color: var(--text-muted); display: inline-flex; align-items: center; min-height: 32px; }
+.actions a:hover { color: var(--text); }
+.more { display: inline-flex; align-items: center; min-height: 44px; margin-top: 8px; color: var(--social); font-weight: 600; font-size: 14px; }
+
+/* Loading skeleton */
+.skel { display: flex; gap: 12px; }
+.skel + .skel { margin-top: 18px; }
+.skelDot { width: 40px; height: 40px; border-radius: 50%; background: var(--surface-muted); flex-shrink: 0; }
+.skelLines { flex: 1; display: flex; flex-direction: column; gap: 8px; padding-top: 4px; }
+.skelLine { height: 12px; border-radius: 6px; background: var(--surface-muted); }
+@media (prefers-reduced-motion: no-preference) {
+  .skelDot, .skelLine { animation: pulse 1.4s ease-in-out infinite; }
+}
+@keyframes pulse { 50% { opacity: 0.5; } }
+
+/* Directory card reply count (NH-43) */
+.cardCount { display: inline-flex; align-items: center; gap: 4px; color: var(--text-muted); }
+
+@media (max-width: 640px) {
+  .card { padding: 18px; }
+  .btn, .btnQuiet { width: 100%; }
+}
