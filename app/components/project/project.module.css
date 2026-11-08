@@ -95,6 +95,9 @@
 }
 .homeBtn:hover { background: var(--accent-hover); }
 
+/* NH-71: sticky upvote bar, phones only (MobileProject.png). Hidden on wider screens. */
+.stickyVote { display: none; }
+
 @media (max-width: 960px) {
   .grid { grid-template-columns: minmax(0, 1fr); }
 }
@@ -109,4 +112,18 @@
   .rows { grid-template-columns: minmax(0, 1fr); gap: 0; }
   .rows dt { padding: 10px 0 0; font-size: 14px; }
   .rows dd { padding: 0 0 10px; }
+
+  .stickyVote {
+    display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 30;
+    background: var(--surface); border-top: 1px solid var(--border);
+    padding: 12px var(--gutter) calc(12px + env(safe-area-inset-bottom, 0px));
+  }
+  .stickyVote > div { width: 100%; }
+  .stickyVote button { width: 100%; }
+  /* The status / share bubble opens upwards from the bar and spans its width. */
+  .stickyVote [role='status'] { top: auto; bottom: calc(100% + 8px); left: 0; right: 0; width: auto; max-width: none; }
+  /* One upvote button on screen at a time: the bar replaces the header button. */
+  .page:has(.stickyVote) .headerActions { display: none; }
+  /* Room under the footer so the fixed bar never covers it (bar: 12 + 48 + 12 + 1 px). */
+  :global(body):has(.stickyVote) { padding-bottom: calc(73px + env(safe-area-inset-bottom, 0px)); }
 }
