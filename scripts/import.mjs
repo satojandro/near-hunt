@@ -83,6 +83,7 @@ const ACCOUNT = flag('account', 'nearhunt.near');
 const KEY_FILE_FLAG = flag('key-file', undefined);
 const CHECK_KEY = args.includes('--check-key');
 const ACCEPT_FULL_ACCESS = args.includes('--accept-full-access');
+const ENRICHMENT_FILE = flag('enrichment', undefined);
 const CREDENTIALS_ROOT = join(homedir(), '.near-credentials');
 const NODE_URL =
   NETWORK === 'mainnet' ? 'https://rpc.mainnet.near.org' : 'https://rpc.testnet.near.org';
@@ -367,7 +368,23 @@ async function main() {
   const existing = await readProjects({ account: ACCOUNT, network: NETWORK });
   console.log(`chain:   ${existing.length} project rows written by ${ACCOUNT} on ${NETWORK}`);
 
-  const plan = planImport({ submissions: projects, existing, nowIso });
+  // Optional enrichment overlay: fills description/repository_url/links only where the record
+  // still has none, so a builder-supplied value is never overwritten and a re-run is a no-op.
+  let enrichment = {};
+  if (ENRICHMENT_FILE) {
+    const proposal = JSON.parse(await readFile(ENRICHMENT_FILE, 'utf8'));
+    for (const item of proposal.results ?? []) {
+      if (item?.status === 'ok') enrichment[item.submission_id] = item;
+    }
+    const usable = Object.values(enrichment);
+    console.log(
+      `enrich:  ${usable.length} proposals (${usable.filter((e) => e.description).length} descriptions, ` +
+        `${usable.filter((e) => e.repository_url).length} repositories, ` +
+        `${usable.filter((e) => e.links?.length).length} with links) from ${ENRICHMENT_FILE}`,
+    );
+  }
+
+  const plan = planImport({ submissions: projects, existing, nowIso, enrichment });
   printPlan(plan);
 
   const writes = [...plan.create, ...plan.update];
