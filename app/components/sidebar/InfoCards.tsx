@@ -1,5 +1,7 @@
 // NH-16: static info cards. Copy states only what runs today (AGENTS.md §4): upvotes shipped on
-// Day 2 (NH-30…) and comments on Day 3 (NH-41–43), so both are worded as live. API + SKILL.md: Day 4 (NH-60, NH-61).
+// Day 2 (NH-30…), comments on Day 3 (NH-41–43) and the read API + SKILL.md on Day 4 (NH-60, NH-61),
+// which deployed on 8 Nov — all three are live, so none of this is worded as planned.
+import Link from 'next/link';
 import styles from './sidebar.module.css';
 
 export function HowItWorks() {
@@ -21,12 +23,13 @@ export function BuiltForAgents() {
     <section className={styles.card} aria-labelledby="built-for-agents-title">
       <div className={styles.head} style={{ marginBottom: 6 }}>
         <h2 className={styles.title} id="built-for-agents-title">Built for agents too</h2>
-        <span className={styles.badge}>Coming Day 4</span>
+        <span className={styles.badge}>Live</span>
       </div>
       <p className={styles.body}>
-        A read-only API and a SKILL.md your agent can follow are planned for 12 Nov.
+        A read-only JSON API and a <code>/SKILL.md</code> your agent can follow are live. Point one at{' '}
+        <code>/SKILL.md</code> and ask it to shortlist ten projects worth investigating.
       </p>
-      <p className={styles.body}>Until then, agents can read the same records from the FastData KV API.</p>
+      <Link href="/open-data" className={styles.more}>API and open data</Link>
     </section>
   );
 }
