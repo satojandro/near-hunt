@@ -45,9 +45,17 @@ test('githubRepoFromUrl normalises a repo and rejects product pages', () => {
 
 test('cleanTweetText drops t.co links and leading mentions, keeps the pitch', () => {
   const raw = '  @NEARProtocol @NearBuilders  Live demo: prompt-injection drain blocked. Repo: https://t.co/abc123 ';
-  assert.equal(cleanTweetText(raw), 'Live demo: prompt-injection drain blocked. Repo:');
+  assert.equal(cleanTweetText(raw), 'Live demo: prompt-injection drain blocked.');
   assert.equal(cleanTweetText('AT&T &amp; more'), 'AT&T & more');
   assert.equal(cleanTweetText(null), '');
+});
+
+test('cleanTweetText removes a dangling link label left by t.co removal', () => {
+  assert.equal(cleanTweetText('Built at the hackathon. Repo: https://t.co/x'), 'Built at the hackathon.');
+  assert.equal(cleanTweetText('Pitch here. Demo: Code: https://t.co/x'), 'Pitch here.');
+  assert.equal(cleanTweetText('Repo: https://t.co/x'), '');
+  // a sentence that merely mentions GitHub keeps its last word
+  assert.equal(cleanTweetText('The code is open source on GitHub'), 'The code is open source on GitHub');
 });
 
 test('authorChain keeps only the submitted post author', () => {

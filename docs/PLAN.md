@@ -7,7 +7,7 @@ https://claude.ai/artifact/TheVd1qg4LzCRzStJvKPKe (private until shared).
 
 ## Where things stand (re-audited 2026-11-08 evening, by Hermes)
 
-`nearhunt.near` has one funding transfer and five project-import transactions:
+`nearhunt.near` has one funding transfer and ten project-import transactions:
 
 1. a 1 NEAR funding transfer (block 223,583,069);
 2. 256 `project/…` records (block 223,583,277);
@@ -15,23 +15,39 @@ https://claude.ai/artifact/TheVd1qg4LzCRzStJvKPKe (private until shared).
 4. 4 `project/…` records — tx `8rX5McjBeiitsRAhQsY7sqWbTQ9nXXHBDYwCJyQuGhfk`
    (`NEAR Claim Check`, `Potluck`, `Swarmpad`, `Q-day`);
 5. 5 `project/…` records — tx `79cSKJkLzZw7mbpaKGFMrX5fpRjkxwcCrgbiNNekhVMF`
-   (`SpendGuard`, `AgentGuard`, `Hallmark`, `Autonomous Treasury Mesh`, `near-agent-guard`),
-   applied 8 Nov after the owner approved that exact 5-key diff.
+   (`SpendGuard`, `AgentGuard`, `Hallmark`, `Autonomous Treasury Mesh`, `near-agent-guard`);
+6–10. the enrichment write, 265 keys in five batches, all applied 8 Nov after the owner approved
+   that exact diff:
+   `SMarR1rfceWC7xkSoJNaMHMughbhN9chLXELUQsMCs5` (65), `7qX3V7XeFRqgMyGKtHN1rUPZsb9n4d3AGn3xR5JTp5ZF` (64),
+   `GqM47JwJ4tdS9NpiQttyZhcvGj7uzagXEyszXVoX2ZS` (63), `8sANNYHH6kyfDBXTCMsEbjnh2BSvj5fvJjsJeQZskjvC` (63),
+   `Gom4MYrHpgZ7pGvTqSQoUwMLZcFRdBZbV5u5HTcyEqVQ` (10).
 
-**The chain matches the feed.** 280 records on chain, 280 in the feed, all 280 valid against the
-schema, 0 foreign rows, 0 tombstones. A re-run writes nothing.
+**The chain matches the feed.** 281 records on chain, 281 in the feed, all 281 valid against the
+schema, 0 foreign rows, 0 tombstones. 264 records carry the builder's own description and 98 a
+verified repository. A plain dry run writes nothing. One correction is measured and **not written**:
+19 keys — 18 descriptions that ended in a dangling link label (`Repo:`, `Demo: Code:`) plus the
+`AgentGuard` record — via `--refresh-enriched`, 18,944 bytes in 1 transaction. It needs its own
+approval before it runs.
 
 The read-only product is built and deployed at **https://near-hunt.vercel.app** (Day 1), and Day 2's
-connect + upvote is merged and deployed. What is missing is discussion and the account page
-(Day 3), Days 4–5, and DNS on nearhunt.xyz. Keys for `nearhunt.near` live on the operator's machine
-by the owner's decision of 8 Nov — the gate is approval of each write, not the machine.
+connect + upvote is merged and deployed. Day 3 — near.social discussion, the account page, the
+outage and stale-data states, the 390 px pass and the vote-count refresh — is built, tested and
+verified on `claude/great-planck-f8gtb9`; it merges once the human gates in
+[`runbooks/day3-signing-checklist.md`](runbooks/day3-signing-checklist.md) (A2–A3, B1–B4, C1–C5,
+D1–D2) are resolved. What is missing is Days 4–5 and DNS on nearhunt.xyz. Keys for `nearhunt.near`
+live on the operator's machine by the owner's decision of 8 Nov — the gate is approval of each
+write, not the machine.
 
-Evidence, reproduced 8 Nov evening after the catch-up:
+Evidence, reproduced 8 Nov evening after the enrichment write; the test count and the NH-40 dry run
+were re-run on the Day 3 head:
 
 ```bash
-npm test                  # 140 pass, 0 fail
-npm run validate:schema   # 280 records on chain, 280 valid, 0 foreign rows, 0 tombstones
-node scripts/import.mjs   # 0 new, 0 changed, 280 unchanged — nothing to write
+npm test                  # 196 pass, 0 fail
+node scripts/social-posts.mjs   # NH-40 dry run: 40 posts / 40 tx / 10,917 bytes; --execute exits 2
+npm run validate:schema   # 281 records on chain, 281 valid, 0 foreign rows, 0 tombstones
+node scripts/import.mjs   # 0 new, 0 changed, 281 unchanged — nothing to write
+node scripts/import.mjs --enrichment data/enrichment/proposal.json --refresh-enriched   # 19 keys, 18,944 bytes, 1 tx — pending
+node scripts/import.mjs --social-posts data/social-posts.json   # after A2: fills social_post only, never replaces one
 node scripts/import.mjs --check-key   # every candidate key with its on-chain permission
 near account list-keys nearhunt.near network-config mainnet now   # 1 key, full access
 ```
@@ -135,13 +151,15 @@ proposal time. No AI rewriting, no repository guessed from a name. Sources are s
 (`description_source`, `repository_source`, `enrichment.sources`); a builder can ask for removal and
 the owner rewrites the record.
 
-**Status:** proposal generated, nothing written. `node scripts/enrich.mjs --threads
-data/enrichment/threads.json` reads the 280 chain records and proposes **264 descriptions, 98
-verified repositories and 110 link sets** (1 repository dropped after failing the liveness check).
-Applying it is a separately approved write:
-`node scripts/import.mjs --enrichment data/enrichment/proposal.json` — as of 8 Nov that is 1 new +
-264 changed records, **265 keys, 263,470 bytes, 5 transactions**. Rerun `enrich.mjs` after any feed
-catch-up so the newest submissions are included.
+**Status: applied 8 Nov.** The 265-key diff (1 new record + 264 enriched) landed in five
+transactions — `SMarR1rf…`, `7qX3V7Xe…`, `GqM47JwJ…`, `8sANNYHH…`, `Gom4MYrH…` — and all 265 keys
+read back from the indexer. 264 records now carry the builder's own description and 98 a verified
+repository. The proposal is regenerated against the 281-record chain (265 descriptions, 98 repos,
+111 link sets). A **19-key correction** is pending: the new `AgentGuard` record
+(`04749b49…`) plus 18 descriptions where removing a t.co link left a dangling `Repo:`/`Demo:` label.
+`--refresh-enriched` permits that rewrite only for fields an earlier enrichment run set — it never
+touches a builder-supplied value. Rerun `enrich.mjs` after any feed catch-up so the newest
+submissions are included.
 
 ### Board 1 — Directory (home) · Day 1
 
@@ -186,10 +204,20 @@ Production deploy done 8 Nov at `https://near-hunt.vercel.app`; `nearhunt.xyz` D
 
 | ID | P | Item |
 |---|---|---|
-| NH-40 | P0 | Project posts from `nearhunt.near`: a daily "spotlight" drip of at most 40, never all at once. Per near.social's skill.md (social-kv/1, AGENTS.md §2a) a post is `{"post/{ms}": {text}}` sent with `__fastdata_kv` to receiver **`social`** (mainnet only), confirmed via `/v1/tx/{hash}`. The post reference is stored in `social_post` (NH-05) via `scripts/import.mjs --social-posts`. **Prep done 8 Nov:** `scripts/social-posts.mjs` prints the batch and has no execute path; posting is Hermes's after approval ([`runbooks/day3-signing-checklist.md`](runbooks/day3-signing-checklist.md)). "Created by the server the first time someone opens a thread" is **not built**: it needs a server-held `nearhunt.near` key, which is an owner decision |
+| NH-40 | P0 | Project posts from `nearhunt.near`: a daily "spotlight" drip of at most 40, never all 281 at once. Per near.social's skill.md (social-kv/1, AGENTS.md §2a) a post is `{"post/{ms}": {text}}` sent with `__fastdata_kv` to receiver **`social`** (mainnet only), gas 1 Ggas, deposit 0, confirmed via `/v1/tx/{hash}`. The post reference is stored in `social_post` (NH-05) via `scripts/import.mjs --social-posts`. **Prep done 8 Nov:** `scripts/social-posts.mjs` prints the batch and has no execute path; posting is Hermes's after approval ([`runbooks/day3-signing-checklist.md`](runbooks/day3-signing-checklist.md)), and it needs a function-call key scoped to `social`, which is a separate approval. "Created by the server the first time someone opens a thread" is **not built**: it needs a server-held `nearhunt.near` key, which is an owner decision |
 | NH-41 | P0 | Read the thread: `GET api2.near.social/v1/posts/nearhunt.near/{post_id}/replies` |
-| NH-42 | P0 | Reply composer: `post/{ms}` with `reply_to`/`root`, plus the `reply/…` backlink in the same action; confirmed via `/v1/tx/{hash}` |
+| NH-42 | P0 | Reply composer: `post/{ms}` with `reply_to`/`root`, plus the `reply/{root_author}/{root_id}/{ms}` backlink in the same action; confirmed via `/v1/tx/{hash}` |
 | NH-43 | P1 | Reply counts on cards; "Most discussed" sort |
+
+**near.social write contract** (`https://near.social/skill.md`, checked 8 Nov): receiver `social`,
+method `__fastdata_kv`, gas `1 Ggas`, deposit 0. The receipt always fails with `CodeDoesNotExist`
+because `social` has no contract — the write is still indexed, so never retry; confirm with
+`GET https://api2.near.social/v1/tx/{hash}` and handle `indexed:false`, `rate_limited` and `invalid`
+(NH-83). Reply args are `{ "post/{ms}": { text, reply_to, root }, "reply/{root_author}/{root_id}/{ms}": {} }`.
+Limits per account per UTC day: 300 posts, 5 MiB; the 40/day drip fits. `nearhunt.near` today has
+**no near.social profile and no posts** (`GET /v1/accounts/nearhunt.near` → `has_profile:false`,
+`counts.posts:0`), and its only key is full access — so NH-40 needs a **function-call key scoped to
+`social`** and a profile write that says the account is automated. Both are separate approvals.
 
 ### Board 3 — Account page · Day 3
 

@@ -9,12 +9,14 @@ page, one-account-one-upvote, and threaded discussion — with every project rec
 open, versioned JSON on NEAR itself, and a read-only API that lets AI agents discover
 projects without browser automation.
 
-> **Status: data layer live on mainnet; read-only web app deployed.** All 280 NEAR Hackathon
-> submissions are stored as `nearhunt/project/1` records under `nearhunt.near` — five import
-> transactions plus the funding transfer, no smart contract, verified readable 280/280 through the
-> public FastData indexer, and a re-run of the importer writes nothing. The directory, project
-> pages and connect/upvote flow are live at **https://near-hunt.vercel.app**. Discussion and the
-> account page are Day 3 work.
+> **Status: data layer live on mainnet; read-only web app deployed.** All 281 NEAR Hackathon
+> submissions are stored as `nearhunt/project/1` records under `nearhunt.near` — ten import
+> transactions plus the funding transfer, no smart contract, verified readable 281/281 through the
+> public FastData indexer. 264 records now carry the builder's own description and 98 a verified
+> repository, filled by a separate approval-gated enrichment pass. The directory, project pages and
+> connect/upvote flow are live at **https://near-hunt.vercel.app**. Discussion, the account page,
+> the indexer-outage states and the 390 px pass are built on `claude/great-planck-f8gtb9` and land
+> once the [Day 3 signing and wallet checks](docs/runbooks/day3-signing-checklist.md) are done.
 > See [`docs/phase-0-spike.md`](docs/phase-0-spike.md) and [`schema/`](schema/).
 
 ---
@@ -48,7 +50,7 @@ anyone, with no bespoke contract to deploy or audit.
 
 | Concern | Choice | Status |
 |---|---|---|
-| Project records | FastData KV writes (`__fastdata_kv`) to `nearhunt.near` | **live on mainnet** (280 records) |
+| Project records | FastData KV writes (`__fastdata_kv`) to `nearhunt.near` | **live on mainnet** (281 records) |
 | Upvotes | `vote/{project_id}` keys written by the voter, so one vote per account | designed, not built |
 | Reading records | `https://kv.main.fastnear.com`, scoped to records written by `nearhunt.near` | verified |
 | Discussion | near.social `social-kv/1` replies to one post per project | designed, not built |
