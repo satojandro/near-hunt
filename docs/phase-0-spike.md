@@ -42,7 +42,10 @@ Error: An error occurred during a `FunctionCall` action.
   ExecutionError("Exceeded the prepaid gas.")
 ```
 
-That is expected and irrelevant. The indexer does not inspect receipt status.
+That is expected and irrelevant. The indexer does not inspect receipt status. (This testnet
+receiver happened to have a contract, so the call ran out of gas. A receiver with no contract,
+like `social` or `nearhunt.near`, fails with `CodeDoesNotExist` instead: that is what the
+mainnet import transactions report. Either failure is fine.)
 
 Read back, ~6 seconds later:
 
@@ -94,6 +97,12 @@ NEAR Hunt needs no bespoke contract. A project record is a KV key:
 project/{project_id}  →  {"schema":"nearhunt/project/1", …}      written by the indexer service
 vote/{project_id}/{voter}  →  {}                                  written by the voter
 ```
+
+> **Superseded (8 Nov):** the vote key is now `vote/{project_id}` with the voter as the
+> writer (`predecessor_id`), not inside the key. A key-embedded voter can be forged: anyone can
+> write `vote/x/alice.near` from their own account. The index already keeps one row per writer
+> per key, so writer-as-voter gives one vote per account with nothing to check. See
+> `schema/README.md`. The test below remains valid evidence for last-write-wins.
 
 Because the voter's account id is *inside the key*, one-account-one-vote is a structural
 property, not an application check. A duplicate vote rewrites the same key — it cannot inflate a
@@ -168,7 +177,11 @@ transactions, not 271.
 
 ---
 
-## Remaining blocker before Phase 1
+## Remaining blocker before Phase 1 — resolved
+
+**Resolved 8 Nov:** `nearhunt.near` was registered and funded (block 223,583,069), and the
+271-project import landed in two transactions (blocks 223,583,277 and 223,583,288). The
+options below are kept for the record.
 
 **The namespace account.** Options:
 
@@ -178,5 +191,4 @@ transactions, not 271.
    machine namespace.
 3. Reuse an existing account — no, muddies provenance.
 
-Decision needed: see the repo issue. Until it is settled, the write path is proven but has no
-home.
+Chosen: option 1, `nearhunt.near`.

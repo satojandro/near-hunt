@@ -45,10 +45,10 @@ anyone, with no bespoke contract to deploy or audit.
 
 | Concern | Choice | Status |
 |---|---|---|
-| Project records | FastData KV writes (`__fastdata_kv`) to a dedicated account | **proven on testnet** |
-| Upvotes | `vote/{project_id}/{voter}` keys — one vote per account by construction | design |
-| Reading records | `https://kv.main.fastnear.com` (public, no API key) | verified |
-| Discussion | near.social `social-kv/1` posts and replies, created lazily per project | verified standard, spike pending |
+| Project records | FastData KV writes (`__fastdata_kv`) to `nearhunt.near` | **live on mainnet** (271 records) |
+| Upvotes | `vote/{project_id}` keys written by the voter, so one vote per account | designed, not built |
+| Reading records | `https://kv.main.fastnear.com`, scoped to records written by `nearhunt.near` | verified |
+| Discussion | near.social `social-kv/1` replies to one post per project | designed, not built |
 | Indexing | FastData indexer (no custom block scanning) | verified |
 | Smart contract | none — deliberately | proven unnecessary |
 | Cache | Valkey, optional, never a source of truth | deferred |
@@ -62,8 +62,13 @@ PRD's first draft: [`docs/research/2026-11-08-platform-findings.md`](docs/resear
 ## Repository layout
 
 ```
+AGENTS.md                    rules for AI agents (mainnet writes need a human)
 docs/
+  PLAN.md                    roadmap and ticketed backlog to 14 Nov
   PRD.md                     product requirements (v0.2)
+  mockups/                   every page and flow, as images, HTML and source
+  proposals/                 the near.social project/ proposal (after the hackathon)
+  runbooks/keys.md           function-call keys for the importer
   phase-0-spike.md           the storage spike: what was executed and what it proved
   research/                  verified platform findings, with evidence
 schema/
@@ -71,9 +76,14 @@ schema/
   README.md                        how to read records from chain, and the rules
 types/
   nearhunt.ts                TypeScript mirrors of the record and the KV envelope
+lib/
+  kv.mjs                     reads from the KV API, scoped to the writer
+  import-plan.mjs            diff of feed vs chain: what the importer would write
 scripts/
-  import.mjs                 hackathon feed → on-chain project records (dry-run by default)
+  import.mjs                 hackathon feed → on-chain project records (dry run by default)
   validate-schema.mjs        every live record against the schema, plus key/id invariants
+  render-mockups.mjs         regenerates docs/mockups images and pages
+test/                        unit tests (npm test)
 data/
   submissions-snapshot.json  the source feed as read on 2026-11-08, for provenance
 ```
@@ -82,8 +92,9 @@ Run it:
 
 ```bash
 npm install
-node scripts/import.mjs                 # dry run: fetch, shape, report — writes nothing
-node scripts/import.mjs --execute       # sign and broadcast (needs ~/.near-credentials)
+npm test                                # unit tests, no network
+node scripts/import.mjs                 # dry run: diff the feed against chain, writes nothing
+node scripts/import.mjs --execute --yes # write the diff (needs a key; see docs/runbooks/keys.md)
 npm run validate:schema                 # verify every record already on chain
 ```
 

@@ -51,6 +51,10 @@ Priority: **P0** = needed to submit · **P1** = should ship · **P2** = only if 
 
 ### Day 0 — guardrails (no board)
 
+**Status (8 Nov):** NH-01 to NH-05 done. NH-06 is waiting on a human: the steps are in
+[`runbooks/keys.md`](runbooks/keys.md). The first dry run of the new importer found 3 new
+submissions (feed total 274) and would write only those 3 keys; that write waits for owner approval.
+
 | ID | P | Item | Done when |
 |---|---|---|---|
 | NH-01 | P0 | One `readProjects()` helper that reads `/v0/latest/nearhunt.near/nearhunt.near`; used in the importer, the validator, the app and the API | Rows written by other accounts never appear as projects; the validator lists them as warnings |
