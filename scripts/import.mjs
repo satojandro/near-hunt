@@ -87,6 +87,8 @@ const ACCEPT_FULL_ACCESS = args.includes('--accept-full-access');
 const ENRICHMENT_FILE = flag('enrichment', undefined);
 const SOCIAL_POSTS_FILE = flag('social-posts', undefined);
 const REFRESH_ENRICHED = args.includes('--refresh-enriched');
+// Land only corrections/updates; never create records that were not part of the approved diff.
+const UPDATES_ONLY = args.includes('--updates-only');
 const CREDENTIALS_ROOT = join(homedir(), '.near-credentials');
 const NODE_URL =
   NETWORK === 'mainnet' ? 'https://rpc.mainnet.near.org' : 'https://rpc.testnet.near.org';
@@ -402,7 +404,10 @@ async function main() {
   });
   printPlan(plan);
 
-  const writes = [...plan.create, ...plan.update];
+  const writes = UPDATES_ONLY ? [...plan.update] : [...plan.create, ...plan.update];
+  if (UPDATES_ONLY && plan.create.length > 0) {
+    console.log(`\nnote: ${plan.create.length} new record(s) are not written (--updates-only).`);
+  }
   if (writes.length === 0) {
     console.log('\nNothing to write. The chain already matches the feed.');
     return;

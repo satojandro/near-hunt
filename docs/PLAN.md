@@ -20,14 +20,22 @@ https://claude.ai/artifact/TheVd1qg4LzCRzStJvKPKe (private until shared).
    that exact diff:
    `SMarR1rfceWC7xkSoJNaMHMughbhN9chLXELUQsMCs5` (65), `7qX3V7XeFRqgMyGKtHN1rUPZsb9n4d3AGn3xR5JTp5ZF` (64),
    `GqM47JwJ4tdS9NpiQttyZhcvGj7uzagXEyszXVoX2ZS` (63), `8sANNYHH6kyfDBXTCMsEbjnh2BSvj5fvJjsJeQZskjvC` (63),
-   `Gom4MYrHpgZ7pGvTqSQoUwMLZcFRdBZbV5u5HTcyEqVQ` (10).
+   `Gom4MYrHpgZ7pGvTqSQoUwMLZcFRdBZbV5u5HTcyEqVQ` (10);
+11. 19-key correction — tx `Bo5ktqRxYFu6Bik4GLDU8pPnyk5bCu8WdnpKZebcAkmY` (18 descriptions with a
+    dangling `Repo:`/`Demo:` label plus the newest `AgentGuard` record).
 
-**The chain matches the feed.** 281 records on chain, 281 in the feed, all 281 valid against the
-schema, 0 foreign rows, 0 tombstones. 264 records carry the builder's own description and 98 a
-verified repository. A plain dry run writes nothing. One correction is measured and **not written**:
-19 keys — 18 descriptions that ended in a dangling link label (`Repo:`, `Demo: Code:`) plus the
-`AgentGuard` record — via `--refresh-enriched`, 18,944 bytes in 1 transaction. It needs its own
-approval before it runs.
+**The chain matches the feed at write time.** 281 records on chain, all 281 valid against the
+schema, 0 foreign rows, 0 tombstones; 265 carry the builder's own description and 98 a verified
+repository. The 19-key correction was applied in tx `Bo5ktqRx…` — 18 descriptions that ended in a
+dangling link label, plus the newest `AgentGuard` record — via `--refresh-enriched`. The feed has
+since grown to **308**, so 27 records are pending a new approval (27 keys, 13,871 bytes, 1 tx).
+
+**near.social identity is now set up** (both owner-approved on 8 Nov): a function-call key
+`ed25519:2ozjdhsUK6iAAWrGtizUtqkx8ms9FSDzKBwedMSa2gaW` scoped to receiver `social` with methods
+`__fastdata_kv`/`__fastdata_fastfs` and a 0.25 NEAR allowance (tx `CJEvxUwy…`; secret at
+`~/.near-credentials/mainnet/social-keys/nearhunt.near-social.json`, mode 600, never committed),
+and the profile — name, automated-disclosure about, website — in tx `544jUhRV…`
+(`GET /v1/accounts/nearhunt.near` → `has_profile:true`, posts 0).
 
 The read-only product is built and deployed at **https://near-hunt.vercel.app** (Day 1), and Day 2's
 connect + upvote is merged and deployed. Day 3 — near.social discussion, the account page, the
@@ -152,15 +160,13 @@ proposal time. No AI rewriting, no repository guessed from a name. Sources are s
 (`description_source`, `repository_source`, `enrichment.sources`); a builder can ask for removal and
 the owner rewrites the record.
 
-**Status: applied 8 Nov.** The 265-key diff (1 new record + 264 enriched) landed in five
-transactions — `SMarR1rf…`, `7qX3V7Xe…`, `GqM47JwJ…`, `8sANNYHH…`, `Gom4MYrH…` — and all 265 keys
-read back from the indexer. 264 records now carry the builder's own description and 98 a verified
-repository. The proposal is regenerated against the 281-record chain (265 descriptions, 98 repos,
-111 link sets). A **19-key correction** is pending: the new `AgentGuard` record
-(`04749b49…`) plus 18 descriptions where removing a t.co link left a dangling `Repo:`/`Demo:` label.
-`--refresh-enriched` permits that rewrite only for fields an earlier enrichment run set — it never
-touches a builder-supplied value. Rerun `enrich.mjs` after any feed catch-up so the newest
-submissions are included.
+**Status: applied 8 Nov, corrected the same evening.** The 265-key diff (1 new record + 264
+enriched) landed in five transactions — `SMarR1rf…`, `7qX3V7Xe…`, `GqM47JwJ…`, `8sANNYHH…`,
+`Gom4MYrH…` — and all 265 keys read back from the indexer. A 19-key correction
+(`Bo5ktqRx…`) then fixed 18 descriptions where removing a t.co link left a dangling
+`Repo:`/`Demo:` label and enriched the newest `AgentGuard` record. **265 records now carry the
+builder's own description and 98 a verified repository.** `--refresh-enriched` permits that rewrite
+only for fields an earlier enrichment run set — it never touches a builder-supplied value.
 
 ### Board 1 — Directory (home) · Day 1
 
@@ -215,10 +221,9 @@ method `__fastdata_kv`, gas `1 Ggas`, deposit 0. The receipt always fails with `
 because `social` has no contract — the write is still indexed, so never retry; confirm with
 `GET https://api2.near.social/v1/tx/{hash}` and handle `indexed:false`, `rate_limited` and `invalid`
 (NH-83). Reply args are `{ "post/{ms}": { text, reply_to, root }, "reply/{root_author}/{root_id}/{ms}": {} }`.
-Limits per account per UTC day: 300 posts, 5 MiB; the 40/day drip fits. `nearhunt.near` today has
-**no near.social profile and no posts** (`GET /v1/accounts/nearhunt.near` → `has_profile:false`,
-`counts.posts:0`), and its only key is full access — so NH-40 needs a **function-call key scoped to
-`social`** and a profile write that says the account is automated. Both are separate approvals.
+Limits per account per UTC day: 300 posts, 5 MiB; the 40/day drip fits. The account now has a
+`social`-scoped function-call key and a profile that discloses automation, so NH-40 is unblocked on
+infrastructure — the remaining work is the server-side posting path itself.
 
 ### Board 3 — Account page · Day 3
 

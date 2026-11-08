@@ -12,8 +12,9 @@ projects without browser automation.
 > **Status: data layer live on mainnet; read-only web app deployed.** All 281 NEAR Hackathon
 > submissions are stored as `nearhunt/project/1` records under `nearhunt.near` — ten import
 > transactions plus the funding transfer, no smart contract, verified readable 281/281 through the
-> public FastData indexer. 264 records now carry the builder's own description and 98 a verified
-> repository, filled by a separate approval-gated enrichment pass. The directory, project pages and
+> public FastData indexer. 265 records now carry the builder's own description and 98 a verified
+> repository, filled by a separate approval-gated enrichment pass. `nearhunt.near` also has a
+> near.social profile that discloses the account is automated. The directory, project pages and
 > connect/upvote flow are live at **https://near-hunt.vercel.app**. Discussion, the account page,
 > the indexer-outage states and the 390 px pass are merged into `main` (PR #4, `3a7189f`) and deploy
 > once the [Day 3 signing and wallet checks](docs/runbooks/day3-signing-checklist.md) are done.
