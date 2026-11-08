@@ -2,7 +2,7 @@
 
 **Updated:** 2026-11-08 · **Deadline:** 14 Nov 2026, 23:59 UTC · **Days left:** 6
 
-Mockups for every page and flow referenced below (boards 1–8):
+Mockups for every page and flow referenced below (boards 1–9) are in [`mockups/`](mockups/README.md); the editable canvas is at
 https://claude.ai/artifact/TheVd1qg4LzCRzStJvKPKe (private until shared).
 
 ## Where things stand (audited 2026-11-08)

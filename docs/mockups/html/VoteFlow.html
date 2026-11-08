@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<title>NEAR Hunt — Connect and upvote flow</title>
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#0A7F5A}a:hover{color:#075E43}
+</style>
+</head>
+<body>
+
+
+<div style="width: 1440px; height: 620px; box-sizing: border-box; padding: 32px; background: #E9ECF0; font-family: Inter, system-ui, sans-serif; color: #12161C; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px;">
+
+  <section style="display: flex; flex-direction: column; gap: 12px;">
+    <p style="margin: 0; font-size: 13px; font-weight: 600; color: #3B4450;">Step 1 · Connect</p>
+    <div style="background: #FFFFFF; border-radius: 16px; padding: 22px; box-shadow: 0 8px 24px rgba(18,22,28,0.10); display: flex; flex-direction: column; gap: 12px; flex: 1;">
+      <h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 20px;">Connect a NEAR account</h2>
+      <p style="margin: 0; font-size: 14px; line-height: 1.5; color: #5A6472;">You need one to upvote or comment. Browsing never needs it.</p>
+      
+        <button type="button" style="font: inherit; font-size: 15px; font-weight: 600; text-align: left; background: #FFFFFF; border: 1px solid #E3E6EB; border-radius: 12px; min-height: 52px; padding: 0 14px; display: flex; align-items: center; gap: 12px; color: #12161C;">
+          <span style="width: 28px; height: 28px; border-radius: 8px; background: #F0F2F5; color: #3B4450; font-size: 13px; display: flex; align-items: center; justify-content: center;">M</span>
+          Meteor Wallet
+        </button>
+      
+        <button type="button" style="font: inherit; font-size: 15px; font-weight: 600; text-align: left; background: #FFFFFF; border: 1px solid #E3E6EB; border-radius: 12px; min-height: 52px; padding: 0 14px; display: flex; align-items: center; gap: 12px; color: #12161C;">
+          <span style="width: 28px; height: 28px; border-radius: 8px; background: #F0F2F5; color: #3B4450; font-size: 13px; display: flex; align-items: center; justify-content: center;">M</span>
+          MyNearWallet
+        </button>
+      
+        <button type="button" style="font: inherit; font-size: 15px; font-weight: 600; text-align: left; background: #FFFFFF; border: 1px solid #E3E6EB; border-radius: 12px; min-height: 52px; padding: 0 14px; display: flex; align-items: center; gap: 12px; color: #12161C;">
+          <span style="width: 28px; height: 28px; border-radius: 8px; background: #F0F2F5; color: #3B4450; font-size: 13px; display: flex; align-items: center; justify-content: center;">H</span>
+          HERE Wallet
+        </button>
+      
+        <button type="button" style="font: inherit; font-size: 15px; font-weight: 600; text-align: left; background: #FFFFFF; border: 1px solid #E3E6EB; border-radius: 12px; min-height: 52px; padding: 0 14px; display: flex; align-items: center; gap: 12px; color: #12161C;">
+          <span style="width: 28px; height: 28px; border-radius: 8px; background: #F0F2F5; color: #3B4450; font-size: 13px; display: flex; align-items: center; justify-content: center;">I</span>
+          Intear Wallet
+        </button>
+      
+      <p style="margin: auto 0 0; font-size: 12.5px; line-height: 1.5; color: #5A6472;">We ask for a limited key that can only write NEAR Hunt votes and near.social posts. It can never move funds.</p>
+    </div>
+  </section>
+
+  <section style="display: flex; flex-direction: column; gap: 12px;">
+    <p style="margin: 0; font-size: 13px; font-weight: 600; color: #3B4450;">Step 2 · Review what you sign</p>
+    <div style="background: #FFFFFF; border-radius: 16px; padding: 22px; box-shadow: 0 8px 24px rgba(18,22,28,0.10); display: flex; flex-direction: column; gap: 14px; flex: 1;">
+      <h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 20px;">Upvote Veto</h2>
+      <dl style="margin: 0; display: grid; grid-template-columns: 90px minmax(0, 1fr); row-gap: 10px; font-size: 14px;">
+        <dt style="color: #5A6472;">From</dt><dd style="margin: 0; font-weight: 600;">alice.near</dd>
+        <dt style="color: #5A6472;">To</dt><dd style="margin: 0;">nearhunt.near</dd>
+        <dt style="color: #5A6472;">Writes</dt><dd style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 12.5px; overflow-wrap: anywhere;">vote/21996773…</dd>
+        <dt style="color: #5A6472;">Cost</dt><dd style="margin: 0;">under 0.001 NEAR in gas, no deposit</dd>
+      </dl>
+      <div style="background: #FDF0E4; color: #7A3800; border-radius: 10px; padding: 12px; font-size: 13.5px; line-height: 1.5;">
+        <strong>Heads up:</strong> your wallet will say this transaction failed. That is normal for this kind of write. We confirm your vote from the NEAR indexer instead.
+      </div>
+      <div style="display: flex; gap: 10px; margin-top: auto;">
+        <button type="button" style="font: inherit; font-weight: 600; font-size: 15px; flex: 1; background: #FFFFFF; border: 1px solid #C9CED6; border-radius: 10px; min-height: 48px; color: #12161C;">Cancel</button>
+        <button type="button" style="font: inherit; font-weight: 600; font-size: 15px; flex: 2; background: #0A7F5A; border: 0; border-radius: 10px; min-height: 48px; color: #FFFFFF;">Sign and upvote</button>
+      </div>
+    </div>
+  </section>
+
+  <section style="display: flex; flex-direction: column; gap: 12px;">
+    <p style="margin: 0; font-size: 13px; font-weight: 600; color: #3B4450;">Step 3 · Pending</p>
+    <div style="background: #FFFFFF; border-radius: 16px; padding: 22px; box-shadow: 0 8px 24px rgba(18,22,28,0.10); display: flex; flex-direction: column; gap: 16px; flex: 1;">
+      <div style="display: flex; align-items: center; gap: 14px;">
+        <span style="width: 64px; min-height: 64px; border-radius: 12px; border: 2px dashed #0A7F5A; color: #0A7F5A; display: flex; flex-direction: column; align-items: center; justify-content: center; font-weight: 600;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"></path></svg>
+          143
+        </span>
+        <div>
+          <h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 20px;">Confirming your vote</h2>
+          <p style="margin: 4px 0 0; font-size: 14px; color: #5A6472;">Usually takes about 3 seconds.</p>
+        </div>
+      </div>
+      <ol style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: 14px;">
+        <li style="display: flex; gap: 10px; align-items: center;"><span style="width: 20px; height: 20px; border-radius: 50%; background: #0A7F5A; color: #FFFFFF; font-size: 12px; display: flex; align-items: center; justify-content: center;">✓</span> Signed by alice.near</li>
+        <li style="display: flex; gap: 10px; align-items: center;"><span style="width: 20px; height: 20px; border-radius: 50%; background: #0A7F5A; color: #FFFFFF; font-size: 12px; display: flex; align-items: center; justify-content: center;">✓</span> Included in a block</li>
+        <li style="display: flex; gap: 10px; align-items: center; color: #5A6472;"><span style="width: 20px; height: 20px; border-radius: 50%; border: 2px solid #C9CED6; box-sizing: border-box;"></span> Seen by the FastData indexer</li>
+      </ol>
+      <p style="margin: auto 0 0; font-size: 12.5px; color: #5A6472;">The count updates right away so the page feels instant, and rolls back if the indexer never sees the write.</p>
+    </div>
+  </section>
+
+  <section style="display: flex; flex-direction: column; gap: 12px;">
+    <p style="margin: 0; font-size: 13px; font-weight: 600; color: #3B4450;">Step 4 · Done, then share</p>
+    <div style="background: #FFFFFF; border-radius: 16px; padding: 22px; box-shadow: 0 8px 24px rgba(18,22,28,0.10); display: flex; flex-direction: column; gap: 14px; flex: 1;">
+      <div style="display: flex; align-items: center; gap: 14px;">
+        <span style="width: 64px; min-height: 64px; border-radius: 12px; background: #0A7F5A; color: #FFFFFF; display: flex; flex-direction: column; align-items: center; justify-content: center; font-weight: 600;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"></path></svg>
+          143
+        </span>
+        <div>
+          <h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 20px;">You upvoted Veto</h2>
+          <p style="margin: 4px 0 0; font-size: 14px; color: #5A6472;">On chain at block 223,601,120</p>
+        </div>
+      </div>
+      <div style="border: 1px solid #C9D6F2; background: #F5F8FE; border-radius: 12px; padding: 14px; display: flex; flex-direction: column; gap: 10px;">
+        <p style="margin: 0; font-size: 13px; font-weight: 600; color: #1D46A3;">Tell your near.social followers?</p>
+        <p style="margin: 0; font-size: 14px; line-height: 1.5; white-space: pre-line;">Just upvoted Veto on NEAR Hunt: an on-chain spending firewall for AI agents. #nearhunt #NEARHackathon
+nearhunt.app/p/21996773</p>
+        <button type="button" style="font: inherit; font-weight: 600; font-size: 14px; background: #2557C7; border: 0; border-radius: 10px; min-height: 44px; color: #FFFFFF;">Post to near.social</button>
+      </div>
+      <button type="button" style="font: inherit; font-weight: 600; font-size: 14px; background: none; border: 0; color: #5A6472; min-height: 36px; margin-top: auto;">Undo vote</button>
+    </div>
+  </section>
+</div>
+
+
+
+
+</body></html>

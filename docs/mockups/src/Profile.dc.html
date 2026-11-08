@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>NEAR Hunt — Account page</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap">
+<style>
+body{margin:0;background:#F5F6F8}
+a{color:#0A7F5A}a:hover{color:#075E43}
+</style>
+</helmet>
+<div style="font-family: Inter, system-ui, sans-serif; color: #12161C; background: #F5F6F8; min-height: 100%;">
+
+  <header style="background: #FFFFFF; border-bottom: 1px solid #E3E6EB;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 14px 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 20px;">
+      <a href="Main.dc.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #12161C;">
+        <span style="width: 34px; height: 34px; border-radius: 9px; background: #12161C; display: flex; align-items: center; justify-content: center;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"></path></svg>
+        </span>
+        <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 20px;">NEAR Hunt</span>
+      </a>
+      <nav style="display: flex; gap: 18px; font-size: 15px; font-weight: 500; flex: 1;">
+        <a href="Main.dc.html" style="color: #5A6472; text-decoration: none;">Projects</a>
+        <a href="OpenData.dc.html" style="color: #5A6472; text-decoration: none;">Open data</a>
+      </nav>
+      <button type="button" style="font: inherit; font-weight: 600; font-size: 15px; background: #FFFFFF; color: #12161C; border: 1px solid #E3E6EB; border-radius: 10px; min-height: 44px; padding: 0 16px;">Sign out</button>
+    </div>
+  </header>
+
+  <section style="background: #FFFFFF; border-bottom: 1px solid #E3E6EB;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 32px 24px; display: flex; flex-wrap: wrap; gap: 24px; align-items: center;">
+      <span style="width: 96px; height: 96px; border-radius: 50%; background: #EAF0FC; color: #2557C7; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 40px; display: flex; align-items: center; justify-content: center;">A</span>
+      <div style="flex: 999 1 360px; min-width: 0;">
+        <h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 32px;">Alice</h1>
+        <p style="margin: 4px 0 8px; color: #5A6472; font-size: 15px;">alice.near · profile from near.social</p>
+        <p style="margin: 0; font-size: 15px; line-height: 1.55; max-width: 620px;">Building wallets for agents. Here to find the security projects worth a second look.</p>
+      </div>
+      <div style="flex: 1 1 240px; display: flex; flex-wrap: wrap; gap: 10px; justify-content: flex-end;">
+        <a href="https://near.social" style="background: #EAF0FC; color: #1D46A3; text-decoration: none; font-weight: 600; font-size: 15px; border-radius: 10px; padding: 0 16px; min-height: 44px; display: flex; align-items: center;">Edit profile on near.social ↗</a>
+      </div>
+    </div>
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 24px 24px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px;">
+      <div style="background: #F5F6F8; border-radius: 12px; padding: 14px 16px;"><div style="font-family: 'Space Grotesk', sans-serif; font-size: 26px; font-weight: 700;">14</div><div style="font-size: 13px; color: #5A6472;">Upvotes</div></div>
+      <div style="background: #F5F6F8; border-radius: 12px; padding: 14px 16px;"><div style="font-family: 'Space Grotesk', sans-serif; font-size: 26px; font-weight: 700;">6</div><div style="font-size: 13px; color: #5A6472;">Comments</div></div>
+      <div style="background: #F5F6F8; border-radius: 12px; padding: 14px 16px;"><div style="font-family: 'Space Grotesk', sans-serif; font-size: 26px; font-weight: 700;">3</div><div style="font-size: 13px; color: #5A6472;">Shares to near.social</div></div>
+      <div style="background: #F5F6F8; border-radius: 12px; padding: 14px 16px;"><div style="font-family: 'Space Grotesk', sans-serif; font-size: 26px; font-weight: 700;">212</div><div style="font-size: 13px; color: #5A6472;">near.social followers</div></div>
+    </div>
+  </section>
+
+  <main style="max-width: 1200px; margin: 0 auto; padding: 24px 24px 64px;">
+    <div role="tablist" aria-label="Activity" style="display: flex; gap: 4px; border-bottom: 1px solid #E3E6EB; margin-bottom: 18px;">
+      <button type="button" role="tab" aria-selected="true" style="font: inherit; font-weight: 600; font-size: 15px; background: none; border: 0; border-bottom: 2px solid #12161C; padding: 0 14px; min-height: 44px; color: #12161C;">Upvoted</button>
+      <button type="button" role="tab" aria-selected="false" style="font: inherit; font-weight: 500; font-size: 15px; background: none; border: 0; border-bottom: 2px solid transparent; padding: 0 14px; min-height: 44px; color: #5A6472;">Comments</button>
+    </div>
+    <ul style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 12px;">
+      <sc-for list="{{items}}" as="it" hint-placeholder-count="6">
+        <li style="background: #FFFFFF; border: 1px solid #E3E6EB; border-radius: 14px; padding: 16px; display: flex; flex-direction: column; gap: 8px;">
+          <a href="Project.dc.html" style="font-family: 'Space Grotesk', sans-serif; font-size: 17px; font-weight: 600; color: #12161C; text-decoration: none;">{{it.name}}</a>
+          <span style="font-size: 13px; color: #5A6472;">{{it.tracks}}</span>
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: 13px;">
+            <span style="color: #5A6472;">Upvoted {{it.when}} · block {{it.block}}</span>
+            <button type="button" style="font: inherit; font-weight: 600; font-size: 13px; background: none; border: 1px solid #C9CED6; border-radius: 8px; padding: 0 10px; min-height: 32px; color: #12161C;">Remove vote</button>
+          </div>
+        </li>
+      </sc-for>
+    </ul>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":1180}}'>
+class Component extends DCLogic {
+  renderVals() {
+    var items = [
+      ['Veto: on-chain spending firewall for AI agents on NEAR', 'Security · Agents', '2h ago', '223,601,120'],
+      ['NEAR Replay Lab', 'Security', '5h ago', '223,594,880'],
+      ['Clear to Pay', 'Privacy · Business · Agents · Real world', 'yesterday', '223,540,212'],
+      ['SpendGuard AI', 'Business · Security · Agents', 'yesterday', '223,538,004'],
+      ['OneShot', 'DeFi · Security', '2 days ago', '223,480,119'],
+      ['Undiluted', 'Privacy · Business · Real world · Open', '2 days ago', '223,471,560']
+    ].map(function (r) { return { name: r[0], tracks: r[1], when: r[2], block: r[3] }; });
+    return { items: items };
+  }
+}
+</script>
+</body>
+</html>

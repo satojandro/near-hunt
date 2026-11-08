@@ -1,0 +1,26 @@
+{
+  "v": 3,
+  "createdOnFiles": {"v": 1, "at": "2026-11-08T09:00:00Z"},
+  "title": "NEAR Hunt Mockups",
+  "launch": {"view": "canvas"},
+  "pages": [],
+  "boards": {
+    "Main.dc.html": {"x": 0, "y": 0, "w": 1280, "h": 1560, "title": "1 · Directory (home)", "expand": "fill"},
+    "Project.dc.html": {"x": 1360, "y": 0, "w": 1280, "h": 1640, "title": "2 · Project page", "expand": "fill"},
+    "Profile.dc.html": {"x": 2720, "y": 0, "w": 1280, "h": 1180, "title": "3 · Account page", "expand": "fill"},
+    "OpenData.dc.html": {"x": 4080, "y": 0, "w": 1280, "h": 1500, "title": "4 · Open data and agents", "expand": "fill"},
+    "MobileDirectory.dc.html": {"x": 0, "y": 2040, "w": 390, "h": 844, "title": "5 · Mobile directory"},
+    "MobileProject.dc.html": {"x": 470, "y": 2040, "w": 390, "h": 844, "title": "6 · Mobile project"},
+    "VoteFlow.dc.html": {"x": 940, "y": 2040, "w": 1440, "h": 620, "title": "7 · Connect and upvote flow"},
+    "States.dc.html": {"x": 2460, "y": 2040, "w": 1280, "h": 620, "title": "8 · Empty, loading and error states"},
+    "Roadmap.dc.html": {"x": 0, "y": 3340, "w": 1920, "h": 1180, "title": "9 · Roadmap and backlog"}
+  },
+  "order": ["Main.dc.html", "Project.dc.html", "Profile.dc.html", "OpenData.dc.html", "MobileDirectory.dc.html", "MobileProject.dc.html", "VoteFlow.dc.html", "States.dc.html", "Roadmap.dc.html"],
+  "notes": {
+    "rowDesktop": {"x": 0, "y": -300, "text": "Desktop pages", "kind": "title1", "maxW": 5360},
+    "rowFlows": {"x": 0, "y": 1760, "text": "Mobile, flows and states", "kind": "title1", "maxW": 3740},
+    "rowRoadmap": {"x": 0, "y": 3060, "text": "Roadmap and backlog", "kind": "title1", "maxW": 1920},
+    "sample": {"x": 5440, "y": 0, "w": 360, "text": "Project names, tracks, demo links and track counts are real (the 271 on-chain records). Vote counts, comment counts, accounts and replies are sample data.", "fill": "orange", "size": "m"}
+  },
+  "designSystems": []
+}

@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>NEAR Hunt — Roadmap and backlog</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#0A7F5A}a:hover{color:#075E43}
+</style>
+</helmet>
+<div style="width: 1920px; height: 1180px; box-sizing: border-box; padding: 36px; background: #F5F6F8; font-family: Inter, system-ui, sans-serif; color: #12161C; display: flex; flex-direction: column; gap: 20px;">
+  <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 24px;">
+    <div>
+      <h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 34px;">Roadmap to 14 Nov, mapped to the mockups</h1>
+      <p style="margin: 6px 0 0; font-size: 15px; color: #5A6472;">Each card is a ticket in docs/PLAN.md. The tag in the corner is the board it builds.</p>
+    </div>
+    <div style="display: flex; gap: 14px; font-size: 13px; color: #3B4450;">
+      <span style="display: flex; align-items: center; gap: 6px;"><span style="width: 12px; height: 12px; border-radius: 3px; background: #12161C;"></span>P0 needed to submit</span>
+      <span style="display: flex; align-items: center; gap: 6px;"><span style="width: 12px; height: 12px; border-radius: 3px; background: #0A7F5A;"></span>P1 should ship</span>
+      <span style="display: flex; align-items: center; gap: 6px;"><span style="width: 12px; height: 12px; border-radius: 3px; border: 2px dashed #8A93A0; box-sizing: border-box;"></span>P2 if time allows</span>
+      <span style="display: flex; align-items: center; gap: 6px;"><span style="width: 12px; height: 12px; border-radius: 3px; background: #2557C7;"></span>near.social integration</span>
+    </div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 14px; flex: 1; min-height: 0;">
+    <sc-for list="{{columns}}" as="col" hint-placeholder-count="7">
+      <section style="{{col.style}}">
+        <header style="display: flex; flex-direction: column; gap: 2px; padding-bottom: 8px; border-bottom: 1px solid #E3E6EB;">
+          <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #5A6472;">{{col.when}}</span>
+          <h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 18px;">{{col.title}}</h2>
+        </header>
+        <sc-for list="{{col.items}}" as="it" hint-placeholder-count="5">
+          <article style="{{it.style}}">
+            <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px;">
+              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">{{it.id}}</span>
+              <span style="{{it.boardStyle}}">{{it.board}}</span>
+            </div>
+            <p style="margin: 0; font-size: 13.5px; line-height: 1.4;">{{it.text}}</p>
+          </article>
+        </sc-for>
+      </section>
+    </sc-for>
+  </div>
+
+  <p style="margin: 0; font-size: 13px; color: #5A6472;">Cut line: if Day 3 slips, drop the P2 items, then NH-23, NH-50 to NH-53 and NH-15. Day 6 (14 Nov) is left empty as buffer.</p>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1920,"height":1180}}'>
+class Component extends DCLogic {
+  renderVals() {
+    var card = function (p, social) {
+      var border = p === 'P0' ? 'border: 1px solid #E3E6EB; border-left: 4px solid #12161C;' : p === 'P1' ? 'border: 1px solid #E3E6EB; border-left: 4px solid #0A7F5A;' : 'border: 2px dashed #C9CED6;';
+      if (social) border = 'border: 1px solid #C9D6F2; border-left: 4px solid #2557C7;';
+      return 'background: #FFFFFF; border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px; ' + border;
+    };
+    var chip = function (b) {
+      return 'font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; white-space: nowrap; ' + (b === '—' ? 'background: #F0F2F5; color: #5A6472;' : 'background: #12161C; color: #FFFFFF;');
+    };
+    var cols = [
+      ['8 Nov · Day 0', 'Guardrails', [
+        ['NH-01', 'P0', '—', 'Reads trust only nearhunt.near rows'],
+        ['NH-02', 'P0', '—', 'Importer writes only what changed'],
+        ['NH-03', 'P0', '—', 'AGENTS.md rules for Hermes'],
+        ['NH-06', 'P0', '—', 'Limited keys; full key stays with a human'],
+        ['NH-05', 'P1', '—', 'Schema: real $id, social_post field, vote spec'],
+        ['NH-04', 'P1', '—', 'Fix docs drift']
+      ]],
+      ['9 Nov · Day 1', 'Browse', [
+        ['NH-10', 'P0', 'B1', 'App scaffold and deploy'],
+        ['NH-11', 'P0', 'B1', 'Project list from chain'],
+        ['NH-12', 'P0', 'B1', 'Search by name'],
+        ['NH-13', 'P0', 'B1', 'Track filter with counts'],
+        ['NH-14', 'P0', 'B1', 'Sort: upvoted, newest'],
+        ['NH-20', 'P0', 'B2', 'Project page, null-safe links'],
+        ['NH-21', 'P1', 'B2', 'On-chain record card'],
+        ['NH-15', 'P1', 'B1', 'Live #nearhunt sidebar', true]
+      ]],
+      ['10 Nov · Day 2', 'Upvote', [
+        ['NH-35', 'P0', 'B7', 'Spike: wallet vs contract-less receiver'],
+        ['NH-30', 'P0', 'B7', 'Wallet login, limited key'],
+        ['NH-31', 'P0', 'B7', 'Upvote with indexer confirm'],
+        ['NH-32', 'P0', 'B7', 'Remove upvote'],
+        ['NH-33', 'P0', 'B1', 'Vote tally, cached'],
+        ['NH-22', 'P1', 'B2', 'Upvoted-by avatars'],
+        ['NH-34', 'P1', 'B7', 'Share vote to near.social', true]
+      ]],
+      ['11 Nov · Day 3', 'Discuss', [
+        ['NH-40', 'P0', 'B2', 'Project posts by nearhunt.near (drip)', true],
+        ['NH-41', 'P0', 'B2', 'Read thread from near.social', true],
+        ['NH-42', 'P0', 'B2', 'Reply composer posts to near.social', true],
+        ['NH-70', 'P0', 'B5', 'Responsive pass at 390 px'],
+        ['NH-80', 'P0', 'B8', 'Loading skeletons'],
+        ['NH-81', 'P0', 'B8', 'Empty states'],
+        ['NH-43', 'P1', 'B1', 'Reply counts, most discussed', true],
+        ['NH-50', 'P1', 'B3', 'Account page from near.social profile', true],
+        ['NH-51', 'P1', 'B3', 'My upvotes'],
+        ['NH-82', 'P1', 'B8', 'Indexer-stale banner'],
+        ['NH-83', 'P1', 'B8', 'near.social rate limit handling', true],
+        ['NH-71', 'P1', 'B6', 'Sticky mobile upvote bar']
+      ]],
+      ['12 Nov · Day 4', 'Open data', [
+        ['NH-60', 'P0', 'B4', 'Read-only API'],
+        ['NH-61', 'P0', 'B4', 'SKILL.md for agents'],
+        ['NH-62', 'P1', 'B4', 'Open data page'],
+        ['NH-63', 'P1', 'B4', 'Agent test with Hermes'],
+        ['NH-64', 'P1', 'B4', 'Publish project/ proposal draft', true]
+      ]],
+      ['13 Nov · Day 5', 'Submit', [
+        ['NH-90', 'P0', '—', 'README matches what runs'],
+        ['NH-91', 'P0', '—', 'Baby Shark cross-reference'],
+        ['NH-92', 'P0', '—', 'Demo video and X post'],
+        ['NH-93', 'P0', '—', 'Final import diff, human-approved'],
+        ['NH-23', 'P2', 'B2', 'Similar projects'],
+        ['NH-52', 'P2', 'B3', 'My comments']
+      ]],
+      ['After 14 Nov', 'Later', [
+        ['NH-100', 'P2', '—', 'Take project/ to near.social maintainers', true],
+        ['NH-101', 'P2', 'B2', 'Builder claim via project/ on near.social', true],
+        ['NH-102', 'P2', 'B2', 'Baby Shark funding link'],
+        ['NH-103', 'P2', '—', 'Mirror every project to near.social', true]
+      ]]
+    ];
+    var columns = cols.map(function (c, i) {
+      return {
+        when: c[0], title: c[1],
+        style: 'border-radius: 14px; padding: 14px; display: flex; flex-direction: column; gap: 8px; min-width: 0; ' + (i === 6 ? 'background: #ECEEF2;' : 'background: #FBFBFC; border: 1px solid #E3E6EB;'),
+        items: c[2].map(function (t) {
+          return { id: t[0], board: t[2], text: t[3], style: card(t[1], t[4]), boardStyle: chip(t[2]) };
+        })
+      };
+    });
+    return { columns: columns };
+  }
+}
+</script>
+</body>
+</html>
