@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import { useWallet } from './WalletProvider';
 
@@ -59,6 +60,16 @@ export default function ConnectButton() {
       {open ? (
         <div className="account-pop" role="menu">
           <p className="account-pop-note">Signed in with NEAR Connect.</p>
+          <Link
+            href={`/u/${encodeURIComponent(accountId)}`}
+            role="menuitem"
+            className="account-pop-item"
+            // .account-pop-item is styled for buttons; a link needs to be a block to fill the row.
+            style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}
+            onClick={() => setOpen(false)}
+          >
+            My upvotes
+          </Link>
           <button
             type="button"
             role="menuitem"
