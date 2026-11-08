@@ -18,12 +18,24 @@ value, but the old value stays in public history forever.
   (NH-40) and a human has approved the batch.
 - Testnet is fine for experiments. Say which network you used.
 
-## 2. Keys
+## 2. Keys — the agent machine holds none
 
-- Agents get **function-call keys only**, limited to receiver `nearhunt.near` and method
-  `__fastdata_kv`. They cannot move funds. See `docs/runbooks/keys.md`.
-- Never ask for, read, print, log or commit a full-access key or any secret key. Never commit
-  anything under `~/.near-credentials`.
+Two machines, two jobs, and the split is not negotiable:
+
+| | Machine | Holds a key | Runs `--execute` |
+|---|---|---|---|
+| Owner | MacBook (`Alejandros-MacBook-Pro`, `/Users/avb`) | yes — all of them | yes |
+| Agent | Mac Mini (`Claudios-Mac-mini`, `/Users/clawdio`) | **no** | **no** |
+
+- An agent never holds a credential file, in any form — not a function-call key, not a copy, not
+  a temporary file. With none present, `--execute` cannot run on the agent machine at all, which
+  is the enforcement.
+- An agent's job is the dry run: produce the exact diff, show it, and hand the decision to the
+  owner. See `docs/runbooks/keys.md`.
+- Never ask for, read, print, log or commit a full-access key, a seed phrase or any secret key.
+  Never commit anything under `~/.near-credentials`.
+- If a credential file for `nearhunt.near` is found on the agent machine, treat it as an
+  incident: report it, do not use it, and let the owner delete it.
 
 ## 3. Reading data
 

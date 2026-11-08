@@ -75,11 +75,12 @@ Priority: **P0** = needed to submit · **P1** = should ship · **P2** = only if 
 
 **Status (8 Nov evening):** NH-01 to NH-05 are **done and verified by Hermes**: `npm test`
 is 15/15 green, `npm run validate:schema` reads 271/271 valid with 0 foreign rows, and the
-importer dry run is idempotent (4 new, 0 changed, 271 unchanged). NH-06 is **not started**, and
-the audit found the situation is worse than "pending": `nearhunt.near` has exactly one key on
-chain and it is **full access**, and its credentials file (which includes the master seed
-phrase) sits on the agent's machine at `~/.near-credentials/mainnet/nearhunt.near/`. The steps
-are in [`runbooks/keys.md`](runbooks/keys.md); they need the owner, not an agent.
+importer dry run is idempotent (4 new, 0 changed, 271 unchanged). NH-07 and NH-08 closed the
+same evening. NH-06 is **not started**: `nearhunt.near` has exactly one key on chain and it is
+**full access**, and the agent machine holds two credential files for it (a flat one and a
+directory), both carrying the master seed phrase. The steps are in
+[`runbooks/keys.md`](runbooks/keys.md) — and the rule they encode is that the **Mini ends up
+with no key at all**: the owner signs on the MacBook, the agent machine only reads.
 
 | ID | P | Item | Done when |
 |---|---|---|---|
@@ -88,9 +89,10 @@ are in [`runbooks/keys.md`](runbooks/keys.md); they need the owner, not an agent
 | NH-03 | P0 | `AGENTS.md`: no mainnet transaction without a dry-run diff a human has approved; every docs claim comes with the command that proves it | **Done** — file committed |
 | NH-04 | P1 | Fix the docs drift (README table, spike "account undecided", the duplicated paragraph in the research doc) | **Done** |
 | NH-05 | P1 | Schema touch-ups: real `$id`; optional `social_post` field (the project's near.social post reference); document that `source.url` is the generic listing; written specs for the `vote/` and near.social comment conventions | **Done** — `$id` is `nearhunt.xyz`; `npm run validate:schema` still passes 271/271 |
-| NH-06 | P0 | Hermes and the server get a function-call key limited to `__fastdata_kv` (one key for `nearhunt.near`, one for `social`); the full-access key stays with a human | Keys added; the full-access key file (and its seed phrase) is **gone from the agent machine**; `list-keys` shows a FunctionCall key |
+| NH-06 | P0 | The owner holds every key on the MacBook; the agent machine holds none. A `__fastdata_kv`-only function-call key signs imports (one for `nearhunt.near`; one for `social` later, in the Vercel env) | MacBook: `list-keys` shows a `FunctionCall` key and the full-access file sits outside `~/.near-credentials`. Mini: **no credential file for `nearhunt.near` at all**, so `--execute` cannot run there |
 | NH-07 | P1 | `scripts/import.mjs` defaults to `~/.near-credentials/{net}/{account}.json`, but near-cli-rs `save-to-legacy-keychain` writes `~/.near-credentials/{net}/{account}/{public-key}.json`. Resolve both, or fail with the exact path it looked for | **Done** — `resolveKeyFile()` takes the flat file when present, else the newest `.json` in the account directory, and the error lists every path tried. `node scripts/import.mjs --check-key` resolves and parses the key without signing: it prints `~/.near-credentials/mainnet/nearhunt.near.json` here, and against a fake `HOME` with only a near-cli-rs directory it prints that nested file. `--key-file <dir>` works too |
 | NH-08 | P2 | `scripts/render-mockups.mjs` needs Playwright + Chromium, which is not in `devDependencies` | **Done** — the Playwright dependency is gone: the script drives the installed Chrome/Chromium over the DevTools protocol using Node's built-in WebSocket, and exits with an install hint (or `CHROME_PATH`) when no browser is found. `npm run render:mockups` on this machine re-rendered all 9 boards; the generated `html/` is byte-identical to the committed files and every PNG keeps its exact 2× dimensions |
+| NH-09 | P1 | The importer cannot tell a full-access key from a function-call key, and `resolveKeyFile()` prefers the flat file — so a leftover full-access credential silently signs an import. Query `view_access_key` for the resolved public key and print the permission; refuse to sign with full access unless `--accept-full-access` is passed | `--check-key` prints `FunctionCall` or `full access` for the resolved key, and an import with a full-access key exits non-zero |
 
 ### Board 1 — Directory (home) · Day 1
 
