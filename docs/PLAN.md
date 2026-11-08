@@ -267,7 +267,7 @@ node scripts/import.mjs   # 29 new (feed 310), 0 changed, 281 unchanged — pend
 - **NH-60:** on a local `next start` against mainnet, `/api/projects?limit=100` pages 100 + 100 + 81 = 281
   and ends with `next_cursor:null`. `/votes` for Aegis returns `alejandro.near` at block 223,642,127.
   An unknown id returns 404 `not_found`, and `limit=0` or a bad cursor returns 400. Choices the contract
-  left open are listed in the contract file's commit (`d2ff086`). The main ones: there is no
+  left open are listed under "As built" in the contract file. The main ones: there is no
   "discussed" sort, an unknown track returns an empty list, and a failed vote read gives `votes:null`.
   `/discussion` is empty for every project until NH-40 posts exist.
 - **NH-61:** `/SKILL.md` serves `text/markdown`. Its direct-to-chain curls were run against mainnet.

@@ -38,3 +38,17 @@ Errors: `{ "error": "<code>", "message": "<text>" }` with codes `not_found` (404
 
 - `public/SKILL.md` → served at `/SKILL.md` (NH-61).
 - Open data page at `/open-data` (NH-62), linked from the header nav.
+
+## As built (NH-60, `d2ff086`): choices the contract left open
+
+- `sort` is `newest | votes | name`; there is no `discussed`. Any other value → 400.
+- An unknown `track` → empty list, not an error. `q` ignores case and accents.
+- Vote read failure: `/api/projects` and `/{id}` give `votes: null` and `meta.votes_available: false`
+  (`sort=votes` falls back to newest); `/votes` answers 503.
+- `/votes` meta: `{total, source: {account, prefix: "vote/", network}}`, latest vote first.
+- `/discussion`: near.social order (oldest first); 503 when near.social is down; 400 if it rejects
+  a cursor; `thread_url` null when there is no `social_post`.
+- Cursors: base64url of `o:<offset>` (our lists) or `s:<near.social cursor>` (discussion); each
+  route rejects the other kind.
+- Cache-Control `s-maxage`: projects 60 s, votes 20 s, discussion 30 s; errors `no-store`.
+  OPTIONS → 204.
