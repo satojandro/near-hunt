@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NEAR Hunt — discovery and community voting for NEAR projects</title>
+<meta name="description" content="A human-first discovery and community voting layer for NEAR ecosystem projects. Every project record is open JSON on NEAR.">
+<style>
+  :root { color-scheme: light dark; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 3rem 1.5rem; min-height: 100vh;
+    font: 16px/1.6 ui-sans-serif, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #111; background: #fbfbfa;
+    display: flex; flex-direction: column; justify-content: center;
+    max-width: 46rem; margin-inline: auto;
+  }
+  .eyebrow { font-size: .8125rem; letter-spacing: .08em; text-transform: uppercase; color: #2f7d43; font-weight: 600; margin: 0 0 .75rem; }
+  h1 { font-size: clamp(1.75rem, 5vw, 2.6rem); line-height: 1.15; margin: 0 0 1rem; letter-spacing: -0.02em; }
+  p { margin: 0 0 1rem; color: #444; }
+  .rule { height: 1px; background: #e5e5e2; margin: 2rem 0; }
+  dl { display: grid; grid-template-columns: max-content 1fr; gap: .4rem 1.25rem; font-size: .9375rem; margin: 0 0 2rem; }
+  dt { color: #777; }
+  dd { margin: 0; font-variant-numeric: tabular-nums; }
+  a { color: #111; text-underline-offset: 3px; }
+  .links { display: flex; flex-wrap: wrap; gap: 1rem; font-size: .9375rem; }
+  .note { font-size: .875rem; color: #777; margin-top: 2.5rem; }
+  code { font-size: .875em; background: #f0efec; padding: .1em .35em; border-radius: 3px; }
+  @media (prefers-color-scheme: dark) {
+    body { color: #f2f2f0; background: #0d0d0c; }
+    p, .note { color: #a3a3a0; }
+    dd, a { color: #f2f2f0; }
+    dt { color: #85857f; }
+    .rule { background: #26262a; }
+    code { background: #1c1c20; }
+  }
+</style>
+</head>
+<body>
+  <p class="eyebrow">NEAR Hackathon · 1–14 Nov 2026</p>
+  <h1>Every hackathon project, as open data on NEAR.</h1>
+  <p>
+    NEAR Hunt is a discovery and community-voting layer for NEAR ecosystem projects. Each project
+    is stored as a versioned JSON record on chain, readable by anyone without this website, and
+    each upvote is a transaction signed by the voter's own account.
+  </p>
+
+  <div class="rule"></div>
+
+  <dl>
+    <dt>Projects on chain</dt><dd>275</dd>
+    <dt>Records valid</dt><dd>275 / 275</dd>
+    <dt>Smart contract</dt><dd>none — FastData KV on <code>nearhunt.near</code></dd>
+    <dt>Schema</dt><dd><code>nearhunt/project/1</code></dd>
+    <dt>Frontend</dt><dd>in progress — directory, project pages and voting land next</dd>
+  </dl>
+
+  <div class="links">
+    <a href="https://github.com/satojandro/near-hunt">Source &amp; docs</a>
+    <a href="https://github.com/satojandro/near-hunt/blob/main/schema/README.md">Schema</a>
+    <a href="https://kv.main.fastnear.com/v0/latest/nearhunt.near/nearhunt.near">Read the raw data</a>
+  </div>
+
+  <p class="note">
+    This is a deployment placeholder that proves the pipeline end to end. It will be replaced by
+    the real directory. Votes are community signals, never official judging.
+  </p>
+</body>
+</html>
