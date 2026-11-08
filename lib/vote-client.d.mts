@@ -8,6 +8,7 @@ export declare const VOTE_DEPOSIT: '0';
 export declare const SITE_ORIGIN: string;
 
 export declare function voteKey(projectId: string): string;
+export declare function idFromVoteKey(key: unknown): string | null;
 export declare function voteArgs(projectId: string, upvote: boolean): Record<string, Record<string, never> | null>;
 
 export interface VoteAction {
