@@ -41,6 +41,11 @@ the PRD and the roadmap were written. Where a skill and a repo doc disagree on h
 something on NEAR (libraries, wallet connection, API usage), **follow the skill** and update the
 repo doc in the same change. The rules in §1 (mainnet writes) and §5 (scope) still apply.
 
+The same applies to near.social. Its agent guide, https://near.social/skill.md, is vendored at
+`.claude/skills/near-social/SKILL.md` (Claude Code loads it from there; other agents read the file).
+Read it before touching anything that reads from or writes to near.social. `SOURCE.md` next to it
+gives the fetch date, the checksum and a one-line drift check.
+
 ## 3. Reading data
 
 - Read project records only through `lib/kv.mjs` (`readProjects`), which keeps rows written by

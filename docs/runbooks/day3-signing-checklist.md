@@ -29,9 +29,22 @@ keys is a separate approval and is never implied by an import approval.
       after approval.
       - [ ] **First, D1 (DNS):** near.social builds each post's link card from
             `https://nearhunt.xyz/p/{id}`, and the domain is still parked.
+      - [ ] **Before the first post, give `nearhunt.near` a near.social profile.** skill.md
+            ("Limits and etiquette") asks automated accounts to say so in `profile/about` and to set
+            `profile/links/website`, and says the operator can hide accounts that look like spam.
+            Today `GET https://api2.near.social/v1/accounts/nearhunt.near` returns
+            `has_profile: false`, so all 40 posts would show a bare account id. This is its own
+            mainnet write to `social` as `nearhunt.near`, so it needs its own approval. Proposed args
+            (one transaction, three keys):
+            `{"profile/name":"NEAR Hunt","profile/about":"Automated account: posts one discussion thread per NEAR Hackathon project. Votes and replies are written by people from their own accounts.","profile/links/website":"https://nearhunt.xyz"}`
       - [ ] Owner approves the printed batch.
-      - [ ] Decide which key signs. `nearhunt.near` has one full-access key today. A function-call
-            key for receiver `social` is a **separate** approval.
+      - [ ] Decide which key signs. `nearhunt.near` has one full-access key today. skill.md
+            recommends a function-call key limited to receiver `social` and methods
+            `__fastdata_kv` and `__fastdata_fastfs`, which can't move funds. Adding that key is a
+            **separate** approval.
+      - [ ] Optional: skill.md allows up to 256 keys per call, so the 40 posts could go in **one**
+            transaction instead of 40. `/v1/tx` reports a status for each key, so per-post
+            confirmation still works. The script prints one per transaction; say if you want one.
       - [ ] Save the confirmed references as `data/social-posts.json` (the overlay format
             `scripts/social-posts.mjs` prints).
 - [ ] **A3. Write `social_post` back into the posted projects' records.** This runs after A2, as a
@@ -48,6 +61,10 @@ keys is a separate approval and is never implied by an import approval.
 - [ ] **B1. How NH-40 posts get created.** The plan says "the server creates the post the first
       time someone opens a thread". That puts a `nearhunt.near` key on Vercel. The agents built
       the alternative, where Hermes posts batches from the operator machine. Pick one.
+- [ ] **B1a. The sidebar after A2.** Root posts contain `#nearhunt`, so each batch also fills
+      the "Live on near.social" sidebar (`/v1/hashtags/nearhunt`), which shows the latest 5. After
+      a 40-post batch it would show only NEAR Hunt's own posts until people reply or post. Keep
+      that, or filter `nearhunt.near` out of the sidebar (a small code change)?
 - [ ] **B2. Treasury account for NH-94** (still open from PLAN.md).
 - [ ] **B3. A pending vote when the indexer is slow (NH-82).** Today a pending vote is rolled back
       after 30 s with "reload in a minute". The States mockup keeps it visible until the indexer
