@@ -10,6 +10,7 @@ import AboutCard from '@/app/components/project/AboutCard';
 import LinksCard from '@/app/components/project/LinksCard';
 import RecordCard from '@/app/components/project/RecordCard';
 import UpvotedBy from '@/app/components/project/UpvotedBy';
+import UpvoteButton from '@/app/components/vote/UpvoteButton';
 import s from '@/app/components/project/project.module.css';
 
 type Props = { params: Promise<{ id: string }> };
@@ -46,22 +47,16 @@ export default async function ProjectPage({ params }: Props) {
         <span aria-hidden="true">/</span>
         <span className={s.crumbCurrent} aria-current="page">{project.name}</span>
       </nav>
-      <div className={s.headerRow}>
-        <ProjectHeader project={project} />
-        <div className={s.headerActions}>
-          {/* NH-31 UpvoteButton: count={count} */}
-          <p className={s.voteCount} title={votesAvailable ? undefined : 'Upvote counts are unavailable right now'}>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              <path d="M12 19V5M5 12l7-7 7 7" />
-            </svg>
-            {votesAvailable ? (
-              <span>{count} {count === 1 ? 'upvote' : 'upvotes'}</span>
-            ) : (
-              <span>Upvotes unavailable</span>
-            )}
-          </p>
-        </div>
-      </div>
+      <ProjectHeader
+        project={project}
+        actions={
+          votesAvailable ? (
+            <UpvoteButton projectId={project.submission_id} initialCount={count} variant="page" projectName={project.name} />
+          ) : (
+            <p className={s.voteCount} title="Upvote counts are unavailable right now">Upvotes unavailable</p>
+          )
+        }
+      />
       <div className={s.grid}>
         <div className={s.main}>
           <AboutCard description={project.description} />

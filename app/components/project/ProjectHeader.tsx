@@ -4,7 +4,8 @@ import { eventLabel } from '@/lib/project-view.mjs';
 import type { ListingItem } from '@/lib/listing.mjs';
 import s from './project.module.css';
 
-export default function ProjectHeader({ project }: { project: ListingItem }) {
+/** `actions` renders at the right of the header (the upvote button, NH-31). */
+export default function ProjectHeader({ project, actions }: { project: ListingItem; actions?: React.ReactNode }) {
   const event = eventLabel(project.source?.event);
   return (
     <div className={s.header}>
@@ -24,6 +25,7 @@ export default function ProjectHeader({ project }: { project: ListingItem }) {
           {event ? <span className={s.event}>{event}</span> : null}
         </div>
       </div>
+      {actions ? <div className={s.headerActions}>{actions}</div> : null}
     </div>
   );
 }

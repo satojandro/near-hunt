@@ -9,6 +9,7 @@
 /* Header */
 .header { display: flex; gap: 20px; align-items: flex-start; margin-bottom: 28px; min-width: 0; }
 .headerText { min-width: 0; flex: 1 1 auto; }
+.headerActions { flex-shrink: 0; display: flex; justify-content: flex-end; }
 .title {
   font-family: var(--font-display); font-weight: 700; font-size: 40px; line-height: 1.15;
   margin: 0 0 14px; overflow-wrap: anywhere;
