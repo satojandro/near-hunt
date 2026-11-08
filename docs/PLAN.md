@@ -44,7 +44,10 @@ outage and stale-data states, the 390 px pass and the vote-count refresh — is 
 The remaining gates in
 [`runbooks/day3-signing-checklist.md`](runbooks/day3-signing-checklist.md) (A2–A3, B1–B4, C1–C5,
 D1–D2) are a human's, not the code's: real-wallet signing checks, the NH-40 post batch, and DNS.
-What is missing is Days 4–5 and DNS on nearhunt.xyz. Keys for `nearhunt.near` live on the operator's
+Day 4 (the read-only JSON API, `SKILL.md`, the open data page) is **merged to `main`** in PR #6
+(merge commit `df7ac8c`, 9 Nov), so it needs only a deploy — there is nothing to sign. What is
+missing is that deploy, NH-63's Hermes run against it, Day 5, and DNS on nearhunt.xyz. Keys for
+`nearhunt.near` live on the operator's
 machine by the owner's decision of 8 Nov — the gate is approval of each write, not the machine.
 
 Evidence, reproduced 8 Nov evening after the enrichment write; the test count and the NH-40 dry run
@@ -252,9 +255,14 @@ infrastructure — the remaining work is the server-side posting path itself.
 
 ### Board 4 — Open data and agents · Day 4
 
-**Status (8 Nov, by Claude, on `claude/wizardly-lamport-w9jaba`):** NH-60, NH-61, NH-62 and NH-64
-are built. NH-63 has one of its two runs. The shared API shape is in
+**Status (9 Nov): NH-60, NH-61, NH-62 and NH-64 are built and merged to `main`** in PR #6
+(merge commit `df7ac8c`). NH-63 has one of its two runs. The shared API shape is in
 [`api-contract-day4.md`](api-contract-day4.md). Read-only: nothing was signed or written.
+
+**Not deployed.** Production (`near-hunt.vercel.app`) still answers 404 on `/api/projects` and
+`/open-data` as of 9 Nov; the routes exist on `main` only. Day 4 ships with the next deploy.
+
+Re-verified on the merged `main` (`df7ac8c`), 9 Nov:
 
 ```bash
 npm test                  # 217 pass, 0 fail (17 new in test/api.test.mjs, 4 for block_timestamp)

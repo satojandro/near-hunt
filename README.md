@@ -18,6 +18,8 @@ projects without browser automation.
 > connect/upvote flow are live at **https://near-hunt.vercel.app**. Discussion, the account page,
 > the indexer-outage states and the 390 px pass are merged and **deployed** (8 Nov); the
 > [Day 3 signing and wallet checks](docs/runbooks/day3-signing-checklist.md) are still pending.
+> Day 4 — the read-only JSON API (`/api/projects…`), `/SKILL.md` for agents and the `/open-data`
+> page — is **merged to `main`** (PR #6) and deploys with the next release.
 > See [`docs/phase-0-spike.md`](docs/phase-0-spike.md) and [`schema/`](schema/).
 
 ---
@@ -52,9 +54,10 @@ anyone, with no bespoke contract to deploy or audit.
 | Concern | Choice | Status |
 |---|---|---|
 | Project records | FastData KV writes (`__fastdata_kv`) to `nearhunt.near` | **live on mainnet** (281 records) |
-| Upvotes | `vote/{project_id}` keys written by the voter, so one vote per account | designed, not built |
+| Upvotes | `vote/{project_id}` keys written by the voter, so one vote per account | live (Day 2) |
 | Reading records | `https://kv.main.fastnear.com`, scoped to records written by `nearhunt.near` | verified |
-| Discussion | near.social `social-kv/1` replies to one post per project | designed, not built |
+| Discussion | near.social `social-kv/1` replies to one post per project | live (Day 3); no project has a post yet (NH-40) |
+| Public read API | Next.js route handlers over the same readers, `{items, next_cursor}` | merged (Day 4, PR #6), not yet deployed |
 | Indexing | FastData indexer (no custom block scanning) | verified |
 | Smart contract | none — deliberately | proven unnecessary |
 | Cache | Valkey, optional, never a source of truth | deferred |
@@ -73,6 +76,8 @@ AGENTS.md                    rules for AI agents (mainnet writes need a human)
 docs/
   PLAN.md                    roadmap and ticketed backlog to 14 Nov
   PRD.md                     product requirements (v0.2)
+  api-contract-day4.md       the public read API: envelope, routes, as-built choices
+  agent-tests/               NH-63 runs: an agent given only the URL, output verbatim
   mockups/                   every page and flow, as images, HTML and source
   proposals/                 the near.social project/ proposal (after the hackathon)
   runbooks/keys.md           function-call keys for the importer
@@ -84,12 +89,18 @@ schema/
 types/
   nearhunt.ts                TypeScript mirrors of the record and the KV envelope
 app/                         Next.js 16 app router: directory (/) and project page (/p/[id])
+  api/projects/              read-only JSON API (NH-60): list, one, /votes, /discussion
+  open-data/                 the open data page (NH-62): dataset card, endpoints, sample record
   components/                cards, search, sort and track controls, sidebar
+public/SKILL.md              the agent guide served at /SKILL.md (NH-61)
 lib/
-  kv.mjs                     reads from the KV API, scoped to the writer
+  kv.mjs                     reads from the KV API, scoped to the writer; exact timestamps
   projects.ts                cached server read used by both pages
   listing.mjs                drops tombstones and malformed rows, adds chain provenance
   directory.mjs              search, track filter, sort and URL state
+  api.mjs                    the read API's pure logic: params, cursors, sort, pagination, bodies
+  votes.mjs                  vote rows: one active vote per writer, tallies, voters
+  discussion.mjs             near.social thread reads, validated
   project-view.mjs           project-page helpers: safe links, record rows, metadata
   social.mjs                 the #nearhunt sidebar feed, validated and reduced to plain text
   import-plan.mjs            diff of feed vs chain: what the importer would write

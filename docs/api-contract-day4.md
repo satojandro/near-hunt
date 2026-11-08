@@ -1,5 +1,8 @@
 # Day 4 API contract (NH-60, shared by NH-61/62/63)
 
+**Status:** merged to `main` in PR #6 (merge commit `df7ac8c`, 9 Nov). Not yet deployed: production
+still answers 404 on these routes.
+
 Read-only. Every route is `GET`, answers JSON, sends `Access-Control-Allow-Origin: *`, and has a
 short `Cache-Control: public, s-maxage=…, stale-while-revalidate=…`. No route signs or writes
 anything. Data comes only through the existing readers: `getProjects()` (lib/projects.ts → `readProjects`,
