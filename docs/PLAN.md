@@ -204,10 +204,20 @@ Production deploy done 8 Nov at `https://near-hunt.vercel.app`; `nearhunt.xyz` D
 
 | ID | P | Item |
 |---|---|---|
-| NH-40 | P0 | Project posts from `nearhunt.near`: a daily "spotlight" drip of at most 40, never all at once. Per near.social's skill.md (social-kv/1, AGENTS.md §2a) a post is `{"post/{ms}": {text}}` sent with `__fastdata_kv` to receiver **`social`** (mainnet only), confirmed via `/v1/tx/{hash}`. The post reference is stored in `social_post` (NH-05) via `scripts/import.mjs --social-posts`. **Prep done 8 Nov:** `scripts/social-posts.mjs` prints the batch and has no execute path; posting is Hermes's after approval ([`runbooks/day3-signing-checklist.md`](runbooks/day3-signing-checklist.md)). "Created by the server the first time someone opens a thread" is **not built**: it needs a server-held `nearhunt.near` key, which is an owner decision |
+| NH-40 | P0 | Project posts from `nearhunt.near`: a daily "spotlight" drip of at most 40, never all 281 at once. Per near.social's skill.md (social-kv/1, AGENTS.md §2a) a post is `{"post/{ms}": {text}}` sent with `__fastdata_kv` to receiver **`social`** (mainnet only), gas 1 Ggas, deposit 0, confirmed via `/v1/tx/{hash}`. The post reference is stored in `social_post` (NH-05) via `scripts/import.mjs --social-posts`. **Prep done 8 Nov:** `scripts/social-posts.mjs` prints the batch and has no execute path; posting is Hermes's after approval ([`runbooks/day3-signing-checklist.md`](runbooks/day3-signing-checklist.md)), and it needs a function-call key scoped to `social`, which is a separate approval. "Created by the server the first time someone opens a thread" is **not built**: it needs a server-held `nearhunt.near` key, which is an owner decision |
 | NH-41 | P0 | Read the thread: `GET api2.near.social/v1/posts/nearhunt.near/{post_id}/replies` |
-| NH-42 | P0 | Reply composer: `post/{ms}` with `reply_to`/`root`, plus the `reply/…` backlink in the same action; confirmed via `/v1/tx/{hash}` |
+| NH-42 | P0 | Reply composer: `post/{ms}` with `reply_to`/`root`, plus the `reply/{root_author}/{root_id}/{ms}` backlink in the same action; confirmed via `/v1/tx/{hash}` |
 | NH-43 | P1 | Reply counts on cards; "Most discussed" sort |
+
+**near.social write contract** (`https://near.social/skill.md`, checked 8 Nov): receiver `social`,
+method `__fastdata_kv`, gas `1 Ggas`, deposit 0. The receipt always fails with `CodeDoesNotExist`
+because `social` has no contract — the write is still indexed, so never retry; confirm with
+`GET https://api2.near.social/v1/tx/{hash}` and handle `indexed:false`, `rate_limited` and `invalid`
+(NH-83). Reply args are `{ "post/{ms}": { text, reply_to, root }, "reply/{root_author}/{root_id}/{ms}": {} }`.
+Limits per account per UTC day: 300 posts, 5 MiB; the 40/day drip fits. `nearhunt.near` today has
+**no near.social profile and no posts** (`GET /v1/accounts/nearhunt.near` → `has_profile:false`,
+`counts.posts:0`), and its only key is full access — so NH-40 needs a **function-call key scoped to
+`social`** and a profile write that says the account is automated. Both are separate approvals.
 
 ### Board 3 — Account page · Day 3
 
