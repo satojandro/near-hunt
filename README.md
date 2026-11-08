@@ -9,9 +9,11 @@ page, one-account-one-upvote, and threaded discussion — with every project rec
 open, versioned JSON on NEAR itself, and a read-only API that lets AI agents discover
 projects without browser automation.
 
-> **Status: data layer live on mainnet.** All 271 NEAR Hackathon submissions are stored as
-> `nearhunt/project/1` records under `nearhunt.near` — two transactions, no smart contract,
-> verified readable 271/271 through the public FastData indexer. The web app is next.
+> **Status: data layer live on mainnet.** 271 of the 275 NEAR Hackathon submissions are stored
+> as `nearhunt/project/1` records under `nearhunt.near` — two transactions, no smart contract,
+> verified readable 271/271 through the public FastData indexer. The feed has since grown to 275;
+> the remaining 4 await an owner-approved import (`node scripts/import.mjs` shows the diff).
+> The web app is next.
 > See [`docs/phase-0-spike.md`](docs/phase-0-spike.md) and [`schema/`](schema/).
 
 ---

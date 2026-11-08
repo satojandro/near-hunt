@@ -5,7 +5,7 @@
 Mockups for every page and flow referenced below (boards 1–9) are in [`mockups/`](mockups/README.md); the editable canvas is at
 https://claude.ai/artifact/TheVd1qg4LzCRzStJvKPKe (private until shared).
 
-## Where things stand (audited 2026-11-08)
+## Where things stand (re-audited 2026-11-08 evening, by Hermes)
 
 `nearhunt.near` has exactly three transactions:
 
@@ -13,9 +13,31 @@ https://claude.ai/artifact/TheVd1qg4LzCRzStJvKPKe (private until shared).
 2. 256 `project/…` records (block 223,583,277);
 3. 15 `project/…` records (block 223,583,288).
 
-The 271 records match the source snapshot and the live feed, and 271/271 validate against
-the schema. **Nothing on chain needs undoing.** What's missing is the product itself, plus the
-guardrails listed under Day 0.
+**Nothing on chain needs undoing.** What's missing is the product itself, plus the guardrails
+listed under Day 0.
+
+The chain is now **behind** the feed. The hackathon feed has grown from 271 to **275**
+submissions; the dry run finds 4 new, 0 changed, 271 unchanged, 0 missing:
+
+```
++ project/e8d8d832-2a1f-4026-afba-111e6bd7316b  "NEAR Claim Check"
++ project/d7468e54-2c34-4138-8613-a587af2d3f1b  "Potluck"
++ project/a395a485-5c23-43ac-b1b5-5e27887c3124  "Swarmpad"
++ project/0328a53c-46b1-4ae4-a6be-c802af786094  "Q-day"
+would write: 4 keys, 2051 bytes, 1 transaction
+```
+
+That write is **waiting on the owner** (NH-93) and must not happen until the key situation in
+NH-06 is fixed — today the only key that can sign it is full-access.
+
+Evidence for everything above, reproduced 8 Nov evening:
+
+```bash
+npm test                  # 15 pass, 0 fail
+npm run validate:schema   # 271 records, 271 valid, 0 foreign rows, 0 tombstones
+node scripts/import.mjs   # 4 new, 0 changed, 271 unchanged, 0 missing
+near account list-keys nearhunt.near network-config mainnet now   # 1 key, full access
+```
 
 ## Decisions taken
 
@@ -34,8 +56,8 @@ guardrails listed under Day 0.
 
 | Day | Theme | Boards |
 |---|---|---|
-| 0 (8 Nov) | Guardrails and schema fixes | — |
-| 1 (9 Nov) | Directory and project page, read-only | 1, 2, 5 |
+| 0 (8 Nov) | Guardrails and schema fixes — **code done; NH-06 keys blocked on the owner** | — |
+| 1 (9 Nov) | Directory and project page, read-only (starts only after NH-06) | 1, 2, 5 |
 | 2 (10 Nov) | Connect and upvote | 7, 2 |
 | 3 (11 Nov) | near.social discussion, account page, states | 2, 3, 6, 8 |
 | 4 (12 Nov) | Open data, API, SKILL.md, proposal draft | 4 |
@@ -51,18 +73,24 @@ Priority: **P0** = needed to submit · **P1** = should ship · **P2** = only if 
 
 ### Day 0 — guardrails (no board)
 
-**Status (8 Nov):** NH-01 to NH-05 done. NH-06 is waiting on a human: the steps are in
-[`runbooks/keys.md`](runbooks/keys.md). The first dry run of the new importer found 3 new
-submissions (feed total 274) and would write only those 3 keys; that write waits for owner approval.
+**Status (8 Nov evening):** NH-01 to NH-05 are **done and verified by Hermes**: `npm test`
+is 15/15 green, `npm run validate:schema` reads 271/271 valid with 0 foreign rows, and the
+importer dry run is idempotent (4 new, 0 changed, 271 unchanged). NH-06 is **not started**, and
+the audit found the situation is worse than "pending": `nearhunt.near` has exactly one key on
+chain and it is **full access**, and its credentials file (which includes the master seed
+phrase) sits on the agent's machine at `~/.near-credentials/mainnet/nearhunt.near/`. The steps
+are in [`runbooks/keys.md`](runbooks/keys.md); they need the owner, not an agent.
 
 | ID | P | Item | Done when |
 |---|---|---|---|
-| NH-01 | P0 | One `readProjects()` helper that reads `/v0/latest/nearhunt.near/nearhunt.near`; used in the importer, the validator, the app and the API | Rows written by other accounts never appear as projects; the validator lists them as warnings |
-| NH-02 | P0 | Importer diffs against chain: writes only new or changed keys, keeps `updated_at` when the content is unchanged, requires `--execute --yes`, never tombstones | A re-run with no changes sends 0 transactions |
-| NH-03 | P0 | `AGENTS.md`: no mainnet transaction without a dry-run diff a human has approved; every docs claim comes with the command that proves it | File committed |
-| NH-04 | P1 | Fix the docs drift (README table, spike "account undecided", the duplicated paragraph in the research doc) | Docs match the chain |
-| NH-05 | P1 | Schema touch-ups: real `$id`; optional `social_post` field (the project's near.social post reference); document that `source.url` is the generic listing; written specs for the `vote/` and near.social comment conventions | `npm run validate:schema` still passes on 271/271 |
-| NH-06 | P0 | Hermes and the server get a function-call key limited to `__fastdata_kv` (one key for `nearhunt.near`, one for `social`); the full-access key stays with a human | Keys added; full-access key removed from the agent |
+| NH-01 | P0 | One `readProjects()` helper that reads `/v0/latest/nearhunt.near/nearhunt.near`; used in the importer, the validator, the app and the API | **Done** — `lib/kv.mjs`; rows from other writers are dropped even if the API returns them |
+| NH-02 | P0 | Importer diffs against chain: writes only new or changed keys, keeps `updated_at` when the content is unchanged, requires `--execute --yes`, never tombstones | **Done** — `lib/import-plan.mjs` + 10 tests; a re-run with no changes writes nothing |
+| NH-03 | P0 | `AGENTS.md`: no mainnet transaction without a dry-run diff a human has approved; every docs claim comes with the command that proves it | **Done** — file committed |
+| NH-04 | P1 | Fix the docs drift (README table, spike "account undecided", the duplicated paragraph in the research doc) | **Done** |
+| NH-05 | P1 | Schema touch-ups: real `$id`; optional `social_post` field (the project's near.social post reference); document that `source.url` is the generic listing; written specs for the `vote/` and near.social comment conventions | **Done** — `$id` is `nearhunt.xyz`; `npm run validate:schema` still passes 271/271 |
+| NH-06 | P0 | Hermes and the server get a function-call key limited to `__fastdata_kv` (one key for `nearhunt.near`, one for `social`); the full-access key stays with a human | Keys added; the full-access key file (and its seed phrase) is **gone from the agent machine**; `list-keys` shows a FunctionCall key |
+| NH-07 | P1 | `scripts/import.mjs` defaults to `~/.near-credentials/{net}/{account}.json`, but near-cli-rs `save-to-legacy-keychain` writes `~/.near-credentials/{net}/{account}/{public-key}.json`. Resolve both, or fail with the exact path it looked for | The documented `--key-file`-free run in `runbooks/keys.md` works against a near-cli-rs key |
+| NH-08 | P2 | `scripts/render-mockups.mjs` needs Playwright + Chromium, which is not in `devDependencies` | `npm run render:mockups` works from a clean clone |
 
 ### Board 1 — Directory (home) · Day 1
 
@@ -168,5 +196,11 @@ beyond `vote/` on `nearhunt.near` and standard near.social posts.
 
 ## Open decisions for the owner
 
-1. **Hosting:** which Vercel account will serve nearhunt.xyz? (DNS points there on Day 1.)
-2. **Treasury account** for NH-94: create one (e.g. `treasury.nearhunt.near`) with a key held by a human, not Hermes.
+1. **NH-06 keys, tonight.** Approve adding a `__fastdata_kv`-only function-call key for
+   `nearhunt.near` (and one for `social`), then delete the full-access key file and the seed
+   phrase from this machine. Until that happens, every write in this plan is signed by a key
+   that can also drain the account.
+2. **NH-93, the 4-key import.** Approve the diff shown above (`nearhunt.near`, 1 transaction,
+   2051 bytes) so the directory can say 275/275 instead of 271/275.
+3. **Hosting:** which Vercel account will serve nearhunt.xyz? (DNS points there on Day 1.)
+4. **Treasury account** for NH-94: create one (e.g. `treasury.nearhunt.near`) with a key held by a human, not Hermes.
