@@ -15,10 +15,17 @@ records. Vote counts, reply counts, accounts and comments are sample data.
 To regenerate `png/` and `html/` after editing `src/`:
 
 ```bash
-node scripts/render-mockups.mjs docs/mockups/src docs/mockups
+npm run render:mockups
 ```
 
-The script needs Playwright with Chromium installed.
+No npm dependency is added for this. The script drives whichever Chrome, Chromium or Edge is
+already installed over the DevTools protocol, so `npm ci` stays small and a clean clone can
+regenerate the boards. Any Chromium 112+ works, including a `npx playwright install chromium`
+build; set `CHROME_PATH` to the binary if it is not in a standard location. Without a browser
+the script stops with an install hint instead of a stack trace.
+
+Re-rendering in a different browser build changes the PNGs only at the antialiasing level —
+the generated `html/` is identical either way.
 
 ---
 

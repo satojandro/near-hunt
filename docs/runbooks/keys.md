@@ -35,8 +35,9 @@ near account add-key nearhunt.near \
 
 - `--allowance` caps the gas this key can ever spend. Each import call uses 1 Ggas, so
   0.25 NEAR is far more than needed.
-- `save-to-legacy-keychain` writes the new key to `~/.near-credentials/mainnet/nearhunt.near/`.
-  Point the importer at it with `--key-file`.
+- `save-to-legacy-keychain` writes the new key to
+  `~/.near-credentials/mainnet/nearhunt.near/<public-key>.json`. The importer finds it without
+  extra flags (see below).
 
 Check it is there and limited:
 
@@ -48,10 +49,20 @@ The new key must show `FunctionCall` with receiver `nearhunt.near`, not `FullAcc
 
 ## Use it
 
+The importer reads both credential layouts the NEAR CLIs write — the flat
+`~/.near-credentials/{network}/{account}.json` of older near-cli and the
+`~/.near-credentials/{network}/{account}/<public-key>.json` directory of near-cli-rs — and
+names every path it tried when neither exists:
+
 ```bash
-node scripts/import.mjs                                       # dry run, review the diff
-node scripts/import.mjs --execute --yes --key-file ~/.near-credentials/mainnet/nearhunt.near/<public-key>.json
+node scripts/import.mjs --check-key      # resolve + parse the key file, sign nothing
+node scripts/import.mjs                  # dry run, review the diff
+node scripts/import.mjs --execute --yes   # no --key-file needed
 ```
+
+If the directory holds more than one key (full access, rotated, function call), the importer
+uses the newest file and prints all of them; pin the intended one with
+`--key-file ~/.near-credentials/mainnet/nearhunt.near/<public-key>.json`.
 
 ## Take keys away from an agent
 

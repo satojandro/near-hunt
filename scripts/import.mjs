@@ -23,16 +23,20 @@
  *
  * Usage:
  *   node scripts/import.mjs                       # dry run: fetch, diff against chain, report
+ *   node scripts/import.mjs --check-key           # resolve and load the signer key, sign nothing
  *   node scripts/import.mjs --execute --yes       # sign and broadcast the diff
  *   node scripts/import.mjs --account X --network testnet
  *   node scripts/import.mjs --execute --yes --key-file path/to/limited-key.json
  *
- * Requires a NEAR credentials file for the signing account, by default at
- * ~/.near-credentials/{network}/{account}.json (override with --key-file). A function-call key limited to
+ * Requires a NEAR credentials file for the signing account, in either shape the CLIs write
+ * (both are resolved, see resolveKeyFile): a flat ~/.near-credentials/{network}/{account}.json
+ * (older near-cli) or a directory of one file per public key,
+ * ~/.near-credentials/{network}/{account}/{public-key}.json (near-cli-rs
+ * `save-to-legacy-keychain`). Override with --key-file. A function-call key limited to
  * `__fastdata_kv` on the account is enough (docs/runbooks/keys.md). Never commit that file.
  */
 
-import { readFile } from 'node:fs/promises';
+import { readFile, readdir, stat } from 'node:fs/promises';
 import { homedir } from 'node:os';
 import { join } from 'node:path';
 import { connect, keyStores, KeyPair, transactions, utils } from 'near-api-js';
@@ -63,7 +67,9 @@ const flag = (name, fallback) => {
 
 const NETWORK = flag('network', 'mainnet');
 const ACCOUNT = flag('account', 'nearhunt.near');
-const KEY_FILE = flag('key-file', join(homedir(), '.near-credentials', NETWORK, `${ACCOUNT}.json`));
+const KEY_FILE_FLAG = flag('key-file', undefined);
+const CHECK_KEY = args.includes('--check-key');
+const CREDENTIALS_ROOT = join(homedir(), '.near-credentials');
 const NODE_URL =
   NETWORK === 'mainnet' ? 'https://rpc.mainnet.near.org' : 'https://rpc.testnet.near.org';
 
@@ -99,16 +105,101 @@ async function fetchSubmissions() {
 }
 
 // ---------------------------------------------------------------------------
-// Signing and broadcast
+// Credentials resolution
 // ---------------------------------------------------------------------------
 
-async function loadSigner(near, accountId) {
-  const path = KEY_FILE;
+const statOrNull = async (path) => {
+  try {
+    return await stat(path);
+  } catch {
+    return null;
+  }
+};
+
+/** One credentials file per public key lives inside a directory named after the account. */
+async function keyFilesIn(dir) {
+  const entries = await readdir(dir, { withFileTypes: true });
+  return entries
+    .filter((e) => e.isFile() && e.name.endsWith('.json'))
+    .map((e) => join(dir, e.name))
+    .sort();
+}
+
+/**
+ * A near-cli-rs keychain directory can hold several keys (full access, function call, old
+ * rotated keys). There is no way to tell from the file which is which, so a single file is
+ * taken as-is and several files are reported: the newest wins, and every candidate is
+ * printed so --key-file can be used to pin the right one.
+ */
+async function pickFromDirectory(dir) {
+  const files = await keyFilesIn(dir);
+  if (files.length <= 1) return files[0] ?? null;
+
+  const dated = await Promise.all(
+    files.map(async (file) => ({ file, mtimeMs: (await stat(file)).mtimeMs })),
+  );
+  dated.sort((a, b) => b.mtimeMs - a.mtimeMs);
+  console.warn(`  ! ${files.length} key files in ${dir}; using the newest. Pass --key-file to pick one:`);
+  for (const { file } of dated) console.warn(`      ${file}`);
+  return dated[0].file;
+}
+
+/**
+ * Resolve the credentials file for an account, accepting both shapes the NEAR CLIs write:
+ *
+ *   ~/.near-credentials/{network}/{account}.json                     (older near-cli)
+ *   ~/.near-credentials/{network}/{account}/{public-key}.json        (near-cli-rs)
+ *
+ * The flat file wins when both exist, so behaviour for existing setups never changes.
+ * On failure the message lists every path that was tried.
+ */
+async function resolveKeyFile({ network, account, explicit }) {
+  if (explicit) {
+    const info = await statOrNull(explicit);
+    if (info?.isFile()) return explicit;
+    if (info?.isDirectory()) {
+      const picked = await pickFromDirectory(explicit);
+      if (picked) return picked;
+      throw new Error(`--key-file ${explicit} is a directory with no .json file inside it`);
+    }
+    throw new Error(`--key-file ${explicit} does not exist`);
+  }
+
+  const base = join(CREDENTIALS_ROOT, network, account);
+  const flat = `${base}.json`;
+  const tried = [flat];
+
+  if ((await statOrNull(flat))?.isFile()) return flat;
+
+  tried.push(base);
+  if ((await statOrNull(base))?.isDirectory()) {
+    const picked = await pickFromDirectory(base);
+    if (picked) return picked;
+    throw new Error(
+      `no key file for ${account} on ${network}. Tried:\n  ${tried.join('\n  ')}\n` +
+        `  (${base} exists but holds no .json file)`,
+    );
+  }
+
+  throw new Error(
+    `no credentials for ${account} on ${network}. Tried:\n  ${tried.join('\n  ')}\n` +
+      `near-cli-rs writes ${base}/<public-key>.json; older near-cli writes ${flat}. ` +
+      `Add a key as described in docs/runbooks/keys.md, or pass --key-file <path>.`,
+  );
+}
+
+/** Read a credentials file and hand the secret key back as a near-api-js KeyPair. */
+async function readKeyPair(path) {
   const raw = JSON.parse(await readFile(path, 'utf8'));
   const secret = raw.secret_key ?? raw.private_key;
-  if (!secret) throw new Error(`no secret key in ${path}`);
+  if (!secret) throw new Error(`no secret_key/private_key field in ${path}`);
+  return { path, accountId: raw.account_id ?? null, keyPair: KeyPair.fromString(secret) };
+}
 
-  const keyPair = KeyPair.fromString(secret);
+async function loadSigner(near, accountId) {
+  const path = await resolveKeyFile({ network: NETWORK, account: accountId, explicit: KEY_FILE_FLAG });
+  const { keyPair } = await readKeyPair(path);
+
   await near.connection.signer.keyStore.setKey(NETWORK, accountId, keyPair);
   return keyPair.getPublicKey();
 }
@@ -187,6 +278,22 @@ function printPlan(plan) {
 
 async function main() {
   const nowIso = new Date().toISOString();
+
+  // Resolve and load the signer without touching the chain or signing anything. This is
+  // what makes the key-path rules in docs/runbooks/keys.md testable before a real import.
+  if (CHECK_KEY) {
+    const path = await resolveKeyFile({
+      network: NETWORK,
+      account: ACCOUNT,
+      explicit: KEY_FILE_FLAG,
+    });
+    const { accountId, keyPair } = await readKeyPair(path);
+    console.log(`key file: ${path}`);
+    console.log(`account:  ${accountId ?? ACCOUNT}`);
+    console.log(`public:   ${keyPair.getPublicKey().toString()}`);
+    console.log('resolved and parsed — nothing signed, nothing sent.');
+    return;
+  }
 
   console.log(`source:  ${SOURCE_API}`);
   const { projects, reportedTotal } = await fetchSubmissions();
