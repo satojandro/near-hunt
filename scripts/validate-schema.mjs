@@ -6,15 +6,18 @@
  * breaks compatibility with what is already on chain, this fails. It reads from the public
  * indexer, so it checks reality, not a fixture.
  *
+ * Reads only rows written by the namespace account itself and warns about rows from any
+ * other writer.
+ *
  * Usage: node scripts/validate-schema.mjs
  */
 
 import { readFile } from 'node:fs/promises';
 import Ajv2020 from 'ajv/dist/2020.js';
 import addFormats from 'ajv-formats';
+import { readProjects, readForeignProjectRows } from '../lib/kv.mjs';
 
 const ACCOUNT = process.env.NEARHUNT_ACCOUNT ?? 'nearhunt.near';
-const KV_API = 'https://kv.main.fastnear.com';
 
 const schema = JSON.parse(
   await readFile(new URL('../schema/nearhunt-project-1.schema.json', import.meta.url), 'utf8'),
@@ -26,32 +29,19 @@ const ajv = new Ajv2020({ strict: false, allErrors: true });
 addFormats(ajv);
 const validate = ajv.compile(schema);
 
-/** Read every `project/` record, following page tokens. */
-async function fetchAll(keyPrefix) {
-  const entries = [];
-  let pageToken = null;
+// Only rows written by ACCOUNT itself are project records (see lib/kv.mjs for why).
+const entries = await readProjects({ account: ACCOUNT });
+console.log(`fetched ${entries.length} records written by ${ACCOUNT}`);
 
-  do {
-    const body = { key_prefix: keyPrefix, limit: 200 };
-    if (pageToken) body.page_token = pageToken;
-
-    const res = await fetch(`${KV_API}/v0/latest/${ACCOUNT}`, {
-      method: 'POST',
-      headers: { 'content-type': 'application/json' },
-      body: JSON.stringify(body),
-    });
-    if (!res.ok) throw new Error(`KV API returned ${res.status}`);
-
-    const json = await res.json();
-    entries.push(...(json.entries ?? []));
-    pageToken = json.page_token ?? null;
-  } while (pageToken);
-
-  return entries;
+// Rows under project/ written by anyone else are spoofing attempts. Readers ignore them;
+// report them so they are noticed.
+const foreign = await readForeignProjectRows({ account: ACCOUNT });
+if (foreign.length) {
+  const writers = [...new Set(foreign.map((e) => e.predecessor_id))];
+  console.warn(`WARNING: ${foreign.length} project/ rows written by other accounts (ignored): ${writers.slice(0, 5).join(', ')}`);
+} else {
+  console.log('foreign rows: 0 (nobody else has written project/ keys here)');
 }
-
-const entries = await fetchAll('project/');
-console.log(`fetched ${entries.length} records from ${ACCOUNT}`);
 
 let valid = 0;
 let tombstones = 0;

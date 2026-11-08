@@ -20,8 +20,8 @@ No API key, no wallet, no website:
 # one project
 curl -s "https://kv.main.fastnear.com/v0/latest/nearhunt.near/nearhunt.near/project/21996773-48fa-43e9-aedc-684fdd2e4425"
 
-# a page of them
-curl -s -X POST "https://kv.main.fastnear.com/v0/latest/nearhunt.near" \
+# a page of them — note the account appears twice: namespace, then writer
+curl -s -X POST "https://kv.main.fastnear.com/v0/latest/nearhunt.near/nearhunt.near" \
   -H 'content-type: application/json' \
   -d '{"key_prefix":"project/","limit":200}'
 ```
@@ -29,6 +29,12 @@ curl -s -X POST "https://kv.main.fastnear.com/v0/latest/nearhunt.near" \
 The URL shape is `/v0/latest/{current_account_id}/{predecessor_id}/{key}` — both account
 ids are `nearhunt.near`, which looks redundant and is not: the index is keyed by who wrote
 the row as well as where it lives.
+
+**Always read projects scoped to the writer.** Anyone can write a `project/…` key into the
+`nearhunt.near` namespace from their own account; the indexer stores it with their account as
+`predecessor_id`. `/v0/latest/nearhunt.near` (no writer) returns those rows too. Only rows whose
+`predecessor_id` is `nearhunt.near` are NEAR Hunt records. `lib/kv.mjs` does this for you, and
+`npm run validate:schema` reports any foreign rows it finds.
 
 ## A record
 
@@ -70,6 +76,42 @@ lets a builder add their own fields; it must never rewrite `source`.
 
 **Unknown fields are legal.** `additionalProperties` is `true` and consumers must ignore
 fields they do not recognise — that is how this schema grows without breaking readers.
+
+## Other keys and conventions
+
+### Upvotes — `vote/{submission_id}` in `nearhunt.near`
+
+| | |
+|---|---|
+| Written by | the voter, from their own account |
+| Value | `{}` = active upvote · `null` = withdrawn |
+| Voter | the row's `predecessor_id` (not part of the key) |
+
+The index keeps one latest row per writer per key, so an account holds at most one vote per
+project however many times it writes, and nobody can vote as someone else. Count a project's
+votes with an exact-key read across all writers:
+
+```bash
+curl -s -X POST "https://kv.main.fastnear.com/v0/latest/nearhunt.near" \
+  -H 'content-type: application/json' \
+  -d '{"key":"vote/21996773-48fa-43e9-aedc-684fdd2e4425"}'
+```
+
+Count rows whose value is an object; skip `null`. Ignore votes for ids that have no project
+record. One account's votes: `POST /v0/latest/nearhunt.near/{account}` with
+`{"key_prefix":"vote/"}`.
+
+### Discussion — near.social posts
+
+Comments are ordinary near.social (`social-kv/1`) posts written to `social`, not NEAR Hunt keys:
+
+- each project has one post by `nearhunt.near`; its reference is stored in the record's
+  `social_post` field once it exists;
+- a comment is a reply: `post/{ms}` with `reply_to` and `root` set to that post, plus the
+  `reply/nearhunt.near/{post_id}/{ms}` backlink in the same call;
+- posts made through NEAR Hunt include `#nearhunt` and a link to `https://nearhunt.xyz/p/{submission_id}`.
+
+Read a thread with `GET https://api2.near.social/v1/posts/nearhunt.near/{post_id}/replies`.
 
 ## Why it is versioned this way
 

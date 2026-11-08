@@ -35,7 +35,7 @@
           "maxLength": 256
         },
         "url": {
-          "description": "Where a human can verify this came from the source.",
+          "description": "Where a human can verify this came from the source. For the NEAR Hackathon feed this is the generic submissions listing, because the source has no per-project page.",
           "type": "string",
           "pattern": "^https://"
         }
@@ -73,6 +73,11 @@
       "description": "Link demonstrating the project, usually the public demo post required by the event.",
       "type": ["string", "null"],
       "pattern": "^https://"
+    },
+    "social_post": {
+      "description": "The project's discussion post on near.social, as a post reference `{account_id}/{post_id}` (social-kv/1). Absent or null until the post exists. Not set by the importer; the importer preserves it.",
+      "type": ["string", "null"],
+      "pattern": "^[a-z0-9._-]{2,64}/[1-9][0-9]{0,15}$"
     },
     "external_campaigns": {
       "description": "Funding or governance campaigns elsewhere that explicitly reference this project. NEAR Hunt never custodies funds: a campaign is a validated outbound link, nothing more.",

@@ -14,32 +14,37 @@
  *   Therefore this script broadcasts asynchronously (sendTransactionAsync) and verifies
  *   against the indexer rather than the receipt. See docs/phase-0-spike.md.
  *
+ * Safety (see AGENTS.md):
+ *   - Writes only keys that are new or whose source-owned fields changed (lib/import-plan.mjs).
+ *     A re-run on an unchanged feed sends nothing.
+ *   - Never tombstones. Projects that left the feed are reported for a human to decide.
+ *   - Signing requires BOTH --execute and --yes. Without them it is a dry run that prints
+ *     the exact diff it would write.
+ *
  * Usage:
- *   node scripts/import.mjs                 # dry run: build and report, send nothing
- *   node scripts/import.mjs --execute       # sign and broadcast
- *   node scripts/import.mjs --account X --network mainnet
+ *   node scripts/import.mjs                       # dry run: fetch, diff against chain, report
+ *   node scripts/import.mjs --execute --yes       # sign and broadcast the diff
+ *   node scripts/import.mjs --account X --network testnet
+ *   node scripts/import.mjs --execute --yes --key-file path/to/limited-key.json
  *
  * Requires a NEAR credentials file for the signing account, by default at
- * ~/.near-credentials/mainnet/nearhunt.near.json. Never commit that file.
+ * ~/.near-credentials/{network}/{account}.json (override with --key-file). A function-call key limited to
+ * `__fastdata_kv` on the account is enough (docs/runbooks/keys.md). Never commit that file.
  */
 
 import { readFile } from 'node:fs/promises';
 import { homedir } from 'node:os';
 import { join } from 'node:path';
 import { connect, keyStores, KeyPair, transactions, utils } from 'near-api-js';
+import { readProjects, KV_HOSTS } from '../lib/kv.mjs';
+import { planImport, toBatches, canonical, MAX_KEYS_PER_CALL } from '../lib/import-plan.mjs';
 
 // ---------------------------------------------------------------------------
 // Configuration
 // ---------------------------------------------------------------------------
 
-const EVENT = 'nearhackathon-2026';
-const SCHEMA = 'nearhunt/project/1';
-
 /** The hackathon's own directory API. 8 projects per page, fixed — hence the loop. */
 const SOURCE_API = 'https://nearhackathon.com/api/projects';
-
-/** FastData enforces a hard limit of 256 keys per call; larger calls are dropped whole. */
-const MAX_KEYS_PER_CALL = 256;
 
 /**
  * 1 Ggas of prepaid gas. The call does no work, so this is the maximum that can be
@@ -50,6 +55,7 @@ const GAS = 1_000_000_000n;
 
 const args = process.argv.slice(2);
 const EXECUTE = args.includes('--execute');
+const CONFIRMED = args.includes('--yes');
 const flag = (name, fallback) => {
   const i = args.indexOf(`--${name}`);
   return i === -1 ? fallback : args[i + 1];
@@ -57,10 +63,9 @@ const flag = (name, fallback) => {
 
 const NETWORK = flag('network', 'mainnet');
 const ACCOUNT = flag('account', 'nearhunt.near');
+const KEY_FILE = flag('key-file', join(homedir(), '.near-credentials', NETWORK, `${ACCOUNT}.json`));
 const NODE_URL =
   NETWORK === 'mainnet' ? 'https://rpc.mainnet.near.org' : 'https://rpc.testnet.near.org';
-const KV_API =
-  NETWORK === 'mainnet' ? 'https://kv.main.fastnear.com' : 'https://kv.test.fastnear.com';
 
 // ---------------------------------------------------------------------------
 // Source ingestion
@@ -94,42 +99,11 @@ async function fetchSubmissions() {
 }
 
 // ---------------------------------------------------------------------------
-// Record shaping
-// ---------------------------------------------------------------------------
-
-/**
- * Canonical project object. Versioned by `schema` so a later shape can be added under a
- * new namespace instead of mutating this one (same approach as near.social's post2/).
- *
- * Fields the source cannot supply are present as null rather than omitted, so every
- * record has the same keys and consumers never need to distinguish "absent" from
- * "empty". The source API exposes only id, project_name, tracks and demo_url.
- */
-function toRecord(p, nowIso) {
-  return {
-    schema: SCHEMA,
-    id: `${EVENT}:${p.id}`,
-    source: {
-      event: EVENT,
-      submission_id: p.id,
-      url: 'https://nearhackathon.com/#submissions',
-    },
-    name: p.project_name,
-    description: null,
-    tracks: p.tracks ?? [],
-    repository_url: null,
-    demo_url: p.demo_url ?? null,
-    external_campaigns: [],
-    updated_at: nowIso,
-  };
-}
-
-// ---------------------------------------------------------------------------
 // Signing and broadcast
 // ---------------------------------------------------------------------------
 
 async function loadSigner(near, accountId) {
-  const path = join(homedir(), '.near-credentials', NETWORK, `${accountId}.json`);
+  const path = KEY_FILE;
   const raw = JSON.parse(await readFile(path, 'utf8'));
   const secret = raw.secret_key ?? raw.private_key;
   if (!secret) throw new Error(`no secret key in ${path}`);
@@ -181,37 +155,30 @@ async function sendBatch(near, accountId, publicKey, receiverId, kvPairs) {
     NETWORK,
   );
 
-  // Async broadcast: no receipt is awaited, because the receipt is guaranteed to fail
-  // (the receiver has no contract). Success is decided by the indexer, not here.
   const hash = utils.serialize.base_encode(txHashBytes);
   await provider.sendTransactionAsync(signedTx);
   return hash;
 }
 
 // ---------------------------------------------------------------------------
-// Verification — the only thing that counts as success
+// Reporting
 // ---------------------------------------------------------------------------
 
-async function readBack(keyPrefix) {
-  const entries = [];
-  let pageToken = null;
+function printPlan(plan) {
+  const { create, update, unchanged, missingFromFeed, deletedOnChain } = plan;
+  console.log(`\nplan:`);
+  console.log(`  new:              ${create.length}`);
+  console.log(`  changed:          ${update.length}`);
+  console.log(`  unchanged:        ${unchanged}`);
+  console.log(`  missing from feed ${missingFromFeed.length}  (reported only, never deleted)`);
+  console.log(`  deleted on chain  ${deletedOnChain.length}  (tombstoned on purpose, not recreated)`);
 
-  do {
-    const body = { key_prefix: keyPrefix, limit: 200 };
-    if (pageToken) body.page_token = pageToken;
-
-    const res = await fetch(`${KV_API}/v0/latest/${ACCOUNT}`, {
-      method: 'POST',
-      headers: { 'content-type': 'application/json' },
-      body: JSON.stringify(body),
-    });
-    if (!res.ok) throw new Error(`KV API returned ${res.status}`);
-    const json = await res.json();
-    entries.push(...(json.entries ?? []));
-    pageToken = json.page_token ?? null;
-  } while (pageToken);
-
-  return entries;
+  for (const w of create.slice(0, 20)) console.log(`  + ${w.key}  "${w.value.name}"`);
+  if (create.length > 20) console.log(`  + … ${create.length - 20} more`);
+  for (const w of update.slice(0, 20)) console.log(`  ~ ${w.key}  changed: ${w.changes.join(', ')}`);
+  if (update.length > 20) console.log(`  ~ … ${update.length - 20} more`);
+  for (const k of missingFromFeed.slice(0, 20)) console.log(`  ? ${k}  no longer in the feed`);
+  for (const k of deletedOnChain.slice(0, 20)) console.log(`  x ${k}  in the feed but tombstoned on chain`);
 }
 
 // ---------------------------------------------------------------------------
@@ -224,31 +191,29 @@ async function main() {
   console.log(`source:  ${SOURCE_API}`);
   const { projects, reportedTotal } = await fetchSubmissions();
   console.log(`fetched: ${projects.length} projects (source reports ${reportedTotal})`);
-
   if (projects.length !== reportedTotal) {
     console.warn(`  ! count mismatch — the feed moved while reading; records deduped by id`);
   }
 
-  // Build the KV payload: one key per project, keyed by source submission id so that
-  // re-running the import overwrites rather than duplicating.
-  const kvPairs = {};
-  for (const p of projects) kvPairs[`project/${p.id}`] = toRecord(p, nowIso);
+  const existing = await readProjects({ account: ACCOUNT, network: NETWORK });
+  console.log(`chain:   ${existing.length} project rows written by ${ACCOUNT} on ${NETWORK}`);
 
-  const keys = Object.keys(kvPairs);
-  const batches = [];
-  for (let i = 0; i < keys.length; i += MAX_KEYS_PER_CALL) {
-    const slice = keys.slice(i, i + MAX_KEYS_PER_CALL);
-    batches.push(Object.fromEntries(slice.map((k) => [k, kvPairs[k]])));
+  const plan = planImport({ submissions: projects, existing, nowIso });
+  printPlan(plan);
+
+  const writes = [...plan.create, ...plan.update];
+  if (writes.length === 0) {
+    console.log('\nNothing to write. The chain already matches the feed.');
+    return;
   }
 
-  const bytes = Buffer.byteLength(JSON.stringify(kvPairs));
-  console.log(`records: ${keys.length} keys, ${bytes} bytes total`);
-  console.log(`plan:    ${batches.length} transaction(s) of <=${MAX_KEYS_PER_CALL} keys`);
-  console.log(`target:  ${ACCOUNT} on ${NETWORK} (contract-less; receipt failure expected)`);
+  const batches = toBatches(writes);
+  const bytes = Buffer.byteLength(JSON.stringify(Object.fromEntries(writes.map((w) => [w.key, w.value]))));
+  console.log(`\nwould write: ${writes.length} keys, ${bytes} bytes, ${batches.length} transaction(s) of <=${MAX_KEYS_PER_CALL} keys`);
+  console.log(`target:      ${ACCOUNT} on ${NETWORK} (contract-less; receipt failure expected)`);
 
-  if (!EXECUTE) {
-    console.log('\nDRY RUN — nothing signed. Re-run with --execute to write.');
-    console.log('first record:', JSON.stringify(Object.values(kvPairs)[0], null, 2));
+  if (!EXECUTE || !CONFIRMED) {
+    console.log('\nDRY RUN — nothing signed. After a human has reviewed the diff above, re-run with --execute --yes.');
     return;
   }
 
@@ -263,27 +228,28 @@ async function main() {
   const hashes = [];
   for (const [i, batch] of batches.entries()) {
     const hash = await sendBatch(near, ACCOUNT, publicKey, ACCOUNT, batch);
-    const id = typeof hash === 'string' ? hash : hash?.transaction_outcome?.id ?? hash;
-    hashes.push(id);
-    console.log(`sent ${i + 1}/${batches.length}: ${id} (${Object.keys(batch).length} keys)`);
+    hashes.push(hash);
+    console.log(`sent ${i + 1}/${batches.length}: ${hash} (${Object.keys(batch).length} keys)`);
   }
 
-  // Poll the indexer. Writes typically land in a few seconds; the index is the truth.
+  // Poll the indexer until every written key reads back with the exact content we sent.
   console.log('\nverifying against the indexer...');
-  let verified = [];
-  for (let attempt = 1; attempt <= 20; attempt++) {
-    verified = await readBack('project/');
-    process.stdout.write(`  attempt ${attempt}: ${verified.length}/${keys.length} readable\r`);
-    if (verified.length >= keys.length) break;
-    await new Promise((r) => setTimeout(r, 2000));
+  const expected = new Map(writes.map((w) => [w.key, canonical(w.value)]));
+  let pending = [...expected.keys()];
+  for (let attempt = 1; attempt <= 20 && pending.length; attempt++) {
+    const rows = await readProjects({ account: ACCOUNT, network: NETWORK });
+    const latest = new Map(rows.map((r) => [r.key, canonical(r.value)]));
+    pending = pending.filter((k) => latest.get(k) !== expected.get(k));
+    process.stdout.write(`  attempt ${attempt}: ${expected.size - pending.length}/${expected.size} verified\r`);
+    if (pending.length) await new Promise((r) => setTimeout(r, 2000));
   }
 
-  console.log(`\nverified: ${verified.length}/${keys.length} project records readable`);
-  console.log(`read them: POST ${KV_API}/v0/latest/${ACCOUNT} {"key_prefix":"project/"}`);
+  console.log(`\nverified: ${expected.size - pending.length}/${expected.size} written keys read back`);
+  console.log(`read them: POST ${KV_HOSTS[NETWORK]}/v0/latest/${ACCOUNT}/${ACCOUNT} {"key_prefix":"project/"}`);
   console.log(`txs: ${hashes.join(', ')}`);
 
-  if (verified.length < keys.length) {
-    console.error('INCOMPLETE — some records are not yet indexed. Re-run to converge.');
+  if (pending.length) {
+    console.error(`INCOMPLETE — ${pending.length} keys not yet indexed, e.g. ${pending[0]}. Re-run (dry) to see what remains.`);
     process.exitCode = 1;
   }
 }

@@ -34,6 +34,8 @@ export interface Project {
   tracks: string[];
   repository_url: string | null;
   demo_url: string | null;
+  /** near.social discussion post, `{account_id}/{post_id}`. Absent until it exists. */
+  social_post?: string | null;
   external_campaigns: ExternalCampaign[];
   /** ISO-8601 UTC, set by the importer. */
   updated_at: string;
@@ -49,6 +51,12 @@ export interface KvEntry<T = unknown> {
   /** Null is a tombstone: the entity was deleted and this must be filtered out. */
   value: T | null;
 }
+
+/**
+ * An upvote. Key `vote/{submission_id}` in the `nearhunt.near` namespace, written by the voter
+ * (the voter is the row's `predecessor_id`). `{}` = active, `null` = withdrawn.
+ */
+export type Vote = Record<string, never>;
 
 /** The list envelope used by the KV read API. */
 export interface KvList<T = unknown> {
