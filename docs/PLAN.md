@@ -147,8 +147,11 @@ the owner rewrites the record.
 transactions — `SMarR1rf…`, `7qX3V7Xe…`, `GqM47JwJ…`, `8sANNYHH…`, `Gom4MYrH…` — and all 265 keys
 read back from the indexer. 264 records now carry the builder's own description and 98 a verified
 repository. The proposal is regenerated against the 281-record chain (265 descriptions, 98 repos,
-111 link sets), so one record (`AgentGuard`, `04749b49…`) is a pending 1-key update. Rerun
-`enrich.mjs` after any feed catch-up so the newest submissions are included.
+111 link sets). A **19-key correction** is pending: the new `AgentGuard` record
+(`04749b49…`) plus 18 descriptions where removing a t.co link left a dangling `Repo:`/`Demo:` label.
+`--refresh-enriched` permits that rewrite only for fields an earlier enrichment run set — it never
+touches a builder-supplied value. Rerun `enrich.mjs` after any feed catch-up so the newest
+submissions are included.
 
 ### Board 1 — Directory (home) · Day 1
 
