@@ -62,7 +62,14 @@ export declare function normaliseReplies(
 ): { items: ThreadPost[]; next_cursor: string | null };
 export declare function fetchThread(
   ref: string | null | undefined,
-  opts?: { base?: string; limit?: number; timeoutMs?: number; revalidate?: number; fetchImpl?: typeof fetch },
+  opts?: {
+    base?: string;
+    limit?: number;
+    timeoutMs?: number;
+    revalidate?: number;
+    cursor?: string | null;
+    fetchImpl?: typeof fetch;
+  },
 ): Promise<ThreadResult>;
 export declare function fetchReplyCounts(
   items: Array<{ submission_id: string; social_post?: string | null }>,

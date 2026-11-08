@@ -1,7 +1,7 @@
 import 'server-only';
 import { unstable_cache } from 'next/cache';
 import { NETWORK, VOTE_ACCOUNT } from './network.mjs';
-import { readVoteRows, tallyVotes, votersFor } from './votes.mjs';
+import { readVoteRows, tallyVotes, votersFor, votesFor } from './votes.mjs';
 import { getProjects } from './projects';
 import type { KvEntry } from '../types/nearhunt';
 
@@ -78,4 +78,18 @@ export async function getVoters(id: string): Promise<ProjectVoters> {
   const votes = await safeVoteRows();
   const voters = votes.ok ? votersFor(votes.rows, id) : [];
   return { voters, count: voters.length, available: votes.ok, network: NETWORK, account: VOTE_ACCOUNT };
+}
+
+export interface ProjectVotes {
+  /** Active votes, voter = row `predecessor_id`, latest vote first. Empty when `available` is false. */
+  votes: Array<{ account_id: string; block_height: number }>;
+  available: boolean;
+  network: 'mainnet' | 'testnet';
+  account: string;
+}
+
+/** `getVoters` with each voter's block height (NH-60 API). Same caller contract: `id` is live. */
+export async function getVotesWithHeights(id: string): Promise<ProjectVotes> {
+  const rows = await safeVoteRows();
+  return { votes: rows.ok ? votesFor(rows.rows, id) : [], available: rows.ok, network: NETWORK, account: VOTE_ACCOUNT };
 }
