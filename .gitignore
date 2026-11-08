@@ -1,4 +1,6 @@
 # dependencies
+# bare form too: a symlink named node_modules is not a directory, so "node_modules/" misses it
+node_modules
 node_modules/
 .pnp/
 .pnp.js
