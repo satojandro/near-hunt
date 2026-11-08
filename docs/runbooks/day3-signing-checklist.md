@@ -36,6 +36,13 @@ keys is a separate approval and is never implied by an import approval.
       time someone opens a thread". That puts a `nearhunt.near` key on Vercel. The agents built
       the alternative, where Hermes posts batches from the operator machine. Pick one.
 - [ ] **B2. Treasury account for NH-94** (still open from PLAN.md).
+- [ ] **B3. A pending vote when the indexer is slow (NH-82).** Today a pending vote is rolled back
+      after 30 s with "reload in a minute". The States mockup keeps it visible until the indexer
+      catches up. Making it match means changing vote logic in `UpvoteButton`. Keep it as is, or
+      change it?
+- [ ] **B4. Directory status code during a full KV outage.** With no saved copy, `/` shows its
+      error state with a **200**, because the Suspense boundary has already started the response.
+      `/p/{id}` returns a real 500. Does a 5xx on `/` matter for monitoring?
 
 ## C. Real-wallet checks: a human's own account, not `nearhunt.near`
 
