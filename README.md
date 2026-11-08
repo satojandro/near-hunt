@@ -15,7 +15,7 @@ projects without browser automation.
 > public FastData indexer. 265 records now carry the builder's own description and 98 a verified
 > repository, filled by a separate approval-gated enrichment pass. `nearhunt.near` also has a
 > near.social profile that discloses the account is automated. The directory, project pages and
-> connect/upvote flow are live at **https://near-hunt.vercel.app**. Discussion, the account page,
+> connect/upvote flow are live at **https://nearhunt.xyz**. Discussion, the account page,
 > the indexer-outage states and the 390 px pass are merged and **deployed** (8 Nov); the
 > [Day 3 signing and wallet checks](docs/runbooks/day3-signing-checklist.md) are still pending.
 > Day 4 — the read-only JSON API (`/api/projects…`), `/SKILL.md` for agents and the `/open-data`
@@ -61,7 +61,7 @@ anyone, with no bespoke contract to deploy or audit.
 | Indexing | FastData indexer (no custom block scanning) | verified |
 | Smart contract | none — deliberately | proven unnecessary |
 | Cache | Valkey, optional, never a source of truth | deferred |
-| Web app | Next.js 16 app router at the repo root; reads through `lib/projects.ts` with a 60 s server cache | live at `near-hunt.vercel.app` |
+| Web app | Next.js 16 app router at the repo root; reads through `lib/projects.ts` with a 60 s server cache | live at `nearhunt.xyz` |
 
 No contract, no storage deposits, no custom indexer: the canonical record is the chain, and
 the read API is a cache that anyone can rebuild.
@@ -124,10 +124,11 @@ node scripts/import.mjs --execute --yes # write the diff (needs a key; see docs/
 npm run validate:schema                 # verify every record already on chain
 ```
 
-The data layer and the read-only pages are live: https://near-hunt.vercel.app serves the
-directory and project pages from mainnet records. The old placeholder is gone (its source stays in
-history at `4e0b5af`). `nearhunt.xyz` still answers from Namecheap parking — point its apex at
-Vercel (`A 76.76.21.21`) and `www` at `cname.vercel-dns.com` before the submission.
+The data layer and the read-only pages are live: **https://nearhunt.xyz** serves the directory and
+project pages from mainnet records (apex `A 216.198.79.1` + `64.29.17.1`, `www` CNAME
+`4b4d19b81c5a6949.vercel-dns-017.com` → 308 to the apex at Namecheap, verified by Vercel 8 Nov).
+`https://near-hunt.vercel.app` is the same deployment and still answers. The old placeholder is
+gone (its source stays in history at `4e0b5af`).
 
 ## Related project — Baby Shark
 

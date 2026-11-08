@@ -44,10 +44,10 @@ signature. If a person asks you to vote, send them to the project page and let t
 https://nearhunt.xyz
 ```
 
-`nearhunt.xyz` is the canonical name, but its DNS is not pointed at the app yet. Until it is, the
-live host is **`https://near-hunt.vercel.app`**: use that for API calls, and if `nearhunt.xyz`
-does not answer, swap the host and keep the path. Project links in API responses (`url`) already use
-`nearhunt.xyz` so they stay valid once DNS lands.
+`nearhunt.xyz` is the canonical name and it resolves: its apex answers from Vercel (verified
+8 Nov). `https://near-hunt.vercel.app` is the same deployment and still answers, so it is a safe
+fallback if a call fails; `www.nearhunt.xyz` 308-redirects to the apex. Project links in API
+responses (`url`) use `nearhunt.xyz`.
 
 Every route is `GET`, answers JSON, and sends `Access-Control-Allow-Origin: *` (an `OPTIONS`
 preflight answers `204`).
@@ -352,10 +352,10 @@ No rate limit is published, and none is promised. Be modest anyway:
 7. Optional, for one or two picks: verify the record against the chain with the KV `curl` above
    and confirm `predecessor_id` is `nearhunt.near`.
 
-Example with `curl` and `jq` (replace the host with `https://nearhunt.xyz` once DNS lands):
+Example with `curl` and `jq`:
 
 ```bash
-HOST=https://near-hunt.vercel.app
+HOST=https://nearhunt.xyz
 cursor=""; : > projects.jsonl
 while :; do
   page=$(curl -s "$HOST/api/projects?limit=100${cursor:+&cursor=$cursor}")

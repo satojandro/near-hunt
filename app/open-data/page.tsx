@@ -197,7 +197,7 @@ export default async function OpenDataPage() {
               It is read-only, so it cannot break anything.
             </p>
             <pre className={s.skill}>{SKILL_EXCERPT}</pre>
-            {/* Relative link: works on near-hunt.vercel.app today and on nearhunt.xyz once DNS lands. */}
+            {/* Relative link: works on nearhunt.xyz and on near-hunt.vercel.app. */}
             <a href="/SKILL.md" className={s.more}>Open SKILL.md ↗</a>
           </section>
 

@@ -37,16 +37,19 @@ since grown to **308**, so 27 records are pending a new approval (27 keys, 13,87
 and the profile — name, automated-disclosure about, website — in tx `544jUhRV…`
 (`GET /v1/accounts/nearhunt.near` → `has_profile:true`, posts 0).
 
-The read-only product is built and deployed at **https://near-hunt.vercel.app** (Day 1), and Day 2's
+The read-only product is built and deployed at **https://nearhunt.xyz** (Day 1; the same deployment
+also answers at `near-hunt.vercel.app`), and Day 2's
 connect + upvote is merged and deployed. Day 3 — near.social discussion, the account page, the
 outage and stale-data states, the 390 px pass and the vote-count refresh — is **merged to `main`**
 (PR #4, merge commit `3a7189f`, 9 Nov), built, verified and **deployed to production on 8 Nov**.
 The remaining gates in
 [`runbooks/day3-signing-checklist.md`](runbooks/day3-signing-checklist.md) (A2–A3, B1–B4, C1–C5,
-D1–D2) are a human's, not the code's: real-wallet signing checks, the NH-40 post batch, and DNS.
+D1–D2) are a human's, not the code's: real-wallet signing checks and the NH-40 post batch.
 Day 4 (the read-only JSON API, `SKILL.md`, the open data page) is **merged to `main`** in PR #6
 (merge commit `df7ac8c`, 9 Nov) and **deployed to production** (`k15gdqx9a`), so it needed nothing
-signed. What is missing is NH-63's Hermes run against the live site, Day 5, and DNS on nearhunt.xyz.
+signed. What is missing is NH-63's Hermes run against the live site, Day 5, and the NH-40 posts.
+The domain is done: `nearhunt.xyz` is verified on Vercel and answers in production (8 Nov), and
+`www` 308-redirects to the apex.
 Keys for `nearhunt.near` live on the operator's
 machine by the owner's decision of 8 Nov — the gate is approval of each write, not the machine.
 
@@ -174,8 +177,8 @@ only for fields an earlier enrichment run set — it never touches a builder-sup
 ### Board 1 — Directory (home) · Day 1
 
 **Status: done 8 Nov** — NH-10–NH-16 are on `main`; evidence in the Day 1 status block above.
-Production deploy done 8 Nov at `https://near-hunt.vercel.app`; `nearhunt.xyz` DNS is still open
-(see Open decisions).
+Production deploy done 8 Nov at `https://nearhunt.xyz` (and `https://near-hunt.vercel.app`); the
+domain's DNS is configured and verified (see Open decisions).
 
 | ID | P | Item |
 |---|---|---|
@@ -342,9 +345,9 @@ beyond `vote/` on `nearhunt.near` and standard near.social posts.
 ## Open decisions for the owner
 
 Settled on 8 Nov: NEAR Connect for login (NH-30); NH-06 dropped; the NH-93 4-key import
-applied; hosting and DNS are Hermes's. Still open:
+applied; hosting and **DNS** are Hermes's — `nearhunt.xyz` was added to the `near-hunt` Vercel
+project and points at it from Namecheap (apex `A 216.198.79.1` + `64.29.17.1`, `www` CNAME
+`4b4d19b81c5a6949.vercel-dns-017.com`, 308 → apex); Vercel reports both domains
+`configured_correctly` and the site serves over HTTPS. Still open:
 
 1. **Treasury account** for NH-94: create one (e.g. `treasury.nearhunt.near`) with a key held by the owner, not Hermes. It never signs imports.
-2. **DNS for nearhunt.xyz (Hermes):** add the domain to the `near-hunt` Vercel project, then set
-   Namecheap DNS — apex `A 76.76.21.21`, `www` CNAME `cname.vercel-dns.com`. Today the domain
-   answers from Namecheap parking; production runs at `near-hunt.vercel.app`.
