@@ -10,9 +10,10 @@ open, versioned JSON on NEAR itself, and a read-only API that lets AI agents dis
 projects without browser automation.
 
 > **Status: data layer live on mainnet; read-only web app merged.** All 275 NEAR Hackathon
-> submissions are stored as `nearhunt/project/1` records under `nearhunt.near` — three
-> transactions, no smart contract, verified readable 275/275 through the public FastData indexer,
-> and a re-run of the importer writes nothing. The directory and project pages are built
+> submissions that have been imported are stored as `nearhunt/project/1` records under
+> `nearhunt.near` — three transactions, no smart contract, verified readable 275/275 through the
+> public FastData indexer. The feed has since grown to 277; the importer plans the two new records
+> and waits for the owner's authorization. The directory and project pages are built
 > (Next.js 16, app router) and merged; production still serves a temporary placeholder until the
 > next deploy. Votes, discussion and the account page are Day 2–3 work.
 > See [`docs/phase-0-spike.md`](docs/phase-0-spike.md) and [`schema/`](schema/).
@@ -105,7 +106,7 @@ Run it:
 npm install
 npm run dev                             # http://localhost:3000
 npm test                                # unit tests, no network
-node scripts/import.mjs                 # dry run: diff the feed against chain, writes nothing
+node scripts/import.mjs                 # dry run: diff the feed against chain; signs nothing
 node scripts/import.mjs --execute --yes # write the diff (needs a key; see docs/runbooks/keys.md)
 npm run validate:schema                 # verify every record already on chain
 ```

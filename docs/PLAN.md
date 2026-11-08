@@ -15,20 +15,24 @@ https://claude.ai/artifact/TheVd1qg4LzCRzStJvKPKe (private until shared).
 4. 4 `project/…` records — tx `8rX5McjBeiitsRAhQsY7sqWbTQ9nXXHBDYwCJyQuGhfk`, authorized by the
    owner and applied on 8 Nov (`NEAR Claim Check`, `Potluck`, `Swarmpad`, `Q-day`).
 
-**Nothing on chain needs undoing, and the chain matches the feed.** 275 records on chain, 275 in
-the feed, 275/275 valid against the schema, 0 foreign rows, 0 tombstones. A re-run writes nothing.
+**Nothing on chain needs undoing.** 275 records on chain, all 275 valid against the schema, 0
+foreign rows, 0 tombstones. The feed has since grown to 277, so a re-run now plans two new keys
+below — it still writes nothing without approval.
 
 The read-only product is now built: the directory and project pages are merged on `main` (Day 1).
-What is missing is voting, discussion and the account page (Days 2–3), a production deploy, and
-Days 4–5. Keys for `nearhunt.near` live on the operator's machine by the owner's decision of 8 Nov
-— the gate is approval of each write, not the machine.
+The chain holds 275 records while the feed now reports **277**: two submissions (`SpendGuard`,
+`AgentGuard`) are not imported yet, and `node scripts/import.mjs` plans them as 2 keys, 1086 bytes,
+1 transaction. That write is **waiting on owner authorization** — nothing was signed. What is
+missing is voting, discussion and the account page (Days 2–3), a production deploy, and Days 4–5.
+Keys for `nearhunt.near` live on the operator's machine by the owner's decision of 8 Nov — the gate
+is approval of each write, not the machine.
 
 Evidence for everything above, reproduced 8 Nov evening:
 
 ```bash
-npm test                  # 23 pass, 0 fail
-npm run validate:schema   # 275 records, 275 valid, 0 foreign rows, 0 tombstones
-node scripts/import.mjs   # 0 new, 0 changed, 275 unchanged — nothing to write
+npm test                  # 58 pass, 0 fail
+npm run validate:schema   # 275 records on chain, 275 valid, 0 foreign rows, 0 tombstones
+node scripts/import.mjs   # 2 new (feed 277), 0 changed, 275 unchanged — nothing signed
 node scripts/import.mjs --check-key   # every candidate key with its on-chain permission
 near account list-keys nearhunt.near network-config mainnet now   # 1 key, full access
 ```
@@ -70,8 +74,9 @@ Priority: **P0** = needed to submit · **P1** = should ship · **P2** = only if 
 ### Day 0 — guardrails (no board)
 
 **Status (8 Nov evening):** NH-01 to NH-05 are **done and verified by Hermes**: `npm test`
-is 23/23 green, `npm run validate:schema` reads 275/275 valid with 0 foreign rows, and the
-importer dry run is idempotent (0 new, 0 changed, 275 unchanged). NH-07, NH-08 and NH-09
+is 58/58 green, `npm run validate:schema` reads 275/275 valid with 0 foreign rows, and the
+importer dry run was idempotent at that time (0 new, 0 changed, 275 unchanged); the feed has
+since grown to 277 (see Where things stand). NH-07, NH-08 and NH-09
 closed the same evening. **NH-06 was withdrawn by the owner on 8 Nov**: keys for
 `nearhunt.near` stay where the importer runs, and the gate is prior authorization of each write, not
 machine custody. See [`runbooks/keys.md`](runbooks/keys.md).
@@ -98,8 +103,8 @@ no key was present on the machine that built it. Hosting and deploys are Hermes'
 npm test                  # 58 pass, 0 fail
 npm run typecheck         # exit 0
 npm run build             # routes: ƒ /, ƒ /p/[id]
-npm run validate:schema   # 275 records, all conform to nearhunt/project/1
-node scripts/import.mjs   # dry run: 0 new, 0 changed, 275 unchanged — nothing to write
+npm run validate:schema   # 275 records on chain, all conform to nearhunt/project/1
+node scripts/import.mjs   # dry run: 2 new (feed 277), 0 changed, 275 unchanged — nothing signed
 ```
 
 Notes from building it, with the evidence in the commit messages:
