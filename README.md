@@ -9,13 +9,13 @@ page, one-account-one-upvote, and threaded discussion — with every project rec
 open, versioned JSON on NEAR itself, and a read-only API that lets AI agents discover
 projects without browser automation.
 
-> **Status: data layer live on mainnet; read-only web app merged.** All 275 NEAR Hackathon
+> **Status: data layer live on mainnet; read-only web app deployed.** All 275 NEAR Hackathon
 > submissions that have been imported are stored as `nearhunt/project/1` records under
 > `nearhunt.near` — three transactions, no smart contract, verified readable 275/275 through the
 > public FastData indexer. The feed has since grown to 277; the importer plans the two new records
-> and waits for the owner's authorization. The directory and project pages are built
-> (Next.js 16, app router) and merged; production still serves a temporary placeholder until the
-> next deploy. Votes, discussion and the account page are Day 2–3 work.
+> and waits for the owner's authorization. The directory and project pages are live at
+> **https://near-hunt.vercel.app** (nearhunt.xyz DNS still points at parking, not Vercel).
+> Votes, discussion and the account page are Day 2–3 work.
 > See [`docs/phase-0-spike.md`](docs/phase-0-spike.md) and [`schema/`](schema/).
 
 ---
@@ -56,7 +56,7 @@ anyone, with no bespoke contract to deploy or audit.
 | Indexing | FastData indexer (no custom block scanning) | verified |
 | Smart contract | none — deliberately | proven unnecessary |
 | Cache | Valkey, optional, never a source of truth | deferred |
-| Web app | Next.js 16 app router at the repo root; reads through `lib/projects.ts` with a 60 s server cache | merged, not yet deployed |
+| Web app | Next.js 16 app router at the repo root; reads through `lib/projects.ts` with a 60 s server cache | live at `near-hunt.vercel.app` |
 
 No contract, no storage deposits, no custom indexer: the canonical record is the chain, and
 the read API is a cache that anyone can rebuild.
@@ -111,10 +111,10 @@ node scripts/import.mjs --execute --yes # write the diff (needs a key; see docs/
 npm run validate:schema                 # verify every record already on chain
 ```
 
-The data layer and the read-only pages are live in code. The production deployment still serves
-the placeholder from `web/` (removed from the tree; its history is at commit `4e0b5af`); before
-deploying the app from the repo root, set the Vercel project's framework preset to Next.js — it
-was created as `Other` for the placeholder.
+The data layer and the read-only pages are live: https://near-hunt.vercel.app serves the
+directory and project pages from mainnet records. The old placeholder is gone (its source stays in
+history at `4e0b5af`). `nearhunt.xyz` still answers from Namecheap parking — point its apex at
+Vercel (`A 76.76.21.21`) and `www` at `cname.vercel-dns.com` before the submission.
 
 ## Related project — Baby Shark
 
