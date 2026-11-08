@@ -20,7 +20,7 @@ value, but the old value stays in public history forever.
 
 ## 2. Keys and authorization
 
-- Keys for `nearhunt.near` live on the Mac Mini and are used by `scripts/import.mjs`. That is
+- Keys for `nearhunt.near` live on the machine that runs `scripts/import.mjs`. That is
   accepted practice here (owner's decision, 8 Nov 2026). **The gate is prior authorization of the
   specific write, not which machine holds the key.**
 - Before any mainnet transaction: run the dry run, state the account, prefix, key count and

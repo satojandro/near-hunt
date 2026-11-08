@@ -28,7 +28,7 @@ would write: 4 keys, 2051 bytes, 1 transaction
 ```
 
 That write is **waiting on authorization** (NH-93): the diff above is what would be signed. Keys
-for `nearhunt.near` live on the Mac Mini by the owner's decision of 8 Nov — the gate is approval
+for `nearhunt.near` live on the operator's machine by the owner's decision of 8 Nov — the gate is approval
 of the write, not the machine.
 
 Evidence for everything above, reproduced 8 Nov evening:
@@ -81,7 +81,7 @@ Priority: **P0** = needed to submit · **P1** = should ship · **P2** = only if 
 is 23/23 green, `npm run validate:schema` reads 271/271 valid with 0 foreign rows, and the
 importer dry run is idempotent (4 new, 0 changed, 271 unchanged). NH-07, NH-08 and NH-09
 closed the same evening. **NH-06 was withdrawn by the owner on 8 Nov**: keys for
-`nearhunt.near` stay on the Mac Mini, and the gate is prior authorization of each write, not
+`nearhunt.near` stay where the importer runs, and the gate is prior authorization of each write, not
 machine custody. See [`runbooks/keys.md`](runbooks/keys.md).
 
 | ID | P | Item | Done when |
@@ -91,7 +91,7 @@ machine custody. See [`runbooks/keys.md`](runbooks/keys.md).
 | NH-03 | P0 | `AGENTS.md`: no mainnet transaction without a dry-run diff a human has approved; every docs claim comes with the command that proves it | **Done** — file committed |
 | NH-04 | P1 | Fix the docs drift (README table, spike "account undecided", the duplicated paragraph in the research doc) | **Done** |
 | NH-05 | P1 | Schema touch-ups: real `$id`; optional `social_post` field (the project's near.social post reference); document that `source.url` is the generic listing; written specs for the `vote/` and near.social comment conventions | **Done** — `$id` is `nearhunt.xyz`; `npm run validate:schema` still passes 271/271 |
-| NH-06 | — | ~~Keys must leave the agent machine~~ | **Withdrawn by the owner, 8 Nov 2026.** Keys stay on the Mac Mini; every mainnet write needs prior authorization for that specific write. Recorded in `AGENTS.md` §2 and `runbooks/keys.md` |
+| NH-06 | — | ~~Keys must leave the agent machine~~ | **Withdrawn by the owner, 8 Nov 2026.** Keys stay on the operator's machine; every mainnet write needs prior authorization for that specific write. Recorded in `AGENTS.md` §2 and `runbooks/keys.md` |
 | NH-07 | P1 | `scripts/import.mjs` defaults to `~/.near-credentials/{net}/{account}.json`, but near-cli-rs `save-to-legacy-keychain` writes `~/.near-credentials/{net}/{account}/{public-key}.json`. Resolve both, or fail with the exact path it looked for | **Done** — `resolveKeyFile()` takes the flat file when present, else the newest `.json` in the account directory, and the error lists every path tried. `node scripts/import.mjs --check-key` resolves and parses the key without signing: it prints `~/.near-credentials/mainnet/nearhunt.near.json` here, and against a fake `HOME` with only a near-cli-rs directory it prints that nested file. `--key-file <dir>` works too |
 | NH-08 | P2 | `scripts/render-mockups.mjs` needs Playwright + Chromium, which is not in `devDependencies` | **Done** — the Playwright dependency is gone: the script drives the installed Chrome/Chromium over the DevTools protocol using Node's built-in WebSocket, and exits with an install hint (or `CHROME_PATH`) when no browser is found. `npm run render:mockups` on this machine re-rendered all 9 boards; the generated `html/` is byte-identical to the committed files and every PNG keeps its exact 2× dimensions |
 | NH-09 | P1 | The importer cannot tell a full-access key from a function-call key, and `resolveKeyFile()` prefers the flat file — so a leftover full-access credential silently signs an import. Query `view_access_key` for the resolved public key and print the permission; refuse to sign with full access unless `--accept-full-access` is passed | **Done** — `queryPermission()` reads `view_access_key` on the same RPC the importer already uses; `--check-key` prints each candidate file with `permission: full access` or `permission: FunctionCall(<receiver>, <methods>)` and marks the chosen one. Verified against `nearhunt.testnet`, where all three shapes resolve: the flat file `full access`, one nested key `FunctionCall(nearhunt.testnet, __fastdata_kv)`, one nested `full access`. `--execute --yes` with the flat full-access file plans the write, prints the candidates, then exits 1 with a refusal naming `docs/runbooks/keys.md`, before the signer is installed or a transaction built; `--accept-full-access` is the explicit override. The permission decision is unit-tested from stubbed RPC responses (8 new network-free tests; `npm test` is 23/23) |
