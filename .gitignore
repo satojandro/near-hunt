@@ -1,0 +1,34 @@
+# dependencies
+node_modules/
+.pnp/
+.pnp.js
+
+# builds
+dist/
+build/
+.next/
+out/
+target/
+
+# env and secrets — never commit keys
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+**/near-credentials/
+
+# os / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# logs
+*.log
+npm-debug.log*
+
+# local scratch
+tmp/
+scratch/
