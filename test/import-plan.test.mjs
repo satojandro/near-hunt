@@ -169,3 +169,41 @@ test('a new submission gets enrichment in the same create', () => {
   assert.equal(plan.create[0].value.description, 'The builder pitch.');
   assert.equal(plan.create[0].value.updated_at, NOW);
 });
+
+test('object key order inside links is not a change', () => {
+  const prev = { links: [{ source_post_id: '1', url: 'https://demo.example' }], enrichment: { fields: ['links'] } };
+  const item = { status: 'ok', links: [{ url: 'https://demo.example', source_post_id: '1' }] };
+  assert.deepEqual(enrichmentFragment(prev, item, { refreshEnriched: true }), {});
+});
+
+test('refresh only corrects fields an earlier enrichment run set', () => {
+  const s = sub('a');
+  const enriched = row(s, {
+    description: 'Old generated text. Repo:',
+    repository_url: 'https://github.com/o/old',
+    enrichment: { method: 'x-thread', retrieved_at: OLD, fields: ['description', 'repository_url'] },
+  });
+  const plan = planImport({
+    submissions: [s],
+    existing: [enriched],
+    nowIso: NOW,
+    enrichment: { a: proposal() },
+    refreshEnriched: true,
+  });
+  assert.equal(plan.update.length, 1);
+  assert.deepEqual(plan.update[0].changes, ['description', 'repository_url', 'links']);
+  assert.equal(plan.update[0].value.description, 'The builder pitch.');
+
+  // a description with no enrichment provenance is never rewritten, even with refresh
+  const builder = row(s, { description: 'The builder wrote this', repository_url: 'https://github.com/real/repo' });
+  const plan2 = planImport({
+    submissions: [s],
+    existing: [builder],
+    nowIso: NOW,
+    enrichment: { a: proposal() },
+    refreshEnriched: true,
+  });
+  assert.deepEqual(plan2.update[0].changes, ['links']);
+  assert.equal(plan2.update[0].value.description, 'The builder wrote this');
+  assert.equal(plan2.update[0].value.repository_url, 'https://github.com/real/repo');
+});

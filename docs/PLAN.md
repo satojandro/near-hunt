@@ -24,9 +24,10 @@ https://claude.ai/artifact/TheVd1qg4LzCRzStJvKPKe (private until shared).
 
 **The chain matches the feed.** 281 records on chain, 281 in the feed, all 281 valid against the
 schema, 0 foreign rows, 0 tombstones. 264 records carry the builder's own description and 98 a
-verified repository. Both dry runs (plain and with `--enrichment`) write nothing. One record
-(`AgentGuard`, id `04749b49…`) is not enriched yet: the proposal gained it after the write, so it is
-a pending 1-key update.
+verified repository. A plain dry run writes nothing. One correction is measured and **not written**:
+19 keys — 18 descriptions that ended in a dangling link label (`Repo:`, `Demo: Code:`) plus the
+`AgentGuard` record — via `--refresh-enriched`, 18,944 bytes in 1 transaction. It needs its own
+approval before it runs.
 
 The read-only product is built and deployed at **https://near-hunt.vercel.app** (Day 1), and Day 2's
 connect + upvote is merged and deployed. Day 3 — near.social discussion, the account page, the
@@ -41,11 +42,12 @@ Evidence, reproduced 8 Nov evening after the enrichment write; the test count an
 were re-run on the Day 3 head:
 
 ```bash
-npm test                  # 193 pass, 0 fail
+npm test                  # 196 pass, 0 fail
 node scripts/social-posts.mjs   # NH-40 dry run: 40 posts / 40 tx / 10,917 bytes; --execute exits 2
 npm run validate:schema   # 281 records on chain, 281 valid, 0 foreign rows, 0 tombstones
 node scripts/import.mjs   # 0 new, 0 changed, 281 unchanged — nothing to write
-node scripts/import.mjs --enrichment data/enrichment/proposal.json   # 0 new, 1 changed — pending
+node scripts/import.mjs --enrichment data/enrichment/proposal.json --refresh-enriched   # 19 keys, 18,944 bytes, 1 tx — pending
+node scripts/import.mjs --social-posts data/social-posts.json   # after A2: fills social_post only, never replaces one
 node scripts/import.mjs --check-key   # every candidate key with its on-chain permission
 near account list-keys nearhunt.near network-config mainnet now   # 1 key, full access
 ```
@@ -153,8 +155,11 @@ the owner rewrites the record.
 transactions — `SMarR1rf…`, `7qX3V7Xe…`, `GqM47JwJ…`, `8sANNYHH…`, `Gom4MYrH…` — and all 265 keys
 read back from the indexer. 264 records now carry the builder's own description and 98 a verified
 repository. The proposal is regenerated against the 281-record chain (265 descriptions, 98 repos,
-111 link sets), so one record (`AgentGuard`, `04749b49…`) is a pending 1-key update. Rerun
-`enrich.mjs` after any feed catch-up so the newest submissions are included.
+111 link sets). A **19-key correction** is pending: the new `AgentGuard` record
+(`04749b49…`) plus 18 descriptions where removing a t.co link left a dangling `Repo:`/`Demo:` label.
+`--refresh-enriched` permits that rewrite only for fields an earlier enrichment run set — it never
+touches a builder-supplied value. Rerun `enrich.mjs` after any feed catch-up so the newest
+submissions are included.
 
 ### Board 1 — Directory (home) · Day 1
 

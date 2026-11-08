@@ -86,6 +86,7 @@ const CHECK_KEY = args.includes('--check-key');
 const ACCEPT_FULL_ACCESS = args.includes('--accept-full-access');
 const ENRICHMENT_FILE = flag('enrichment', undefined);
 const SOCIAL_POSTS_FILE = flag('social-posts', undefined);
+const REFRESH_ENRICHED = args.includes('--refresh-enriched');
 const CREDENTIALS_ROOT = join(homedir(), '.near-credentials');
 const NODE_URL =
   NETWORK === 'mainnet' ? 'https://rpc.mainnet.near.org' : 'https://rpc.testnet.near.org';
@@ -383,7 +384,8 @@ async function main() {
     console.log(
       `enrich:  ${usable.length} proposals (${usable.filter((e) => e.description).length} descriptions, ` +
         `${usable.filter((e) => e.repository_url).length} repositories, ` +
-        `${usable.filter((e) => e.links?.length).length} with links) from ${ENRICHMENT_FILE}`,
+        `${usable.filter((e) => e.links?.length).length} with links) from ${ENRICHMENT_FILE}` +
+        (REFRESH_ENRICHED ? ' [refresh: fields set by an earlier enrichment run may be corrected]' : ''),
     );
   }
 
@@ -395,7 +397,9 @@ async function main() {
     console.log(`social:  ${Object.keys(socialPosts).length} post references from ${SOCIAL_POSTS_FILE}`);
   }
 
-  const plan = planImport({ submissions: projects, existing, nowIso, enrichment, socialPosts });
+  const plan = planImport({
+    submissions: projects, existing, nowIso, enrichment, socialPosts, refreshEnriched: REFRESH_ENRICHED,
+  });
   printPlan(plan);
 
   const writes = [...plan.create, ...plan.update];
