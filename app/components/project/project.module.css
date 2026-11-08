@@ -59,6 +59,31 @@
 .jsonBtn:hover { background: #E9ECF0; }
 .recordFoot { margin: 14px 0 0; font-size: 12px; color: #B5BCC7; }
 
+/* Upvote count next to the header (NH-33). NH-31 replaces the static count with UpvoteButton. */
+.headerRow { display: flex; gap: 20px; align-items: flex-start; justify-content: space-between; margin-bottom: 28px; min-width: 0; }
+.headerRow > .header { margin-bottom: 0; flex: 1 1 auto; }
+.headerActions { flex-shrink: 0; display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
+.voteCount {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 0 20px;
+  border-radius: var(--radius); border: 1px solid var(--border); background: var(--surface);
+  font-weight: 600; font-size: 17px; color: var(--text);
+}
+.voteCount svg { color: var(--accent); }
+
+/* Upvoted by (NH-22) */
+.voters { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 4px; }
+.voterLink { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; }
+.voterLink:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.voterAvatar {
+  width: 40px; height: 40px; border-radius: 50%; flex-shrink: 0; object-fit: cover;
+  background: var(--surface-muted); color: var(--text-chip); font-weight: 600; font-size: 15px;
+  display: flex; align-items: center; justify-content: center;
+}
+.voterIds { list-style: none; margin: 0; padding: 0; font-size: 14px; }
+.voterIds a { display: inline-flex; align-items: center; min-height: 32px; overflow-wrap: anywhere; }
+.voterNote { margin: 12px 0 0; font-size: 14px; color: var(--text-muted); }
+.cardTitle + .voterNote { margin-top: 0; }
+
 /* Not found */
 .notFound { padding-top: 64px; padding-bottom: 64px; text-align: center; }
 .notFound h1 { font-family: var(--font-display); font-size: 32px; margin: 0 0 8px; }
@@ -76,6 +101,8 @@
 @media (max-width: 640px) {
   .page { padding-top: 12px; }
   .header { gap: 14px; margin-bottom: 20px; }
+  .headerRow { flex-direction: column; gap: 14px; margin-bottom: 20px; }
+  .headerActions { align-items: stretch; width: 100%; }
   .title { font-size: 26px; margin-bottom: 12px; }
   .card { padding: 18px; }
   .rows { grid-template-columns: minmax(0, 1fr); gap: 0; }
