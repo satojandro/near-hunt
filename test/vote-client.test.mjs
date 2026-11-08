@@ -2,7 +2,9 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import {
   VOTE_GAS,
+  VOTE_PREFIX,
   voteKey,
+  idFromVoteKey,
   voteArgs,
   voteAction,
   isActiveVote,
@@ -79,9 +81,9 @@ test('only a plain object counts as a vote; null, arrays and scalars do not', ()
   assert.equal(isActiveVote(true), false);
 });
 
-// The browser read and the server tally each own a copy of this predicate (the client must not
+// The browser read and the server tally each own a copy of these rules (the client must not
 // import the server modules). They have to answer identically, or a card reads "voted" while the
-// tally counts 0. This test fails if either copy drifts.
+// tally counts 0. These tests fail if either copy drifts.
 test('the client and tally predicates agree on every value shape', async () => {
   const { isActiveVote: tallyIsActiveVote } = await import('../lib/votes.mjs');
   const shapes = [{}, { note: 1 }, null, undefined, [], [{}], [1], 'yes', '', 0, 1, true, false];
@@ -90,6 +92,33 @@ test('the client and tally predicates agree on every value shape', async () => {
       isActiveVote(v), tallyIsActiveVote(v),
       `client and tally disagree on ${JSON.stringify(v)}: client=${isActiveVote(v)} tally=${tallyIsActiveVote(v)}`,
     );
+  }
+});
+
+test('the client and tally agree on the prefix and on every key shape', async () => {
+  const { VOTE_PREFIX: tallyPrefix, idFromVoteKey: tallyIdFromVoteKey } = await import('../lib/votes.mjs');
+  assert.equal(VOTE_PREFIX, tallyPrefix, 'the two copies of VOTE_PREFIX have drifted apart');
+
+  const keys = ['vote/a', 'vote/abc-1', 'vote/', 'vote/a/b', 'vote/a/', 'vote', 'Vote/a',
+    'project/a', '', null, undefined, 42, {}, ['vote/a']];
+  for (const k of keys) {
+    assert.deepEqual(
+      idFromVoteKey(k), tallyIdFromVoteKey(k),
+      `client and tally parse ${JSON.stringify(k)} differently: client=${idFromVoteKey(k)} tally=${tallyIdFromVoteKey(k)}`,
+    );
+  }
+});
+
+test('every id the client may write survives the tally’s parse unchanged', async () => {
+  const { idFromVoteKey: tallyIdFromVoteKey } = await import('../lib/votes.mjs');
+  for (const id of ['a', 'abc-1', '21996773-48fa-43e9-aedc-684fdd2e4425', 'A b_9', 'ünïcode']) {
+    const key = voteKey(id);
+    assert.equal(idFromVoteKey(key), id);
+    assert.equal(tallyIdFromVoteKey(key), id, `the tally would not count a vote the client wrote for ${id}`);
+  }
+  // ...and the ids it must refuse: an empty one, and any that would build a key the count ignores.
+  for (const bad of ['', 'a/b', '/', 'a/', '/a']) {
+    assert.throws(() => voteKey(bad), /projectId/, `voteKey accepted ${JSON.stringify(bad)}`);
   }
 });
 
@@ -102,6 +131,10 @@ test('voted ids come only from the account’s own non-null vote rows', () => {
       row('alice.testnet', 'project/d'),
       // Off-schema value: the tally ignores it, so the browser must ignore it too.
       row('alice.testnet', 'vote/e', [{}]),
+      // Keys the tally cannot parse back into an id: nested, bare prefix, wrong suffix.
+      row('alice.testnet', 'vote/f/g'),
+      row('alice.testnet', 'vote/'),
+      row('alice.testnet', 'votes/h'),
     ],
     'alice.testnet',
   );
