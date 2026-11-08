@@ -1,17 +1,31 @@
-import Link from 'next/link';
+import { Suspense } from 'react';
 import { getProjects } from '@/lib/projects';
 import { getVoteCounts } from '@/lib/votes';
-import { buildHref, directoryView, formatFetchedUtc, type SearchParamsRecord, type Votes } from '@/lib/directory.mjs';
+import { directoryView, formatFetchedUtc, type SearchParamsRecord, type Votes } from '@/lib/directory.mjs';
 import { trackLabel } from '@/lib/tracks.mjs';
 import Sidebar from '@/app/components/sidebar/Sidebar';
 import SearchBox from '@/app/components/directory/SearchBox';
 import ProjectCard from '@/app/components/directory/ProjectCard';
 import { SortTabs, TrackChips } from '@/app/components/directory/DirectoryControls';
+import StaleBanner from '@/app/components/states/StaleBanner';
+import EmptyResults from '@/app/components/states/EmptyResults';
+import DirectorySkeleton from '@/app/components/states/DirectorySkeleton';
 import './directory.css';
 
 // Directory: search (NH-12), track chips (NH-13), sort (NH-14). All state lives in the URL
 // (`?q=&track=&sort=`) and is rendered on the server.
-export default async function Home({ searchParams }: { searchParams: Promise<SearchParamsRecord> }) {
+// NH-80: the skeleton shows while the project list loads. A Suspense boundary here rather than
+// app/loading.tsx, because a root loading.tsx would also wrap /p/[id] and cost it its 404 status.
+// URL-only changes (search, chips, sort) keep the current list on screen instead of the skeleton.
+export default function Home(props: { searchParams: Promise<SearchParamsRecord> }) {
+  return (
+    <Suspense fallback={<DirectorySkeleton />}>
+      <Directory {...props} />
+    </Suspense>
+  );
+}
+
+async function Directory({ searchParams }: { searchParams: Promise<SearchParamsRecord> }) {
   const [{ items, fetched_at, account }, params, tally] = await Promise.all([
     getProjects(), searchParams, getVoteCounts(),
   ]);
@@ -27,6 +41,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
 
   return (
     <>
+      <StaleBanner row />
       <section className="container dir-hero">
         <p className="dir-eyebrow">NEAR Hackathon · 1–14 Nov 2026</p>
         <h1>{total} projects. Upvote the ones you would actually use.</h1>
@@ -68,18 +83,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
               ))}
             </ol>
           ) : (
-            <div className="dir-empty">
-              <p className="dir-empty-title">
-                {state.q ? <>No project names match “{state.q}”.</> : <>No projects in this track.</>}
-              </p>
-              {state.q ? (
-                <p>Search covers project names only — the hackathon feed has no descriptions.</p>
-              ) : null}
-              <p className="dir-empty-actions">
-                {state.q ? <Link href={buildHref(state, { q: '' })}>Clear search</Link> : null}
-                {state.track ? <Link href={buildHref(state, { track: null })}>Show all tracks</Link> : null}
-              </p>
-            </div>
+            <EmptyResults state={state} />
           )}
         </div>
 

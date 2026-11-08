@@ -1,0 +1,81 @@
+/* Empty, loading and error states (mockup: docs/mockups/png/States.png). Tokens from globals.css. */
+
+/* ---- Indexer slow banner (NH-82) ---- */
+.banner {
+  background: #FDF0E4; color: #7A3800; border-radius: var(--radius); padding: 12px 14px;
+  font-size: 14px; line-height: 1.5; margin: 0; overflow-wrap: anywhere;
+}
+.banner strong { font-weight: 600; }
+.bannerRow { padding-top: 16px; }
+.bannerInline { margin-bottom: 12px; }
+
+/* ---- Empty search / filter (NH-81) ---- */
+.empty {
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-card);
+  padding: 40px 24px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 10px;
+}
+.emptyIcon { color: #8A93A0; }
+.emptyTitle {
+  margin: 0; font-family: var(--font-display); font-size: 20px; font-weight: 700; line-height: 1.3;
+  overflow-wrap: anywhere; max-width: 100%;
+}
+.emptyText { margin: 0; font-size: 15px; line-height: 1.5; color: var(--text-muted); max-width: 420px; }
+.emptyActions { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 12px; margin-top: 8px; }
+
+.btnDark, .btnLight {
+  display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 18px;
+  border-radius: var(--radius); font: inherit; font-size: 15px; font-weight: 600; text-decoration: none; cursor: pointer;
+}
+.btnDark { background: var(--text); color: #fff; border: 0; }
+.btnDark:hover { background: #2A313B; color: #fff; }
+.btnLight { background: var(--surface); color: var(--text); border: 1px solid var(--border-strong); }
+.btnLight:hover { border-color: var(--text); color: var(--text); }
+
+/* ---- Error state (KV unreachable, no earlier copy) ---- */
+.error { padding-top: 56px; padding-bottom: 56px; }
+.errorCard {
+  max-width: 560px; margin: 0 auto; background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius-card); padding: 24px; display: flex; flex-direction: column; gap: 14px;
+}
+.errorCard h1 { margin: 0; font-family: var(--font-display); font-size: 26px; line-height: 1.2; }
+.errorCard p { margin: 0; color: var(--text-muted); }
+.errorActions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
+.errorActions > * { flex: 1 1 160px; }
+
+/* ---- Skeletons (NH-80) ---- */
+.bone { display: block; background: #ECEEF2; border-radius: 6px; }
+.boneSoft { display: block; background: #F2F4F7; border-radius: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .bone, .boneSoft { animation: pulse 1.4s ease-in-out infinite; }
+}
+@keyframes pulse { 50% { opacity: 0.55; } }
+
+.skHero { padding-top: 40px; padding-bottom: 8px; display: flex; flex-direction: column; gap: 12px; }
+.skControls { padding-top: 24px; display: flex; flex-direction: column; gap: 14px; }
+.skSearch { height: 44px; max-width: 640px; border-radius: var(--radius); }
+.skRow { display: flex; gap: 8px; overflow: hidden; }
+.skChip { height: 36px; width: 96px; border-radius: 999px; flex-shrink: 0; }
+.skMain { padding-top: 20px; display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start; }
+.skList { flex: 999 1 560px; min-width: 0; list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.skAside { flex: 1 1 300px; min-width: 0; height: 320px; border-radius: var(--radius-card); }
+.skCard {
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-card);
+  padding: 16px; display: flex; align-items: center; gap: 16px;
+}
+.skAvatar { width: 44px; height: 44px; border-radius: 10px; flex-shrink: 0; }
+.skLines { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 8px; }
+.skVote { width: 64px; height: 64px; border-radius: 12px; flex-shrink: 0; }
+
+@media (max-width: 640px) {
+  .skHero { padding-top: 24px; }
+  .skControls { padding-top: 18px; gap: 12px; }
+  .skSearch { max-width: none; }
+  .skChip { height: 44px; }
+  .skCard { padding: 14px; gap: 10px; }
+  .skAvatar { width: 40px; height: 40px; }
+  .skVote { width: 56px; height: 56px; }
+  .empty { padding: 32px 18px; }
+  .error { padding-top: 32px; padding-bottom: 32px; }
+  .errorCard { padding: 20px; }
+  .errorCard h1 { font-size: 22px; }
+}
