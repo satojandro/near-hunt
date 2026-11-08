@@ -1,0 +1,19 @@
+{
+  "name": "near-hunt",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Human-first discovery and community voting layer for NEAR ecosystem projects",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "import": "node scripts/import.mjs",
+    "validate:schema": "node scripts/validate-schema.mjs"
+  },
+  "dependencies": {
+    "near-api-js": "^5.1.1"
+  },
+  "devDependencies": {
+    "ajv": "^8.20.0",
+    "ajv-formats": "^3.0.1"
+  }
+}

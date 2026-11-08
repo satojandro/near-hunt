@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nearhunt.example/schema/nearhunt/project/1",
+  "title": "nearhunt/project/1",
+  "description": "Canonical project record for NEAR Hunt. One record per project, stored on NEAR as a FastData KV value under the key `project/{source.submission_id}` in the `nearhunt.near` namespace. Versioned by the `schema` field: a future breaking change gets a new namespace (nearhunt/project/2) rather than a version field, the same approach near.social uses for post2/.",
+  "type": "object",
+  "required": ["schema", "id", "source", "name", "tracks", "updated_at"],
+  "properties": {
+    "schema": {
+      "description": "Schema identifier. Consumers MUST check this before interpreting any other field.",
+      "const": "nearhunt/project/1"
+    },
+    "id": {
+      "description": "Globally unique project id, formed as `{source.event}:{source.submission_id}`. Stable across re-imports, and independent of the storage key so a project can outlive its original submission.",
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]*:.+$",
+      "minLength": 3,
+      "maxLength": 256
+    },
+    "source": {
+      "description": "Provenance. Who or what produced this record, and where it can be checked. Never rewritten by a later claim of ownership — a builder claiming a project adds a separate field, it does not erase where the data came from.",
+      "type": "object",
+      "required": ["event", "submission_id", "url"],
+      "properties": {
+        "event": {
+          "description": "Identifies the originating event or dataset, e.g. `nearhackathon-2026`.",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "submission_id": {
+          "description": "The source system's own identifier for this submission. Used as the storage key, so re-importing updates rather than duplicates.",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "url": {
+          "description": "Where a human can verify this came from the source.",
+          "type": "string",
+          "pattern": "^https://"
+        }
+      },
+      "additionalProperties": true
+    },
+    "name": {
+      "description": "Project name as published by the source.",
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "description": {
+      "description": "Project pitch. Null when the source does not supply one — which is the case for the NEAR Hackathon feed. Null means unknown, never empty.",
+      "type": ["string", "null"],
+      "maxLength": 5000
+    },
+    "tracks": {
+      "description": "Event tracks or categories this project belongs to, as slugs from the source. Lowercase, hyphenated. Empty array means uncategorised.",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9][a-z0-9-]*$",
+        "maxLength": 64
+      },
+      "uniqueItems": true,
+      "maxItems": 16
+    },
+    "repository_url": {
+      "description": "Public source repository. Null when unknown; the importer never guesses this from the project name.",
+      "type": ["string", "null"],
+      "pattern": "^https://"
+    },
+    "demo_url": {
+      "description": "Link demonstrating the project, usually the public demo post required by the event.",
+      "type": ["string", "null"],
+      "pattern": "^https://"
+    },
+    "external_campaigns": {
+      "description": "Funding or governance campaigns elsewhere that explicitly reference this project. NEAR Hunt never custodies funds: a campaign is a validated outbound link, nothing more.",
+      "type": "array",
+      "maxItems": 16,
+      "items": {
+        "type": "object",
+        "required": ["provider", "url"],
+        "properties": {
+          "provider": {
+            "description": "System hosting the campaign, e.g. `babyshark`.",
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9-]*$",
+            "maxLength": 64
+          },
+          "url": {
+            "type": "string",
+            "pattern": "^https://"
+          },
+          "campaign_id": {
+            "description": "The campaign's identifier within its own system. Opaque to NEAR Hunt.",
+            "type": ["string", "null"],
+            "maxLength": 256
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "updated_at": {
+      "description": "ISO-8601 UTC timestamp of the most recent import that touched this record. This is a property of the record, not of the project; chain position is the authority for ordering.",
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "additionalProperties": true
+}

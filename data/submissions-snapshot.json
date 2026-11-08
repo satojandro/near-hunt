@@ -1,0 +1,2516 @@
+{
+  "fetched_at": "2026-11-08T07:12:41Z",
+  "source": "https://nearhackathon.com/api/projects",
+  "total": 271,
+  "projects": [
+    {
+      "id": "21996773-48fa-43e9-aedc-684fdd2e4425",
+      "project_name": "Veto: on-chain spending firewall for AI agents on NEAR",
+      "tracks": [
+        "security",
+        "agents"
+      ],
+      "demo_url": "https://x.com/tarantinbv/status/2116528585829720403"
+    },
+    {
+      "id": "1715bb6b-148f-46f3-980b-459b06f6ca2e",
+      "project_name": "Semilla1 Guard",
+      "tracks": [
+        "security",
+        "agents"
+      ],
+      "demo_url": "https://x.com/Rextropovich/status/2115458380491882998"
+    },
+    {
+      "id": "abe27d2f-1615-4025-9e0c-e78e28519207",
+      "project_name": "Allowance",
+      "tracks": [
+        "business",
+        "security",
+        "agents"
+      ],
+      "demo_url": "https://x.com/soldanoandrea/status/2116497975195378080"
+    },
+    {
+      "id": "2e608b86-3e2c-4dbe-a438-8f30f4129e41",
+      "project_name": "near-thesis: NEAR on the evidence",
+      "tracks": [
+        "thesis"
+      ],
+      "demo_url": "https://x.com/soldanoandrea/status/2116498437860647095"
+    },
+    {
+      "id": "4589fe87-dac6-4b42-9218-13a7d2c8b5e6",
+      "project_name": "LeashPay",
+      "tracks": [
+        "security",
+        "agents"
+      ],
+      "demo_url": "https://x.com/rajahassants/status/2116686379828892126"
+    },
+    {
+      "id": "a0cc08b2-010c-4638-a2ff-7048be063228",
+      "project_name": "NEAR Private OTC",
+      "tracks": [
+        "defi"
+      ],
+      "demo_url": "https://x.com/priva_cie/status/2116719374585434499"
+    },
+    {
+      "id": "cbe3ec14-568f-4944-b4d9-b9efede91dfb",
+      "project_name": "Tidepool",
+      "tracks": [
+        "open"
+      ],
+      "demo_url": "https://x.com/priva_cie/status/2116726168930168843"
+    },
+    {
+      "id": "fd751e55-7d14-44d1-8eb9-7a354ee46007",
+      "project_name": "NEAR Agent Spend Guard",
+      "tracks": [
+        "business",
+        "security",
+        "agents"
+      ],
+      "demo_url": "https://x.com/mubu_dot/status/2116372906745991631"
+    },
+    {
+      "id": "9db102a5-37d3-40bb-9184-7c08b52dca88",
+      "project_name": "Veridom Pay",
+      "tracks": [
+        "privacy",
+        "security",
+        "realworld",
+        "nfts"
+      ],
+      "demo_url": "https://x.com/KhDidukh/status/2116683395585691855"
+    },
+    {
+      "id": "e408ca93-5786-4c45-b538-8ddf51f84f7e",
+      "project_name": "Throughput Treasury",
+      "tracks": [
+        "privacy",
+        "business",
+        "security",
+        "agents"
+      ],
+      "demo_url": "https://x.com/KhDidukh/status/2116683859798663586"
+    },
+    {
+      "id": "ca0fa8a1-c97c-4a2e-a2d1-bbb24c3f97bd",
+      "project_name": "ÁUREA CONTRACT FOR PRIVACY",
+      "tracks": [
+        "privacy"
+      ],
+      "demo_url": "https://x.com/chun_dik/status/2115480066163613744"
+    },
+    {
+      "id": "645b1dd2-5e78-4a02-a560-53aafc7206cb",
+      "project_name": "Morrowseal",
+      "tracks": [
+        "privacy",
+        "open"
+      ],
+      "demo_url": "https://x.com/hack_sometimes/status/2116783798616486114"
+    },
+    {
+      "id": "def55673-2bc5-491f-b85c-ed7d267164e3",
+      "project_name": "Jurat",
+      "tracks": [
+        "privacy",
+        "realworld"
+      ],
+      "demo_url": "https://x.com/NFTKINGIII/status/2116798898945610113"
+    },
+    {
+      "id": "da5deb59-ae0c-4b08-8511-75360f4a0a17",
+      "project_name": "NEAR Investment Thesis: the evidence",
+      "tracks": [
+        "thesis"
+      ],
+      "demo_url": "https://x.com/ridakalam52/status/2116716270619951520"
+    },
+    {
+      "id": "b075dd6e-2a1f-478e-b201-0d78f3f1e52a",
+      "project_name": "NEAR Thesis Scorecard",
+      "tracks": [
+        "thesis"
+      ],
+      "demo_url": "https://x.com/CryptHypoBuster/status/2116819146595819580"
+    },
+    {
+      "id": "79b57ff9-b521-470c-9a34-1d52da03f792",
+      "project_name": "Thesis Agent",
+      "tracks": [
+        "agents"
+      ],
+      "demo_url": "https://x.com/Cryptogiives/status/2116831337407779257"
+    },
+    {
+      "id": "ff4096e0-82f9-468d-8592-ea13a28fb4c4",
+      "project_name": "AgentGuard",
+      "tracks": [
+        "privacy",
+        "business",
+        "security",
+        "agents"
+      ],
+      "demo_url": "https://x.com/MyCryptoWallet/status/2116833046041416166?a=uMtKktqYxtIvcmKmBxM&s=20"
+    },
+    {
+      "id": "230eb981-1e52-49db-bf11-614605d187f2",
+      "project_name": "Tollgate",
+      "tracks": [
+        "security",
+        "agents"
+      ],
+      "demo_url": "https://x.com/smartkdy7/status/2116830600229478794"
+    },
+    {
+      "id": "fab81a4b-9c1f-4434-a1cc-cc0933f8d37f",
+      "project_name": "IntentGuard",
+      "tracks": [
+        "security"
+      ],
+      "demo_url": "https://x.com/RobinsomTim/status/2116836174853771287"
+    },
+    {
+      "id": "3dd7c35e-6930-4b60-ad0a-7f569fcdacdc",
+      "project_name": "Black box: a verifiable flight recorder for an AI agent's money",
+      "tracks": [
+        "security",
+        "agents",
+        "open"
+      ],
+      "demo_url": "https://x.com/mr_ghdc/status/2116851371207012835"
+    },
+    {
+      "id": "050caed7-ac37-4af2-b6df-fe2af24da753",
+      "project_name": "NEAR's agent economy, measured",
+      "tracks": [
+        "thesis",
+        "agents",
+        "open"
+      ],
+      "demo_url": "https://x.com/mr_ghdc/status/2116851596596564385"
+    },
+    {
+      "id": "008dcf6e-df4c-4fac-ba92-dccdeccff142",
+      "project_name": "SpendGuard AI",
+      "tracks": [
+        "business",
+        "security",
+        "agents"
+      ],
+      "demo_url": "https://x.com/anhmy1312/status/2116873925716320288?s=20"
+    },
+    {
+      "id": "7da81c3b-7016-4353-a646-953edf768856",
+      "project_name": "agent-pay",
+      "tracks": [
+        "security",
+        "agents"
+      ],
+      "demo_url": "https://x.com/chamdom/status/2116891550634639375"
+    },
+    {
+      "id": "6b71235d-6bf2-4a7e-9147-b54e3b2160d0",
+      "project_name": "Terra matcher",
+      "tracks": [
+        "defi"
+      ],
+      "demo_url": "https://x.com/archtum66/status/2116892371963252792"
+    },
+    {
+      "id": "d7b06ad9-a662-4d99-97d7-ae8125b319f3",
+      "project_name": "Tripwire",
+      "tracks": [
+        "security",
+        "agents"
+      ],
+      "demo_url": "https://x.com/AVIEHUB/status/2116891534738256126"
+    },
+    {
+      "id": "7556a73b-de05-4bfe-aa81-a3ae4d1e1c04",
+      "project_name": "NairaRails",
+      "tracks": [
+        "realworld"
+      ],
+      "demo_url": "https://x.com/Esimuda/status/2116831491292287085"
+    },
+    {
+      "id": "05d6e2f2-4eac-4262-8ee0-9eca1a932b2c",
+      "project_name": "PinPay",
+      "tracks": [
+        "business",
+        "agents"
+      ],
+      "demo_url": "https://x.com/DavidHu178488/status/2116915410562125962"
+    },
+    {
+      "id": "14c70946-d8de-4fed-8fc6-739886447220",
+      "project_name": "DeadDrop",
+      "tracks": [
+        "privacy",
+        "realworld"
+      ],
+      "demo_url": "https://x.com/DavidHu178488/status/2116915586261557492"
+    },
+    {
+      "id": "d69c576e-7283-4636-b282-b17611eab088",
+      "project_name": "Leash",
+      "tracks": [
+        "security",
+        "agents"
+      ],
+      "demo_url": "https://x.com/TensorustAI/status/2116918629149077959"
+    },
+    {
+      "id": "0bc14688-974e-48bd-b2fe-281b220ff202",
+      "project_name": "Tollgate",
+      "tracks": [
+        "agents",
+        "realworld"
+      ],
+      "demo_url": "https://x.com/TensorustAI/status/2116926310991716394"
+    },
+    {
+      "id": "9d90081c-23d1-44c5-96da-2efd6cc87c1e",
+      "project_name": "Settled",
+      "tracks": [
+        "security",
+        "agents",
+        "realworld"
+      ],
+      "demo_url": "https://x.com/ashgoyal1990/status/2116929689617088724"
+    },
+    {
+      "id": "59cfb2ff-3625-4421-912f-74b393e7d982",
+      "project_name": "HADES OMEGA — Multi-Agent Orchestration System",
+      "tracks": [
+        "business",
+        "swarms",
+        "security"
+      ],
+      "demo_url": "https://x.com/diana161184/status/2116345624970891701"
+    },
+    {
+      "id": "7a2c3ff0-7771-4ae5-9994-fff4c7ac8f2a",
+      "project_name": "Claw Guard: Signing Gate for AI Agents",
+      "tracks": [
+        "security",
+        "agents"
+      ],
+      "demo_url": "https://x.com/RUNECLAW_AI/status/2116940411423924311"
+    },
+    {
+      "id": "d02472d3-65c0-462c-acaf-cedf13da00f8",
+      "project_name": "Kyrona",
+      "tracks": [
+        "security"
+      ],
+      "demo_url": "https://x.com/thesithunyein/status/2116943783577423982?a=FR6DkmEC-Oxs0HTZ0tg&s=20"
+    },
+    {
+      "id": "d77c18bd-46e3-4de2-8bcd-ad98669843ab",
+      "project_name": "Tune Up Research Desk",
+      "tracks": [
+        "thesis",
+        "agents"
+      ],
+      "demo_url": "https://x.com/TuneUpArgentina/status/2116961469761806543"
+    },
+    {
+      "id": "8ba03120-be2b-4be8-8474-b9e3f0afd444",
+      "project_name": "Loca",
+      "tracks": [
+        "defi",
+        "business",
+        "swarms",
+        "security",
+        "agents"
+      ],
+      "demo_url": "https://x.com/loca_near/status/2116960298532007969"
+    },
+    {
+      "id": "171b08cc-8096-4605-928e-0dfbb4209e1a",
+      "project_name": "Sentinel",
+      "tracks": [
+        "security"
+      ],
+      "demo_url": "https://x.com/NathanOyewole/status/2116976865646653840"
+    },
+    {
+      "id": "6483956b-bdac-412e-b9b8-1887687db7f6",
+      "project_name": "Pal",
+      "tracks": [
+        "open"
+      ],
+      "demo_url": "https://x.com/AkpanSunday193/status/2116994341965074541?a=Pyc9_MtJaBThhyszKXI&s=20"
+    },
+    {
+      "id": "3fcad2f5-4dc1-4dc8-8dd0-bd33bc845d23",
+      "project_name": "EarnScout",
+      "tracks": [
+        "security",
+        "agents",
+        "open"
+      ],
+      "demo_url": "https://x.com/hustleone21/status/2117002586481926443"
+    },
+    {
+      "id": "9f6e4b85-ce62-4c40-b1bc-a62ac00f2d11",
+      "project_name": "Bolsillos",
+      "tracks": [
+        "security",
+        "realworld",
+        "open"
+      ],
+      "demo_url": "https://x.com/TuneUpArgentina/status/2117013267247935781"
+    },
+    {
+      "id": "2f6dea96-c753-40a2-ac98-e4e7639255b8",
+      "project_name": "StarFloor: Orbital Market Center & Zero-Gravity Colocation",
+      "tracks": [
+        "defi",
+        "open"
+      ],
+      "demo_url": "https://x.com/yeabdotsuperint/status/2117013005602795618?a=rBwxTImUnZoW6QCSPq0&s=20"
+    },
+    {
+      "id": "e7cfc31a-e944-4f49-92ba-eb95e4165a98",
+      "project_name": "NEAR Intents Value Accrual Thesis",
+      "tracks": [
+        "thesis"
+      ],
+      "demo_url": "https://x.com/Apihpih69/status/2117036976880877770"
+    },
+    {
+      "id": "bdb7ff9f-4c40-4036-8e05-0e12e8be9f2b",
+      "project_name": "TEE Receipts",
+      "tracks": [
+        "privacy",
+        "open"
+      ],
+      "demo_url": "https://x.com/chamdom/status/2117060976700997909"
+    },
+    {
+      "id": "01d1ec5e-9ba4-49cb-88f8-8236c08285ea",
+      "project_name": "Agent Toll",
+      "tracks": [
+        "security",
+        "agents"
+      ],
+      "demo_url": "https://x.com/madebydevx/status/2117086445022449735"
+    },
+    {
+      "id": "8ce1e3a2-1bf0-4dc0-aeb3-0981afda5c60",
+      "project_name": "PayPerCall on NEAR",
+      "tracks": [
+        "business",
+        "agents",
+        "realworld"
+      ],
+      "demo_url": "https://x.com/madebydevx/status/2117086998460842295"
+    },
+    {
+      "id": "e5be6759-eaf7-4884-aa75-b0d135f30f96",
+      "project_name": "Tijar app",
+      "tracks": [
+        "business"
+      ],
+      "demo_url": "https://x.com/Musnadey/status/2117100748555108649?a=gznUMZziHWyDyrQOtao&s=19"
+    },
+    {
+      "id": "8ea8f57a-ecc0-4eb4-a246-cac9b00f141a",
+      "project_name": "Agent Leash",
+      "tracks": [
+        "security",
+        "agents"
+      ],
+      "demo_url": "https://x.com/tab_for_akshay/status/2117052147661705305"
+    },
+    {
+      "id": "9f2fd9a3-7e91-403e-91d2-dae5ffb47cd2",
+      "project_name": "Sidelot",
+      "tracks": [
+        "defi",
+        "agents",
+        "realworld",
+        "memecoins"
+      ],
+      "demo_url": "https://usesidelot.com/"
+    },
+    {
+      "id": "b11fb494-3e91-48af-843e-9a8e6d20ff28",
+      "project_name": "HoldUp",
+      "tracks": [
+        "security",
+        "realworld",
+        "open"
+      ],
+      "demo_url": "https://x.com/danial_x4/status/2117153040159617051"
+    },
+    {
+      "id": "a4fb47cc-2f16-49b9-92cd-b4fef4924e1d",
+      "project_name": "AJO ON NEAR",
+      "tracks": [
+        "realworld"
+      ],
+      "demo_url": "https://x.com/ayoadhe/status/2117127898159104304?a=8jki3MnZMwnKP0q1VOg&s=20"
+    },
+    {
+      "id": "4aaee984-92a7-4d4f-96f5-37642167fd6f",
+      "project_name": "PrivatePay Agent",
+      "tracks": [
+        "privacy",
+        "agents"
+      ],
+      "demo_url": "https://x.com/hassan_samimi/status/2117164751662858404?a=QzxF2aXeRTF65r7cjW4&s=20"
+    },
+    {
+      "id": "f51768cc-80ac-4be3-a71c-dde94ad0f494",
+      "project_name": "TreasureHunt",
+      "tracks": [
+        "games"
+      ],
+      "demo_url": "https://x.com/Sparkler_Labs/status/2114194006947291518"
+    },
+    {
+      "id": "24e3d259-5e06-4763-88c3-9101bac17f60",
+      "project_name": "Payrein",
+      "tracks": [
+        "security",
+        "agents"
+      ],
+      "demo_url": "https://x.com/CrissEthan7au/status/2117162030889390370"
+    },
+    {
+      "id": "0de1795d-ae29-4b29-8289-09dd6ceb98ba",
+      "project_name": "Approval Moment",
+      "tracks": [
+        "security"
+      ],
+      "demo_url": "https://x.com/minotorXBT/status/2117176009938374795"
+    },
+    {
+      "id": "ac7254d5-15e4-47cb-9eb9-c400486f9b49",
+      "project_name": "Near Degen toolkit",
+      "tracks": [
+        "defi"
+      ],
+      "demo_url": "https://x.com/cryptoworld_by/status/2117185581235019821"
+    },
+    {
+      "id": "cc936172-28bf-4063-9fa8-8969e59023ee",
+      "project_name": "Hasp",
+      "tracks": [
+        "agents"
+      ],
+      "demo_url": "https://x.com/thesithunyein/status/2117209602848956525?a=hGUBgvqsi-AaeEUYOUM&s=46"
+    },
+    {
+      "id": "acbd537d-69d0-4ecf-b87b-8d63dce6619e",
+      "project_name": "PayGuard",
+      "tracks": [
+        "security",
+        "agents"
+      ],
+      "demo_url": "https://x.com/blokceyn/status/2117212782319824913"
+    },
+    {
+      "id": "68c95c14-4ef7-4f70-b128-a476742e4ddc",
+      "project_name": "Arkhe Guard",
+      "tracks": [
+        "security",
+        "agents"
+      ],
+      "demo_url": "https://x.com/Corvo_Arkhen/status/2117226851466723668"
+    },
+    {
+      "id": "73796d23-4bf6-4c00-a3e8-6c0211807d59",
+      "project_name": "NEAR Growth Intelligence",
+      "tracks": [
+        "thesis"
+      ],
+      "demo_url": "https://x.com/insightX01/status/2117243839995855107"
+    },
+    {
+      "id": "3f86c8f9-811e-4de8-a500-ae345b737b2c",
+      "project_name": "NEAR Books",
+      "tracks": [
+        "thesis",
+        "open"
+      ],
+      "demo_url": "https://x.com/muliark/status/2117252715139264647"
+    },
+    {
+      "id": "c9b94b3a-218d-44db-a04e-46b2f9822235",
+      "project_name": "AgentVault",
+      "tracks": [
+        "agents"
+      ],
+      "demo_url": "https://x.com/IrmanFebri75rb/status/2117255542888636594"
+    },
+    {
+      "id": "76bf91c3-ef6a-4f83-8792-a8796019cbef",
+      "project_name": "ByLaw",
+      "tracks": [
+        "security"
+      ],
+      "demo_url": "https://x.com/boredrhinodev/status/2117270364573073460"
+    },
+    {
+      "id": "d917daa9-bb54-4051-a5a3-3ba8e9dd3322",
+      "project_name": "Bridle",
+      "tracks": [
+        "business",
+        "security",
+        "agents"
+      ],
+      "demo_url": "https://x.com/UseBridle/status/2116560619306688923?a=XgwFZWOH8jEWFrtTXhk&s=20"
+    },
+    {
+      "id": "247640ff-7661-42ec-8275-b2fc8ada1a9a",
+      "project_name": "NDBOT",
+      "tracks": [
+        "defi",
+        "memecoins",
+        "social",
+        "open"
+      ],
+      "demo_url": "https://x.com/cryptoworld_by/status/2117309648709538189"
+    },
+    {
+      "id": "4e50d9a7-3ef3-4a68-9307-01d46c96e184",
+      "project_name": "Greed Machine",
+      "tracks": [
+        "defi",
+        "business",
+        "swarms",
+        "security",
+        "agents",
+        "memecoins"
+      ],
+      "demo_url": "https://x.com/Greyw0rks/status/2117323746600161676"
+    },
+    {
+      "id": "8be0239a-d5ae-41aa-bf7b-8e8c5746b2c5",
+      "project_name": "Guardrail",
+      "tracks": [
+        "privacy",
+        "security",
+        "realworld",
+        "open"
+      ],
+      "demo_url": "https://x.com/FStrategy001/status/2117332239654527104"
+    },
+    {
+      "id": "3caec19c-48c2-48b8-ac7d-db2a2f387b22",
+      "project_name": "Rootbound",
+      "tracks": [
+        "swarms",
+        "security",
+        "agents"
+      ],
+      "demo_url": "https://x.com/wahabolaniyi090/status/2117131903434203332?a=0V7xr86xKGVeWt7FgtA&s=20"
+    },
+    {
+      "id": "38f7ce64-0414-46ce-b0b9-f40bd12374b6",
+      "project_name": "presign-guard for NEAR",
+      "tracks": [
+        "security",
+        "agents"
+      ],
+      "demo_url": "https://x.com/x402fizzl/status/2117352123746996356"
+    },
+    {
+      "id": "2dc79d85-a032-49da-a708-89f6607d81bc",
+      "project_name": "Deed",
+      "tracks": [
+        "business",
+        "security",
+        "nfts"
+      ],
+      "demo_url": "https://x.com/Szczypek_96/status/2117369764112932935"
+    },
+    {
+      "id": "722ede59-e2e6-4693-ac2c-15039142c84e",
+      "project_name": "Werracle: Intra-Block AI Shield for NEAR Intents & Aurora EVM",
+      "tracks": [
+        "defi",
+        "security",
+        "agents"
+      ],
+      "demo_url": "https://x.com/pCwOrM/status/2117372421233893590"
+    },
+    {
+      "id": "6e7be752-aa60-4da7-a729-09ce3f2d82d4",
+      "project_name": "NEAR Usage Thesis",
+      "tracks": [
+        "thesis"
+      ],
+      "demo_url": "https://x.com/RainO_oDess/status/2117385144218636393"
+    },
+    {
+      "id": "857da381-27f9-4e36-aed5-d1483f0dd154",
+      "project_name": "NEAR FeeLens",
+      "tracks": [
+        "thesis"
+      ],
+      "demo_url": "https://x.com/37Nerion/status/2117388943960207468"
+    },
+    {
+      "id": "fa6703a5-2e4c-4721-9bdb-8f22915922f5",
+      "project_name": "Flock",
+      "tracks": [
+        "swarms",
+        "agents"
+      ],
+      "demo_url": "https://x.com/Szczypek_96/status/2117400141384626606"
+    },
+    {
+      "id": "a1b7211e-f7ad-499a-b10c-c30d34f19d13",
+      "project_name": "Key proof",
+      "tracks": [
+        "security"
+      ],
+      "demo_url": "https://x.com/benny___5/status/2117441824381927609?s=46"
+    },
+    {
+      "id": "759c5597-8632-4578-a05b-8dc047cf2db8",
+      "project_name": "Leash",
+      "tracks": [
+        "security",
+        "agents"
+      ],
+      "demo_url": "https://x.com/Hycorange/status/2117456531322990765"
+    },
+    {
+      "id": "9888f8dc-85bd-4c29-a0c2-e9b02db3a09d",
+      "project_name": "Petty Cash",
+      "tracks": [
+        "realworld",
+        "social"
+      ],
+      "demo_url": "https://x.com/kasbsquall95/status/2117473026732437544"
+    },
+    {
+      "id": "481cec5c-d9fc-41a4-9a72-b9e104915c77",
+      "project_name": "ZEDEC PQOS aka. TIAMAT",
+      "tracks": [
+        "defi",
+        "thesis",
+        "privacy",
+        "business",
+        "swarms",
+        "security",
+        "agents",
+        "realworld",
+        "open"
+      ],
+      "demo_url": "https://x.com/JDR1848/status/2117496300442878090?a=UUlMKFtdXTbpYo1L8k0&s=20"
+    },
+    {
+      "id": "0c086611-ade4-44ff-9215-5853e1f049da",
+      "project_name": "NearGuard",
+      "tracks": [
+        "security"
+      ],
+      "demo_url": "https://x.com/mawidjaya_157/status/2117510379358302540"
+    },
+    {
+      "id": "50fd3b4f-c601-4081-a463-9aa0944b7d00",
+      "project_name": "Measure",
+      "tracks": [
+        "privacy",
+        "security"
+      ],
+      "demo_url": "https://x.com/tayonweb/status/2117540004020773005?s=46"
+    },
+    {
+      "id": "a0fa588f-442f-47a6-87bd-ca286faba510",
+      "project_name": "Tollgate",
+      "tracks": [
+        "security",
+        "agents"
+      ],
+      "demo_url": "https://x.com/dipo0x/status/2117552671641206828"
+    },
+    {
+      "id": "f206fa10-94e3-4537-a8e6-912a712697a9",
+      "project_name": "NEXUS AiOS",
+      "tracks": [
+        "swarms",
+        "security",
+        "agents"
+      ],
+      "demo_url": "https://ykbojak-alt.github.io/nexus-aios/demo/"
+    },
+    {
+      "id": "cf37357e-ba05-4992-bbdc-2ff8858bd71e",
+      "project_name": "Settl",
+      "tracks": [
+        "defi",
+        "realworld",
+        "open"
+      ],
+      "demo_url": "https://x.com/settl_near/status/2117575722101604404"
+    },
+    {
+      "id": "71ed36e8-4c24-4135-8fa2-80b070cbbd64",
+      "project_name": "Workcell",
+      "tracks": [
+        "defi",
+        "security"
+      ],
+      "demo_url": "https://x.com/dotmantissa/status/2117579705528496461"
+    },
+    {
+      "id": "a2757faf-3453-4d4f-98dc-3c18598dcdf9",
+      "project_name": "Quittance",
+      "tracks": [
+        "defi",
+        "privacy",
+        "realworld",
+        "open"
+      ],
+      "demo_url": "https://x.com/AustinChris_/status/2117576965418787327?a=AvlIbgYA5eoY1umZHxI&s=19"
+    },
+    {
+      "id": "28edadfc-7a18-4ce3-8ffd-127044e182ff",
+      "project_name": "Judge on NEAR",
+      "tracks": [
+        "privacy",
+        "security",
+        "agents"
+      ],
+      "demo_url": "https://x.com/cryptovijay1/status/2117592303665877002"
+    },
+    {
+      "id": "56274522-5749-427e-a444-fc23f1e4bb99",
+      "project_name": "dareskro",
+      "tracks": [
+        "business",
+        "agents",
+        "realworld"
+      ],
+      "demo_url": "https://x.com/Ju_l_C/status/2117586092559917281"
+    },
+    {
+      "id": "114ae4bb-1b40-4004-a80f-80b89a0f585b",
+      "project_name": "PrivateDAO",
+      "tracks": [
+        "defi",
+        "thesis",
+        "privacy",
+        "business",
+        "security",
+        "agents",
+        "realworld"
+      ],
+      "demo_url": "https://x.com/privateDAOOS/status/2108681687986995364?a=onBxBDfVZVctj_SzDcg&s=19"
+    },
+    {
+      "id": "38de9d36-b5d0-4cf8-9e0b-aa6088913022",
+      "project_name": "Redline",
+      "tracks": [
+        "privacy",
+        "security",
+        "realworld"
+      ],
+      "demo_url": "https://x.com/nearagentic/status/2117603276397113631?a=WtNSjDO9M59Zr_1OQZg&s"
+    },
+    {
+      "id": "2633a774-80fe-4d9c-b813-0ebe292ad450",
+      "project_name": "Cobra on NEAR",
+      "tracks": [
+        "agents",
+        "realworld"
+      ],
+      "demo_url": "https://x.com/Cadawallet/status/2117644899109761343"
+    },
+    {
+      "id": "b7b2dda7-6b60-4eb8-8dee-b7b27aecd045",
+      "project_name": "VRX",
+      "tracks": [
+        "defi",
+        "privacy",
+        "business",
+        "realworld",
+        "open"
+      ],
+      "demo_url": "https://x.com/vettedrealty/status/2117648264006963623"
+    },
+    {
+      "id": "287d08ef-3e56-4424-a00b-700e0f7d1bf9",
+      "project_name": "NEAR, on evidence",
+      "tracks": [
+        "thesis"
+      ],
+      "demo_url": "https://x.com/orenrot24/status/2117658183099662458"
+    },
+    {
+      "id": "ae705c2e-32e8-412c-afd9-9a3b04fa40d1",
+      "project_name": "x402-near",
+      "tracks": [
+        "security",
+        "agents",
+        "realworld"
+      ],
+      "demo_url": "https://x.com/dahlinomine/status/2117355110842142727"
+    },
+    {
+      "id": "9678d215-8d1d-468b-b853-19e0e3a83eb8",
+      "project_name": "AgentSig",
+      "tracks": [
+        "business",
+        "security",
+        "agents"
+      ],
+      "demo_url": "https://x.com/AZ1Z1M/status/2117664595125153960"
+    },
+    {
+      "id": "768bead2-5675-4167-92bd-4910d204f359",
+      "project_name": "Agent Treasury",
+      "tracks": [
+        "defi",
+        "business",
+        "security",
+        "agents",
+        "realworld"
+      ],
+      "demo_url": "https://x.com/isfaggod/status/2117676783600591105"
+    },
+    {
+      "id": "900812a5-e7f9-47ed-a836-b31ae918f84d",
+      "project_name": "Kalfou Swap — Cross-Chain Desk",
+      "tracks": [
+        "defi"
+      ],
+      "demo_url": "https://x.com/Crypto_Lwa/status/2117683705367969821"
+    },
+    {
+      "id": "42a2f5ef-1476-44b5-8927-56b703fd7b36",
+      "project_name": "MilestonePay",
+      "tracks": [
+        "realworld"
+      ],
+      "demo_url": "https://x.com/casinodeveloper/status/2117715950921544044"
+    },
+    {
+      "id": "3d9be24a-53f1-4755-8524-44d742c861b7",
+      "project_name": "Release Passport",
+      "tracks": [
+        "security",
+        "nfts"
+      ],
+      "demo_url": "https://x.com/surthenort40906/status/2117717055579501036"
+    },
+    {
+      "id": "ebacde79-c454-41c4-b5ef-27917cf242e3",
+      "project_name": "Patch Fund",
+      "tracks": [
+        "security",
+        "social"
+      ],
+      "demo_url": "https://x.com/surthenort40906/status/2117717450783633412"
+    },
+    {
+      "id": "849f9204-ed81-497b-8570-bd3ef00a21e2",
+      "project_name": "Sealed Exploit",
+      "tracks": [
+        "privacy",
+        "security",
+        "agents",
+        "open"
+      ],
+      "demo_url": "https://x.com/edycutjong/status/2117725204403364028?a=QdNHo5ZYfvRj9uwfVHU"
+    },
+    {
+      "id": "c6b6afc6-50c7-4f17-b9b3-9435ed964d75",
+      "project_name": "Tontine",
+      "tracks": [
+        "defi",
+        "thesis",
+        "business",
+        "swarms",
+        "security",
+        "agents"
+      ],
+      "demo_url": "https://x.com/0x___eth/status/2117308258423828751?a=DCXxcbpPfxRpUwMfjQU&s=20"
+    },
+    {
+      "id": "21b88ac4-20b2-4951-bb42-9b5e57695f5f",
+      "project_name": "The Build City Hackathon",
+      "tracks": [
+        "privacy"
+      ],
+      "demo_url": "https://x.com/buidlcity/status/2117722829277790511?a=Ft7nYv1z7AgNEFsto9o&s=20"
+    },
+    {
+      "id": "dd0fea75-b29a-4ad1-b2d3-bdc1ae456fd1",
+      "project_name": "PROVEN",
+      "tracks": [
+        "open"
+      ],
+      "demo_url": "https://x.com/cryptoAYA33/status/2117739000358482276"
+    },
+    {
+      "id": "e57ee21f-4601-4fad-878b-d81519dc8a4f",
+      "project_name": "Agent Crash Lab",
+      "tracks": [
+        "security"
+      ],
+      "demo_url": "https://x.com/Amiinjalili/status/2117754340073230518"
+    },
+    {
+      "id": "06deb0b5-807d-420a-9c8a-88a6884f0c10",
+      "project_name": "AgentTab",
+      "tracks": [
+        "security",
+        "agents"
+      ],
+      "demo_url": "https://agenttab.152-53-225-73.sslip.io/demo.html"
+    },
+    {
+      "id": "d96eb111-3fb9-4840-9047-4cfaf8249ee0",
+      "project_name": "FlashFirm",
+      "tracks": [
+        "business",
+        "swarms",
+        "security",
+        "agents"
+      ],
+      "demo_url": "https://x.com/0xCaptain888/status/2117825285190295741"
+    },
+    {
+      "id": "3bfa2738-b31d-4735-ab12-5bfcb8a657c9",
+      "project_name": "Chai Pot on NEAR",
+      "tracks": [
+        "security",
+        "agents",
+        "social"
+      ],
+      "demo_url": "https://x.com/farhanakhan33/status/2117851251048079595"
+    },
+    {
+      "id": "9f3958ff-50c8-452f-b382-91cfe6a3a9d4",
+      "project_name": "AgentBond",
+      "tracks": [
+        "business",
+        "security",
+        "agents"
+      ],
+      "demo_url": "https://x.com/ikorofrancis1/status/2117864852089897186"
+    },
+    {
+      "id": "68e265ef-198e-4e20-abcd-7ad16a23e23c",
+      "project_name": "NEAR Intents Thesis — Tested",
+      "tracks": [
+        "thesis"
+      ],
+      "demo_url": "https://x.com/luongs3/status/2117899826386043151"
+    },
+    {
+      "id": "d56cc76d-871b-445d-ba3c-db891f8ff43e",
+      "project_name": "AgentEscrow",
+      "tracks": [
+        "security",
+        "agents"
+      ],
+      "demo_url": "https://x.com/dele_dave/status/2117911300516823327"
+    },
+    {
+      "id": "5f55a401-e97f-4c65-bfab-eca295c8a2d5",
+      "project_name": "nearswaps agent kit",
+      "tracks": [
+        "defi",
+        "security",
+        "agents"
+      ],
+      "demo_url": "https://x.com/NearSwaps/status/2117920305608065470"
+    },
+    {
+      "id": "e4af217b-7468-46c3-a756-fde5900c550b",
+      "project_name": "Agent Allowance Guard",
+      "tracks": [
+        "security"
+      ],
+      "demo_url": "https://x.com/alejandroso54/status/2117713714874921129"
+    },
+    {
+      "id": "916f8fba-c86f-47b0-bcf0-1a70f3b4cf6d",
+      "project_name": "NearGuard",
+      "tracks": [
+        "security",
+        "agents"
+      ],
+      "demo_url": "https://x.com/georgebuilding2/status/2117936258848559574"
+    },
+    {
+      "id": "bfd74897-d0a2-4891-9f2c-0638a1a63331",
+      "project_name": "NearQuery",
+      "tracks": [
+        "thesis"
+      ],
+      "demo_url": "https://x.com/marrnueldev/status/2117938855957667984?a=xOTJsvSjL1_9gIRFr84&s=46"
+    },
+    {
+      "id": "8c1629ae-c5eb-40c6-baf6-b282662a7b78",
+      "project_name": "AgentGauntlet",
+      "tracks": [
+        "security"
+      ],
+      "demo_url": "https://x.com/i_amtony_/status/2117985336357703971?a=-9Exga4aGD_Hx-foWQA&s=20"
+    },
+    {
+      "id": "94d69930-ab78-4ede-a6e3-8ab5f56bcf7f",
+      "project_name": "NEAR Guardian",
+      "tracks": [
+        "security"
+      ],
+      "demo_url": "https://x.com/akihitozinnia/status/2117991167547863344"
+    },
+    {
+      "id": "09912d1f-af52-4f56-8840-f66f00a90710",
+      "project_name": "Halter",
+      "tracks": [
+        "security",
+        "agents"
+      ],
+      "demo_url": "https://x.com/arashrahmani696/status/2117998501183267267?s=46"
+    },
+    {
+      "id": "fe8a03ca-439a-4f14-ac20-2a84c925d84c",
+      "project_name": "Near-LEASH",
+      "tracks": [
+        "security"
+      ],
+      "demo_url": "https://x.com/W3B_AI_SR/status/2117999713039376852"
+    },
+    {
+      "id": "51261916-2c0e-48df-9888-4c24f52dccd5",
+      "project_name": "Proof of Ship on NEAR",
+      "tracks": [
+        "agents",
+        "realworld",
+        "social"
+      ],
+      "demo_url": "https://x.com/HeyResearch/status/2118011068731854972"
+    },
+    {
+      "id": "665d4643-1468-4327-a7a5-31e1519f713f",
+      "project_name": "VAULTRY",
+      "tracks": [
+        "defi",
+        "privacy",
+        "security"
+      ],
+      "demo_url": "https://x.com/Cryptoworld_01/status/2118023840609845404"
+    },
+    {
+      "id": "f7e0b566-0b2c-499e-8c4e-c2945beb1a7b",
+      "project_name": "Clean Exit",
+      "tracks": [
+        "security",
+        "agents"
+      ],
+      "demo_url": "https://x.com/l0rdWells/status/2118026646813094290"
+    },
+    {
+      "id": "bb739197-c903-456a-b25c-4e97ffe5495f",
+      "project_name": "Tripwire",
+      "tracks": [
+        "memecoins"
+      ],
+      "demo_url": "https://x.com/samaisback/status/2118030472676769978"
+    },
+    {
+      "id": "49563af4-b8b7-4c1e-a715-9d3148403610",
+      "project_name": "XAUConnect Gold Router",
+      "tracks": [
+        "defi",
+        "agents",
+        "realworld"
+      ],
+      "demo_url": "https://x.com/xaxmd5/status/2118041570100588952"
+    },
+    {
+      "id": "e0d4e5a0-7b7d-40d4-9530-4bbd6412d844",
+      "project_name": "Sumplus CATS Service Pass",
+      "tracks": [
+        "security",
+        "agents"
+      ],
+      "demo_url": "https://x.com/JakobJJJJJX/status/2118043873184551411"
+    },
+    {
+      "id": "00ed3eb4-ba45-405f-8567-58fd42a0f6a0",
+      "project_name": "AgentGuard",
+      "tracks": [
+        "security",
+        "agents"
+      ],
+      "demo_url": "https://x.com/Dark_ernity/status/2118047777703989374"
+    },
+    {
+      "id": "422f6a2e-9008-4883-ac35-a98ed9cbda89",
+      "project_name": "Agent3 Purser Relay",
+      "tracks": [
+        "agents"
+      ],
+      "demo_url": "https://x.com/JoeyXu13/status/2118049501957296306"
+    },
+    {
+      "id": "c7db48a2-b63b-4486-9ea7-7e05d97eae30",
+      "project_name": "ClearSend Intents",
+      "tracks": [
+        "realworld"
+      ],
+      "demo_url": "https://x.com/Emmanue07495029/status/2118049068798849227?a=V8ZvEUYZA7abEWoLKK4&s=19"
+    },
+    {
+      "id": "38426453-a40e-4f55-8e74-db7b6e5c24b1",
+      "project_name": "RedactGate",
+      "tracks": [
+        "privacy",
+        "security"
+      ],
+      "demo_url": "https://x.com/mmixbizca/status/2118097092329775117"
+    },
+    {
+      "id": "0411b3ca-9a55-4545-911f-d2eb89e301a4",
+      "project_name": "IntentWatch",
+      "tracks": [
+        "security"
+      ],
+      "demo_url": "https://x.com/Surs51/status/2118108935110668386"
+    },
+    {
+      "id": "1ea9d594-1b33-4c41-9d7d-d536ff0df573",
+      "project_name": "near-thesis",
+      "tracks": [
+        "thesis"
+      ],
+      "demo_url": "https://x.com/rajeshmullippa/status/2118146054088540494"
+    },
+    {
+      "id": "b5e7fe4a-fd7c-4a94-bcb4-2e6e1b8d2ab9",
+      "project_name": "Leash",
+      "tracks": [
+        "security",
+        "agents"
+      ],
+      "demo_url": "https://x.com/Aliqa3a/status/2118157451178492050"
+    },
+    {
+      "id": "42ec2a12-bf4e-40a0-8f23-dd9617e1d9ea",
+      "project_name": "NePu",
+      "tracks": [
+        "thesis",
+        "open"
+      ],
+      "demo_url": "https://x.com/Axlnd3r/status/2118168310374453512?a=3T50Ys8-yLnLYLeC4k4&s=19"
+    },
+    {
+      "id": "6b0d4c1e-2f6a-4d57-9a3e-7c1f8e2b5a90",
+      "project_name": "Footnote",
+      "tracks": [
+        "security",
+        "agents"
+      ],
+      "demo_url": "https://x.com/baegseungh7061/status/2118189999606899109"
+    },
+    {
+      "id": "e3abfe5a-e38f-479d-85e9-e68f3caa0221",
+      "project_name": "SpactVault",
+      "tracks": [
+        "defi",
+        "security",
+        "agents"
+      ],
+      "demo_url": "https://x.com/spactvault/status/2118225273523233241"
+    },
+    {
+      "id": "6cc579c6-4abc-4e72-b93a-20904b06e2bd",
+      "project_name": "KeyLease",
+      "tracks": [
+        "swarms",
+        "security",
+        "agents"
+      ],
+      "demo_url": "https://x.com/RUNECLAW_AI/status/2118229460000366986"
+    },
+    {
+      "id": "3dfb2344-8015-43d8-9389-9cf36bd8fbc2",
+      "project_name": "Shelflife",
+      "tracks": [
+        "open"
+      ],
+      "demo_url": "https://x.com/Savage27z/status/2118225862168649899?a=cWR9MkkqB8MWz0SLjP0&s=20"
+    },
+    {
+      "id": "3d44dcae-ee40-4616-bbc5-7489ce0d360d",
+      "project_name": "Writ: Who Pays When Your AI Agent Gets Fooled",
+      "tracks": [
+        "security",
+        "agents",
+        "open"
+      ],
+      "demo_url": "https://x.com/zuemennet/status/2118226302658617836"
+    },
+    {
+      "id": "413dd679-48cf-4dce-adf3-36be20a9e739",
+      "project_name": "Kite",
+      "tracks": [
+        "agents",
+        "realworld"
+      ],
+      "demo_url": "https://x.com/usekite__/status/2118246496734973970?a=evRERDCTpDEm1KvWgEA&s=46"
+    },
+    {
+      "id": "32c75be1-ea65-4bef-8607-1df599ae847e",
+      "project_name": "Aureus",
+      "tracks": [
+        "defi",
+        "privacy",
+        "business",
+        "security",
+        "agents"
+      ],
+      "demo_url": "https://x.com/Omaofweb3/status/2118250067270283753?a=eydpxiL3HN-KwzgqApA&s=19"
+    },
+    {
+      "id": "71c0d142-809a-4ab3-9eef-33cd08b89fae",
+      "project_name": "Charter",
+      "tracks": [
+        "defi",
+        "privacy",
+        "business",
+        "security",
+        "agents",
+        "open"
+      ],
+      "demo_url": "https://x.com/Spagero71/status/2118006934284521737"
+    },
+    {
+      "id": "e3848b30-81f4-4865-98fb-434e7cf08798",
+      "project_name": "Penstock",
+      "tracks": [
+        "privacy",
+        "realworld"
+      ],
+      "demo_url": "https://x.com/_ace_won/status/2118266550096675080?a=vMHV5KCOo3UT1io4Y2g&s=20"
+    },
+    {
+      "id": "acc5fdf7-9bbd-4d2e-97de-41e8463116f4",
+      "project_name": "TheRascalsDotFun",
+      "tracks": [
+        "defi",
+        "agents",
+        "memecoins",
+        "social",
+        "open"
+      ],
+      "demo_url": "https://x.com/therascalsfun/status/2118272084346593280"
+    },
+    {
+      "id": "a29ed9d6-a596-4918-a56b-aef5f6ee8484",
+      "project_name": "NOVA Copy-Trading",
+      "tracks": [
+        "privacy",
+        "security",
+        "agents"
+      ],
+      "demo_url": "https://x.com/jcarbonnell/status/2118274901693837481"
+    },
+    {
+      "id": "b2a653cd-5f26-44c0-a307-645615e23f39",
+      "project_name": "AllTrades",
+      "tracks": [
+        "business",
+        "agents",
+        "realworld"
+      ],
+      "demo_url": "https://x.com/GiacMoTrieuDo/status/2118277438161694884"
+    },
+    {
+      "id": "8309262f-0ac4-44a9-8ca0-2b51b03d52d0",
+      "project_name": "Invoice Link",
+      "tracks": [
+        "business",
+        "realworld"
+      ],
+      "demo_url": "https://x.com/brookxbt/status/2118283214322106444"
+    },
+    {
+      "id": "fe292050-bdfa-482d-ab08-4d1355e49f3f",
+      "project_name": "Nims",
+      "tracks": [
+        "games"
+      ],
+      "demo_url": "https://x.com/marrnueldev/status/2118292623358341128?a=g1B7jxNqFLQHgGbiqJg&s=20"
+    },
+    {
+      "id": "b743bd60-eee7-46b1-b86d-81ca9f709ff5",
+      "project_name": "Capgrate",
+      "tracks": [
+        "business",
+        "security",
+        "agents"
+      ],
+      "demo_url": "https://x.com/Adeiza_web3/status/2118296658819567734"
+    },
+    {
+      "id": "4f87bbfb-1dca-41b9-a230-80919a649933",
+      "project_name": "Mandate",
+      "tracks": [
+        "business",
+        "security",
+        "agents"
+      ],
+      "demo_url": "https://x.com/PostcardCrypto/status/2118309597572473177"
+    },
+    {
+      "id": "3824ad53-8f26-426f-8239-99f5080ec3ca",
+      "project_name": "CareRail",
+      "tracks": [
+        "business",
+        "security",
+        "agents"
+      ],
+      "demo_url": "https://x.com/LainHolic/status/2118314930608930992"
+    },
+    {
+      "id": "55eb2652-5aee-4768-8800-22f5d6ee0b92",
+      "project_name": "NEAR SENTINEL",
+      "tracks": [
+        "security"
+      ],
+      "demo_url": "https://x.com/NguyenThan60809/status/2118319057107849498"
+    },
+    {
+      "id": "4a4566f6-e525-4a5e-b0de-ba403c34a512",
+      "project_name": "Lifeguard",
+      "tracks": [
+        "defi",
+        "security",
+        "agents"
+      ],
+      "demo_url": "https://x.com/Timidan_x/status/2118320826751795692"
+    },
+    {
+      "id": "82821a03-0701-4e30-90e5-cdc42fbf8a03",
+      "project_name": "GhostSign",
+      "tracks": [
+        "security",
+        "agents"
+      ],
+      "demo_url": "https://x.com/anki_anc/status/2118342923180007918"
+    },
+    {
+      "id": "d01a3b13-a62b-412c-a6f8-f86f59850c5e",
+      "project_name": "Aegis",
+      "tracks": [
+        "open"
+      ],
+      "demo_url": "https://x.com/AlvinAgustus/status/2118351207953809875?a=Hqbfk6bYOAyLMLfT1x4&s=20"
+    },
+    {
+      "id": "eecf45ed-abe3-4e3b-8326-41448de21783",
+      "project_name": "Payproof Global",
+      "tracks": [
+        "business",
+        "realworld",
+        "open"
+      ],
+      "demo_url": "https://x.com/isonidavid/status/2118359294890639555"
+    },
+    {
+      "id": "20df5127-8326-4810-8314-c068af25650b",
+      "project_name": "Foreman",
+      "tracks": [
+        "business",
+        "swarms",
+        "security",
+        "agents"
+      ],
+      "demo_url": "https://x.com/SarwarBuild/status/2118359003550110112"
+    },
+    {
+      "id": "cd9582b9-fe1a-46a4-b595-1d30597bd48c",
+      "project_name": "GhosterDex",
+      "tracks": [
+        "privacy",
+        "agents"
+      ],
+      "demo_url": "https://x.com/GhosterDex/status/2118366128368136199"
+    },
+    {
+      "id": "7f8dff57-988e-4866-8dc0-a76d6ccaa659",
+      "project_name": "Ash.",
+      "tracks": [
+        "business",
+        "swarms",
+        "security",
+        "agents",
+        "realworld",
+        "social"
+      ],
+      "demo_url": "https://x.com/i_am_festac/status/2118371914884211011?a=s4aeIh72QzvmCMcDWt8&s=19"
+    },
+    {
+      "id": "3e0a5372-942a-4618-b309-68cfa5c4d208",
+      "project_name": "Launchline",
+      "tracks": [
+        "open"
+      ],
+      "demo_url": "https://x.com/clarky93795294/status/2096285372875686246"
+    },
+    {
+      "id": "0b1cdfcb-d589-4018-a833-2b14875ed854",
+      "project_name": "Alphaforge",
+      "tracks": [
+        "defi"
+      ],
+      "demo_url": "https://www.ikol.top/alphaforge/#/home"
+    },
+    {
+      "id": "4c88b184-5c62-4718-92fe-149510a709cb",
+      "project_name": "Handover",
+      "tracks": [
+        "nfts"
+      ],
+      "demo_url": "https://x.com/ApexSys_Dev/status/2118392517699780924?a=ZSnlPsPOH-Ajo74btHI&s=20"
+    },
+    {
+      "id": "ae4fcc6b-beb2-47ca-9f04-75c840f9bea5",
+      "project_name": "near-threshold-guardian",
+      "tracks": [
+        "security"
+      ],
+      "demo_url": "https://x.com/exocognosis/status/2118407307394777107"
+    },
+    {
+      "id": "493021e8-fb56-49ef-8be0-b1a1060d7784",
+      "project_name": "Warrant",
+      "tracks": [
+        "defi"
+      ],
+      "demo_url": "https://x.com/emmanuelcesc/status/2118396029271974299"
+    },
+    {
+      "id": "f5c2e9b1-0815-40a9-8aa5-0bd97523170e",
+      "project_name": "NEAR Spending Vault",
+      "tracks": [
+        "security"
+      ],
+      "demo_url": "https://x.com/silence_inf/status/2118400979490287643"
+    },
+    {
+      "id": "2a722043-5c3c-4f92-ade4-989549be0261",
+      "project_name": "Maven",
+      "tracks": [
+        "security",
+        "games"
+      ],
+      "demo_url": "https://x.com/josephmarv3016/status/2118398854609387999"
+    },
+    {
+      "id": "fe99e55a-7b7e-4f55-8029-73c2a4ddfce9",
+      "project_name": "nearbi",
+      "tracks": [
+        "thesis",
+        "business"
+      ],
+      "demo_url": "https://x.com/nearbiai/status/2118415518382108887?a=Nawz5XblFxVOwd7NOlA&s=20"
+    },
+    {
+      "id": "04ed6beb-1fe1-4079-811d-eb6264de4866",
+      "project_name": "Agent Undercover",
+      "tracks": [
+        "swarms",
+        "agents",
+        "games"
+      ],
+      "demo_url": "https://x.com/necklace_btc/status/2118430392734888088"
+    },
+    {
+      "id": "de2b5217-8d85-4052-a0d2-0e8e8066c2a5",
+      "project_name": "Aegis",
+      "tracks": [
+        "security"
+      ],
+      "demo_url": "https://x.com/aegisonnear/status/2118429338253361400?a=qGkQxcCxKby_roZC5Kc&s=19"
+    },
+    {
+      "id": "018eac07-b635-43fb-85c8-b2b7b2633e1e",
+      "project_name": "Aegis Vault",
+      "tracks": [
+        "business",
+        "security",
+        "agents",
+        "realworld"
+      ],
+      "demo_url": "https://x.com/SDesigan84042/status/2118441897190412687"
+    },
+    {
+      "id": "64092c5f-df0f-41b0-98a5-697faad7314a",
+      "project_name": "NEARpedia",
+      "tracks": [
+        "agents",
+        "open"
+      ],
+      "demo_url": "https://x.com/UnityNodes/status/2118447685397291123"
+    },
+    {
+      "id": "3e4327e1-8ee3-435b-86d5-d61045b8e05e",
+      "project_name": "Skarbnik",
+      "tracks": [
+        "privacy",
+        "security",
+        "agents"
+      ],
+      "demo_url": "https://x.com/pgreyy/status/2118237758321795364"
+    },
+    {
+      "id": "754bc1d0-3596-44dd-9721-3f45eae3eeda",
+      "project_name": "NEARPORTAL",
+      "tracks": [
+        "agents",
+        "realworld"
+      ],
+      "demo_url": "https://x.com/0xunholy/status/2118484384340684976?a=N9B4Emuce6Y1AGadcAE&s=20"
+    },
+    {
+      "id": "ea1c1594-d16c-4ce2-8087-3d788cbd97f9",
+      "project_name": "AgentGuard",
+      "tracks": [
+        "security"
+      ],
+      "demo_url": "https://x.com/MrSharafi4/status/2118504037918310510?a=JdxbouGCDQ11QiPifX8&s=20"
+    },
+    {
+      "id": "5115a8b3-a5ed-47ea-a2f9-1fd2af1aa6e3",
+      "project_name": "Vouch",
+      "tracks": [
+        "security",
+        "agents",
+        "open"
+      ],
+      "demo_url": "https://x.com/0xDUDS/status/2118503073593360762"
+    },
+    {
+      "id": "eca1f579-9dc4-412c-9250-c1aedbe6e2fe",
+      "project_name": "ProofPay",
+      "tracks": [
+        "business",
+        "agents",
+        "realworld"
+      ],
+      "demo_url": "https://x.com/the_annon_one/status/2118508938178220451"
+    },
+    {
+      "id": "8b933a5b-2bae-413b-a96f-38b888dc0da4",
+      "project_name": "Ballast",
+      "tracks": [
+        "defi",
+        "agents"
+      ],
+      "demo_url": "https://x.com/olliechapman/status/2118541780178334141"
+    },
+    {
+      "id": "aab1bb9e-ab36-4d8c-920f-62487b5b7714",
+      "project_name": "Allowance",
+      "tracks": [
+        "security",
+        "agents"
+      ],
+      "demo_url": "https://x.com/Ritesh5969/status/2118542200615457097"
+    },
+    {
+      "id": "77069aa4-6eb5-4770-8448-349169c99ee4",
+      "project_name": "PredicTEE",
+      "tracks": [
+        "privacy"
+      ],
+      "demo_url": "https://x.com/zhic18891/status/2118580496569639157"
+    },
+    {
+      "id": "385ea3c8-bda5-4257-87b4-550bdfc33be6",
+      "project_name": "DiveMarket",
+      "tracks": [
+        "agents",
+        "games"
+      ],
+      "demo_url": "https://x.com/agungkzn/status/2118582497793691861"
+    },
+    {
+      "id": "cc6e7b0e-d946-49f6-8e3a-84c974ffff01",
+      "project_name": "OddsHedge",
+      "tracks": [
+        "defi",
+        "agents"
+      ],
+      "demo_url": "https://x.com/Maribtxn/status/2118578943376625692"
+    },
+    {
+      "id": "a0c866ab-367c-4d78-954c-88cc328930a0",
+      "project_name": "AgentGuard",
+      "tracks": [
+        "security"
+      ],
+      "demo_url": "https://x.com/Jibsonfta/status/2118582872256721080?a=bn8qFJtJMq4MZCZ59bM&s=19"
+    },
+    {
+      "id": "6f3e7aa3-98c1-4321-bf9b-52324117cd17",
+      "project_name": "Mint Scout for NEAR",
+      "tracks": [
+        "security",
+        "agents",
+        "open"
+      ],
+      "demo_url": "https://x.com/SolGemLab/status/2118587619454165023"
+    },
+    {
+      "id": "7cad9fe0-5642-43a2-848e-0ee1bcc3b142",
+      "project_name": "Agent shield",
+      "tracks": [
+        "security"
+      ],
+      "demo_url": "https://x.com/magnuskrypt/status/2118586938470875446"
+    },
+    {
+      "id": "bcd11306-4a6c-46bc-98b9-333e0527820f",
+      "project_name": "Nearverse",
+      "tracks": [
+        "games"
+      ],
+      "demo_url": "https://x.com/gabquelyn/status/2118602977363784094?s=46"
+    },
+    {
+      "id": "42a410b7-5bac-46bf-8816-69c286905e39",
+      "project_name": "Settleform",
+      "tracks": [
+        "realworld"
+      ],
+      "demo_url": "https://x.com/DhaneeyP/status/2118607618625175717"
+    },
+    {
+      "id": "0465d387-401d-41fc-909b-fc1863a2bb56",
+      "project_name": "Gideon",
+      "tracks": [
+        "security"
+      ],
+      "demo_url": "https://x.com/Ade_lekeJr/status/2118621896375730424"
+    },
+    {
+      "id": "11146863-2476-4490-8414-dae2119efc46",
+      "project_name": "Plumbline",
+      "tracks": [
+        "business",
+        "security",
+        "agents"
+      ],
+      "demo_url": "https://x.com/0x_valid/status/2118602765060489378"
+    },
+    {
+      "id": "f82bca91-89a5-4f03-9f35-7d2dc73ec3c3",
+      "project_name": "NEAR Usage Thesis",
+      "tracks": [
+        "thesis"
+      ],
+      "demo_url": "https://x.com/jccryp_11/status/2118639391933612174"
+    },
+    {
+      "id": "20fdc725-b01a-4f2a-89f3-9489da621c90",
+      "project_name": "near",
+      "tracks": [
+        "open"
+      ],
+      "demo_url": "https://x.com/isla69909/status/2118643763929329891?a=R29v6BXrUBPnuiC0sOw&s=19"
+    },
+    {
+      "id": "cb2c6cc5-6f0d-4c19-8c29-a6a9be1b1425",
+      "project_name": "PipTradeDex Private Intent",
+      "tracks": [
+        "defi",
+        "privacy",
+        "security"
+      ],
+      "demo_url": "https://x.com/PipTradeDex/status/2117542107447427454"
+    },
+    {
+      "id": "0f2e3793-1498-4517-a539-e26b994c2e29",
+      "project_name": "STYX",
+      "tracks": [
+        "security",
+        "agents"
+      ],
+      "demo_url": "https://x.com/stratton001/status/2118647736467632169?a=V-O5C3rlKnHISgvCFp8"
+    },
+    {
+      "id": "cf21f377-dfbe-41f2-a493-c1256effba69",
+      "project_name": "NEAR Thesis Lab",
+      "tracks": [
+        "thesis"
+      ],
+      "demo_url": "https://x.com/mikeyXBT_/status/2118652096194998401"
+    },
+    {
+      "id": "6536ea69-2b69-4e83-89c0-8811489df585",
+      "project_name": "GetLeash",
+      "tracks": [
+        "privacy",
+        "business",
+        "security",
+        "agents",
+        "realworld",
+        "open"
+      ],
+      "demo_url": "https://x.com/usegetleash/status/2118637512897831054"
+    },
+    {
+      "id": "56dde30d-7c27-4c0b-91e7-6d45a01fa809",
+      "project_name": "AgentFence",
+      "tracks": [
+        "security",
+        "agents"
+      ],
+      "demo_url": "https://x.com/jccryp_11/status/2117775460520386721"
+    },
+    {
+      "id": "c3deca64-850b-4fb8-a614-251ca121fb69",
+      "project_name": "Zinc",
+      "tracks": [
+        "nfts"
+      ],
+      "demo_url": "https://zinc-demo-production.up.railway.app/"
+    },
+    {
+      "id": "5d0a06c9-5bfa-4a3c-a701-19139bfb5c2e",
+      "project_name": "setllend",
+      "tracks": [
+        "defi"
+      ],
+      "demo_url": "https://x.com/setllend/status/2118690228798124037?a=_tqqyRelOBdpMATJNug&s=20"
+    },
+    {
+      "id": "65ee7b4d-ddc0-4519-959e-9d65c51deb59",
+      "project_name": "Roomy",
+      "tracks": [
+        "realworld",
+        "social",
+        "open"
+      ],
+      "demo_url": "https://x.com/FocoBernardo/status/2118698850445586812"
+    },
+    {
+      "id": "8bf2bb4f-b322-4970-9fd8-f954a131fd5e",
+      "project_name": "Buffer",
+      "tracks": [
+        "business",
+        "security",
+        "agents"
+      ],
+      "demo_url": "https://x.com/therichworth/status/2118588149391610280"
+    },
+    {
+      "id": "115b2488-dcf6-4715-8f67-eaa70cc8afb3",
+      "project_name": "Overclock",
+      "tracks": [
+        "agents",
+        "games"
+      ],
+      "demo_url": "https://x.com/AlvinAgustus/status/2118703283502227812?a=VjDZY4TkQOGhreHr57c&s=20"
+    },
+    {
+      "id": "99166eec-0a56-40b7-b8dd-7f51759115f3",
+      "project_name": "CartelBreaker",
+      "tracks": [
+        "security",
+        "agents"
+      ],
+      "demo_url": "https://x.com/PKushneryk/status/2118703213226729677"
+    },
+    {
+      "id": "686150b9-35a1-47df-b0fd-20a3c87eed4a",
+      "project_name": "Budget Broker MCP",
+      "tracks": [
+        "security",
+        "agents"
+      ],
+      "demo_url": "https://x.com/dwkim601/status/2118706874971218150"
+    },
+    {
+      "id": "e0f7582b-c257-425d-9f4c-3dea19be71ba",
+      "project_name": "TabWrit",
+      "tracks": [
+        "security",
+        "agents",
+        "realworld"
+      ],
+      "demo_url": "https://x.com/LesnaCrex/status/2118706276091974069"
+    },
+    {
+      "id": "9a4be398-2a3e-45b0-90d4-5adcc565e0f8",
+      "project_name": "DUEL",
+      "tracks": [
+        "security",
+        "games",
+        "social"
+      ],
+      "demo_url": "https://x.com/tajudeen/status/2118711739793408144?a=hJPsuXF1Z6HLEVD1OnU&s=46"
+    },
+    {
+      "id": "99bf6ef4-b3cd-4092-86d6-555cdddd2e43",
+      "project_name": "AEGIS // COUNTERFACTUAL",
+      "tracks": [
+        "security"
+      ],
+      "demo_url": "https://eshaanvgupta.github.io/aegis-counterfactual/"
+    },
+    {
+      "id": "c3811444-35d2-4567-adc1-c93088436716",
+      "project_name": "Relay",
+      "tracks": [
+        "agents"
+      ],
+      "demo_url": "https://x.com/Sammy_Cryptguy/status/2118728427414900809"
+    },
+    {
+      "id": "4a9a7ae0-6943-4a34-b4e3-99198eeee530",
+      "project_name": "Dragons Market",
+      "tracks": [
+        "defi",
+        "swarms",
+        "agents",
+        "nfts",
+        "social"
+      ],
+      "demo_url": "https://x.com/DragonsOnNear/status/2118729901847007494?a=8ZW6jrqwJ4GMEIsZyyM&s=20"
+    },
+    {
+      "id": "ecbdc52c-d6b7-480b-8e56-65e554ede735",
+      "project_name": "Glassbox",
+      "tracks": [
+        "security"
+      ],
+      "demo_url": "https://x.com/Ade_lekeJr/status/2118745431651885226"
+    },
+    {
+      "id": "e7d4c287-3945-4aa6-8b17-f85e0bfe71ce",
+      "project_name": "KAVREN",
+      "tracks": [
+        "security",
+        "agents"
+      ],
+      "demo_url": "https://x.com/_joelad/status/2118745191368511983"
+    },
+    {
+      "id": "e29480a7-0c0e-46da-b577-263a26e549b9",
+      "project_name": "Phylaxtag",
+      "tracks": [
+        "realworld",
+        "nfts",
+        "open"
+      ],
+      "demo_url": "https://x.com/nestarich07/status/2118754817711784305?a=DrUcmBjqTK70kUPXXqg&s=20"
+    },
+    {
+      "id": "13320277-ad5c-44de-bbd0-65c898072ddf",
+      "project_name": "NearPocket",
+      "tracks": [
+        "agents",
+        "realworld"
+      ],
+      "demo_url": "https://x.com/ijustabi/status/2118765599472189523?a=8O_yd538qbr8lFDe_8c&s=19"
+    },
+    {
+      "id": "4151103c-8802-4efc-a552-574373f46228",
+      "project_name": "Milestone Vault",
+      "tracks": [
+        "privacy",
+        "security",
+        "agents",
+        "realworld"
+      ],
+      "demo_url": "https://x.com/t7pkaaa/status/2118777298921136597"
+    },
+    {
+      "id": "92a088fc-9af6-4572-a4a9-f5924a4754c6",
+      "project_name": "Chaperone",
+      "tracks": [
+        "defi",
+        "business",
+        "security",
+        "agents",
+        "realworld"
+      ],
+      "demo_url": "https://x.com/Big14teru/status/2118752617073414491"
+    },
+    {
+      "id": "e2eda711-0154-4560-bcee-2504e4152ac2",
+      "project_name": "SCOGÉ Universe",
+      "tracks": [
+        "games",
+        "nfts",
+        "open"
+      ],
+      "demo_url": "https://www.scoge.world/"
+    },
+    {
+      "id": "a832f6b8-b553-4e63-b996-91c082cc7417",
+      "project_name": "Mandate",
+      "tracks": [
+        "business",
+        "security",
+        "agents"
+      ],
+      "demo_url": "https://x.com/Emmageneris2001/status/2118789509861036061"
+    },
+    {
+      "id": "d8fe089c-2931-4055-84ad-5bd613d45d60",
+      "project_name": "Pull Up",
+      "tracks": [
+        "realworld"
+      ],
+      "demo_url": "https://x.com/trextxxy/status/2118765763851092192"
+    },
+    {
+      "id": "efc90a1e-09d2-4cbb-b216-2fc0b6ca2fac",
+      "project_name": "SafeSpend",
+      "tracks": [
+        "security",
+        "agents"
+      ],
+      "demo_url": "https://x.com/CryptoBurrito/status/2118799142419873800"
+    },
+    {
+      "id": "d9905453-4216-49f9-b100-d6a7268b9ed9",
+      "project_name": "Unpair",
+      "tracks": [
+        "defi",
+        "privacy"
+      ],
+      "demo_url": "https://x.com/Unpairxyz/status/2118804862020300822"
+    },
+    {
+      "id": "8ad3b968-e3ad-47f1-b1a9-b33581f616f6",
+      "project_name": "OneUp",
+      "tracks": [
+        "defi",
+        "agents",
+        "nfts",
+        "open"
+      ],
+      "demo_url": "https://x.com/EthBoi_/status/2118836495641461214"
+    },
+    {
+      "id": "6cf9c090-53ba-4ada-a86a-09824dd98eba",
+      "project_name": "Sealed Dossier",
+      "tracks": [
+        "privacy"
+      ],
+      "demo_url": "https://x.com/archtum66/status/2118844813869187271"
+    },
+    {
+      "id": "18ee7a1b-2985-420e-80fa-9bcc96e536cd",
+      "project_name": "Logen",
+      "tracks": [
+        "nfts",
+        "open"
+      ],
+      "demo_url": "https://x.com/chennl1u/status/2118871692261147135"
+    },
+    {
+      "id": "688b3439-debc-4980-943e-285357ace6f5",
+      "project_name": "NEAR Intents thesis: usage vs value capture",
+      "tracks": [
+        "thesis"
+      ],
+      "demo_url": "https://x.com/Erfanmoheb1373/status/2118871672325296196"
+    },
+    {
+      "id": "4f8d2c31-9e67-4f0a-8c2d-5b1e7a93c044",
+      "project_name": "Outlive",
+      "tracks": [
+        "business",
+        "nfts"
+      ],
+      "demo_url": "https://x.com/olaph_lol/status/2118877859389530222"
+    },
+    {
+      "id": "3c93bf03-e823-4fab-b708-9d067a790162",
+      "project_name": "C0-op",
+      "tracks": [
+        "swarms",
+        "security",
+        "agents"
+      ],
+      "demo_url": "https://x.com/ApexSys_Dev/status/2118893440066830717?a=eQX3tmyPIcRoP5EUBHQ&s=20"
+    },
+    {
+      "id": "5278473e-6acf-40b2-a013-a2ff4236f176",
+      "project_name": "Presafe",
+      "tracks": [
+        "realworld"
+      ],
+      "demo_url": "https://x.com/Ahmardchain/status/2118905952887816627"
+    },
+    {
+      "id": "6a17a2b1-b46b-448e-9d51-5f8f78a96281",
+      "project_name": "SpecLock",
+      "tracks": [
+        "realworld"
+      ],
+      "demo_url": "https://x.com/groziez/status/2118929226779025917"
+    },
+    {
+      "id": "5b9a485e-baae-4ed9-86a4-2bc73cf944a8",
+      "project_name": "Torch",
+      "tracks": [
+        "nfts"
+      ],
+      "demo_url": "https://x.com/BimaJadiva07/status/2118949693963321612"
+    },
+    {
+      "id": "3cbfb04e-1d0d-4407-8bd6-e06f77090106",
+      "project_name": "Bazaar Sovereign",
+      "tracks": [
+        "swarms",
+        "agents",
+        "games",
+        "nfts",
+        "open"
+      ],
+      "demo_url": "https://x.com/ReconScribe/status/2118951990667710788"
+    },
+    {
+      "id": "44b5ae7e-aa92-4927-97e8-e0eabf4cf379",
+      "project_name": "Orbit",
+      "tracks": [
+        "defi"
+      ],
+      "demo_url": "https://x.com/mcgrodeth/status/2118975690808963149?a=0F1cYZKXly03AiPXnPg&s=20"
+    },
+    {
+      "id": "32c18d75-53bb-4f4d-b454-ac784023055d",
+      "project_name": "Safecell",
+      "tracks": [
+        "security",
+        "agents",
+        "open"
+      ],
+      "demo_url": "https://192-248-147-190.sslip.io/"
+    },
+    {
+      "id": "ab25271d-0c98-455d-b88e-a15523066068",
+      "project_name": "Saku: an AI agent's budget, enforced on NEAR",
+      "tracks": [
+        "security",
+        "agents"
+      ],
+      "demo_url": "https://x.com/Gliana_agent/status/2118984586587975724"
+    },
+    {
+      "id": "735b6139-e210-44d2-9a0c-3dd305621d3c",
+      "project_name": "Stashway",
+      "tracks": [
+        "security"
+      ],
+      "demo_url": "https://x.com/meguru_jr/status/2118931451701841951"
+    },
+    {
+      "id": "0fbd89e5-d81e-48ae-8ede-73dac94760c5",
+      "project_name": "Writ",
+      "tracks": [
+        "nfts"
+      ],
+      "demo_url": "https://x.com/Viktor_ella_/status/2119003082897936792"
+    },
+    {
+      "id": "d2db35be-04a2-496c-9585-920c97676f72",
+      "project_name": "Boyun",
+      "tracks": [
+        "privacy",
+        "swarms",
+        "social",
+        "open"
+      ],
+      "demo_url": "https://x.com/QianCherry2102/status/2119005602223444412?a=c-n0X1WxlNcTXaCJBZo&s=20"
+    },
+    {
+      "id": "51323ef0-6cd0-475c-8751-1ab992e1ef01",
+      "project_name": "VeilProof",
+      "tracks": [
+        "privacy",
+        "agents"
+      ],
+      "demo_url": "https://x.com/ritual_meme/status/2119008928684208150"
+    },
+    {
+      "id": "f8ed5c05-2ce8-4599-b263-2384b923797d",
+      "project_name": "Heir",
+      "tracks": [
+        "realworld",
+        "open"
+      ],
+      "demo_url": "https://x.com/peter_obisi/status/2119013176310427661"
+    },
+    {
+      "id": "47cbc85d-6ab2-4d3f-9d91-7cc7e57eb3cf",
+      "project_name": "BEXLEY",
+      "tracks": [
+        "defi",
+        "privacy",
+        "security"
+      ],
+      "demo_url": "https://x.com/IzuchukwuOffia/status/2119026984667984031"
+    },
+    {
+      "id": "7c772095-71d1-4cac-a207-2d4feca6e4ff",
+      "project_name": "Tripwire",
+      "tracks": [
+        "thesis"
+      ],
+      "demo_url": "https://x.com/danielwalter780/status/2118899446003962363"
+    },
+    {
+      "id": "7ddc2d4e-c9ec-4e9d-bf57-c6309930e8ba",
+      "project_name": "NEARlyHuman - AI NPC NFT",
+      "tracks": [
+        "games",
+        "nfts"
+      ],
+      "demo_url": "https://x.com/alphastack1/status/2118877597023269366"
+    },
+    {
+      "id": "5a469ae8-b9ad-4746-a5d6-d4b8445c15aa",
+      "project_name": "ProofAgent AI",
+      "tracks": [
+        "business",
+        "agents"
+      ],
+      "demo_url": "https://x.com/quayycera/status/2119048512784773285"
+    },
+    {
+      "id": "f1b09ee0-bca5-4336-9a0b-8cc6a258cbf1",
+      "project_name": "Agent NFT",
+      "tracks": [
+        "security",
+        "nfts"
+      ],
+      "demo_url": "https://x.com/neqro_61/status/2119053192746942910"
+    },
+    {
+      "id": "6bfd034b-bdf4-41ae-a269-279fc50dc3ec",
+      "project_name": "ArchivePass",
+      "tracks": [
+        "nfts"
+      ],
+      "demo_url": "https://x.com/MAarashAlijo/status/2119056656256598343"
+    },
+    {
+      "id": "e20ab0f1-86d0-438b-bd77-0859ffb3b934",
+      "project_name": "AllTogether",
+      "tracks": [
+        "social"
+      ],
+      "demo_url": "https://x.com/MAarashAlijo/status/2119059717540712799"
+    },
+    {
+      "id": "2a3c4c07-a62a-4b84-ae21-a77b3fd42e06",
+      "project_name": "Safe Near",
+      "tracks": [
+        "security"
+      ],
+      "demo_url": "https://x.com/Raphael_Hoang/status/2118583687944269929?a=W6rNCoEfh7mPmeZSbxw&s=20"
+    },
+    {
+      "id": "01d2b5be-1787-4ab8-9536-787fdd5b9d16",
+      "project_name": "Supply",
+      "tracks": [
+        "privacy",
+        "realworld"
+      ],
+      "demo_url": "https://x.com/moltycarlo/status/2119059565153325080"
+    },
+    {
+      "id": "f0dc8734-b89a-4a8a-a94a-47220007bb2b",
+      "project_name": "Agent-Receipt",
+      "tracks": [
+        "business",
+        "security",
+        "agents"
+      ],
+      "demo_url": "https://x.com/ghulerushi14/status/2119075984393875695"
+    },
+    {
+      "id": "9f4b3e21-8c74-4d2a-b81e-6c905e3a7104",
+      "project_name": "GhostShift",
+      "tracks": [
+        "privacy",
+        "business",
+        "swarms",
+        "security",
+        "agents",
+        "open"
+      ],
+      "demo_url": "https://x.com/GGGODLIN/status/2119075686073979332"
+    },
+    {
+      "id": "82878626-d007-4202-bbd8-bdc6305c7156",
+      "project_name": "Kinwarden",
+      "tracks": [
+        "privacy",
+        "security",
+        "agents",
+        "realworld"
+      ],
+      "demo_url": "https://kinwarden.duckdns.org/"
+    },
+    {
+      "id": "409c8751-d703-4eff-a8c4-f6a42a2a99b7",
+      "project_name": ".Leash",
+      "tracks": [
+        "security"
+      ],
+      "demo_url": "https://x.com/frank_olien123/status/2119056537633112461?a=WQYs47E6FU0zadKywgA&s=20"
+    },
+    {
+      "id": "0fdc3944-7e09-4607-a08a-2590472db1ea",
+      "project_name": "Meridian",
+      "tracks": [
+        "swarms",
+        "agents",
+        "games",
+        "nfts",
+        "memecoins",
+        "social"
+      ],
+      "demo_url": "https://x.com/meridiantown/status/2119084569102045318"
+    },
+    {
+      "id": "438e5163-d314-44c0-9fcc-42d177d0718d",
+      "project_name": "Sealed Ledger",
+      "tracks": [
+        "privacy"
+      ],
+      "demo_url": "https://x.com/0_x_0_0_0/status/2119101579794256070"
+    },
+    {
+      "id": "b9dbbfb9-6c08-4651-bed2-ac657ae12164",
+      "project_name": "DeepSea Hunter",
+      "tracks": [
+        "games",
+        "nfts"
+      ],
+      "demo_url": "https://x.com/jarwono4444/status/2119110986749853943"
+    },
+    {
+      "id": "f1605e5a-23ce-4b4f-9985-c10079441806",
+      "project_name": "Blast Radius Zero — Agent Wallet Edition",
+      "tracks": [
+        "security"
+      ],
+      "demo_url": "https://x.com/3rsona/status/2118345921692127594"
+    },
+    {
+      "id": "52131336-6eac-4599-bd2d-2dc3cd93cd7b",
+      "project_name": "AgentPay AI",
+      "tracks": [
+        "agents"
+      ],
+      "demo_url": "https://x.com/BuleZari/status/2119111781289267371?a=gas3Tyo1B8mSCPKJ7Yg&s=20"
+    },
+    {
+      "id": "f6bd2d41-873e-4b16-90a7-8500590c8051",
+      "project_name": "Realsies",
+      "tracks": [
+        "privacy",
+        "games",
+        "memecoins"
+      ],
+      "demo_url": "https://x.com/realsieslol/status/2118619797596541027"
+    },
+    {
+      "id": "c1705e3d-260d-41c1-9370-3cd561c6a920",
+      "project_name": "Leash",
+      "tracks": [
+        "security"
+      ],
+      "demo_url": "https://x.com/peper1zal/status/2119141161692811526"
+    },
+    {
+      "id": "d3bb0acb-0529-4c30-9955-ba1de0f62567",
+      "project_name": "TAINT",
+      "tracks": [
+        "privacy",
+        "security",
+        "realworld"
+      ],
+      "demo_url": "https://x.com/HollowEchoes_23/status/2119142869860856123?a=3BhVmvqD_hJ-09XXzg8&s=20"
+    },
+    {
+      "id": "fc7ad669-fe67-48e1-b82d-c9f8efdb20c0",
+      "project_name": "NEARShield – AI-Powered Traffic Attack Detection",
+      "tracks": [
+        "security"
+      ],
+      "demo_url": "https://x.com/prathameshjknc/status/2119149208351711679?a=1bTcjsbT1kRfyckdfKg&s=20"
+    },
+    {
+      "id": "b53437ab-0092-48e0-9a0a-d1fc2d66f545",
+      "project_name": "Lockstep",
+      "tracks": [
+        "realworld",
+        "social"
+      ],
+      "demo_url": "https://x.com/Marc_Dvci/status/2119151556457316391"
+    },
+    {
+      "id": "a07b9397-00d2-4114-923c-b3121dceafc7",
+      "project_name": "OATH",
+      "tracks": [
+        "memecoins"
+      ],
+      "demo_url": "https://x.com/OpeyemiBolatit1/status/2118986219585441920?a=1cCc1ZFCF5iXKo-Y6Aw&s=19"
+    },
+    {
+      "id": "eaab06b8-2ec0-41d5-ab11-be1d4cc37f0f",
+      "project_name": "AL-AMANAH FORTRESS",
+      "tracks": [
+        "security",
+        "agents"
+      ],
+      "demo_url": "https://x.com/ssifi1972/status/198..."
+    },
+    {
+      "id": "dcdde902-6fe8-4634-9668-fd0ce223ab97",
+      "project_name": "TokenGo",
+      "tracks": [
+        "games"
+      ],
+      "demo_url": "https://x.com/r4b1nj0i3/status/2119186356325015735"
+    },
+    {
+      "id": "885b6c2e-565c-480d-8691-ac431ab6afce",
+      "project_name": "Public Agent Coin (PAC)",
+      "tracks": [
+        "agents",
+        "memecoins"
+      ],
+      "demo_url": "https://x.com/PAC_agent/status/2119183302061850925"
+    },
+    {
+      "id": "6ce4fa90-8531-475f-ae45-ff1ca2fe0bbe",
+      "project_name": "NEAR Payment Guard",
+      "tracks": [
+        "security",
+        "agents"
+      ],
+      "demo_url": "https://x.com/chainwardai/status/2119196519853330585"
+    },
+    {
+      "id": "655ccb07-9788-4b73-9f5c-5f376c05f72f",
+      "project_name": "Undiluted",
+      "tracks": [
+        "privacy",
+        "business",
+        "realworld",
+        "open"
+      ],
+      "demo_url": "https://x.com/elioz404/status/2119207538503897177?a=kYKlLWE5zVhK06E5DEY&s=20"
+    },
+    {
+      "id": "fa54da13-e260-4391-ad42-937e28fa2031",
+      "project_name": "777 giros gratis",
+      "tracks": [
+        "defi",
+        "thesis",
+        "agents",
+        "realworld",
+        "games",
+        "memecoins",
+        "social",
+        "open"
+      ],
+      "demo_url": "https://afun.mx/?ch=430696"
+    },
+    {
+      "id": "2b198e26-7589-45a4-b6d9-0c838c248657",
+      "project_name": "Clear to Pay",
+      "tracks": [
+        "privacy",
+        "business",
+        "agents",
+        "realworld"
+      ],
+      "demo_url": "https://x.com/joezzyweb3/status/2119220897345122339"
+    },
+    {
+      "id": "40a5c9de-69dc-4f11-9973-b9c045eec2e3",
+      "project_name": "NEAR Replay Lab",
+      "tracks": [
+        "security"
+      ],
+      "demo_url": "https://x.com/grasserfa/status/2119228922361741408"
+    },
+    {
+      "id": "56da0783-da22-446f-9ebe-4b49a6c88d00",
+      "project_name": "OneShot",
+      "tracks": [
+        "defi",
+        "security"
+      ],
+      "demo_url": "https://x.com/Jrken_ny/status/2119238568308772936"
+    },
+    {
+      "id": "1f42c89b-67d7-4cf5-ad15-77d5eb9893c7",
+      "project_name": "Setoff",
+      "tracks": [
+        "realworld",
+        "open"
+      ],
+      "demo_url": "https://x.com/elioz404/status/2119265125425095107"
+    },
+    {
+      "id": "e4a1b9c2-5f38-4d67-9a81-2c4e7b8d9012",
+      "project_name": "Afterlight",
+      "tracks": [
+        "games",
+        "nfts"
+      ],
+      "demo_url": "https://x.com/GGGODLIN/status/2119268196062798316"
+    },
+    {
+      "id": "c1c7b574-850a-4f47-9af9-22a49339df07",
+      "project_name": "Grind District",
+      "tracks": [
+        "games"
+      ],
+      "demo_url": "https://x.com/0xarewah/status/2119301193100837169?a=9KguSWBHILcqWoQSBhk&s=19"
+    },
+    {
+      "id": "c94136e5-eaeb-4cb1-94ea-a71cfe5f11d0",
+      "project_name": "SETTLENEAR",
+      "tracks": [
+        "defi",
+        "business",
+        "swarms",
+        "agents"
+      ],
+      "demo_url": "https://x.com/folarihn/status/2119153070051295422?a=FBTpIvaAedWbLDymWJk&s=20"
+    },
+    {
+      "id": "50e6a343-ca00-4423-95a9-88d2ba74a4ac",
+      "project_name": "Pelargo",
+      "tracks": [
+        "realworld"
+      ],
+      "demo_url": "https://x.com/maxlensherr/status/2119318538456293558?s=46"
+    }
+  ]
+}

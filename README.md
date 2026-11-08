@@ -9,9 +9,10 @@ page, one-account-one-upvote, and threaded discussion — with every project rec
 open, versioned JSON on NEAR itself, and a read-only API that lets AI agents discover
 projects without browser automation.
 
-> **Status: Phase 0 complete.** The storage architecture is proven on testnet — project records
-> are written as FastData KV to an account we control and read back from a public API, with no
-> smart contract. Phase 1 (human MVP) is next. See [`docs/phase-0-spike.md`](docs/phase-0-spike.md).
+> **Status: data layer live on mainnet.** All 271 NEAR Hackathon submissions are stored as
+> `nearhunt/project/1` records under `nearhunt.near` — two transactions, no smart contract,
+> verified readable 271/271 through the public FastData indexer. The web app is next.
+> See [`docs/phase-0-spike.md`](docs/phase-0-spike.md) and [`schema/`](schema/).
 
 ---
 
@@ -65,10 +66,28 @@ docs/
   PRD.md                     product requirements (v0.2)
   phase-0-spike.md           the storage spike: what was executed and what it proved
   research/                  verified platform findings, with evidence
+schema/
+  nearhunt-project-1.schema.json   the canonical project record, JSON Schema 2020-12
+  README.md                        how to read records from chain, and the rules
+types/
+  nearhunt.ts                TypeScript mirrors of the record and the KV envelope
+scripts/
+  import.mjs                 hackathon feed → on-chain project records (dry-run by default)
+  validate-schema.mjs        every live record against the schema, plus key/id invariants
+data/
+  submissions-snapshot.json  the source feed as read on 2026-11-08, for provenance
 ```
 
-Application code will appear once the Phase 0 spike passes (or the documented fallback is
-chosen).
+Run it:
+
+```bash
+npm install
+node scripts/import.mjs                 # dry run: fetch, shape, report — writes nothing
+node scripts/import.mjs --execute       # sign and broadcast (needs ~/.near-credentials)
+npm run validate:schema                 # verify every record already on chain
+```
+
+The data layer is live; the web app (`web/`) is the next thing to be built against it.
 
 ## Related project — Baby Shark
 
