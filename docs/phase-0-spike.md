@@ -113,6 +113,34 @@ project**. Creating those 271 posts from a single account would:
 Writing votes into NEAR Hunt's own namespace avoids all three, costs one 1-Ggas transaction per
 vote, and keeps the canonical record self-contained.
 
+### Vote primitive — tested
+
+Three writes against the same project, from two accounts, one of them repeated:
+
+```bash
+near contract call-function as-transaction $NS __fastdata_kv \
+  json-args '{"vote/probe-1/board3.metapoo-player1.testnet":{}}' … sign-as board3…   # vote 1
+near contract call-function as-transaction $NS __fastdata_kv \
+  json-args '{"vote/probe-1/board1.metapoo-player3.testnet":{}}' … sign-as board1…   # vote 2
+near contract call-function as-transaction $NS __fastdata_kv \
+  json-args '{"vote/probe-1/board3.metapoo-player1.testnet":{}}' … sign-as board3…   # duplicate
+```
+
+```json
+{"entries":[
+  {"predecessor_id":"board1.metapoo-player3.testnet","key":"vote/probe-1/board1.metapoo-player3.testnet","value":{}},
+  {"predecessor_id":"board3.metapoo-player1.testnet","key":"vote/probe-1/board3.metapoo-player1.testnet","value":{}}
+]}
+```
+
+**Three writes produced two votes.** The duplicate overwrote its own key (last-write-wins), so a
+repeated vote is physically incapable of inflating a count — no server-side deduplication, no
+counter that can drift. The author appears as `predecessor_id` and is also embedded in the key,
+so a tally is a `key_prefix` scan with no join.
+
+Un-voting is `{"vote/{project_id}/{voter}": null}` — a tombstone, which the "latest" endpoint
+reports as `value: null` and which must be filtered when counting.
+
 **Recommendation:** votes and project records live in the NEAR Hunt namespace. Reserve
 near.social for **discussion**, where its identity, threading and reach are genuinely
 irreplaceable — and create a project's social post **lazily, on the first comment**, so the

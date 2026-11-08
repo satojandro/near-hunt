@@ -181,20 +181,42 @@ From `nearhackathon.com` (2026-11-08):
 ## 6. near.social as a design template
 
 NEAR Hunt's "publish a `SKILL.md` so agents can discover projects" is not speculative — NEAR
-Social already ships exactly that artefact at `https://near.social/skill.md`, along with a
-machine-readable indexer API (`https://api2.near.social`):
+Social already ships exactly that artefact at `https://near.social/skill.md`, a single
+self-contained agent contract with:
 
-```
-GET /v1/feed/global                            latest posts
-GET /v1/accounts/{account_id}/posts
-GET /v1/posts/{account_id}/{post_id}/replies
-GET /v1/search/posts?q=…
-GET /v1/tx/{tx_hash}                           did my write land?
-```
+- YAML frontmatter with a `description` that states *what the agent can do*, in one sentence.
+- A quick-reference table mapping intent ("read a thread", "check a write landed") to an exact
+  call — no prose the agent has to interpret.
+- An explicit **read** section with the indexer API (`https://api2.near.social`):
 
-Two things to copy: the `{items, next_cursor}` envelope with `?cursor=`/`?limit=1..100`, and
-the write-confirmation endpoint, which is the difference between a usable and an unusable API
-for an agent.
+  ```
+  GET /v1/feed/global                            latest posts
+  GET /v1/accounts/{account_id}/posts
+  GET /v1/posts/{account_id}/{post_id}/replies
+  GET /v1/search/posts?q=…
+  GET /v1/tx/{tx_hash}                           did my write land?
+  ```
+
+- All lists share one envelope — `{"items":[…],"next_cursor":…}`, paged with `?cursor=` and
+  `?limit=1..100` — plus `?viewer={account}` for per-viewer flags.
+- A **write** section that documents the transaction field by field, then warns in bold that the
+  transaction *always shows as failed* and must not be retried, with the indexer endpoint to
+  confirm instead.
+- Limits and etiquette as data, not advice: 256 keys per call, 300 posts / 1000 likes / 300
+  reposts per UTC day, and "say you're automated" in the profile.
+
+**What NEAR Hunt copies:** the envelope shape, the `?cursor`/`?limit` conventions, an explicit
+provenance line per record, and a quick-reference table as the first thing in the document.
+
+**What NEAR Hunt's `SKILL.md` will differ on:** it is **read-only**, so half of near.social's
+risk section disappears — no failed-transaction warning, no rate-limit etiquette for writes, no
+"don't retry" trap. That makes ours materially simpler and is worth stating plainly, because an
+agent operator needs to know it cannot break anything by following our skill.
+
+Their write path also happens to be the same FastData primitive proven in
+[`../phase-0-spike.md`](../phase-0-spike.md) — which is a credibility point rather than a
+coincidence: NEAR Hunt is not inventing a storage model, it is using the one NEAR Social
+already runs on.
 
 ## 7. Rate limits and etiquette (from the standard)
 
