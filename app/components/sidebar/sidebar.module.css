@@ -1,0 +1,61 @@
+/* Directory sidebar (mockup board 1, right-hand aside). Fluid width: the page controls layout. */
+.stack { display: flex; flex-direction: column; gap: 16px; min-width: 0; width: 100%; }
+
+.card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-card);
+  padding: 18px; min-width: 0; overflow-wrap: anywhere;
+}
+.cardDark { background: var(--text); border-color: var(--text); color: #FFFFFF; }
+
+.head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 12px; }
+.title { margin: 0; font-family: var(--font-display); font-size: 17px; font-weight: 600; line-height: 1.3; }
+.tagLink { font-size: 13px; color: var(--social); white-space: nowrap; }
+.tagLink:hover { color: var(--social); }
+
+/* Live on near.social */
+.feed { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
+.post { display: flex; gap: 10px; min-width: 0; }
+.avatar {
+  width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0; object-fit: cover;
+  background: #EAF0FC; color: var(--social); font-weight: 600; font-size: 13px;
+  display: flex; align-items: center; justify-content: center;
+}
+.postBody { min-width: 0; flex: 1 1 auto; font-size: 14px; line-height: 1.45; }
+.meta { display: flex; align-items: baseline; gap: 6px; min-width: 0; }
+.name { font-weight: 600; flex: 0 0 auto; max-width: 65%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.account { color: var(--text-muted); font-size: 13px; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 0 1 auto; }
+.time { color: var(--text-muted); font-size: 13px; white-space: nowrap; flex-shrink: 0; }
+.time::before { content: '·'; margin-right: 6px; }
+.excerpt {
+  display: block; margin: 2px 0 0; color: var(--text-chip); text-decoration: none; overflow-wrap: anywhere;
+}
+.excerpt:hover { color: var(--text); text-decoration: underline; }
+
+.note { margin: 0; font-size: 14px; line-height: 1.5; color: var(--text-muted); }
+.alert {
+  margin: 0; background: #FDF0E4; color: #7A3800; border-radius: var(--radius); padding: 12px;
+  font-size: 14px; line-height: 1.5;
+}
+.more { display: inline-block; margin-top: 12px; font-size: 14px; font-weight: 600; color: var(--social); }
+.more:hover { color: var(--social); }
+
+/* How it works on NEAR */
+.steps {
+  margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 10px;
+  font-size: 14px; line-height: 1.5; color: #D5DAE1;
+}
+.steps strong { color: #FFFFFF; font-weight: 600; }
+.code {
+  display: block; margin-top: 12px; border-radius: 8px; padding: 10px; font-size: 12.5px; line-height: 1.45;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; overflow-wrap: anywhere;
+  background: var(--bg); color: var(--text);
+}
+.cardDark .code { background: rgba(255, 255, 255, 0.08); color: #E8ECF1; }
+
+/* Built for agents */
+.badge {
+  font-size: 12px; font-weight: 600; color: var(--text-chip); background: var(--surface-muted);
+  border-radius: 999px; padding: 2px 10px; white-space: nowrap;
+}
+.body { margin: 0; font-size: 14px; line-height: 1.5; color: var(--text-muted); }
+.body + .body { margin-top: 8px; }
