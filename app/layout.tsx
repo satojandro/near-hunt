@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Inter, Space_Grotesk } from 'next/font/google';
 import WalletProvider from '@/app/components/wallet/WalletProvider';
 import ConnectButton from '@/app/components/wallet/ConnectButton';
+import SiteNav from '@/app/components/SiteNav';
 import { NETWORK, VOTE_ACCOUNT } from '@/lib/network.mjs';
 import './globals.css';
 
@@ -33,9 +34,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 </span>
                 <span className="brand-name">NEAR Hunt</span>
               </Link>
-              <nav className="site-nav" aria-label="Main">
-                <Link href="/">Projects</Link>
-              </nav>
+              <SiteNav />
               <span className="header-spacer" />
               <ConnectButton />
             </div>
