@@ -252,6 +252,39 @@ infrastructure — the remaining work is the server-side posting path itself.
 
 ### Board 4 — Open data and agents · Day 4
 
+**Status (8 Nov, by Claude, on `claude/wizardly-lamport-w9jaba`):** NH-60, NH-61, NH-62 and NH-64
+are built. NH-63 has one of its two runs. The shared API shape is in
+[`api-contract-day4.md`](api-contract-day4.md). Read-only: nothing was signed or written.
+
+```bash
+npm test                  # 213 pass, 0 fail (17 new in test/api.test.mjs)
+npm run typecheck         # exit 0
+npm run build             # adds ƒ /open-data and ƒ /api/projects, /[id], /[id]/votes, /[id]/discussion
+npm run validate:schema   # 281 records, all conform to nearhunt/project/1
+node scripts/import.mjs   # 29 new (feed 310), 0 changed, 281 unchanged — pending approval, not part of Day 4
+```
+
+- **NH-60:** on a local `next start` against mainnet, `/api/projects?limit=100` pages 100 + 100 + 81 = 281
+  and ends with `next_cursor:null`. `/votes` for Aegis returns `alejandro.near` at block 223,642,127.
+  An unknown id returns 404 `not_found`, and `limit=0` or a bad cursor returns 400. Choices the contract
+  left open are listed in the contract file's commit (`d2ff086`). The main ones: there is no
+  "discussed" sort, an unknown track returns an empty list, and a failed vote read gives `votes:null`.
+  `/discussion` is empty for every project until NH-40 posts exist.
+- **NH-61:** `/SKILL.md` serves `text/markdown`. Its direct-to-chain curls were run against mainnet.
+- **NH-62 and NH-64:** `/open-data` shows live dataset values (281 records, 258 KB, 10 distinct
+  block heights) and links the draft proposal. It was checked at 1280 px and 390 px, with no
+  horizontal scroll at 390 px. An "Open data" nav link was added, but `globals.css` hides
+  `.site-nav` at ≤640 px, so phones don't see it (true of "Projects" too).
+- **NH-63 run 1 (a fresh Claude agent, URL only):** it shortlisted ten from 4 HTTP requests and
+  checked 2 records and 1 vote on chain against the API. Output:
+  [`agent-tests/2026-11-08-nh-63-claude-shortlist.md`](agent-tests/2026-11-08-nh-63-claude-shortlist.md).
+  Its feedback was applied to SKILL.md: the stale "no votes" line, `demo_url` is usually the X post
+  (real links are in `links`), near-duplicate submissions, the vote value, and where
+  `repository_url` comes from. **Still open: the Hermes run against the deployed site.**
+- Found, not fixed: `block_timestamp` (ns) exceeds 2^53 and loses precision in JSON; SKILL.md
+  says to use `block_height`. The schema README's "Cost of the whole dataset" still says 275
+  records / 128,270 bytes.
+
 | ID | P | Item |
 |---|---|---|
 | NH-60 | P0 | `GET /api/projects`, `/api/projects/{id}`, `/votes`, `/discussion`, using the `{items, next_cursor}` envelope |

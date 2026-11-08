@@ -159,8 +159,10 @@ Accounts that upvoted, latest vote first. `limit` and `cursor` as above.
 }
 ```
 
-`account_id` is the account that signed the vote (the row's `predecessor_id`). On 8 Nov 2026 no
-mainnet project had a vote yet, so expect `items: []` early on. Unlike the project list, this
+`account_id` is the account that signed the vote (the row's `predecessor_id`). On chain a vote is
+the row `vote/{id}` with value `{}` (any JSON object) for an active vote and `null` once withdrawn;
+the API already drops withdrawn votes. Votes are sparse early on (on 8 Nov 2026 one project had
+one vote), so expect `items: []` for most projects. Unlike the project list, this
 route answers `503 unavailable` when the vote rows cannot be read.
 
 ### `GET /api/projects/{id}/discussion`
@@ -228,8 +230,11 @@ These rules hold whether you use the API or read the chain yourself.
    verbatim (t.co links and leading @mentions removed), with the post URL in `enrichment.sources`
    or `description_source`. It is not written or summarised by NEAR Hunt. Quote it as the
    builder's claim, not as a verified fact.
-8. **`repository_url` is set only when verified.** It is filled only when the builder linked the
-   repository and it answered `git ls-remote` at the time. It is never guessed from a project name.
+8. **`repository_url` comes from the builder, never from a guess.** Either the builder supplied it
+   in the hackathon submission (then `enrichment.fields` does not list it), or the builder linked
+   it in their own X post and it answered `git ls-remote` when NEAR Hunt read it (then
+   `enrichment.fields` lists `repository_url` and `repository_source` holds the post). It is never
+   guessed from a project name.
    `null` means unknown; do not go looking for a "probable" repo and present it as theirs.
 9. **The schema is `nearhunt/project/1`.** Check `schema` before reading other fields. The JSON
    Schema is in the [NEAR Hunt repository](https://github.com/satojandro/near-hunt/blob/main/schema/README.md).
@@ -322,11 +327,18 @@ No rate limit is published, and none is promised. Be modest anyway:
    `fetched_at` time in your answer.
 2. If the person named an interest, filter by `track` or `q` (or both) instead of fetching
    everything.
-3. Score with what the records actually say. Reasonable signals: a non-null `repository_url`
-   (verified to exist), a non-null `description` (the builder explained it), a `demo_url`, and
-   `votes` (community interest; treat `null` as unknown, not zero). Do not reward or punish a
-   project for a field that is merely `null`, beyond noting it is unknown.
-4. Pick ten, spread across tracks unless the person asked for one.
+3. Score with what the records actually say. Reasonable signals: a non-null `repository_url`,
+   a non-null `description` (the builder explained it), and `votes` (community interest; treat
+   `null` as unknown, not zero). Do not reward or punish a project for a field that is merely
+   `null`, beyond noting it is unknown. Know the data's quirks:
+   - `demo_url` is almost always the builder's X submission post, not an app. Real app, video or
+     site links, when the builder posted any, are in the extra `links` array (`[{url,
+     source_post_id}]`). They are copied from the post as written, so some are bare domains or
+     truncated; treat them as leads, not verified demos.
+   - Early in the event almost every project has 0 votes, so votes rarely separate projects.
+4. Pick ten, spread across tracks unless the person asked for one. Many submissions share an idea
+   (dozens are "spending limits for an AI agent's wallet"); compare descriptions and avoid
+   shortlisting near-duplicates unless the person wants that theme.
 5. For each, give: name, tracks, one line in your own words based on the `description` (and say
    it is the builder's description), why it made the list, and links to `url` and, if present,
    `repository_url` and `demo_url`.
@@ -348,10 +360,10 @@ while :; do
 done
 jq -s 'map(. + {score: ((if .repository_url then 2 else 0 end)
                        + (if .description then 1 else 0 end)
-                       + (if .demo_url then 1 else 0 end)
+                       + (if (.links // []) | length > 0 then 1 else 0 end)
                        + ((.votes // 0) / 5))})
        | sort_by(-.score) | .[:10]
-       | map({name, tracks, votes, url, repository_url, demo_url})' projects.jsonl
+       | map({name, tracks, votes, url, repository_url, demo_url, links: [.links[]?.url]})' projects.jsonl
 ```
 
 The weights are an example, not a ranking NEAR Hunt endorses. Explain the ones you use.
