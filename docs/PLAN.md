@@ -129,6 +129,22 @@ Notes from building it, with the evidence in the commit messages:
 - The `web/` placeholder was retired in the merge; its source stays in history at `4e0b5af`.
   Production now serves the Next app at `near-hunt.vercel.app`.
 
+### Record enrichment — NH-95 (policy decided 8 Nov)
+
+**Owner decision:** publish the builder's own X-post text **verbatim** as the project's
+`description` (the "About" card), and a repository URL **only when it answers `git ls-remote`** at
+proposal time. No AI rewriting, no repository guessed from a name. Sources are stored on the record
+(`description_source`, `repository_source`, `enrichment.sources`); a builder can ask for removal and
+the owner rewrites the record.
+
+**Status:** proposal generated, nothing written. `node scripts/enrich.mjs --threads
+data/enrichment/threads.json` reads 275 records and 86 captured threads and proposes **260
+descriptions, 97 verified repositories and 109 link sets** (1 repository dropped after failing the
+liveness check). Applying it is a separately approved write:
+`node scripts/import.mjs --enrichment data/enrichment/proposal.json` — as of 8 Nov that is 5 new +
+260 changed records, **265 keys, 261,743 bytes, 5 transactions**. Rerun `enrich.mjs` after the
+feed catch-up so the newest submissions are included.
+
 ### Board 1 — Directory (home) · Day 1
 
 **Status: done 8 Nov** — NH-10–NH-16 are on `main`; evidence in the Day 1 status block above.

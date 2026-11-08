@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-11-08T10:29:11.060Z",
+  "generated_at": "2026-11-08T10:41:29.051Z",
   "account": "nearhunt.near",
   "summary": {
     "projects": 275,
     "ok": 260,
     "with_description": 260,
-    "with_repository": 98,
+    "with_repository": 97,
     "with_links": 109,
     "by_status": {
       "post-unavailable": 3,
@@ -36,8 +36,10 @@
         "sources": [
           "https://x.com/Dark_ernity/status/2118026602626122151"
         ],
-        "retrieved_at": "2026-11-08T10:28:16.874Z"
-      }
+        "retrieved_at": "2026-11-08T10:40:28.157Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "018eac07-b635-43fb-85c8-b2b7b2633e1e",
@@ -55,7 +57,7 @@
         "sources": [
           "https://x.com/SDesigan84042/status/2118441897190412687"
         ],
-        "retrieved_at": "2026-11-08T10:28:17.178Z"
+        "retrieved_at": "2026-11-08T10:40:28.465Z"
       }
     },
     {
@@ -79,8 +81,10 @@
         "sources": [
           "https://x.com/madebydevx/status/2117086445022449735"
         ],
-        "retrieved_at": "2026-11-08T10:28:17.480Z"
-      }
+        "retrieved_at": "2026-11-08T10:40:28.769Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "01d2b5be-1787-4ab8-9536-787fdd5b9d16",
@@ -98,8 +102,10 @@
         "sources": [
           "https://x.com/moltycarlo/status/2119059565153325080"
         ],
-        "retrieved_at": "2026-11-08T10:28:17.783Z"
-      }
+        "retrieved_at": "2026-11-08T10:40:29.073Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "0328a53c-46b1-4ae4-a6be-c802af786094",
@@ -122,7 +128,7 @@
         "sources": [
           "https://x.com/nauvalennn/status/2119344904950481328"
         ],
-        "retrieved_at": "2026-11-08T10:28:18.085Z"
+        "retrieved_at": "2026-11-08T10:40:29.376Z"
       }
     },
     {
@@ -141,8 +147,10 @@
         "sources": [
           "https://x.com/Surs51/status/2118108935110668386"
         ],
-        "retrieved_at": "2026-11-08T10:28:18.388Z"
-      }
+        "retrieved_at": "2026-11-08T10:40:29.679Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "0465d387-401d-41fc-909b-fc1863a2bb56",
@@ -160,7 +168,7 @@
         "sources": [
           "https://x.com/Ade_lekeJr/status/2118621896375730424"
         ],
-        "retrieved_at": "2026-11-08T10:28:18.693Z"
+        "retrieved_at": "2026-11-08T10:40:29.983Z"
       }
     },
     {
@@ -179,7 +187,7 @@
         "sources": [
           "https://x.com/necklace_btc/status/2118430392734888088"
         ],
-        "retrieved_at": "2026-11-08T10:28:18.695Z"
+        "retrieved_at": "2026-11-08T10:40:29.985Z"
       }
     },
     {
@@ -203,7 +211,7 @@
         "sources": [
           "https://x.com/mr_ghdc/status/2116851596596564385"
         ],
-        "retrieved_at": "2026-11-08T10:28:18.997Z"
+        "retrieved_at": "2026-11-08T10:40:30.289Z"
       }
     },
     {
@@ -227,8 +235,10 @@
         "sources": [
           "https://x.com/DavidHu178488/status/2116915410562125962"
         ],
-        "retrieved_at": "2026-11-08T10:28:19.300Z"
-      }
+        "retrieved_at": "2026-11-08T10:40:30.593Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "06deb0b5-807d-420a-9c8a-88a6884f0c10",
@@ -255,7 +265,7 @@
         "sources": [
           "https://x.com/ArashRahmani696/status/2117998501183267267"
         ],
-        "retrieved_at": "2026-11-08T10:28:19.602Z"
+        "retrieved_at": "2026-11-08T10:40:30.896Z"
       }
     },
     {
@@ -278,7 +288,7 @@
         "sources": [
           "https://x.com/TensorustAI/status/2116926310991716394"
         ],
-        "retrieved_at": "2026-11-08T10:28:19.905Z"
+        "retrieved_at": "2026-11-08T10:40:31.198Z"
       }
     },
     {
@@ -297,8 +307,10 @@
         "sources": [
           "https://x.com/mawidjaya_157/status/2117510379358302540"
         ],
-        "retrieved_at": "2026-11-08T10:28:20.206Z"
-      }
+        "retrieved_at": "2026-11-08T10:40:31.502Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "0de1795d-ae29-4b29-8289-09dd6ceb98ba",
@@ -316,8 +328,10 @@
         "sources": [
           "https://x.com/minotorXBT/status/2117176009938374795"
         ],
-        "retrieved_at": "2026-11-08T10:28:20.508Z"
-      }
+        "retrieved_at": "2026-11-08T10:40:31.806Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "0f2e3793-1498-4517-a539-e26b994c2e29",
@@ -335,8 +349,10 @@
         "sources": [
           "https://x.com/stratton001/status/2118647736467632169"
         ],
-        "retrieved_at": "2026-11-08T10:28:20.810Z"
-      }
+        "retrieved_at": "2026-11-08T10:40:32.109Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "0fbd89e5-d81e-48ae-8ede-73dac94760c5",
@@ -354,7 +370,7 @@
         "sources": [
           "https://x.com/Viktor_ella_/status/2119003082897936792"
         ],
-        "retrieved_at": "2026-11-08T10:28:20.810Z"
+        "retrieved_at": "2026-11-08T10:40:32.110Z"
       }
     },
     {
@@ -379,8 +395,10 @@
           "https://x.com/meridiantown/status/2119062642270830924",
           "https://x.com/meridiantown/status/2119084569102045318"
         ],
-        "retrieved_at": "2026-11-08T10:28:21.112Z"
-      }
+        "retrieved_at": "2026-11-08T10:40:32.414Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "11146863-2476-4490-8414-dae2119efc46",
@@ -398,7 +416,7 @@
         "sources": [
           "https://x.com/0x_valid/status/2118602765060489378"
         ],
-        "retrieved_at": "2026-11-08T10:28:21.414Z"
+        "retrieved_at": "2026-11-08T10:40:32.718Z"
       }
     },
     {
@@ -417,7 +435,7 @@
         "sources": [
           "https://x.com/privateDAOOS/status/2108681687986995364"
         ],
-        "retrieved_at": "2026-11-08T10:28:21.415Z"
+        "retrieved_at": "2026-11-08T10:40:32.718Z"
       }
     },
     {
@@ -441,8 +459,10 @@
         "sources": [
           "https://x.com/AlvinAgustus/status/2118703283502227812"
         ],
-        "retrieved_at": "2026-11-08T10:28:21.416Z"
-      }
+        "retrieved_at": "2026-11-08T10:40:32.719Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "13320277-ad5c-44de-bbd0-65c898072ddf",
@@ -465,8 +485,10 @@
         "sources": [
           "https://x.com/ijustabi/status/2118765599472189523"
         ],
-        "retrieved_at": "2026-11-08T10:28:21.418Z"
-      }
+        "retrieved_at": "2026-11-08T10:40:32.719Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "14c70946-d8de-4fed-8fc6-739886447220",
@@ -489,8 +511,10 @@
         "sources": [
           "https://x.com/DavidHu178488/status/2116915586261557492"
         ],
-        "retrieved_at": "2026-11-08T10:28:21.419Z"
-      }
+        "retrieved_at": "2026-11-08T10:40:32.720Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "1715bb6b-148f-46f3-980b-459b06f6ca2e",
@@ -508,7 +532,7 @@
         "sources": [
           "https://x.com/Rextropovich/status/2115458380491882998"
         ],
-        "retrieved_at": "2026-11-08T10:28:21.721Z"
+        "retrieved_at": "2026-11-08T10:40:33.023Z"
       }
     },
     {
@@ -527,7 +551,7 @@
         "sources": [
           "https://x.com/NathanOyewole/status/2116976865646653840"
         ],
-        "retrieved_at": "2026-11-08T10:28:22.022Z"
+        "retrieved_at": "2026-11-08T10:40:33.327Z"
       }
     },
     {
@@ -546,7 +570,7 @@
         "sources": [
           "https://x.com/chennl1u/status/2118871692261147135"
         ],
-        "retrieved_at": "2026-11-08T10:28:22.023Z"
+        "retrieved_at": "2026-11-08T10:40:33.328Z"
       }
     },
     {
@@ -570,8 +594,10 @@
         "sources": [
           "https://x.com/rajeshmullippa/status/2118146054088540494"
         ],
-        "retrieved_at": "2026-11-08T10:28:22.024Z"
-      }
+        "retrieved_at": "2026-11-08T10:40:33.330Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "1f42c89b-67d7-4cf5-ad15-77d5eb9893c7",
@@ -594,7 +620,7 @@
         "sources": [
           "https://x.com/elioz404/status/2119265125425095107"
         ],
-        "retrieved_at": "2026-11-08T10:28:22.326Z"
+        "retrieved_at": "2026-11-08T10:40:33.634Z"
       }
     },
     {
@@ -613,7 +639,7 @@
         "sources": [
           "https://x.com/SarwarBuild/status/2118359003550110112"
         ],
-        "retrieved_at": "2026-11-08T10:28:22.628Z"
+        "retrieved_at": "2026-11-08T10:40:33.940Z"
       }
     },
     {
@@ -639,8 +665,10 @@
         "sources": [
           "https://x.com/TarantinBV/status/2116528585829720403"
         ],
-        "retrieved_at": "2026-11-08T10:28:23.234Z"
-      }
+        "retrieved_at": "2026-11-08T10:40:34.545Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "21b88ac4-20b2-4951-bb42-9b5e57695f5f",
@@ -658,7 +686,7 @@
         "sources": [
           "https://x.com/buidlcity/status/2117722829277790511"
         ],
-        "retrieved_at": "2026-11-08T10:28:23.537Z"
+        "retrieved_at": "2026-11-08T10:40:34.849Z"
       }
     },
     {
@@ -677,8 +705,10 @@
         "sources": [
           "https://x.com/smartkdy7/status/2116830600229478794"
         ],
-        "retrieved_at": "2026-11-08T10:28:23.538Z"
-      }
+        "retrieved_at": "2026-11-08T10:40:34.849Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "247640ff-7661-42ec-8275-b2fc8ada1a9a",
@@ -701,7 +731,7 @@
         "sources": [
           "https://x.com/cryptoworld_by/status/2117309648709538189"
         ],
-        "retrieved_at": "2026-11-08T10:28:23.840Z"
+        "retrieved_at": "2026-11-08T10:40:35.153Z"
       }
     },
     {
@@ -720,7 +750,7 @@
         "sources": [
           "https://x.com/CrissEthan7au/status/2117162030889390370"
         ],
-        "retrieved_at": "2026-11-08T10:28:24.143Z"
+        "retrieved_at": "2026-11-08T10:40:35.456Z"
       }
     },
     {
@@ -744,8 +774,10 @@
         "sources": [
           "https://x.com/Cadawallet/status/2117644899109761343"
         ],
-        "retrieved_at": "2026-11-08T10:28:24.446Z"
-      }
+        "retrieved_at": "2026-11-08T10:40:35.759Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "287d08ef-3e56-4424-a00b-700e0f7d1bf9",
@@ -763,7 +795,7 @@
         "sources": [
           "https://x.com/orenrot24/status/2117658183099662458"
         ],
-        "retrieved_at": "2026-11-08T10:28:24.749Z"
+        "retrieved_at": "2026-11-08T10:40:36.063Z"
       }
     },
     {
@@ -782,8 +814,10 @@
         "sources": [
           "https://x.com/cryptovijay1/status/2117592303665877002"
         ],
-        "retrieved_at": "2026-11-08T10:28:25.051Z"
-      }
+        "retrieved_at": "2026-11-08T10:40:36.367Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "2a3c4c07-a62a-4b84-ae21-a77b3fd42e06",
@@ -801,7 +835,7 @@
         "sources": [
           "https://x.com/Raphael_Hoang/status/2118583687944269929"
         ],
-        "retrieved_at": "2026-11-08T10:28:25.353Z"
+        "retrieved_at": "2026-11-08T10:40:36.669Z"
       }
     },
     {
@@ -820,7 +854,7 @@
         "sources": [
           "https://x.com/josephmarv3016/status/2118398854609387999"
         ],
-        "retrieved_at": "2026-11-08T10:28:25.656Z"
+        "retrieved_at": "2026-11-08T10:40:36.973Z"
       }
     },
     {
@@ -839,7 +873,7 @@
         "sources": [
           "https://x.com/joezzyweb3/status/2119220897345122339"
         ],
-        "retrieved_at": "2026-11-08T10:28:25.960Z"
+        "retrieved_at": "2026-11-08T10:40:37.276Z"
       }
     },
     {
@@ -858,8 +892,10 @@
         "sources": [
           "https://x.com/Szczypek_96/status/2117369764112932935"
         ],
-        "retrieved_at": "2026-11-08T10:28:25.961Z"
-      }
+        "retrieved_at": "2026-11-08T10:40:37.277Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "2e608b86-3e2c-4dbe-a438-8f30f4129e41",
@@ -877,8 +913,10 @@
         "sources": [
           "https://x.com/soldanoandrea/status/2116498437860647095"
         ],
-        "retrieved_at": "2026-11-08T10:28:26.263Z"
-      }
+        "retrieved_at": "2026-11-08T10:40:37.579Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "2f6dea96-c753-40a2-ac98-e4e7639255b8",
@@ -901,7 +939,7 @@
         "sources": [
           "https://x.com/yeabdotsuperint/status/2117013005602795618"
         ],
-        "retrieved_at": "2026-11-08T10:28:26.565Z"
+        "retrieved_at": "2026-11-08T10:40:37.883Z"
       }
     },
     {
@@ -924,7 +962,7 @@
         "sources": [
           "https://x.com/Omaofweb3/status/2118250067270283753"
         ],
-        "retrieved_at": "2026-11-08T10:28:26.868Z"
+        "retrieved_at": "2026-11-08T10:40:38.185Z"
       }
     },
     {
@@ -943,7 +981,7 @@
         "sources": [
           "https://x.com/LainHolic/status/2118314930608930992"
         ],
-        "retrieved_at": "2026-11-08T10:28:26.869Z"
+        "retrieved_at": "2026-11-08T10:40:38.186Z"
       }
     },
     {
@@ -962,8 +1000,10 @@
         "sources": [
           "https://x.com/mmixbizca/status/2118097092329775117"
         ],
-        "retrieved_at": "2026-11-08T10:28:27.171Z"
-      }
+        "retrieved_at": "2026-11-08T10:40:38.489Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "385ea3c8-bda5-4257-87b4-550bdfc33be6",
@@ -981,7 +1021,7 @@
         "sources": [
           "https://x.com/agungkzn/status/2118582497793691861"
         ],
-        "retrieved_at": "2026-11-08T10:28:27.473Z"
+        "retrieved_at": "2026-11-08T10:40:38.793Z"
       }
     },
     {
@@ -1000,7 +1040,7 @@
         "sources": [
           "https://x.com/nearagentic/status/2117603276397113631"
         ],
-        "retrieved_at": "2026-11-08T10:28:27.473Z"
+        "retrieved_at": "2026-11-08T10:40:38.794Z"
       }
     },
     {
@@ -1019,7 +1059,7 @@
         "sources": [
           "https://x.com/x402fizzl/status/2117352123746996356"
         ],
-        "retrieved_at": "2026-11-08T10:28:27.776Z"
+        "retrieved_at": "2026-11-08T10:40:39.097Z"
       }
     },
     {
@@ -1043,7 +1083,7 @@
         "sources": [
           "https://x.com/ApexSys_Dev/status/2118893440066830717"
         ],
-        "retrieved_at": "2026-11-08T10:28:28.078Z"
+        "retrieved_at": "2026-11-08T10:40:39.400Z"
       }
     },
     {
@@ -1062,7 +1102,7 @@
         "sources": [
           "https://x.com/wahabolaniyi090/status/2117131903434203332"
         ],
-        "retrieved_at": "2026-11-08T10:28:28.380Z"
+        "retrieved_at": "2026-11-08T10:40:39.704Z"
       }
     },
     {
@@ -1086,7 +1126,7 @@
         "sources": [
           "https://x.com/ReconScribe/status/2118951990667710788"
         ],
-        "retrieved_at": "2026-11-08T10:28:28.381Z"
+        "retrieved_at": "2026-11-08T10:40:39.705Z"
       }
     },
     {
@@ -1110,7 +1150,7 @@
         "sources": [
           "https://x.com/zuemennet/status/2118226302658617836"
         ],
-        "retrieved_at": "2026-11-08T10:28:28.683Z"
+        "retrieved_at": "2026-11-08T10:40:40.009Z"
       }
     },
     {
@@ -1134,7 +1174,7 @@
         "sources": [
           "https://x.com/surthenort40906/status/2117717055579501036"
         ],
-        "retrieved_at": "2026-11-08T10:28:28.985Z"
+        "retrieved_at": "2026-11-08T10:40:40.311Z"
       }
     },
     {
@@ -1158,8 +1198,10 @@
         "sources": [
           "https://x.com/mr_ghdc/status/2116851371207012835"
         ],
-        "retrieved_at": "2026-11-08T10:28:29.287Z"
-      }
+        "retrieved_at": "2026-11-08T10:40:40.615Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "3dfb2344-8015-43d8-9389-9cf36bd8fbc2",
@@ -1177,8 +1219,10 @@
         "sources": [
           "https://x.com/Savage27z/status/2118225862168649899"
         ],
-        "retrieved_at": "2026-11-08T10:28:29.589Z"
-      }
+        "retrieved_at": "2026-11-08T10:40:40.918Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "3e0a5372-942a-4618-b309-68cfa5c4d208",
@@ -1201,7 +1245,7 @@
         "sources": [
           "https://x.com/clarky93795294/status/2096285372875686246"
         ],
-        "retrieved_at": "2026-11-08T10:28:29.590Z"
+        "retrieved_at": "2026-11-08T10:40:40.919Z"
       }
     },
     {
@@ -1220,8 +1264,10 @@
         "sources": [
           "https://x.com/pgreyy/status/2118237758321795364"
         ],
-        "retrieved_at": "2026-11-08T10:28:29.891Z"
-      }
+        "retrieved_at": "2026-11-08T10:40:41.222Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "3f86c8f9-811e-4de8-a500-ae345b737b2c",
@@ -1244,8 +1290,10 @@
         "sources": [
           "https://x.com/muliark/status/2117252715139264647"
         ],
-        "retrieved_at": "2026-11-08T10:28:29.892Z"
-      }
+        "retrieved_at": "2026-11-08T10:40:41.223Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "3fcad2f5-4dc1-4dc8-8dd0-bd33bc845d23",
@@ -1263,7 +1311,7 @@
         "sources": [
           "https://x.com/hustleone21/status/2117002586481926443"
         ],
-        "retrieved_at": "2026-11-08T10:28:30.194Z"
+        "retrieved_at": "2026-11-08T10:40:41.527Z"
       }
     },
     {
@@ -1282,7 +1330,7 @@
         "sources": [
           "https://x.com/frank_olien123/status/2119056537633112461"
         ],
-        "retrieved_at": "2026-11-08T10:28:30.496Z"
+        "retrieved_at": "2026-11-08T10:40:41.830Z"
       }
     },
     {
@@ -1301,8 +1349,10 @@
         "sources": [
           "https://x.com/grasserfa/status/2119228922361741408"
         ],
-        "retrieved_at": "2026-11-08T10:28:30.497Z"
-      }
+        "retrieved_at": "2026-11-08T10:40:41.831Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "413dd679-48cf-4dce-adf3-36be20a9e739",
@@ -1320,7 +1370,7 @@
         "sources": [
           "https://x.com/usekite__/status/2118246496734973970"
         ],
-        "retrieved_at": "2026-11-08T10:28:30.799Z"
+        "retrieved_at": "2026-11-08T10:40:42.133Z"
       }
     },
     {
@@ -1344,7 +1394,7 @@
         "sources": [
           "https://x.com/t7pkaaa/status/2118777298921136597"
         ],
-        "retrieved_at": "2026-11-08T10:28:31.101Z"
+        "retrieved_at": "2026-11-08T10:40:42.437Z"
       }
     },
     {
@@ -1363,7 +1413,7 @@
         "sources": [
           "https://x.com/JoeyXu13/status/2118049501957296306"
         ],
-        "retrieved_at": "2026-11-08T10:28:31.403Z"
+        "retrieved_at": "2026-11-08T10:40:42.741Z"
       }
     },
     {
@@ -1382,7 +1432,7 @@
         "sources": [
           "https://x.com/casinodeveloper/status/2117715950921544044"
         ],
-        "retrieved_at": "2026-11-08T10:28:31.705Z"
+        "retrieved_at": "2026-11-08T10:40:43.046Z"
       }
     },
     {
@@ -1406,8 +1456,10 @@
         "sources": [
           "https://x.com/DhaneeyP/status/2118607618625175717"
         ],
-        "retrieved_at": "2026-11-08T10:28:32.009Z"
-      }
+        "retrieved_at": "2026-11-08T10:40:43.350Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "42ec2a12-bf4e-40a0-8f23-dd9617e1d9ea",
@@ -1430,8 +1482,10 @@
         "sources": [
           "https://x.com/Axlnd3r/status/2118168310374453512"
         ],
-        "retrieved_at": "2026-11-08T10:28:32.311Z"
-      }
+        "retrieved_at": "2026-11-08T10:40:43.652Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "438e5163-d314-44c0-9fcc-42d177d0718d",
@@ -1454,8 +1508,10 @@
         "sources": [
           "https://x.com/0_x_0_0_0/status/2119101579794256070"
         ],
-        "retrieved_at": "2026-11-08T10:28:32.613Z"
-      }
+        "retrieved_at": "2026-11-08T10:40:43.955Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "44b5ae7e-aa92-4927-97e8-e0eabf4cf379",
@@ -1478,7 +1534,7 @@
         "sources": [
           "https://x.com/mcgrodeth/status/2118975690808963149"
         ],
-        "retrieved_at": "2026-11-08T10:28:32.614Z"
+        "retrieved_at": "2026-11-08T10:40:43.956Z"
       }
     },
     {
@@ -1497,8 +1553,10 @@
         "sources": [
           "https://x.com/rajahassants/status/2116686379828892126"
         ],
-        "retrieved_at": "2026-11-08T10:28:32.916Z"
-      }
+        "retrieved_at": "2026-11-08T10:40:44.258Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "47cbc85d-6ab2-4d3f-9d91-7cc7e57eb3cf",
@@ -1516,7 +1574,7 @@
         "sources": [
           "https://x.com/IzuchukwuOffia/status/2119026984667984031"
         ],
-        "retrieved_at": "2026-11-08T10:28:33.218Z"
+        "retrieved_at": "2026-11-08T10:40:44.562Z"
       }
     },
     {
@@ -1535,7 +1593,7 @@
         "sources": [
           "https://x.com/JDR1848/status/2117496300442878090"
         ],
-        "retrieved_at": "2026-11-08T10:28:33.219Z"
+        "retrieved_at": "2026-11-08T10:40:44.563Z"
       }
     },
     {
@@ -1559,8 +1617,10 @@
         "sources": [
           "https://x.com/emmanuelcesc/status/2118396029271974299"
         ],
-        "retrieved_at": "2026-11-08T10:28:33.521Z"
-      }
+        "retrieved_at": "2026-11-08T10:40:44.866Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "49563af4-b8b7-4c1e-a715-9d3148403610",
@@ -1578,8 +1638,10 @@
         "sources": [
           "https://x.com/xaxmd5/status/2118041570100588952"
         ],
-        "retrieved_at": "2026-11-08T10:28:33.823Z"
-      }
+        "retrieved_at": "2026-11-08T10:40:45.170Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "4a4566f6-e525-4a5e-b0de-ba403c34a512",
@@ -1602,8 +1664,10 @@
         "sources": [
           "https://x.com/Timidan_x/status/2118320826751795692"
         ],
-        "retrieved_at": "2026-11-08T10:28:34.158Z"
-      }
+        "retrieved_at": "2026-11-08T10:40:45.473Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "4a9a7ae0-6943-4a34-b4e3-99198eeee530",
@@ -1621,7 +1685,7 @@
         "sources": [
           "https://x.com/DragonsOnNear/status/2118729901847007494"
         ],
-        "retrieved_at": "2026-11-08T10:28:34.460Z"
+        "retrieved_at": "2026-11-08T10:40:45.777Z"
       }
     },
     {
@@ -1640,8 +1704,10 @@
         "sources": [
           "https://x.com/hassan_samimi/status/2117164751662858404"
         ],
-        "retrieved_at": "2026-11-08T10:28:34.461Z"
-      }
+        "retrieved_at": "2026-11-08T10:40:45.777Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "4c88b184-5c62-4718-92fe-149510a709cb",
@@ -1659,7 +1725,7 @@
         "sources": [
           "https://x.com/ApexSys_Dev/status/2118392517699780924"
         ],
-        "retrieved_at": "2026-11-08T10:28:34.462Z"
+        "retrieved_at": "2026-11-08T10:40:45.778Z"
       }
     },
     {
@@ -1678,7 +1744,7 @@
         "sources": [
           "https://x.com/Greyw0rks/status/2117323746600161676"
         ],
-        "retrieved_at": "2026-11-08T10:28:34.764Z"
+        "retrieved_at": "2026-11-08T10:40:46.081Z"
       }
     },
     {
@@ -1697,7 +1763,7 @@
         "sources": [
           "https://x.com/PostcardCrypto/status/2118305301216862322"
         ],
-        "retrieved_at": "2026-11-08T10:28:35.369Z"
+        "retrieved_at": "2026-11-08T10:40:46.687Z"
       }
     },
     {
@@ -1716,7 +1782,7 @@
         "sources": [
           "https://x.com/olaph_lol/status/2118877859389530222"
         ],
-        "retrieved_at": "2026-11-08T10:28:35.671Z"
+        "retrieved_at": "2026-11-08T10:40:46.991Z"
       }
     },
     {
@@ -1735,7 +1801,7 @@
         "sources": [
           "https://x.com/MaxLensherr/status/2119318538456293558"
         ],
-        "retrieved_at": "2026-11-08T10:28:35.671Z"
+        "retrieved_at": "2026-11-08T10:40:46.991Z"
       }
     },
     {
@@ -1759,7 +1825,7 @@
         "sources": [
           "https://x.com/tayonweb/status/2117540004020773005"
         ],
-        "retrieved_at": "2026-11-08T10:28:35.672Z"
+        "retrieved_at": "2026-11-08T10:40:46.991Z"
       }
     },
     {
@@ -1783,8 +1849,10 @@
         "sources": [
           "https://x.com/0xDUDS/status/2118503073593360762"
         ],
-        "retrieved_at": "2026-11-08T10:28:35.672Z"
-      }
+        "retrieved_at": "2026-11-08T10:40:46.992Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "51261916-2c0e-48df-9888-4c24f52dccd5",
@@ -1802,7 +1870,7 @@
         "sources": [
           "https://x.com/HeyResearch/status/2118011068731854972"
         ],
-        "retrieved_at": "2026-11-08T10:28:35.673Z"
+        "retrieved_at": "2026-11-08T10:40:46.993Z"
       }
     },
     {
@@ -1826,7 +1894,7 @@
         "sources": [
           "https://x.com/ritual_meme/status/2119008928684208150"
         ],
-        "retrieved_at": "2026-11-08T10:28:35.673Z"
+        "retrieved_at": "2026-11-08T10:40:46.993Z"
       }
     },
     {
@@ -1850,8 +1918,10 @@
         "sources": [
           "https://x.com/BuleZari/status/2119111781289267371"
         ],
-        "retrieved_at": "2026-11-08T10:28:35.974Z"
-      }
+        "retrieved_at": "2026-11-08T10:40:47.296Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "5278473e-6acf-40b2-a013-a2ff4236f176",
@@ -1869,7 +1939,7 @@
         "sources": [
           "https://x.com/Ahmardchain/status/2118905952887816627"
         ],
-        "retrieved_at": "2026-11-08T10:28:36.276Z"
+        "retrieved_at": "2026-11-08T10:40:47.599Z"
       }
     },
     {
@@ -1888,7 +1958,7 @@
         "sources": [
           "https://x.com/NguyenThan60809/status/2118319057107849498"
         ],
-        "retrieved_at": "2026-11-08T10:28:36.277Z"
+        "retrieved_at": "2026-11-08T10:40:47.600Z"
       }
     },
     {
@@ -1907,7 +1977,7 @@
         "sources": [
           "https://x.com/Ju_l_C/status/2117586092559917281"
         ],
-        "retrieved_at": "2026-11-08T10:28:36.579Z"
+        "retrieved_at": "2026-11-08T10:40:47.903Z"
       }
     },
     {
@@ -1926,7 +1996,7 @@
         "sources": [
           "https://x.com/Jrken_ny/status/2119238568308772936"
         ],
-        "retrieved_at": "2026-11-08T10:28:36.881Z"
+        "retrieved_at": "2026-11-08T10:40:48.206Z"
       }
     },
     {
@@ -1945,8 +2015,10 @@
         "sources": [
           "https://x.com/jccryp_11/status/2117775460520386721"
         ],
-        "retrieved_at": "2026-11-08T10:28:36.882Z"
-      }
+        "retrieved_at": "2026-11-08T10:40:48.207Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "59cfb2ff-3625-4421-912f-74b393e7d982",
@@ -1969,7 +2041,7 @@
         "sources": [
           "https://x.com/diana161184/status/2116345624970891701"
         ],
-        "retrieved_at": "2026-11-08T10:28:37.183Z"
+        "retrieved_at": "2026-11-08T10:40:48.510Z"
       }
     },
     {
@@ -1993,8 +2065,10 @@
         "sources": [
           "https://x.com/Quayycera/status/2119048512784773285"
         ],
-        "retrieved_at": "2026-11-08T10:28:37.486Z"
-      }
+        "retrieved_at": "2026-11-08T10:40:48.813Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "5b9a485e-baae-4ed9-86a4-2bc73cf944a8",
@@ -2012,7 +2086,7 @@
         "sources": [
           "https://x.com/BimaJadiva07/status/2118949693963321612"
         ],
-        "retrieved_at": "2026-11-08T10:28:37.486Z"
+        "retrieved_at": "2026-11-08T10:40:48.814Z"
       }
     },
     {
@@ -2031,7 +2105,7 @@
         "sources": [
           "https://x.com/setllend/status/2118690228798124037"
         ],
-        "retrieved_at": "2026-11-08T10:28:37.487Z"
+        "retrieved_at": "2026-11-08T10:40:48.814Z"
       }
     },
     {
@@ -2050,8 +2124,10 @@
         "sources": [
           "https://x.com/NearSwaps/status/2117920305608065470"
         ],
-        "retrieved_at": "2026-11-08T10:28:37.487Z"
-      }
+        "retrieved_at": "2026-11-08T10:40:48.815Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "64092c5f-df0f-41b0-98a5-697faad7314a",
@@ -2069,7 +2145,7 @@
         "sources": [
           "https://x.com/UnityNodes/status/2118447685397291123"
         ],
-        "retrieved_at": "2026-11-08T10:28:37.788Z"
+        "retrieved_at": "2026-11-08T10:40:49.118Z"
       }
     },
     {
@@ -2088,7 +2164,7 @@
         "sources": [
           "https://x.com/hack_sometimes/status/2116783798616486114"
         ],
-        "retrieved_at": "2026-11-08T10:28:38.090Z"
+        "retrieved_at": "2026-11-08T10:40:49.422Z"
       }
     },
     {
@@ -2112,7 +2188,7 @@
         "sources": [
           "https://x.com/AkpanSunday193/status/2116994341965074541"
         ],
-        "retrieved_at": "2026-11-08T10:28:38.393Z"
+        "retrieved_at": "2026-11-08T10:40:49.725Z"
       }
     },
     {
@@ -2136,7 +2212,7 @@
         "sources": [
           "https://x.com/usegetleash/status/2118637512897831054"
         ],
-        "retrieved_at": "2026-11-08T10:28:38.394Z"
+        "retrieved_at": "2026-11-08T10:40:49.726Z"
       }
     },
     {
@@ -2160,7 +2236,7 @@
         "sources": [
           "https://x.com/elioz404/status/2119207538503897177"
         ],
-        "retrieved_at": "2026-11-08T10:28:38.696Z"
+        "retrieved_at": "2026-11-08T10:40:50.027Z"
       }
     },
     {
@@ -2184,8 +2260,10 @@
         "sources": [
           "https://x.com/FocoBernardo/status/2118698850445586812"
         ],
-        "retrieved_at": "2026-11-08T10:28:38.999Z"
-      }
+        "retrieved_at": "2026-11-08T10:40:50.331Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "665d4643-1468-4327-a7a5-31e1519f713f",
@@ -2208,8 +2286,10 @@
         "sources": [
           "https://x.com/Cryptoworld_01/status/2118023840609845404"
         ],
-        "retrieved_at": "2026-11-08T10:28:39.300Z"
-      }
+        "retrieved_at": "2026-11-08T10:40:50.634Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "686150b9-35a1-47df-b0fd-20a3c87eed4a",
@@ -2227,7 +2307,7 @@
         "sources": [
           "https://x.com/dwkim601/status/2118706874971218150"
         ],
-        "retrieved_at": "2026-11-08T10:28:39.602Z"
+        "retrieved_at": "2026-11-08T10:40:50.937Z"
       }
     },
     {
@@ -2251,7 +2331,7 @@
         "sources": [
           "https://x.com/Erfanmoheb1373/status/2118871672325296196"
         ],
-        "retrieved_at": "2026-11-08T10:28:39.904Z"
+        "retrieved_at": "2026-11-08T10:40:51.240Z"
       }
     },
     {
@@ -2270,8 +2350,10 @@
         "sources": [
           "https://x.com/Corvo_Arkhen/status/2117226851466723668"
         ],
-        "retrieved_at": "2026-11-08T10:28:40.206Z"
-      }
+        "retrieved_at": "2026-11-08T10:40:51.543Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "68e265ef-198e-4e20-abcd-7ad16a23e23c",
@@ -2294,7 +2376,7 @@
         "sources": [
           "https://x.com/luongs3/status/2117899826386043151"
         ],
-        "retrieved_at": "2026-11-08T10:28:40.508Z"
+        "retrieved_at": "2026-11-08T10:40:51.846Z"
       }
     },
     {
@@ -2313,7 +2395,7 @@
         "sources": [
           "https://x.com/groziez/status/2118929226779025917"
         ],
-        "retrieved_at": "2026-11-08T10:28:40.811Z"
+        "retrieved_at": "2026-11-08T10:40:52.149Z"
       }
     },
     {
@@ -2332,7 +2414,7 @@
         "sources": [
           "https://x.com/baegseungh7061/status/2118189999606899109"
         ],
-        "retrieved_at": "2026-11-08T10:28:41.113Z"
+        "retrieved_at": "2026-11-08T10:40:52.453Z"
       }
     },
     {
@@ -2351,8 +2433,10 @@
         "sources": [
           "https://x.com/archtum66/status/2116892371963252792"
         ],
-        "retrieved_at": "2026-11-08T10:28:41.113Z"
-      }
+        "retrieved_at": "2026-11-08T10:40:52.454Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "6bfd034b-bdf4-41ae-a269-279fc50dc3ec",
@@ -2370,7 +2454,7 @@
         "sources": [
           "https://x.com/MAarashAlijo/status/2119056656256598343"
         ],
-        "retrieved_at": "2026-11-08T10:28:41.415Z"
+        "retrieved_at": "2026-11-08T10:40:52.756Z"
       }
     },
     {
@@ -2389,7 +2473,7 @@
         "sources": [
           "https://x.com/RUNECLAW_AI/status/2118229460000366986"
         ],
-        "retrieved_at": "2026-11-08T10:28:41.416Z"
+        "retrieved_at": "2026-11-08T10:40:52.757Z"
       }
     },
     {
@@ -2408,8 +2492,10 @@
         "sources": [
           "https://x.com/chainwardai/status/2119196519853330585"
         ],
-        "retrieved_at": "2026-11-08T10:28:41.718Z"
-      }
+        "retrieved_at": "2026-11-08T10:40:53.060Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "6cf9c090-53ba-4ada-a86a-09824dd98eba",
@@ -2427,8 +2513,10 @@
         "sources": [
           "https://x.com/archtum66/status/2118844813869187271"
         ],
-        "retrieved_at": "2026-11-08T10:28:42.020Z"
-      }
+        "retrieved_at": "2026-11-08T10:40:53.363Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "6e7be752-aa60-4da7-a729-09ce3f2d82d4",
@@ -2451,8 +2539,10 @@
         "sources": [
           "https://x.com/RainO_oDess/status/2117385144218636393"
         ],
-        "retrieved_at": "2026-11-08T10:28:42.322Z"
-      }
+        "retrieved_at": "2026-11-08T10:40:53.666Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "6f3e7aa3-98c1-4321-bf9b-52324117cd17",
@@ -2470,7 +2560,7 @@
         "sources": [
           "https://x.com/SolGemLab/status/2118587619454165023"
         ],
-        "retrieved_at": "2026-11-08T10:28:42.625Z"
+        "retrieved_at": "2026-11-08T10:40:53.968Z"
       }
     },
     {
@@ -2498,7 +2588,7 @@
         "sources": [
           "https://x.com/Spagero71/status/2118006934284521737"
         ],
-        "retrieved_at": "2026-11-08T10:28:42.927Z"
+        "retrieved_at": "2026-11-08T10:40:54.270Z"
       }
     },
     {
@@ -2517,7 +2607,7 @@
         "sources": [
           "https://x.com/dotmantissa/status/2117579705528496461"
         ],
-        "retrieved_at": "2026-11-08T10:28:42.928Z"
+        "retrieved_at": "2026-11-08T10:40:54.271Z"
       }
     },
     {
@@ -2541,8 +2631,10 @@
         "sources": [
           "https://x.com/pCwOrM/status/2117372421233893590"
         ],
-        "retrieved_at": "2026-11-08T10:28:43.230Z"
-      }
+        "retrieved_at": "2026-11-08T10:40:54.575Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "735b6139-e210-44d2-9a0c-3dd305621d3c",
@@ -2565,7 +2657,7 @@
         "sources": [
           "https://x.com/meguru_jr/status/2118931451701841951"
         ],
-        "retrieved_at": "2026-11-08T10:28:43.230Z"
+        "retrieved_at": "2026-11-08T10:40:54.575Z"
       }
     },
     {
@@ -2584,7 +2676,7 @@
         "sources": [
           "https://x.com/insightX01/status/2117243839995855107"
         ],
-        "retrieved_at": "2026-11-08T10:28:43.231Z"
+        "retrieved_at": "2026-11-08T10:40:54.576Z"
       }
     },
     {
@@ -2608,7 +2700,7 @@
         "sources": [
           "https://x.com/0xunholy/status/2118484384340684976"
         ],
-        "retrieved_at": "2026-11-08T10:28:43.533Z"
+        "retrieved_at": "2026-11-08T10:40:54.880Z"
       }
     },
     {
@@ -2632,7 +2724,7 @@
         "sources": [
           "https://x.com/Esimuda/status/2116831491292287085"
         ],
-        "retrieved_at": "2026-11-08T10:28:43.534Z"
+        "retrieved_at": "2026-11-08T10:40:54.880Z"
       }
     },
     {
@@ -2651,8 +2743,10 @@
         "sources": [
           "https://x.com/Hycorange/status/2117456531322990765"
         ],
-        "retrieved_at": "2026-11-08T10:28:43.534Z"
-      }
+        "retrieved_at": "2026-11-08T10:40:54.881Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "768bead2-5675-4167-92bd-4910d204f359",
@@ -2670,8 +2764,10 @@
         "sources": [
           "https://x.com/isfaggod/status/2117676783600591105"
         ],
-        "retrieved_at": "2026-11-08T10:28:43.835Z"
-      }
+        "retrieved_at": "2026-11-08T10:40:55.184Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "76bf91c3-ef6a-4f83-8792-a8796019cbef",
@@ -2689,7 +2785,7 @@
         "sources": [
           "https://x.com/boredrhinodev/status/2117270364573073460"
         ],
-        "retrieved_at": "2026-11-08T10:28:44.138Z"
+        "retrieved_at": "2026-11-08T10:40:55.488Z"
       }
     },
     {
@@ -2708,8 +2804,10 @@
         "sources": [
           "https://x.com/zhic18891/status/2118580496569639157"
         ],
-        "retrieved_at": "2026-11-08T10:28:44.440Z"
-      }
+        "retrieved_at": "2026-11-08T10:40:55.792Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "79b57ff9-b521-470c-9a34-1d52da03f792",
@@ -2727,8 +2825,10 @@
         "sources": [
           "https://x.com/Cryptogiives/status/2116831337407779257"
         ],
-        "retrieved_at": "2026-11-08T10:28:44.742Z"
-      }
+        "retrieved_at": "2026-11-08T10:40:56.095Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "7a2c3ff0-7771-4ae5-9994-fff4c7ac8f2a",
@@ -2751,8 +2851,10 @@
         "sources": [
           "https://x.com/RUNECLAW_AI/status/2116940411423924311"
         ],
-        "retrieved_at": "2026-11-08T10:28:45.044Z"
-      }
+        "retrieved_at": "2026-11-08T10:40:56.398Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "7c772095-71d1-4cac-a207-2d4feca6e4ff",
@@ -2775,7 +2877,7 @@
         "sources": [
           "https://x.com/danielwalter780/status/2118899446003962363"
         ],
-        "retrieved_at": "2026-11-08T10:28:45.045Z"
+        "retrieved_at": "2026-11-08T10:40:56.399Z"
       }
     },
     {
@@ -2799,7 +2901,7 @@
         "sources": [
           "https://x.com/magnuskrypt/status/2118586938470875446"
         ],
-        "retrieved_at": "2026-11-08T10:28:45.046Z"
+        "retrieved_at": "2026-11-08T10:40:56.399Z"
       }
     },
     {
@@ -2818,8 +2920,10 @@
         "sources": [
           "https://x.com/chamdom/status/2116891550634639375"
         ],
-        "retrieved_at": "2026-11-08T10:28:45.047Z"
-      }
+        "retrieved_at": "2026-11-08T10:40:56.400Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "7ddc2d4e-c9ec-4e9d-bf57-c6309930e8ba",
@@ -2842,7 +2946,7 @@
         "sources": [
           "https://x.com/alphastack1/status/2118877597023269366"
         ],
-        "retrieved_at": "2026-11-08T10:28:45.349Z"
+        "retrieved_at": "2026-11-08T10:40:56.703Z"
       }
     },
     {
@@ -2861,8 +2965,10 @@
         "sources": [
           "https://x.com/i_am_festac/status/2118371914884211011"
         ],
-        "retrieved_at": "2026-11-08T10:28:45.349Z"
-      }
+        "retrieved_at": "2026-11-08T10:40:56.704Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "82821a03-0701-4e30-90e5-cdc42fbf8a03",
@@ -2880,8 +2986,10 @@
         "sources": [
           "https://x.com/anki_anc/status/2118342923180007918"
         ],
-        "retrieved_at": "2026-11-08T10:28:45.350Z"
-      }
+        "retrieved_at": "2026-11-08T10:40:56.704Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "82878626-d007-4202-bbd8-bdc6305c7156",
@@ -2908,7 +3016,7 @@
         "sources": [
           "https://x.com/brookxbt/status/2118283214322106444"
         ],
-        "retrieved_at": "2026-11-08T10:28:45.652Z"
+        "retrieved_at": "2026-11-08T10:40:57.008Z"
       }
     },
     {
@@ -2940,8 +3048,10 @@
         "sources": [
           "https://x.com/edycutjong/status/2117725204403364028"
         ],
-        "retrieved_at": "2026-11-08T10:28:45.653Z"
-      }
+        "retrieved_at": "2026-11-08T10:40:57.008Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "857da381-27f9-4e36-aed5-d1483f0dd154",
@@ -2959,8 +3069,10 @@
         "sources": [
           "https://x.com/37Nerion/status/2117388943960207468"
         ],
-        "retrieved_at": "2026-11-08T10:28:45.653Z"
-      }
+        "retrieved_at": "2026-11-08T10:40:57.009Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "885b6c2e-565c-480d-8691-ac431ab6afce",
@@ -2978,7 +3090,7 @@
         "sources": [
           "https://x.com/PAC_agent/status/2119183302061850925"
         ],
-        "retrieved_at": "2026-11-08T10:28:45.954Z"
+        "retrieved_at": "2026-11-08T10:40:57.312Z"
       }
     },
     {
@@ -3002,8 +3114,10 @@
         "sources": [
           "https://x.com/EthBoi_/status/2118836495641461214"
         ],
-        "retrieved_at": "2026-11-08T10:28:46.256Z"
-      }
+        "retrieved_at": "2026-11-08T10:40:57.615Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "8b933a5b-2bae-413b-a96f-38b888dc0da4",
@@ -3026,7 +3140,7 @@
         "sources": [
           "https://x.com/olliechapman/status/2118541780178334141"
         ],
-        "retrieved_at": "2026-11-08T10:28:46.258Z"
+        "retrieved_at": "2026-11-08T10:40:57.616Z"
       }
     },
     {
@@ -3045,7 +3159,7 @@
         "sources": [
           "https://x.com/loca_near/status/2116960298532007969"
         ],
-        "retrieved_at": "2026-11-08T10:28:46.259Z"
+        "retrieved_at": "2026-11-08T10:40:57.616Z"
       }
     },
     {
@@ -3064,7 +3178,7 @@
         "sources": [
           "https://x.com/FStrategy001/status/2117332239654527104"
         ],
-        "retrieved_at": "2026-11-08T10:28:46.260Z"
+        "retrieved_at": "2026-11-08T10:40:57.617Z"
       }
     },
     {
@@ -3088,8 +3202,10 @@
         "sources": [
           "https://x.com/therichworth/status/2118588149391610280"
         ],
-        "retrieved_at": "2026-11-08T10:28:46.562Z"
-      }
+        "retrieved_at": "2026-11-08T10:40:57.921Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "8c1629ae-c5eb-40c6-baf6-b282662a7b78",
@@ -3107,7 +3223,7 @@
         "sources": [
           "https://x.com/i_amtony_/status/2117985336357703971"
         ],
-        "retrieved_at": "2026-11-08T10:28:46.563Z"
+        "retrieved_at": "2026-11-08T10:40:57.922Z"
       }
     },
     {
@@ -3131,8 +3247,10 @@
         "sources": [
           "https://x.com/madebydevx/status/2117086998460842295"
         ],
-        "retrieved_at": "2026-11-08T10:28:46.865Z"
-      }
+        "retrieved_at": "2026-11-08T10:40:58.225Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "8ea8f57a-ecc0-4eb4-a246-cac9b00f141a",
@@ -3150,8 +3268,10 @@
         "sources": [
           "https://x.com/tab_for_akshay/status/2117052147661705305"
         ],
-        "retrieved_at": "2026-11-08T10:28:47.167Z"
-      }
+        "retrieved_at": "2026-11-08T10:40:58.528Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "900812a5-e7f9-47ed-a836-b31ae918f84d",
@@ -3169,7 +3289,7 @@
         "sources": [
           "https://x.com/Crypto_Lwa/status/2117683705367969821"
         ],
-        "retrieved_at": "2026-11-08T10:28:47.469Z"
+        "retrieved_at": "2026-11-08T10:40:58.832Z"
       }
     },
     {
@@ -3188,7 +3308,7 @@
         "sources": [
           "https://x.com/georgebuilding2/status/2117936258848559574"
         ],
-        "retrieved_at": "2026-11-08T10:28:47.771Z"
+        "retrieved_at": "2026-11-08T10:40:59.134Z"
       }
     },
     {
@@ -3212,7 +3332,7 @@
         "sources": [
           "https://x.com/Big14teru/status/2118752617073414491"
         ],
-        "retrieved_at": "2026-11-08T10:28:48.073Z"
+        "retrieved_at": "2026-11-08T10:40:59.438Z"
       }
     },
     {
@@ -3231,7 +3351,7 @@
         "sources": [
           "https://x.com/akihitozinnia/status/2117991167547863344"
         ],
-        "retrieved_at": "2026-11-08T10:28:48.074Z"
+        "retrieved_at": "2026-11-08T10:40:59.439Z"
       }
     },
     {
@@ -3250,7 +3370,7 @@
         "sources": [
           "https://x.com/AZ1Z1M/status/2117664595125153960"
         ],
-        "retrieved_at": "2026-11-08T10:28:48.375Z"
+        "retrieved_at": "2026-11-08T10:40:59.742Z"
       }
     },
     {
@@ -3269,7 +3389,7 @@
         "sources": [
           "https://x.com/kasbsquall95/status/2117473026732437544"
         ],
-        "retrieved_at": "2026-11-08T10:28:48.376Z"
+        "retrieved_at": "2026-11-08T10:40:59.743Z"
       }
     },
     {
@@ -3288,8 +3408,10 @@
         "sources": [
           "https://x.com/PKushneryk/status/2118703213226729677"
         ],
-        "retrieved_at": "2026-11-08T10:28:48.678Z"
-      }
+        "retrieved_at": "2026-11-08T10:41:00.045Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "99bf6ef4-b3cd-4092-86d6-555cdddd2e43",
@@ -3316,7 +3438,7 @@
         "sources": [
           "https://x.com/Tajudeen/status/2118711739793408144"
         ],
-        "retrieved_at": "2026-11-08T10:28:48.980Z"
+        "retrieved_at": "2026-11-08T10:41:00.349Z"
       }
     },
     {
@@ -3340,7 +3462,7 @@
         "sources": [
           "https://x.com/ashgoyal1990/status/2116929689617088724"
         ],
-        "retrieved_at": "2026-11-08T10:28:48.980Z"
+        "retrieved_at": "2026-11-08T10:41:00.350Z"
       }
     },
     {
@@ -3359,7 +3481,7 @@
         "sources": [
           "https://x.com/KhDidukh/status/2116683395585691855"
         ],
-        "retrieved_at": "2026-11-08T10:28:48.981Z"
+        "retrieved_at": "2026-11-08T10:41:00.351Z"
       }
     },
     {
@@ -3391,8 +3513,10 @@
         "sources": [
           "https://x.com/ikorofrancis1/status/2117864852089897186"
         ],
-        "retrieved_at": "2026-11-08T10:28:49.282Z"
-      }
+        "retrieved_at": "2026-11-08T10:41:00.654Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "9f4b3e21-8c74-4d2a-b81e-6c905e3a7104",
@@ -3415,8 +3539,10 @@
         "sources": [
           "https://x.com/GGGODLIN/status/2119075686073979332"
         ],
-        "retrieved_at": "2026-11-08T10:28:49.283Z"
-      }
+        "retrieved_at": "2026-11-08T10:41:00.655Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "9f6e4b85-ce62-4c40-b1bc-a62ac00f2d11",
@@ -3434,8 +3560,10 @@
         "sources": [
           "https://x.com/TuneUpArgentina/status/2117013267247935781"
         ],
-        "retrieved_at": "2026-11-08T10:28:49.585Z"
-      }
+        "retrieved_at": "2026-11-08T10:41:00.957Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "a07b9397-00d2-4114-923c-b3121dceafc7",
@@ -3458,7 +3586,7 @@
         "sources": [
           "https://x.com/OpeyemiBolatit1/status/2118986219585441920"
         ],
-        "retrieved_at": "2026-11-08T10:28:49.887Z"
+        "retrieved_at": "2026-11-08T10:41:01.259Z"
       }
     },
     {
@@ -3482,7 +3610,7 @@
         "sources": [
           "https://x.com/Jibsonfta/status/2118582872256721080"
         ],
-        "retrieved_at": "2026-11-08T10:28:50.189Z"
+        "retrieved_at": "2026-11-08T10:41:01.563Z"
       }
     },
     {
@@ -3501,7 +3629,7 @@
         "sources": [
           "https://x.com/priva_cie/status/2116719374585434499"
         ],
-        "retrieved_at": "2026-11-08T10:28:50.189Z"
+        "retrieved_at": "2026-11-08T10:41:01.564Z"
       }
     },
     {
@@ -3525,8 +3653,10 @@
         "sources": [
           "https://x.com/dipo0x/status/2117552671641206828"
         ],
-        "retrieved_at": "2026-11-08T10:28:50.490Z"
-      }
+        "retrieved_at": "2026-11-08T10:41:01.866Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "a1b7211e-f7ad-499a-b10c-c30d34f19d13",
@@ -3549,7 +3679,7 @@
         "sources": [
           "https://x.com/Benny___5/status/2117441824381927609"
         ],
-        "retrieved_at": "2026-11-08T10:28:50.792Z"
+        "retrieved_at": "2026-11-08T10:41:02.170Z"
       }
     },
     {
@@ -3573,7 +3703,7 @@
         "sources": [
           "https://x.com/AustinChris_/status/2117576965418787327"
         ],
-        "retrieved_at": "2026-11-08T10:28:50.793Z"
+        "retrieved_at": "2026-11-08T10:41:02.171Z"
       }
     },
     {
@@ -3601,8 +3731,10 @@
         "sources": [
           "https://x.com/jcarbonnell/status/2118274901693837481"
         ],
-        "retrieved_at": "2026-11-08T10:28:51.095Z"
-      }
+        "retrieved_at": "2026-11-08T10:41:02.473Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "a395a485-5c23-43ac-b1b5-5e27887c3124",
@@ -3625,7 +3757,7 @@
         "sources": [
           "https://x.com/swarmpad_near/status/2119342638889607196"
         ],
-        "retrieved_at": "2026-11-08T10:28:51.095Z"
+        "retrieved_at": "2026-11-08T10:41:02.474Z"
       }
     },
     {
@@ -3649,7 +3781,7 @@
         "sources": [
           "https://x.com/ayoadhe/status/2117127898159104304"
         ],
-        "retrieved_at": "2026-11-08T10:28:51.096Z"
+        "retrieved_at": "2026-11-08T10:41:02.474Z"
       }
     },
     {
@@ -3668,7 +3800,7 @@
         "sources": [
           "https://x.com/Emmageneris2001/status/2118789509861036061"
         ],
-        "retrieved_at": "2026-11-08T10:28:51.097Z"
+        "retrieved_at": "2026-11-08T10:41:02.475Z"
       }
     },
     {
@@ -3692,7 +3824,7 @@
         "sources": [
           "https://x.com/Ritesh5969/status/2118542200615457097"
         ],
-        "retrieved_at": "2026-11-08T10:28:51.398Z"
+        "retrieved_at": "2026-11-08T10:41:02.779Z"
       }
     },
     {
@@ -3711,8 +3843,10 @@
         "sources": [
           "https://x.com/Gliana_agent/status/2118984586587975724"
         ],
-        "retrieved_at": "2026-11-08T10:28:51.399Z"
-      }
+        "retrieved_at": "2026-11-08T10:41:02.780Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "abe27d2f-1615-4025-9e0c-e78e28519207",
@@ -3730,8 +3864,10 @@
         "sources": [
           "https://x.com/soldanoandrea/status/2116497975195378080"
         ],
-        "retrieved_at": "2026-11-08T10:28:51.701Z"
-      }
+        "retrieved_at": "2026-11-08T10:41:03.083Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "ac7254d5-15e4-47cb-9eb9-c400486f9b49",
@@ -3749,7 +3885,7 @@
         "sources": [
           "https://x.com/cryptoworld_by/status/2117185581235019821"
         ],
-        "retrieved_at": "2026-11-08T10:28:52.002Z"
+        "retrieved_at": "2026-11-08T10:41:03.386Z"
       }
     },
     {
@@ -3768,8 +3904,10 @@
         "sources": [
           "https://x.com/blokceyn/status/2117212782319824913"
         ],
-        "retrieved_at": "2026-11-08T10:28:52.003Z"
-      }
+        "retrieved_at": "2026-11-08T10:41:03.387Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "acc5fdf7-9bbd-4d2e-97de-41e8463116f4",
@@ -3792,7 +3930,7 @@
         "sources": [
           "https://x.com/therascalsfun/status/2118272084346593280"
         ],
-        "retrieved_at": "2026-11-08T10:28:52.305Z"
+        "retrieved_at": "2026-11-08T10:41:03.690Z"
       }
     },
     {
@@ -3811,8 +3949,10 @@
         "sources": [
           "https://x.com/exocognosis/status/2118407307394777107"
         ],
-        "retrieved_at": "2026-11-08T10:28:52.607Z"
-      }
+        "retrieved_at": "2026-11-08T10:41:03.992Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "ae705c2e-32e8-412c-afd9-9a3b04fa40d1",
@@ -3830,8 +3970,10 @@
         "sources": [
           "https://x.com/dahlinomine/status/2117355110842142727"
         ],
-        "retrieved_at": "2026-11-08T10:28:52.607Z"
-      }
+        "retrieved_at": "2026-11-08T10:41:03.993Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "b075dd6e-2a1f-478e-b201-0d78f3f1e52a",
@@ -3854,7 +3996,7 @@
         "sources": [
           "https://x.com/CryptHypoBuster/status/2116819146595819580"
         ],
-        "retrieved_at": "2026-11-08T10:28:52.909Z"
+        "retrieved_at": "2026-11-08T10:41:04.296Z"
       }
     },
     {
@@ -3873,8 +4015,10 @@
         "sources": [
           "https://x.com/danial_x4/status/2117153040159617051"
         ],
-        "retrieved_at": "2026-11-08T10:28:53.211Z"
-      }
+        "retrieved_at": "2026-11-08T10:41:04.600Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "b2a653cd-5f26-44c0-a307-645615e23f39",
@@ -3897,7 +4041,7 @@
         "sources": [
           "https://x.com/GiacMoTrieuDo/status/2118277438161694884"
         ],
-        "retrieved_at": "2026-11-08T10:28:53.513Z"
+        "retrieved_at": "2026-11-08T10:41:04.903Z"
       }
     },
     {
@@ -3916,8 +4060,10 @@
         "sources": [
           "https://x.com/Marc_Dvci/status/2119151556457316391"
         ],
-        "retrieved_at": "2026-11-08T10:28:53.518Z"
-      }
+        "retrieved_at": "2026-11-08T10:41:04.903Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "b5e7fe4a-fd7c-4a94-bcb4-2e6e1b8d2ab9",
@@ -3935,8 +4081,10 @@
         "sources": [
           "https://x.com/Aliqa3a/status/2118157451178492050"
         ],
-        "retrieved_at": "2026-11-08T10:28:53.824Z"
-      }
+        "retrieved_at": "2026-11-08T10:41:05.207Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "b743bd60-eee7-46b1-b86d-81ca9f709ff5",
@@ -3954,7 +4102,7 @@
         "sources": [
           "https://x.com/Adeiza_web3/status/2118296658819567734"
         ],
-        "retrieved_at": "2026-11-08T10:28:54.126Z"
+        "retrieved_at": "2026-11-08T10:41:05.510Z"
       }
     },
     {
@@ -3978,7 +4126,7 @@
         "sources": [
           "https://x.com/vettedrealty/status/2117648264006963623"
         ],
-        "retrieved_at": "2026-11-08T10:28:54.428Z"
+        "retrieved_at": "2026-11-08T10:41:05.812Z"
       }
     },
     {
@@ -4006,7 +4154,7 @@
         "sources": [
           "https://x.com/jarwono4444/status/2119110986749853943"
         ],
-        "retrieved_at": "2026-11-08T10:28:54.730Z"
+        "retrieved_at": "2026-11-08T10:41:06.116Z"
       }
     },
     {
@@ -4030,7 +4178,7 @@
         "sources": [
           "https://x.com/samaisback/status/2118030472676769978"
         ],
-        "retrieved_at": "2026-11-08T10:28:54.731Z"
+        "retrieved_at": "2026-11-08T10:41:06.116Z"
       }
     },
     {
@@ -4054,7 +4202,7 @@
         "sources": [
           "https://x.com/gabquelyn/status/2118602977363784094"
         ],
-        "retrieved_at": "2026-11-08T10:28:54.732Z"
+        "retrieved_at": "2026-11-08T10:41:06.117Z"
       }
     },
     {
@@ -4073,8 +4221,10 @@
         "sources": [
           "https://x.com/chamdom/status/2117060976700997909"
         ],
-        "retrieved_at": "2026-11-08T10:28:54.732Z"
-      }
+        "retrieved_at": "2026-11-08T10:41:06.118Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "bfd74897-d0a2-4891-9f2c-0638a1a63331",
@@ -4097,8 +4247,10 @@
         "sources": [
           "https://x.com/marrnueldev/status/2117938855957667984"
         ],
-        "retrieved_at": "2026-11-08T10:28:55.034Z"
-      }
+        "retrieved_at": "2026-11-08T10:41:06.421Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "c1705e3d-260d-41c1-9370-3cd561c6a920",
@@ -4121,7 +4273,7 @@
         "sources": [
           "https://x.com/peper1zal/status/2119141161692811526"
         ],
-        "retrieved_at": "2026-11-08T10:28:55.035Z"
+        "retrieved_at": "2026-11-08T10:41:06.422Z"
       }
     },
     {
@@ -4145,7 +4297,7 @@
         "sources": [
           "https://x.com/0xarewah/status/2119301193100837169"
         ],
-        "retrieved_at": "2026-11-08T10:28:55.337Z"
+        "retrieved_at": "2026-11-08T10:41:06.725Z"
       }
     },
     {
@@ -4169,8 +4321,10 @@
         "sources": [
           "https://x.com/Sammy_Cryptguy/status/2118728427414900809"
         ],
-        "retrieved_at": "2026-11-08T10:28:55.338Z"
-      }
+        "retrieved_at": "2026-11-08T10:41:06.726Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "c3deca64-850b-4fb8-a614-251ca121fb69",
@@ -4192,7 +4346,7 @@
         "sources": [
           "https://x.com/0x___eth/status/2117308258423828751"
         ],
-        "retrieved_at": "2026-11-08T10:28:55.640Z"
+        "retrieved_at": "2026-11-08T10:41:07.029Z"
       }
     },
     {
@@ -4211,8 +4365,10 @@
         "sources": [
           "https://x.com/Emmanue07495029/status/2118049068798849227"
         ],
-        "retrieved_at": "2026-11-08T10:28:55.942Z"
-      }
+        "retrieved_at": "2026-11-08T10:41:07.332Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "c94136e5-eaeb-4cb1-94ea-a71cfe5f11d0",
@@ -4235,8 +4391,10 @@
         "sources": [
           "https://x.com/folarihn/status/2119153070051295422"
         ],
-        "retrieved_at": "2026-11-08T10:28:56.245Z"
-      }
+        "retrieved_at": "2026-11-08T10:41:07.635Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "c9b94b3a-218d-44db-a04e-46b2f9822235",
@@ -4259,8 +4417,10 @@
         "sources": [
           "https://x.com/chun_dik/status/2115480066163613744"
         ],
-        "retrieved_at": "2026-11-08T10:28:56.246Z"
-      }
+        "retrieved_at": "2026-11-08T10:41:07.636Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "cb2c6cc5-6f0d-4c19-8c29-a6a9be1b1425",
@@ -4287,7 +4447,7 @@
         "sources": [
           "https://x.com/PipTradeDex/status/2117542107447427454"
         ],
-        "retrieved_at": "2026-11-08T10:28:56.548Z"
+        "retrieved_at": "2026-11-08T10:41:07.940Z"
       }
     },
     {
@@ -4315,7 +4475,7 @@
         "sources": [
           "https://x.com/priva_cie/status/2116726168930168843"
         ],
-        "retrieved_at": "2026-11-08T10:28:56.549Z"
+        "retrieved_at": "2026-11-08T10:41:07.940Z"
       }
     },
     {
@@ -4334,8 +4494,10 @@
         "sources": [
           "https://x.com/Maribtxn/status/2118578943376625692"
         ],
-        "retrieved_at": "2026-11-08T10:28:56.549Z"
-      }
+        "retrieved_at": "2026-11-08T10:41:07.941Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "cc936172-28bf-4063-9fa8-8969e59023ee",
@@ -4353,7 +4515,7 @@
         "sources": [
           "https://x.com/thesithunyein/status/2117209602848956525"
         ],
-        "retrieved_at": "2026-11-08T10:28:56.550Z"
+        "retrieved_at": "2026-11-08T10:41:07.941Z"
       }
     },
     {
@@ -4372,7 +4534,7 @@
         "sources": [
           "https://x.com/GhosterDex/status/2118366128368136199"
         ],
-        "retrieved_at": "2026-11-08T10:28:56.853Z"
+        "retrieved_at": "2026-11-08T10:41:08.245Z"
       }
     },
     {
@@ -4391,7 +4553,7 @@
         "sources": [
           "https://x.com/mikeyXBT_/status/2118652096194998401"
         ],
-        "retrieved_at": "2026-11-08T10:28:56.854Z"
+        "retrieved_at": "2026-11-08T10:41:08.246Z"
       }
     },
     {
@@ -4419,8 +4581,10 @@
         "sources": [
           "https://x.com/Settl_near/status/2117575722101604404"
         ],
-        "retrieved_at": "2026-11-08T10:28:56.854Z"
-      }
+        "retrieved_at": "2026-11-08T10:41:08.247Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "d01a3b13-a62b-412c-a6f8-f86f59850c5e",
@@ -4443,7 +4607,7 @@
         "sources": [
           "https://x.com/AlvinAgustus/status/2118351207953809875"
         ],
-        "retrieved_at": "2026-11-08T10:28:56.855Z"
+        "retrieved_at": "2026-11-08T10:41:08.248Z"
       }
     },
     {
@@ -4462,7 +4626,7 @@
         "sources": [
           "https://x.com/thesithunyein/status/2116943783577423982"
         ],
-        "retrieved_at": "2026-11-08T10:28:56.856Z"
+        "retrieved_at": "2026-11-08T10:41:08.248Z"
       }
     },
     {
@@ -4486,7 +4650,7 @@
         "sources": [
           "https://x.com/QianCherry2102/status/2119005602223444412"
         ],
-        "retrieved_at": "2026-11-08T10:28:57.158Z"
+        "retrieved_at": "2026-11-08T10:41:08.550Z"
       }
     },
     {
@@ -4505,7 +4669,7 @@
         "sources": [
           "https://x.com/HollowEchoes_23/status/2119142869860856123"
         ],
-        "retrieved_at": "2026-11-08T10:28:57.159Z"
+        "retrieved_at": "2026-11-08T10:41:08.550Z"
       }
     },
     {
@@ -4524,7 +4688,7 @@
         "sources": [
           "https://x.com/dele_dave/status/2117911300516823327"
         ],
-        "retrieved_at": "2026-11-08T10:28:57.461Z"
+        "retrieved_at": "2026-11-08T10:41:08.853Z"
       }
     },
     {
@@ -4543,7 +4707,7 @@
         "sources": [
           "https://x.com/TensorustAI/status/2116918629149077959"
         ],
-        "retrieved_at": "2026-11-08T10:28:57.765Z"
+        "retrieved_at": "2026-11-08T10:41:09.157Z"
       }
     },
     {
@@ -4567,8 +4731,10 @@
           "https://x.com/TuneUpArgentina/status/2116578038637039717",
           "https://x.com/TuneUpArgentina/status/2116961469761806543"
         ],
-        "retrieved_at": "2026-11-08T10:28:58.369Z"
-      }
+        "retrieved_at": "2026-11-08T10:41:09.762Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "d7b06ad9-a662-4d99-97d7-ae8125b319f3",
@@ -4586,7 +4752,7 @@
         "sources": [
           "https://x.com/aviehub/status/2116891534738256126"
         ],
-        "retrieved_at": "2026-11-08T10:28:58.672Z"
+        "retrieved_at": "2026-11-08T10:41:10.064Z"
       }
     },
     {
@@ -4610,7 +4776,7 @@
         "sources": [
           "https://x.com/Trextxxy/status/2118765763851092192"
         ],
-        "retrieved_at": "2026-11-08T10:28:58.974Z"
+        "retrieved_at": "2026-11-08T10:41:10.367Z"
       }
     },
     {
@@ -4634,7 +4800,7 @@
         "sources": [
           "https://x.com/UseBridle/status/2116560619306688923"
         ],
-        "retrieved_at": "2026-11-08T10:28:58.975Z"
+        "retrieved_at": "2026-11-08T10:41:10.368Z"
       }
     },
     {
@@ -4658,7 +4824,7 @@
         "sources": [
           "https://x.com/0xCaptain888/status/2117825285190295741"
         ],
-        "retrieved_at": "2026-11-08T10:28:59.278Z"
+        "retrieved_at": "2026-11-08T10:41:10.671Z"
       }
     },
     {
@@ -4682,8 +4848,10 @@
         "sources": [
           "https://x.com/Unpairxyz/status/2118804862020300822"
         ],
-        "retrieved_at": "2026-11-08T10:28:59.580Z"
-      }
+        "retrieved_at": "2026-11-08T10:41:10.973Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "da5deb59-ae0c-4b08-8511-75360f4a0a17",
@@ -4706,7 +4874,7 @@
         "sources": [
           "https://x.com/ridakalam52/status/2116716270619951520"
         ],
-        "retrieved_at": "2026-11-08T10:28:59.882Z"
+        "retrieved_at": "2026-11-08T10:41:11.277Z"
       }
     },
     {
@@ -4730,8 +4898,10 @@
         "sources": [
           "https://x.com/r4b1nj0i3/status/2119186356325015735"
         ],
-        "retrieved_at": "2026-11-08T10:29:00.184Z"
-      }
+        "retrieved_at": "2026-11-08T10:41:11.579Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "dd0fea75-b29a-4ad1-b2d3-bdc1ae456fd1",
@@ -4749,7 +4919,7 @@
         "sources": [
           "https://x.com/cryptoAYA33/status/2117739000358482276"
         ],
-        "retrieved_at": "2026-11-08T10:29:00.486Z"
+        "retrieved_at": "2026-11-08T10:41:11.883Z"
       }
     },
     {
@@ -4773,7 +4943,7 @@
         "sources": [
           "https://x.com/aegisonnear/status/2118429338253361400"
         ],
-        "retrieved_at": "2026-11-08T10:29:00.788Z"
+        "retrieved_at": "2026-11-08T10:41:12.186Z"
       }
     },
     {
@@ -4792,7 +4962,7 @@
         "sources": [
           "https://x.com/NFTKINGIII/status/2116798898945610113"
         ],
-        "retrieved_at": "2026-11-08T10:29:01.090Z"
+        "retrieved_at": "2026-11-08T10:41:12.489Z"
       }
     },
     {
@@ -4811,7 +4981,7 @@
         "sources": [
           "https://x.com/JakobJJJJJX/status/2118043873184551411"
         ],
-        "retrieved_at": "2026-11-08T10:29:01.392Z"
+        "retrieved_at": "2026-11-08T10:41:12.791Z"
       }
     },
     {
@@ -4830,7 +5000,7 @@
         "sources": [
           "https://x.com/LesnaCrex/status/2118706276091974069"
         ],
-        "retrieved_at": "2026-11-08T10:29:01.694Z"
+        "retrieved_at": "2026-11-08T10:41:13.094Z"
       }
     },
     {
@@ -4854,7 +5024,7 @@
         "sources": [
           "https://x.com/MAarashAlijo/status/2119059717540712799"
         ],
-        "retrieved_at": "2026-11-08T10:29:01.996Z"
+        "retrieved_at": "2026-11-08T10:41:13.397Z"
       }
     },
     {
@@ -4873,7 +5043,7 @@
         "sources": [
           "https://x.com/nestarich07/status/2118754817711784305"
         ],
-        "retrieved_at": "2026-11-08T10:29:01.997Z"
+        "retrieved_at": "2026-11-08T10:41:13.398Z"
       }
     },
     {
@@ -4896,8 +5066,10 @@
         "sources": [
           "https://x.com/_ace_won/status/2118266550096675080"
         ],
-        "retrieved_at": "2026-11-08T10:29:02.298Z"
-      }
+        "retrieved_at": "2026-11-08T10:41:13.702Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "e3abfe5a-e38f-479d-85e9-e68f3caa0221",
@@ -4920,7 +5092,7 @@
         "sources": [
           "https://x.com/spactvault/status/2118225273523233241"
         ],
-        "retrieved_at": "2026-11-08T10:29:02.601Z"
+        "retrieved_at": "2026-11-08T10:41:14.004Z"
       }
     },
     {
@@ -4939,7 +5111,7 @@
         "sources": [
           "https://x.com/KhDidukh/status/2116683859798663586"
         ],
-        "retrieved_at": "2026-11-08T10:29:02.602Z"
+        "retrieved_at": "2026-11-08T10:41:14.005Z"
       }
     },
     {
@@ -4963,8 +5135,10 @@
         "sources": [
           "https://x.com/GGGODLIN/status/2119268196062798316"
         ],
-        "retrieved_at": "2026-11-08T10:29:02.903Z"
-      }
+        "retrieved_at": "2026-11-08T10:41:14.308Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "e4af217b-7468-46c3-a756-fde5900c550b",
@@ -4987,8 +5161,10 @@
         "sources": [
           "https://x.com/alejandroso54/status/2117713714874921129"
         ],
-        "retrieved_at": "2026-11-08T10:29:03.205Z"
-      }
+        "retrieved_at": "2026-11-08T10:41:14.610Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "e57ee21f-4601-4fad-878b-d81519dc8a4f",
@@ -5006,8 +5182,10 @@
         "sources": [
           "https://x.com/Amiinjalili/status/2117754340073230518"
         ],
-        "retrieved_at": "2026-11-08T10:29:03.507Z"
-      }
+        "retrieved_at": "2026-11-08T10:41:14.911Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "e5be6759-eaf7-4884-aa75-b0d135f30f96",
@@ -5030,7 +5208,7 @@
         "sources": [
           "https://x.com/Musnadey/status/2117100748555108649"
         ],
-        "retrieved_at": "2026-11-08T10:29:03.809Z"
+        "retrieved_at": "2026-11-08T10:41:15.214Z"
       }
     },
     {
@@ -5049,7 +5227,7 @@
         "sources": [
           "https://x.com/Apihpih69/status/2117036976880877770"
         ],
-        "retrieved_at": "2026-11-08T10:29:04.111Z"
+        "retrieved_at": "2026-11-08T10:41:15.517Z"
       }
     },
     {
@@ -5073,8 +5251,10 @@
         "sources": [
           "https://x.com/_joelad/status/2118745191368511983"
         ],
-        "retrieved_at": "2026-11-08T10:29:04.413Z"
-      }
+        "retrieved_at": "2026-11-08T10:41:15.819Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "e8d8d832-2a1f-4026-afba-111e6bd7316b",
@@ -5092,7 +5272,7 @@
         "sources": [
           "https://x.com/MabMan338/status/2119335847728411110"
         ],
-        "retrieved_at": "2026-11-08T10:29:04.415Z"
+        "retrieved_at": "2026-11-08T10:41:15.820Z"
       }
     },
     {
@@ -5116,8 +5296,10 @@
         "sources": [
           "https://x.com/MrSharafi4/status/2118504037918310510"
         ],
-        "retrieved_at": "2026-11-08T10:29:04.717Z"
-      }
+        "retrieved_at": "2026-11-08T10:41:16.124Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "eaab06b8-2ec0-41d5-ab11-be1d4cc37f0f",
@@ -5135,7 +5317,7 @@
         "sources": [
           "https://x.com/jack/status/198"
         ],
-        "retrieved_at": "2026-11-08T10:29:05.020Z"
+        "retrieved_at": "2026-11-08T10:41:16.427Z"
       }
     },
     {
@@ -5159,7 +5341,7 @@
         "sources": [
           "https://x.com/surthenort40906/status/2117717450783633412"
         ],
-        "retrieved_at": "2026-11-08T10:29:05.022Z"
+        "retrieved_at": "2026-11-08T10:41:16.428Z"
       }
     },
     {
@@ -5178,7 +5360,7 @@
         "sources": [
           "https://x.com/the_annon_one/status/2118508938178220451"
         ],
-        "retrieved_at": "2026-11-08T10:29:05.324Z"
+        "retrieved_at": "2026-11-08T10:41:16.731Z"
       }
     },
     {
@@ -5206,7 +5388,7 @@
         "sources": [
           "https://x.com/Ade_lekeJr/status/2118745431651885226"
         ],
-        "retrieved_at": "2026-11-08T10:29:05.626Z"
+        "retrieved_at": "2026-11-08T10:41:17.034Z"
       }
     },
     {
@@ -5217,8 +5399,8 @@
       "posts": 1,
       "description": "PayProof — escrow for freelancers, built at NEAR HACKATHON 🚀 Locks payment in a NEAR smart contract, releases it on approval. No middleman. 🔗 💻 Built at @NEARProtocol #NEARHackathon",
       "description_source": "https://x.com/isonidavid/status/2118359294890639555",
-      "repository_url": "https://github.com/0xdavid01/Payproof-Global",
-      "repository_source": "https://x.com/isonidavid/status/2118359294890639555",
+      "repository_url": null,
+      "repository_source": null,
       "links": [
         {
           "url": "https://app.payproof.site",
@@ -5230,8 +5412,9 @@
         "sources": [
           "https://x.com/isonidavid/status/2118359294890639555"
         ],
-        "retrieved_at": "2026-11-08T10:29:05.627Z"
-      }
+        "retrieved_at": "2026-11-08T10:41:17.034Z"
+      },
+      "repository_unverified": "https://github.com/0xdavid01/Payproof-Global"
     },
     {
       "submission_id": "efc90a1e-09d2-4cbb-b216-2fc0b6ca2fac",
@@ -5254,7 +5437,7 @@
         "sources": [
           "https://x.com/CryptoBurrito/status/2118799142419873800"
         ],
-        "retrieved_at": "2026-11-08T10:29:05.929Z"
+        "retrieved_at": "2026-11-08T10:41:17.337Z"
       }
     },
     {
@@ -5273,7 +5456,7 @@
         "sources": [
           "https://x.com/ghulerushi14/status/2119075984393875695"
         ],
-        "retrieved_at": "2026-11-08T10:29:05.929Z"
+        "retrieved_at": "2026-11-08T10:41:17.338Z"
       }
     },
     {
@@ -5292,8 +5475,10 @@
         "sources": [
           "https://x.com/3rsona/status/2118345921692127594"
         ],
-        "retrieved_at": "2026-11-08T10:29:06.231Z"
-      }
+        "retrieved_at": "2026-11-08T10:41:17.642Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "f1b09ee0-bca5-4336-9a0b-8cc6a258cbf1",
@@ -5311,7 +5496,7 @@
         "sources": [
           "https://x.com/neqro_61/status/2119053192746942910"
         ],
-        "retrieved_at": "2026-11-08T10:29:06.533Z"
+        "retrieved_at": "2026-11-08T10:41:17.945Z"
       }
     },
     {
@@ -5339,7 +5524,7 @@
         "sources": [
           "https://x.com/Sparkler_Labs/status/2114194006947291518"
         ],
-        "retrieved_at": "2026-11-08T10:29:06.835Z"
+        "retrieved_at": "2026-11-08T10:41:18.248Z"
       }
     },
     {
@@ -5358,8 +5543,10 @@
         "sources": [
           "https://x.com/silence_inf/status/2118400979490287643"
         ],
-        "retrieved_at": "2026-11-08T10:29:07.137Z"
-      }
+        "retrieved_at": "2026-11-08T10:41:18.551Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "f6bd2d41-873e-4b16-90a7-8500590c8051",
@@ -5377,7 +5564,7 @@
         "sources": [
           "https://x.com/realsieslol/status/2118619797596541027"
         ],
-        "retrieved_at": "2026-11-08T10:29:07.438Z"
+        "retrieved_at": "2026-11-08T10:41:18.854Z"
       }
     },
     {
@@ -5396,7 +5583,7 @@
         "sources": [
           "https://x.com/l0rdWells/status/2118026646813094290"
         ],
-        "retrieved_at": "2026-11-08T10:29:07.740Z"
+        "retrieved_at": "2026-11-08T10:41:19.158Z"
       }
     },
     {
@@ -5420,8 +5607,10 @@
         "sources": [
           "https://x.com/jccryp_11/status/2118639391933612174"
         ],
-        "retrieved_at": "2026-11-08T10:29:08.041Z"
-      }
+        "retrieved_at": "2026-11-08T10:41:19.461Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "f8ed5c05-2ce8-4599-b263-2384b923797d",
@@ -5444,7 +5633,7 @@
         "sources": [
           "https://x.com/Peter_obisi/status/2119013176310427661"
         ],
-        "retrieved_at": "2026-11-08T10:29:08.344Z"
+        "retrieved_at": "2026-11-08T10:41:19.763Z"
       }
     },
     {
@@ -5467,8 +5656,10 @@
         "sources": [
           "https://x.com/Szczypek_96/status/2117400141384626606"
         ],
-        "retrieved_at": "2026-11-08T10:29:08.646Z"
-      }
+        "retrieved_at": "2026-11-08T10:41:20.065Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "fab81a4b-9c1f-4434-a1cc-cc0933f8d37f",
@@ -5486,8 +5677,10 @@
         "sources": [
           "https://x.com/RobinsomTim/status/2116836174853771287"
         ],
-        "retrieved_at": "2026-11-08T10:29:08.947Z"
-      }
+        "retrieved_at": "2026-11-08T10:41:20.369Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "fc7ad669-fe67-48e1-b82d-c9f8efdb20c0",
@@ -5505,7 +5698,7 @@
         "sources": [
           "https://x.com/prathameshjknc/status/2119149208351711679"
         ],
-        "retrieved_at": "2026-11-08T10:29:09.249Z"
+        "retrieved_at": "2026-11-08T10:41:20.671Z"
       }
     },
     {
@@ -5524,8 +5717,10 @@
         "sources": [
           "https://x.com/mubu_dot/status/2116372906745991631"
         ],
-        "retrieved_at": "2026-11-08T10:29:09.551Z"
-      }
+        "retrieved_at": "2026-11-08T10:41:20.974Z"
+      },
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-08T10:41:29.050Z"
     },
     {
       "submission_id": "fe292050-bdfa-482d-ab08-4d1355e49f3f",
@@ -5543,7 +5738,7 @@
         "sources": [
           "https://x.com/marrnueldev/status/2118292623358341128"
         ],
-        "retrieved_at": "2026-11-08T10:29:09.852Z"
+        "retrieved_at": "2026-11-08T10:41:21.277Z"
       }
     },
     {
@@ -5562,7 +5757,7 @@
         "sources": [
           "https://x.com/W3B_AI_SR/status/2117999713039376852"
         ],
-        "retrieved_at": "2026-11-08T10:29:10.155Z"
+        "retrieved_at": "2026-11-08T10:41:21.581Z"
       }
     },
     {
@@ -5586,7 +5781,7 @@
         "sources": [
           "https://x.com/nearbiai/status/2118415518382108887"
         ],
-        "retrieved_at": "2026-11-08T10:29:10.457Z"
+        "retrieved_at": "2026-11-08T10:41:21.884Z"
       }
     },
     {
@@ -5605,7 +5800,7 @@
         "sources": [
           "https://x.com/MyCryptoWallet/status/2116833046041416166"
         ],
-        "retrieved_at": "2026-11-08T10:29:10.759Z"
+        "retrieved_at": "2026-11-08T10:41:22.188Z"
       }
     }
   ]
