@@ -25,7 +25,7 @@ guardrails listed under Day 0.
 | Where upvotes live | `nearhunt.near`, key `vote/{submission_id}`; the voter is the writer (`predecessor_id`) | The indexer keeps one row per writer per key, so one account gets one vote and nobody can vote as someone else. This replaces `vote/{id}/{voter}`. |
 | Where comments live | **near.social**: replies to one post per project by `nearhunt.near` | They show up in feeds and notifications and grow near.social activity. This reverses the earlier "own namespace" recommendation. |
 | Identity | near.social profiles (name, avatar, about) | People arrive with an identity they already have. |
-| Projects as a near.social data object | Write a proposal now, build it after the hackathon | See [`proposals/social-kv-project.md`](proposals/social-kv-project.md). |
+| Projects as a near.social data object | **Out of hackathon scope** (owner agreed 8 Nov). The draft proposal stays in the repo; no `project/` writes to `social` before 14 Nov | See [`proposals/social-kv-project.md`](proposals/social-kv-project.md). |
 
 ## Roadmap at a glance
 
@@ -132,7 +132,7 @@ Priority: **P0** = needed to submit · **P1** = should ship · **P2** = only if 
 | NH-61 | P0 | `public/SKILL.md`: quick-reference table first, read-only, provenance rules |
 | NH-62 | P1 | Open data page (board 4) |
 | NH-63 | P1 | Agent test: "Read NEAR Hunt's skill and shortlist ten projects", run with Hermes and one other agent |
-| NH-64 | P1 | Publish the near.social `project/` proposal draft (doc only) and link it from the open data page |
+| NH-64 | P2 | Link the existing `project/` proposal draft from the open data page (doc only, no on-chain writes) |
 
 ### Day 5 — submission
 
@@ -160,6 +160,3 @@ beyond `vote/` on `nearhunt.near` and standard near.social posts.
 ## Open decisions for the owner
 
 1. **Hosting:** which Vercel account or domain? (This blocks NH-05's `$id` and the SKILL.md URL.)
-2. **Optional demo write:** should `nearhunt.near` publish NEAR Hunt's *own* project as the
-   first `project/` record on `social`, as a live example of the proposal? It's one mainnet
-   write, and it needs your approval.
