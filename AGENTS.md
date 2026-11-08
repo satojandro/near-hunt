@@ -33,6 +33,14 @@ value, but the old value stays in public history forever.
 - Testnet is fine without asking. Say which network you used.
 - See `docs/runbooks/keys.md`.
 
+## 2a. NEAR Agent Skills win over older docs
+
+The NEAR Agent Skills (`npx skills add near/agent-skills`, listed at
+https://docs.near.org/getting-started/tools-for-ai) were installed on 9 Nov, after `docs/PLAN.md`,
+the PRD and the roadmap were written. Where a skill and a repo doc disagree on how to build
+something on NEAR (libraries, wallet connection, API usage), **follow the skill** and update the
+repo doc in the same change. The rules in §1 (mainnet writes) and §5 (scope) still apply.
+
 ## 3. Reading data
 
 - Read project records only through `lib/kv.mjs` (`readProjects`), which keeps rows written by
