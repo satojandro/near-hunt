@@ -66,12 +66,31 @@ test('voteKey refuses an empty project id', () => {
 
 // --- reading votes ----------------------------------------------------------
 
-test('only object values count as a vote; null is withdrawn', () => {
+test('only a plain object counts as a vote; null, arrays and scalars do not', () => {
   assert.equal(isActiveVote({}), true);
   assert.equal(isActiveVote({ note: 1 }), true);
   assert.equal(isActiveVote(null), false);
   assert.equal(isActiveVote(undefined), false);
   assert.equal(isActiveVote('yes'), false);
+  // `typeof [] === 'object'`, but a schema/README.md vote value is `{}` or `null`, never an array.
+  assert.equal(isActiveVote([]), false);
+  assert.equal(isActiveVote([{}]), false);
+  assert.equal(isActiveVote(1), false);
+  assert.equal(isActiveVote(true), false);
+});
+
+// The browser read and the server tally each own a copy of this predicate (the client must not
+// import the server modules). They have to answer identically, or a card reads "voted" while the
+// tally counts 0. This test fails if either copy drifts.
+test('the client and tally predicates agree on every value shape', async () => {
+  const { isActiveVote: tallyIsActiveVote } = await import('../lib/votes.mjs');
+  const shapes = [{}, { note: 1 }, null, undefined, [], [{}], [1], 'yes', '', 0, 1, true, false];
+  for (const v of shapes) {
+    assert.equal(
+      isActiveVote(v), tallyIsActiveVote(v),
+      `client and tally disagree on ${JSON.stringify(v)}: client=${isActiveVote(v)} tally=${tallyIsActiveVote(v)}`,
+    );
+  }
 });
 
 test('voted ids come only from the account’s own non-null vote rows', () => {
@@ -81,6 +100,8 @@ test('voted ids come only from the account’s own non-null vote rows', () => {
       row('alice.testnet', 'vote/b', null),
       row('mallory.testnet', 'vote/c'),
       row('alice.testnet', 'project/d'),
+      // Off-schema value: the tally ignores it, so the browser must ignore it too.
+      row('alice.testnet', 'vote/e', [{}]),
     ],
     'alice.testnet',
   );
@@ -113,6 +134,12 @@ test('one vote is an exact-key read', async () => {
   const r = await readAccountVote({ network: 'testnet', voteAccount: 'nearhunt.testnet', accountId: 'alice.testnet', projectId: 'a', fetchImpl: impl });
   assert.deepEqual(r, { voted: true, blockHeight: 42 });
   assert.deepEqual(calls[0].body, { key: 'vote/a' });
+});
+
+test('an off-schema row value reads as not voted, matching the tally', async () => {
+  const { impl } = fakeFetch([{ entries: [row('alice.testnet', 'vote/a', [{}], 42)] }]);
+  const r = await readAccountVote({ network: 'testnet', voteAccount: 'nearhunt.testnet', accountId: 'alice.testnet', projectId: 'a', fetchImpl: impl });
+  assert.deepEqual(r, { voted: false, blockHeight: 42 });
 });
 
 test('a KV error status is an error, not "not voted"', async () => {
