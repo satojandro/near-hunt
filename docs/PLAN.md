@@ -7,36 +7,27 @@ https://claude.ai/artifact/TheVd1qg4LzCRzStJvKPKe (private until shared).
 
 ## Where things stand (re-audited 2026-11-08 evening, by Hermes)
 
-`nearhunt.near` has exactly three transactions:
+`nearhunt.near` has exactly four transactions:
 
 1. a 1 NEAR funding transfer (block 223,583,069);
 2. 256 `project/…` records (block 223,583,277);
-3. 15 `project/…` records (block 223,583,288).
+3. 15 `project/…` records (block 223,583,288);
+4. 4 `project/…` records — tx `8rX5McjBeiitsRAhQsY7sqWbTQ9nXXHBDYwCJyQuGhfk`, authorized by the
+   owner and applied on 8 Nov (`NEAR Claim Check`, `Potluck`, `Swarmpad`, `Q-day`).
 
-**Nothing on chain needs undoing.** What's missing is the product itself, plus the guardrails
-listed under Day 0.
+**Nothing on chain needs undoing, and the chain matches the feed.** 275 records on chain, 275 in
+the feed, 275/275 valid against the schema, 0 foreign rows, 0 tombstones. A re-run writes nothing.
 
-The chain is now **behind** the feed. The hackathon feed has grown from 271 to **275**
-submissions; the dry run finds 4 new, 0 changed, 271 unchanged, 0 missing:
-
-```
-+ project/e8d8d832-2a1f-4026-afba-111e6bd7316b  "NEAR Claim Check"
-+ project/d7468e54-2c34-4138-8613-a587af2d3f1b  "Potluck"
-+ project/a395a485-5c23-43ac-b1b5-5e27887c3124  "Swarmpad"
-+ project/0328a53c-46b1-4ae4-a6be-c802af786094  "Q-day"
-would write: 4 keys, 2051 bytes, 1 transaction
-```
-
-That write is **waiting on authorization** (NH-93): the diff above is what would be signed. Keys
-for `nearhunt.near` live on the operator's machine by the owner's decision of 8 Nov — the gate is approval
-of the write, not the machine.
+What's missing is the product itself, plus Day 1 onwards. Keys for `nearhunt.near` live on the
+operator's machine by the owner's decision of 8 Nov — the gate is approval of each write, not the
+machine.
 
 Evidence for everything above, reproduced 8 Nov evening:
 
 ```bash
 npm test                  # 23 pass, 0 fail
-npm run validate:schema   # 271 records, 271 valid, 0 foreign rows, 0 tombstones
-node scripts/import.mjs   # 4 new, 0 changed, 271 unchanged, 0 missing
+npm run validate:schema   # 275 records, 275 valid, 0 foreign rows, 0 tombstones
+node scripts/import.mjs   # 0 new, 0 changed, 275 unchanged — nothing to write
 node scripts/import.mjs --check-key   # every candidate key with its on-chain permission
 near account list-keys nearhunt.near network-config mainnet now   # 1 key, full access
 ```
@@ -78,8 +69,8 @@ Priority: **P0** = needed to submit · **P1** = should ship · **P2** = only if 
 ### Day 0 — guardrails (no board)
 
 **Status (8 Nov evening):** NH-01 to NH-05 are **done and verified by Hermes**: `npm test`
-is 23/23 green, `npm run validate:schema` reads 271/271 valid with 0 foreign rows, and the
-importer dry run is idempotent (4 new, 0 changed, 271 unchanged). NH-07, NH-08 and NH-09
+is 23/23 green, `npm run validate:schema` reads 275/275 valid with 0 foreign rows, and the
+importer dry run is idempotent (0 new, 0 changed, 275 unchanged). NH-07, NH-08 and NH-09
 closed the same evening. **NH-06 was withdrawn by the owner on 8 Nov**: keys for
 `nearhunt.near` stay where the importer runs, and the gate is prior authorization of each write, not
 machine custody. See [`runbooks/keys.md`](runbooks/keys.md).
@@ -180,7 +171,7 @@ machine custody. See [`runbooks/keys.md`](runbooks/keys.md).
 | NH-90 | P0 | Rewrite the README to match what runs: live URL, 3-command local run, what is on chain where |
 | NH-91 | P0 | README names Baby Shark, and Baby Shark's README names NEAR Hunt |
 | NH-92 | P0 | Demo video or screenshots, plus an X post tagging `@NEARProtocol` `#NEARHackathon` |
-| NH-93 | P0 | Final dry-run import; a human approves and applies any diff |
+| NH-93 | P0 | Final dry-run import; a human approves and applies any diff | **Done 8 Nov** — 4 records applied in tx `8rX5McjBeiitsRAhQsY7sqWbTQ9nXXHBDYwCJyQuGhfk`, 4/4 verified against the indexer, schema 275/275 |
 | NH-94 | P2 | "Support NEAR Hunt" link (footer and open data page) to a separate treasury account, labelled "supports the site, not any project" |
 
 ### After the hackathon
@@ -200,7 +191,5 @@ beyond `vote/` on `nearhunt.near` and standard near.social posts.
 
 ## Open decisions for the owner
 
-1. **NH-93, the 4-key import.** Authorize the diff shown above (`nearhunt.near`, 4 keys,
-   1 transaction, 2051 bytes) so the directory can say 275/275 instead of 271/275.
-2. **Hosting:** which Vercel account will serve nearhunt.xyz? (DNS points there on Day 1.)
-3. **Treasury account** for NH-94: create one (e.g. `treasury.nearhunt.near`) with a key held by the owner. It never signs imports.
+1. **Hosting:** which Vercel account will serve nearhunt.xyz? (DNS points there on Day 1.)
+2. **Treasury account** for NH-94: create one (e.g. `treasury.nearhunt.near`) with a key held by the owner. It never signs imports.

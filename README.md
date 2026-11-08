@@ -9,11 +9,10 @@ page, one-account-one-upvote, and threaded discussion — with every project rec
 open, versioned JSON on NEAR itself, and a read-only API that lets AI agents discover
 projects without browser automation.
 
-> **Status: data layer live on mainnet.** 271 of the 275 NEAR Hackathon submissions are stored
-> as `nearhunt/project/1` records under `nearhunt.near` — two transactions, no smart contract,
-> verified readable 271/271 through the public FastData indexer. The feed has since grown to 275;
-> the remaining 4 await an owner-approved import (`node scripts/import.mjs` shows the diff).
-> The web app is next.
+> **Status: data layer live on mainnet.** All 275 NEAR Hackathon submissions are stored
+> as `nearhunt/project/1` records under `nearhunt.near` — three transactions, no smart contract,
+> verified readable 275/275 through the public FastData indexer, and a re-run of the importer
+> writes nothing. The web app is next.
 > See [`docs/phase-0-spike.md`](docs/phase-0-spike.md) and [`schema/`](schema/).
 
 ---
@@ -47,7 +46,7 @@ anyone, with no bespoke contract to deploy or audit.
 
 | Concern | Choice | Status |
 |---|---|---|
-| Project records | FastData KV writes (`__fastdata_kv`) to `nearhunt.near` | **live on mainnet** (271 records) |
+| Project records | FastData KV writes (`__fastdata_kv`) to `nearhunt.near` | **live on mainnet** (275 records) |
 | Upvotes | `vote/{project_id}` keys written by the voter, so one vote per account | designed, not built |
 | Reading records | `https://kv.main.fastnear.com`, scoped to records written by `nearhunt.near` | verified |
 | Discussion | near.social `social-kv/1` replies to one post per project | designed, not built |
