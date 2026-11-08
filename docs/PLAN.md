@@ -94,6 +94,34 @@ with no key at all**: the owner signs on the MacBook, the agent machine only rea
 | NH-08 | P2 | `scripts/render-mockups.mjs` needs Playwright + Chromium, which is not in `devDependencies` | **Done** — the Playwright dependency is gone: the script drives the installed Chrome/Chromium over the DevTools protocol using Node's built-in WebSocket, and exits with an install hint (or `CHROME_PATH`) when no browser is found. `npm run render:mockups` on this machine re-rendered all 9 boards; the generated `html/` is byte-identical to the committed files and every PNG keeps its exact 2× dimensions |
 | NH-09 | P1 | The importer cannot tell a full-access key from a function-call key, and `resolveKeyFile()` prefers the flat file — so a leftover full-access credential silently signs an import. Query `view_access_key` for the resolved public key and print the permission; refuse to sign with full access unless `--accept-full-access` is passed | `--check-key` prints `FunctionCall` or `full access` for the resolved key, and an import with a full-access key exits non-zero |
 
+### Day 1 status (9 Nov, by Claude)
+
+Code for NH-10 (scaffold; preview deploys wait on open decision 3), NH-11–NH-16, NH-20 and NH-21
+is merged on `claude/wizardly-darwin-ugh6wq`. Read-only: nothing was signed or written, and no key
+was present on the machine that built it. NH-06 is still the owner's, and Day 1 code does not need it.
+
+```bash
+npm test                  # 50 pass, 0 fail
+npm run typecheck         # exit 0
+npm run build             # routes: ƒ /, ƒ /p/[id]
+npm run validate:schema   # all 271 records conform to nearhunt/project/1
+node scripts/import.mjs   # dry run: the same 4 new keys as above, 2051 bytes, nothing signed
+```
+
+Notes from building it, with the evidence in the commit messages:
+- Votes do not exist until NH-33, so "Newest" is the default sort and every count shows 0
+  in a box that cannot be clicked. Most records share two block heights, so "Newest" is
+  mostly alphabetical today.
+- NH-15 uses `api2.near.social/v1/hashtags/nearhunt` (0 posts today; empty state shown). The
+  `near-social-js` SDK the NEAR docs recommend reads the legacy index and returned only post
+  pointers, so it was not added.
+- NH-21 "View JSON" links to `GET kv.main.fastnear.com/v0/latest/nearhunt.near/nearhunt.near/project/{id}`
+  (a single row, writer-scoped). Block heights link to Pikespeak because nearblocks.io answers
+  automated checks with a Cloudflare challenge.
+- For Day 2 (NH-30): the official NEAR docs and the `near-dapp` agent skill now recommend NEAR
+  Connect (`@hot-labs/near-connect`, `near-connect-hooks`) rather than Wallet Selector, and the
+  `near-api-js` skill documents v7 while `package.json` pins ^5.1.1. Owner to decide.
+
 ### Board 1 — Directory (home) · Day 1
 
 | ID | P | Item |

@@ -35,7 +35,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <span className="header-spacer" />
             {/* NH-30 (Day 2) wires this up. Disabled until then so it never pretends to work. */}
             <button type="button" className="connect-btn" disabled title="Connecting a NEAR account arrives with upvoting">
-              Connect NEAR account
+              Connect<span className="connect-long">NEAR account</span>
             </button>
           </div>
         </header>
