@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://nearhunt.example/schema/nearhunt/project/1",
+  "$id": "https://nearhunt.xyz/schema/nearhunt/project/1",
   "title": "nearhunt/project/1",
   "description": "Canonical project record for NEAR Hunt. One record per project, stored on NEAR as a FastData KV value under the key `project/{source.submission_id}` in the `nearhunt.near` namespace. Versioned by the `schema` field: a future breaking change gets a new namespace (nearhunt/project/2) rather than a version field, the same approach near.social uses for post2/.",
   "type": "object",

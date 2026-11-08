@@ -26,6 +26,9 @@ guardrails listed under Day 0.
 | Where comments live | **near.social**: replies to one post per project by `nearhunt.near` | They show up in feeds and notifications and grow near.social activity. This reverses the earlier "own namespace" recommendation. |
 | Identity | near.social profiles (name, avatar, about) | People arrive with an identity they already have. |
 | Projects as a near.social data object | **Out of hackathon scope** (owner agreed 8 Nov). The draft proposal stays in the repo; no `project/` writes to `social` before 14 Nov | See [`proposals/social-kv-project.md`](proposals/social-kv-project.md). |
+| Domain | **nearhunt.xyz** (bought 8 Nov). Pages at `nearhunt.xyz/p/{submission_id}`, skill at `nearhunt.xyz/SKILL.md`, schema `$id` under `nearhunt.xyz/schema/` | Owner's decision |
+| Donations to NEAR Hunt | A small "Support NEAR Hunt" link in the footer and on the open data page (NH-94, P2). It pays a **separate treasury account**, never `nearhunt.near`, and it never appears next to an upvote button | Low cost and on-brand, but it must not read as paying for votes, and the data-publishing key should not also hold funds |
+| Sponsored placements | **Not before results are announced (18 Nov).** After that: one clearly labelled slot, outside the rankings, published on chain (NH-104) | Paid visibility during judging would undercut "votes are community signals" |
 
 ## Roadmap at a glance
 
@@ -142,6 +145,7 @@ Priority: **P0** = needed to submit · **P1** = should ship · **P2** = only if 
 | NH-91 | P0 | README names Baby Shark, and Baby Shark's README names NEAR Hunt |
 | NH-92 | P0 | Demo video or screenshots, plus an X post tagging `@NEARProtocol` `#NEARHackathon` |
 | NH-93 | P0 | Final dry-run import; a human approves and applies any diff |
+| NH-94 | P2 | "Support NEAR Hunt" link (footer and open data page) to a separate treasury account, labelled "supports the site, not any project" |
 
 ### After the hackathon
 
@@ -151,6 +155,7 @@ Priority: **P0** = needed to submit · **P1** = should ship · **P2** = only if 
 | NH-101 | Builder claim flow: builders publish their own `project/{slug}` on `social`; NEAR Hunt links it to the imported listing |
 | NH-102 | Baby Shark "Fund this project" link (`external_campaigns`) |
 | NH-103 | Optional near.social mirroring for every project, once there's a moderation story |
+| NH-104 | Sponsored slot: one per page at most, labelled "Sponsored", never inside the ranked list and never affecting rank. Each placement is published as an on-chain record by NEAR Hunt (sponsor, dates, amount). No tracking scripts. Written sponsor policy first |
 
 ## Explicitly out of scope until after the 14th
 
@@ -159,4 +164,5 @@ beyond `vote/` on `nearhunt.near` and standard near.social posts.
 
 ## Open decisions for the owner
 
-1. **Hosting:** which Vercel account or domain? (This blocks NH-05's `$id` and the SKILL.md URL.)
+1. **Hosting:** which Vercel account will serve nearhunt.xyz? (DNS points there on Day 1.)
+2. **Treasury account** for NH-94: create one (e.g. `treasury.nearhunt.near`) with a key held by a human, not Hermes.
