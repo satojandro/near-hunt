@@ -27,8 +27,8 @@ submissions; the dry run finds 4 new, 0 changed, 271 unchanged, 0 missing:
 would write: 4 keys, 2051 bytes, 1 transaction
 ```
 
-That write is **waiting on the owner** (NH-93) and must not happen until the key situation in
-NH-06 is fixed — today the only key that can sign it is full-access.
+That write was **approved by the owner on 9 Nov** (NH-93). It is applied from the machine that
+holds the key (Hermes), not from a cloud agent session.
 
 Evidence for everything above, reproduced 8 Nov evening:
 
@@ -56,8 +56,8 @@ near account list-keys nearhunt.near network-config mainnet now   # 1 key, full 
 
 | Day | Theme | Boards |
 |---|---|---|
-| 0 (8 Nov) | Guardrails and schema fixes — **code done; NH-06 keys blocked on the owner** | — |
-| 1 (9 Nov) | Directory and project page, read-only (starts only after NH-06) | 1, 2, 5 |
+| 0 (8 Nov) | Guardrails and schema fixes — **done** (NH-06 dropped 9 Nov, handled by the owner with Hermes) | — |
+| 1 (9 Nov) | Directory and project page, read-only — **code done** | 1, 2, 5 |
 | 2 (10 Nov) | Connect and upvote | 7, 2 |
 | 3 (11 Nov) | near.social discussion, account page, states | 2, 3, 6, 8 |
 | 4 (12 Nov) | Open data, API, SKILL.md, proposal draft | 4 |
@@ -76,11 +76,8 @@ Priority: **P0** = needed to submit · **P1** = should ship · **P2** = only if 
 **Status (8 Nov evening):** NH-01 to NH-05 are **done and verified by Hermes**: `npm test`
 is 15/15 green, `npm run validate:schema` reads 271/271 valid with 0 foreign rows, and the
 importer dry run is idempotent (4 new, 0 changed, 271 unchanged). NH-07 and NH-08 closed the
-same evening. NH-06 is **not started**: `nearhunt.near` has exactly one key on chain and it is
-**full access**, and the agent machine holds two credential files for it (a flat one and a
-directory), both carrying the master seed phrase. The steps are in
-[`runbooks/keys.md`](runbooks/keys.md) — and the rule they encode is that the **Mini ends up
-with no key at all**: the owner signs on the MacBook, the agent machine only reads.
+same evening. NH-06 was **dropped on 9 Nov** by the owner: key custody is handled with Hermes, and
+keys may live on the Mac Mini (AGENTS.md §2).
 
 | ID | P | Item | Done when |
 |---|---|---|---|
@@ -89,7 +86,7 @@ with no key at all**: the owner signs on the MacBook, the agent machine only rea
 | NH-03 | P0 | `AGENTS.md`: no mainnet transaction without a dry-run diff a human has approved; every docs claim comes with the command that proves it | **Done** — file committed |
 | NH-04 | P1 | Fix the docs drift (README table, spike "account undecided", the duplicated paragraph in the research doc) | **Done** |
 | NH-05 | P1 | Schema touch-ups: real `$id`; optional `social_post` field (the project's near.social post reference); document that `source.url` is the generic listing; written specs for the `vote/` and near.social comment conventions | **Done** — `$id` is `nearhunt.xyz`; `npm run validate:schema` still passes 271/271 |
-| NH-06 | P0 | The owner holds every key on the MacBook; the agent machine holds none. A `__fastdata_kv`-only function-call key signs imports (one for `nearhunt.near`; one for `social` later, in the Vercel env) | MacBook: `list-keys` shows a `FunctionCall` key and the full-access file sits outside `~/.near-credentials`. Mini: **no credential file for `nearhunt.near` at all**, so `--execute` cannot run there |
+| NH-06 | — | ~~Key custody split between MacBook and Mac Mini~~ | **Dropped 9 Nov (owner).** Key handling is the owner's, with Hermes; keys may live on the Mac Mini. See AGENTS.md §2 |
 | NH-07 | P1 | `scripts/import.mjs` defaults to `~/.near-credentials/{net}/{account}.json`, but near-cli-rs `save-to-legacy-keychain` writes `~/.near-credentials/{net}/{account}/{public-key}.json`. Resolve both, or fail with the exact path it looked for | **Done** — `resolveKeyFile()` takes the flat file when present, else the newest `.json` in the account directory, and the error lists every path tried. `node scripts/import.mjs --check-key` resolves and parses the key without signing: it prints `~/.near-credentials/mainnet/nearhunt.near.json` here, and against a fake `HOME` with only a near-cli-rs directory it prints that nested file. `--key-file <dir>` works too |
 | NH-08 | P2 | `scripts/render-mockups.mjs` needs Playwright + Chromium, which is not in `devDependencies` | **Done** — the Playwright dependency is gone: the script drives the installed Chrome/Chromium over the DevTools protocol using Node's built-in WebSocket, and exits with an install hint (or `CHROME_PATH`) when no browser is found. `npm run render:mockups` on this machine re-rendered all 9 boards; the generated `html/` is byte-identical to the committed files and every PNG keeps its exact 2× dimensions |
 | NH-09 | P1 | The importer cannot tell a full-access key from a function-call key, and `resolveKeyFile()` prefers the flat file — so a leftover full-access credential silently signs an import. Query `view_access_key` for the resolved public key and print the permission; refuse to sign with full access unless `--accept-full-access` is passed | `--check-key` prints `FunctionCall` or `full access` for the resolved key, and an import with a full-access key exits non-zero |
@@ -98,7 +95,7 @@ with no key at all**: the owner signs on the MacBook, the agent machine only rea
 
 Code for NH-10 (scaffold; preview deploys wait on open decision 3), NH-11–NH-16, NH-20 and NH-21
 is merged on `claude/wizardly-darwin-ugh6wq`. Read-only: nothing was signed or written, and no key
-was present on the machine that built it. NH-06 is still the owner's, and Day 1 code does not need it.
+was present on the machine that built it. Hosting and deploys are Hermes's (owner decision, 9 Nov).
 
 ```bash
 npm test                  # 50 pass, 0 fail
@@ -118,15 +115,17 @@ Notes from building it, with the evidence in the commit messages:
 - NH-21 "View JSON" links to `GET kv.main.fastnear.com/v0/latest/nearhunt.near/nearhunt.near/project/{id}`
   (a single row, writer-scoped). Block heights link to Pikespeak because nearblocks.io answers
   automated checks with a Cloudflare challenge.
-- For Day 2 (NH-30): the official NEAR docs and the `near-dapp` agent skill now recommend NEAR
-  Connect (`@hot-labs/near-connect`, `near-connect-hooks`) rather than Wallet Selector, and the
-  `near-api-js` skill documents v7 while `package.json` pins ^5.1.1. Owner to decide.
+- For Day 2 (NH-30): the `near-dapp` skill and the NEAR docs recommend NEAR Connect
+  (`@hot-labs/near-connect`, `near-connect-hooks`) over Wallet Selector. **Decided 9 Nov: NEAR
+  Connect**, and the skills win on any mismatch with this plan (AGENTS.md §2a). The
+  `near-api-js` skill documents v7 while `package.json` pins ^5.1.1; the upgrade belongs with
+  NH-30, where wallet code first needs it.
 
 ### Board 1 — Directory (home) · Day 1
 
 | ID | P | Item |
 |---|---|---|
-| NH-10 | P0 | App scaffold (Next.js on Vercel), header, nav, preview deploys |
+| NH-10 | P0 | App scaffold (Next.js), header, nav. Hosting and preview deploys: Hermes |
 | NH-11 | P0 | Project list from the KV API via NH-01, with a short server cache |
 | NH-12 | P0 | Search by name. The empty result says why: names only, since the feed has no descriptions |
 | NH-13 | P0 | Track filter chips with live counts |
@@ -148,7 +147,7 @@ Notes from building it, with the evidence in the commit messages:
 
 | ID | P | Item | Done when |
 |---|---|---|---|
-| NH-30 | P0 | Wallet selector login. A function-call access key covers **one** receiver, so the login key targets `nearhunt.near` (votes, frequent) and near.social posts go through a wallet confirmation | Login and logout work in Meteor and MyNearWallet |
+| NH-30 | P0 | Wallet login with **NEAR Connect** (`@hot-labs/near-connect` + `near-connect-hooks`, per the `near-dapp` skill; replaces Wallet Selector, owner decision 9 Nov). A function-call access key covers **one** receiver, so the login key targets `nearhunt.near` (votes, frequent) and near.social posts go through a wallet confirmation | Login and logout work in at least two NEAR Connect wallets (e.g. HOT and Meteor) |
 | NH-31 | P0 | Upvote: write `{"vote/{id}": {}}` to `nearhunt.near`. The count updates instantly, is confirmed against the indexer, and rolls back on timeout. The "wallet will say failed" warning is shown | One account's vote counts once, however many times it votes |
 | NH-32 | P0 | Remove an upvote: write `null` | Count drops; profile list updates |
 | NH-33 | P0 | Tally: for each project, an exact-key query across writers, ignoring nulls and projects that don't exist; cached | Matches a manual KV query |
@@ -206,7 +205,7 @@ Notes from building it, with the evidence in the commit messages:
 | NH-90 | P0 | Rewrite the README to match what runs: live URL, 3-command local run, what is on chain where |
 | NH-91 | P0 | README names Baby Shark, and Baby Shark's README names NEAR Hunt |
 | NH-92 | P0 | Demo video or screenshots, plus an X post tagging `@NEARProtocol` `#NEARHackathon` |
-| NH-93 | P0 | Final dry-run import; a human approves and applies any diff |
+| NH-93 | P0 | Final dry-run import; a human approves and applies any diff. **The 4-key diff was approved by the owner on 9 Nov**; Hermes applies it |
 | NH-94 | P2 | "Support NEAR Hunt" link (footer and open data page) to a separate treasury account, labelled "supports the site, not any project" |
 
 ### After the hackathon
@@ -226,11 +225,7 @@ beyond `vote/` on `nearhunt.near` and standard near.social posts.
 
 ## Open decisions for the owner
 
-1. **NH-06 keys, tonight.** Approve adding a `__fastdata_kv`-only function-call key for
-   `nearhunt.near` (and one for `social`), then delete the full-access key file and the seed
-   phrase from this machine. Until that happens, every write in this plan is signed by a key
-   that can also drain the account.
-2. **NH-93, the 4-key import.** Approve the diff shown above (`nearhunt.near`, 1 transaction,
-   2051 bytes) so the directory can say 275/275 instead of 271/275.
-3. **Hosting:** which Vercel account will serve nearhunt.xyz? (DNS points there on Day 1.)
-4. **Treasury account** for NH-94: create one (e.g. `treasury.nearhunt.near`) with a key held by a human, not Hermes.
+Settled on 9 Nov: NEAR Connect for login (NH-30); NH-06 dropped; the NH-93 4-key import
+approved; hosting and DNS are Hermes's. Still open:
+
+1. **Treasury account** for NH-94: create one (e.g. `treasury.nearhunt.near`) with a key held by a human, not Hermes.

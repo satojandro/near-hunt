@@ -1,5 +1,9 @@
 # Runbook: NEAR keys for NEAR Hunt
 
+> **Superseded, 9 Nov.** The owner dropped NH-06: key custody is handled by the owner with
+> Hermes, and keys may live on the Mac Mini. See `AGENTS.md` §2. The steps below are kept for
+> reference (the function-call key setup is still good practice) but are no longer required.
+
 **Who runs this:** the owner, on the MacBook. Never an agent, never the Mac Mini.
 
 ## Which machine does what

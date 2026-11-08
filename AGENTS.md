@@ -18,24 +18,26 @@ value, but the old value stays in public history forever.
   (NH-40) and a human has approved the batch.
 - Testnet is fine for experiments. Say which network you used.
 
-## 2. Keys — the agent machine holds none
+## 2. Keys
 
-Two machines, two jobs, and the split is not negotiable:
+**Owner decision, 9 Nov:** NH-06 is dropped and key custody is handled by the owner with Hermes.
+Keys may live on the Mac Mini (`Claudios-Mac-mini`). This replaces the earlier "agent machine
+holds none" rule; `docs/runbooks/keys.md` is kept for reference only.
 
-| | Machine | Holds a key | Runs `--execute` |
-|---|---|---|---|
-| Owner | MacBook (`Alejandros-MacBook-Pro`, `/Users/avb`) | yes — all of them | yes |
-| Agent | Mac Mini (`Claudios-Mac-mini`, `/Users/clawdio`) | **no** | **no** |
-
-- An agent never holds a credential file, in any form — not a function-call key, not a copy, not
-  a temporary file. With none present, `--execute` cannot run on the agent machine at all, which
-  is the enforcement.
-- An agent's job is the dry run: produce the exact diff, show it, and hand the decision to the
-  owner. See `docs/runbooks/keys.md`.
+- Holding a key never replaces §1: no mainnet transaction without a human's approval of the
+  exact dry-run diff.
+- Cloud or ad-hoc agent sessions (anything other than the Mac Mini) hold no key. Their job is the
+  dry run: produce the exact diff, show it, and hand the decision to the owner.
 - Never ask for, read, print, log or commit a full-access key, a seed phrase or any secret key.
   Never commit anything under `~/.near-credentials`.
-- If a credential file for `nearhunt.near` is found on the agent machine, treat it as an
-  incident: report it, do not use it, and let the owner delete it.
+
+## 2a. NEAR Agent Skills win over older docs
+
+The NEAR Agent Skills (`npx skills add near/agent-skills`, listed at
+https://docs.near.org/getting-started/tools-for-ai) were installed on 9 Nov, after `docs/PLAN.md`,
+the PRD and the roadmap were written. Where a skill and a repo doc disagree on how to build
+something on NEAR (libraries, wallet connection, API usage), **follow the skill** and update the
+repo doc in the same change. The rules in §1 (mainnet writes) and §5 (scope) still apply.
 
 ## 3. Reading data
 
