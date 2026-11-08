@@ -19,7 +19,7 @@ projects without browser automation.
 > the indexer-outage states and the 390 px pass are merged and **deployed** (8 Nov); the
 > [Day 3 signing and wallet checks](docs/runbooks/day3-signing-checklist.md) are still pending.
 > Day 4 — the read-only JSON API (`/api/projects…`), `/SKILL.md` for agents and the `/open-data`
-> page — is **merged to `main`** (PR #6) and deploys with the next release.
+> page — is merged to `main` (PR #6) and **deployed** (8 Nov).
 > See [`docs/phase-0-spike.md`](docs/phase-0-spike.md) and [`schema/`](schema/).
 
 ---
@@ -57,7 +57,7 @@ anyone, with no bespoke contract to deploy or audit.
 | Upvotes | `vote/{project_id}` keys written by the voter, so one vote per account | live (Day 2) |
 | Reading records | `https://kv.main.fastnear.com`, scoped to records written by `nearhunt.near` | verified |
 | Discussion | near.social `social-kv/1` replies to one post per project | live (Day 3); no project has a post yet (NH-40) |
-| Public read API | Next.js route handlers over the same readers, `{items, next_cursor}` | merged (Day 4, PR #6), not yet deployed |
+| Public read API | Next.js route handlers over the same readers, `{items, next_cursor}` | live (Day 4, PR #6) |
 | Indexing | FastData indexer (no custom block scanning) | verified |
 | Smart contract | none — deliberately | proven unnecessary |
 | Cache | Valkey, optional, never a source of truth | deferred |

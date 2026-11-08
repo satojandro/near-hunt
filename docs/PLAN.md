@@ -45,9 +45,9 @@ The remaining gates in
 [`runbooks/day3-signing-checklist.md`](runbooks/day3-signing-checklist.md) (A2–A3, B1–B4, C1–C5,
 D1–D2) are a human's, not the code's: real-wallet signing checks, the NH-40 post batch, and DNS.
 Day 4 (the read-only JSON API, `SKILL.md`, the open data page) is **merged to `main`** in PR #6
-(merge commit `df7ac8c`, 9 Nov), so it needs only a deploy — there is nothing to sign. What is
-missing is that deploy, NH-63's Hermes run against it, Day 5, and DNS on nearhunt.xyz. Keys for
-`nearhunt.near` live on the operator's
+(merge commit `df7ac8c`, 9 Nov) and **deployed to production** (`k15gdqx9a`), so it needed nothing
+signed. What is missing is NH-63's Hermes run against the live site, Day 5, and DNS on nearhunt.xyz.
+Keys for `nearhunt.near` live on the operator's
 machine by the owner's decision of 8 Nov — the gate is approval of each write, not the machine.
 
 Evidence, reproduced 8 Nov evening after the enrichment write; the test count and the NH-40 dry run
@@ -259,8 +259,18 @@ infrastructure — the remaining work is the server-side posting path itself.
 (merge commit `df7ac8c`). NH-63 has one of its two runs. The shared API shape is in
 [`api-contract-day4.md`](api-contract-day4.md). Read-only: nothing was signed or written.
 
-**Not deployed.** Production (`near-hunt.vercel.app`) still answers 404 on `/api/projects` and
-`/open-data` as of 9 Nov; the routes exist on `main` only. Day 4 ships with the next deploy.
+**Deployed to production on 8 Nov** (`near-hunt-k15gdqx9a-…`, Vercel project `near-hunt`, Node.js
+26.x runtime). Checked live on `https://near-hunt.vercel.app` after the deploy:
+
+- `/`, `/open-data`, `/SKILL.md` (200, `text/markdown`) and `/api/projects` (200) all answer.
+- `/api/projects?limit=100` pages 100 + 100 + 81 = **281**, `meta.total: 281`, `stale: false`.
+- `limit=0`, `sort=hot`, `cursor=zzz` → 400 `bad_request`; an unknown id → 404 `not_found`;
+  `access-control-allow-origin: *` on every route.
+- `/votes` for Aegis → `alejandro.near @ 223642127`; `/api/projects/{Veto}` → `block_timestamp`
+  `"1794135497728714191"` exact, `record_url` pointing at the KV API.
+- `/open-data` renders 281 records, 258 KB, 10 distinct block heights.
+- The project has no git integration: deploys are `vercel --prod` from `main`. Node 26.x on Vercel
+  means `JSON.parse`'s reviver source text exists, so `parseKvJson` keeps exact digits there.
 
 Re-verified on the merged `main` (`df7ac8c`), 9 Nov:
 
