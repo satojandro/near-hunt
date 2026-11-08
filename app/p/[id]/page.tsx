@@ -14,6 +14,7 @@ import UpvoteButton from '@/app/components/vote/UpvoteButton';
 import SimilarProjects from '@/app/components/project/SimilarProjects';
 import ClaimCard from '@/app/components/project/ClaimCard';
 import StaleBanner from '@/app/components/states/StaleBanner';
+import Discussion from '@/app/components/discussion/Discussion';
 import s from '@/app/components/project/project.module.css';
 
 type Props = { params: Promise<{ id: string }> };
@@ -70,7 +71,7 @@ export default async function ProjectPage({ params }: Props) {
         <div className={s.main}>
           <AboutCard description={project.description} />
           <LinksCard project={project} />
-          {/* NH-41/42: discussion thread goes here. */}
+          <Discussion projectId={project.submission_id} socialPost={project.social_post} />
         </div>
         <aside className={s.side} aria-label="Record details">
           <RecordCard project={project} />

@@ -2,17 +2,21 @@ import Link from 'next/link';
 import { buildHref, type DirectoryState, type TrackChip } from '@/lib/directory.mjs';
 import { trackLabel } from '@/lib/tracks.mjs';
 
-// "Most discussed" waits for NH-43.
 const SORT_TABS = [
   { sort: 'upvoted', label: 'Most upvoted' },
   { sort: 'newest', label: 'Newest' },
+  { sort: 'discussed', label: 'Most discussed' },
 ] as const;
 
-/** Sort tabs (NH-14). Plain links: the URL carries the state. */
-export function SortTabs({ state }: { state: DirectoryState }) {
+/**
+ * Sort tabs (NH-14, NH-43). Plain links: the URL carries the state. "Most discussed" is shown
+ * only once some project has a near.social discussion post (`discussed`), or when it is active.
+ */
+export function SortTabs({ state, discussed = false }: { state: DirectoryState; discussed?: boolean }) {
+  const tabs = SORT_TABS.filter((t) => t.sort !== 'discussed' || discussed || state.sort === 'discussed');
   return (
     <nav className="dir-tabs" aria-label="Sort projects">
-      {SORT_TABS.map(({ sort, label }) => {
+      {tabs.map(({ sort, label }) => {
         const active = state.sort === sort;
         return (
           <Link
