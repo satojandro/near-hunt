@@ -51,3 +51,28 @@ test('a non-OK response is an error, not an empty result', async () => {
   const impl = async () => ({ ok: false, status: 503, json: async () => ({}) });
   await assert.rejects(readProjects({ fetchImpl: impl }), /503/);
 });
+
+test('parseKvJson keeps block_timestamp digits above 2^53 exactly', async () => {
+  const { parseKvJson, readLatest } = await import('../lib/kv.mjs');
+  const raw = '{"entries":[{"predecessor_id":"nearhunt.near","current_account_id":"nearhunt.near","block_height":223606742,"block_timestamp":1794155090502512652,"key":"project/x","value":{"block_timestamp":1794155090502512652,"n":1}}],"page_token":null}';
+  assert.equal(JSON.parse(raw).entries[0].block_timestamp, 1794155090502512600); // what res.json() gave
+  const json = parseKvJson(raw);
+  assert.equal(json.entries[0].block_timestamp, '1794155090502512652');
+  // user data inside `value` is not rewritten
+  assert.equal(typeof json.entries[0].value.block_timestamp, 'number');
+
+  const rows = await readLatest({
+    account: 'nearhunt.near', writer: 'nearhunt.near', keyPrefix: 'project/',
+    fetchImpl: async () => ({ ok: true, text: async () => raw }),
+  });
+  assert.equal(rows[0].block_timestamp, '1794155090502512652');
+});
+
+test('readLatest turns a numeric block_timestamp from a json-only response into a string', async () => {
+  const { readLatest } = await import('../lib/kv.mjs');
+  const rows = await readLatest({
+    account: 'a.near', key: 'vote/x',
+    fetchImpl: async () => ({ ok: true, json: async () => ({ entries: [{ predecessor_id: 'b.near', key: 'vote/x', value: {}, block_height: 1, block_timestamp: 5_000_000 }] }) }),
+  });
+  assert.equal(rows[0].block_timestamp, '5000000');
+});

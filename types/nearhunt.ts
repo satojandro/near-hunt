@@ -46,7 +46,8 @@ export interface KvEntry<T = unknown> {
   predecessor_id: string;
   current_account_id: string;
   block_height: number;
-  block_timestamp: number;
+  /** Nanoseconds since epoch as an exact decimal string; the API's number exceeds 2^53. */
+  block_timestamp: string;
   key: string;
   /** Null is a tombstone: the entity was deleted and this must be filtered out. */
   value: T | null;
