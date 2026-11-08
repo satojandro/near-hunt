@@ -124,7 +124,12 @@ If that holds, project records are on-chain, versioned, permissionless to read, 
 existing infrastructure, and require **no smart contract and no storage deposit** — which is
 strictly better than the PRD's "FastData KV or a conventional database" fallback.
 
-**Status: unverified.** This is the single most important thing the spike must prove.
+**Status: verified on testnet, 2026-11-08** (block 276,743,133). A `__fastdata_kv` call to
+`board1.metapoo-player3.testnet` carrying an arbitrary key `nearhunt/probe/test-b` was indexed
+and read back through `kv.test.fastnear.com`, with the call itself reporting
+`ExecutionError`. This is strictly better than the PRD's "FastData KV or a conventional
+database" fallback: **NEAR Hunt needs no smart contract at all.** Full run and evidence:
+[`../phase-0-spike.md`](../phase-0-spike.md).
 
 ## 4. The hackathon has a public submissions API — but a thin one
 
@@ -204,8 +209,11 @@ For an importer this means: **never** publish 271 social posts on one account in
 
 ## Open questions still unanswered
 
-1. Does a `__fastdata_kv` call to a non-`social` account get indexed? *(spike, blocking)*
+1. ~~Does a `__fastdata_kv` call to a non-`social` account get indexed?~~ **Answered: yes.**
+   See §3 and [`../phase-0-spike.md`](../phase-0-spike.md).
 2. Do project posts appear in the global near.social feed, and can they be scoped to avoid
    flooding it? *(spike)*
 3. What does an unauthenticated `POST /v0/latest` cost, rate-limit-wise, in practice? *(spike)*
 4. Is `total` in the hackathon API stable enough to detect deletions, or only additions?
+5. Does a **contract-less** receiver work end-to-end once we own one? `social` on mainnet is
+   the existence proof; our namespace account is not registered yet.

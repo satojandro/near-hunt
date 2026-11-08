@@ -9,9 +9,9 @@ page, one-account-one-upvote, and threaded discussion — with every project rec
 open, versioned JSON on NEAR itself, and a read-only API that lets AI agents discover
 projects without browser automation.
 
-> **Status: Phase 0 — architecture spike.** This repository currently contains the product
-> spec and verified platform research. No application code yet; the storage decision is
-> being proven before it is built on. See [`docs/research/`](docs/research/).
+> **Status: Phase 0 complete.** The storage architecture is proven on testnet — project records
+> are written as FastData KV to an account we control and read back from a public API, with no
+> smart contract. Phase 1 (human MVP) is next. See [`docs/phase-0-spike.md`](docs/phase-0-spike.md).
 
 ---
 
@@ -44,11 +44,16 @@ anyone, with no bespoke contract to deploy or audit.
 
 | Concern | Choice | Status |
 |---|---|---|
-| Project records | FastData KV writes (`__fastdata_kv`) to a dedicated account | **verifying** |
+| Project records | FastData KV writes (`__fastdata_kv`) to a dedicated account | **proven on testnet** |
+| Upvotes | `vote/{project_id}/{voter}` keys — one vote per account by construction | design |
 | Reading records | `https://kv.main.fastnear.com` (public, no API key) | verified |
-| Discussion + upvotes | near.social `social-kv/1` posts, replies and likes | verified standard, spike pending |
+| Discussion | near.social `social-kv/1` posts and replies, created lazily per project | verified standard, spike pending |
 | Indexing | FastData indexer (no custom block scanning) | verified |
+| Smart contract | none — deliberately | proven unnecessary |
 | Cache | Valkey, optional, never a source of truth | deferred |
+
+No contract, no storage deposits, no custom indexer: the canonical record is the chain, and
+the read API is a cache that anyone can rebuild.
 
 Full detail, including the exact endpoints and the corrections this research forced on the
 PRD's first draft: [`docs/research/2026-11-08-platform-findings.md`](docs/research/2026-11-08-platform-findings.md).
@@ -58,6 +63,7 @@ PRD's first draft: [`docs/research/2026-11-08-platform-findings.md`](docs/resear
 ```
 docs/
   PRD.md                     product requirements (v0.2)
+  phase-0-spike.md           the storage spike: what was executed and what it proved
   research/                  verified platform findings, with evidence
 ```
 
