@@ -7,7 +7,7 @@ https://claude.ai/artifact/TheVd1qg4LzCRzStJvKPKe (private until shared).
 
 ## Where things stand (re-audited 2026-11-08 evening, by Hermes)
 
-`nearhunt.near` has one funding transfer and five project-import transactions:
+`nearhunt.near` has one funding transfer and ten project-import transactions:
 
 1. a 1 NEAR funding transfer (block 223,583,069);
 2. 256 `project/…` records (block 223,583,277);
@@ -15,23 +15,31 @@ https://claude.ai/artifact/TheVd1qg4LzCRzStJvKPKe (private until shared).
 4. 4 `project/…` records — tx `8rX5McjBeiitsRAhQsY7sqWbTQ9nXXHBDYwCJyQuGhfk`
    (`NEAR Claim Check`, `Potluck`, `Swarmpad`, `Q-day`);
 5. 5 `project/…` records — tx `79cSKJkLzZw7mbpaKGFMrX5fpRjkxwcCrgbiNNekhVMF`
-   (`SpendGuard`, `AgentGuard`, `Hallmark`, `Autonomous Treasury Mesh`, `near-agent-guard`),
-   applied 8 Nov after the owner approved that exact 5-key diff.
+   (`SpendGuard`, `AgentGuard`, `Hallmark`, `Autonomous Treasury Mesh`, `near-agent-guard`);
+6–10. the enrichment write, 265 keys in five batches, all applied 8 Nov after the owner approved
+   that exact diff:
+   `SMarR1rfceWC7xkSoJNaMHMughbhN9chLXELUQsMCs5` (65), `7qX3V7XeFRqgMyGKtHN1rUPZsb9n4d3AGn3xR5JTp5ZF` (64),
+   `GqM47JwJ4tdS9NpiQttyZhcvGj7uzagXEyszXVoX2ZS` (63), `8sANNYHH6kyfDBXTCMsEbjnh2BSvj5fvJjsJeQZskjvC` (63),
+   `Gom4MYrHpgZ7pGvTqSQoUwMLZcFRdBZbV5u5HTcyEqVQ` (10).
 
-**The chain matches the feed.** 280 records on chain, 280 in the feed, all 280 valid against the
-schema, 0 foreign rows, 0 tombstones. A re-run writes nothing.
+**The chain matches the feed.** 281 records on chain, 281 in the feed, all 281 valid against the
+schema, 0 foreign rows, 0 tombstones. 264 records carry the builder's own description and 98 a
+verified repository. Both dry runs (plain and with `--enrichment`) write nothing. One record
+(`AgentGuard`, id `04749b49…`) is not enriched yet: the proposal gained it after the write, so it is
+a pending 1-key update.
 
 The read-only product is built and deployed at **https://near-hunt.vercel.app** (Day 1), and Day 2's
 connect + upvote is merged and deployed. What is missing is discussion and the account page
 (Day 3), Days 4–5, and DNS on nearhunt.xyz. Keys for `nearhunt.near` live on the operator's machine
 by the owner's decision of 8 Nov — the gate is approval of each write, not the machine.
 
-Evidence, reproduced 8 Nov evening after the catch-up:
+Evidence, reproduced 8 Nov evening after the enrichment write:
 
 ```bash
-npm test                  # 140 pass, 0 fail
-npm run validate:schema   # 280 records on chain, 280 valid, 0 foreign rows, 0 tombstones
-node scripts/import.mjs   # 0 new, 0 changed, 280 unchanged — nothing to write
+npm test                  # 144 pass, 0 fail
+npm run validate:schema   # 281 records on chain, 281 valid, 0 foreign rows, 0 tombstones
+node scripts/import.mjs   # 0 new, 0 changed, 281 unchanged — nothing to write
+node scripts/import.mjs --enrichment data/enrichment/proposal.json   # 0 new, 1 changed — pending
 node scripts/import.mjs --check-key   # every candidate key with its on-chain permission
 near account list-keys nearhunt.near network-config mainnet now   # 1 key, full access
 ```
@@ -135,13 +143,12 @@ proposal time. No AI rewriting, no repository guessed from a name. Sources are s
 (`description_source`, `repository_source`, `enrichment.sources`); a builder can ask for removal and
 the owner rewrites the record.
 
-**Status:** proposal generated, nothing written. `node scripts/enrich.mjs --threads
-data/enrichment/threads.json` reads the 280 chain records and proposes **264 descriptions, 98
-verified repositories and 110 link sets** (1 repository dropped after failing the liveness check).
-Applying it is a separately approved write:
-`node scripts/import.mjs --enrichment data/enrichment/proposal.json` — as of 8 Nov that is 1 new +
-264 changed records, **265 keys, 263,470 bytes, 5 transactions**. Rerun `enrich.mjs` after any feed
-catch-up so the newest submissions are included.
+**Status: applied 8 Nov.** The 265-key diff (1 new record + 264 enriched) landed in five
+transactions — `SMarR1rf…`, `7qX3V7Xe…`, `GqM47JwJ…`, `8sANNYHH…`, `Gom4MYrH…` — and all 265 keys
+read back from the indexer. 264 records now carry the builder's own description and 98 a verified
+repository. The proposal is regenerated against the 281-record chain (265 descriptions, 98 repos,
+111 link sets), so one record (`AgentGuard`, `04749b49…`) is a pending 1-key update. Rerun
+`enrich.mjs` after any feed catch-up so the newest submissions are included.
 
 ### Board 1 — Directory (home) · Day 1
 
