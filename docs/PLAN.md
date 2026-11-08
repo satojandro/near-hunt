@@ -40,12 +40,12 @@ and the profile — name, automated-disclosure about, website — in tx `544jUhR
 The read-only product is built and deployed at **https://near-hunt.vercel.app** (Day 1), and Day 2's
 connect + upvote is merged and deployed. Day 3 — near.social discussion, the account page, the
 outage and stale-data states, the 390 px pass and the vote-count refresh — is **merged to `main`**
-(PR #4, merge commit `3a7189f`, 9 Nov) after being built, tested and verified on
-`claude/great-planck-f8gtb9`. It deploys with D2 in
-[`runbooks/day3-signing-checklist.md`](runbooks/day3-signing-checklist.md); the remaining gates
-there (A2–A3, B1–B4, C1–C5, D1–D2) are a human's, not the code's. What is missing is Days 4–5 and
-DNS on nearhunt.xyz. Keys for `nearhunt.near` live on the operator's machine by the owner's decision
-of 8 Nov — the gate is approval of each write, not the machine.
+(PR #4, merge commit `3a7189f`, 9 Nov), built, verified and **deployed to production on 8 Nov**.
+The remaining gates in
+[`runbooks/day3-signing-checklist.md`](runbooks/day3-signing-checklist.md) (A2–A3, B1–B4, C1–C5,
+D1–D2) are a human's, not the code's: real-wallet signing checks, the NH-40 post batch, and DNS.
+What is missing is Days 4–5 and DNS on nearhunt.xyz. Keys for `nearhunt.near` live on the operator's
+machine by the owner's decision of 8 Nov — the gate is approval of each write, not the machine.
 
 Evidence, reproduced 8 Nov evening after the enrichment write; the test count and the NH-40 dry run
 were re-run on the merged `main` (`3a7189f`):

@@ -16,8 +16,8 @@ projects without browser automation.
 > repository, filled by a separate approval-gated enrichment pass. `nearhunt.near` also has a
 > near.social profile that discloses the account is automated. The directory, project pages and
 > connect/upvote flow are live at **https://near-hunt.vercel.app**. Discussion, the account page,
-> the indexer-outage states and the 390 px pass are merged into `main` (PR #4, `3a7189f`) and deploy
-> once the [Day 3 signing and wallet checks](docs/runbooks/day3-signing-checklist.md) are done.
+> the indexer-outage states and the 390 px pass are merged and **deployed** (8 Nov); the
+> [Day 3 signing and wallet checks](docs/runbooks/day3-signing-checklist.md) are still pending.
 > See [`docs/phase-0-spike.md`](docs/phase-0-spike.md) and [`schema/`](schema/).
 
 ---
