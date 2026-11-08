@@ -161,3 +161,32 @@ test('an explicit "repo" cue wins over several candidates', () => {
   assert.equal(pick.repository_url, 'https://github.com/alice/app');
   assert.equal(pick.ambiguous, false);
 });
+
+test('a repository name X cut short with an ellipsis is not a repository', () => {
+  // Seen in the 8 Nov browser crawl: "Code: github.com/Adelekejr/Gide… #NEARHackathon"
+  assert.equal(repoFromText('Live: gideon-near.vercel.app Code: github.com/Adelekejr/Gide… #NEARHackathon'), null);
+  assert.equal(repoFromText('Code: github.com/Adelekejr/Gide... more'), null);
+  // a later, complete mention in the same text still counts
+  assert.equal(
+    repoFromText('github.com/a/Gide… full link: github.com/a/Gideon'),
+    'https://github.com/a/Gideon',
+  );
+  // a sentence-ending full stop is not part of the name
+  assert.equal(repoFromText('Code is at github.com/a/b.'), 'https://github.com/a/b');
+  const chain = [tweet(1, 'ade', 'Code: https://github.com/Adelekejr/Gide… #NEARHackathon')];
+  assert.equal(repoFromChain(chain), null);
+});
+
+test('captured thread posts without a real id cite the submitted post, never a made-up URL', () => {
+  const project = { submission_id: 'gid', name: 'Gideon', demo_url: 'https://x.com/ade/status/30' };
+  const chain = [
+    tweet(30, 'ade', 'Gideon checks NEAR addresses before you send.'),
+    tweet('thread-1', 'ade', 'Repo: github.com/ade/gideon'),
+    tweet('thread-links', 'ade', '', ['https://gideon-near.vercel.app/']),
+  ];
+  const out = buildEnrichment(project, { chain, retrieved_at: '2026-11-08T00:00:00.000Z' });
+  assert.equal(out.repository_url, 'https://github.com/ade/gideon');
+  assert.equal(out.repository_source, 'https://x.com/ade/status/30');
+  assert.ok(out.enrichment.sources.every((u) => /\/status\/\d+$/.test(u)), out.enrichment.sources.join(' '));
+  assert.deepEqual(out.links, [{ url: 'https://gideon-near.vercel.app', source_post_id: '30' }]);
+});
