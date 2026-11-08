@@ -1,56 +1,60 @@
 # Runbook: NEAR keys for NEAR Hunt
 
-**Who runs this:** the owner, on the MacBook. Never an agent, never the Mac Mini.
+**Who runs this:** Hermes or the owner. The key lives on the Mac Mini and that is fine — the
+gate is **prior authorization of the specific write**, not which machine holds the key (owner's
+decision, 8 Nov 2026).
 
-## Which machine does what
+## What is where
 
-| | Machine | Holds a key | Runs `--execute` |
+| Machine | Home | Holds the key | May run `--execute` |
 |---|---|---|---|
-| Owner | MacBook Pro (`Alejandros-MacBook-Pro`, `/Users/avb`) | **yes — all of them** | **yes** |
-| Hermes | Mac Mini (`Claudios-Mac-mini`, `/Users/clawdio`) | **no — zero keys** | **no** |
+| Mac Mini (`Claudios-Mac-mini`) | `/Users/clawdio` | yes — this is where the importer runs | yes, after the owner authorizes that write |
+| MacBook Pro (`Alejandros-MacBook-Pro`) | `/Users/avb` | possible second copy, owner's call | yes, same rule |
 
-The Mini runs dry runs (`node scripts/import.mjs`), `npm test`, `npm run validate:schema`,
-the mockup renderer, docs and reviews. With no credential file it cannot sign anything, which is
-the point. Every signature happens on the MacBook. If a later decision gives the agent machine a
-key, that reverses this rule and must be recorded here first, with the reason.
+Two credential files for `nearhunt.near` exist on the Mini, both written by one import: a flat
+`~/.near-credentials/mainnet/nearhunt.near.json` and a directory
+`~/.near-credentials/mainnet/nearhunt.near/<public-key>.json`. The importer resolves either. Both
+are mode `600` and contain the master seed phrase, which is why they are never printed, logged,
+pasted into a chat or committed.
 
-## Why
+## The gate: authorization, per write
 
-FastData writes need no deposit and no contract, so the data layer needs no full-access key at
-all. Two tiers:
+1. Run the dry run and keep its output: `node scripts/import.mjs`.
+2. State what will be written — account, prefix, key count, transaction count — and get a yes
+   **for that write**.
+3. Then `--execute --yes`.
 
-- **Full-access key** — can move funds, add keys, delete the account. Exactly one copy, on the
-  MacBook, kept **outside** `~/.near-credentials` (see step 5) and used only to add or remove keys.
-- **Function-call key** — one method on one receiver, nothing else. Cannot transfer NEAR or add
-  keys. This is what signs imports and (later) near.social posts.
+Authorization for one import does not extend to the next one, and never covers adding or deleting
+access keys, transferring NEAR, or deleting an account; those need their own explicit approval.
 
-A function-call key covers **one receiver account**, so two are needed:
+## Key tiers
+
+FastData writes need no deposit and no contract, so the data layer needs no full-access key:
+
+- **Full-access key** — can move funds, add keys, delete the account. Used only to add or remove
+  keys, and only by the owner.
+- **Function-call key** — one method on one receiver. Cannot transfer NEAR or add keys. This is
+  what the importer should sign with.
+
+A function-call key covers **one receiver account**, so two exist:
 
 | Key | Receiver | Methods | Used by |
 |---|---|---|---|
-| Importer key | `nearhunt.near` | `__fastdata_kv` | `scripts/import.mjs`, on the MacBook |
-| near.social key | `social` | `__fastdata_kv` | the Vercel server env (NH-40, Day 3) — not a laptop |
+| Importer key | `nearhunt.near` | `__fastdata_kv` | `scripts/import.mjs` |
+| near.social key | `social` | `__fastdata_kv` | the Vercel server env (NH-40, Day 3) |
 
-## 1. Take the existing key off the Mini
-
-Run this **on the MacBook**. It reads from the Mini and writes nothing there. There are two copies
-of the same full-access key on the Mini — a flat file and a directory — created by one import;
-either is enough, so copy the flat one.
+## Checking which key the importer will use
 
 ```bash
-mkdir -p ~/.near-credentials/mainnet && chmod 700 ~/.near-credentials/mainnet
-scp "clawdio@Claudios-Mac-mini.local:~/.near-credentials/mainnet/nearhunt.near.json" \
-    ~/.near-credentials/mainnet/nearhunt.near.json
-chmod 600 ~/.near-credentials/mainnet/nearhunt.near.json
+node scripts/import.mjs --check-key
 ```
 
-The file contains a `master_seed_phrase`. Do not print it, paste it into any chat, or commit it.
-From here on the MacBook is the only machine with it.
+It reads `view_access_key` for every candidate file, prints each one's on-chain permission and
+marks the chosen file. An import signed by a `FullAccess` key is refused unless
+`--accept-full-access` is passed — that flag exists so the refusal is a decision, not a wall.
+Imports are expected to use the `FunctionCall` key.
 
-## 2. Add the importer's function-call key
-
-Run this **on the MacBook**. `sign-with-legacy-keychain` reads the file from step 1, so there is
-no seed-phrase prompt. This transaction is also the proof that the key works.
+## Adding the function-call key (if it is ever missing)
 
 ```bash
 near account add-key nearhunt.near \
@@ -62,75 +66,35 @@ near account add-key nearhunt.near \
   network-config mainnet sign-with-legacy-keychain send
 ```
 
-- `--allowance` caps lifetime gas spend. Each import call uses 1 Ggas, so 0.25 NEAR is ample.
-- `save-to-legacy-keychain` writes the new key to
-  `~/.near-credentials/mainnet/nearhunt.near/<public-key>.json` — a **directory**, not the flat file.
+`--allowance` caps lifetime gas spend; each import call uses 1 Ggas, so 0.25 NEAR is ample.
+`save-to-legacy-keychain` writes `~/.near-credentials/mainnet/nearhunt.near/<public-key>.json`.
 
-## 3. Check it before touching anything else
+`sign-with-keychain` works when the key is in the macOS keychain; `sign-with-legacy-keychain`
+reads the flat file; `sign-with-seed-phrase` prompts for the phrase. Any of them is fine.
 
-```bash
-near account list-keys nearhunt.near network-config mainnet now
-```
-
-Expected: two keys — the original `full access` **and** a new `FunctionCall` limited to
-`nearhunt.near`. If the FunctionCall key is missing, stop; nothing downstream works.
-
-## 4. Move the full-access key out of the credentials tree
-
-The importer prefers the flat `~/.near-credentials/{network}/{account}.json` when it exists.
-It now also asks the RPC (`view_access_key`) what the resolved key may do, prints that
-permission next to every candidate file, and **refuses to sign an import with a `FullAccess`
-key** unless `--accept-full-access` is passed. This step therefore becomes belt-and-braces
-rather than the only protection. Do it all the same: a full-access file in the tree is one
-flag away from signing, and that file also carries the master seed phrase.
+## Running the import
 
 ```bash
-mkdir -p ~/nearhunt-keys && chmod 700 ~/nearhunt-keys
-mv ~/.near-credentials/mainnet/nearhunt.near.json ~/nearhunt-keys/full-access.json
-chmod 600 ~/nearhunt-keys/full-access.json
-node ~/Projects/near-hunt/scripts/import.mjs --check-key
+node scripts/import.mjs                  # dry run — this is what the owner authorizes
+node scripts/import.mjs --execute --yes  # after the yes
 ```
 
-`--check-key` prints `permission: …` for **every** candidate file it finds (the chosen one is
-marked `*`). It must now report the **directory** path (`…/nearhunt.near/<public-key>.json`)
-and `permission: FunctionCall(nearhunt.near, __fastdata_kv)` — nothing may print
-`permission: full access`. That is the function-call key, and it is the only key the importer
-can find.
+The script verifies every written key against the FastData indexer afterwards and exits non-zero
+if any key has not appeared. A failed receipt (`CodeDoesNotExist`) is expected and is not a
+failure: `nearhunt.near` has no contract, and the indexer records the row anyway (proven in
+`docs/spikes/2026-11-08-nh-35-wallet-tx-to-contractless-receiver.md`).
 
-## 5. Clear the Mini
+`npm test` and `npm run validate:schema` are read-only.
 
-Tell Hermes the MacBook copy is confirmed. Hermes deletes both
-`~/.near-credentials/mainnet/nearhunt.near.json` and the `nearhunt.near/` directory on the Mini.
-That path is not a Syncthing share, so the deletion is local to the Mini.
+## Do not, without explicit approval
 
-Do **not** run `near account delete-keys` on chain at this point. The full-access key is currently
-the only full-access key on the account; deleting it would leave an account that can never be
-recovered. On-chain rotation to a fresh offline key is a post-hackathon job.
-
-## 6. Run the import (MacBook)
-
-The repo has to exist on the MacBook, not only on the Mini:
-
-```bash
-cd ~/Projects/near-hunt || git clone git@github.com:satojandro/near-hunt.git ~/Projects/near-hunt
-cd ~/Projects/near-hunt && git pull && npm install
-node scripts/import.mjs                  # dry run — paste this output for approval
-node scripts/import.mjs --execute --yes  # signs with the function-call key from step 4
-```
-
-If the resolved key is still full access, `--execute` exits 1 with the refusal and names this
-runbook. That is the guardrail working; do not reach for `--accept-full-access` to get past it,
-go back to step 2.
-
-`npm test` and `npm run validate:schema` are read-only and can be run on either machine.
-
-## Taking keys away from a machine
-
-1. Delete the credential file from that machine.
-2. If a full-access key ever lived there, treat the account as exposed: add a new full-access key
-   from a trusted device, verify it signs, and only then delete the old one on chain.
+- Add or delete access keys, or rotate the full-access key. The account currently has one
+  full-access key; deleting it would leave it unrecoverable.
+- Transfer NEAR from `nearhunt.near`.
+- Delete or tombstone a project record.
+- Print, log, commit or paste a secret key or seed phrase anywhere.
 
 ## Treasury (NH-94)
 
 Donations go to a separate account, for example `treasury.nearhunt.near`, created and held by the
-owner. No agent key is ever added to it, and it never signs imports.
+owner. It never signs imports.
