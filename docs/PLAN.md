@@ -33,9 +33,10 @@ NH-06 is fixed — today the only key that can sign it is full-access.
 Evidence for everything above, reproduced 8 Nov evening:
 
 ```bash
-npm test                  # 15 pass, 0 fail
+npm test                  # 23 pass, 0 fail
 npm run validate:schema   # 271 records, 271 valid, 0 foreign rows, 0 tombstones
 node scripts/import.mjs   # 4 new, 0 changed, 271 unchanged, 0 missing
+node scripts/import.mjs --check-key   # every candidate key with its on-chain permission
 near account list-keys nearhunt.near network-config mainnet now   # 1 key, full access
 ```
 
@@ -76,9 +77,9 @@ Priority: **P0** = needed to submit · **P1** = should ship · **P2** = only if 
 ### Day 0 — guardrails (no board)
 
 **Status (8 Nov evening):** NH-01 to NH-05 are **done and verified by Hermes**: `npm test`
-is 15/15 green, `npm run validate:schema` reads 271/271 valid with 0 foreign rows, and the
-importer dry run is idempotent (4 new, 0 changed, 271 unchanged). NH-07 and NH-08 closed the
-same evening. NH-06 is **not started**: `nearhunt.near` has exactly one key on chain and it is
+is 23/23 green, `npm run validate:schema` reads 271/271 valid with 0 foreign rows, and the
+importer dry run is idempotent (4 new, 0 changed, 271 unchanged). NH-07, NH-08 and NH-09
+closed the same evening. NH-06 is **not started**: `nearhunt.near` has exactly one key on chain and it is
 **full access**, and the agent machine holds two credential files for it (a flat one and a
 directory), both carrying the master seed phrase. The steps are in
 [`runbooks/keys.md`](runbooks/keys.md) — and the rule they encode is that the **Mini ends up
@@ -94,7 +95,7 @@ with no key at all**: the owner signs on the MacBook, the agent machine only rea
 | NH-06 | P0 | The owner holds every key on the MacBook; the agent machine holds none. A `__fastdata_kv`-only function-call key signs imports (one for `nearhunt.near`; one for `social` later, in the Vercel env) | MacBook: `list-keys` shows a `FunctionCall` key and the full-access file sits outside `~/.near-credentials`. Mini: **no credential file for `nearhunt.near` at all**, so `--execute` cannot run there |
 | NH-07 | P1 | `scripts/import.mjs` defaults to `~/.near-credentials/{net}/{account}.json`, but near-cli-rs `save-to-legacy-keychain` writes `~/.near-credentials/{net}/{account}/{public-key}.json`. Resolve both, or fail with the exact path it looked for | **Done** — `resolveKeyFile()` takes the flat file when present, else the newest `.json` in the account directory, and the error lists every path tried. `node scripts/import.mjs --check-key` resolves and parses the key without signing: it prints `~/.near-credentials/mainnet/nearhunt.near.json` here, and against a fake `HOME` with only a near-cli-rs directory it prints that nested file. `--key-file <dir>` works too |
 | NH-08 | P2 | `scripts/render-mockups.mjs` needs Playwright + Chromium, which is not in `devDependencies` | **Done** — the Playwright dependency is gone: the script drives the installed Chrome/Chromium over the DevTools protocol using Node's built-in WebSocket, and exits with an install hint (or `CHROME_PATH`) when no browser is found. `npm run render:mockups` on this machine re-rendered all 9 boards; the generated `html/` is byte-identical to the committed files and every PNG keeps its exact 2× dimensions |
-| NH-09 | P1 | The importer cannot tell a full-access key from a function-call key, and `resolveKeyFile()` prefers the flat file — so a leftover full-access credential silently signs an import. Query `view_access_key` for the resolved public key and print the permission; refuse to sign with full access unless `--accept-full-access` is passed | `--check-key` prints `FunctionCall` or `full access` for the resolved key, and an import with a full-access key exits non-zero |
+| NH-09 | P1 | The importer cannot tell a full-access key from a function-call key, and `resolveKeyFile()` prefers the flat file — so a leftover full-access credential silently signs an import. Query `view_access_key` for the resolved public key and print the permission; refuse to sign with full access unless `--accept-full-access` is passed | **Done** — `queryPermission()` reads `view_access_key` on the same RPC the importer already uses; `--check-key` prints each candidate file with `permission: full access` or `permission: FunctionCall(<receiver>, <methods>)` and marks the chosen one. Verified against `nearhunt.testnet`, where all three shapes resolve: the flat file `full access`, one nested key `FunctionCall(nearhunt.testnet, __fastdata_kv)`, one nested `full access`. `--execute --yes` with the flat full-access file plans the write, prints the candidates, then exits 1 with a refusal naming `docs/runbooks/keys.md`, before the signer is installed or a transaction built; `--accept-full-access` is the explicit override. The permission decision is unit-tested from stubbed RPC responses (8 new network-free tests; `npm test` is 23/23) |
 
 ### Board 1 — Directory (home) · Day 1
 

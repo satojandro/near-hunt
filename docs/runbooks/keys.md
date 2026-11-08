@@ -77,9 +77,12 @@ Expected: two keys — the original `full access` **and** a new `FunctionCall` l
 
 ## 4. Move the full-access key out of the credentials tree
 
-The importer prefers the flat `~/.near-credentials/{network}/{account}.json` when it exists, and
-it cannot tell a full-access key from a function-call key. Leaving the full-access file there
-means the next import is silently signed with it. Move it somewhere the CLI never looks:
+The importer prefers the flat `~/.near-credentials/{network}/{account}.json` when it exists.
+It now also asks the RPC (`view_access_key`) what the resolved key may do, prints that
+permission next to every candidate file, and **refuses to sign an import with a `FullAccess`
+key** unless `--accept-full-access` is passed. This step therefore becomes belt-and-braces
+rather than the only protection. Do it all the same: a full-access file in the tree is one
+flag away from signing, and that file also carries the master seed phrase.
 
 ```bash
 mkdir -p ~/nearhunt-keys && chmod 700 ~/nearhunt-keys
@@ -88,8 +91,11 @@ chmod 600 ~/nearhunt-keys/full-access.json
 node ~/Projects/near-hunt/scripts/import.mjs --check-key
 ```
 
-`--check-key` must now report the **directory** path (`…/nearhunt.near/<public-key>.json`).
-That is the function-call key, and it is the only key the importer can find.
+`--check-key` prints `permission: …` for **every** candidate file it finds (the chosen one is
+marked `*`). It must now report the **directory** path (`…/nearhunt.near/<public-key>.json`)
+and `permission: FunctionCall(nearhunt.near, __fastdata_kv)` — nothing may print
+`permission: full access`. That is the function-call key, and it is the only key the importer
+can find.
 
 ## 5. Clear the Mini
 
@@ -111,6 +117,10 @@ cd ~/Projects/near-hunt && git pull && npm install
 node scripts/import.mjs                  # dry run — paste this output for approval
 node scripts/import.mjs --execute --yes  # signs with the function-call key from step 4
 ```
+
+If the resolved key is still full access, `--execute` exits 1 with the refusal and names this
+runbook. That is the guardrail working; do not reach for `--accept-full-access` to get past it,
+go back to step 2.
 
 `npm test` and `npm run validate:schema` are read-only and can be run on either machine.
 
