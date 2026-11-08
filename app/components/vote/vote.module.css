@@ -1,0 +1,58 @@
+/* Upvote button (mockups: Main.png card count, Project.png header button, VoteFlow.png states). */
+
+.wrapCard { padding: 0; }
+.wrapPage { position: relative; display: flex; flex-direction: column; align-items: stretch; flex-shrink: 0; }
+
+.btn {
+  font-family: inherit; font-weight: 600; cursor: pointer; border: 1px solid var(--border);
+  background: var(--surface); color: var(--text-muted);
+  display: inline-flex; align-items: center; justify-content: center;
+}
+.btn:hover { border-color: var(--border-strong); color: var(--text); }
+.btn[aria-busy='true'] { cursor: progress; }
+
+/* Card: fills the 64×64 .dir-upvote box (56×56 on phones), arrow over count. */
+.card {
+  width: 100%; height: 100%; min-height: inherit; border-radius: 12px; flex-direction: column; gap: 2px;
+  font-size: 15px; padding: 0;
+}
+
+/* Page: the big header button ("Upvoted · 142"). */
+.page {
+  min-height: 52px; padding: 0 22px; border-radius: var(--radius); gap: 10px; font-size: 17px;
+  color: var(--text); white-space: nowrap;
+}
+
+.voted { background: var(--accent); border-color: var(--accent); color: #fff; }
+.voted:hover { background: var(--accent-hover); border-color: var(--accent-hover); color: #fff; }
+
+/* Waiting for the indexer: dashed outline, as in VoteFlow step 3. */
+.pending { border-style: dashed; border-color: var(--accent); }
+.pending.voted { background: var(--accent-soft); color: var(--accent); }
+
+.bubbleEmpty { display: contents; }
+.bubble {
+  position: absolute; top: calc(100% + 8px); right: 0; z-index: 5; width: 300px; max-width: calc(100vw - 32px);
+  background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-card);
+  box-shadow: 0 8px 24px rgba(18, 22, 28, 0.12); padding: 14px 16px; text-align: left;
+  font-weight: 400; font-size: 14px; color: var(--text); cursor: auto;
+}
+.bubble p { margin: 0 0 8px; }
+.bubble p:last-child { margin-bottom: 0; }
+.statusTitle { font-weight: 600; }
+.statusText { color: var(--text-muted); }
+.shareTitle { font-weight: 600; color: var(--social); }
+.shareText { overflow-wrap: anywhere; }
+.shareBtn {
+  width: 100%; min-height: 44px; margin: 4px 0 8px; border: 0; border-radius: var(--radius);
+  background: var(--social); color: #fff; font: inherit; font-weight: 600; cursor: pointer;
+}
+.shareBtn:hover { filter: brightness(0.92); }
+.linkBtn {
+  background: none; border: 0; padding: 0; min-height: 44px; font: inherit; font-weight: 600;
+  color: var(--text-muted); cursor: pointer; text-decoration: underline;
+}
+
+@media (max-width: 640px) {
+  .page { min-height: 48px; font-size: 16px; }
+}

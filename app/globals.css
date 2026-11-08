@@ -59,8 +59,35 @@ a:hover { color: var(--accent-hover); }
 .connect-btn {
   background: var(--text); color: #fff; font-weight: 600; font-size: 15px; padding: 0 18px;
   min-height: 44px; display: inline-flex; align-items: center; border-radius: var(--radius);
-  border: 0; font-family: inherit; opacity: 0.55; cursor: not-allowed;
+  border: 0; font-family: inherit; cursor: pointer;
 }
+.connect-btn:hover { background: #2A313B; }
+.connect-btn:disabled, .connect-btn[aria-busy="true"] { opacity: 0.7; cursor: progress; }
+/* Signed in: account pill with a Disconnect menu (mockup board 2 header). */
+.account-menu { position: relative; min-width: 0; }
+.account-btn {
+  display: inline-flex; align-items: center; gap: 10px; min-height: 44px; max-width: 260px; padding: 0 14px 0 6px;
+  border: 1px solid var(--border); border-radius: 999px; background: var(--surface); color: var(--text);
+  font-family: inherit; font-size: 15px; font-weight: 600; cursor: pointer;
+}
+.account-btn:hover { border-color: var(--border-strong); }
+.account-initial {
+  width: 32px; height: 32px; flex-shrink: 0; border-radius: 999px; background: #E8EEFB; color: var(--social);
+  display: inline-flex; align-items: center; justify-content: center;
+}
+.account-id { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.account-net { font-size: 11px; font-weight: 600; color: #8A4B00; background: #FDF0E2; border-radius: 999px; padding: 1px 8px; }
+.account-pop {
+  position: absolute; right: 0; top: calc(100% + 6px); z-index: 20; min-width: 220px;
+  background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-card);
+  box-shadow: 0 8px 24px rgba(18, 22, 28, 0.12); padding: 8px;
+}
+.account-pop-note { margin: 4px 8px 6px; font-size: 13px; color: var(--text-muted); }
+.account-pop-item {
+  width: 100%; min-height: 44px; text-align: left; padding: 0 8px; border: 0; border-radius: var(--radius-sm);
+  background: none; font: inherit; font-weight: 600; color: var(--text); cursor: pointer;
+}
+.account-pop-item:hover { background: var(--surface-muted); }
 .connect-long { margin-left: 0.3em;
 }
 
@@ -75,6 +102,7 @@ a:hover { color: var(--accent-hover); }
   .brand-name { font-size: 18px; }
   .site-nav { display: none; }
   .connect-btn { font-size: 14px; padding: 0 12px; white-space: nowrap; }
+  .account-btn { max-width: 170px; font-size: 14px; }
 }
 @media (max-width: 360px) {
   .connect-btn .connect-long { display: none; }

@@ -8,6 +8,7 @@ import ProjectHeader from '@/app/components/project/ProjectHeader';
 import AboutCard from '@/app/components/project/AboutCard';
 import LinksCard from '@/app/components/project/LinksCard';
 import RecordCard from '@/app/components/project/RecordCard';
+import UpvoteButton from '@/app/components/vote/UpvoteButton';
 import s from '@/app/components/project/project.module.css';
 
 type Props = { params: Promise<{ id: string }> };
@@ -40,7 +41,13 @@ export default async function ProjectPage({ params }: Props) {
         <span aria-hidden="true">/</span>
         <span className={s.crumbCurrent} aria-current="page">{project.name}</span>
       </nav>
-      <ProjectHeader project={project} />
+      <ProjectHeader
+        project={project}
+        actions={
+          // TODO(NH-33): pass the tally count
+          <UpvoteButton projectId={project.submission_id} initialCount={0} variant="page" projectName={project.name} />
+        }
+      />
       <div className={s.grid}>
         <div className={s.main}>
           <AboutCard description={project.description} />

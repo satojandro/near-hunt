@@ -83,9 +83,9 @@
 .dir-pill { background: var(--surface-muted); border-radius: var(--radius-sm); padding: 2px 8px; color: var(--text-chip); }
 .dir-demo { overflow-wrap: anywhere; }
 
-/* Read-only vote count: flat, muted, no hover state, sits above the card link so its title shows. */
+/* Upvote box (UpvoteButton variant="card"): sits above the stretched card link so it gets the click. */
 .dir-upvote {
-  position: relative; z-index: 1; cursor: default;
+  position: relative; z-index: 1;
   width: 64px; min-height: 64px; flex-shrink: 0; border-radius: 12px;
   display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;
   font-weight: 600; font-size: 15px; color: var(--text-muted); background: none;

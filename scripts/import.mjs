@@ -43,7 +43,15 @@
 import { readFile, readdir, stat } from 'node:fs/promises';
 import { homedir } from 'node:os';
 import { join } from 'node:path';
-import { connect, keyStores, KeyPair, transactions, utils } from 'near-api-js';
+import {
+  JsonRpcProvider,
+  KeyPair,
+  KeyPairSigner,
+  actions,
+  createTransaction,
+  baseDecode,
+  baseEncode,
+} from 'near-api-js';
 import { readProjects, KV_HOSTS } from '../lib/kv.mjs';
 import { planImport, toBatches, canonical, MAX_KEYS_PER_CALL } from '../lib/import-plan.mjs';
 import { describePermission, isFullAccess, importKeyDecision } from '../lib/key-permission.mjs';
@@ -214,8 +222,8 @@ async function readKeyPair(path) {
  * authority. Reading it costs one read-only RPC call against the same node the importer
  * already talks to.
  */
-async function queryPermission(near, accountId, publicKey) {
-  const accessKey = await near.connection.provider.query({
+async function queryPermission(provider, accountId, publicKey) {
+  const accessKey = await provider.query({
     request_type: 'view_access_key',
     finality: 'final',
     account_id: accountId,
@@ -229,7 +237,7 @@ async function queryPermission(near, accountId, publicKey) {
  * The chosen file is marked `*`. Returns the chosen permission, or null when it could not
  * be read (an unpublished key, or an RPC failure).
  */
-async function reportKeyCandidates(near, { candidates, chosen, accountId }) {
+async function reportKeyCandidates(provider, { candidates, chosen, accountId }) {
   console.log('key candidates:');
   let chosenPermission = null;
 
@@ -238,7 +246,7 @@ async function reportKeyCandidates(near, { candidates, chosen, accountId }) {
     let described;
     try {
       const { keyPair } = await readKeyPair(file);
-      const permission = await queryPermission(near, accountId, keyPair.getPublicKey().toString());
+      const permission = await queryPermission(provider, accountId, keyPair.getPublicKey().toString());
       described = `permission: ${describePermission(permission)}`;
       if (file === chosen) chosenPermission = permission;
     } catch (err) {
@@ -258,9 +266,7 @@ async function reportKeyCandidates(near, { candidates, chosen, accountId }) {
  * waits for an outcome either throws or reports failure for a write that succeeded.
  * Correctness is established afterwards, against the indexer.
  */
-async function sendBatch(near, accountId, publicKey, receiverId, kvPairs) {
-  const provider = near.connection.provider;
-
+async function sendBatch(provider, signer, accountId, publicKey, receiverId, kvPairs) {
   // Nonce and block hash must come from a fresh access key, and the nonce must be
   // read per batch because each accepted transaction advances it.
   const accessKey = await provider.query({
@@ -270,31 +276,27 @@ async function sendBatch(near, accountId, publicKey, receiverId, kvPairs) {
     public_key: publicKey.toString(),
   });
 
-  const action = transactions.functionCall(
+  const action = actions.functionCall(
     '__fastdata_kv',
     Buffer.from(JSON.stringify(kvPairs), 'utf8'),
     GAS,
     0n,
   );
 
-  // The 7-argument form of signTransaction builds the unsigned transaction and signs it
-  // in one step. (The object form needs a real Transaction instance — near-api-js v5's
-  // createTransaction returns a plain object, so passing it here would be misread as
-  // the legacy receiverId argument.)
-  //
-  // It returns a tuple [txHashBytes, SignedTransaction], not a SignedTransaction.
-  const [txHashBytes, signedTx] = await transactions.signTransaction(
-    receiverId,
-    accessKey.nonce + 1,
-    [action],
-    utils.serialize.base_decode(accessKey.block_hash),
-    near.connection.signer,
+  // near-api-js v7: build the unsigned transaction, then let the KeyPairSigner sign it.
+  // signTransaction returns { txHash, signedTransaction }.
+  const tx = createTransaction(
     accountId,
-    NETWORK,
+    publicKey,
+    receiverId,
+    BigInt(accessKey.nonce) + 1n,
+    [action],
+    baseDecode(accessKey.block_hash),
   );
+  const { txHash, signedTransaction } = await signer.signTransaction(tx);
 
-  const hash = utils.serialize.base_encode(txHashBytes);
-  await provider.sendTransactionAsync(signedTx);
+  const hash = baseEncode(txHash);
+  await provider.sendTransactionAsync(signedTransaction);
   return hash;
 }
 
@@ -329,18 +331,14 @@ async function main() {
   // Resolve the signer, print what the key is allowed to do, and sign nothing. This is what
   // makes the key rules in docs/runbooks/keys.md testable before a real import.
   if (CHECK_KEY) {
-    const near = await connect({
-      networkId: NETWORK,
-      nodeUrl: NODE_URL,
-      keyStore: new keyStores.InMemoryKeyStore(),
-    });
+    const provider = new JsonRpcProvider({ url: NODE_URL });
     const { path, candidates } = await resolveKeyFile({
       network: NETWORK,
       account: ACCOUNT,
       explicit: KEY_FILE_FLAG,
     });
     const { accountId, keyPair } = await readKeyPair(path);
-    const permission = await reportKeyCandidates(near, {
+    const permission = await reportKeyCandidates(provider, {
       candidates,
       chosen: path,
       accountId: accountId ?? ACCOUNT,
@@ -388,18 +386,14 @@ async function main() {
     return;
   }
 
-  const near = await connect({
-    networkId: NETWORK,
-    nodeUrl: NODE_URL,
-    keyStore: new keyStores.InMemoryKeyStore(),
-  });
+  const provider = new JsonRpcProvider({ url: NODE_URL });
   const { path, candidates } = await resolveKeyFile({
     network: NETWORK,
     account: ACCOUNT,
     explicit: KEY_FILE_FLAG,
   });
   const { keyPair } = await readKeyPair(path);
-  const permission = await reportKeyCandidates(near, {
+  const permission = await reportKeyCandidates(provider, {
     candidates,
     chosen: path,
     accountId: ACCOUNT,
@@ -415,13 +409,13 @@ async function main() {
   if (!decision.allowed) throw new Error(decision.reason);
   if (decision.warning) console.warn(`  ! ${decision.warning}`);
 
-  await near.connection.signer.keyStore.setKey(NETWORK, ACCOUNT, keyPair);
+  const signer = new KeyPairSigner(keyPair);
   const publicKey = keyPair.getPublicKey();
   console.log(`signer:  ${ACCOUNT} (${publicKey.toString()}) — ${describePermission(permission)}`);
 
   const hashes = [];
   for (const [i, batch] of batches.entries()) {
-    const hash = await sendBatch(near, ACCOUNT, publicKey, ACCOUNT, batch);
+    const hash = await sendBatch(provider, signer, ACCOUNT, publicKey, ACCOUNT, batch);
     hashes.push(hash);
     console.log(`sent ${i + 1}/${batches.length}: ${hash} (${Object.keys(batch).length} keys)`);
   }
