@@ -1,6 +1,9 @@
 import type { Metadata, Viewport } from 'next';
 import Link from 'next/link';
 import { Inter, Space_Grotesk } from 'next/font/google';
+import WalletProvider from '@/app/components/wallet/WalletProvider';
+import ConnectButton from '@/app/components/wallet/ConnectButton';
+import { NETWORK, VOTE_ACCOUNT } from '@/lib/network.mjs';
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'], weight: ['400', '500', '600'], variable: '--font-inter', display: 'swap' });
@@ -19,33 +22,32 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${inter.variable} ${grotesk.variable}`}>
       <body>
-        <header className="site-header">
-          <div className="container">
-            <Link href="/" className="brand">
-              <span className="brand-mark" aria-hidden="true">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M12 19V5M5 12l7-7 7 7" />
-                </svg>
-              </span>
-              <span className="brand-name">NEAR Hunt</span>
-            </Link>
-            <nav className="site-nav" aria-label="Main">
-              <Link href="/">Projects</Link>
-            </nav>
-            <span className="header-spacer" />
-            {/* NH-30 (Day 2) wires this up. Disabled until then so it never pretends to work. */}
-            <button type="button" className="connect-btn" disabled title="Connecting a NEAR account arrives with upvoting">
-              Connect<span className="connect-long">NEAR account</span>
-            </button>
-          </div>
-        </header>
-        {children}
-        <footer className="site-footer">
-          <div className="container">
-            <span>Project records are read from NEAR mainnet, account nearhunt.near, keys project/…</span>
-            <span>Votes are community signals, not official judging.</span>
-          </div>
-        </footer>
+        <WalletProvider>
+          <header className="site-header">
+            <div className="container">
+              <Link href="/" className="brand">
+                <span className="brand-mark" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 19V5M5 12l7-7 7 7" />
+                  </svg>
+                </span>
+                <span className="brand-name">NEAR Hunt</span>
+              </Link>
+              <nav className="site-nav" aria-label="Main">
+                <Link href="/">Projects</Link>
+              </nav>
+              <span className="header-spacer" />
+              <ConnectButton />
+            </div>
+          </header>
+          {children}
+          <footer className="site-footer">
+            <div className="container">
+              <span>Project records are read from NEAR mainnet, account nearhunt.near, keys project/…</span>
+              <span>Votes are written by voters to {VOTE_ACCOUNT} on NEAR {NETWORK}, keys vote/… — community signals, not official judging.</span>
+            </div>
+          </footer>
+        </WalletProvider>
       </body>
     </html>
   );

@@ -41,6 +41,25 @@ export declare function normaliseHashtagFeed(
   opts?: { limit?: number },
 ): { items: SocialPost[]; next_cursor: string | null };
 export declare function relativeTime(ms: number, now: number): string;
+export declare const PROFILE_TIMEOUT_MS: number;
+export declare const PROFILE_REVALIDATE_SECONDS: number;
+
+/** A near.social profile, reduced to what an avatar list shows. */
+export interface SocialProfile {
+  account_id: string;
+  name: string | null;
+  /** https only, or null. */
+  avatar_url: string | null;
+}
+
+export declare function profileApiUrl(accountId: string, opts?: { base?: string }): string;
+export declare function profileUrl(accountId: string): string;
+export declare function normaliseProfile(json: unknown, accountId: string): SocialProfile;
+export declare function fetchProfiles(
+  accountIds: string[],
+  opts?: { base?: string; timeoutMs?: number; revalidate?: number; fetchImpl?: typeof fetch },
+): Promise<{ status: 'ok' | 'error'; profiles: SocialProfile[] }>;
+
 export declare function fetchHashtagFeed(opts?: {
   hashtag?: string;
   limit?: number;
