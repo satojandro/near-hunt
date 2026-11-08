@@ -31,15 +31,16 @@ approval before it runs.
 
 The read-only product is built and deployed at **https://near-hunt.vercel.app** (Day 1), and Day 2's
 connect + upvote is merged and deployed. Day 3 — near.social discussion, the account page, the
-outage and stale-data states, the 390 px pass and the vote-count refresh — is built, tested and
-verified on `claude/great-planck-f8gtb9`; it merges once the human gates in
-[`runbooks/day3-signing-checklist.md`](runbooks/day3-signing-checklist.md) (A2–A3, B1–B4, C1–C5,
-D1–D2) are resolved. What is missing is Days 4–5 and DNS on nearhunt.xyz. Keys for `nearhunt.near`
-live on the operator's machine by the owner's decision of 8 Nov — the gate is approval of each
-write, not the machine.
+outage and stale-data states, the 390 px pass and the vote-count refresh — is **merged to `main`**
+(PR #4, merge commit `3a7189f`, 9 Nov) after being built, tested and verified on
+`claude/great-planck-f8gtb9`. It deploys with D2 in
+[`runbooks/day3-signing-checklist.md`](runbooks/day3-signing-checklist.md); the remaining gates
+there (A2–A3, B1–B4, C1–C5, D1–D2) are a human's, not the code's. What is missing is Days 4–5 and
+DNS on nearhunt.xyz. Keys for `nearhunt.near` live on the operator's machine by the owner's decision
+of 8 Nov — the gate is approval of each write, not the machine.
 
 Evidence, reproduced 8 Nov evening after the enrichment write; the test count and the NH-40 dry run
-were re-run on the Day 3 head:
+were re-run on the merged `main` (`3a7189f`):
 
 ```bash
 npm test                  # 196 pass, 0 fail

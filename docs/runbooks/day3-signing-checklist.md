@@ -1,6 +1,7 @@
 # Day 3 — signing and approval checklist (for Hermes)
 
-**Written:** 2026-11-08, from the `claude/great-planck-f8gtb9` branch. Agents built and tested
+**Written:** 2026-11-08, from the `claude/great-planck-f8gtb9` branch, which was **merged to `main`
+on 9 Nov** (PR #4, merge commit `3a7189f`). Agents built and tested
 everything in this list, and none of them signed anything; there are no keys on the machine
 where the code was written. Each box below is either a mainnet write, which needs the owner's
 approval of that exact diff (AGENTS.md §1–2), or a check that needs a real wallet.
@@ -98,4 +99,5 @@ nobody has run them yet.
 
 - [ ] **D1. DNS for nearhunt.xyz:** add the domain to the `near-hunt` Vercel project, then set
       Namecheap DNS (apex `A 76.76.21.21`, `www` CNAME `cname.vercel-dns.com`).
-- [ ] **D2. Deploy** the Day 3 branch after it is merged.
+- [ ] **D2. Deploy `main`.** Day 3 is merged (`3a7189f`); this deploy ships it. Nothing on Vercel
+      changes until it runs.

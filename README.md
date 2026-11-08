@@ -15,7 +15,7 @@ projects without browser automation.
 > public FastData indexer. 264 records now carry the builder's own description and 98 a verified
 > repository, filled by a separate approval-gated enrichment pass. The directory, project pages and
 > connect/upvote flow are live at **https://near-hunt.vercel.app**. Discussion, the account page,
-> the indexer-outage states and the 390 px pass are built on `claude/great-planck-f8gtb9` and land
+> the indexer-outage states and the 390 px pass are merged into `main` (PR #4, `3a7189f`) and deploy
 > once the [Day 3 signing and wallet checks](docs/runbooks/day3-signing-checklist.md) are done.
 > See [`docs/phase-0-spike.md`](docs/phase-0-spike.md) and [`schema/`](schema/).
 
