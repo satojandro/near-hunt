@@ -1,9 +1,11 @@
 import type { ListingItem } from './listing.mjs';
 
-export type DirectorySort = 'upvoted' | 'newest';
+export type DirectorySort = 'upvoted' | 'newest' | 'discussed';
 export type SearchParamsRecord = Record<string, string | string[] | undefined>;
 /** submission_id -> vote count (NH-33 tally; missing = 0). */
 export type Votes = Record<string, number>;
+/** submission_id -> near.social reply count (NH-43); absent = the project has no discussion post. */
+export type Replies = Record<string, number>;
 
 export interface DirectoryState {
   q: string;
@@ -31,9 +33,9 @@ export declare function normalizeText(s: unknown): string;
 export declare function parseParams(params?: SearchParamsRecord, knownTracks?: string[]): DirectoryState;
 export declare function searchItems<T extends { name: string }>(items: T[], q: string): T[];
 export declare function filterByTrack<T extends { tracks: string[] }>(items: T[], track: string | null): T[];
-export declare function sortItems<T extends ListingItem>(items: T[], sort: DirectorySort, votes?: Votes): T[];
+export declare function sortItems<T extends ListingItem>(items: T[], sort: DirectorySort, votes?: Votes, replies?: Replies): T[];
 export declare function trackChips(allItems: ListingItem[], searched: ListingItem[], activeTrack: string | null): TrackChip[];
 export declare function buildHref(state: DirectoryState, overrides?: Partial<DirectoryState>): string;
 export declare function hostOf(url: string | null | undefined): string | null;
 export declare function formatFetchedUtc(iso: string): string | null;
-export declare function directoryView(items: ListingItem[], params: SearchParamsRecord, votes?: Votes): DirectoryView;
+export declare function directoryView(items: ListingItem[], params: SearchParamsRecord, votes?: Votes, replies?: Replies): DirectoryView;

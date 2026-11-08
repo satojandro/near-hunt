@@ -63,7 +63,7 @@ test('parseParams applies defaults and rejects unknown values', () => {
   assert.deepEqual(parseParams({}), { q: '', track: null, sort: DEFAULT_SORT });
   assert.equal(DEFAULT_SORT, 'newest');
   assert.deepEqual(parseParams({ q: '  a   b ', track: 'defi', sort: 'upvoted' }, ['defi']), { q: 'a b', track: 'defi', sort: 'upvoted' });
-  assert.deepEqual(parseParams({ track: 'nope', sort: 'discussed' }, ['defi']), { q: '', track: null, sort: 'newest' });
+  assert.deepEqual(parseParams({ track: 'nope', sort: 'loudest' }, ['defi']), { q: '', track: null, sort: 'newest' });
   assert.deepEqual(parseParams({ q: ['x', 'y'], track: 'all' }), { q: 'x', track: null, sort: 'newest' });
 });
 

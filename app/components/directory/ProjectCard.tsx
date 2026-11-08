@@ -4,9 +4,13 @@ import { hostOf } from '@/lib/directory.mjs';
 import type { ListingItem } from '@/lib/listing.mjs';
 import { trackLabel } from '@/lib/tracks.mjs';
 import UpvoteButton from '@/app/components/vote/UpvoteButton';
+import ds from '@/app/components/discussion/discussion.module.css';
 
-/** One row of the directory (mockup board 1). The whole card is a link to the project page. */
-export default function ProjectCard({ item, rank, votes }: { item: ListingItem; rank: number; votes: number }) {
+/**
+ * One row of the directory (mockup board 1). The whole card is a link to the project page.
+ * `replies` (NH-43) is undefined when the project has no near.social post: nothing is shown then.
+ */
+export default function ProjectCard({ item, rank, votes, replies }: { item: ListingItem; rank: number; votes: number; replies?: number }) {
   const host = hostOf(item.demo_url);
   return (
     <li className="dir-card">
@@ -25,6 +29,12 @@ export default function ProjectCard({ item, rank, votes }: { item: ListingItem; 
             <>
               <span aria-hidden="true">·</span>
               <span className="dir-demo">Demo on {host}</span>
+            </>
+          ) : null}
+          {typeof replies === 'number' ? (
+            <>
+              <span aria-hidden="true">·</span>
+              <span className={ds.cardCount}>{replies} {replies === 1 ? 'reply' : 'replies'}</span>
             </>
           ) : null}
         </div>
