@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { getProject } from '@/lib/projects';
+import { getProject, getProjects } from '@/lib/projects';
 import { getVoters } from '@/lib/votes';
 import { trackLabel } from '@/lib/tracks.mjs';
 import { metaDescription } from '@/lib/project-view.mjs';
@@ -11,6 +11,8 @@ import LinksCard from '@/app/components/project/LinksCard';
 import RecordCard from '@/app/components/project/RecordCard';
 import UpvotedBy from '@/app/components/project/UpvotedBy';
 import UpvoteButton from '@/app/components/vote/UpvoteButton';
+import SimilarProjects from '@/app/components/project/SimilarProjects';
+import ClaimCard from '@/app/components/project/ClaimCard';
 import s from '@/app/components/project/project.module.css';
 
 type Props = { params: Promise<{ id: string }> };
@@ -39,6 +41,8 @@ export default async function ProjectPage({ params }: Props) {
   // NH-33: active votes for this project (one per voter account). `available` is false when the
   // votes read failed; the page still renders, without a number.
   const { voters, count, available: votesAvailable } = await getVoters(project.submission_id);
+  // NH-23: the same cached list getProject just read.
+  const { items: allProjects } = await getProjects();
 
   return (
     <main className={`container ${s.page}`}>
@@ -66,7 +70,8 @@ export default async function ProjectPage({ params }: Props) {
         <aside className={s.side} aria-label="Record details">
           <RecordCard project={project} />
           <UpvotedBy voters={voters} available={votesAvailable} />
-          {/* NH-23 (Similar projects), NH-24 (Claim) go here. */}
+          <SimilarProjects project={project} all={allProjects} />
+          <ClaimCard />
         </aside>
       </div>
     </main>
