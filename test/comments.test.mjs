@@ -7,12 +7,14 @@ import {
   COMMENT_PREFIX,
   MAX_COMMENT_CHARS,
   POLICY_PATH,
+  blockTimeMs,
   cleanCommentText,
   commentArgs,
   commentFromRow,
   commentKey,
   commentRef,
   commentThread,
+  commentTime,
   commentUrl,
   commentTransaction,
   countComments,
@@ -35,10 +37,14 @@ import {
 const NS = 'nearhunt.near';
 const PID = 'p1';
 
-const row = (writer, id, value, block_height = 10, project = PID) => ({
+/** Block time of every test row unless given: 2027-01-15, later than every id the tests use. */
+const BLOCK_NS = '1800000000000000000';
+
+const row = (writer, id, value, block_height = 10, project = PID, block_timestamp = BLOCK_NS) => ({
   predecessor_id: writer,
   current_account_id: NS,
   block_height,
+  block_timestamp,
   key: `comment/${project}/${id}`,
   value,
 });
@@ -167,6 +173,36 @@ test('a row becomes a comment; the author is predecessor_id, never the value', (
   assert.equal(c.reply_to, null);
   assert.equal(c.url, commentUrl(PID, 'alice.near', '1794122153750'));
   assert.match(c.url, /^https:\/\/nearhunt\.xyz\/p\/p1#c-alice\.near-1794122153750$/);
+});
+
+test('a comment time is min(id, block time): a future id cannot outrank real comments', () => {
+  assert.equal(blockTimeMs('1800000000000000000'), 1800000000000);
+  assert.equal(blockTimeMs(1.8e18), 1800000000000);
+  assert.equal(blockTimeMs(undefined), null);
+  assert.equal(blockTimeMs('not a number'), null);
+
+  // A slow client clock keeps its own earlier time; a forged future one gets the block's.
+  assert.equal(commentTime('1794122153750', '1794122160000000000'), 1794122153750);
+  assert.equal(commentTime('9007199254740900', '1794122160000000000'), 1794122160000);
+  assert.equal(commentTime('1794122153750', undefined), null);
+
+  const future = commentFromRow(row('spam.near', '9007199254740900', { text: 'x' }, 10, PID, '1794122160000000000'));
+  assert.equal(future.created_at, 1794122160000);
+  assert.equal(future.id, '9007199254740900'); // identity is still the key
+  // Renders: a forged id used to make toISOString() throw and take the page down.
+  assert.doesNotThrow(() => new Date(future.created_at).toISOString());
+  assert.equal(commentFromRow(row('alice.near', '1', { text: 'x' }, 10, PID, null)).created_at, null);
+});
+
+test('50 comments with forged future ids do not push a later real comment out of the newest 50', () => {
+  const rows = [];
+  for (let i = 0; i < 50; i++) {
+    rows.push(row('spam.near', String(9007199254740900 + i), { text: 'spam' }, 10, PID, '1794122000000000000'));
+  }
+  rows.push(row('alice.near', '1794122153750', { text: 'real' }, 11, PID, '1794122154000000000'));
+  const { items } = commentThread(rows, PID);
+  assert.equal(items.at(-1).text, 'real');
+  assert.ok(items.slice(-50).some((c) => c.author === 'alice.near'));
 });
 
 test('deletions, empty text, arrays, foreign projects and invalid writers are not comments', () => {

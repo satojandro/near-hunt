@@ -25,6 +25,7 @@ export interface Comment {
   author: string;
   text: string;
   truncated: boolean;
+  /** ms; `min(id, block time)`, so never later than the block. Null when the block time is unknown. */
   created_at: number | null;
   block_height: number | null;
   reply_to: string | null;
@@ -90,6 +91,8 @@ export declare function removeCommentTransaction(opts: {
   methodName?: string;
 }): { receiverId: string; actions: Array<{ type: 'FunctionCall'; params: Record<string, unknown> }> };
 
+export declare function blockTimeMs(v: unknown): number | null;
+export declare function commentTime(id: string, blockTimestamp: unknown): number | null;
 export declare function commentFromRow(
   row: unknown,
   opts?: { projectId?: string | null; hidden?: HideEntry[] },
