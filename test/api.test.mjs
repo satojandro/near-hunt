@@ -1,8 +1,8 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import {
-  ApiError, CACHE, DEFAULT_LIMIT, MAX_LIMIT, apiHeaders, decodeCursor, decodeUpstreamCursor, discussionBody,
-  encodeCursor, encodeUpstreamCursor, errorBody, notFound, paginate, parseLimit, parsePage, parseProjectsQuery,
+  ApiError, CACHE, DEFAULT_LIMIT, MAX_LIMIT, apiHeaders, decodeCursor, discussionBody,
+  encodeCursor, errorBody, notFound, paginate, parseLimit, parsePage, parseProjectsQuery,
   projectsBody, recordUrl, toProject, votesBody,
 } from '../lib/api.mjs';
 import { votesFor, votersFor } from '../lib/votes.mjs';
@@ -84,15 +84,8 @@ test('bad cursors are bad_request', () => {
     Buffer.from('x:5').toString('base64url'), Buffer.from('o:99999999').toString('base64url'), 'bzo1=', 'a'.repeat(3000)];
   for (const bad of bads) throwsCode(() => decodeCursor(bad), 'bad_request', 400);
   throwsCode(() => q('cursor=%%%'), 'bad_request', 400);
-  // A discussion cursor is not a list cursor, and the other way round.
-  throwsCode(() => decodeCursor(encodeUpstreamCursor('abc')), 'bad_request', 400);
-  throwsCode(() => decodeUpstreamCursor(encodeCursor(5)), 'bad_request', 400);
-});
-
-test('upstream cursor round-trips verbatim', () => {
-  const up = 'eyJiIjoxOTk2MzE5MjB9:x/y+z=';
-  assert.equal(decodeUpstreamCursor(encodeUpstreamCursor(up)), up);
-  assert.equal(decodeUpstreamCursor(null), null);
+  // Discussion pages by list offset now (NH-44); an `s:` payload is not a list cursor.
+  throwsCode(() => decodeCursor(Buffer.from('s:abc').toString('base64url')), 'bad_request', 400);
 });
 
 test('sort: newest (default), votes, name; unknown is bad_request', () => {
@@ -176,15 +169,30 @@ test('votes body: envelope, ordering, paging and meta', () => {
   assert.equal(p2.next_cursor, null);
 });
 
-test('discussion body: empty with root null when there is no post; upstream cursor wrapped', () => {
-  assert.deepEqual(discussionBody(null, null), { items: [], next_cursor: null, meta: { root: null, thread_url: null } });
-  const root = { key: 'nearhunt.near/1' };
-  const replies = [{ key: 'a.near/2' }];
-  const body = discussionBody({ root, replies, next_cursor: 'UP' }, 'https://near.social/nearhunt.near/post/1');
-  assert.deepEqual(body.items, replies);
-  assert.deepEqual(body.meta, { root, thread_url: 'https://near.social/nearhunt.near/post/1' });
-  assert.equal(decodeUpstreamCursor(body.next_cursor), 'UP');
-  assert.equal(discussionBody({ root, replies, next_cursor: null }, 'u').next_cursor, null);
+test('discussion body: flat comments with reply_to, offset paging and comment meta', () => {
+  const src = { account: 'nearhunt.near', network: 'mainnet' };
+  const c = (id, author, extra = {}) => ({
+    key: `comment/p1/${id}`, id, ref: `${author}/${id}`, project_id: 'p1', author,
+    text: `comment ${id}`, truncated: false, created_at: Number(id), block_height: 100,
+    reply_to: null, url: `https://nearhunt.xyz/p/p1#c-${author}-${id}`, ...extra,
+  });
+  assert.deepEqual(discussionBody([], src, parsePage(new URLSearchParams(''))), {
+    items: [],
+    next_cursor: null,
+    meta: {
+      total: 0,
+      source: { account: 'nearhunt.near', prefix: 'comment/', network: 'mainnet' },
+      policy_url: 'https://nearhunt.xyz/comment-policy',
+    },
+  });
+  const comments = [c('10', 'a.near'), c('11', 'b.near', { reply_to: 'a.near/10' }), c('12', 'c.near')];
+  const p1 = discussionBody(comments, src, parsePage(new URLSearchParams('limit=2')));
+  assert.deepEqual(p1.items.map((x) => x.id), ['10', '11']);
+  assert.equal(p1.items[1].reply_to, 'a.near/10');
+  assert.equal(p1.meta.total, 3);
+  const p2 = discussionBody(comments, src, parsePage(new URLSearchParams(`limit=2&cursor=${p1.next_cursor}`)));
+  assert.deepEqual(p2.items.map((x) => x.id), ['12']);
+  assert.equal(p2.next_cursor, null);
 });
 
 test('fetchThread passes a near.social cursor through to /replies', async () => {

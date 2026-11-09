@@ -1,0 +1,4 @@
+{
+  "_note": "NEAR Hunt's comment hide list (NH-44). A comment is hidden only when project_id, author (the row's predecessor_id) and id all match, so an entry can never hide another author's comment. Removing an entry un-hides the comment on the next deploy. Policy: /comment-policy.",
+  "comments": []
+}

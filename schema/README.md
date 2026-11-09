@@ -124,17 +124,30 @@ Count rows whose value is an object; skip `null`. Ignore votes for ids that have
 record. One account's votes: `POST /v0/latest/nearhunt.near/{account}` with
 `{"key_prefix":"vote/"}`.
 
-### Discussion — near.social posts
+### Comments — `comment/{submission_id}/{ms}` in `nearhunt.near`
 
-Comments are ordinary near.social (`social-kv/1`) posts written to `social`, not NEAR Hunt keys:
+| | |
+|---|---|
+| Written by | the commenter, from their own account, with the login key (`__fastdata_kv`) |
+| Value | `{ "text": "…", "reply_to": "{author}/{id}"? }` · `null` = deleted by its author |
+| Author | the row's `predecessor_id` (not part of the key) |
 
-- each project has one post by `nearhunt.near`; its reference is stored in the record's
-  `social_post` field once it exists;
-- a comment is a reply: `post/{ms}` with `reply_to` and `root` set to that post, plus the
-  `reply/nearhunt.near/{post_id}/{ms}` backlink in the same call;
-- posts made through NEAR Hunt include `#nearhunt` and a link to `https://nearhunt.xyz/p/{submission_id}`.
+`ms` is the writer's Unix time in milliseconds. The index keeps one latest row per writer per key,
+so only the author can change or delete their comment, and two writers can use the same `ms`
+without colliding. Plain text, at most 2,000 characters. Read one project's discussion with a
+prefix read across writers:
 
-Read a thread with `GET https://api2.near.social/v1/posts/nearhunt.near/{post_id}/replies`.
+```bash
+curl -s -X POST "https://kv.main.fastnear.com/v0/latest/nearhunt.near" \
+  -H 'content-type: application/json' \
+  -d '{"key_prefix":"comment/21996773-48fa-43e9-aedc-684fdd2e4425/","limit":200}'
+```
+
+A reply's `reply_to` is `{author}/{id}` of the comment it answers (one level; answers to answers
+are shown under the same top-level comment). Deleted rows and rows on NEAR Hunt's hide list
+(`data/hidden-comments.json`, matched on project + author + id) are not shown or counted. NEAR Hunt
+cannot delete a comment and never writes under `comment/`; the policy is at
+<https://nearhunt.xyz/comment-policy>.
 
 ## Why it is versioned this way
 

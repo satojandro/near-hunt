@@ -1,6 +1,6 @@
 // NH-16: static info cards. Copy states only what runs today (AGENTS.md §4): upvotes shipped on
-// Day 2 (NH-30…), comments on Day 3 (NH-41–43) and the read API + SKILL.md on Day 4 (NH-60, NH-61),
-// which deployed on 8 Nov — all three are live, so none of this is worded as planned.
+// Day 2 (NH-30…), comments on nearhunt.near (NH-44) and the read API + SKILL.md on Day 4 (NH-60,
+// NH-61), which deployed on 8 Nov — all of it is live, so none of this is worded as planned.
 import Link from 'next/link';
 import styles from './sidebar.module.css';
 
@@ -11,7 +11,7 @@ export function HowItWorks() {
       <ol className={styles.steps}>
         <li><strong>Projects</strong> are open JSON records stored under nearhunt.near (keys project/…). No smart contract.</li>
         <li><strong>Anyone can read them</strong> through the public FastData KV API. No account or API key needed.</li>
-        <li><strong>Upvotes and comments</strong> are written from your own NEAR account: one active upvote per account per project, and comments as near.social replies.</li>
+        <li><strong>Upvotes and comments</strong> are written from your own NEAR account: one active upvote per account per project, and comments as comment/… rows signed the same way.</li>
       </ol>
       <code className={styles.code}>POST kv.main.fastnear.com/v0/latest/nearhunt.near/nearhunt.near</code>
     </section>

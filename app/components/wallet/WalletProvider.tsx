@@ -43,6 +43,12 @@ interface WalletContextValue {
   setMyVote: (projectId: string, voted: boolean) => void;
   /** `onWalletFallback` runs when the login key cannot sign and the wallet is asked instead. */
   cast: (projectId: string, upvote: boolean, opts?: { onWalletFallback?: () => void }) => Promise<CastResult>;
+  /**
+   * The same sender for comment writes (NH-44): `send` signs with the login key, and
+   * `fallbackSend` drops a key the chain no longer accepts so the next send goes to the wallet.
+   * Typed for any transaction shape so the comment module does not depend on the vote types.
+   */
+  commentSender: () => { send: (tx: unknown) => Promise<unknown>; fallbackSend: () => ((tx: unknown) => Promise<unknown>) | null };
 }
 
 const WalletContext = createContext<WalletContextValue | null>(null);
@@ -174,6 +180,19 @@ function Inner({ children }: { children: React.ReactNode }) {
     [],
   );
 
+  const commentSender = useCallback(() => {
+    const send = nearRef.current.signAndSendTransaction as unknown as (tx: unknown) => Promise<unknown>;
+    const fallbackSend = () => {
+      try {
+        window.localStorage.removeItem(PLUGIN_STORAGE_KEY);
+      } catch {
+        return null;
+      }
+      return send;
+    };
+    return { send, fallbackSend };
+  }, []);
+
   const value = useMemo<WalletContextValue>(
     () => ({
       loading,
@@ -187,8 +206,9 @@ function Inner({ children }: { children: React.ReactNode }) {
       ensureMyVotes,
       setMyVote,
       cast,
+      commentSender,
     }),
-    [loading, accountId, connect, disconnect, myVotes, votesError, ensureMyVotes, setMyVote, cast],
+    [loading, accountId, connect, disconnect, myVotes, votesError, ensureMyVotes, setMyVote, cast, commentSender],
   );
 
   return <WalletContext.Provider value={value}>{children}</WalletContext.Provider>;

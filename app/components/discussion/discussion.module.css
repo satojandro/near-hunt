@@ -1,4 +1,4 @@
-/* Discussion (NH-41/42/83, mockup board 2: docs/mockups/png/Project.png). Uses the tokens in app/globals.css. */
+/* Discussion (NH-44 comments on nearhunt.near, mockup board 2: docs/mockups/png/Project.png). Uses the tokens in app/globals.css. */
 
 .card {
   background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-card);
@@ -7,6 +7,7 @@
 .head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 16px; margin: 0 0 16px; }
 .title { font-family: var(--font-display); font-weight: 600; font-size: 20px; margin: 0; }
 .titleCount { color: var(--text-muted); font-weight: 500; }
+.headNote { font-size: 13px; color: var(--text-muted); }
 .open { color: var(--social); font-weight: 600; font-size: 14px; display: inline-flex; align-items: center; min-height: 44px; margin: -12px 0; }
 
 .note { margin: 0; color: var(--text-muted); font-size: 15px; }
@@ -34,6 +35,9 @@
   background: transparent; min-height: 72px; width: 100%;
 }
 .composerFoot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; }
+.composerButtons { display: inline-flex; flex-wrap: wrap; gap: 8px; }
+.outcomeSlot:empty { display: none; }
+.outcomeSlot .alert { margin: 0; }
 .hint { font-size: 13px; color: var(--text-muted); min-width: 0; overflow-wrap: anywhere; }
 .counter { font-variant-numeric: tabular-nums; }
 .over { color: #B42318; font-weight: 600; }
@@ -51,6 +55,10 @@
 
 /* Thread */
 .list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 18px; }
+.threadItem { list-style: none; }
+.replies { list-style: none; margin: 14px 0 0; padding: 0 0 0 52px; display: flex; flex-direction: column; gap: 14px; }
+.inlineComposer { margin: 10px 0 0 52px; }
+.inlineComposer form { margin: 0; }
 .reply { display: flex; gap: 12px; min-width: 0; }
 .pending { opacity: 0.75; }
 .avatar {
@@ -66,6 +74,20 @@
 .actions { display: flex; flex-wrap: wrap; gap: 4px 16px; margin-top: 4px; font-size: 13px; color: var(--text-muted); }
 .actions a { color: var(--text-muted); display: inline-flex; align-items: center; min-height: 32px; }
 .actions a:hover { color: var(--text); }
+.action {
+  font: inherit; background: none; border: 0; padding: 0; color: var(--text-muted);
+  min-height: 32px; cursor: pointer; display: inline-flex; align-items: center;
+}
+.action:hover { color: var(--text); }
+.action:disabled { opacity: 0.6; cursor: not-allowed; }
+.danger { color: #B42318; }
+.danger:hover { color: #8C1B12; }
+.policy {
+  margin: 18px 0 0; padding-top: 14px; border-top: 1px solid var(--border);
+  font-size: 13px; color: var(--text-muted);
+}
+.policy code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+.policy a { color: var(--social); font-weight: 600; }
 .more { display: inline-flex; align-items: center; min-height: 44px; margin-top: 8px; color: var(--social); font-weight: 600; font-size: 14px; }
 
 /* Loading skeleton */
@@ -85,4 +107,6 @@
 @media (max-width: 640px) {
   .card { padding: 18px; }
   .btn, .btnQuiet { width: 100%; }
+  .replies, .inlineComposer { padding-left: 0; margin-left: 0; }
+  .action { min-height: 44px; }
 }
