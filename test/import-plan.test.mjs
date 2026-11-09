@@ -129,7 +129,7 @@ test('enrichment fills description and repository on an existing record', () => 
   const v = plan.update[0].value;
   assert.equal(v.description, 'The builder pitch.');
   assert.equal(v.repository_url, 'https://github.com/o/r');
-  assert.deepEqual(plan.update[0].changes, ['description', 'repository_url', 'links']);
+  assert.deepEqual(plan.update[0].changes, ['description', 'repository_url', 'links', 'enrichment']);
   assert.equal(v.enrichment.method, 'x-thread');
   assert.deepEqual(v.enrichment.fields, ['description', 'repository_url', 'links']);
 });
@@ -140,7 +140,7 @@ test('enrichment never overwrites a value already on chain', () => {
   const plan = planImport({ submissions: [s], existing, nowIso: NOW, enrichment: { a: proposal() } });
   // description and repository already exist; only the missing `links` field is added
   assert.equal(plan.update.length, 1);
-  assert.deepEqual(plan.update[0].changes, ['links']);
+  assert.deepEqual(plan.update[0].changes, ['links', 'enrichment']);
   assert.equal(plan.update[0].value.description, 'Builder wrote this');
   assert.equal(plan.update[0].value.repository_url, 'https://github.com/real/repo');
 });
@@ -191,7 +191,7 @@ test('refresh only corrects fields an earlier enrichment run set', () => {
     refreshEnriched: true,
   });
   assert.equal(plan.update.length, 1);
-  assert.deepEqual(plan.update[0].changes, ['description', 'repository_url', 'links']);
+  assert.deepEqual(plan.update[0].changes, ['description', 'repository_url', 'links', 'enrichment']);
   assert.equal(plan.update[0].value.description, 'The builder pitch.');
 
   // a description with no enrichment provenance is never rewritten, even with refresh
@@ -203,7 +203,19 @@ test('refresh only corrects fields an earlier enrichment run set', () => {
     enrichment: { a: proposal() },
     refreshEnriched: true,
   });
-  assert.deepEqual(plan2.update[0].changes, ['links']);
+  assert.deepEqual(plan2.update[0].changes, ['links', 'enrichment']);
   assert.equal(plan2.update[0].value.description, 'The builder wrote this');
   assert.equal(plan2.update[0].value.repository_url, 'https://github.com/real/repo');
+});
+
+test('the dry-run change labels name media and provenance, so a media-only update is not blank', () => {
+  const s = sub('m');
+  const prev = { ...newRecord(s, NOW), enrichment: { method: 'x-thread', sources: ['https://x.com/a/status/1'], retrieved_at: NOW, fields: ['description'] }, description: 'Builder text' };
+  const media = [{ type: 'photo', url: 'https://pbs.twimg.com/media/P.jpg', post_url: 'https://x.com/a/status/1' }];
+  const plan = planImport({
+    submissions: [s], existing: [{ key: 'project/m', value: prev }], nowIso: NOW,
+    enrichment: { m: { status: 'ok', media, enrichment: { method: 'x-thread', sources: ['https://x.com/a/status/1'], retrieved_at: NOW } } },
+  });
+  assert.equal(plan.update.length, 1);
+  assert.deepEqual(plan.update[0].changes, ['media', 'enrichment']);
 });
