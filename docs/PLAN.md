@@ -7,7 +7,7 @@ https://claude.ai/artifact/TheVd1qg4LzCRzStJvKPKe (private until shared).
 
 ## Where things stand (re-audited 2026-11-09 after the NH-96 write, by Hermes)
 
-`nearhunt.near` has one funding transfer and eighteen project-import transactions:
+`nearhunt.near` has one funding transfer and nineteen project-import transactions:
 
 1. a 1 NEAR funding transfer (block 223,583,069);
 2. 256 `project/…` records (block 223,583,277);
@@ -44,12 +44,20 @@ https://claude.ai/artifact/TheVd1qg4LzCRzStJvKPKe (private until shared).
     checked `links`; 5 were `not-an-x-post` and 3 `post-unavailable`, so they carry feed fields
     only. Signed with the FullAccess key under the same explicit choice as batch 12.
 
-**After batches 12 and 13, read back from the indexer:** **336 records, all 336 valid** against the
-schema, 0 foreign rows, 0 tombstones; 312 carry the builder's own description, 113 a verified
-repository, 294 `media`, 114 labelled and checked `links`. 15 records still keep unlabelled links
-(see NH-96: the 8 Nov correction dropped their provenance, so `--refresh-enriched` refuses them).
-Re-running either import now prints `changed: 0, unchanged: 336`; the feed and the chain are level
-at 336.
+14. Repositories recovered from the builders' replies, 9 Nov (NH-96c), owner-approved for
+    `70 keys, 109373 bytes, 2 tx`: `AHNbKXxpfY2XPQkTMz3YzzKNPfyYJYYnEF2JoZHxU5Eq` (41) and
+    `GBa9v6X99sj1SNUesye2zcoz1sGJDoJpHWyKcruf8iNm` (29). Importer output `verified: 70/70 written
+    keys read back` (41/70 on the first two attempts, 70/70 on the third); re-run prints
+    `changed: 0, unchanged: 336`. Fields: `repository_url` 43, `links` 58 (additions only, no URL
+    removed), `enrichment` 70; no description changed. Signed with the FullAccess key.
+
+**After batches 12–14, read back from the indexer:** **336 records, all 336 valid** against the
+schema, 0 foreign rows, 0 tombstones; 312 carry the builder's own description, **156 a verified
+repository**, 294 `media`, 164 with links. 180 records still have no repository: the builder
+published none that X renders to us (68 captured threads had no author reply, 17 `demo_url`s are not
+X posts, 6 posts are gone). 15 records still keep unlabelled links (see NH-96: the 8 Nov correction
+dropped their provenance, so `--refresh-enriched` refuses them). Re-running any import prints
+`changed: 0, unchanged: 336`; the feed and the chain are level at 336.
 
 **The 19-key correction** was applied in tx `Bo5ktqRx…` — 18 descriptions that ended in a dangling
 link label, plus the newest `AgentGuard` record — via `--refresh-enriched`.
