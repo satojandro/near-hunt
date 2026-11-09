@@ -16,8 +16,10 @@ projects without browser automation.
 > repository, filled by a separate approval-gated enrichment pass. `nearhunt.near` also has a
 > near.social profile that discloses the account is automated. The directory, project pages and
 > connect/upvote flow are live at **https://nearhunt.xyz**. Comments moved from near.social replies
-> to rows on `nearhunt.near` (NH-44): built and verified against `nearhunt.testnet`, **not yet
-> deployed**. The account page, the indexer-outage states and the 390 px pass are merged and
+> to rows on `nearhunt.near` (NH-44) and are **live** (PR #8, merge `f11ea7e`, deployment
+> `near-hunt-dggp40cj3`, 9 Nov): `/comment-policy` answers, a project page takes comments, and
+> `/api/projects/{id}/discussion` reads `comment/` rows. The account page, the indexer-outage states
+> and the 390 px pass are merged and
 > **deployed** (8 Nov); the
 > [Day 3 signing and wallet checks](docs/runbooks/day3-signing-checklist.md) are still pending.
 > Day 4 — the read-only JSON API (`/api/projects…`), `/SKILL.md` for agents and the `/open-data`
@@ -59,7 +61,7 @@ anyone, with no bespoke contract to deploy or audit.
 | Project records | FastData KV writes (`__fastdata_kv`) to `nearhunt.near` | **live on mainnet** (281 records) |
 | Upvotes | `vote/{project_id}` keys written by the voter, so one vote per account | live (Day 2) |
 | Reading records | `https://kv.main.fastnear.com`, scoped to records written by `nearhunt.near` | verified |
-| Discussion | `comment/{project_id}/{ms}` rows in `nearhunt.near`, written by the commenter, signed with the login key (NH-44) | built, testnet-verified; not yet deployed |
+| Discussion | `comment/{project_id}/{ms}` rows in `nearhunt.near`, written by the commenter, signed with the login key (NH-44) | **live** (deployed 9 Nov, `dggp40cj3`) |
 | Public read API | Next.js route handlers over the same readers, `{items, next_cursor}` | live (Day 4, PR #6) |
 | Indexing | FastData indexer (no custom block scanning) | verified |
 | Smart contract | none — deliberately | proven unnecessary |
