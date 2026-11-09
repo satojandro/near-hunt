@@ -58,6 +58,7 @@ near account add-key nearhunt.near \
 ```
 
 `--allowance` caps lifetime gas spend; each import call uses 1 Ggas, so 0.25 NEAR is ample.
+
 Which signer form to use (`sign-with-keychain`, `sign-with-legacy-keychain`,
 `sign-with-access-key-file`, `sign-with-seed-phrase`) depends on where the key was stored; run
 `near account add-key grant-function-call-access autogenerate-new-keypair --help` for the current
@@ -94,3 +95,18 @@ failure: `nearhunt.near` has no contract, and the indexer records the row anyway
 
 Donations go to a separate account, for example `treasury.nearhunt.near`, created and held by the
 owner. It never signs imports.
+
+## What the chain actually holds (checked 9 Nov 2026, after the NH-96 write)
+
+`view_access_key_list nearhunt.near` returns **two** keys:
+
+- `ed25519:2ozjdhsUK6iAAWrGtizUtqkx8ms9FSDzKBwedMSa2gaW` — FunctionCall, receiver `social`,
+  `__fastdata_kv`/`__fastdata_fastfs`. That is the near.social key; it cannot sign an import, whose
+  calls go to receiver `nearhunt.near`.
+- `ed25519:EXQAnyijsEeUa9yKqk3z2FKDqLcaHWsZ6wuVEm2sW5yw` — **FullAccess**.
+
+So the importer key in the table at the top **does not exist right now** and `scripts/import.mjs`
+refuses to sign. The NH-96 batch (257 keys, six transactions, 9 Nov) was signed with the FullAccess
+key under `--accept-full-access`, which the owner chose explicitly for that batch instead of adding
+a key first. Adding the function-call key needs its own approval (AGENTS.md §2); until it exists,
+every import needs that same explicit choice.

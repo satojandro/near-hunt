@@ -5,9 +5,9 @@
 Mockups for every page and flow referenced below (boards 1–9) are in [`mockups/`](mockups/README.md); the editable canvas is at
 https://claude.ai/artifact/TheVd1qg4LzCRzStJvKPKe (private until shared).
 
-## Where things stand (re-audited 2026-11-08 evening, by Hermes)
+## Where things stand (re-audited 2026-11-09 after the NH-96 write, by Hermes)
 
-`nearhunt.near` has one funding transfer and ten project-import transactions:
+`nearhunt.near` has one funding transfer and sixteen project-import transactions:
 
 1. a 1 NEAR funding transfer (block 223,583,069);
 2. 256 `project/…` records (block 223,583,277);
@@ -23,12 +23,33 @@ https://claude.ai/artifact/TheVd1qg4LzCRzStJvKPKe (private until shared).
    `Gom4MYrHpgZ7pGvTqSQoUwMLZcFRdBZbV5u5HTcyEqVQ` (10);
 11. 19-key correction — tx `Bo5ktqRxYFu6Bik4GLDU8pPnyk5bCu8WdnpKZebcAkmY` (18 descriptions with a
     dangling `Repo:`/`Demo:` label plus the newest `AgentGuard` record).
+12. The NH-96 enrichment write, 257 keys in six batches, 9 Nov. The owner approved these exact
+    numbers after the dry run printed them verbatim (`257 keys, 337616 bytes, 6 transaction(s)`),
+    and the execute run reprinted the same numbers before signing:
+    `5weeMimTDTFeURnRxKPBgin4vS3mohGsTYJZZUgAtBrS` (48), `HkxpLGGMFanZWU227iECne2CHt7mU7BowvXcXQbeXqHu` (48),
+    `HQGWrwyRbYxPgQxgDBAHdiRigJHmg5p9BTS61M7rEajJ` (48), `6owv4LrZ5K1xbKmbrTtUA2wRYQrjmoTedLBFpUSqZfPe` (49),
+    `8f3uiyonG66Qs6RdUng1X1vgW7cxq9RYLVtHW7RwrMjM` (48), `HCCkXj44yMFV8AjM1pXUwSqoYfdNmMidr6NCbX4styUm` (16).
+    Importer output: `verified: 257/257 written keys read back`. Fields written: `media` 251,
+    `links` 96, `repository_url` 1 (SafeSpend, `bitbucket.org/dualrail-builder/near-safespend`),
+    `enrichment` 257; no description changed. Signed with the FullAccess key: no importer
+    function-call key exists on chain (see below), and the owner chose `--accept-full-access` for
+    this batch rather than adding one first.
 
-**The chain matches the feed at write time.** 281 records on chain, all 281 valid against the
-schema, 0 foreign rows, 0 tombstones; 265 carry the builder's own description and 98 a verified
-repository. The 19-key correction was applied in tx `Bo5ktqRx…` — 18 descriptions that ended in a
-dangling link label, plus the newest `AgentGuard` record — via `--refresh-enriched`. The feed has
-since grown to **308**, so 27 records are pending a new approval (27 keys, 13,871 bytes, 1 tx).
+**After the batch, read back from the indexer:** 281 records, all 281 valid against the schema, 0
+foreign rows, 0 tombstones; 265 carry the builder's own description, 99 a repository, 251 `media`
+(299 items), 96 labelled and checked `links`. 15 records keep unlabelled links (see NH-96: the 8 Nov
+correction dropped their provenance, so `--refresh-enriched` refuses them). A re-run of the same
+command now prints `changed: 0, unchanged: 281`. The feed has since grown to **335**, so 54 records
+are pending a new approval.
+
+**The 19-key correction** was applied in tx `Bo5ktqRx…` — 18 descriptions that ended in a dangling
+link label, plus the newest `AgentGuard` record — via `--refresh-enriched`.
+
+**Importer key (state on 9 Nov):** `view_access_key_list nearhunt.near` shows two keys — the
+near.social function-call key below, and one `FullAccess` key. There is **no** function-call key
+with receiver `nearhunt.near`, so `scripts/import.mjs` refuses every import until one is added;
+batch 12 above was signed with the `FullAccess` key under `--accept-full-access` by explicit owner
+choice. `runbooks/keys.md` carries the same note.
 
 **near.social identity is now set up** (both owner-approved on 8 Nov): a function-call key
 `ed25519:2ozjdhsUK6iAAWrGtizUtqkx8ms9FSDzKBwedMSa2gaW` scoped to receiver `social` with methods
@@ -219,7 +240,7 @@ removed. Images are referenced by URL, never copied.
   gives 251 of 281 projects with media (224 video posters, 75 photos). The dry run
   `node scripts/import.mjs --enrichment data/enrichment/proposal-nh96.json` gives 54 new (feed now 335),
   251 changed, 30 unchanged; 305 keys, 345,922 bytes, 6 tx. The 251 changes touch only `media` and
-  `enrichment`. **Pending owner approval (step 5); not applied.**
+  `enrichment`. **Superseded by the 257-key batch, which was applied 9 Nov (batch 12 below).**
 - **Step 2 done (9 Nov).** `node scripts/enrich.mjs --links` visits every `links` entry and every
   non-X `demo_url` once (`lib/link-probe.mjs`: one GET, redirects followed by hand, each hop checked,
   IP literals, local names, non-https and odd ports refused, 512 KB read cap, honest user agent).
@@ -240,7 +261,7 @@ removed. Images are referenced by URL, never copied.
   drops a duplicate entry). Those values were set by enrichment, so `--refresh-enriched` may fix them:
   `node scripts/import.mjs --enrichment data/enrichment/proposal-nh96.json --refresh-enriched --updates-only`
   gives 251 keys, 318,152 bytes, 6 tx, touching only `media` (251), `links` (3) and `enrichment`;
-  no description or repository changes. **Pending owner approval.**
+  no description or repository changes. **Superseded by the 257-key batch, applied 9 Nov.**
 - **For the owner, not acted on:** the one `gone` link (near-agent-guard's `njump.me/…%20…`) is
   two URLs glued by a space in the source thread. Sealed Exploit's `https://dev.to` is a bare domain
   because X truncated the path. The record "777 giros gratis" (`fa54da13…`) links to a gambling site
@@ -289,15 +310,17 @@ removed. Images are referenced by URL, never copied.
     submission (AgentGuard ×6, Leash ×4, Tollgate ×3, Tripwire ×3, …), all from different builders
     with different repositories. 26 X accounts submitted two projects each, all with different
     names, so there are no hidden resubmissions.
-- **NH-96 is complete in code.** What remains is step 5, the import:
-  - **Approved by the owner, 9 Nov (in session):** the 257-key batch. Account `nearhunt.near`,
-    prefix `project/`, 257 keys, 337,616 bytes, 6 tx; fields `media` (251), `links` (96),
-    `repository_url` (1, SafeSpend), `enrichment` (257); no description changes. Command, to be run
-    by the key holder (Hermes) from this branch:
-    `node scripts/import.mjs --enrichment data/enrichment/proposal-nh96.json --refresh-enriched --updates-only`.
-    Its dry run must print exactly those numbers; if it does not, stop and re-ask. Then add
-    `--execute --yes`. `data/enrichment/proposal-nh96.json` is frozen for this batch; do not
-    regenerate it.
+- **NH-96 is complete: code merged and the import applied.** PR #9 merged as `bd509c7` and
+  deployed to production as `near-hunt-l8tegfh98`.
+  - **Applied 9 Nov (batch 12 in "Where things stand"):** the 257-key batch. Account
+    `nearhunt.near`, prefix `project/`, 257 keys, 337,616 bytes, 6 tx; fields `media` (251),
+    `links` (96), `repository_url` (1, SafeSpend), `enrichment` (257); no description changes.
+    Command, run from `main` by the key holder (Hermes):
+    `node scripts/import.mjs --enrichment data/enrichment/proposal-nh96.json --refresh-enriched --updates-only`
+    printed those numbers, then the same command with `--execute --yes --accept-full-access` wrote
+    them and the indexer read back 257/257. `data/enrichment/proposal-nh96.json` stays frozen; do
+    not regenerate it. The `--accept-full-access` flag was the owner's explicit choice because no
+    importer function-call key exists on chain (see "Where things stand").
   - **Not approved:** the 54 new feed records, restoring labels on the 15 records, and anything
     about "777 giros gratis".
   - **From now on:** new submissions follow
