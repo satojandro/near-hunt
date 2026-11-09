@@ -119,6 +119,7 @@ lib/
   duplicates.mjs             submissions sharing a repo, X post or demo (flags only)
 scripts/
   import.mjs                 hackathon feed → on-chain project records (dry run by default)
+  capture-threads.mjs        the builder's own replies under a submitted post (read-only)
   enrich.mjs                 enrichment proposal, link checks, duplicate flags (read-only)
   feed-watch.mjs / .sh       scheduled check: one line when the feed has new projects
   validate-schema.mjs        every live record against the schema, plus key/id invariants

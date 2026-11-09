@@ -35,7 +35,21 @@ Run from the repository root on an up-to-date `main`, after `npm ci`.
 npm run feed:check        # one line, e.g. "NEAR Hunt feed: 12 new project record(s) (chain 335, feed 347)"
 ```
 
-### 2. Build the proposal (read-only)
+### 2. Capture the builders' reply threads (read-only)
+
+```bash
+npm run threads:capture   # = node scripts/capture-threads.mjs --missing-repo-only
+```
+
+The syndication endpoint walks a thread **up** (parents), never down, and builders put the
+repository in their first reply ("Code: github.com/…") far more often than in the submitted post.
+This step reads the server-rendered status page for each record that has no repository, keeps the
+author's own replies (never a stranger's), and stores them with post ids and expanded URLs in
+`data/enrichment/threads.json`. Raw pages are cached under `data/enrichment/x-threads/` (git-ignored)
+and fetched with an honest user agent at ~3 requests/second. It is resumable: entries already
+captured are skipped unless `--refresh`.
+
+### 3. Build the proposal (read-only)
 
 ```bash
 npm run enrich            # = node scripts/enrich.mjs --threads data/enrichment/threads.json
@@ -54,7 +68,7 @@ It also:
 `threads.json` holds thread replies captured in a browser for a few older projects; new projects do
 not need an entry.
 
-### 3. Check links and duplicates (read-only)
+### 4. Check links and duplicates (read-only)
 
 ```bash
 npm run enrich:links       # data/enrichment/links.json: verdict, HTTP status, title, og:image per link
@@ -72,7 +86,7 @@ Read both before asking for approval:
 - Look out for spam (e.g. a gambling referral link) and tell the owner. Hiding a record is the
   owner's decision.
 
-### 4. Dry run the import (read-only)
+### 5. Dry run the import (read-only)
 
 ```bash
 node scripts/import.mjs --enrichment data/enrichment/proposal.json
@@ -95,7 +109,7 @@ Check it before asking:
 transaction count from the dry run, and what changes (new records, which fields). Wait for an
 explicit yes for those numbers. An approval covers that write only.
 
-### 5. Write (needs the key and the approval)
+### 6. Write (needs the key and the approval)
 
 Re-run the **same** command with `--execute --yes`:
 
@@ -111,7 +125,7 @@ node scripts/import.mjs --enrichment data/enrichment/proposal.json --execute --y
   `nearhunt.near`); never retry on it. The importer then reads every written key back from the
   indexer and prints `verified: N/N written keys read back`.
 
-### 6. Verify and record
+### 7. Verify and record
 
 ```bash
 npm run validate:schema   # every live record against the schema
@@ -155,6 +169,7 @@ Field definitions: [`schema/README.md`](../../schema/README.md). Agent-facing su
 | Command | Reads | Writes | Signs |
 |---|---|---|---|
 | `npm run feed:check` | feed, chain | stdout | no |
+| `npm run threads:capture` | chain, X status pages, X syndication | `data/enrichment/threads.json` | no |
 | `npm run enrich` | chain, feed, X, git hosts, link sites | `data/enrichment/proposal.json` | no |
 | `npm run enrich:links` | chain, link sites | `data/enrichment/links.json` | no |
 | `npm run enrich:duplicates` | chain, proposal, feed | `data/enrichment/duplicates.json` | no |

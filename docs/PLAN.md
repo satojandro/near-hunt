@@ -312,6 +312,22 @@ removed. Images are referenced by URL, never copied.
     `enrichment.sources` already cites the link's post) that the owner approves.
   - Not fixed: `schema/README.md` lists `repository_source` and `repository_verified_at`, but the
     importer has never written them; on chain, provenance is `enrichment.sources`.
+- **NH-96c carried repos out of the replies (9 Nov, owner request).** Of 336 records only 113 had a
+  `repository_url`. The cause was structural: the syndication payload carries a post and its
+  *ancestors*, so `enrich.mjs` could walk up a thread but never down, and builders put the code link
+  in their first reply ("Code: github.com/…"). `scripts/capture-threads.mjs` (`npm run
+  threads:capture`) now reads the server-rendered status page — an honest user agent is served the
+  conversation, so no API key and no browser are needed — keeps only the author's own replies, and
+  writes them with real post ids and expanded URLs into `data/enrichment/threads.json`.
+  - Crawl: 223 records without a repository → 132 threads captured (46 already on file), 68 with no
+    author reply rendered, 17 whose `demo_url` is not an X post, 6 posts gone.
+  - Result: **113 → 156 records with a verified repository** (+43), 0 ambiguous (several repos in
+    one thread stays null), and 42 records gain 58 links from the replies (no link is removed).
+    Dry run: 70 keys, 109,373 bytes, 2 tx, 266 unchanged, 0 new. Heir
+    (`f8ed5c05…`) is the worked example: the submitted post has only the demo link, the author's
+    reply has `github.com/ZSP111/Heir`, and `git ls-remote` answers.
+  - Limit, stated rather than hidden: 180 records still have no repository, because the builder
+    published none that X renders to us.
 - **Step 4 done (9 Nov).** `node scripts/enrich.mjs --duplicates` (`lib/duplicates.mjs`) compares
   all 335 submissions (281 on chain plus the proposal's repositories and links, and the 54 pending in
   the feed). It flags any two that share a repository, X post, demo or builder link, after
