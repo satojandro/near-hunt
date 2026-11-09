@@ -1,0 +1,644 @@
+{
+  "generated_at": "2026-11-09T01:52:19.270Z",
+  "account": "nearhunt.near",
+  "note": "Flags only. Nothing is merged, hidden or written. `clusters`/`groups` share an identifying URL (possible duplicates). `weak_signals` share only a name or an X account and are usually different projects.",
+  "summary": {
+    "submissions": 335,
+    "on_chain": 281,
+    "pending": 54,
+    "shared_urls": 0,
+    "by_kind": {},
+    "clusters": 0,
+    "submissions_flagged": 0,
+    "same_name_groups": 12,
+    "same_x_account_groups": 26
+  },
+  "clusters": [],
+  "groups": [],
+  "weak_signals": {
+    "same_name": [
+      {
+        "key": "agentguard",
+        "submissions": [
+          {
+            "submission_id": "00ed3eb4-ba45-405f-8567-58fd42a0f6a0",
+            "name": "AgentGuard",
+            "on_chain": true
+          },
+          {
+            "submission_id": "04749b49-1ec8-469d-91b8-4ee173e2bc9f",
+            "name": "AgentGuard",
+            "on_chain": true
+          },
+          {
+            "submission_id": "24ab3074-3cfd-46e9-b7e5-fc4922a7c66e",
+            "name": "AgentGuard",
+            "on_chain": true
+          },
+          {
+            "submission_id": "a0c866ab-367c-4d78-954c-88cc328930a0",
+            "name": "AgentGuard",
+            "on_chain": true
+          },
+          {
+            "submission_id": "ea1c1594-d16c-4ce2-8087-3d788cbd97f9",
+            "name": "AgentGuard",
+            "on_chain": true
+          },
+          {
+            "submission_id": "ff4096e0-82f9-468d-8592-ea13a28fb4c4",
+            "name": "AgentGuard",
+            "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "leash",
+        "submissions": [
+          {
+            "submission_id": "759c5597-8632-4578-a05b-8dc047cf2db8",
+            "name": "Leash",
+            "on_chain": true
+          },
+          {
+            "submission_id": "b5e7fe4a-fd7c-4a94-bcb4-2e6e1b8d2ab9",
+            "name": "Leash",
+            "on_chain": true
+          },
+          {
+            "submission_id": "c1705e3d-260d-41c1-9370-3cd561c6a920",
+            "name": "Leash",
+            "on_chain": true
+          },
+          {
+            "submission_id": "d69c576e-7283-4636-b282-b17611eab088",
+            "name": "Leash",
+            "on_chain": true
+          },
+          {
+            "submission_id": "fda85f72-004a-44cd-a28f-525b91ed0053",
+            "name": "Leash",
+            "on_chain": false
+          }
+        ]
+      },
+      {
+        "key": "allowance",
+        "submissions": [
+          {
+            "submission_id": "aab1bb9e-ab36-4d8c-920f-62487b5b7714",
+            "name": "Allowance",
+            "on_chain": true
+          },
+          {
+            "submission_id": "abe27d2f-1615-4025-9e0c-e78e28519207",
+            "name": "Allowance",
+            "on_chain": true
+          },
+          {
+            "submission_id": "4126642c-e4c0-4876-80c0-3f9729f1d81d",
+            "name": "Allowance",
+            "on_chain": false
+          }
+        ]
+      },
+      {
+        "key": "tollgate",
+        "submissions": [
+          {
+            "submission_id": "0bc14688-974e-48bd-b2fe-281b220ff202",
+            "name": "Tollgate",
+            "on_chain": true
+          },
+          {
+            "submission_id": "230eb981-1e52-49db-bf11-614605d187f2",
+            "name": "Tollgate",
+            "on_chain": true
+          },
+          {
+            "submission_id": "a0fa588f-442f-47a6-87bd-ca286faba510",
+            "name": "Tollgate",
+            "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "tripwire",
+        "submissions": [
+          {
+            "submission_id": "7c772095-71d1-4cac-a207-2d4feca6e4ff",
+            "name": "Tripwire",
+            "on_chain": true
+          },
+          {
+            "submission_id": "bb739197-c903-456a-b25c-4e97ffe5495f",
+            "name": "Tripwire",
+            "on_chain": true
+          },
+          {
+            "submission_id": "d7b06ad9-a662-4d99-97d7-ae8125b319f3",
+            "name": "Tripwire",
+            "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "aegis",
+        "submissions": [
+          {
+            "submission_id": "d01a3b13-a62b-412c-a6f8-f86f59850c5e",
+            "name": "Aegis",
+            "on_chain": true
+          },
+          {
+            "submission_id": "de2b5217-8d85-4052-a0d2-0e8e8066c2a5",
+            "name": "Aegis",
+            "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "carerail",
+        "submissions": [
+          {
+            "submission_id": "3824ad53-8f26-426f-8239-99f5080ec3ca",
+            "name": "CareRail",
+            "on_chain": true
+          },
+          {
+            "submission_id": "779185fc-dc4e-4508-ad58-8a66a3204968",
+            "name": "CareRail",
+            "on_chain": false
+          }
+        ]
+      },
+      {
+        "key": "mandate",
+        "submissions": [
+          {
+            "submission_id": "4f87bbfb-1dca-41b9-a230-80919a649933",
+            "name": "Mandate",
+            "on_chain": true
+          },
+          {
+            "submission_id": "a832f6b8-b553-4e63-b996-91c082cc7417",
+            "name": "Mandate",
+            "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "near sentinel",
+        "submissions": [
+          {
+            "submission_id": "55eb2652-5aee-4768-8800-22f5d6ee0b92",
+            "name": "NEAR SENTINEL",
+            "on_chain": true
+          },
+          {
+            "submission_id": "19769764-c445-437e-8187-e0433b18c3da",
+            "name": "NEAR SENTINEL",
+            "on_chain": false
+          }
+        ]
+      },
+      {
+        "key": "near usage thesis",
+        "submissions": [
+          {
+            "submission_id": "6e7be752-aa60-4da7-a729-09ce3f2d82d4",
+            "name": "NEAR Usage Thesis",
+            "on_chain": true
+          },
+          {
+            "submission_id": "f82bca91-89a5-4f03-9f35-7d2dc73ec3c3",
+            "name": "NEAR Usage Thesis",
+            "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "nearguard",
+        "submissions": [
+          {
+            "submission_id": "0c086611-ade4-44ff-9215-5853e1f049da",
+            "name": "NearGuard",
+            "on_chain": true
+          },
+          {
+            "submission_id": "916f8fba-c86f-47b0-bcf0-1a70f3b4cf6d",
+            "name": "NearGuard",
+            "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "torch",
+        "submissions": [
+          {
+            "submission_id": "5b9a485e-baae-4ed9-86a4-2bc73cf944a8",
+            "name": "Torch",
+            "on_chain": true
+          },
+          {
+            "submission_id": "8f06285a-0cfb-40a5-b426-68e74cb37d3a",
+            "name": "Torch",
+            "on_chain": false
+          }
+        ]
+      }
+    ],
+    "same_x_account": [
+      {
+        "key": "ade_lekejr",
+        "submissions": [
+          {
+            "submission_id": "0465d387-401d-41fc-909b-fc1863a2bb56",
+            "name": "Gideon",
+            "on_chain": true
+          },
+          {
+            "submission_id": "ecbdc52c-d6b7-480b-8e56-65e554ede735",
+            "name": "Glassbox",
+            "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "alvinagustus",
+        "submissions": [
+          {
+            "submission_id": "115b2488-dcf6-4715-8f67-eaa70cc8afb3",
+            "name": "Overclock",
+            "on_chain": true
+          },
+          {
+            "submission_id": "d01a3b13-a62b-412c-a6f8-f86f59850c5e",
+            "name": "Aegis",
+            "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "apexsys_dev",
+        "submissions": [
+          {
+            "submission_id": "3c93bf03-e823-4fab-b708-9d067a790162",
+            "name": "C0-op",
+            "on_chain": true
+          },
+          {
+            "submission_id": "4c88b184-5c62-4718-92fe-149510a709cb",
+            "name": "Handover",
+            "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "archtum66",
+        "submissions": [
+          {
+            "submission_id": "6b71235d-6bf2-4a7e-9147-b54e3b2160d0",
+            "name": "Terra matcher",
+            "on_chain": true
+          },
+          {
+            "submission_id": "6cf9c090-53ba-4ada-a86a-09824dd98eba",
+            "name": "Sealed Dossier",
+            "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "big14teru",
+        "submissions": [
+          {
+            "submission_id": "92a088fc-9af6-4572-a4a9-f5924a4754c6",
+            "name": "Chaperone",
+            "on_chain": true
+          },
+          {
+            "submission_id": "d06bb20e-e7da-4d89-9be4-9de3d707e7ca",
+            "name": "Dues",
+            "on_chain": false
+          }
+        ]
+      },
+      {
+        "key": "chainwardai",
+        "submissions": [
+          {
+            "submission_id": "6ce4fa90-8531-475f-ae45-ff1ca2fe0bbe",
+            "name": "NEAR Payment Guard",
+            "on_chain": true
+          },
+          {
+            "submission_id": "c50680b6-192f-4ff0-8f10-fa6e87ed9429",
+            "name": "Headcount",
+            "on_chain": false
+          }
+        ]
+      },
+      {
+        "key": "chamdom",
+        "submissions": [
+          {
+            "submission_id": "7da81c3b-7016-4353-a646-953edf768856",
+            "name": "agent-pay",
+            "on_chain": true
+          },
+          {
+            "submission_id": "bdb7ff9f-4c40-4036-8e05-0e12e8be9f2b",
+            "name": "TEE Receipts",
+            "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "cryptoworld_by",
+        "submissions": [
+          {
+            "submission_id": "247640ff-7661-42ec-8275-b2fc8ada1a9a",
+            "name": "NDBOT",
+            "on_chain": true
+          },
+          {
+            "submission_id": "ac7254d5-15e4-47cb-9eb9-c400486f9b49",
+            "name": "Near Degen toolkit",
+            "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "davidhu178488",
+        "submissions": [
+          {
+            "submission_id": "05d6e2f2-4eac-4262-8ee0-9eca1a932b2c",
+            "name": "PinPay",
+            "on_chain": true
+          },
+          {
+            "submission_id": "14c70946-d8de-4fed-8fc6-739886447220",
+            "name": "DeadDrop",
+            "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "elioz404",
+        "submissions": [
+          {
+            "submission_id": "1f42c89b-67d7-4cf5-ad15-77d5eb9893c7",
+            "name": "Setoff",
+            "on_chain": true
+          },
+          {
+            "submission_id": "655ccb07-9788-4b73-9f5c-5f376c05f72f",
+            "name": "Undiluted",
+            "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "gggodlin",
+        "submissions": [
+          {
+            "submission_id": "9f4b3e21-8c74-4d2a-b81e-6c905e3a7104",
+            "name": "GhostShift",
+            "on_chain": true
+          },
+          {
+            "submission_id": "e4a1b9c2-5f38-4d67-9a81-2c4e7b8d9012",
+            "name": "Afterlight",
+            "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "jccryp_11",
+        "submissions": [
+          {
+            "submission_id": "56dde30d-7c27-4c0b-91e7-6d45a01fa809",
+            "name": "AgentFence",
+            "on_chain": true
+          },
+          {
+            "submission_id": "f82bca91-89a5-4f03-9f35-7d2dc73ec3c3",
+            "name": "NEAR Usage Thesis",
+            "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "khdidukh",
+        "submissions": [
+          {
+            "submission_id": "9db102a5-37d3-40bb-9184-7c08b52dca88",
+            "name": "Veridom Pay",
+            "on_chain": true
+          },
+          {
+            "submission_id": "e408ca93-5786-4c45-b538-8ddf51f84f7e",
+            "name": "Throughput Treasury",
+            "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "maarashalijo",
+        "submissions": [
+          {
+            "submission_id": "6bfd034b-bdf4-41ae-a269-279fc50dc3ec",
+            "name": "ArchivePass",
+            "on_chain": true
+          },
+          {
+            "submission_id": "e20ab0f1-86d0-438b-bd77-0859ffb3b934",
+            "name": "AllTogether",
+            "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "madebydevx",
+        "submissions": [
+          {
+            "submission_id": "01d1ec5e-9ba4-49cb-88f8-8236c08285ea",
+            "name": "Agent Toll",
+            "on_chain": true
+          },
+          {
+            "submission_id": "8ce1e3a2-1bf0-4dc0-aeb3-0981afda5c60",
+            "name": "PayPerCall on NEAR",
+            "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "marrnueldev",
+        "submissions": [
+          {
+            "submission_id": "bfd74897-d0a2-4891-9f2c-0638a1a63331",
+            "name": "NearQuery",
+            "on_chain": true
+          },
+          {
+            "submission_id": "fe292050-bdfa-482d-ab08-4d1355e49f3f",
+            "name": "Nims",
+            "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "mr_ghdc",
+        "submissions": [
+          {
+            "submission_id": "050caed7-ac37-4af2-b6df-fe2af24da753",
+            "name": "NEAR's agent economy, measured",
+            "on_chain": true
+          },
+          {
+            "submission_id": "3dd7c35e-6930-4b60-ad0a-7f569fcdacdc",
+            "name": "Black box: a verifiable flight recorder for an AI agent's money",
+            "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "priva_cie",
+        "submissions": [
+          {
+            "submission_id": "a0cc08b2-010c-4638-a2ff-7048be063228",
+            "name": "NEAR Private OTC",
+            "on_chain": true
+          },
+          {
+            "submission_id": "cbe3ec14-568f-4944-b4d9-b9efede91dfb",
+            "name": "Tidepool",
+            "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "runeclaw_ai",
+        "submissions": [
+          {
+            "submission_id": "6cc579c6-4abc-4e72-b93a-20904b06e2bd",
+            "name": "KeyLease",
+            "on_chain": true
+          },
+          {
+            "submission_id": "7a2c3ff0-7771-4ae5-9994-fff4c7ac8f2a",
+            "name": "Claw Guard: Signing Gate for AI Agents",
+            "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "soldanoandrea",
+        "submissions": [
+          {
+            "submission_id": "2e608b86-3e2c-4dbe-a438-8f30f4129e41",
+            "name": "near-thesis: NEAR on the evidence",
+            "on_chain": true
+          },
+          {
+            "submission_id": "abe27d2f-1615-4025-9e0c-e78e28519207",
+            "name": "Allowance",
+            "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "surthenort40906",
+        "submissions": [
+          {
+            "submission_id": "3d9be24a-53f1-4755-8524-44d742c861b7",
+            "name": "Release Passport",
+            "on_chain": true
+          },
+          {
+            "submission_id": "ebacde79-c454-41c4-b5ef-27917cf242e3",
+            "name": "Patch Fund",
+            "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "szczypek_96",
+        "submissions": [
+          {
+            "submission_id": "2dc79d85-a032-49da-a708-89f6607d81bc",
+            "name": "Deed",
+            "on_chain": true
+          },
+          {
+            "submission_id": "fa6703a5-2e4c-4721-9bdb-8f22915922f5",
+            "name": "Flock",
+            "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "tensorustai",
+        "submissions": [
+          {
+            "submission_id": "0bc14688-974e-48bd-b2fe-281b220ff202",
+            "name": "Tollgate",
+            "on_chain": true
+          },
+          {
+            "submission_id": "d69c576e-7283-4636-b282-b17611eab088",
+            "name": "Leash",
+            "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "thesithunyein",
+        "submissions": [
+          {
+            "submission_id": "cc936172-28bf-4063-9fa8-8969e59023ee",
+            "name": "Hasp",
+            "on_chain": true
+          },
+          {
+            "submission_id": "d02472d3-65c0-462c-acaf-cedf13da00f8",
+            "name": "Kyrona",
+            "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "tobadaniel_",
+        "submissions": [
+          {
+            "submission_id": "a1bf1936-7bdc-41a7-985f-c54c0ba3be85",
+            "name": "Pump Rider",
+            "on_chain": false
+          },
+          {
+            "submission_id": "080cff8f-bfd0-4f8c-92c9-1c244556b840",
+            "name": "NEAR: On The Evidence",
+            "on_chain": false
+          }
+        ]
+      },
+      {
+        "key": "tuneupargentina",
+        "submissions": [
+          {
+            "submission_id": "9f6e4b85-ce62-4c40-b1bc-a62ac00f2d11",
+            "name": "Bolsillos",
+            "on_chain": true
+          },
+          {
+            "submission_id": "d77c18bd-46e3-4de2-8bcd-ad98669843ab",
+            "name": "Tune Up Research Desk",
+            "on_chain": true
+          }
+        ]
+      }
+    ]
+  }
+}

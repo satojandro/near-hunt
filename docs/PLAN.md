@@ -276,7 +276,20 @@ removed. Images are referenced by URL, never copied.
     `enrichment.sources` already cites the link's post) that the owner approves.
   - Not fixed: `schema/README.md` lists `repository_source` and `repository_verified_at`, but the
     importer has never written them; on chain, provenance is `enrichment.sources`.
-- Step 4 (duplicate flags) is still to do.
+- **Step 4 done (9 Nov).** `node scripts/enrich.mjs --duplicates` (`lib/duplicates.mjs`) compares
+  all 335 submissions (281 on chain plus the proposal's repositories and links, and the 54 pending in
+  the feed). It flags any two that share a repository, X post, demo or builder link, after
+  normalising host case, `www.`, trailing slash, `.git`, tracking parameters and the X handle.
+  Platform URLs such as `dev.to` or a bare `youtube.com/watch` are ignored. Report:
+  `data/enrichment/duplicates.json`. Flags only; nothing is merged, hidden or written.
+  - **Result: 0 shared URLs, 0 possible duplicates.** An independent raw check of exact
+    `repository_url`, `demo_url` and X status id on chain also finds none. Detection is covered by
+    `test/duplicates.test.mjs` (5 tests, e.g. one X post under two handles, `Repo.git` vs `repo`).
+  - **Weak signals, listed but not called duplicates:** 12 names are used by more than one
+    submission (AgentGuard ×6, Leash ×4, Tollgate ×3, Tripwire ×3, …), all from different builders
+    with different repositories. 26 X accounts submitted two projects each, all with different
+    names, so there are no hidden resubmissions.
+- **NH-96 is complete in code.** What remains is step 5: the owner-approved import (pending).
 
 ### Board 1 — Directory (home) · Day 1
 

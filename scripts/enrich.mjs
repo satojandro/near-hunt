@@ -7,6 +7,8 @@
 //   node scripts/enrich.mjs --refresh           # ignore cached posts and re-fetch
 //   node scripts/enrich.mjs --links             # NH-96 step 2: visit every link once, write
 //                                               # data/enrichment/links.json (status, <title>, og:image)
+//   node scripts/enrich.mjs --duplicates        # NH-96 step 4: submissions sharing a repo, X post
+//                                               # or demo, written to data/enrichment/duplicates.json
 //
 // Read-only: it reads records from mainnet and posts from X's public syndication endpoint, and
 // writes only local files. It never signs or writes anything on chain. Applying the proposal is
@@ -23,6 +25,7 @@ import { buildEnrichment, summarize, tweetIdFromUrl } from '../lib/enrichment.mj
 import { verifyRepos } from '../lib/repo-check.mjs';
 import { linksToCheck, probeLink, summarizeProbes, verdictOf } from '../lib/link-probe.mjs';
 import { applyLinkChecks } from '../lib/link-label.mjs';
+import { clusters, findDuplicates, weakSignals } from '../lib/duplicates.mjs';
 import { isXPost } from '../lib/project-view.mjs';
 
 const args = process.argv.slice(2);
@@ -280,7 +283,76 @@ async function checkLinks() {
   console.log(`\nwrote ${out} (nothing written on chain)\n`);
 }
 
-(flag('--links') ? checkLinks() : main()).catch((err) => {
+/**
+ * NH-96 step 4. Reads the chain records, the proposal (repositories and links not on chain yet)
+ * and the hackathon feed (submissions not imported yet), and lists groups that share an
+ * identifying URL. Flag only: nothing is merged, hidden or written on chain.
+ */
+async function checkDuplicates() {
+  const out = value('--out', 'data/enrichment/duplicates.json');
+  const proposalFile = value('--proposal', 'data/enrichment/proposal-nh96.json');
+  const rows = await readProjects({ account: DEFAULT_ACCOUNT, network: 'mainnet' });
+  const records = rows.filter((r) => r.value && typeof r.value === 'object').map((r) => r.value);
+  let proposal = {};
+  try {
+    for (const r of JSON.parse(await readFile(proposalFile, 'utf8')).results ?? []) proposal[r.submission_id] = r;
+  } catch {
+    console.log(`(no ${proposalFile}: chain values only)`);
+  }
+
+  const subs = new Map();
+  for (const v of records) {
+    const id = v.source?.submission_id;
+    const p = proposal[id] ?? {};
+    const urls = [
+      { field: 'demo_url', url: v.demo_url },
+      { field: 'repository_url', url: v.repository_url ?? p.repository_url },
+      ...[...(v.links ?? []), ...(p.links ?? [])].map((l) => ({ field: 'links', url: l?.url })),
+    ];
+    subs.set(id, { submission_id: id, name: v.name, on_chain: true, urls });
+  }
+
+  // The feed: 8 per page, so loop; dedupe on the source id (the feed grows while we read).
+  let page = 1;
+  let total = Infinity;
+  let read = 0;
+  while (read < total) {
+    const res = await fetch(`https://nearhackathon.com/api/projects?page=${page}`);
+    if (!res.ok) throw new Error(`feed returned ${res.status} on page ${page}`);
+    const body = await res.json();
+    total = body.total;
+    if (!body.projects?.length) break;
+    for (const f of body.projects) {
+      if (!subs.has(f.id)) subs.set(f.id, { submission_id: f.id, name: f.project_name, on_chain: false, urls: [{ field: 'demo_url', url: f.demo_url }] });
+    }
+    read += body.projects.length;
+    page += 1;
+    await delay(400);
+  }
+
+  const all = [...subs.values()];
+  const groups = findDuplicates(all);
+  const grouped = clusters(groups);
+  const weak = weakSignals(all);
+  const summary = {
+    submissions: all.length,
+    on_chain: all.filter((s) => s.on_chain).length,
+    pending: all.filter((s) => !s.on_chain).length,
+    shared_urls: groups.length,
+    by_kind: groups.reduce((a, g) => ({ ...a, [g.kind]: (a[g.kind] ?? 0) + 1 }), {}),
+    clusters: grouped.length,
+    submissions_flagged: grouped.reduce((n, c) => n + c.submissions.length, 0),
+    same_name_groups: weak.same_name.length,
+    same_x_account_groups: weak.same_x_account.length,
+  };
+  const report = { generated_at: new Date().toISOString(), account: DEFAULT_ACCOUNT, note: 'Flags only. Nothing is merged, hidden or written. `clusters`/`groups` share an identifying URL (possible duplicates). `weak_signals` share only a name or an X account and are usually different projects.', summary, clusters: grouped, groups, weak_signals: weak };
+  await mkdir(dirname(out), { recursive: true });
+  await writeFile(out, `${JSON.stringify(report, null, 2)}\n`);
+  console.log(JSON.stringify(summary, null, 2));
+  console.log(`\nwrote ${out} (nothing written on chain)\n`);
+}
+
+(flag('--duplicates') ? checkDuplicates() : flag('--links') ? checkLinks() : main()).catch((err) => {
   console.error(err);
   process.exit(1);
 });
