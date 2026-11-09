@@ -27,8 +27,10 @@ function Avatar({ profile }: { profile: SocialProfile }) {
       />
     );
   }
-  const letter = ((profile.name ?? profile.account_id).match(/[\p{L}\p{N}]/u)?.[0] ?? '?').toUpperCase();
-  return <span className={`${s.avatar} ${s.avatarLetter}`} aria-hidden="true">{letter}</span>;
+  // Two letters, never one: a single "O" in a circle reads as a zero badge next to the count.
+  const source = (profile.name ?? profile.account_id).replace(/[^\p{L}\p{N}]/gu, '');
+  const initials = (source.slice(0, 2) || '?').toUpperCase();
+  return <span className={`${s.avatar} ${s.avatarLetter}`} aria-hidden="true">{initials}</span>;
 }
 
 /** `label` comes from participantsLabel() so the sentence and the count cannot drift apart. */

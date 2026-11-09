@@ -50,6 +50,8 @@
 .avatarLetter {
   font-family: var(--font-display);
   font-weight: 700;
+  font-size: 10px;
+  letter-spacing: 0.02em;
   background: var(--surface-muted);
   color: var(--text-chip);
 }
