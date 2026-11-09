@@ -13,9 +13,11 @@ type Props = {
   profileStatus: 'ok' | 'error';
   /** Active upvotes on live projects; null when they could not be read. */
   upvoteCount: number | null;
+  /** NH-113: the page-view counter for this profile, rendered once the browser has read it. */
+  views?: React.ReactNode;
 };
 
-export default function ProfileHeader({ profile, profileStatus, upvoteCount }: Props) {
+export default function ProfileHeader({ profile, profileStatus, upvoteCount, views }: Props) {
   const id = profile.account_id;
   const letter = ((profile.name ?? id).match(/[\p{L}\p{N}]/u)?.[0] ?? '?').toUpperCase();
   const stats: Array<{ value: number; label: string }> = [];
@@ -45,6 +47,7 @@ export default function ProfileHeader({ profile, profileStatus, upvoteCount }: P
           <p className={s.sub}>
             {id}
             {profile.has_profile ? ' · profile from near.social' : ''}
+            {views ? <> · {views}</> : null}
           </p>
           {profile.about ? <p className={s.about}>{profile.about}</p> : null}
           {profileStatus === 'error' ? (

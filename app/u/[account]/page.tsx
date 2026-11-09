@@ -8,6 +8,7 @@ import { trackLabel } from '@/lib/tracks.mjs';
 import { accountComments, accountUpvotes, fetchAccountProfile, nsToMs, readAccountCommentRows, readAccountVoteRows } from '@/lib/account.mjs';
 import { HIDDEN_COMMENTS } from '@/lib/comments';
 import ProfileHeader from '@/app/components/account/ProfileHeader';
+import ViewCount from '@/app/components/project/ViewCount';
 import UpvotesList, { type UpvoteRow } from '@/app/components/account/UpvotesList';
 import CommentsList, { type CommentRow } from '@/app/components/account/CommentsList';
 import s from '@/app/components/account/account.module.css';
@@ -113,7 +114,12 @@ export default async function AccountPage({ params, searchParams }: Props) {
 
   return (
     <main className={`container ${s.page}`}>
-      <ProfileHeader profile={profile} profileStatus={status} upvoteCount={upvotes ? upvotes.length : null} />
+      <ProfileHeader
+        profile={profile}
+        profileStatus={status}
+        upvoteCount={upvotes ? upvotes.length : null}
+        views={<ViewCount path={`/u/${account}`} />}
+      />
 
       <nav className={s.tabs} aria-label="Account activity">
         <Link

@@ -4,8 +4,11 @@ import { eventLabel } from '@/lib/project-view.mjs';
 import type { ListingItem } from '@/lib/listing.mjs';
 import s from './project.module.css';
 
-/** `actions` renders at the right of the header (the upvote button, NH-31). */
-export default function ProjectHeader({ project, actions }: { project: ListingItem; actions?: React.ReactNode }) {
+/** `actions` renders at the right of the header (the upvote button, NH-31); `extra` sits in the
+ * metadata row (NH-113: the page-view count). */
+export default function ProjectHeader({
+  project, actions, extra,
+}: { project: ListingItem; actions?: React.ReactNode; extra?: React.ReactNode }) {
   const event = eventLabel(project.source?.event);
   return (
     <div className={s.header}>
@@ -23,6 +26,7 @@ export default function ProjectHeader({ project, actions }: { project: ListingIt
             <span className={s.event}>Tracks: Not supplied</span>
           )}
           {event ? <span className={s.event}>{event}</span> : null}
+          {extra ? <span className={s.event}>{extra}</span> : null}
         </div>
       </div>
       {actions ? <div className={s.headerActions}>{actions}</div> : null}

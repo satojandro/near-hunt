@@ -8,6 +8,7 @@ import { trackLabel } from '@/lib/tracks.mjs';
 import { metaDescription } from '@/lib/project-view.mjs';
 import { mediaView } from '@/lib/media.mjs';
 import ProjectHeader from '@/app/components/project/ProjectHeader';
+import ViewCount from '@/app/components/project/ViewCount';
 import AboutCard from '@/app/components/project/AboutCard';
 import LinksCard from '@/app/components/project/LinksCard';
 import MediaCard from '@/app/components/project/MediaCard';
@@ -69,6 +70,7 @@ export default async function ProjectPage({ params }: Props) {
       </nav>
       <ProjectHeader
         project={project}
+        extra={<ViewCount path={`/p/${project.submission_id}`} />}
         actions={
           votesAvailable ? (
             <UpvoteButton projectId={project.submission_id} initialCount={count} variant="page" projectName={project.name} />

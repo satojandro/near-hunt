@@ -1,6 +1,9 @@
 import { Suspense } from 'react';
 import type { Metadata } from 'next';
 import { getProjects } from '@/lib/projects';
+import { getParticipants } from '@/lib/participants';
+import { participantsLabel } from '@/lib/participants.mjs';
+import Participants from '@/app/components/Participants';
 import { getVoteCounts } from '@/lib/votes';
 import { cardCommentCount, directoryView, formatFetchedUtc, type SearchParamsRecord, type Votes } from '@/lib/directory.mjs';
 import { trackLabel } from '@/lib/tracks.mjs';
@@ -50,8 +53,8 @@ export default function Home(props: { searchParams: Promise<SearchParamsRecord> 
 }
 
 async function Directory({ searchParams }: { searchParams: Promise<SearchParamsRecord> }) {
-  const [{ items, fetched_at, account }, params, tally] = await Promise.all([
-    getProjects(), searchParams, getVoteCounts(),
+  const [{ items, fetched_at, account }, params, tally, people] = await Promise.all([
+    getProjects(), searchParams, getVoteCounts(), getParticipants(),
   ]);
 
   // Vote counts by submission_id (NH-33): active `vote/{id}` rows under the vote account, one per
@@ -76,6 +79,11 @@ async function Directory({ searchParams }: { searchParams: Promise<SearchParamsR
           Every project is an open record on NEAR. Every upvote and every comment is a write you sign
           from your own NEAR account. Votes are community signals, not official judging.
         </p>
+        {/* NH-112: people who have signed something, with their near.social faces. Hidden when the
+            rows cannot be read — never rendered as "0 people". */}
+        {people.available && people.items.length > 0 ? (
+          <Participants people={people.items} label={participantsLabel(people.items.length) ?? ''} />
+        ) : null}
       </section>
 
       <section className="container dir-controls" aria-label="Find projects">
