@@ -220,7 +220,33 @@ removed. Images are referenced by URL, never copied.
   `node scripts/import.mjs --enrichment data/enrichment/proposal-nh96.json` gives 54 new (feed now 335),
   251 changed, 30 unchanged; 305 keys, 345,922 bytes, 6 tx. The 251 changes touch only `media` and
   `enrichment`. **Pending owner approval (step 5); not applied.**
-- Steps 2 (HTTP status, `<title>`, `og:image` per link), 3 and 4 are still to do.
+- **Step 2 done (9 Nov).** `node scripts/enrich.mjs --links` visits every `links` entry and every
+  non-X `demo_url` once (`lib/link-probe.mjs`: one GET, redirects followed by hand, each hop checked,
+  IP literals, local names, non-https and odd ports refused, 512 KB read cap, honest user agent).
+  Report: `data/enrichment/links.json`, one row per link with `verdict`, HTTP status, final URL,
+  `<title>` and `og:image`. Run against mainnet, 281 records (the committed report): **132 links
+  (131 distinct); 124 live, 1 gone, 7 unverified; 122 with a title, 40 with an `og:image`; 5 redirect
+  to another host.** `verdict` is `gone` only for 404/410 or a missing host. Crawler blocks
+  (401/403/429, a google.com/sorry page), 5xx and timeouts are `unverified` and must not be
+  reported as dead links. The unverified ones: the two bare `youtube.com/watch` links (429 from the
+  run's IP), nearblocks ×2, etherscan, medium and afun.mx (403 to crawlers). Runs vary: an earlier
+  run the same hour had OATH's youtu.be link rate-limited and keyproof.onrender.com at 503 (a
+  sleeping free host), and both answered on the re-run.
+- **Bug found and fixed on the way:** `linksFromChain()` rebuilt URLs from host + path, so it dropped
+  every query string. On chain since 8 Nov, Charter and Sealed Exploit link to a bare
+  `youtube.com/watch` with no video. Queries are now kept, minus tracking parameters (`utm_*`, `ref`,
+  `si`, `feature`, …), and the de-duplication key includes the query. Re-running the proposal
+  corrects 3 records' `links` (Charter and Sealed Exploit get their `?v=` back; DeepSea Hunter
+  drops a duplicate entry). Those values were set by enrichment, so `--refresh-enriched` may fix them:
+  `node scripts/import.mjs --enrichment data/enrichment/proposal-nh96.json --refresh-enriched --updates-only`
+  gives 251 keys, 318,152 bytes, 6 tx, touching only `media` (251), `links` (3) and `enrichment`;
+  no description or repository changes. **Pending owner approval.**
+- **For the owner, not acted on:** the one `gone` link (near-agent-guard's `njump.me/…%20…`) is
+  two URLs glued by a space in the source thread. Sealed Exploit's `https://dev.to` is a bare domain
+  because X truncated the path. The record "777 giros gratis" (`fa54da13…`) links to a gambling site
+  with a referral code (`afun.mx/?ch=…`) and looks like spam. Per AGENTS.md §1 nothing is tombstoned;
+  whether to hide it is your call.
+- Steps 3 (label links from these results) and 4 (duplicate flags) are still to do.
 
 ### Board 1 — Directory (home) · Day 1
 

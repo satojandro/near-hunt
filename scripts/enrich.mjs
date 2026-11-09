@@ -5,6 +5,8 @@
 //   node scripts/enrich.mjs --only <submission_id>
 //   node scripts/enrich.mjs --threads data/enrichment/threads.json
 //   node scripts/enrich.mjs --refresh           # ignore cached posts and re-fetch
+//   node scripts/enrich.mjs --links             # NH-96 step 2: visit every link once, write
+//                                               # data/enrichment/links.json (status, <title>, og:image)
 //
 // Read-only: it reads records from mainnet and posts from X's public syndication endpoint, and
 // writes only local files. It never signs or writes anything on chain. Applying the proposal is
@@ -19,6 +21,8 @@ import { dirname, join } from 'node:path';
 import { DEFAULT_ACCOUNT, readProjects } from '../lib/kv.mjs';
 import { buildEnrichment, summarize, tweetIdFromUrl } from '../lib/enrichment.mjs';
 import { verifyRepos } from '../lib/repo-check.mjs';
+import { linksToCheck, probeLink, summarizeProbes, verdictOf } from '../lib/link-probe.mjs';
+import { isXPost } from '../lib/project-view.mjs';
 
 const args = process.argv.slice(2);
 const flag = (name) => args.includes(name);
@@ -200,7 +204,52 @@ async function main() {
   console.log(`\nwrote ${OUT} (nothing written on chain)\n`);
 }
 
-main().catch((err) => {
+/**
+ * NH-96 step 2. One GET per distinct URL across all records (a URL shared by two records is
+ * visited once and reported for both), a few at a time. Writes a local report only.
+ */
+async function checkLinks() {
+  const out = value('--out', 'data/enrichment/links.json');
+  const concurrency = Math.max(1, Number(value('--concurrency', '4')) || 4);
+  const rows = await readProjects({ account: DEFAULT_ACCOUNT, network: 'mainnet' });
+  const projects = rows
+    .filter((r) => r.value && typeof r.value === 'object')
+    .map((r) => ({ ...r.value, submission_id: r.key.slice('project/'.length) }))
+    .filter((p) => (ONLY ? p.submission_id === ONLY : true))
+    .slice(0, LIMIT || undefined);
+
+  const wanted = projects.flatMap((p) =>
+    linksToCheck(p, isXPost).map((l) => ({ submission_id: p.submission_id, name: p.name, ...l })),
+  );
+  const urls = [...new Set(wanted.map((w) => w.url))];
+  console.log(`records: ${projects.length}; links to check: ${wanted.length} (${urls.length} distinct URLs)`);
+
+  const results = new Map();
+  let next = 0;
+  let done = 0;
+  async function worker() {
+    while (next < urls.length) {
+      const url = urls[next++];
+      results.set(url, await probeLink(url));
+      if (++done % 25 === 0) console.log(`  ...${done}/${urls.length}`);
+      await delay(DELAY_MS);
+    }
+  }
+  await Promise.all(Array.from({ length: Math.min(concurrency, urls.length) }, worker));
+
+  const checked_at = new Date().toISOString();
+  const report = wanted.map((w) => {
+    const { url, ...probe } = results.get(w.url);
+    return { submission_id: w.submission_id, name: w.name, field: w.field, url, verdict: verdictOf(results.get(w.url)), truncated: w.truncated, ...probe };
+  });
+  const summary = summarizeProbes(report);
+  await mkdir(dirname(out), { recursive: true });
+  await writeFile(out, `${JSON.stringify({ generated_at: checked_at, account: DEFAULT_ACCOUNT, summary, rows: report }, null, 2)}\n`);
+  console.log(`\n${JSON.stringify(summary, null, 2)}`);
+  console.log(`\nwrote ${out} (nothing written on chain)\n`);
+}
+
+(flag('--links') ? checkLinks() : main()).catch((err) => {
   console.error(err);
   process.exit(1);
 });

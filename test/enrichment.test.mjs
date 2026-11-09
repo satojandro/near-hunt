@@ -91,6 +91,24 @@ test('linksFromChain keeps product links and drops github/x/img hosts', () => {
   assert.deepEqual(links.map((l) => l.url), ['https://demo.example.com/app']);
 });
 
+test('linksFromChain keeps a meaningful query and drops only tracking parameters (NH-96)', () => {
+  // Charter and Sealed Exploit were published as a bare youtube.com/watch on 8 Nov.
+  const links = linksFromChain([
+    tweet(1, 'alice', 'root', [
+      'https://www.youtube.com/watch?v=YTom8Vb9i1E&feature=youtu.be',
+      'https://www.youtube.com/watch?v=sEMg3q7gG5k&si=abc',
+      'https://app.example.com/?utm_source=x&utm_medium=social',
+      'https://medium.com/@a/post-1?sharedUserId=a',
+    ]),
+  ]);
+  assert.deepEqual(links.map((l) => l.url), [
+    'https://www.youtube.com/watch?v=YTom8Vb9i1E',
+    'https://www.youtube.com/watch?v=sEMg3q7gG5k',
+    'https://app.example.com',
+    'https://medium.com/@a/post-1',
+  ]);
+});
+
 test('descriptionFromChain prefers the root post and refuses tiny text', () => {
   const chain = [tweet(1, 'alice', 'A real pitch for the project.'), tweet(2, 'alice', 'short')];
   assert.equal(descriptionFromChain(chain).description, 'A real pitch for the project.');
