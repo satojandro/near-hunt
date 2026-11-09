@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8">
-<title>NEAR Hunt — Roadmap and backlog</title>
+<title>NEAR Hunt — Roadmap to the MVP launch</title>
 
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap">
@@ -16,14 +16,16 @@ a{color:#0A7F5A}a:hover{color:#075E43}
 <div style="width: 1920px; height: 1180px; box-sizing: border-box; padding: 36px; background: #F5F6F8; font-family: Inter, system-ui, sans-serif; color: #12161C; display: flex; flex-direction: column; gap: 20px;">
   <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 24px;">
     <div>
-      <h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 34px;">Roadmap to 14 Nov, mapped to the mockups</h1>
-      <p style="margin: 6px 0 0; font-size: 15px; color: #5A6472;">Each card is a ticket in docs/PLAN.md. The tag in the corner is the board it builds.</p>
+      <h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 34px;">Roadmap: MVP launch 11 Nov, deadline 14 Nov</h1>
+      <p style="margin: 6px 0 0; font-size: 15px; color: #5A6472;">Updated 9 Nov. Each card is a ticket in docs/PLAN.md; the tag is the board it builds. Launch earlier if the 10 Nov column is done early.</p>
     </div>
     <div style="display: flex; gap: 14px; font-size: 13px; color: #3B4450;">
       <span style="display: flex; align-items: center; gap: 6px;"><span style="width: 12px; height: 12px; border-radius: 3px; background: #12161C;"></span>P0 needed to submit</span>
       <span style="display: flex; align-items: center; gap: 6px;"><span style="width: 12px; height: 12px; border-radius: 3px; background: #0A7F5A;"></span>P1 should ship</span>
       <span style="display: flex; align-items: center; gap: 6px;"><span style="width: 12px; height: 12px; border-radius: 3px; border: 2px dashed #8A93A0; box-sizing: border-box;"></span>P2 if time allows</span>
-      <span style="display: flex; align-items: center; gap: 6px;"><span style="width: 12px; height: 12px; border-radius: 3px; background: #2557C7;"></span>near.social integration</span>
+      <span style="display: flex; align-items: center; gap: 6px;"><span style="width: 12px; height: 12px; border-radius: 3px; background: #E6F4EE; border: 1px solid #0A7F5A; box-sizing: border-box;"></span>Done</span>
+      <span style="display: flex; align-items: center; gap: 6px;"><span style="width: 12px; height: 12px; border-radius: 3px; background: #2557C7;"></span>near.social</span>
+      <span style="display: flex; align-items: center; gap: 6px;"><span style="width: 12px; height: 12px; border-radius: 3px; background: #F0F2F5; border: 1px solid #C9CED6; box-sizing: border-box;"></span><s>Superseded</s></span>
     </div>
   </div>
 
@@ -31,463 +33,311 @@ a{color:#0A7F5A}a:hover{color:#075E43}
     
       <section style="border-radius: 14px; padding: 14px; display: flex; flex-direction: column; gap: 8px; min-width: 0; background: #FBFBFC; border: 1px solid #E3E6EB;">
         <header style="display: flex; flex-direction: column; gap: 2px; padding-bottom: 8px; border-bottom: 1px solid #E3E6EB;">
-          <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #5A6472;">8 Nov · Day 0</span>
-          <h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 18px;">Guardrails</h2>
+          <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #5A6472;">8–9 Nov · Days 0–1</span>
+          <h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 18px;">Guardrails, browse</h2>
         </header>
         
-          <article style="background: #FFFFFF; border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px; border: 1px solid #E3E6EB; border-left: 4px solid #12161C;">
+          <article style="background: #E6F4EE; border-radius: 10px; padding: 9px 12px; display: flex; flex-direction: column; gap: 3px; border: 1px solid #CFE8DC;">
             <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px;">
-              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-01</span>
+              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-01–09</span>
               <span style="font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; white-space: nowrap; background: #F0F2F5; color: #5A6472;">—</span>
             </div>
-            <p style="margin: 0; font-size: 13.5px; line-height: 1.4;">Reads trust only nearhunt.near rows</p>
+            <p style="margin: 0; font-size: 13px; line-height: 1.38; color: #3B4450;">✓ Writer-scoped reads, diff-only importer, AGENTS.md, key checks</p>
           </article>
         
-          <article style="background: #FFFFFF; border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px; border: 1px solid #E3E6EB; border-left: 4px solid #12161C;">
+          <article style="background: #E6F4EE; border-radius: 10px; padding: 9px 12px; display: flex; flex-direction: column; gap: 3px; border: 1px solid #CFE8DC;">
             <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px;">
-              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-02</span>
+              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-95</span>
               <span style="font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; white-space: nowrap; background: #F0F2F5; color: #5A6472;">—</span>
             </div>
-            <p style="margin: 0; font-size: 13.5px; line-height: 1.4;">Importer writes only what changed</p>
+            <p style="margin: 0; font-size: 13px; line-height: 1.38; color: #3B4450;">✓ Builder descriptions on 265 records, 98 verified repos</p>
           </article>
         
-          <article style="background: #FFFFFF; border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px; border: 1px solid #E3E6EB; border-left: 4px solid #12161C;">
+          <article style="background: #E6F4EE; border-radius: 10px; padding: 9px 12px; display: flex; flex-direction: column; gap: 3px; border: 1px solid #CFE8DC;">
             <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px;">
-              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-03</span>
-              <span style="font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; white-space: nowrap; background: #F0F2F5; color: #5A6472;">—</span>
+              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-10–16</span>
+              <span style="font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; white-space: nowrap; background: #12161C; color: #FFFFFF;">B1</span>
             </div>
-            <p style="margin: 0; font-size: 13.5px; line-height: 1.4;">AGENTS.md rules for Hermes</p>
+            <p style="margin: 0; font-size: 13px; line-height: 1.38; color: #3B4450;">✓ Directory: list, search, tracks, sort, sidebar</p>
           </article>
         
-          <article style="background: #FFFFFF; border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px; border: 1px solid #E3E6EB; border-left: 4px solid #12161C;">
+          <article style="background: #E6F4EE; border-radius: 10px; padding: 9px 12px; display: flex; flex-direction: column; gap: 3px; border: 1px solid #CFE8DC;">
             <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px;">
-              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-06</span>
-              <span style="font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; white-space: nowrap; background: #F0F2F5; color: #5A6472;">—</span>
+              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-20–21</span>
+              <span style="font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; white-space: nowrap; background: #12161C; color: #FFFFFF;">B2</span>
             </div>
-            <p style="margin: 0; font-size: 13.5px; line-height: 1.4;">Limited keys; full key stays with a human</p>
+            <p style="margin: 0; font-size: 13px; line-height: 1.38; color: #3B4450;">✓ Project page and on-chain record card</p>
           </article>
         
-          <article style="background: #FFFFFF; border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px; border: 1px solid #E3E6EB; border-left: 4px solid #0A7F5A;">
+          <article style="background: #E6F4EE; border-radius: 10px; padding: 9px 12px; display: flex; flex-direction: column; gap: 3px; border: 1px solid #CFE8DC;">
             <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px;">
-              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-05</span>
+              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">DNS</span>
               <span style="font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; white-space: nowrap; background: #F0F2F5; color: #5A6472;">—</span>
             </div>
-            <p style="margin: 0; font-size: 13.5px; line-height: 1.4;">Schema: real $id, social_post field, vote spec</p>
-          </article>
-        
-          <article style="background: #FFFFFF; border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px; border: 1px solid #E3E6EB; border-left: 4px solid #0A7F5A;">
-            <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px;">
-              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-04</span>
-              <span style="font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; white-space: nowrap; background: #F0F2F5; color: #5A6472;">—</span>
-            </div>
-            <p style="margin: 0; font-size: 13.5px; line-height: 1.4;">Fix docs drift</p>
+            <p style="margin: 0; font-size: 13px; line-height: 1.38; color: #3B4450;">✓ nearhunt.xyz live over HTTPS</p>
           </article>
         
       </section>
     
       <section style="border-radius: 14px; padding: 14px; display: flex; flex-direction: column; gap: 8px; min-width: 0; background: #FBFBFC; border: 1px solid #E3E6EB;">
         <header style="display: flex; flex-direction: column; gap: 2px; padding-bottom: 8px; border-bottom: 1px solid #E3E6EB;">
-          <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #5A6472;">9 Nov · Day 1</span>
-          <h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 18px;">Browse</h2>
+          <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #5A6472;">8–9 Nov · Days 2–4</span>
+          <h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 18px;">Upvote, states, data</h2>
         </header>
         
-          <article style="background: #FFFFFF; border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px; border: 1px solid #E3E6EB; border-left: 4px solid #12161C;">
+          <article style="background: #E6F4EE; border-radius: 10px; padding: 9px 12px; display: flex; flex-direction: column; gap: 3px; border: 1px solid #CFE8DC;">
             <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px;">
-              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-10</span>
-              <span style="font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; white-space: nowrap; background: #12161C; color: #FFFFFF;">B1</span>
-            </div>
-            <p style="margin: 0; font-size: 13.5px; line-height: 1.4;">App scaffold and deploy</p>
-          </article>
-        
-          <article style="background: #FFFFFF; border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px; border: 1px solid #E3E6EB; border-left: 4px solid #12161C;">
-            <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px;">
-              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-11</span>
-              <span style="font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; white-space: nowrap; background: #12161C; color: #FFFFFF;">B1</span>
-            </div>
-            <p style="margin: 0; font-size: 13.5px; line-height: 1.4;">Project list from chain</p>
-          </article>
-        
-          <article style="background: #FFFFFF; border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px; border: 1px solid #E3E6EB; border-left: 4px solid #12161C;">
-            <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px;">
-              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-12</span>
-              <span style="font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; white-space: nowrap; background: #12161C; color: #FFFFFF;">B1</span>
-            </div>
-            <p style="margin: 0; font-size: 13.5px; line-height: 1.4;">Search by name</p>
-          </article>
-        
-          <article style="background: #FFFFFF; border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px; border: 1px solid #E3E6EB; border-left: 4px solid #12161C;">
-            <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px;">
-              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-13</span>
-              <span style="font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; white-space: nowrap; background: #12161C; color: #FFFFFF;">B1</span>
-            </div>
-            <p style="margin: 0; font-size: 13.5px; line-height: 1.4;">Track filter with counts</p>
-          </article>
-        
-          <article style="background: #FFFFFF; border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px; border: 1px solid #E3E6EB; border-left: 4px solid #12161C;">
-            <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px;">
-              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-14</span>
-              <span style="font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; white-space: nowrap; background: #12161C; color: #FFFFFF;">B1</span>
-            </div>
-            <p style="margin: 0; font-size: 13.5px; line-height: 1.4;">Sort: upvoted, newest</p>
-          </article>
-        
-          <article style="background: #FFFFFF; border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px; border: 1px solid #E3E6EB; border-left: 4px solid #12161C;">
-            <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px;">
-              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-20</span>
-              <span style="font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; white-space: nowrap; background: #12161C; color: #FFFFFF;">B2</span>
-            </div>
-            <p style="margin: 0; font-size: 13.5px; line-height: 1.4;">Project page, null-safe links</p>
-          </article>
-        
-          <article style="background: #FFFFFF; border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px; border: 1px solid #E3E6EB; border-left: 4px solid #0A7F5A;">
-            <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px;">
-              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-21</span>
-              <span style="font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; white-space: nowrap; background: #12161C; color: #FFFFFF;">B2</span>
-            </div>
-            <p style="margin: 0; font-size: 13.5px; line-height: 1.4;">On-chain record card</p>
-          </article>
-        
-          <article style="background: #FFFFFF; border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px; border: 1px solid #C9D6F2; border-left: 4px solid #2557C7;">
-            <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px;">
-              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-15</span>
-              <span style="font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; white-space: nowrap; background: #12161C; color: #FFFFFF;">B1</span>
-            </div>
-            <p style="margin: 0; font-size: 13.5px; line-height: 1.4;">Live #nearhunt sidebar</p>
-          </article>
-        
-      </section>
-    
-      <section style="border-radius: 14px; padding: 14px; display: flex; flex-direction: column; gap: 8px; min-width: 0; background: #FBFBFC; border: 1px solid #E3E6EB;">
-        <header style="display: flex; flex-direction: column; gap: 2px; padding-bottom: 8px; border-bottom: 1px solid #E3E6EB;">
-          <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #5A6472;">10 Nov · Day 2</span>
-          <h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 18px;">Upvote</h2>
-        </header>
-        
-          <article style="background: #FFFFFF; border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px; border: 1px solid #E3E6EB; border-left: 4px solid #12161C;">
-            <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px;">
-              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-35</span>
+              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-30–35</span>
               <span style="font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; white-space: nowrap; background: #12161C; color: #FFFFFF;">B7</span>
             </div>
-            <p style="margin: 0; font-size: 13.5px; line-height: 1.4;">Spike: wallet vs contract-less receiver</p>
+            <p style="margin: 0; font-size: 13px; line-height: 1.38; color: #3B4450;">✓ Wallet login with a limited key, upvote, remove, tally</p>
           </article>
         
-          <article style="background: #FFFFFF; border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px; border: 1px solid #E3E6EB; border-left: 4px solid #12161C;">
+          <article style="background: #E6F4EE; border-radius: 10px; padding: 9px 12px; display: flex; flex-direction: column; gap: 3px; border: 1px solid #CFE8DC;">
             <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px;">
-              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-30</span>
-              <span style="font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; white-space: nowrap; background: #12161C; color: #FFFFFF;">B7</span>
-            </div>
-            <p style="margin: 0; font-size: 13.5px; line-height: 1.4;">Wallet login, limited key</p>
-          </article>
-        
-          <article style="background: #FFFFFF; border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px; border: 1px solid #E3E6EB; border-left: 4px solid #12161C;">
-            <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px;">
-              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-31</span>
-              <span style="font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; white-space: nowrap; background: #12161C; color: #FFFFFF;">B7</span>
-            </div>
-            <p style="margin: 0; font-size: 13.5px; line-height: 1.4;">Upvote with indexer confirm</p>
-          </article>
-        
-          <article style="background: #FFFFFF; border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px; border: 1px solid #E3E6EB; border-left: 4px solid #12161C;">
-            <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px;">
-              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-32</span>
-              <span style="font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; white-space: nowrap; background: #12161C; color: #FFFFFF;">B7</span>
-            </div>
-            <p style="margin: 0; font-size: 13.5px; line-height: 1.4;">Remove upvote</p>
-          </article>
-        
-          <article style="background: #FFFFFF; border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px; border: 1px solid #E3E6EB; border-left: 4px solid #12161C;">
-            <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px;">
-              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-33</span>
-              <span style="font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; white-space: nowrap; background: #12161C; color: #FFFFFF;">B1</span>
-            </div>
-            <p style="margin: 0; font-size: 13.5px; line-height: 1.4;">Vote tally, cached</p>
-          </article>
-        
-          <article style="background: #FFFFFF; border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px; border: 1px solid #E3E6EB; border-left: 4px solid #0A7F5A;">
-            <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px;">
-              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-22</span>
+              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-22–24</span>
               <span style="font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; white-space: nowrap; background: #12161C; color: #FFFFFF;">B2</span>
             </div>
-            <p style="margin: 0; font-size: 13.5px; line-height: 1.4;">Upvoted-by avatars</p>
+            <p style="margin: 0; font-size: 13px; line-height: 1.38; color: #3B4450;">✓ Upvoted by, similar projects, claim card</p>
           </article>
         
-          <article style="background: #FFFFFF; border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px; border: 1px solid #C9D6F2; border-left: 4px solid #2557C7;">
+          <article style="background: #E6F4EE; border-radius: 10px; padding: 9px 12px; display: flex; flex-direction: column; gap: 3px; border: 1px solid #CFE8DC;">
             <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px;">
-              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-34</span>
-              <span style="font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; white-space: nowrap; background: #12161C; color: #FFFFFF;">B7</span>
+              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-50–53</span>
+              <span style="font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; white-space: nowrap; background: #12161C; color: #FFFFFF;">B3</span>
             </div>
-            <p style="margin: 0; font-size: 13.5px; line-height: 1.4;">Share vote to near.social</p>
+            <p style="margin: 0; font-size: 13px; line-height: 1.38; color: #3B4450;">✓ Account page, my upvotes</p>
           </article>
         
-      </section>
-    
-      <section style="border-radius: 14px; padding: 14px; display: flex; flex-direction: column; gap: 8px; min-width: 0; background: #FBFBFC; border: 1px solid #E3E6EB;">
-        <header style="display: flex; flex-direction: column; gap: 2px; padding-bottom: 8px; border-bottom: 1px solid #E3E6EB;">
-          <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #5A6472;">11 Nov · Day 3</span>
-          <h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 18px;">Discuss</h2>
-        </header>
-        
-          <article style="background: #FFFFFF; border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px; border: 1px solid #C9D6F2; border-left: 4px solid #2557C7;">
+          <article style="background: #E6F4EE; border-radius: 10px; padding: 9px 12px; display: flex; flex-direction: column; gap: 3px; border: 1px solid #CFE8DC;">
             <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px;">
-              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-40</span>
-              <span style="font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; white-space: nowrap; background: #12161C; color: #FFFFFF;">B2</span>
-            </div>
-            <p style="margin: 0; font-size: 13.5px; line-height: 1.4;">Project posts by nearhunt.near (drip)</p>
-          </article>
-        
-          <article style="background: #FFFFFF; border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px; border: 1px solid #C9D6F2; border-left: 4px solid #2557C7;">
-            <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px;">
-              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-41</span>
-              <span style="font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; white-space: nowrap; background: #12161C; color: #FFFFFF;">B2</span>
-            </div>
-            <p style="margin: 0; font-size: 13.5px; line-height: 1.4;">Read thread from near.social</p>
-          </article>
-        
-          <article style="background: #FFFFFF; border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px; border: 1px solid #C9D6F2; border-left: 4px solid #2557C7;">
-            <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px;">
-              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-42</span>
-              <span style="font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; white-space: nowrap; background: #12161C; color: #FFFFFF;">B2</span>
-            </div>
-            <p style="margin: 0; font-size: 13.5px; line-height: 1.4;">Reply composer posts to near.social</p>
-          </article>
-        
-          <article style="background: #FFFFFF; border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px; border: 1px solid #E3E6EB; border-left: 4px solid #12161C;">
-            <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px;">
-              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-70</span>
-              <span style="font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; white-space: nowrap; background: #12161C; color: #FFFFFF;">B5</span>
-            </div>
-            <p style="margin: 0; font-size: 13.5px; line-height: 1.4;">Responsive pass at 390 px</p>
-          </article>
-        
-          <article style="background: #FFFFFF; border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px; border: 1px solid #E3E6EB; border-left: 4px solid #12161C;">
-            <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px;">
-              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-80</span>
+              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-70–83</span>
               <span style="font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; white-space: nowrap; background: #12161C; color: #FFFFFF;">B8</span>
             </div>
-            <p style="margin: 0; font-size: 13.5px; line-height: 1.4;">Loading skeletons</p>
+            <p style="margin: 0; font-size: 13px; line-height: 1.38; color: #3B4450;">✓ 390 px pass, sticky bar, skeletons, outage states</p>
           </article>
         
-          <article style="background: #FFFFFF; border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px; border: 1px solid #E3E6EB; border-left: 4px solid #12161C;">
+          <article style="background: #E6F4EE; border-radius: 10px; padding: 9px 12px; display: flex; flex-direction: column; gap: 3px; border: 1px solid #CFE8DC;">
             <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px;">
-              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-81</span>
-              <span style="font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; white-space: nowrap; background: #12161C; color: #FFFFFF;">B8</span>
+              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-60–64</span>
+              <span style="font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; white-space: nowrap; background: #12161C; color: #FFFFFF;">B4</span>
             </div>
-            <p style="margin: 0; font-size: 13.5px; line-height: 1.4;">Empty states</p>
+            <p style="margin: 0; font-size: 13px; line-height: 1.38; color: #3B4450;">✓ API, SKILL.md, open data page</p>
           </article>
         
-          <article style="background: #FFFFFF; border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px; border: 1px solid #C9D6F2; border-left: 4px solid #2557C7;">
+          <article style="background: #F0F2F5; border-radius: 10px; padding: 9px 12px; display: flex; flex-direction: column; gap: 3px; border: 1px solid #DDE1E6;">
+            <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px;">
+              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-41–42</span>
+              <span style="font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; white-space: nowrap; background: #12161C; color: #FFFFFF;">B2</span>
+            </div>
+            <p style="margin: 0; font-size: 13px; line-height: 1.38; color: #8A93A0; text-decoration: line-through;">Discussion as near.social replies</p>
+          </article>
+        
+      </section>
+    
+      <section style="border-radius: 14px; padding: 14px; display: flex; flex-direction: column; gap: 8px; min-width: 0; background: #FBFBFC; border: 1px solid #E3E6EB;">
+        <header style="display: flex; flex-direction: column; gap: 2px; padding-bottom: 8px; border-bottom: 1px solid #E3E6EB;">
+          <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #5A6472;">10 Nov</span>
+          <h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 18px;">Finish the MVP</h2>
+        </header>
+        
+          <article style="background: #FFFFFF; border-radius: 10px; padding: 9px 12px; display: flex; flex-direction: column; gap: 3px; border: 1px solid #E3E6EB; border-left: 4px solid #12161C; box-shadow: 0 0 0 2px #0A7F5A;">
+            <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px;">
+              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-44</span>
+              <span style="font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; white-space: nowrap; background: #12161C; color: #FFFFFF;">B2</span>
+            </div>
+            <p style="margin: 0; font-size: 13px; line-height: 1.38; ">Comments on nearhunt.near: signed like a vote, no wallet pop-up</p>
+          </article>
+        
+          <article style="background: #FFFFFF; border-radius: 10px; padding: 9px 12px; display: flex; flex-direction: column; gap: 3px; border: 1px solid #E3E6EB; border-left: 4px solid #12161C;">
+            <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px;">
+              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">import</span>
+              <span style="font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; white-space: nowrap; background: #F0F2F5; color: #5A6472;">—</span>
+            </div>
+            <p style="margin: 0; font-size: 13px; line-height: 1.38; ">Import 29 new hackathon projects (owner approves)</p>
+          </article>
+        
+          <article style="background: #FFFFFF; border-radius: 10px; padding: 9px 12px; display: flex; flex-direction: column; gap: 3px; border: 1px solid #E3E6EB; border-left: 4px solid #0A7F5A;">
             <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px;">
               <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-43</span>
               <span style="font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; white-space: nowrap; background: #12161C; color: #FFFFFF;">B1</span>
             </div>
-            <p style="margin: 0; font-size: 13.5px; line-height: 1.4;">Reply counts, most discussed</p>
+            <p style="margin: 0; font-size: 13px; line-height: 1.38; ">Comment counts, "Most discussed" from NH-44 rows</p>
           </article>
         
-          <article style="background: #FFFFFF; border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px; border: 1px solid #C9D6F2; border-left: 4px solid #2557C7;">
+          <article style="background: #FFFFFF; border-radius: 10px; padding: 9px 12px; display: flex; flex-direction: column; gap: 3px; border: 1px solid #E3E6EB; border-left: 4px solid #0A7F5A;">
             <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px;">
-              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-50</span>
-              <span style="font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; white-space: nowrap; background: #12161C; color: #FFFFFF;">B3</span>
-            </div>
-            <p style="margin: 0; font-size: 13.5px; line-height: 1.4;">Account page from near.social profile</p>
-          </article>
-        
-          <article style="background: #FFFFFF; border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px; border: 1px solid #E3E6EB; border-left: 4px solid #0A7F5A;">
-            <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px;">
-              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-51</span>
-              <span style="font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; white-space: nowrap; background: #12161C; color: #FFFFFF;">B3</span>
-            </div>
-            <p style="margin: 0; font-size: 13.5px; line-height: 1.4;">My upvotes</p>
-          </article>
-        
-          <article style="background: #FFFFFF; border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px; border: 1px solid #E3E6EB; border-left: 4px solid #0A7F5A;">
-            <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px;">
-              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-82</span>
-              <span style="font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; white-space: nowrap; background: #12161C; color: #FFFFFF;">B8</span>
-            </div>
-            <p style="margin: 0; font-size: 13.5px; line-height: 1.4;">Indexer-stale banner</p>
-          </article>
-        
-          <article style="background: #FFFFFF; border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px; border: 1px solid #C9D6F2; border-left: 4px solid #2557C7;">
-            <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px;">
-              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-83</span>
-              <span style="font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; white-space: nowrap; background: #12161C; color: #FFFFFF;">B8</span>
-            </div>
-            <p style="margin: 0; font-size: 13.5px; line-height: 1.4;">near.social rate limit handling</p>
-          </article>
-        
-          <article style="background: #FFFFFF; border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px; border: 1px solid #E3E6EB; border-left: 4px solid #0A7F5A;">
-            <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px;">
-              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-71</span>
-              <span style="font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; white-space: nowrap; background: #12161C; color: #FFFFFF;">B6</span>
-            </div>
-            <p style="margin: 0; font-size: 13.5px; line-height: 1.4;">Sticky mobile upvote bar</p>
-          </article>
-        
-      </section>
-    
-      <section style="border-radius: 14px; padding: 14px; display: flex; flex-direction: column; gap: 8px; min-width: 0; background: #FBFBFC; border: 1px solid #E3E6EB;">
-        <header style="display: flex; flex-direction: column; gap: 2px; padding-bottom: 8px; border-bottom: 1px solid #E3E6EB;">
-          <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #5A6472;">12 Nov · Day 4</span>
-          <h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 18px;">Open data</h2>
-        </header>
-        
-          <article style="background: #FFFFFF; border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px; border: 1px solid #E3E6EB; border-left: 4px solid #12161C;">
-            <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px;">
-              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-60</span>
-              <span style="font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; white-space: nowrap; background: #12161C; color: #FFFFFF;">B4</span>
-            </div>
-            <p style="margin: 0; font-size: 13.5px; line-height: 1.4;">Read-only API</p>
-          </article>
-        
-          <article style="background: #FFFFFF; border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px; border: 1px solid #E3E6EB; border-left: 4px solid #12161C;">
-            <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px;">
-              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-61</span>
-              <span style="font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; white-space: nowrap; background: #12161C; color: #FFFFFF;">B4</span>
-            </div>
-            <p style="margin: 0; font-size: 13.5px; line-height: 1.4;">SKILL.md for agents</p>
-          </article>
-        
-          <article style="background: #FFFFFF; border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px; border: 1px solid #E3E6EB; border-left: 4px solid #0A7F5A;">
-            <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px;">
-              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-62</span>
-              <span style="font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; white-space: nowrap; background: #12161C; color: #FFFFFF;">B4</span>
-            </div>
-            <p style="margin: 0; font-size: 13.5px; line-height: 1.4;">Open data page</p>
-          </article>
-        
-          <article style="background: #FFFFFF; border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px; border: 1px solid #E3E6EB; border-left: 4px solid #0A7F5A;">
-            <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px;">
-              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-63</span>
-              <span style="font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; white-space: nowrap; background: #12161C; color: #FFFFFF;">B4</span>
-            </div>
-            <p style="margin: 0; font-size: 13.5px; line-height: 1.4;">Agent test with Hermes</p>
-          </article>
-        
-          <article style="background: #FFFFFF; border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px; border: 2px dashed #C9CED6;">
-            <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px;">
-              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-64</span>
-              <span style="font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; white-space: nowrap; background: #12161C; color: #FFFFFF;">B4</span>
-            </div>
-            <p style="margin: 0; font-size: 13.5px; line-height: 1.4;">Link project/ proposal (doc only)</p>
-          </article>
-        
-      </section>
-    
-      <section style="border-radius: 14px; padding: 14px; display: flex; flex-direction: column; gap: 8px; min-width: 0; background: #FBFBFC; border: 1px solid #E3E6EB;">
-        <header style="display: flex; flex-direction: column; gap: 2px; padding-bottom: 8px; border-bottom: 1px solid #E3E6EB;">
-          <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #5A6472;">13 Nov · Day 5</span>
-          <h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 18px;">Submit</h2>
-        </header>
-        
-          <article style="background: #FFFFFF; border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px; border: 1px solid #E3E6EB; border-left: 4px solid #12161C;">
-            <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px;">
-              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-90</span>
-              <span style="font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; white-space: nowrap; background: #F0F2F5; color: #5A6472;">—</span>
-            </div>
-            <p style="margin: 0; font-size: 13.5px; line-height: 1.4;">README matches what runs</p>
-          </article>
-        
-          <article style="background: #FFFFFF; border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px; border: 1px solid #E3E6EB; border-left: 4px solid #12161C;">
-            <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px;">
-              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-91</span>
-              <span style="font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; white-space: nowrap; background: #F0F2F5; color: #5A6472;">—</span>
-            </div>
-            <p style="margin: 0; font-size: 13.5px; line-height: 1.4;">Baby Shark cross-reference</p>
-          </article>
-        
-          <article style="background: #FFFFFF; border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px; border: 1px solid #E3E6EB; border-left: 4px solid #12161C;">
-            <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px;">
-              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-92</span>
-              <span style="font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; white-space: nowrap; background: #F0F2F5; color: #5A6472;">—</span>
-            </div>
-            <p style="margin: 0; font-size: 13.5px; line-height: 1.4;">Demo video and X post</p>
-          </article>
-        
-          <article style="background: #FFFFFF; border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px; border: 1px solid #E3E6EB; border-left: 4px solid #12161C;">
-            <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px;">
-              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-93</span>
-              <span style="font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; white-space: nowrap; background: #F0F2F5; color: #5A6472;">—</span>
-            </div>
-            <p style="margin: 0; font-size: 13.5px; line-height: 1.4;">Final import diff, human-approved</p>
-          </article>
-        
-          <article style="background: #FFFFFF; border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px; border: 2px dashed #C9CED6;">
-            <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px;">
-              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-23</span>
+              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-96 · 1</span>
               <span style="font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; white-space: nowrap; background: #12161C; color: #FFFFFF;">B2</span>
             </div>
-            <p style="margin: 0; font-size: 13.5px; line-height: 1.4;">Similar projects</p>
+            <p style="margin: 0; font-size: 13px; line-height: 1.38; ">Show the hidden links on project pages</p>
           </article>
         
-          <article style="background: #FFFFFF; border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px; border: 2px dashed #C9CED6;">
+          <article style="background: #FFFFFF; border-radius: 10px; padding: 9px 12px; display: flex; flex-direction: column; gap: 3px; border: 2px dashed #C9CED6;">
             <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px;">
               <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-52</span>
               <span style="font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; white-space: nowrap; background: #12161C; color: #FFFFFF;">B3</span>
             </div>
-            <p style="margin: 0; font-size: 13.5px; line-height: 1.4;">My comments</p>
+            <p style="margin: 0; font-size: 13px; line-height: 1.38; ">My comments, from comment/ rows</p>
           </article>
         
-          <article style="background: #FFFFFF; border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px; border: 2px dashed #C9CED6;">
+          <article style="background: #FFFFFF; border-radius: 10px; padding: 9px 12px; display: flex; flex-direction: column; gap: 3px; border: 1px solid #E3E6EB; border-left: 4px solid #0A7F5A;">
+            <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px;">
+              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-63</span>
+              <span style="font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; white-space: nowrap; background: #12161C; color: #FFFFFF;">B4</span>
+            </div>
+            <p style="margin: 0; font-size: 13px; line-height: 1.38; ">Agent test run 2 against the live site</p>
+          </article>
+        
+      </section>
+    
+      <section style="border-radius: 14px; padding: 14px; display: flex; flex-direction: column; gap: 8px; min-width: 0; background: #FFFFFF; border: 2px solid #0A7F5A;">
+        <header style="display: flex; flex-direction: column; gap: 2px; padding-bottom: 8px; border-bottom: 1px solid #E3E6EB;">
+          <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #5A6472;">11 Nov</span>
+          <h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 18px;">MVP launch</h2>
+        </header>
+        
+          <article style="background: #FFFFFF; border-radius: 10px; padding: 9px 12px; display: flex; flex-direction: column; gap: 3px; border: 1px solid #E3E6EB; border-left: 4px solid #12161C;">
+            <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px;">
+              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-90</span>
+              <span style="font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; white-space: nowrap; background: #F0F2F5; color: #5A6472;">—</span>
+            </div>
+            <p style="margin: 0; font-size: 13px; line-height: 1.38; ">README matches what runs</p>
+          </article>
+        
+          <article style="background: #FFFFFF; border-radius: 10px; padding: 9px 12px; display: flex; flex-direction: column; gap: 3px; border: 1px solid #E3E6EB; border-left: 4px solid #12161C;">
+            <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px;">
+              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-91</span>
+              <span style="font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; white-space: nowrap; background: #F0F2F5; color: #5A6472;">—</span>
+            </div>
+            <p style="margin: 0; font-size: 13px; line-height: 1.38; ">Baby Shark cross-reference</p>
+          </article>
+        
+          <article style="background: #FFFFFF; border-radius: 10px; padding: 9px 12px; display: flex; flex-direction: column; gap: 3px; border: 1px solid #E3E6EB; border-left: 4px solid #12161C;">
+            <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px;">
+              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-92</span>
+              <span style="font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; white-space: nowrap; background: #F0F2F5; color: #5A6472;">—</span>
+            </div>
+            <p style="margin: 0; font-size: 13px; line-height: 1.38; ">Demo video and launch post on X</p>
+          </article>
+        
+          <article style="background: #FFFFFF; border-radius: 10px; padding: 9px 12px; display: flex; flex-direction: column; gap: 3px; border: 1px solid #E3E6EB; border-left: 4px solid #0A7F5A;">
+            <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px;">
+              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-96 · 2–5</span>
+              <span style="font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; white-space: nowrap; background: #12161C; color: #FFFFFF;">B2</span>
+            </div>
+            <p style="margin: 0; font-size: 13px; line-height: 1.38; ">Label links: title, image, verified repo; flag duplicates</p>
+          </article>
+        
+      </section>
+    
+      <section style="border-radius: 14px; padding: 14px; display: flex; flex-direction: column; gap: 8px; min-width: 0; background: #FBFBFC; border: 1px solid #E3E6EB;">
+        <header style="display: flex; flex-direction: column; gap: 2px; padding-bottom: 8px; border-bottom: 1px solid #E3E6EB;">
+          <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #5A6472;">12 Nov</span>
+          <h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 18px;">After launch, P2</h2>
+        </header>
+        
+          <article style="background: #FFFFFF; border-radius: 10px; padding: 9px 12px; display: flex; flex-direction: column; gap: 3px; border: 2px dashed #C9CED6;">
+            <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px;">
+              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-102</span>
+              <span style="font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; white-space: nowrap; background: #12161C; color: #FFFFFF;">B2</span>
+            </div>
+            <p style="margin: 0; font-size: 13px; line-height: 1.38; ">Baby Shark "Fund this project" link</p>
+          </article>
+        
+          <article style="background: #FFFFFF; border-radius: 10px; padding: 9px 12px; display: flex; flex-direction: column; gap: 3px; border: 1px solid #C9D6F2; border-left: 4px solid #2557C7;">
+            <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px;">
+              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-103</span>
+              <span style="font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; white-space: nowrap; background: #F0F2F5; color: #5A6472;">—</span>
+            </div>
+            <p style="margin: 0; font-size: 13px; line-height: 1.38; ">near.social promotion posts, policy first</p>
+          </article>
+        
+          <article style="background: #FFFFFF; border-radius: 10px; padding: 9px 12px; display: flex; flex-direction: column; gap: 3px; border: 2px dashed #C9CED6;">
+            <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px;">
+              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-104</span>
+              <span style="font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; white-space: nowrap; background: #12161C; color: #FFFFFF;">B1</span>
+            </div>
+            <p style="margin: 0; font-size: 13px; line-height: 1.38; ">Sponsored slot built, off until 18 Nov</p>
+          </article>
+        
+          <article style="background: #FFFFFF; border-radius: 10px; padding: 9px 12px; display: flex; flex-direction: column; gap: 3px; border: 2px dashed #C9CED6;">
             <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px;">
               <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-94</span>
               <span style="font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; white-space: nowrap; background: #F0F2F5; color: #5A6472;">—</span>
             </div>
-            <p style="margin: 0; font-size: 13.5px; line-height: 1.4;">Support NEAR Hunt link (separate treasury)</p>
+            <p style="margin: 0; font-size: 13px; line-height: 1.38; ">Support NEAR Hunt link (separate treasury)</p>
+          </article>
+        
+      </section>
+    
+      <section style="border-radius: 14px; padding: 14px; display: flex; flex-direction: column; gap: 8px; min-width: 0; background: #FBFBFC; border: 1px solid #E3E6EB;">
+        <header style="display: flex; flex-direction: column; gap: 2px; padding-bottom: 8px; border-bottom: 1px solid #E3E6EB;">
+          <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #5A6472;">13–14 Nov</span>
+          <h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 18px;">Submit, buffer</h2>
+        </header>
+        
+          <article style="background: #FFFFFF; border-radius: 10px; padding: 9px 12px; display: flex; flex-direction: column; gap: 3px; border: 1px solid #E3E6EB; border-left: 4px solid #12161C;">
+            <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px;">
+              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">submit</span>
+              <span style="font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; white-space: nowrap; background: #F0F2F5; color: #5A6472;">—</span>
+            </div>
+            <p style="margin: 0; font-size: 13px; line-height: 1.38; ">Hackathon submission from the launch material</p>
+          </article>
+        
+          <article style="background: #FFFFFF; border-radius: 10px; padding: 9px 12px; display: flex; flex-direction: column; gap: 3px; border: 2px dashed #C9CED6;">
+            <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px;">
+              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">14 Nov</span>
+              <span style="font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; white-space: nowrap; background: #F0F2F5; color: #5A6472;">—</span>
+            </div>
+            <p style="margin: 0; font-size: 13px; line-height: 1.38; ">Buffer · deadline 23:59 UTC</p>
           </article>
         
       </section>
     
       <section style="border-radius: 14px; padding: 14px; display: flex; flex-direction: column; gap: 8px; min-width: 0; background: #ECEEF2;">
         <header style="display: flex; flex-direction: column; gap: 2px; padding-bottom: 8px; border-bottom: 1px solid #E3E6EB;">
-          <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #5A6472;">After 14 Nov</span>
-          <h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 18px;">Later</h2>
+          <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #5A6472;">After launch</span>
+          <h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 18px;">Next</h2>
         </header>
         
-          <article style="background: #FFFFFF; border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px; border: 1px solid #C9D6F2; border-left: 4px solid #2557C7;">
-            <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px;">
-              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-100</span>
-              <span style="font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; white-space: nowrap; background: #F0F2F5; color: #5A6472;">—</span>
-            </div>
-            <p style="margin: 0; font-size: 13.5px; line-height: 1.4;">Project data object: take project/ to near.social maintainers</p>
-          </article>
-        
-          <article style="background: #FFFFFF; border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px; border: 1px solid #C9D6F2; border-left: 4px solid #2557C7;">
+          <article style="background: #FFFFFF; border-radius: 10px; padding: 9px 12px; display: flex; flex-direction: column; gap: 3px; border: 2px dashed #C9CED6;">
             <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px;">
               <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-101</span>
               <span style="font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; white-space: nowrap; background: #12161C; color: #FFFFFF;">B2</span>
             </div>
-            <p style="margin: 0; font-size: 13.5px; line-height: 1.4;">Builder claim via project/ on near.social</p>
+            <p style="margin: 0; font-size: 13px; line-height: 1.38; ">Submit a project: anyone, shown as "submitted by"</p>
           </article>
         
-          <article style="background: #FFFFFF; border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px; border: 2px dashed #C9CED6;">
+          <article style="background: #FFFFFF; border-radius: 10px; padding: 9px 12px; display: flex; flex-direction: column; gap: 3px; border: 2px dashed #C9CED6;">
             <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px;">
-              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-102</span>
+              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-105</span>
               <span style="font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; white-space: nowrap; background: #12161C; color: #FFFFFF;">B2</span>
             </div>
-            <p style="margin: 0; font-size: 13.5px; line-height: 1.4;">Baby Shark funding link</p>
+            <p style="margin: 0; font-size: 13px; line-height: 1.38; ">Claim: makers say "this is ours"</p>
           </article>
         
-          <article style="background: #FFFFFF; border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px; border: 1px solid #C9D6F2; border-left: 4px solid #2557C7;">
+          <article style="background: #FFFFFF; border-radius: 10px; padding: 9px 12px; display: flex; flex-direction: column; gap: 3px; border: 2px dashed #C9CED6;">
             <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px;">
-              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-103</span>
+              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-100</span>
               <span style="font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; white-space: nowrap; background: #F0F2F5; color: #5A6472;">—</span>
             </div>
-            <p style="margin: 0; font-size: 13.5px; line-height: 1.4;">Mirror every project to near.social</p>
+            <p style="margin: 0; font-size: 13px; line-height: 1.38; ">Document project/1 as an open format</p>
           </article>
         
-          <article style="background: #FFFFFF; border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px; border: 2px dashed #C9CED6;">
+          <article style="background: #FFFFFF; border-radius: 10px; padding: 9px 12px; display: flex; flex-direction: column; gap: 3px; border: 1px solid #C9D6F2; border-left: 4px solid #2557C7;">
             <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px;">
-              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-104</span>
-              <span style="font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; white-space: nowrap; background: #12161C; color: #FFFFFF;">B1</span>
+              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #3B4450;">NH-40</span>
+              <span style="font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; white-space: nowrap; background: #F0F2F5; color: #5A6472;">—</span>
             </div>
-            <p style="margin: 0; font-size: 13.5px; line-height: 1.4;">Sponsored slot: labelled, outside rankings, on chain</p>
+            <p style="margin: 0; font-size: 13px; line-height: 1.38; ">Optional near.social promotion drip</p>
           </article>
         
       </section>
     
   </div>
 
-  <p style="margin: 0; font-size: 13px; color: #5A6472;">Cut line: if Day 3 slips, drop the P2 items, then NH-23, NH-50 to NH-53 and NH-15. Day 6 (14 Nov) is left empty as buffer.</p>
+  <p style="margin: 0; font-size: 13px; color: #5A6472;">Decided 9 Nov: comments live on nearhunt.near (NH-44), project/1 only gains fields, submissions and claims wait until after launch. P2 items stop first if anything slips. 14 Nov is buffer; results on 18 Nov.</p>
 </div>
 
 
