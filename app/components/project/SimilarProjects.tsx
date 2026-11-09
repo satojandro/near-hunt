@@ -17,7 +17,7 @@ export default function SimilarProjects({ project, all }: { project: ListingItem
         {similar.map(({ project: q, shared }) => (
           <li key={q.submission_id}>
             <Link className={s.item} href={`/p/${encodeURIComponent(q.submission_id)}`}>
-              <ProjectAvatar id={q.submission_id} name={q.name} size={36} />
+              <ProjectAvatar id={q.submission_id} name={q.name} track={q.tracks[0]} size={36} />
               <span className={s.itemText}>
                 <span className={s.itemName}>{q.name}</span>
                 <span className={s.itemTracks}>{shared.map(trackLabel).join(' · ')}</span>

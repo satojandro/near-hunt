@@ -14,11 +14,11 @@
 .note + .note { margin-top: 8px; }
 .alert {
   margin: 0 0 16px; padding: 12px 14px; border-radius: var(--radius); font-size: 14px;
-  background: #FFF6E5; border: 1px solid #F2D49B; color: #5C4200;
+  background: var(--warn-bg-strong); border: 1px solid var(--warn-border-strong); color: var(--warn-text-strong);
 }
-.alert strong { color: #3D2C00; }
-.ok { background: var(--accent-soft); border-color: #B7E2CF; color: #0B4B36; }
-.ok strong { color: #073B2A; }
+.alert strong { color: var(--warn-em-strong); }
+.ok { background: var(--accent-soft); border-color: var(--ok-border); color: var(--ok-text); }
+.ok strong { color: var(--ok-em); }
 .empty { padding: 4px 0; }
 .empty .note a { color: var(--social); font-weight: 600; }
 
@@ -40,9 +40,9 @@
 .outcomeSlot .alert { margin: 0; }
 .hint { font-size: 13px; color: var(--text-muted); min-width: 0; overflow-wrap: anywhere; }
 .counter { font-variant-numeric: tabular-nums; }
-.over { color: #B42318; font-weight: 600; }
+.over { color: var(--danger); font-weight: 600; }
 .btn {
-  font: inherit; font-weight: 600; font-size: 15px; background: var(--text); color: #fff; border: 0;
+  font: inherit; font-weight: 600; font-size: 15px; background: var(--btn-bg); color: var(--btn-text); border: 0;
   border-radius: var(--radius); min-height: 44px; padding: 0 18px; cursor: pointer;
 }
 .btn:disabled { opacity: 0.55; cursor: not-allowed; }
@@ -80,8 +80,8 @@
 }
 .action:hover { color: var(--text); }
 .action:disabled { opacity: 0.6; cursor: not-allowed; }
-.danger { color: #B42318; }
-.danger:hover { color: #8C1B12; }
+.danger { color: var(--danger); }
+.danger:hover { color: var(--danger-hover); }
 .policy {
   margin: 18px 0 0; padding-top: 14px; border-top: 1px solid var(--border);
   font-size: 13px; color: var(--text-muted);

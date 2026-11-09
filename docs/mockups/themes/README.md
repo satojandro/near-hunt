@@ -59,6 +59,11 @@ Today `app/` has about 85 hard-coded hex colours in 11 files (count:
 token, or the themes look broken. Do that sweep first, as its own commit, with no visual change in
 Light.
 
+> **Built, 9 Nov (NH-114).** The sweep is done: `grep -rEn "#[0-9A-Fa-f]{3,8}\b" app --include=*.css
+> --include=*.tsx` now returns only `globals.css`'s four token tables, the `themeColor` default and
+> the picker's last-resort `'#FFFFFF'`. Two deliberate differences from the plan are noted under
+> "Notes from the build" below.
+
 ### 2. Token values
 
 New tokens are in **bold**. Light keeps today's values; the new tokens are defined for it too so
@@ -123,18 +128,44 @@ Golden Hour and Darkroom show ranks as `01`, `02` (zero-padded, `--font-num`); L
 - `node docs/mockups/themes/contrast.mjs` exits 0. Today it prints:
 
   ```
-  light        12 pairs, lowest 4.63:1 (accent (links) on bg)
-  dark         18 pairs, lowest 6.95:1 (text-muted on surface)
-  golden-hour  18 pairs, lowest 4.86:1 (accent (links) on bg)
-  darkroom     18 pairs, lowest 6.42:1 (accent (links) on surface)
+  light        22 pairs, lowest 4.63:1 (accent (links) on bg)
+  dark         28 pairs, lowest 6.12:1 (feature note on feature bg)
+  golden-hour  28 pairs, lowest 4.86:1 (accent (links) on bg)
+  darkroom     28 pairs, lowest 6.42:1 (accent (links) on surface)
   ```
+
+  (The proposal checked 12 and 18 pairs. The build extended the check to the pairs the app really
+  renders — social badges, warning banners, error text, the feature card's body/step/note text and
+  its button — so Light is now 22 pairs and the others 28.)
 - Voted and not-voted upvote buttons differ by fill and border, not by hue alone, in every theme.
 - `npm test` and `npm run typecheck` pass. No change to anything that reads or writes NEAR.
 
-## Proposed ticket (owner to add to PLAN.md)
+## Notes from the build (9 Nov, NH-114)
+
+- **Fonts are loaded with `preload: false`.** Fraunces, Space Mono and Caveat are registered in
+  `app/layout.tsx` but never preloaded, so a Light or Dark visitor downloads none of them: only a
+  playful theme's CSS asks for those families. Chosen over conditional loading, which would need a
+  client-side font swap after first paint.
+- **Light's letter tiles are neutral.** The tint table gives Light one grey pair for all six tints,
+  and board T0 shows grey tiles, so a project's initial is `#F0F2F5`/`#3B4450` there. Light's track
+  *chips* are unchanged, because today's pill is already exactly that pair. If the owner prefers the
+  old five-colour avatar palette in Light, the Light `--tint-*` values are the only thing to change.
+- **Chosen track tints colour the chips only in the playful themes.** In Light and Dark the chip keeps
+  its neutral surface (board T0 again); the `chip-tint-*` rules are scoped to `golden-hour` and
+  `darkroom`.
+- **The sweep added tokens the table did not name**, because the app used those colours inline:
+  `--social-soft(-hover)`, `--warn-*` (two banner variants), `--ok-*`, `--danger*`, `--net-*`,
+  `--skeleton(-soft)`, `--shadow`, and `--feature-body/-step/-muted/-note` plus the feature card's
+  button pair. Every one is defined for all four themes.
+- **The picker's phone home is the footer nav.** The header copy is hidden below 640 px (where the
+  header nav already is, NH-106) and the footer copy appears in its place; both are the same
+  component, so the menu, the storage key and the "System" behaviour are identical.
+
+## Ticket
+
+Added to [`../../PLAN.md`](../../PLAN.md) as **NH-114 (P2)** on 9 Nov, at the owner's instruction.
+The PLAN row is the source of truth for its status; this folder is the design reference.
 
 | ID | Pri | Ticket |
 |---|---|---|
 | NH-114 | P2 | Themes: Light (today), Dark, Golden Hour and Darkroom, built from the tokens and picker in `docs/mockups/themes/README.md`. Step 1 is the token sweep with no visual change; step 2 adds the themes and the picker. Front end only: no chain reads or writes change |
-
-P2 because it is not launch-critical. It lands after the MVP launch unless the owner says otherwise.

@@ -1,11 +1,7 @@
-// Letter tile used on cards and the project page (mockup boards 1 and 2).
-const PALETTE = [
-  { bg: '#E6F4EE', fg: '#0A7F5A' },
-  { bg: '#EAF0FC', fg: '#2557C7' },
-  { bg: '#FDF0E4', fg: '#A04A00' },
-  { bg: '#F1ECFB', fg: '#6A3FC1' },
-  { bg: '#FCEBEE', fg: '#B42345' },
-];
+// Letter tile used on cards and the project page (mockup boards 1 and 2, themes README §3).
+// The colour pair comes from the project's first track (lib/tints.mjs); a project that lists no
+// track still gets a stable tile, from a hash of its id.
+import { tintIndex } from '@/lib/tints.mjs';
 
 function hash(s: string) {
   let h = 0;
@@ -13,16 +9,19 @@ function hash(s: string) {
   return h;
 }
 
-export default function ProjectAvatar({ id, name, size = 48 }: { id: string; name: string; size?: number }) {
-  const { bg, fg } = PALETTE[hash(id) % PALETTE.length];
+export default function ProjectAvatar({
+  id, name, track, size = 48,
+}: { id: string; name: string; track?: string | null; size?: number }) {
+  const tint = track ? tintIndex(track) : (hash(id) % 6) + 1;
   const letter = (name.match(/[A-Za-z0-9]/)?.[0] ?? '?').toUpperCase();
   return (
     <span
       aria-hidden="true"
+      className={`tint-${tint}`}
       style={{
         width: size, height: size, borderRadius: Math.round(size / 4), flexShrink: 0, display: 'flex',
-        alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--font-display)', fontWeight: 700,
-        fontSize: Math.round(size * 0.42), background: bg, color: fg,
+        alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--font-display)',
+        fontWeight: 'var(--display-weight)', fontSize: Math.round(size * 0.42),
       }}
     >
       {letter}

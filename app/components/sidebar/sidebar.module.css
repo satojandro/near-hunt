@@ -5,10 +5,18 @@
   background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-card);
   padding: 18px; min-width: 0; overflow-wrap: anywhere;
 }
-.cardDark { background: var(--text); border-color: var(--text); color: #FFFFFF; }
+.cardDark { background: var(--feature-bg); border-color: var(--feature-bg); color: var(--feature-text); }
+.cardFeature { padding: 0; overflow: hidden; }
+.featureInner { padding: 18px; }
+.sprocket {
+  height: var(--sprocket-h);
+  background: repeating-linear-gradient(90deg, var(--bg) 0 8px, transparent 8px 18px);
+  background-size: auto 6px; background-position: 0 4px; background-repeat: repeat-x;
+}
 
 .head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 12px; }
 .title { margin: 0; font-family: var(--font-display); font-size: 17px; font-weight: 600; line-height: 1.3; }
+/* The three steps keep the body face in every theme; only the card around them changes. */
 .tagLink {
   font-size: 13px; color: var(--social); white-space: nowrap;
   display: inline-flex; align-items: center; min-height: 44px; margin: -12px 0; /* 44 px target, no extra height */
@@ -20,7 +28,7 @@
 .post { display: flex; gap: 10px; min-width: 0; }
 .avatar {
   width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0; object-fit: cover;
-  background: #EAF0FC; color: var(--social); font-weight: 600; font-size: 13px;
+  background: var(--social-soft); color: var(--social); font-weight: 600; font-size: 13px;
   display: flex; align-items: center; justify-content: center;
 }
 .postBody { min-width: 0; flex: 1 1 auto; font-size: 14px; line-height: 1.45; }
@@ -36,7 +44,7 @@
 
 .note { margin: 0; font-size: 14px; line-height: 1.5; color: var(--text-muted); }
 .alert {
-  margin: 0; background: #FDF0E4; color: #7A3800; border-radius: var(--radius); padding: 12px;
+  margin: 0; background: var(--warn-bg); color: var(--warn-text); border-radius: var(--radius); padding: 12px;
   font-size: 14px; line-height: 1.5;
 }
 .more {
@@ -48,15 +56,15 @@
 /* How it works on NEAR */
 .steps {
   margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 10px;
-  font-size: 14px; line-height: 1.5; color: #D5DAE1;
+  font-size: 14px; line-height: 1.5; color: var(--feature-step);
 }
-.steps strong { color: #FFFFFF; font-weight: 600; }
+.steps strong { color: var(--feature-text); font-weight: 600; }
 .code {
   display: block; margin-top: 12px; border-radius: 8px; padding: 10px; font-size: 12.5px; line-height: 1.45;
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; overflow-wrap: anywhere;
   background: var(--bg); color: var(--text);
 }
-.cardDark .code { background: rgba(255, 255, 255, 0.08); color: #E8ECF1; }
+.cardDark .code { background: var(--feature-code-bg); color: var(--feature-code-text); }
 
 /* Built for agents */
 .badge {
@@ -67,7 +75,7 @@
 .body + .body { margin-top: 8px; }
 
 /* Feed skeleton (NH-80) */
-.bone { display: block; background: #ECEEF2; border-radius: 6px; }
+.bone { display: block; background: var(--skeleton); border-radius: 6px; }
 .avatar.bone { border-radius: 50%; }
 @media (prefers-reduced-motion: no-preference) {
   .bone { animation: bonePulse 1.4s ease-in-out infinite; }

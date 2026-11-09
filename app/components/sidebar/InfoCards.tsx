@@ -6,7 +6,10 @@ import styles from './sidebar.module.css';
 
 export function HowItWorks() {
   return (
-    <section className={`${styles.card} ${styles.cardDark}`} aria-labelledby="how-it-works-title">
+    <section className={`${styles.card} ${styles.cardDark} ${styles.cardFeature}`} aria-labelledby="how-it-works-title">
+      {/* Film perforations top and bottom (themes README §3): 0 px tall in Light and Dark. */}
+      <div className={styles.sprocket} aria-hidden="true" />
+      <div className={styles.featureInner}>
       <h2 className={styles.title} id="how-it-works-title" style={{ marginBottom: 12 }}>How it works on NEAR</h2>
       <ol className={styles.steps}>
         <li><strong>Projects</strong> are open JSON records stored under nearhunt.near (keys project/…). No smart contract.</li>
@@ -14,6 +17,8 @@ export function HowItWorks() {
         <li><strong>Upvotes and comments</strong> are written from your own NEAR account: one active upvote per account per project, and comments as comment/… rows signed the same way.</li>
       </ol>
       <code className={styles.code}>POST kv.main.fastnear.com/v0/latest/nearhunt.near/nearhunt.near</code>
+      </div>
+      <div className={styles.sprocket} aria-hidden="true" />
     </section>
   );
 }

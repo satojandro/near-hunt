@@ -69,10 +69,20 @@ async function Directory({ searchParams }: { searchParams: Promise<SearchParamsR
   const noVotesYet = state.sort === 'upvoted' && results.every((p) => !votes[p.submission_id]);
   const noCommentsYet = state.sort === 'discussed' && results.every((p) => !discussion.counts[p.submission_id]);
 
+  // NH-114: the snapshot card is decorative (aria-hidden) and only drawn by the playful themes
+  // (globals.css sets --snapshot-display). It shows the current #1 — the first row of the sort on
+  // screen — with a camera-style date stamp.
+  const top = results[0];
+  const now = new Date();
+  const snapshotStamp = `'${String(now.getFullYear()).slice(-2)} `
+    + `${String(now.getMonth() + 1).padStart(2, '0')} ${String(now.getDate()).padStart(2, '0')}`;
+  const snapshotInitial = (top?.name.match(/[A-Za-z0-9]/)?.[0] ?? '?').toUpperCase();
+
   return (
     <>
       <StaleBanner row />
       <section className="container dir-hero">
+        <div className="dir-hero-copy">
         <p className="dir-eyebrow">NEAR Hackathon · 1–14 Nov 2026</p>
         <h1>{total} projects. Upvote the ones you would actually use.</h1>
         <p className="dir-lede">
@@ -83,6 +93,16 @@ async function Directory({ searchParams }: { searchParams: Promise<SearchParamsR
             rows cannot be read — never rendered as "0 people". */}
         {people.available && people.items.length > 0 ? (
           <Participants people={people.items} label={participantsLabel(people.items.length) ?? ''} />
+        ) : null}
+        </div>
+        {top ? (
+          <figure className="dir-snapshot" aria-hidden="true">
+            <div className="dir-snapshot-frame">
+              <span className="dir-snapshot-letter">{snapshotInitial}</span>
+              <span className="dir-snapshot-stamp">{snapshotStamp}</span>
+            </div>
+            <figcaption className="dir-snapshot-caption">top of the hunt: {top.name}</figcaption>
+          </figure>
         ) : null}
       </section>
 

@@ -1,5 +1,8 @@
-/* Design tokens taken from docs/mockups (boards 1, 2, 5, 6). */
-:root {
+/* Design tokens (docs/mockups) plus the four themes of docs/mockups/themes/README.md (NH-114).
+   A theme is this same variable set under html[data-theme="…"]; no component should hold a colour
+   of its own. Light keeps today's values, so the token sweep alone changes nothing on screen. */
+:root,
+html[data-theme="light"] {
   --bg: #F5F6F8;
   --surface: #FFFFFF;
   --surface-muted: #F0F2F5;
@@ -11,14 +14,323 @@
   --accent: #0A7F5A;
   --accent-hover: #075E43;
   --accent-soft: #E6F4EE;
+  --on-accent: #FFFFFF;
   --social: #2557C7;
+  --social-soft: #EAF0FC;
+  --social-soft-hover: #DCE6FA;
+  --danger: #B42318;
+  --danger-hover: #8C1B12;
+  --danger-alt: #B42345;
+  --warn-bg: #FDF0E4;
+  --warn-text: #7A3800;
+  --warn-bg-strong: #FFF6E5;
+  --warn-border-strong: #F2D49B;
+  --warn-text-strong: #5C4200;
+  --warn-em-strong: #3D2C00;
+  --ok-border: #B7E2CF;
+  --ok-text: #0B4B36;
+  --ok-em: #073B2A;
+  --net-bg: #FDF0E2;
+  --net-text: #8A4B00;
+  --icon-muted: #8A93A0;
+  --skeleton: #ECEEF2;
+  --skeleton-soft: #F2F4F7;
+  --shadow: rgba(18, 22, 28, 0.12);
+  /* Buttons filled with the page's ink: Connect, the selected sort tab, the "All" chip. */
+  --btn-bg: #12161C;
+  --btn-bg-hover: #2A313B;
+  --btn-text: #FFFFFF;
+  /* The inverted cards: "How it works", the on-chain record, "straight from the chain". */
+  --feature-bg: #12161C;
+  --feature-text: #FFFFFF;
+  --feature-body: #E6EAF0;
+  --feature-step: #D5DAE1;
+  --feature-muted: #B5BCC7;
+  --feature-note: #A9B2BF;
+  --feature-link: #7FE0B9;
+  --feature-link-hover: #B4F0D6;
+  --feature-code-bg: rgba(255, 255, 255, 0.08);
+  --feature-code-text: #E8ECF1;
+  --feature-btn-bg: #FFFFFF;
+  --feature-btn-text: #12161C;
+  --feature-btn-hover: #E9ECF0;
+  --brand-mark-bg: #12161C;
+  --brand-mark-fg: #FFFFFF;
+  /* Flourishes: off in the calm themes (README §3). */
+  --stripe-h: 0px;
+  --stripe-1: #0A7F5A;
+  --stripe-2: #12161C;
+  --stripe-3: #5A6472;
+  --stripe-4: #C9CED6;
+  --sprocket-h: 0px;
+  --snapshot-display: none;
+  --snapshot-frame: #FFFFFF;
+  --snapshot-shadow: rgba(18, 22, 28, 0.18);
+  --snapshot-stamp: #0A7F5A;
+  --snapshot-letter: #FFFFFF;
+  --snapshot-caption: #12161C;
+  /* Track tints (lib/tints.mjs). Calm themes keep them neutral, as in board T0. */
+  --tint-1-bg: #F0F2F5;
+  --tint-1-fg: #3B4450;
+  --tint-2-bg: #F0F2F5;
+  --tint-2-fg: #3B4450;
+  --tint-3-bg: #F0F2F5;
+  --tint-3-fg: #3B4450;
+  --tint-4-bg: #F0F2F5;
+  --tint-4-fg: #3B4450;
+  --tint-5-bg: #F0F2F5;
+  --tint-5-fg: #3B4450;
+  --tint-6-bg: #F0F2F5;
+  --tint-6-fg: #3B4450;
+
   --radius-sm: 6px;
   --radius: 10px;
   --radius-card: 14px;
   --font-body: var(--font-inter), system-ui, sans-serif;
   --font-display: var(--font-grotesk), system-ui, sans-serif;
+  --font-num: var(--font-inter), system-ui, sans-serif;
+  --display-weight: 700;
   --page-max: 1200px;
   --gutter: 24px;
+}
+
+html[data-theme="dark"] {
+  --bg: #0D1117;
+  --surface: #151B23;
+  --surface-muted: #1C232D;
+  --border: #283039;
+  --border-strong: #3A4350;
+  --text: #E6EAF0;
+  --text-muted: #9BA5B3;
+  --text-chip: #C5CCD6;
+  --accent: #34D399;
+  --accent-hover: #6EE7B7;
+  --accent-soft: #10302A;
+  --on-accent: #04221A;
+  --social: #7AA2FF;
+  --social-soft: #16243B;
+  --social-soft-hover: #1D3050;
+  --danger: #FF9B8F;
+  --danger-hover: #FFC0B8;
+  --danger-alt: #FF9B8F;
+  --warn-bg: #33240F;
+  --warn-text: #F0C48B;
+  --warn-bg-strong: #3A2A0E;
+  --warn-border-strong: #6B5320;
+  --warn-text-strong: #F5D9A8;
+  --warn-em-strong: #FFF0D0;
+  --ok-border: #1E5C46;
+  --ok-text: #9FE8C9;
+  --ok-em: #D2F7E6;
+  --net-bg: #33240F;
+  --net-text: #F0C48B;
+  --icon-muted: #7C8794;
+  --skeleton: #212934;
+  --skeleton-soft: #26303B;
+  --shadow: rgba(0, 0, 0, 0.45);
+  --btn-bg: #E6EAF0;
+  --btn-bg-hover: #C5CCD6;
+  --btn-text: #0D1117;
+  --feature-bg: #0A2A20;
+  --feature-text: #D7F5E9;
+  --feature-body: #B9D8CC;
+  --feature-step: #C6E3D6;
+  --feature-muted: #9FC2B4;
+  --feature-note: #8FA9A0;
+  --feature-link: #34D399;
+  --feature-link-hover: #6EE7B7;
+  --feature-code-bg: rgba(255, 255, 255, 0.08);
+  --feature-code-text: #CFE9DE;
+  --feature-btn-bg: #D7F5E9;
+  --feature-btn-text: #0A2A20;
+  --feature-btn-hover: #B9E4D3;
+  --brand-mark-bg: #E6EAF0;
+  --brand-mark-fg: #0D1117;
+
+  --stripe-h: 0px;
+  --sprocket-h: 0px;
+  --snapshot-display: none;
+
+  --tint-1-bg: #1C232D;
+  --tint-1-fg: #F5B97A;
+  --tint-2-bg: #1C232D;
+  --tint-2-fg: #6EE7B7;
+  --tint-3-bg: #1C232D;
+  --tint-3-fg: #F0A3B5;
+  --tint-4-bg: #1C232D;
+  --tint-4-fg: #9DB8FF;
+  --tint-5-bg: #1C232D;
+  --tint-5-fg: #C9E07A;
+  --tint-6-bg: #1C232D;
+  --tint-6-fg: #C4A7FF;
+}
+
+html[data-theme="golden-hour"] {
+  --bg: #F4EBD9;
+  --surface: #FFFAF0;
+  --surface-muted: #F1E4C9;
+  --border: #E4D2AE;
+  --border-strong: #C8AF82;
+  --text: #2B1D12;
+  --text-muted: #6B5540;
+  --text-chip: #4A3727;
+  --accent: #B83A0B;
+  --accent-hover: #8F2C06;
+  --accent-soft: #FDE3CF;
+  --on-accent: #FFF8EC;
+  --social: #1E5A87;
+  --social-soft: #E2E9F1;
+  --social-soft-hover: #D3DFEC;
+  --danger: #A8290F;
+  --danger-hover: #8A210C;
+  --danger-alt: #A8290F;
+  --warn-bg: #F7E2C2;
+  --warn-text: #7A3B00;
+  --warn-bg-strong: #F9E7C9;
+  --warn-border-strong: #D9AE6A;
+  --warn-text-strong: #5C3B00;
+  --warn-em-strong: #3A2500;
+  --ok-border: #A9CDB4;
+  --ok-text: #1F5136;
+  --ok-em: #143C27;
+  --net-bg: #F7E2C2;
+  --net-text: #7A3B00;
+  --icon-muted: #8A7256;
+  --skeleton: #EFE2C8;
+  --skeleton-soft: #E7D8BA;
+  --shadow: rgba(43, 29, 18, 0.18);
+  --btn-bg: #2B1D12;
+  --btn-bg-hover: #4A3727;
+  --btn-text: #FFF8EC;
+  --feature-bg: #2B1D12;
+  --feature-text: #F7EBD3;
+  --feature-body: #E7D3B2;
+  --feature-step: #E6D0AE;
+  --feature-muted: #D9C09B;
+  --feature-note: #C4B199;
+  --feature-link: #F5B700;
+  --feature-link-hover: #FFD65C;
+  --feature-code-bg: rgba(255, 255, 255, 0.08);
+  --feature-code-text: #F7EBD3;
+  --feature-btn-bg: #FFF8EC;
+  --feature-btn-text: #2B1D12;
+  --feature-btn-hover: #F1E4C9;
+  --brand-mark-bg: #B83A0B;
+  --brand-mark-fg: #FFF8EC;
+
+  --stripe-h: 8px;
+  --stripe-1: #F5B700;
+  --stripe-2: #F08A00;
+  --stripe-3: #D7261E;
+  --stripe-4: #7A2E12;
+  --sprocket-h: 14px;
+  --snapshot-display: flex;
+  --snapshot-frame: #FFFDF7;
+  --snapshot-shadow: rgba(43, 29, 18, 0.18);
+  --snapshot-stamp: #FF6B1A;
+  --snapshot-letter: #FFF3DA;
+  --snapshot-caption: #2B1D12;
+
+  --tint-1-bg: #FBE3B0;
+  --tint-1-fg: #6B4400;
+  --tint-2-bg: #D9EBE6;
+  --tint-2-fg: #1F5C55;
+  --tint-3-bg: #F9D9D2;
+  --tint-3-fg: #8A2A14;
+  --tint-4-bg: #DCE6F2;
+  --tint-4-fg: #1E4A75;
+  --tint-5-bg: #E6EBCF;
+  --tint-5-fg: #4D5A1A;
+  --tint-6-bg: #EEDCEC;
+  --tint-6-fg: #6B2D65;
+
+  --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
+  --font-num: var(--font-space-mono), ui-monospace, monospace;
+  --display-weight: 800;
+}
+
+html[data-theme="darkroom"] {
+  --bg: #120B09;
+  --surface: #1C1310;
+  --surface-muted: #261A15;
+  --border: #3A2A22;
+  --border-strong: #574034;
+  --text: #F5E9D6;
+  --text-muted: #BBA38A;
+  --text-chip: #E0CDB4;
+  --accent: #FF6A3D;
+  --accent-hover: #FF8C66;
+  --accent-soft: #3B1A0F;
+  --on-accent: #1A0A04;
+  --social: #7CC6DE;
+  --social-soft: #13333C;
+  --social-soft-hover: #1A4450;
+  --danger: #FF9B8F;
+  --danger-hover: #FFC0B8;
+  --danger-alt: #FF9B8F;
+  --warn-bg: #3A1E0A;
+  --warn-text: #FFC23D;
+  --warn-bg-strong: #40220C;
+  --warn-border-strong: #7A5220;
+  --warn-text-strong: #FFD98A;
+  --warn-em-strong: #FFF0C9;
+  --ok-border: #2F6A52;
+  --ok-text: #A8EBCE;
+  --ok-em: #D6F8E8;
+  --net-bg: #3A1E0A;
+  --net-text: #FFC23D;
+  --icon-muted: #9C8672;
+  --skeleton: #2A1D18;
+  --skeleton-soft: #31231D;
+  --shadow: rgba(0, 0, 0, 0.55);
+  --btn-bg: #F5E9D6;
+  --btn-bg-hover: #E0CDB4;
+  --btn-text: #1A0A04;
+  --feature-bg: #2A0E08;
+  --feature-text: #F5E9D6;
+  --feature-body: #E3CDB2;
+  --feature-step: #E8D6BC;
+  --feature-muted: #C9AF92;
+  --feature-note: #C0A88F;
+  --feature-link: #FFC23D;
+  --feature-link-hover: #FFD98A;
+  --feature-code-bg: rgba(255, 255, 255, 0.08);
+  --feature-code-text: #F0DCC4;
+  --feature-btn-bg: #F5E9D6;
+  --feature-btn-text: #1A0A04;
+  --feature-btn-hover: #E0CDB4;
+  --brand-mark-bg: #FF6A3D;
+  --brand-mark-fg: #1A0A04;
+
+  --stripe-h: 8px;
+  --stripe-1: #FFC23D;
+  --stripe-2: #FF8A1F;
+  --stripe-3: #E5332A;
+  --stripe-4: #8C3A1E;
+  --sprocket-h: 14px;
+  --snapshot-display: flex;
+  --snapshot-frame: #26190F;
+  --snapshot-shadow: rgba(0, 0, 0, 0.6);
+  --snapshot-stamp: #FFB26A;
+  --snapshot-letter: #FFF3DA;
+  --snapshot-caption: #F5E9D6;
+
+  --tint-1-bg: #3A2A0E;
+  --tint-1-fg: #FFC23D;
+  --tint-2-bg: #13302C;
+  --tint-2-fg: #7FD6C8;
+  --tint-3-bg: #3A1810;
+  --tint-3-fg: #FF9B7A;
+  --tint-4-bg: #152A3D;
+  --tint-4-fg: #8EC3F0;
+  --tint-5-bg: #262E12;
+  --tint-5-fg: #C5D77A;
+  --tint-6-bg: #33192F;
+  --tint-6-fg: #E7A6DD;
+
+  --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
+  --font-num: var(--font-space-mono), ui-monospace, monospace;
+  --display-weight: 800;
 }
 
 @media (max-width: 640px) {
@@ -45,24 +357,91 @@ a:hover { color: var(--accent-hover); }
   overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
 }
 
+/* Track tints (lib/tints.mjs): six pairs for chips and project avatars. `:root` prefix so these
+   beat a component's own single-class rule whatever order the stylesheets load in. */
+:root .tint-1 { background: var(--tint-1-bg); color: var(--tint-1-fg); }
+:root .tint-2 { background: var(--tint-2-bg); color: var(--tint-2-fg); }
+:root .tint-3 { background: var(--tint-3-bg); color: var(--tint-3-fg); }
+:root .tint-4 { background: var(--tint-4-bg); color: var(--tint-4-fg); }
+:root .tint-5 { background: var(--tint-5-bg); color: var(--tint-5-fg); }
+:root .tint-6 { background: var(--tint-6-bg); color: var(--tint-6-fg); }
+
+/* Track chips wear their tint only in the playful themes, as in board T2; Light and Dark keep
+   today's neutral chip. The selected chip is a filled button and never takes a tint. */
+html[data-theme="golden-hour"] .chip-tint-1:not([aria-current="true"]),
+html[data-theme="darkroom"] .chip-tint-1:not([aria-current="true"]) { background: var(--tint-1-bg); color: var(--tint-1-fg); border-color: var(--tint-1-bg); }
+html[data-theme="golden-hour"] .chip-tint-2:not([aria-current="true"]),
+html[data-theme="darkroom"] .chip-tint-2:not([aria-current="true"]) { background: var(--tint-2-bg); color: var(--tint-2-fg); border-color: var(--tint-2-bg); }
+html[data-theme="golden-hour"] .chip-tint-3:not([aria-current="true"]),
+html[data-theme="darkroom"] .chip-tint-3:not([aria-current="true"]) { background: var(--tint-3-bg); color: var(--tint-3-fg); border-color: var(--tint-3-bg); }
+html[data-theme="golden-hour"] .chip-tint-4:not([aria-current="true"]),
+html[data-theme="darkroom"] .chip-tint-4:not([aria-current="true"]) { background: var(--tint-4-bg); color: var(--tint-4-fg); border-color: var(--tint-4-bg); }
+html[data-theme="golden-hour"] .chip-tint-5:not([aria-current="true"]),
+html[data-theme="darkroom"] .chip-tint-5:not([aria-current="true"]) { background: var(--tint-5-bg); color: var(--tint-5-fg); border-color: var(--tint-5-bg); }
+html[data-theme="golden-hour"] .chip-tint-6:not([aria-current="true"]),
+html[data-theme="darkroom"] .chip-tint-6:not([aria-current="true"]) { background: var(--tint-6-bg); color: var(--tint-6-fg); border-color: var(--tint-6-bg); }
+
+/* Ranks read 1, 2 in the calm themes and 01, 02 in the playful pair (README §3). */
+.rank-pad { display: none; }
+html[data-theme="golden-hour"] .rank-pad,
+html[data-theme="darkroom"] .rank-pad { display: inline; }
+html[data-theme="golden-hour"] .rank-plain,
+html[data-theme="darkroom"] .rank-plain { display: none; }
+
 /* Header (shared) */
 .site-header { background: var(--surface); border-bottom: 1px solid var(--border); }
-.site-header .container { display: flex; flex-wrap: wrap; align-items: center; gap: 20px; padding-top: 14px; padding-bottom: 14px; }
+.site-header .container { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; padding-top: 14px; padding-bottom: 14px; }
 .brand { display: flex; align-items: center; gap: 10px; min-height: 44px; text-decoration: none; color: var(--text); }
 .brand:hover { color: var(--text); }
-.brand-mark { width: 34px; height: 34px; border-radius: 9px; background: var(--text); display: flex; align-items: center; justify-content: center; }
-.brand-name { font-family: var(--font-display); font-weight: 700; font-size: 20px; }
+.brand-mark {
+  width: 34px; height: 34px; border-radius: 9px; background: var(--brand-mark-bg); color: var(--brand-mark-fg);
+  display: flex; align-items: center; justify-content: center;
+}
+.brand-name { font-family: var(--font-display); font-weight: var(--display-weight); font-size: 20px; }
 .site-nav { display: flex; gap: 18px; font-size: 15px; font-weight: 500; }
 .site-nav a { color: var(--text-muted); text-decoration: none; min-height: 44px; display: inline-flex; align-items: center; }
 .site-nav a[aria-current="page"] { color: var(--text); }
 .header-spacer { flex: 1 1 0; }
 .connect-btn {
-  background: var(--text); color: #fff; font-weight: 600; font-size: 15px; padding: 0 18px;
+  background: var(--btn-bg); color: var(--btn-text); font-weight: 600; font-size: 15px; padding: 0 18px;
   min-height: 44px; display: inline-flex; align-items: center; border-radius: var(--radius);
   border: 0; font-family: inherit; cursor: pointer;
 }
-.connect-btn:hover { background: #2A313B; }
+.connect-btn:hover { background: var(--btn-bg-hover); }
 .connect-btn:disabled, .connect-btn[aria-busy="true"] { opacity: 0.7; cursor: progress; }
+
+/* Theme picker (README §4). On phones the header copy is hidden and the footer copy shows. */
+.theme-picker { position: relative; }
+.theme-btn {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 12px;
+  border: 1px solid var(--border); border-radius: 999px; background: var(--surface); color: var(--text);
+  font: inherit; font-size: 14px; font-weight: 600; cursor: pointer;
+}
+.theme-btn:hover { border-color: var(--border-strong); }
+.theme-swatch { width: 18px; height: 18px; border-radius: 999px; flex-shrink: 0; box-shadow: inset 0 0 0 1px var(--border); }
+.theme-caret { flex-shrink: 0; color: var(--text-muted); }
+.theme-menu {
+  position: absolute; right: 0; top: calc(100% + 6px); z-index: 30; min-width: 244px;
+  background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-card);
+  box-shadow: 0 8px 24px var(--shadow); padding: 6px;
+}
+.theme-item {
+  display: flex; align-items: center; gap: 10px; width: 100%; min-height: 44px; padding: 0 10px;
+  border: 0; border-radius: var(--radius-sm); background: none; color: var(--text);
+  font: inherit; font-size: 14px; font-weight: 600; text-align: left; cursor: pointer;
+}
+.theme-item:hover { background: var(--surface-muted); }
+.theme-item[aria-checked="true"] { background: var(--surface-muted); }
+.theme-item-hint { margin-left: auto; font-size: 12.5px; font-weight: 500; color: var(--text-muted); }
+.theme-check { margin-left: auto; color: var(--accent); flex-shrink: 0; }
+.theme-item-hint + .theme-check { margin-left: 8px; }
+
+/* The four-band stripe under the header; height 0 in the calm themes (README §3). */
+.theme-stripe {
+  height: var(--stripe-h);
+  background: linear-gradient(180deg, var(--stripe-1) 0 25%, var(--stripe-2) 25% 50%, var(--stripe-3) 50% 75%, var(--stripe-4) 75%);
+}
+
 /* Signed in: account pill with a Disconnect menu (mockup board 2 header). */
 .account-menu { position: relative; min-width: 0; }
 .account-btn {
@@ -72,15 +451,15 @@ a:hover { color: var(--accent-hover); }
 }
 .account-btn:hover { border-color: var(--border-strong); }
 .account-initial {
-  width: 32px; height: 32px; flex-shrink: 0; border-radius: 999px; background: #E8EEFB; color: var(--social);
+  width: 32px; height: 32px; flex-shrink: 0; border-radius: 999px; background: var(--social-soft); color: var(--social);
   display: inline-flex; align-items: center; justify-content: center;
 }
 .account-id { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.account-net { font-size: 11px; font-weight: 600; color: #8A4B00; background: #FDF0E2; border-radius: 999px; padding: 1px 8px; }
+.account-net { font-size: 11px; font-weight: 600; color: var(--net-text); background: var(--net-bg); border-radius: 999px; padding: 1px 8px; }
 .account-pop {
   position: absolute; right: 0; top: calc(100% + 6px); z-index: 20; min-width: 220px;
   background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-card);
-  box-shadow: 0 8px 24px rgba(18, 22, 28, 0.12); padding: 8px;
+  box-shadow: 0 8px 24px var(--shadow); padding: 8px;
 }
 .account-pop-note { margin: 4px 8px 6px; font-size: 13px; color: var(--text-muted); }
 .account-pop-item {
@@ -96,12 +475,18 @@ a:hover { color: var(--accent-hover); }
 .site-footer .container { padding-top: 20px; padding-bottom: 28px; font-size: 13px; color: var(--text-muted); display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: space-between; }
 /* NH-106: the header nav is hidden at phone width, so these links are the phone's only route to
    /open-data and the correction form. */
-.footer-links { display: flex; flex-wrap: wrap; gap: 4px 18px; width: 100%; }
+.footer-links { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 18px; width: 100%; }
 .footer-links a { color: var(--text-muted); text-decoration: none; min-height: 44px; display: inline-flex; align-items: center; }
 .footer-links a:hover { color: var(--text); text-decoration: underline; }
 .footer-privacy { width: 100%; }
+
+/* The picker's phone home: the header nav is hidden below 640 px (NH-106), so the footer carries it. */
+.footer-theme { display: none; }
+.footer-theme .theme-menu { left: 0; right: auto; }
 @media (max-width: 640px) {
   .footer-links { gap: 0 20px; }
+  .site-header .theme-picker { display: none; }
+  .footer-theme { display: block; }
 }
 
 /* Keep brand, nav and connect on one row at phone width. */

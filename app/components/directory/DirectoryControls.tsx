@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { buildHref, type DirectoryState, type TrackChip } from '@/lib/directory.mjs';
 import { trackLabel } from '@/lib/tracks.mjs';
+import { tintIndex } from '@/lib/tints.mjs';
 
 const SORT_TABS = [
   { sort: 'upvoted', label: 'Most upvoted' },
@@ -44,7 +45,7 @@ export function TrackChips({ state, chips }: { state: DirectoryState; chips: Tra
           <Link
             key={c.track ?? '__all'}
             href={buildHref(state, { track: c.track })}
-            className="dir-chip"
+            className={`dir-chip${c.track ? ` chip-tint-${tintIndex(c.track)}` : ''}`}
             aria-current={c.active ? 'true' : undefined}
             aria-label={`${label}, ${c.count} ${c.count === 1 ? 'project' : 'projects'}`}
             scroll={false}

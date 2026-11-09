@@ -3,6 +3,7 @@ import ProjectAvatar from '@/app/components/ProjectAvatar';
 import { hostOf } from '@/lib/directory.mjs';
 import type { ListingItem } from '@/lib/listing.mjs';
 import { trackLabel } from '@/lib/tracks.mjs';
+import { tintClass } from '@/lib/tints.mjs';
 import UpvoteButton from '@/app/components/vote/UpvoteButton';
 import ds from '@/app/components/discussion/discussion.module.css';
 
@@ -14,8 +15,11 @@ export default function ProjectCard({ item, rank, votes, comments }: { item: Lis
   const host = hostOf(item.demo_url);
   return (
     <li className="dir-card">
-      <span className="dir-rank" aria-hidden="true">{rank}</span>
-      <span className="dir-avatar"><ProjectAvatar id={item.submission_id} name={item.name} /></span>
+      {/* Playful themes zero-pad the rank; the calm themes keep today's "1" (globals.css). */}
+      <span className="dir-rank" aria-hidden="true">
+        <span className="rank-plain">{rank}</span><span className="rank-pad">{String(rank).padStart(2, '0')}</span>
+      </span>
+      <span className="dir-avatar"><ProjectAvatar id={item.submission_id} name={item.name} track={item.tracks[0]} /></span>
       <div className="dir-card-body">
         <Link href={`/p/${encodeURIComponent(item.submission_id)}`} className="dir-card-link">
           <span className="visually-hidden">{rank}. </span>{item.name}
@@ -23,7 +27,7 @@ export default function ProjectCard({ item, rank, votes, comments }: { item: Lis
         <div className="dir-card-meta">
           <span className="visually-hidden">Tracks:</span>
           {item.tracks.map((t) => (
-            <span key={t} className="dir-pill">{trackLabel(t)}</span>
+            <span key={t} className={`dir-pill ${tintClass(t)}`}>{trackLabel(t)}</span>
           ))}
           {host ? (
             <>

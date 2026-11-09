@@ -2,7 +2,7 @@
 
 /* ---- Indexer slow banner (NH-82) ---- */
 .banner {
-  background: #FDF0E4; color: #7A3800; border-radius: var(--radius); padding: 12px 14px;
+  background: var(--warn-bg); color: var(--warn-text); border-radius: var(--radius); padding: 12px 14px;
   font-size: 14px; line-height: 1.5; margin: 0; overflow-wrap: anywhere;
 }
 .banner strong { font-weight: 600; }
@@ -14,7 +14,7 @@
   background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-card);
   padding: 40px 24px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 10px;
 }
-.emptyIcon { color: #8A93A0; }
+.emptyIcon { color: var(--icon-muted); }
 .emptyTitle {
   margin: 0; font-family: var(--font-display); font-size: 20px; font-weight: 700; line-height: 1.3;
   overflow-wrap: anywhere; max-width: 100%;
@@ -26,8 +26,8 @@
   display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 18px;
   border-radius: var(--radius); font: inherit; font-size: 15px; font-weight: 600; text-decoration: none; cursor: pointer;
 }
-.btnDark { background: var(--text); color: #fff; border: 0; }
-.btnDark:hover { background: #2A313B; color: #fff; }
+.btnDark { background: var(--btn-bg); color: var(--btn-text); border: 0; }
+.btnDark:hover { background: var(--btn-bg-hover); color: var(--btn-text); }
 .btnLight { background: var(--surface); color: var(--text); border: 1px solid var(--border-strong); }
 .btnLight:hover { border-color: var(--text); color: var(--text); }
 
@@ -43,8 +43,8 @@
 .errorActions > * { flex: 1 1 160px; }
 
 /* ---- Skeletons (NH-80) ---- */
-.bone { display: block; background: #ECEEF2; border-radius: 6px; }
-.boneSoft { display: block; background: #F2F4F7; border-radius: 6px; }
+.bone { display: block; background: var(--skeleton); border-radius: 6px; }
+.boneSoft { display: block; background: var(--skeleton-soft); border-radius: 6px; }
 @media (prefers-reduced-motion: no-preference) {
   .bone, .boneSoft { animation: pulse 1.4s ease-in-out infinite; }
 }
