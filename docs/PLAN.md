@@ -270,7 +270,7 @@ infrastructure — the remaining work is the server-side posting path itself.
 |---|---|---|
 | NH-50 | P1 | Profile header from `GET api2.near.social/v1/accounts/{id}` with an "Edit on near.social" link |
 | NH-51 | P1 | My upvotes: `POST /v0/latest/nearhunt.near/{me}` with prefix `vote/` |
-| NH-52 | P2 | My comments: the user's near.social posts filtered to NEAR Hunt threads |
+| NH-52 | P2 | My comments: the account's `comment/` rows (the near.social-posts version is obsolete since NH-44), newest first, with the project name and a link to the comment | **Done and live 9 Nov (`ea5c582`, deploy `qk08lbdb4`)** — `readAccountCommentRows` (writer-scoped `comment/` prefix) + `accountComments` in `lib/account.mjs`; the Comments tab joins rows with live projects, drops deletions, empty text, hide-list entries and projects no longer in the feed, and uses the project page's own `created_at`/text rules. `CommentsList` shows project, text (5-line clamp), "Commented … · block N" and a link to the anchor. A read failure says so; the tab loads only when selected. Evidence: `npm test` 252/252 (4 new account tests); live `https://nearhunt.xyz/u/alejandro.near?tab=comments` → 200 with the Tripwire comment, an unknown account → the empty state, and `/p/bb739197-…` carries `id="c-alejandro.near-1794187016743"` so the link lands |
 | NH-53 | P1 | Remove a vote from the list (reuses NH-32) |
 
 ### Boards 5 and 6 — Mobile · Day 3 polish
