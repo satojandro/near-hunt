@@ -180,6 +180,26 @@ enriched) landed in five transactions — `SMarR1rf…`, `7qX3V7Xe…`, `GqM47Jw
 builder's own description and 98 a verified repository.** `--refresh-enriched` permits that rewrite
 only for fields an earlier enrichment run set — it never touches a builder-supplied value.
 
+#### NH-96 — link enrichment, no AI (owner, 9 Nov) · Days 6–7 · P1
+
+Same policy as NH-95: verbatim builder text, a repository only when it answers `git ls-remote`,
+nothing written by a model. Read-only until the owner approves the importer diff.
+
+Gaps it targets, counted 9 Nov with `readProjects()`: 281 records; 16 without a description;
+183 without a verified repository; 111 with unlabelled `links` from the X post; 269 whose
+`demo_url` is the X post itself; none with an image.
+
+| Step | What | Done when |
+|---|---|---|
+| 1 | Show the `links` array on `/p/{id}`. Today `linkRows()` in `lib/project-view.mjs` renders only `demo_url` and `repository_url`, so e.g. Aegis hides `aegis-demo-beta.vercel.app` | Every record with `links` shows them; unit test |
+| 2 | `scripts/enrich.mjs --links`: visit each link once; record HTTP status, page `<title>` and `og:image` | Proposal file lists one row per link with its result; no network writes |
+| 3 | Label links: a GitHub URL that answers `git ls-remote` becomes the repository; other hosts become website or demo; unreachable links are kept and marked | The verified-repository count is re-measured and stated with the command |
+| 4 | Flag possible duplicates: different submissions sharing a repository or demo URL. Flag only, never merge | List in the proposal for the owner to read |
+| 5 | Importer dry run of the result; the owner approves the exact diff before `--execute --yes` | Diff applied, read back from the indexer, `npm run validate:schema` clean |
+
+New fields are additive (the schema allows extra properties), so no existing field is renamed or
+removed. Images are referenced by URL, never copied.
+
 ### Board 1 — Directory (home) · Day 1
 
 **Status: done 8 Nov** — NH-10–NH-16 are on `main`; evidence in the Day 1 status block above.
