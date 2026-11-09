@@ -15,8 +15,10 @@ projects without browser automation.
 > public FastData indexer. 265 records now carry the builder's own description and 98 a verified
 > repository, filled by a separate approval-gated enrichment pass. `nearhunt.near` also has a
 > near.social profile that discloses the account is automated. The directory, project pages and
-> connect/upvote flow are live at **https://nearhunt.xyz**. Discussion, the account page,
-> the indexer-outage states and the 390 px pass are merged and **deployed** (8 Nov); the
+> connect/upvote flow are live at **https://nearhunt.xyz**. Comments moved from near.social replies
+> to rows on `nearhunt.near` (NH-44): built and verified against `nearhunt.testnet`, **not yet
+> deployed**. The account page, the indexer-outage states and the 390 px pass are merged and
+> **deployed** (8 Nov); the
 > [Day 3 signing and wallet checks](docs/runbooks/day3-signing-checklist.md) are still pending.
 > Day 4 — the read-only JSON API (`/api/projects…`), `/SKILL.md` for agents and the `/open-data`
 > page — is merged to `main` (PR #6) and **deployed** (8 Nov).
@@ -37,7 +39,8 @@ a machine-readable record that outlives the hackathon.
 - **Project page** — permanent URL, full description, source submission link, GitHub and demo
   links, upvote control, threaded discussion.
 - **Voting and comments** — connect a NEAR account, one active upvote per account per project.
-  Anonymous browsing always works. Votes are community signals, never official judging.
+  Comments are `comment/{id}/{ms}` rows signed with the same login key; only the author can delete
+  one. Anonymous browsing always works. Votes are community signals, never official judging.
 - **Open data** — a versioned `nearhunt/project/1` JSON record per project, fetchable
   independently of the frontend.
 - **Agent surface** — a documented read-only API plus a `SKILL.md` so an operator can tell an
@@ -56,7 +59,7 @@ anyone, with no bespoke contract to deploy or audit.
 | Project records | FastData KV writes (`__fastdata_kv`) to `nearhunt.near` | **live on mainnet** (281 records) |
 | Upvotes | `vote/{project_id}` keys written by the voter, so one vote per account | live (Day 2) |
 | Reading records | `https://kv.main.fastnear.com`, scoped to records written by `nearhunt.near` | verified |
-| Discussion | near.social `social-kv/1` replies to one post per project | live (Day 3); no project has a post yet (NH-40) |
+| Discussion | `comment/{project_id}/{ms}` rows in `nearhunt.near`, written by the commenter, signed with the login key (NH-44) | built, testnet-verified; not yet deployed |
 | Public read API | Next.js route handlers over the same readers, `{items, next_cursor}` | live (Day 4, PR #6) |
 | Indexing | FastData indexer (no custom block scanning) | verified |
 | Smart contract | none — deliberately | proven unnecessary |
@@ -100,7 +103,9 @@ lib/
   directory.mjs              search, track filter, sort and URL state
   api.mjs                    the read API's pure logic: params, cursors, sort, pagination, bodies
   votes.mjs                  vote rows: one active vote per writer, tallies, voters
-  discussion.mjs             near.social thread reads, validated
+  comments.mjs               comment rows: keys, validation, threading, hide list, write/confirm
+  comments.ts                cached server reads for the discussion page and counts
+  discussion.mjs             near.social post builders (NH-40 promotion), validated
   project-view.mjs           project-page helpers: safe links, record rows, metadata
   social.mjs                 the #nearhunt sidebar feed, validated and reduced to plain text
   import-plan.mjs            diff of feed vs chain: what the importer would write

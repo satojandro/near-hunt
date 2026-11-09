@@ -29,7 +29,7 @@ const ENDPOINTS = [
   { path: '/api/projects?track=&sort=&q=&cursor=&limit=', what: 'A page of projects with their upvote counts' },
   { path: '/api/projects/{id}', what: 'One project record, plus where it lives on chain' },
   { path: '/api/projects/{id}/votes', what: 'Accounts that upvoted, with block heights' },
-  { path: '/api/projects/{id}/discussion', what: 'The near.social thread for this project' },
+  { path: '/api/projects/{id}/discussion', what: 'Comments on nearhunt.near, oldest first' },
 ];
 
 const SKILL_EXCERPT = `---
@@ -123,13 +123,13 @@ export default async function OpenDataPage() {
           <code className={s.key}>vote/{'{submission_id}'} → {'{}'} or null</code>
         </article>
         <article className={s.card}>
-          <span className={`${s.badge} ${s.badgeSocial}`}>social (near.social)</span>
-          <h2>Discussion</h2>
+          <span className={s.badge}>nearhunt.near</span>
+          <h2>Comments</h2>
           <p>
-            Ordinary near.social posts: each project gets one post by nearhunt.near, and comments are
-            replies to it, so they live in the wider NEAR social graph.
+            Written by each commenter from their own account, signed with the same login key as an upvote.
+            The author is the writer, so only they can delete their row.
           </p>
-          <code className={s.key}>post/{'{ms}'} with reply_to the project post</code>
+          <code className={s.key}>comment/{'{submission_id}'}/{'{ms}'} → {'{ text, reply_to? }'} or null</code>
         </article>
       </section>
 

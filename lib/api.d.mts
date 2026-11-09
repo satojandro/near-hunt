@@ -76,12 +76,29 @@ export interface VotesBody {
 }
 export declare function votesBody(voters: VoteItem[], source: { account: string; network: string }, page: Page): VotesBody;
 
+export interface DiscussionItem {
+  key: string;
+  id: string;
+  ref: string;
+  author: string;
+  text: string;
+  truncated: boolean;
+  created_at: number | null;
+  block_height: number | null;
+  reply_to: string | null;
+  url: string;
+}
 export interface DiscussionBody {
-  items: ThreadPost[];
+  items: DiscussionItem[];
   next_cursor: string | null;
-  meta: { root: ThreadPost | null; thread_url: string | null };
+  meta: {
+    total: number;
+    source: { account: string; prefix: 'comment/'; network: string };
+    policy_url: string;
+  };
 }
 export declare function discussionBody(
-  thread: { root: ThreadPost | null; replies: ThreadPost[]; next_cursor: string | null } | null,
-  threadUrl: string | null,
+  comments: import('./comments.d.mts').Comment[],
+  source: { account: string; network: string },
+  page: Page,
 ): DiscussionBody;

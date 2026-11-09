@@ -8,7 +8,7 @@ Read-only. Every route is `GET`, answers JSON, sends `Access-Control-Allow-Origi
 short `Cache-Control: public, s-maxage=…, stale-while-revalidate=…`. No route signs or writes
 anything. Data comes only through the existing readers: `getProjects()` (lib/projects.ts → `readProjects`,
 writer-scoped to `nearhunt.near`), `getVoteCounts()/getVoters()` (lib/votes.ts, voter = `predecessor_id`),
-and `fetchThread`/`fetchReplyCounts` (lib/discussion.mjs).
+and comment reads (`lib/comments.mjs`, `lib/comments.ts`).
 
 ## Envelope
 
@@ -26,7 +26,7 @@ Errors: `{ "error": "<code>", "message": "<text>" }` with codes `not_found` (404
 | `GET /api/projects?track=&sort=&q=&cursor=&limit=` | `{items: ProjectSummary[], next_cursor, meta}` |
 | `GET /api/projects/{id}` | `Project` (single object, no envelope); 404 if no live record |
 | `GET /api/projects/{id}/votes?cursor=&limit=` | `{items: [{account_id, block_height}], next_cursor, meta}` latest vote first |
-| `GET /api/projects/{id}/discussion?cursor=&limit=` | `{items: Reply[], next_cursor, meta: {root, thread_url}}`; `root: null` and empty items when the project has no `social_post` yet |
+| `GET /api/projects/{id}/discussion?cursor=&limit=` | `{items: Comment[], next_cursor, meta: {total, source, policy_url}}`, oldest first and flat (`reply_to` links a reply) |
 
 `sort`: `newest` (default; block height desc, then name), `votes` (count desc), `name`.
 `track`: exact track slug. `q`: case-insensitive substring on name and description.
@@ -50,9 +50,12 @@ Errors: `{ "error": "<code>", "message": "<text>" }` with codes `not_found` (404
 - Vote read failure: `/api/projects` and `/{id}` give `votes: null` and `meta.votes_available: false`
   (`sort=votes` falls back to newest); `/votes` answers 503.
 - `/votes` meta: `{total, source: {account, prefix: "vote/", network}}`, latest vote first.
-- `/discussion`: near.social order (oldest first); 503 when near.social is down; 400 if it rejects
-  a cursor; `thread_url` null when there is no `social_post`.
-- Cursors: base64url of `o:<offset>` (our lists) or `s:<near.social cursor>` (discussion); each
-  route rejects the other kind.
+- `/discussion` (NH-44, 9 Nov): the project's `comment/` rows on `nearhunt.near`, oldest first,
+  flat, hidden comments absent; offset cursors like the other lists (the near.social `s:` cursor is
+  gone). `meta` is `{total, source: {account, prefix: "comment/", network}, policy_url}`. Every
+  project takes comments, so `items: []` is a real empty discussion; 503 when the rows cannot be
+  read. `author` is the row's `predecessor_id`; `ref` is `{author}/{id}`, what `reply_to` points at.
+- Cursors: base64url of `o:<offset>` for every list, discussion included; a malformed or foreign
+  cursor is `bad_request`.
 - Cache-Control `s-maxage`: projects 60 s, votes 20 s, discussion 30 s; errors `no-store`.
   OPTIONS → 204.

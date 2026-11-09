@@ -71,7 +71,7 @@ export default async function ProjectPage({ params }: Props) {
         <div className={s.main}>
           <AboutCard description={project.description} />
           <LinksCard project={project} />
-          <Discussion projectId={project.submission_id} socialPost={project.social_post} />
+          <Discussion projectId={project.submission_id} />
         </div>
         <aside className={s.side} aria-label="Record details">
           <RecordCard project={project} />

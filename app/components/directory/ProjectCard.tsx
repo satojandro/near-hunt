@@ -8,9 +8,9 @@ import ds from '@/app/components/discussion/discussion.module.css';
 
 /**
  * One row of the directory (mockup board 1). The whole card is a link to the project page.
- * `replies` (NH-43) is undefined when the project has no near.social post: nothing is shown then.
+ * `comments` (NH-43) is undefined when the count is unavailable: nothing is shown then.
  */
-export default function ProjectCard({ item, rank, votes, replies }: { item: ListingItem; rank: number; votes: number; replies?: number }) {
+export default function ProjectCard({ item, rank, votes, comments }: { item: ListingItem; rank: number; votes: number; comments?: number }) {
   const host = hostOf(item.demo_url);
   return (
     <li className="dir-card">
@@ -31,10 +31,10 @@ export default function ProjectCard({ item, rank, votes, replies }: { item: List
               <span className="dir-demo">Demo on {host}</span>
             </>
           ) : null}
-          {typeof replies === 'number' ? (
+          {typeof comments === 'number' ? (
             <>
               <span aria-hidden="true">·</span>
-              <span className={ds.cardCount}>{replies} {replies === 1 ? 'reply' : 'replies'}</span>
+              <span className={ds.cardCount}>{comments} {comments === 1 ? 'comment' : 'comments'}</span>
             </>
           ) : null}
         </div>
