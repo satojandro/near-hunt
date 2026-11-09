@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import {
-  NOT_SUPPLIED, safeHttpsUrl, linkHost, linkText, linkRow, linkRows, descriptionView, eventLabel,
+  NOT_SUPPLIED, safeHttpsUrl, linkHost, linkText, linkRow, linkRows, descriptionView, eventLabel, isXPost, extraLinkLabel, linkNote,
   formatBlockHeight, explorerBlockUrl, formatUtc, kvRecordUrl, recordRows, metaDescription,
 } from '../lib/project-view.mjs';
 
@@ -51,10 +51,70 @@ test('linkRow: null is Not supplied, non-https is text only, https is a link', (
 
 test('linkRows labels the source URL as the generic listing', () => {
   const rows = linkRows(item());
-  assert.deepEqual(rows.map((r) => r.label), ['Demo', 'Repository', 'Hackathon listing']);
+  // The fixture's demo_url is an X post, so it is labelled as such rather than "Demo".
+  assert.deepEqual(rows.map((r) => r.label), ['Launch post on X', 'Repository', 'Hackathon listing']);
   assert.equal(rows[1].text, NOT_SUPPLIED);
   assert.equal(rows[2].href, 'https://nearhackathon.com/#submissions');
   assert.match(rows[2].note, /no per-project page/);
+});
+
+test('NH-96 step 1: a non-X demo keeps the "Demo" label', () => {
+  const rows = linkRows(item({ demo_url: 'https://app.example.com' }));
+  assert.equal(rows[0].label, 'Demo');
+  assert.equal(rows[0].href, 'https://app.example.com/');
+});
+
+test('NH-96 step 1: every builder link is shown, de-duplicated, https only', () => {
+  const rows = linkRows(item({
+    repository_url: 'https://github.com/a/b',
+    links: [
+      { url: 'https://aegis-demo-beta.vercel.app', source_post_id: '1' },
+      { url: 'https://www.youtube.com/watch?v=abc', source_post_id: '1' },
+      { url: 'https://t.me/aegis', source_post_id: '1' },
+      { url: 'https://aegis-demo-beta.vercel.app', source_post_id: '2' }, // duplicate
+      { url: 'https://github.com/a/b', source_post_id: '1' }, // same as repository_url
+      { url: 'http://insecure.example', source_post_id: '1' }, // not https: dropped
+      { url: 'javascript:alert(1)' },
+      null,
+      'https://plain-string.example',
+    ],
+  }));
+  assert.deepEqual(rows.map((r) => r.label), [
+    'Launch post on X', 'Repository', 'Link', 'Video', 'Telegram', 'Link', 'Hackathon listing',
+  ]);
+  assert.equal(rows[2].href, 'https://aegis-demo-beta.vercel.app/');
+  assert.equal(rows[2].text, 'aegis-demo-beta.vercel.app');
+  assert.match(rows[2].note, /builder/);
+  assert.equal(rows[5].href, 'https://plain-string.example/');
+  assert.ok(rows.every((r) => r.href === null || r.href.startsWith('https://')));
+});
+
+test('NH-96 step 3: labelled links use their kind; a gone link says so, unverified says nothing', () => {
+  const rows = linkRows(item({
+    links: [
+      { url: 'https://sealed.edycu.dev', kind: 'demo', kind_basis: 'builder', check: { verdict: 'live', http_status: 200, checked_at: '2026-11-09T02:00:00.000Z' } },
+      { url: 'https://nearblocks.io/address/a.near', kind: 'explorer', kind_basis: 'host', check: { verdict: 'unverified', http_status: 403, checked_at: '2026-11-09T02:00:00.000Z' } },
+      { url: 'https://njump.me/x', kind: 'website', kind_basis: 'default', check: { verdict: 'gone', http_status: 404, checked_at: '2026-11-09T02:00:00.000Z' } },
+    ],
+  }));
+  assert.deepEqual(rows.slice(2, 5).map((r) => r.label), ['Demo', 'On-chain', 'Website']);
+  assert.equal(rows[2].note, 'Posted by the builder on X');
+  assert.equal(rows[3].note, 'Posted by the builder on X');
+  assert.equal(rows[4].note, 'Did not answer when checked on 9 Nov 2026 (HTTP 404). Posted by the builder on X');
+  assert.equal(rows[4].href, 'https://njump.me/x'); // kept, never dropped
+  assert.equal(linkNote('https://plain.example'), 'Posted by the builder on X');
+});
+
+test('isXPost and extraLinkLabel', () => {
+  assert.equal(isXPost('https://x.com/a/status/123'), true);
+  assert.equal(isXPost('https://twitter.com/a/status/123'), true);
+  assert.equal(isXPost('https://x.com/a'), false);
+  assert.equal(isXPost('https://notx.com/a/status/1'), false);
+  assert.equal(isXPost('http://x.com/a/status/1'), false);
+  assert.equal(extraLinkLabel('https://youtu.be/x'), 'Video');
+  assert.equal(extraLinkLabel('https://discord.gg/x'), 'Discord');
+  assert.equal(extraLinkLabel('https://somewhere.app'), 'Link');
+  assert.equal(extraLinkLabel('nope'), 'Link');
 });
 
 test('descriptionView never renders null as empty', () => {

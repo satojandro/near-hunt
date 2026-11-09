@@ -6,9 +6,11 @@ import { getVoters } from '@/lib/votes';
 import { getProjectComments } from '@/lib/comments';
 import { trackLabel } from '@/lib/tracks.mjs';
 import { metaDescription } from '@/lib/project-view.mjs';
+import { mediaView } from '@/lib/media.mjs';
 import ProjectHeader from '@/app/components/project/ProjectHeader';
 import AboutCard from '@/app/components/project/AboutCard';
 import LinksCard from '@/app/components/project/LinksCard';
+import MediaCard from '@/app/components/project/MediaCard';
 import RecordCard from '@/app/components/project/RecordCard';
 import UpvotedBy from '@/app/components/project/UpvotedBy';
 import UpvoteButton from '@/app/components/vote/UpvoteButton';
@@ -30,11 +32,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (project === undefined) return { title: 'Project unavailable', robots: { index: false } };
   if (!project) return { title: 'Project not found', robots: { index: false } };
   const description = metaDescription(project, trackLabel);
+  // NH-96: the builder's own image (or video poster) as the share preview, when the record has one.
+  const cover = mediaView(project)[0];
+  const images = cover ? [{ url: cover.full, alt: cover.alt }] : undefined;
   return {
     title: project.name,
     description,
     alternates: { canonical: `/p/${encodeURIComponent(project.submission_id)}` },
-    openGraph: { title: project.name, description, type: 'website' },
+    openGraph: { title: project.name, description, type: 'website', images },
+    twitter: { card: cover ? 'summary_large_image' : 'summary', title: project.name, description, images: images?.map((i) => i.url) },
   };
 }
 
@@ -74,6 +80,7 @@ export default async function ProjectPage({ params }: Props) {
       <div className={s.grid}>
         <div className={s.main}>
           <AboutCard description={project.description} />
+          <MediaCard media={project.media} />
           <LinksCard project={project} />
           <Discussion projectId={project.submission_id} />
         </div>

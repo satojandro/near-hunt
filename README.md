@@ -86,6 +86,7 @@ docs/
   mockups/                   every page and flow, as images, HTML and source
   proposals/                 the near.social project/ proposal (after the hackathon)
   runbooks/keys.md           function-call keys for the importer
+  runbooks/new-submissions.md  new projects → enriched records: the repeatable cycle
   phase-0-spike.md           the storage spike: what was executed and what it proved
   research/                  verified platform findings, with evidence
 schema/
@@ -111,8 +112,15 @@ lib/
   project-view.mjs           project-page helpers: safe links, record rows, metadata
   social.mjs                 the #nearhunt sidebar feed, validated and reduced to plain text
   import-plan.mjs            diff of feed vs chain: what the importer would write
+  enrichment.mjs             builder's X post → description, repository, links, media (no AI)
+  media.mjs                  images/video posters from the X post, validated for the Media card
+  link-probe.mjs             visit a link once: verdict, HTTP status, title, og:image
+  link-label.mjs             what a link is (demo, website, video, …) and why
+  duplicates.mjs             submissions sharing a repo, X post or demo (flags only)
 scripts/
   import.mjs                 hackathon feed → on-chain project records (dry run by default)
+  enrich.mjs                 enrichment proposal, link checks, duplicate flags (read-only)
+  feed-watch.mjs / .sh       scheduled check: one line when the feed has new projects
   validate-schema.mjs        every live record against the schema, plus key/id invariants
   render-mockups.mjs         regenerates docs/mockups images and pages
 test/                        unit tests (npm test)
@@ -128,6 +136,7 @@ npm run dev                             # http://localhost:3000
 npm test                                # unit tests, no network
 node scripts/import.mjs                 # dry run: diff the feed against chain; signs nothing
 node scripts/import.mjs --execute --yes # write the diff (needs a key; see docs/runbooks/keys.md)
+# New submissions, descriptions, media and links: docs/runbooks/new-submissions.md
 npm run validate:schema                 # verify every record already on chain
 ```
 

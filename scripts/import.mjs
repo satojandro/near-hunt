@@ -374,7 +374,7 @@ async function main() {
   const existing = await readProjects({ account: ACCOUNT, network: NETWORK });
   console.log(`chain:   ${existing.length} project rows written by ${ACCOUNT} on ${NETWORK}`);
 
-  // Optional enrichment overlay: fills description/repository_url/links only where the record
+  // Optional enrichment overlay: fills description/repository_url/links/media only where the record
   // still has none, so a builder-supplied value is never overwritten and a re-run is a no-op.
   let enrichment = {};
   if (ENRICHMENT_FILE) {
@@ -386,7 +386,8 @@ async function main() {
     console.log(
       `enrich:  ${usable.length} proposals (${usable.filter((e) => e.description).length} descriptions, ` +
         `${usable.filter((e) => e.repository_url).length} repositories, ` +
-        `${usable.filter((e) => e.links?.length).length} with links) from ${ENRICHMENT_FILE}` +
+        `${usable.filter((e) => e.links?.length).length} with links, ` +
+        `${usable.filter((e) => e.media?.length).length} with media) from ${ENRICHMENT_FILE}` +
         (REFRESH_ENRICHED ? ' [refresh: fields set by an earlier enrichment run may be corrected]' : ''),
     );
   }

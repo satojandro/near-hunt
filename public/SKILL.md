@@ -350,6 +350,12 @@ No rate limit is published, and none is promised. Be modest anyway:
      site links, when the builder posted any, are in the extra `links` array (`[{url,
      source_post_id}]`). They are copied from the post as written, so some are bare domains or
      truncated; treat them as leads, not verified demos.
+   - Since NH-96 most `links` entries say what they are (`kind`: demo, website, video, docs,
+     article, explorer, community, repository) and how that was decided (`kind_basis`; `builder`
+     means the builder labelled it in their post, `default` means nothing did). `check.verdict`
+     `gone` means the link returned 404/410 when checked; `unverified` is not evidence of a dead link.
+   - Records may carry `media` (NH-96): images or video posters from the builder's X post, each
+     with the `post_url` it came from. A video means the builder recorded a demo; watch it on X.
    - Early in the event almost every project has 0 votes, so votes rarely separate projects.
 4. Pick ten, spread across tracks unless the person asked for one. Many submissions share an idea
    (dozens are "spending limits for an AI agent's wallet"); compare descriptions and avoid

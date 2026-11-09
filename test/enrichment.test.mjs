@@ -91,6 +91,24 @@ test('linksFromChain keeps product links and drops github/x/img hosts', () => {
   assert.deepEqual(links.map((l) => l.url), ['https://demo.example.com/app']);
 });
 
+test('linksFromChain keeps a meaningful query and drops only tracking parameters (NH-96)', () => {
+  // Charter and Sealed Exploit were published as a bare youtube.com/watch on 8 Nov.
+  const links = linksFromChain([
+    tweet(1, 'alice', 'root', [
+      'https://www.youtube.com/watch?v=YTom8Vb9i1E&feature=youtu.be',
+      'https://www.youtube.com/watch?v=sEMg3q7gG5k&si=abc',
+      'https://app.example.com/?utm_source=x&utm_medium=social',
+      'https://medium.com/@a/post-1?sharedUserId=a',
+    ]),
+  ]);
+  assert.deepEqual(links.map((l) => l.url), [
+    'https://www.youtube.com/watch?v=YTom8Vb9i1E',
+    'https://www.youtube.com/watch?v=sEMg3q7gG5k',
+    'https://app.example.com',
+    'https://medium.com/@a/post-1',
+  ]);
+});
+
 test('descriptionFromChain prefers the root post and refuses tiny text', () => {
   const chain = [tweet(1, 'alice', 'A real pitch for the project.'), tweet(2, 'alice', 'short')];
   assert.equal(descriptionFromChain(chain).description, 'A real pitch for the project.');
@@ -136,6 +154,7 @@ test('summarize counts only ok rows for field coverage', () => {
     with_description: 2,
     with_repository: 1,
     with_links: 1,
+    with_media: 0,
     by_status: { ok: 2, 'not-an-x-post': 1 },
   });
 });
@@ -196,5 +215,5 @@ test('captured thread posts without a real id cite the submitted post, never a m
   assert.equal(out.repository_url, 'https://github.com/ade/gideon');
   assert.equal(out.repository_source, 'https://x.com/ade/status/30');
   assert.ok(out.enrichment.sources.every((u) => /\/status\/\d+$/.test(u)), out.enrichment.sources.join(' '));
-  assert.deepEqual(out.links, [{ url: 'https://gideon-near.vercel.app', source_post_id: '30' }]);
+  assert.deepEqual(out.links, [{ url: 'https://gideon-near.vercel.app', source_post_id: '30', kind: 'website', kind_basis: 'default' }]);
 });

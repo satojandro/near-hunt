@@ -202,6 +202,110 @@ Gaps it targets, counted 9 Nov with `readProjects()`: 281 records; 16 without a 
 New fields are additive (the schema allows extra properties), so no existing field is renamed or
 removed. Images are referenced by URL, never copied.
 
+**Status 9 Nov (Claude, branch `claude/keen-galileo-6c7py0`), built and tested, not deployed, nothing signed:**
+
+- **Step 1 done.** `linkRows()` renders every `links` entry (de-duplicated, https only, labelled
+  Video/Telegram/Discord only when the host makes it certain, otherwise "Link"). A `demo_url` that
+  is an X post is labelled "Launch post on X" instead of "Demo". Unit tests in
+  `test/project-view.test.mjs`.
+- **Media (owner request in session, 9 Nov; extends step 2).** The X syndication payload that
+  `enrich.mjs` already fetches carries the post's media. `lib/media.mjs` keeps only
+  `pbs.twimg.com` image URLs (photos, plus video *posters*), at most 4, each with its `post_url`.
+  `/p/{id}` shows them in a Media card; a video opens on X. No X script loads and no video file is
+  hotlinked. The first image also becomes the page's `og:image`. The importer fills `media` only
+  when it is empty, and `enrichment.fields`/`sources` now accumulate, so adding media keeps the
+  existing `description` provenance.
+- **Measured:** `node scripts/enrich.mjs --threads data/enrichment/threads.json --out data/enrichment/proposal-nh96.json`
+  gives 251 of 281 projects with media (224 video posters, 75 photos). The dry run
+  `node scripts/import.mjs --enrichment data/enrichment/proposal-nh96.json` gives 54 new (feed now 335),
+  251 changed, 30 unchanged; 305 keys, 345,922 bytes, 6 tx. The 251 changes touch only `media` and
+  `enrichment`. **Pending owner approval (step 5); not applied.**
+- **Step 2 done (9 Nov).** `node scripts/enrich.mjs --links` visits every `links` entry and every
+  non-X `demo_url` once (`lib/link-probe.mjs`: one GET, redirects followed by hand, each hop checked,
+  IP literals, local names, non-https and odd ports refused, 512 KB read cap, honest user agent).
+  Report: `data/enrichment/links.json`, one row per link with `verdict`, HTTP status, final URL,
+  `<title>` and `og:image`. Run against mainnet, 281 records (the committed report): **132 links
+  (131 distinct); 124 live, 1 gone, 7 unverified; 122 with a title, 40 with an `og:image`; 5 redirect
+  to another host.** `verdict` is `gone` only for 404/410 or a missing host. Crawler blocks
+  (401/403/429, a google.com/sorry page), 5xx and timeouts are `unverified` and must not be
+  reported as dead links. The unverified ones: the two bare `youtube.com/watch` links (429 from the
+  run's IP), nearblocks ×2, etherscan, medium and afun.mx (403 to crawlers). Runs vary: an earlier
+  run the same hour had OATH's youtu.be link rate-limited and keyproof.onrender.com at 503 (a
+  sleeping free host), and both answered on the re-run.
+- **Bug found and fixed on the way:** `linksFromChain()` rebuilt URLs from host + path, so it dropped
+  every query string. On chain since 8 Nov, Charter and Sealed Exploit link to a bare
+  `youtube.com/watch` with no video. Queries are now kept, minus tracking parameters (`utm_*`, `ref`,
+  `si`, `feature`, …), and the de-duplication key includes the query. Re-running the proposal
+  corrects 3 records' `links` (Charter and Sealed Exploit get their `?v=` back; DeepSea Hunter
+  drops a duplicate entry). Those values were set by enrichment, so `--refresh-enriched` may fix them:
+  `node scripts/import.mjs --enrichment data/enrichment/proposal-nh96.json --refresh-enriched --updates-only`
+  gives 251 keys, 318,152 bytes, 6 tx, touching only `media` (251), `links` (3) and `enrichment`;
+  no description or repository changes. **Pending owner approval.**
+- **For the owner, not acted on:** the one `gone` link (near-agent-guard's `njump.me/…%20…`) is
+  two URLs glued by a space in the source thread. Sealed Exploit's `https://dev.to` is a bare domain
+  because X truncated the path. The record "777 giros gratis" (`fa54da13…`) links to a gambling site
+  with a referral code (`afun.mx/?ch=…`) and looks like spam. Per AGENTS.md §1 nothing is tombstoned;
+  whether to hide it is your call.
+- **Step 3 done (9 Nov).** `lib/link-label.mjs` labels every proposed link with `kind` and
+  `kind_basis`, strongest evidence first: the host (YouTube is a video, nearblocks an explorer); the
+  builder's own word right before the link ("Demo:", "Live:", "Try it:", "Website:", nearest first,
+  only separators in between); the URL (`demo.` host, `/app` path); otherwise `website`. Each link
+  also carries its step-2 `check`. Links on non-GitHub git hosts are checked with `git ls-remote`
+  and become `repository`. A record without a repository gets one only when exactly one such repo
+  answered. The Links card shows the label, and a `gone` link says "Did not answer when checked on
+  …"; `unverified` shows nothing.
+  - **Verified repositories: 98 → 99.** SafeSpend (`efc90a1e…`) linked
+    `bitbucket.org/dualrail-builder/near-safespend`, which answers `git ls-remote`. The count comes
+    from `node scripts/enrich.mjs --threads data/enrichment/threads.json --out data/enrichment/proposal-nh96.json`
+    (`with repository: 99`). 98 are on chain today.
+  - **Labels on the 120 proposed links:** website 85, demo 22, video 3, explorer 3, community 3,
+    article 2, docs 1, repository 1. By basis: default 84, builder 21, host 12, url 3. All 21
+    builder labels were read against the post text by hand and match it.
+  - **Bug fixed:** X gives link positions in code points and JS indexes UTF-16, so an emoji earlier
+    in a post shifted the position and cut the cue window short. `linkIndex` now converts.
+  - **Dry run:** `node scripts/import.mjs --enrichment data/enrichment/proposal-nh96.json --refresh-enriched --updates-only`
+    gives 257 keys, 337,616 bytes, 6 tx. Fields: `media` 251, `links` 96 (labels and checks;
+    Charter and Sealed Exploit get their `?v=` back), `repository_url` 1 (SafeSpend), `enrichment`
+    257. No description changes and no provenance dropped. **Pending owner approval; replaces the
+    earlier 251-key batch.**
+  - **Not labelled, needs an owner decision:** 15 records keep unlabelled links (the page falls back
+    to host-only labels). All 15 were written at block 223,641,089 by the 8 Nov correction. The
+    importer then *replaced* `enrichment.fields` with `["description"]`, so their links lost their
+    enrichment provenance, and `--refresh-enriched` rightly refuses to touch them. The accumulate
+    fix above stops this recurring. Restoring them needs a one-off rule (e.g. allow a refresh when
+    `enrichment.sources` already cites the link's post) that the owner approves.
+  - Not fixed: `schema/README.md` lists `repository_source` and `repository_verified_at`, but the
+    importer has never written them; on chain, provenance is `enrichment.sources`.
+- **Step 4 done (9 Nov).** `node scripts/enrich.mjs --duplicates` (`lib/duplicates.mjs`) compares
+  all 335 submissions (281 on chain plus the proposal's repositories and links, and the 54 pending in
+  the feed). It flags any two that share a repository, X post, demo or builder link, after
+  normalising host case, `www.`, trailing slash, `.git`, tracking parameters and the X handle.
+  Platform URLs such as `dev.to` or a bare `youtube.com/watch` are ignored. Report:
+  `data/enrichment/duplicates.json`. Flags only; nothing is merged, hidden or written.
+  - **Result: 0 shared URLs, 0 possible duplicates.** An independent raw check of exact
+    `repository_url`, `demo_url` and X status id on chain also finds none. Detection is covered by
+    `test/duplicates.test.mjs` (5 tests, e.g. one X post under two handles, `Repo.git` vs `repo`).
+  - **Weak signals, listed but not called duplicates:** 12 names are used by more than one
+    submission (AgentGuard ×6, Leash ×4, Tollgate ×3, Tripwire ×3, …), all from different builders
+    with different repositories. 26 X accounts submitted two projects each, all with different
+    names, so there are no hidden resubmissions.
+- **NH-96 is complete in code.** What remains is step 5, the import:
+  - **Approved by the owner, 9 Nov (in session):** the 257-key batch. Account `nearhunt.near`,
+    prefix `project/`, 257 keys, 337,616 bytes, 6 tx; fields `media` (251), `links` (96),
+    `repository_url` (1, SafeSpend), `enrichment` (257); no description changes. Command, to be run
+    by the key holder (Hermes) from this branch:
+    `node scripts/import.mjs --enrichment data/enrichment/proposal-nh96.json --refresh-enriched --updates-only`.
+    Its dry run must print exactly those numbers; if it does not, stop and re-ask. Then add
+    `--execute --yes`. `data/enrichment/proposal-nh96.json` is frozen for this batch; do not
+    regenerate it.
+  - **Not approved:** the 54 new feed records, restoring labels on the 15 records, and anything
+    about "777 giros gratis".
+  - **From now on:** new submissions follow
+    [`runbooks/new-submissions.md`](runbooks/new-submissions.md). `npm run enrich` now also covers
+    feed submissions not yet on chain, so they are created already enriched in one approved write.
+    A scratch run on 9 Nov showed 311 proposals for 335 submissions; the 54 pending ones would be
+    created with 46 descriptions, 42 media sets and 14 verified repositories.
+
 ### Board 1 — Directory (home) · Day 1
 
 **Status: done 8 Nov** — NH-10–NH-16 are on `main`; evidence in the Day 1 status block above.
