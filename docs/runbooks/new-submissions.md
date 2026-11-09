@@ -14,7 +14,7 @@ posters from their X post. Existing records get only what they are missing.
 - Builder text is used **verbatim**. No model writes or rewrites anything.
 - A repository is published only when `git ls-remote` answers. No repository is guessed from a name.
 - Images are **referenced by URL** on `pbs.twimg.com`, never copied. A video is stored as its poster
-  and plays on X.
+  and plays in place through X's embed iframe, built from the post URL — no file in the record.
 - A value a builder or the owner set is never overwritten. A record is never deleted (tombstoned);
   report it instead.
 - Every value carries its source post in `enrichment.sources`.

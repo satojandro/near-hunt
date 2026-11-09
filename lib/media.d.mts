@@ -12,6 +12,8 @@ export interface MediaViewItem {
   alt: string;
   duration: string | null;
   postUrl: string;
+  /** X's player iframe for a video (NH-96b: plays in place), null for a photo. */
+  embedUrl: string | null;
 }
 
 export declare function safeMediaUrl(url: unknown): string | null;

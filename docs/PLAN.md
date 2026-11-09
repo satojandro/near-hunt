@@ -232,8 +232,14 @@ removed. Images are referenced by URL, never copied.
 - **Media (owner request in session, 9 Nov; extends step 2).** The X syndication payload that
   `enrich.mjs` already fetches carries the post's media. `lib/media.mjs` keeps only
   `pbs.twimg.com` image URLs (photos, plus video *posters*), at most 4, each with its `post_url`.
-  `/p/{id}` shows them in a Media card; a video opens on X. No X script loads and no video file is
-  hotlinked. The first image also becomes the page's `og:image`. The importer fills `media` only
+  `/p/{id}` shows them in a Media card. **Owner request later the same day (NH-96b):** a video
+  plays in place, through X's own player iframe (`platform.twitter.com/embed/Tweet.html?id=…`), so
+  the demo is visible without leaving the page. No X script (`widgets.js`) is loaded, no video file
+  is copied and none is hotlinked: the payload's mp4 was tried first and rejected — X's CDN 403s a
+  foreign `Referer`, a 302 out of a route is followed but fails to demux
+  (`MEDIA_ELEMENT_ERROR: Format error`), and a streaming proxy puts the bytes on our bandwidth. The
+  frame URL is built by `lib/media.mjs`'s `tweetEmbedUrl` and sized 550×560 (480 tall on mobile); a
+  missing post leaves the poster and the "Open the post" link, never an empty box. The first image also becomes the page's `og:image`. The importer fills `media` only
   when it is empty, and `enrichment.fields`/`sources` now accumulate, so adding media keeps the
   existing `description` provenance.
 - **Measured:** `node scripts/enrich.mjs --threads data/enrichment/threads.json --out data/enrichment/proposal-nh96.json`

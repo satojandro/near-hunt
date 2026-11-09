@@ -139,10 +139,16 @@
 .mediaLink:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .mediaImg { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
 .mediaSingle .mediaImg { aspect-ratio: auto; max-height: 480px; object-fit: contain; }
-.mediaPlay {
-  position: absolute; left: 12px; bottom: 12px; display: inline-flex; align-items: center; gap: 6px;
-  min-height: 36px; padding: 0 14px; border-radius: 999px; background: rgba(15, 20, 25, 0.82); color: #fff;
-  font-size: 14px; font-weight: 600;
+/* NH-96b: a video plays in place through X's own embed iframe. X sizes its embeds up to 550 px. */
+.mediaFigure { margin: 0; }
+.mediaEmbed {
+  max-width: 550px; height: 560px; max-height: 78vh; background: var(--surface-muted);
+  border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden;
 }
-.mediaLink:hover .mediaPlay { background: rgba(15, 20, 25, 0.95); }
-@media (max-width: 640px) { .media { grid-template-columns: minmax(0, 1fr); } }
+.mediaFrame { display: block; width: 100%; height: 100%; border: 0; }
+.mediaCaption { margin: 6px 0 0; font-size: 13px; color: var(--muted); }
+.mediaCaption a { color: inherit; }
+@media (max-width: 640px) {
+  .media { grid-template-columns: minmax(0, 1fr); }
+  .mediaEmbed { height: 480px; max-height: none; }
+}

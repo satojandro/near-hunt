@@ -99,9 +99,11 @@ test('mediaView validates every item from the record before rendering', () => {
     type: 'video', src: `${video.media_url_https}?name=small`, full: `${video.media_url_https}?name=large`,
     width: 1920, height: 1080, alt: "Video poster from the builder's post on X", duration: '0:35',
     postUrl: 'https://x.com/builder/status/2',
+    embedUrl: 'https://platform.twitter.com/embed/Tweet.html?id=2&dnt=true&theme=light&conversation=none',
   });
   assert.equal(view[1].width, null);
   assert.equal(view[1].alt, "Image from the builder's post on X");
+  assert.equal(view[1].embedUrl, null); // NH-96b: a photo has no player
   assert.deepEqual(mediaView({}), []);
   assert.deepEqual(mediaView({ media: 'nope' }), []);
   assert.deepEqual(mediaView(null), []);
