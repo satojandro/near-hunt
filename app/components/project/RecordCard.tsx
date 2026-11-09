@@ -3,8 +3,20 @@ import type { ListingItem } from '@/lib/listing.mjs';
 import ExternalLink from './ExternalLink';
 import s from './project.module.css';
 
-/** NH-21: where this record lives on NEAR, and a link to the raw row in the public KV API. */
-export default function RecordCard({ project }: { project: ListingItem }) {
+/**
+ * NH-21: where this record lives on NEAR, and a link to the raw row in the public KV API.
+ * NH-43: the comment count is the same number the directory card shows; unknown (read failed)
+ * shows no row rather than a misleading zero.
+ */
+export default function RecordCard({
+  project,
+  comments,
+  commentsAvailable = false,
+}: {
+  project: ListingItem;
+  comments?: number;
+  commentsAvailable?: boolean;
+}) {
   const rows = recordRows(project);
   const jsonUrl = kvRecordUrl({ account: project.account, key: project.key });
   return (
@@ -20,6 +32,12 @@ export default function RecordCard({ project }: { project: ListingItem }) {
             </dd>
           </div>
         ))}
+        {commentsAvailable && typeof comments === 'number' ? (
+          <div style={{ display: 'contents' }}>
+            <dt>Comments</dt>
+            <dd>{comments} signed {comments === 1 ? 'key' : 'keys'}</dd>
+          </div>
+        ) : null}
       </dl>
       <div className={s.recordActions}>
         {jsonUrl ? (

@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 import { getProjects } from '@/lib/projects';
 import { getVoteCounts } from '@/lib/votes';
-import { directoryView, formatFetchedUtc, type SearchParamsRecord, type Votes } from '@/lib/directory.mjs';
+import { cardCommentCount, directoryView, formatFetchedUtc, type SearchParamsRecord, type Votes } from '@/lib/directory.mjs';
 import { trackLabel } from '@/lib/tracks.mjs';
 import Sidebar from '@/app/components/sidebar/Sidebar';
 import SearchBox from '@/app/components/directory/SearchBox';
@@ -86,7 +86,13 @@ async function Directory({ searchParams }: { searchParams: Promise<SearchParamsR
           {results.length > 0 ? (
             <ol className="dir-list">
               {results.map((item, i) => (
-                <ProjectCard key={item.submission_id} item={item} rank={i + 1} votes={votes[item.submission_id] ?? 0} comments={discussion.counts[item.submission_id]} />
+                <ProjectCard
+                  key={item.submission_id}
+                  item={item}
+                  rank={i + 1}
+                  votes={votes[item.submission_id] ?? 0}
+                  comments={cardCommentCount(discussion.counts, item.submission_id, discussion.available)}
+                />
               ))}
             </ol>
           ) : (

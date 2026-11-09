@@ -2,7 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import {
   normalizeText, parseParams, searchItems, filterByTrack, sortItems, trackChips, buildHref,
-  hostOf, formatFetchedUtc, directoryView, DEFAULT_SORT,
+  hostOf, formatFetchedUtc, directoryView, cardCommentCount, DEFAULT_SORT,
 } from '../lib/directory.mjs';
 
 const item = (id, name, tracks, block_height, extra = {}) => ({
@@ -107,4 +107,23 @@ test('directoryView combines search, track and sort', () => {
   assert.equal(v.total, 4);
   assert.deepEqual(v.results.map((i) => i.submission_id), ['d', 'b']);
   assert.equal(v.chips[0].count, 3);
+});
+
+// NH-43: comment counts on cards, from `comment/` rows (NH-44).
+test('discussed sorts by comment count desc, projects with none last, ties by newest', () => {
+  const ids = (s, counts) => directoryView(FEED, s, {}, counts).results.map((i) => i.submission_id);
+  const counts = { a: 1, c: 4, d: 4 };
+  assert.deepEqual(ids({ sort: 'discussed' }, counts), ['d', 'c', 'a', 'b']); // 4 (newer first), 4, 1, 0
+  assert.deepEqual(ids({ sort: 'discussed' }, {}), ['d', 'b', 'c', 'a']); // no counts at all: newest, ties by name
+  // A count for a project that is not in the feed cannot reorder anything.
+  assert.deepEqual(ids({ sort: 'discussed' }, { zzz: 9, a: 1 }), ['a', 'd', 'b', 'c']);
+});
+
+test('cardCommentCount: 0 is data when the read worked, nothing when it did not', () => {
+  assert.equal(cardCommentCount({ a: 2 }, 'a'), 2);
+  assert.equal(cardCommentCount({ a: 2 }, 'b'), 0);
+  assert.equal(cardCommentCount({}, 'b'), 0);
+  assert.equal(cardCommentCount(null, 'b'), 0);
+  assert.equal(cardCommentCount({ a: 2 }, 'a', false), undefined);
+  assert.equal(cardCommentCount({ a: Number.NaN }, 'a'), 0);
 });

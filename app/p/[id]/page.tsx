@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getProject, getProjects } from '@/lib/projects';
 import { getVoters } from '@/lib/votes';
+import { getProjectComments } from '@/lib/comments';
 import { trackLabel } from '@/lib/tracks.mjs';
 import { metaDescription } from '@/lib/project-view.mjs';
 import ProjectHeader from '@/app/components/project/ProjectHeader';
@@ -46,6 +47,9 @@ export default async function ProjectPage({ params }: Props) {
   // NH-33: active votes for this project (one per voter account). `available` is false when the
   // votes read failed; the page still renders, without a number.
   const { voters, count, available: votesAvailable } = await getVoters(project.submission_id);
+  // NH-43: the record card shows the same comment count as the directory card (one cached read,
+  // shared with the Discussion card below).
+  const comments = await getProjectComments(project.submission_id);
   // NH-23: the same cached list getProject just read.
   const { items: allProjects } = await getProjects();
 
@@ -74,7 +78,7 @@ export default async function ProjectPage({ params }: Props) {
           <Discussion projectId={project.submission_id} />
         </div>
         <aside className={s.side} aria-label="Record details">
-          <RecordCard project={project} />
+          <RecordCard project={project} comments={comments.count} commentsAvailable={comments.available} />
           <UpvotedBy voters={voters} available={votesAvailable} />
           <SimilarProjects project={project} all={allProjects} />
           <ClaimCard />

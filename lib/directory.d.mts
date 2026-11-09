@@ -4,7 +4,7 @@ export type DirectorySort = 'upvoted' | 'newest' | 'discussed';
 export type SearchParamsRecord = Record<string, string | string[] | undefined>;
 /** submission_id -> vote count (NH-33 tally; missing = 0). */
 export type Votes = Record<string, number>;
-/** submission_id -> near.social reply count (NH-43); absent = the project has no discussion post. */
+/** submission_id -> visible comment count (NH-43, from `comment/` rows). */
 export type Replies = Record<string, number>;
 
 export interface DirectoryState {
@@ -38,4 +38,10 @@ export declare function trackChips(allItems: ListingItem[], searched: ListingIte
 export declare function buildHref(state: DirectoryState, overrides?: Partial<DirectoryState>): string;
 export declare function hostOf(url: string | null | undefined): string | null;
 export declare function formatFetchedUtc(iso: string): string | null;
+/** NH-43: `0` when the read succeeded and the project has none; `undefined` when the count is unknown. */
+export declare function cardCommentCount(
+  counts: Record<string, number> | null | undefined,
+  id: string,
+  available?: boolean,
+): number | undefined;
 export declare function directoryView(items: ListingItem[], params: SearchParamsRecord, votes?: Votes, replies?: Replies): DirectoryView;
