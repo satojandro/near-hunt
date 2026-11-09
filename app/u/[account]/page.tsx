@@ -5,9 +5,11 @@ import { getProjects } from '@/lib/projects';
 import { NETWORK, VOTE_ACCOUNT } from '@/lib/network.mjs';
 import { isAccountId, relativeTime } from '@/lib/social.mjs';
 import { trackLabel } from '@/lib/tracks.mjs';
-import { accountUpvotes, fetchAccountProfile, nsToMs, readAccountVoteRows } from '@/lib/account.mjs';
+import { accountComments, accountUpvotes, fetchAccountProfile, nsToMs, readAccountCommentRows, readAccountVoteRows } from '@/lib/account.mjs';
+import { HIDDEN_COMMENTS } from '@/lib/comments';
 import ProfileHeader from '@/app/components/account/ProfileHeader';
 import UpvotesList, { type UpvoteRow } from '@/app/components/account/UpvotesList';
+import CommentsList, { type CommentRow } from '@/app/components/account/CommentsList';
 import s from '@/app/components/account/account.module.css';
 
 type Props = {
@@ -25,7 +27,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!isAccountId(account)) return { title: 'Account not found', robots: { index: false } };
   return {
     title: account,
-    description: `Projects ${account} upvoted on NEAR Hunt. Votes are written by the voter on NEAR and read from the public FastData index.`,
+    description: `Projects ${account} upvoted and comments it wrote on NEAR Hunt. Votes and comments are rows the account wrote on NEAR, read from the public FastData index.`,
     alternates: { canonical: `/u/${account}` },
     robots: { index: false },
   };
@@ -63,6 +65,39 @@ async function loadUpvotes(accountId: string): Promise<UpvoteRow[] | null> {
   }
 }
 
+/**
+ * NH-52: the account's comments on live projects, newest first. Same contract as `loadUpvotes`:
+ * `null` when the rows or the project list could not be read, so the page says so instead of
+ * pretending the account has no comments. Hidden comments (repo hide list) and comments on
+ * projects no longer in the feed are left out.
+ */
+async function loadComments(accountId: string): Promise<CommentRow[] | null> {
+  try {
+    const [rows, { items }] = await Promise.all([
+      readAccountCommentRows({
+        accountId,
+        account: VOTE_ACCOUNT,
+        network: NETWORK,
+        fetchImpl: (input, init) => fetch(input, { ...init, cache: 'no-store', signal: AbortSignal.timeout(VOTES_TIMEOUT_MS) }),
+      }),
+      getProjects(),
+    ]);
+    const now = Date.now();
+    return accountComments(rows, accountId, items, { hidden: HIDDEN_COMMENTS }).map((c) => ({
+      id: c.id,
+      projectId: c.project_id,
+      projectName: c.project.name,
+      text: c.text,
+      when: c.created_at ? `Commented ${relativeTime(c.created_at, now)}` : null,
+      block_height: c.block_height,
+      url: c.url,
+    }));
+  } catch (err) {
+    console.error('[account] comments read failed:', err instanceof Error ? err.message : err);
+    return null;
+  }
+}
+
 /** `/u/{account}` — Board 3: NH-50 (header), NH-51 (upvotes), NH-53 (remove), NH-52 (comments tab). */
 export default async function AccountPage({ params, searchParams }: Props) {
   const { account } = await params;
@@ -70,7 +105,11 @@ export default async function AccountPage({ params, searchParams }: Props) {
   const { tab } = await searchParams;
   const showComments = tab === 'comments';
 
-  const [{ status, profile }, upvotes] = await Promise.all([fetchAccountProfile(account), loadUpvotes(account)]);
+  const [{ status, profile }, upvotes, comments] = await Promise.all([
+    fetchAccountProfile(account),
+    loadUpvotes(account),
+    showComments ? loadComments(account) : Promise.resolve([]),
+  ]);
 
   return (
     <main className={`container ${s.page}`}>
@@ -97,10 +136,17 @@ export default async function AccountPage({ params, searchParams }: Props) {
 
       {showComments ? (
         <section aria-label="Comments">
-          {/* NH-52: no NEAR Hunt discussion threads exist on near.social yet (NH-41/42), so there is
-              nothing to filter this account's posts against. Honest empty state, no request. */}
-          <p className={s.empty}>
-            Comments appear here once project discussions open on near.social.
+          {comments === null ? (
+            <p className={s.empty} role="status">
+              Comments unavailable right now: the NEAR index could not be read. Try again in a minute.
+            </p>
+          ) : (
+            <CommentsList accountId={account} rows={comments} />
+          )}
+          <p className={s.note}>
+            Comments are rows this account wrote to {VOTE_ACCOUNT} on NEAR {NETWORK} (keys comment/…).
+            Only the author can delete one; comments on projects no longer in the feed, and comments on
+            NEAR Hunt&apos;s hide list, are not shown.
           </p>
         </section>
       ) : (

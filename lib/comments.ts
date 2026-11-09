@@ -28,6 +28,9 @@ export const COMMENT_ACCOUNT = VOTE_ACCOUNT;
 
 const HIDDEN: HideEntry[] = parseHideList(hiddenFile);
 
+/** The reviewed hide list, for the account page's "my comments" read (NH-52). */
+export const HIDDEN_COMMENTS: HideEntry[] = HIDDEN;
+
 /** A slow indexer must not hold the page. */
 const timedFetch: typeof fetch = (input, init) =>
   fetch(input, { ...init, cache: 'no-store', signal: AbortSignal.timeout(COMMENTS_TIMEOUT_MS) });

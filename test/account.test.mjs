@@ -2,10 +2,12 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import {
   ABOUT_MAX,
+  accountComments,
   accountUpvotes,
   fetchAccountProfile,
   normaliseAccountProfile,
   nsToMs,
+  readAccountCommentRows,
   readAccountVoteRows,
 } from '../lib/account.mjs';
 
@@ -148,4 +150,62 @@ test('nsToMs is exact for decimal-string nanoseconds', () => {
   assert.equal(nsToMs('1794155090502512652'), 1794155090502);
   assert.equal(nsToMs(null), null);
   assert.equal(nsToMs('0'), null);
+});
+
+// --- NH-52: my comments -------------------------------------------------------
+
+const commentRow = (writer, project, id, value, block_height = 10, block_timestamp = '1800000000000000000') => ({
+  predecessor_id: writer,
+  current_account_id: 'nearhunt.near',
+  block_height,
+  block_timestamp,
+  key: `comment/${project}/${id}`,
+  value,
+});
+
+test('readAccountCommentRows asks for the account’s own comment/ rows', async () => {
+  const calls = [];
+  const fetchImpl = async (url, init) => {
+    calls.push({ url: String(url), body: JSON.parse(init.body) });
+    return { ok: true, text: async () => JSON.stringify({ entries: [], page_token: null }) };
+  };
+  await readAccountCommentRows({ accountId: 'alice.near', account: 'nearhunt.near', fetchImpl });
+  assert.equal(calls[0].url, 'https://kv.main.fastnear.com/v0/latest/nearhunt.near/alice.near');
+  assert.deepEqual(calls[0].body, { limit: 200, key_prefix: 'comment/' });
+});
+
+test('accountComments: only this account’s live comments on live projects, newest first', () => {
+  const rows = [
+    commentRow('alice.near', 'p1', '1794000000000', { text: 'older' }, 10, '1794000000000000000'),
+    commentRow('alice.near', 'p2', '1795000000000', { text: 'newer' }, 12, '1795000000000000000'),
+    commentRow('bob.near', 'p1', '1796000000000', { text: 'not mine' }, 13),
+    commentRow('alice.near', 'p1', '1797000000000', null, 14), // deleted
+    commentRow('alice.near', 'p1', '1797000000001', { text: '   ' }, 14), // empty
+    commentRow('alice.near', 'gone', '1797000000002', { text: 'unknown project' }, 15),
+    { predecessor_id: 'alice.near', key: 'vote/p1', value: {}, block_height: 16 },
+  ];
+  const out = accountComments(rows, 'alice.near', [P('p1'), P('p2')]);
+  assert.deepEqual(out.map((c) => c.text), ['newer', 'older']);
+  assert.equal(out[0].project.name, 'p2');
+  assert.equal(out[0].project_id, 'p2');
+  assert.match(out[0].url, /\/p\/p2#c-alice\.near-1795000000000$/);
+  assert.equal(out[0].block_height, 12);
+});
+
+test('accountComments drops hidden comments and keeps the latest row per key', () => {
+  const rows = [
+    commentRow('alice.near', 'p1', '1794000000000', { text: 'first' }, 10),
+    commentRow('alice.near', 'p1', '1794000000000', { text: 'edited' }, 11),
+    commentRow('alice.near', 'p2', '1795000000000', { text: 'hidden' }, 12),
+  ];
+  const hidden = [{ project_id: 'p2', author: 'alice.near', id: '1795000000000' }];
+  const out = accountComments(rows, 'alice.near', [P('p1'), P('p2')], { hidden });
+  assert.deepEqual(out.map((c) => c.text), ['edited']);
+});
+
+test('accountComments reads created_at capped at the block time', () => {
+  const rows = [commentRow('alice.near', 'p1', '9007199254740900', { text: 'forged' }, 10, '1794122160000000000')];
+  const [c] = accountComments(rows, 'alice.near', [P('p1')]);
+  assert.equal(c.created_at, 1794122160000);
+  assert.equal(c.id, '9007199254740900');
 });

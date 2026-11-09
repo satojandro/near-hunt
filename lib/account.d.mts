@@ -38,3 +38,28 @@ export declare function accountUpvotes<P extends { submission_id: string }>(
 ): AccountUpvote<P>[];
 
 export declare function nsToMs(ns: unknown): number | null;
+
+export declare function readAccountCommentRows(opts: {
+  accountId: string;
+  account?: string;
+  network?: 'mainnet' | 'testnet';
+  fetchImpl?: typeof fetch;
+}): Promise<KvEntry[]>;
+
+export interface AccountComment<P> {
+  id: string;
+  project_id: string;
+  /** Plain text, already reduced the way the project page shows it. */
+  text: string;
+  truncated: boolean;
+  created_at: number | null;
+  block_height: number | null;
+  url: string;
+  project: P;
+}
+export declare function accountComments<P extends { submission_id: string }>(
+  rows: ReadonlyArray<Partial<KvEntry>> | null | undefined,
+  accountId: string,
+  projects: Iterable<P> | null | undefined,
+  opts?: { hidden?: Array<{ project_id: string; author: string; id: string }> },
+): AccountComment<P>[];

@@ -64,6 +64,16 @@
 .rowStatus { margin: 0; font-size: 14px; color: var(--text-muted); }
 .rowError { margin: 0; font-size: 14px; color: #B42345; }
 
+/* NH-52: a comment's text on the account page. Clamped for the card; the link opens the full
+   comment (and thread) on the project page. */
+.commentText {
+  margin: 0; font-size: 15px; line-height: 1.55; color: var(--text); white-space: pre-wrap;
+  overflow-wrap: anywhere; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 5;
+  overflow: hidden;
+}
+.commentLink { color: var(--social); font-weight: 600; font-size: 14px; text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; }
+.commentLink:hover { text-decoration: underline; }
+
 .empty {
   background: var(--surface); border: 1px dashed var(--border-strong); border-radius: var(--radius-card);
   padding: 28px; color: var(--text-muted); margin: 0;
