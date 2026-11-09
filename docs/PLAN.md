@@ -289,7 +289,22 @@ removed. Images are referenced by URL, never copied.
     submission (AgentGuard ×6, Leash ×4, Tollgate ×3, Tripwire ×3, …), all from different builders
     with different repositories. 26 X accounts submitted two projects each, all with different
     names, so there are no hidden resubmissions.
-- **NH-96 is complete in code.** What remains is step 5: the owner-approved import (pending).
+- **NH-96 is complete in code.** What remains is step 5, the import:
+  - **Approved by the owner, 9 Nov (in session):** the 257-key batch. Account `nearhunt.near`,
+    prefix `project/`, 257 keys, 337,616 bytes, 6 tx; fields `media` (251), `links` (96),
+    `repository_url` (1, SafeSpend), `enrichment` (257); no description changes. Command, to be run
+    by the key holder (Hermes) from this branch:
+    `node scripts/import.mjs --enrichment data/enrichment/proposal-nh96.json --refresh-enriched --updates-only`.
+    Its dry run must print exactly those numbers; if it does not, stop and re-ask. Then add
+    `--execute --yes`. `data/enrichment/proposal-nh96.json` is frozen for this batch; do not
+    regenerate it.
+  - **Not approved:** the 54 new feed records, restoring labels on the 15 records, and anything
+    about "777 giros gratis".
+  - **From now on:** new submissions follow
+    [`runbooks/new-submissions.md`](runbooks/new-submissions.md). `npm run enrich` now also covers
+    feed submissions not yet on chain, so they are created already enriched in one approved write.
+    A scratch run on 9 Nov showed 311 proposals for 335 submissions; the 54 pending ones would be
+    created with 46 descriptions, 42 media sets and 14 verified repositories.
 
 ### Board 1 — Directory (home) · Day 1
 

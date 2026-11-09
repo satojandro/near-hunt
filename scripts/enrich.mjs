@@ -5,6 +5,7 @@
 //   node scripts/enrich.mjs --only <submission_id>
 //   node scripts/enrich.mjs --threads data/enrichment/threads.json
 //   node scripts/enrich.mjs --refresh           # ignore cached posts and re-fetch
+//   node scripts/enrich.mjs --chain-only        # skip feed submissions that are not on chain yet
 //   node scripts/enrich.mjs --links             # NH-96 step 2: visit every link once, write
 //                                               # data/enrichment/links.json (status, <title>, og:image)
 //   node scripts/enrich.mjs --duplicates        # NH-96 step 4: submissions sharing a repo, X post
@@ -18,6 +19,10 @@
 // the hackathon feed links whichever post the builder submitted. Follow-up replies in a thread
 // are not exposed by the syndication endpoint; when a browser crawl has captured them, pass
 // --threads with `{ "<submission_id>": [{ text, links, author, id }] }` and they are merged in.
+//
+// By default the proposal also covers submissions that are in the hackathon feed but not on
+// chain yet, so the importer can create them already enriched: one approval per batch, not two.
+// The runbook is docs/runbooks/new-submissions.md.
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 import { DEFAULT_ACCOUNT, readProjects } from '../lib/kv.mjs';
@@ -48,6 +53,29 @@ const CHECK_REPOS = !args.includes('--no-check-repos');
 // reused (one visit per URL); anything missing is visited now.
 const LINK_CHECKS = value('--link-checks', 'data/enrichment/links.json');
 const CHECK_LINKS = !args.includes('--no-check-links');
+const CHAIN_ONLY = flag('--chain-only');
+const FEED_API = 'https://nearhackathon.com/api/projects';
+
+/**
+ * Every submission in the hackathon feed, `{ id, project_name, tracks, demo_url }`. Same loop
+ * as scripts/import.mjs: 8 per page, deduped on the source id because the feed grows mid-read.
+ */
+async function readFeed() {
+  const seen = new Map();
+  let total = Infinity;
+  let read = 0;
+  for (let page = 1; read < total; page++) {
+    const res = await fetch(`${FEED_API}?page=${page}`);
+    if (!res.ok) throw new Error(`feed returned ${res.status} on page ${page}`);
+    const body = await res.json();
+    total = body.total;
+    if (!body.projects?.length) break;
+    for (const f of body.projects) seen.set(f.id, f);
+    read += body.projects.length;
+    await delay(400);
+  }
+  return [...seen.values()];
+}
 
 const SYNDICATION = 'https://cdn.syndication.twimg.com/tweet-result';
 const MAX_PARENTS = 6;
@@ -144,8 +172,16 @@ async function main() {
   const projects = rows
     .filter((r) => r.value && typeof r.value === 'object')
     .map((r) => ({ ...r.value, submission_id: r.key.slice('project/'.length) }))
-    .filter((p) => (ONLY ? p.submission_id === ONLY : true))
-    .slice(0, LIMIT || undefined);
+    .filter((p) => (ONLY ? p.submission_id === ONLY : true));
+  if (!CHAIN_ONLY) {
+    const onChain = new Set(projects.map((p) => p.submission_id));
+    const pending = (await readFeed())
+      .filter((f) => !onChain.has(f.id) && (ONLY ? f.id === ONLY : true))
+      .map((f) => ({ submission_id: f.id, name: f.project_name, demo_url: f.demo_url ?? null }));
+    console.log(`feed: ${pending.length} submission(s) not on chain yet, included`);
+    projects.push(...pending);
+  }
+  projects.splice(LIMIT || projects.length);
 
   const threads = THREADS_FILE ? JSON.parse(await readFile(THREADS_FILE, 'utf8')) : {};
   const results = [];
@@ -312,22 +348,8 @@ async function checkDuplicates() {
     subs.set(id, { submission_id: id, name: v.name, on_chain: true, urls });
   }
 
-  // The feed: 8 per page, so loop; dedupe on the source id (the feed grows while we read).
-  let page = 1;
-  let total = Infinity;
-  let read = 0;
-  while (read < total) {
-    const res = await fetch(`https://nearhackathon.com/api/projects?page=${page}`);
-    if (!res.ok) throw new Error(`feed returned ${res.status} on page ${page}`);
-    const body = await res.json();
-    total = body.total;
-    if (!body.projects?.length) break;
-    for (const f of body.projects) {
-      if (!subs.has(f.id)) subs.set(f.id, { submission_id: f.id, name: f.project_name, on_chain: false, urls: [{ field: 'demo_url', url: f.demo_url }] });
-    }
-    read += body.projects.length;
-    page += 1;
-    await delay(400);
+  for (const f of await readFeed()) {
+    if (!subs.has(f.id)) subs.set(f.id, { submission_id: f.id, name: f.project_name, on_chain: false, urls: [{ field: 'demo_url', url: f.demo_url }] });
   }
 
   const all = [...subs.values()];

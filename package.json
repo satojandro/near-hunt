@@ -11,6 +11,10 @@
     "start": "next start",
     "typecheck": "tsc --noEmit",
     "import": "node scripts/import.mjs",
+    "feed:check": "node scripts/feed-watch.mjs",
+    "enrich": "node scripts/enrich.mjs --threads data/enrichment/threads.json",
+    "enrich:links": "node scripts/enrich.mjs --links",
+    "enrich:duplicates": "node scripts/enrich.mjs --duplicates",
     "validate:schema": "node scripts/validate-schema.mjs",
     "test": "node --test test/*.test.mjs",
     "render:mockups": "node scripts/render-mockups.mjs docs/mockups/src docs/mockups"

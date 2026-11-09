@@ -9,7 +9,8 @@ value, but the old value stays in public history forever.
 - **Never sign or broadcast a mainnet transaction without explicit human approval of the exact
   diff.** Run the dry run, show the human its output, and wait for a yes in the conversation.
 - The only sanctioned write path for project records is `scripts/import.mjs`. Run it without
-  flags first (dry run). Only after approval: `--execute --yes`.
+  flags first (dry run). Only after approval: `--execute --yes`. For new submissions and
+  enrichment, follow `docs/runbooks/new-submissions.md`.
 - Never write keys outside the prefixes in `docs/PLAN.md`. Today that means `project/` on
   `nearhunt.near` (importer only) and nothing else from agents. Votes (`vote/`) and comments
   (`comment/`) on `nearhunt.near` are written by end users from their own accounts, never by an agent.
