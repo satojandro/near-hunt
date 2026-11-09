@@ -58,9 +58,7 @@ export default async function Participants({
         {more > 0 ? <li className={`${s.avatar} ${s.more}`} aria-hidden="true">+{more}</li> : null}
       </ul>
       <p className={s.text}>
-        <strong>{label}</strong>
-        {' — '}
-        <JoinLink />
+        <strong>{label}</strong> <JoinLink />
       </p>
     </div>
   );
