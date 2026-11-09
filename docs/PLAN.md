@@ -202,6 +202,26 @@ Gaps it targets, counted 9 Nov with `readProjects()`: 281 records; 16 without a 
 New fields are additive (the schema allows extra properties), so no existing field is renamed or
 removed. Images are referenced by URL, never copied.
 
+**Status 9 Nov (Claude, branch `claude/keen-galileo-6c7py0`), built and tested, not deployed, nothing signed:**
+
+- **Step 1 done.** `linkRows()` renders every `links` entry (de-duplicated, https only, labelled
+  Video/Telegram/Discord only when the host makes it certain, otherwise "Link"). A `demo_url` that
+  is an X post is labelled "Launch post on X" instead of "Demo". Unit tests in
+  `test/project-view.test.mjs`.
+- **Media (owner request in session, 9 Nov; extends step 2).** The X syndication payload that
+  `enrich.mjs` already fetches carries the post's media. `lib/media.mjs` keeps only
+  `pbs.twimg.com` image URLs (photos, plus video *posters*), at most 4, each with its `post_url`.
+  `/p/{id}` shows them in a Media card; a video opens on X. No X script loads and no video file is
+  hotlinked. The first image also becomes the page's `og:image`. The importer fills `media` only
+  when it is empty, and `enrichment.fields`/`sources` now accumulate, so adding media keeps the
+  existing `description` provenance.
+- **Measured:** `node scripts/enrich.mjs --threads data/enrichment/threads.json --out data/enrichment/proposal-nh96.json`
+  gives 251 of 281 projects with media (224 video posters, 75 photos). The dry run
+  `node scripts/import.mjs --enrichment data/enrichment/proposal-nh96.json` gives 54 new (feed now 335),
+  251 changed, 30 unchanged; 305 keys, 345,922 bytes, 6 tx. The 251 changes touch only `media` and
+  `enrichment`. **Pending owner approval (step 5); not applied.**
+- Steps 2 (HTTP status, `<title>`, `og:image` per link), 3 and 4 are still to do.
+
 ### Board 1 — Directory (home) · Day 1
 
 **Status: done 8 Nov** — NH-10–NH-16 are on `main`; evidence in the Day 1 status block above.

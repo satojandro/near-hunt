@@ -24,7 +24,11 @@ export declare function safeHttpsUrl(url: unknown): string | null;
 export declare function linkHost(url: unknown): string | null;
 export declare function linkText(url: unknown): string | null;
 export declare function linkRow(label: string, url: unknown): LinkRow;
-export declare function linkRows(project: Pick<Project, 'demo_url' | 'repository_url' | 'source'>): LinkRow[];
+export declare function isXPost(url: unknown): boolean;
+export declare function extraLinkLabel(url: unknown): string;
+export declare function linkRows(
+  project: Pick<Project, 'demo_url' | 'repository_url' | 'source'> & { links?: Array<{ url: string } | string> | null },
+): LinkRow[];
 export declare function descriptionView(description: string | null | undefined): { supplied: boolean; text: string };
 export declare function eventLabel(event: unknown): string | null;
 export declare function formatBlockHeight(height: unknown): string | null;

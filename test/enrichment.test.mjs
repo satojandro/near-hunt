@@ -136,6 +136,7 @@ test('summarize counts only ok rows for field coverage', () => {
     with_description: 2,
     with_repository: 1,
     with_links: 1,
+    with_media: 0,
     by_status: { ok: 2, 'not-an-x-post': 1 },
   });
 });

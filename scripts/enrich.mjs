@@ -195,6 +195,7 @@ async function main() {
   console.log(`with description:    ${summary.with_description}`);
   console.log(`with repository:     ${summary.with_repository}`);
   console.log(`with extra links:    ${summary.with_links}`);
+  console.log(`with media:          ${summary.with_media}`);
   console.log(`by status:           ${JSON.stringify(summary.by_status)}`);
   console.log(`\nwrote ${OUT} (nothing written on chain)\n`);
 }

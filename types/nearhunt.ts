@@ -23,6 +23,25 @@ export interface ExternalCampaign {
   campaign_id?: string | null;
 }
 
+export interface ProjectLink {
+  url: string;
+  source_post_id?: string;
+}
+
+/**
+ * One image from the builder's own X post. Referenced by URL on pbs.twimg.com, never copied.
+ * A video is stored as its poster image; it plays on X (`post_url`), not on NEAR Hunt.
+ */
+export interface ProjectMedia {
+  type: 'photo' | 'video';
+  url: string;
+  width?: number;
+  height?: number;
+  alt?: string | null;
+  duration_ms?: number;
+  post_url: string;
+}
+
 export interface Project {
   schema: typeof PROJECT_SCHEMA;
   /** `{source.event}:{source.submission_id}` */
@@ -37,6 +56,10 @@ export interface Project {
   /** near.social discussion post, `{account_id}/{post_id}`. Absent until it exists. */
   social_post?: string | null;
   external_campaigns: ExternalCampaign[];
+  /** Additive (NH-95): other URLs the builder posted on X. */
+  links?: ProjectLink[] | null;
+  /** Additive (NH-96): images and video posters attached to the builder's X post, by URL. */
+  media?: ProjectMedia[] | null;
   /** ISO-8601 UTC, set by the importer. */
   updated_at: string;
 }

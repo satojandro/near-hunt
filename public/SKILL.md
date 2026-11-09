@@ -350,6 +350,8 @@ No rate limit is published, and none is promised. Be modest anyway:
      site links, when the builder posted any, are in the extra `links` array (`[{url,
      source_post_id}]`). They are copied from the post as written, so some are bare domains or
      truncated; treat them as leads, not verified demos.
+   - Records may carry `media` (NH-96): images or video posters from the builder's X post, each
+     with the `post_url` it came from. A video means the builder recorded a demo; watch it on X.
    - Early in the event almost every project has 0 votes, so votes rarely separate projects.
 4. Pick ten, spread across tracks unless the person asked for one. Many submissions share an idea
    (dozens are "spending limits for an AI agent's wallet"); compare descriptions and avoid

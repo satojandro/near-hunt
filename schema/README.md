@@ -74,7 +74,8 @@ object, and a consumer that ignores them loses nothing.
 | `repository_unverified` | A linked repository that did not answer; kept for review, never published in `repository_url`. |
 | `repository_candidates` | Several unrelated repos were linked, so `repository_url` stays null rather than guessing. |
 | `links` | Other product URLs the builder posted, `{ url, source_post_id }`. |
-| `enrichment` | Provenance: `{ method, sources: [post URLs], retrieved_at, fields }`. |
+| `media` | NH-96. Images from the builder's own X post, at most 4: `{ type: "photo"\|"video", url, width?, height?, alt?, duration_ms?, post_url }`. `url` is always on `pbs.twimg.com` (referenced, never copied); a video is stored as its poster image and plays on X at `post_url`. |
+| `enrichment` | Provenance: `{ method, sources: [post URLs], retrieved_at, fields }`. `fields` accumulates across runs. |
 
 Policy: no AI rewriting, no repository guessed from a name. A builder can ask for their text to be
 removed — the owner rewrites the record, which updates the latest value (the older value remains in
