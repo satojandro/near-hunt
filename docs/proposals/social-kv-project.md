@@ -1,6 +1,6 @@
 # Proposal: `project/` — projects as a near.social data object
 
-**Status:** draft, not submitted · **Target:** `social-kv/1` (an additive key) · **Author:** NEAR Hunt
+**Status:** background only — superseded 9 Nov by a NEAR Hunt native format (`docs/PLAN.md`, Decisions taken). Not submitted · **Target:** `social-kv/1` (an additive key) · **Author:** NEAR Hunt
 
 ## Summary
 
