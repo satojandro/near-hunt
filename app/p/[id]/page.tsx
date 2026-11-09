@@ -88,7 +88,7 @@ export default async function ProjectPage({ params }: Props) {
           <RecordCard project={project} comments={comments.count} commentsAvailable={comments.available} />
           <UpvotedBy voters={voters} available={votesAvailable} />
           <SimilarProjects project={project} all={allProjects} />
-          <ClaimCard />
+          <ClaimCard project={project} />
         </aside>
       </div>
       {/* NH-71: the same UpvoteButton in a bar pinned to the bottom on phones; hidden on desktop. */}

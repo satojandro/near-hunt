@@ -17,6 +17,18 @@ export const metadata: Metadata = {
   description:
     'Where NEAR Hunt data lives on NEAR, the read-only API, the agent SKILL.md, and how to read every record straight from the chain.',
   alternates: { canonical: '/open-data' },
+  openGraph: {
+    title: 'Open data · NEAR Hunt',
+    description: 'Every NEAR Hunt record, readable straight from the chain — API, SKILL.md and schema.',
+    type: 'website',
+    images: [{ url: '/og/open-data.png', width: 1200, height: 630, alt: 'NEAR Hunt open data' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Open data · NEAR Hunt',
+    description: 'Every NEAR Hunt record, readable straight from the chain — API, SKILL.md and schema.',
+    images: ['/og/open-data.png'],
+  },
 };
 
 const KV = 'https://kv.main.fastnear.com';

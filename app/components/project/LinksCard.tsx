@@ -1,4 +1,5 @@
 import { linkRows } from '@/lib/project-view.mjs';
+import { outboundKind } from '@/lib/links.mjs';
 import type { ListingItem } from '@/lib/listing.mjs';
 import ExternalLink from './ExternalLink';
 import s from './project.module.css';
@@ -14,7 +15,7 @@ export default function LinksCard({ project }: { project: ListingItem }) {
             <dt>{r.label}</dt>
             <dd>
               {r.href ? (
-                <ExternalLink href={r.href}>{r.text}</ExternalLink>
+                <ExternalLink href={r.href} eventKind={outboundKind(r.label)}>{r.text}</ExternalLink>
               ) : (
                 <span className={r.supplied ? undefined : s.notSupplied}>{r.text}</span>
               )}

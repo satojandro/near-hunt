@@ -18,6 +18,8 @@
     "enrich:duplicates": "node scripts/enrich.mjs --duplicates",
     "validate:schema": "node scripts/validate-schema.mjs",
     "test": "node --test test/*.test.mjs",
+    "health:check": "node scripts/site-health.mjs",
+    "og": "node scripts/render-og.mjs",
     "render:mockups": "node scripts/render-mockups.mjs docs/mockups/src docs/mockups"
   },
   "dependencies": {

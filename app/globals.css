@@ -94,6 +94,15 @@ a:hover { color: var(--accent-hover); }
 /* Footer (shared) */
 .site-footer { border-top: 1px solid var(--border); background: var(--surface); margin-top: 48px; }
 .site-footer .container { padding-top: 20px; padding-bottom: 28px; font-size: 13px; color: var(--text-muted); display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: space-between; }
+/* NH-106: the header nav is hidden at phone width, so these links are the phone's only route to
+   /open-data and the correction form. */
+.footer-links { display: flex; flex-wrap: wrap; gap: 4px 18px; width: 100%; }
+.footer-links a { color: var(--text-muted); text-decoration: none; min-height: 44px; display: inline-flex; align-items: center; }
+.footer-links a:hover { color: var(--text); text-decoration: underline; }
+.footer-privacy { width: 100%; }
+@media (max-width: 640px) {
+  .footer-links { gap: 0 20px; }
+}
 
 /* Keep brand, nav and connect on one row at phone width. */
 @media (max-width: 640px) {

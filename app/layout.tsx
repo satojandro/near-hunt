@@ -4,6 +4,8 @@ import { Inter, Space_Grotesk } from 'next/font/google';
 import WalletProvider from '@/app/components/wallet/WalletProvider';
 import ConnectButton from '@/app/components/wallet/ConnectButton';
 import SiteNav from '@/app/components/SiteNav';
+import Analytics from '@/app/components/Analytics';
+import { correctionUrl } from '@/lib/links.mjs';
 import { NETWORK, VOTE_ACCOUNT } from '@/lib/network.mjs';
 import './globals.css';
 
@@ -44,9 +46,25 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <div className="container">
               <span>Project records are read from NEAR mainnet, account nearhunt.near, keys project/…</span>
               <span>Votes are written by voters to {VOTE_ACCOUNT} on NEAR {NETWORK}, keys vote/… — community signals, not official judging.</span>
+              {/* NH-106: the header nav is hidden on phones, so the footer carries every route a
+                  phone visitor needs. */}
+              <nav className="footer-links" aria-label="Footer">
+                <Link href="/">Projects</Link>
+                <Link href="/open-data">Open data</Link>
+                <Link href="/comment-policy">Comment policy</Link>
+                <a href={correctionUrl()} target="_blank" rel="noopener noreferrer" data-outbound-kind="correction">
+                  Report a problem
+                </a>
+              </nav>
+              {/* The counter is aggregate and cookie-free (app/components/Analytics.tsx). The
+                  claim is only rendered when a counter is actually configured. */}
+              {process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID ? (
+                <span className="footer-privacy">Page views are counted in aggregate, without cookies or identifiers.</span>
+              ) : null}
             </div>
           </footer>
         </WalletProvider>
+        <Analytics />
       </body>
     </html>
   );

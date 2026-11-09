@@ -15,4 +15,12 @@ export interface ListingItem extends Project {
 }
 
 export declare function toListing(entries: KvEntry[]): ListingItem[];
+/**
+ * Drop listings named in the owner's hide list (data/hidden-projects.json, NH-108). Matches on
+ * `submission_id` only; hides for display, never tombstones the record on chain.
+ */
+export declare function filterHidden(
+  items: ListingItem[],
+  hidden: { projects?: Array<{ submission_id?: string } | string> } | Array<string | { submission_id?: string }>,
+): ListingItem[];
 export declare function trackCounts(items: ListingItem[]): Array<{ track: string; count: number }>;

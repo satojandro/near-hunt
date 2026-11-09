@@ -1,0 +1,11 @@
+{
+  "_note": "NEAR Hunt's project hide list. A listing is hidden only when its submission_id matches an entry here: it stops appearing in the directory, the API, /open-data and its own page (which returns 404), and it is never tombstoned on chain (AGENTS.md §1). Hiding is a reviewed code change: add the id with a reason and `hidden_at`, commit, deploy. Removing the entry restores the listing on the next deploy. Owner decision, 9 Nov 2026 (docs/PLAN.md NH-108).",
+  "projects": [
+    {
+      "submission_id": "fa54da13-e260-4391-ad42-937e28fa2031",
+      "name": "777 giros gratis",
+      "reason": "Not a hackathon project: the record's only link is a gambling-site referral (afun.mx/?ch=…). Owner-approved hide, 9 Nov 2026.",
+      "hidden_at": "2026-11-09"
+    }
+  ]
+}

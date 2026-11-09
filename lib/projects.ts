@@ -1,7 +1,8 @@
 import 'server-only';
 import { unstable_cache } from 'next/cache';
 import { readProjects, DEFAULT_ACCOUNT } from './kv.mjs';
-import { toListing, type ListingItem } from './listing.mjs';
+import { toListing, filterHidden, type ListingItem } from './listing.mjs';
+import HIDDEN_PROJECTS from '../data/hidden-projects.json';
 
 /** Seconds a cached copy of the project list is served before it is re-read from the KV API. */
 export const PROJECTS_REVALIDATE_SECONDS = 60;
@@ -50,7 +51,9 @@ const readCachedProjects = unstable_cache(
     try {
       const entries = await readProjects({ account: DEFAULT_ACCOUNT, network: 'mainnet', fetchImpl: timedFetch });
       lastReadOkAt = Date.now();
-      return { items: toListing(entries), fetched_at: new Date().toISOString(), account: DEFAULT_ACCOUNT };
+      // NH-108: the owner's hide list is applied here, the one place every reader passes through.
+      const items = filterHidden(toListing(entries), HIDDEN_PROJECTS);
+      return { items, fetched_at: new Date().toISOString(), account: DEFAULT_ACCOUNT };
     } catch (err) {
       lastReadFailedAt = Date.now();
       throw err;

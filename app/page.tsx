@@ -1,4 +1,5 @@
 import { Suspense } from 'react';
+import type { Metadata } from 'next';
 import { getProjects } from '@/lib/projects';
 import { getVoteCounts } from '@/lib/votes';
 import { cardCommentCount, directoryView, formatFetchedUtc, type SearchParamsRecord, type Votes } from '@/lib/directory.mjs';
@@ -12,6 +13,28 @@ import EmptyResults from '@/app/components/states/EmptyResults';
 import DirectorySkeleton from '@/app/components/states/DirectorySkeleton';
 import { getCommentCounts } from '@/lib/comments';
 import './directory.css';
+
+// The directory's share card (NH-109). Without this the front page — the URL the demo post links
+// — rendered with no og:/twitter: tags at all, while every /p/{id} page had a rich card.
+export const metadata: Metadata = {
+  title: { absolute: 'NEAR Hunt — the NEAR Hackathon, as open records on NEAR' },
+  description:
+    'Browse the NEAR Hackathon projects. Every project is an open record on NEAR, and every upvote is a write you sign from your own account. Votes are community signals, not official judging.',
+  alternates: { canonical: '/' },
+  openGraph: {
+    title: 'NEAR Hunt — the NEAR Hackathon, as open records',
+    description: 'Browse every project. Upvote the ones you would actually use. Records and votes are on NEAR.',
+    type: 'website',
+    url: '/',
+    images: [{ url: '/og/home.png', width: 1200, height: 630, alt: 'NEAR Hunt' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'NEAR Hunt — the NEAR Hackathon, as open records',
+    description: 'Browse every project. Upvote the ones you would actually use. Records and votes are on NEAR.',
+    images: ['/og/home.png'],
+  },
+};
 
 // Directory: search (NH-12), track chips (NH-13), sort (NH-14). All state lives in the URL
 // (`?q=&track=&sort=`) and is rendered on the server.

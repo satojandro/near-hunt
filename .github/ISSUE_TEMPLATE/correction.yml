@@ -1,0 +1,58 @@
+name: Listing correction
+description: Fix, complete or remove a project listing on NEAR Hunt
+title: "Correction: "
+labels: ["data"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        NEAR Hunt republishes what the builder posted publicly on X, read from the NEAR chain
+        (`nearhunt.near`, keys `project/…`). Nothing is rewritten by a model, so a wrong or
+        missing field usually means the post did not carry it.
+
+        Fill this in and the listing is corrected in a reviewed change. Records are never deleted
+        from the chain: the listing is hidden instead, and the record stays readable.
+  - type: input
+    id: project
+    attributes:
+      label: Project
+      description: The project's page link, or its submission id.
+      placeholder: https://nearhunt.xyz/p/…
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What is wrong
+      options:
+        - Wrong or missing description
+        - Wrong or missing repository
+        - Wrong or missing link (demo, website, docs)
+        - Wrong name or tracks
+        - This is not a hackathon project (spam, affiliate link)
+        - I built this and want the listing removed
+        - Something else
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: What it should say
+      description: The exact text or URL to publish. Plain text; it is published verbatim.
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Public source
+      description: A link that shows the right value (your X post, the repository, the announcement). Optional but it is what makes a correction verifiable.
+      placeholder: https://…
+    validations:
+      required: false
+  - type: checkboxes
+    id: authority
+    attributes:
+      label: Basis
+      options:
+        - label: I am the builder of this project, or I am reporting a listing that is not a hackathon project.
+          required: true

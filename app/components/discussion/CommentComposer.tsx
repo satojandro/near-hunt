@@ -25,6 +25,7 @@ import {
 } from '@/lib/comments.mjs';
 import { profileUrl } from '@/lib/social.mjs';
 import { commentsChanged } from '@/app/actions/comments';
+import { track } from '@/lib/analytics';
 import s from './discussion.module.css';
 
 type Props = {
@@ -127,6 +128,7 @@ export default function CommentComposer({ projectId, replyTo = null, onPosted, o
     }
 
     if (result.outcome === 'confirmed') {
+      track('comment', { kind: replyTo ? 'reply' : 'new', project: projectId });
       const now = Date.now();
       onPosted({
         key: result.key,

@@ -20,6 +20,7 @@ import { NETWORK, VOTE_ACCOUNT, VOTE_METHOD } from '@/lib/network.mjs';
 import { SIGN_IN_OPTIONS, connectorOptions } from '@/lib/wallets.mjs';
 import { castVote, readAccountVotes, type CastResult, type SignAndSend } from '@/lib/vote-client.mjs';
 import { votesChanged } from '@/app/actions/votes';
+import { track } from '@/lib/analytics';
 
 /** Where function-call-key-plugin keeps the login key (documented in its README). */
 const PLUGIN_STORAGE_KEY = 'access_key::plugin';
@@ -123,6 +124,7 @@ function Inner({ children }: { children: React.ReactNode }) {
   const connect = useCallback(async () => {
     try {
       await nearRef.current.signIn(SIGN_IN_OPTIONS);
+      track('wallet_connect');
       return true;
     } catch (err) {
       // Closing the picker or declining in the wallet lands here; nothing changed.
@@ -173,7 +175,11 @@ function Inner({ children }: { children: React.ReactNode }) {
       // No router.refresh(): the buttons already show the vote optimistically, and re-rendering
       // them with the new server count on top of their local adjustment would count it twice.
       result.then((res) => {
-        if (res.outcome === 'confirmed') votesChanged().catch(() => {});
+        if (res.outcome === 'confirmed') {
+          votesChanged().catch(() => {});
+          // The funnel signal the chain cannot split: a confirmed write plus the intent around it.
+          track(upvote ? 'vote' : 'unvote', { project: projectId });
+        }
       }, () => {});
       return result;
     },

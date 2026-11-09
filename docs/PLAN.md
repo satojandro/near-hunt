@@ -59,6 +59,11 @@ X posts, 6 posts are gone). 15 records still keep unlabelled links (see NH-96: t
 dropped their provenance, so `--refresh-enriched` refuses them). Re-running any import prints
 `changed: 0, unchanged: 336`; the feed and the chain are level at 336.
 
+**The site serves 335 of those 336** since NH-108 (9 Nov): one record is on the owner's hide list
+(`data/hidden-projects.json`, `fa54da13-…` "777 giros gratis", a gambling referral). Hiding is a
+repo change, not a chain write — the record is untouched on chain and `/api/projects` reports
+`meta.total: 335`. `npm run validate:schema` and the importer still see all 336.
+
 **The 19-key correction** was applied in tx `Bo5ktqRx…` — 18 descriptions that ended in a dangling
 link label, plus the newest `AgentGuard` record — via `--refresh-enriched`.
 
@@ -526,6 +531,38 @@ node scripts/import.mjs   # 29 new (feed 310), 0 changed, 281 unchanged — pend
 | NH-92 | P0 | Demo video or screenshots, plus an X post tagging `@NEARProtocol` `#NEARHackathon` |
 | NH-93 | P0 | Final dry-run import; a human approves and applies any diff | **Done 8 Nov** — 4 records applied in tx `8rX5McjBeiitsRAhQsY7sqWbTQ9nXXHBDYwCJyQuGhfk`, 4/4 verified against the indexer, schema 275/275 |
 | NH-94 | P2 | "Support NEAR Hunt" link (footer and open data page) to a separate treasury account, labelled "supports the site, not any project" |
+
+### Live-traffic hardening — NH-106…NH-110 (9 Nov, owner request)
+
+Shaped the day the demo went out on X, before visitors could hit the gaps. Everything here is
+read-only or display-only: **no chain writes, no keys.**
+
+| ID | P | Item | Status |
+|---|---|---|---|
+| NH-106 | P1 | The header nav is `display:none` at ≤640 px, so phones had no route to `/open-data` or the correction form. Footer now carries Projects, Open data, Comment policy and Report a problem at 44 px targets | **Done** — `app/globals.css` `.footer-links`, `app/layout.tsx` |
+| NH-107 | P1 | Builders arriving had no way to report a wrong/missing description or repository. Public issue form `.github/ISSUE_TEMPLATE/correction.yml`, prefilled from `/p/{id}` | **Done** — `lib/links.mjs` `correctionUrl()`, linked from `ClaimCard` |
+| NH-108 | P1 | **Project hide list.** `data/hidden-projects.json`, applied in `getProjects()` — the one funnel every reader passes through — so a hidden listing leaves the directory, the API, `/open-data` and its own page (404). Matches `submission_id` only, keeps a written reason, never tombstones (AGENTS.md §1) | **Done** — `lib/listing.mjs` `filterHidden()` + 5 tests. First entry: `fa54da13-…` "777 giros gratis" (gambling referral, owner-approved hide). Served count 336 → **335**; the record stays on chain |
+| NH-109 | P1 | The front page had **no `og:`/`twitter:` tags at all** — the URL the demo post links rendered as a bare text card while `/p/{id}` pages had rich cards. Metadata + 1200×630 share cards for `/` and `/open-data`, rendered without a new npm dependency | **Done** — `app/page.tsx`, `app/open-data/page.tsx`, `scripts/render-og.mjs` → `public/og/{home,open-data}.png` |
+| NH-110 | P1 | Production had no monitor: the existing cron runs the **local** importer, and a KV outage returns **200 on `/`** (B4), so a status-only check is green through an outage. `scripts/site-health.mjs` asserts the API body, a project page (`__next_error__` is the tell), the home `og:image` and `/open-data` | **Done** — silent when healthy, one line naming the failed check. Cron `near-hunt site health`, every 10 min, `no_agent` |
+| NH-111 | P2 | Aggregate, cookie-free page counting (Umami Cloud free: 1 site, 100k events/mo, no consent banner). Loads only when `NEXT_PUBLIC_UMAMI_WEBSITE_ID` is set, restricted to production hosts; events `wallet_connect`, `vote`, `unvote`, `comment`, `outbound_click` (kind: repository/demo/video/website) | **Code done, inert until the website id exists.** The funnel itself is already on chain; this adds the denominator and the outbound-intent signal |
+
+Why analytics is compatible with NH-104's "no tracking scripts": the counter is aggregate,
+sets no cookies and collects no identifiers — it is not ad tracking, and the footer says so
+when it is on. No Sentry: NH-110 covers the failure that would actually bite during judging.
+
+Evidence (9 Nov):
+
+```bash
+npm test                  # 296 pass, 0 fail (5 new for the hide list)
+npm run typecheck         # exit 0
+npm run build             # adds /open-data share card; /p/[id] unchanged
+node scripts/site-health.mjs --verbose   # against production, before deploy: fails on
+                                         # "home: no og:image" — the gap it exists to catch
+# local `next start -p 3311`, after build:
+#   /p/fa54da13-… → 404 ; /api/projects meta.total 335 ; q=777 → 0 hits
+#   / → og:image https://nearhunt.xyz/og/home.png, footer nav rendered
+#   umami script absent and no privacy line while the id is unset
+```
 
 ### Days 7–8 — after launch, P2 (owner, 8–9 Nov)
 
