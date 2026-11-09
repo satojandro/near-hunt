@@ -61,9 +61,29 @@ test('malformed rows never throw', () => {
   assert.deepEqual(participantsFrom([null, {}, { predecessor_id: 5, key: 'vote/a' }, { key: 'vote/a' }]), []);
 });
 
-test('the label says what was signed, never "logged in"', () => {
+test('the label says what was signed, recently, and never "logged in"', () => {
   assert.equal(participantsLabel(0), null);
-  assert.equal(participantsLabel(1), '1 person has voted or commented');
-  assert.equal(participantsLabel(12), '12 people have voted or commented');
+  assert.equal(participantsLabel(1), '1 person has voted or commented recently');
+  assert.equal(participantsLabel(12), '12 people have voted or commented recently');
   assert.doesNotMatch(participantsLabel(12) ?? '', /log/i);
+});
+
+test('the window drops rows signed before it and rows with no date', () => {
+  const now = Date.parse('2026-11-09T12:00:00Z');
+  const ns = (iso) => String(Date.parse(iso)) + '000000';
+  const rows = [
+    { predecessor_id: 'old.near', key: 'vote/a', value: {}, block_height: 1, block_timestamp: ns('2026-10-01T00:00:00Z') },
+    { predecessor_id: 'new.near', key: 'vote/b', value: {}, block_height: 2, block_timestamp: ns('2026-11-09T11:00:00Z') },
+    { predecessor_id: 'undated.near', key: 'vote/c', value: {}, block_height: 3 },
+  ];
+  const out = participantsFrom(rows, { sinceMs: now - 7 * 24 * 60 * 60 * 1000 });
+  assert.deepEqual(out.map((p) => p.account_id), ['new.near']);
+});
+
+test('no window means every dated and undated live row counts', () => {
+  const rows = [
+    { predecessor_id: 'a.near', key: 'vote/a', value: {}, block_height: 1 },
+    { predecessor_id: 'b.near', key: 'comment/a/1', value: { text: 'x' }, block_height: 2 },
+  ];
+  assert.equal(participantsFrom(rows).length, 2);
 });

@@ -45,12 +45,29 @@
 .avatarLink:hover .avatar,
 .avatarLink:focus-visible .avatar { border-color: var(--accent); }
 
+/* Letter fallbacks stay neutral: a green circle holding the first letter of `ollie.near` reads as
+   a "0" badge sitting next to the count. */
 .avatarLetter {
   font-family: var(--font-display);
   font-weight: 700;
-  background: var(--accent-soft);
-  color: var(--accent);
+  background: var(--surface-muted);
+  color: var(--text-chip);
 }
+
+.join {
+  background: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+
+.join:hover { color: var(--accent-hover); }
 
 .more {
   background: var(--surface);

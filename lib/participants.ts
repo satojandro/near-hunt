@@ -2,7 +2,7 @@ import 'server-only';
 import { unstable_cache } from 'next/cache';
 import { readLatest } from './kv.mjs';
 import { NETWORK, VOTE_ACCOUNT } from './network.mjs';
-import { participantsFrom } from './participants.mjs';
+import { participantsFrom, PARTICIPANT_WINDOW_MS } from './participants.mjs';
 
 /** Seconds a cached participant list is served (NH-112). */
 export const PARTICIPANTS_REVALIDATE_SECONDS = 60;
@@ -38,7 +38,9 @@ const readParticipants = unstable_cache(
       readLatest({ account: VOTE_ACCOUNT, keyPrefix: 'vote/', network: NETWORK, fetchImpl: timedFetch }),
       readLatest({ account: VOTE_ACCOUNT, keyPrefix: 'comment/', network: NETWORK, fetchImpl: timedFetch }),
     ]);
-    return participantsFrom([...votes, ...comments]);
+    // "Recently" is a real window, not a flourish: only rows signed in the last seven days count.
+    const sinceMs = Date.now() - PARTICIPANT_WINDOW_MS;
+    return participantsFrom([...votes, ...comments], { sinceMs });
   },
   ['nearhunt-participants-v1', NETWORK, VOTE_ACCOUNT],
   // Votes and comments both revalidate this, so a fresh vote moves the number immediately.

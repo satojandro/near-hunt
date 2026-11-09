@@ -6,6 +6,7 @@
 // number this project exists to avoid.
 import { fetchProfiles, profileUrl, type SocialProfile } from '@/lib/social.mjs';
 import type { Participant } from '@/lib/participants';
+import JoinLink from './JoinLink';
 import s from './participants.module.css';
 
 /** Avatars shown before "+N more". Each one is a near.social profile request. */
@@ -58,8 +59,8 @@ export default async function Participants({
       </ul>
       <p className={s.text}>
         <strong>{label}</strong>
-        {' — each one a row they signed from their own NEAR account.'}
-        {status === 'error' ? ' Pictures are hidden while near.social is not responding.' : null}
+        {' — '}
+        <JoinLink />
       </p>
     </div>
   );
