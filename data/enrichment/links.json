@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-11-09T09:52:14.528Z",
+  "generated_at": "2026-11-09T17:02:04.467Z",
   "account": "nearhunt.near",
   "summary": {
-    "links": 213,
+    "links": 217,
     "by_verdict": {
       "live": 194,
-      "unverified": 18,
+      "unverified": 22,
       "gone": 1
     },
     "by_status": {
       "ok": 194,
-      "http-error": 19
+      "http-error": 23
     },
     "with_title": 189,
     "with_og_image": 69,
@@ -420,7 +420,7 @@
       "redirects": 0,
       "content_type": "text/html",
       "title": "Telegram: Launch @ndegen_bot",
-      "og_image": "https://cdn4.telesco.pe/file/QM3mr3378CknC3vhxQtmxt3TWXhhiJbcaRSx_ef5C_U4HDKzYbSCC0ztpOZheHLREpHxTcT75BHc09h9DWQGFpWxsI36vev8Z3TnY_WOTDXqtqcXTZnVFGtVwuBxt3c8F8c6Dh5CKP-LmFo51gm-MLIES3rDFzsfCfd4O9ZpgsCBh3BslKMITelbrDwApwpFcajUtxMSr9y3LcZm9b7VIGEGsq_Wxd1M5vyQdtbXC6VdtKK8vuFOd9MH13paVKXZE4IaqYPq9ZOfOLdCy3EW1-F7_6H6TYFoblwyUYBehO7BjbIVF0hk8jjIT8oii0qspft6lgJfKkdLAiqcZBUSsA.jpg"
+      "og_image": "https://cdn4.telesco.pe/file/ORHSd7dBLcdbL6zd_aWKymInPKgNKWk9NAr2wXs18D0HFffZxVf9QOs4w6eGippUstxp5hWSMJAuu8Db4DqQ9P2ToucQc0kRL8W042TQJSDdib5_O6H4tsFBdrqkVy7sqFYThurgC5Pl4BslNH2SYLlp8Vq5d0sCGGtTKvwhduWwv9IOS2APcyq57lKGc-iPdFt7RX4E487U7yD8gNSLzIP_gbQj9iUZnJoWQDVILVYPS7KgUHEuyuT4HPtRRHUUSpgbM12N4yAlhTD3sE2g4UM1y7z06b84ZvO17fzCSPXI_1kkK3bPogZqFqnA3eeHv_qxL8Ycizb185SLLjmj0g.jpg"
     },
     {
       "submission_id": "2633a774-80fe-4d9c-b813-0ebe292ad450",
@@ -435,7 +435,7 @@
       "redirects": 0,
       "content_type": "text/html",
       "title": "Telegram: Launch @Cobrainvoicebot",
-      "og_image": "https://cdn4.telesco.pe/file/PQBSQEUi7Nuf6byGKT9VbdfnijFvL97QHDlXpGeoIJ7bwhW2EL9k4hOGne9wqUMH1YjPzbT5UEYzdt2i-fP9_5jPwXp0oIvK3wcKSX-Ry7Qs2zRQcibrZcO8Nz1oiCkq0hoCfnLL1ufntHpkFLnHo9UjZnumICUVBo-Mguu2AYiQGavUtzHA6mvlQJmH6ybqmCv__HZmue0o3GPvbKpyMAhRyxXjeHkLolMQNBOl_L7_NsTO14hlZhSGL9g2lezasq8u86_pp3xLaFH8rgPJ8kOBLcta7h6GQ3jiqrXwA6J1qCoG2v5CRsrzP5_RUHX9UolwNnvS7bmxXvtAICp5ew.jpg"
+      "og_image": "https://cdn4.telesco.pe/file/fzM9x0ZDyqnx0_4KU82C7jjGnFG7KJIkbRgynmh6RPocr7T89aRa-r1wNhsu7L-O7cXHXiE577H7tywlUjmBObg1iprKzVF_Jf5abKyMkS66DDOeK7DsHLnj55CvDptg6fn1NxGI5WztYv6fYLBHWirtynVFHqciIWzBBYXiL3S6LFTS1P3FUidaAuLgJmV-aBbBKWE1qXdOXiJjvQwWP8r9FKWcRjkenK_tTQxqaLxDF6c9ImDvow9NCeJSPacMZ-s8z4V-LrUi3RnZYkkd-rvdlQQkG_1fv5AjY3UA2Vojx_emTqfRwwmyRBzo0MmZtEEwciiWNuBkluvub3tT_A.jpg"
     },
     {
       "submission_id": "287d08ef-3e56-4424-a00b-700e0f7d1bf9",
@@ -1672,15 +1672,45 @@
       "name": "Veridom Pay",
       "field": "links",
       "url": "https://veridom-pay.onrender.com",
+      "verdict": "unverified",
+      "truncated": false,
+      "status": "http-error",
+      "http_status": 503,
+      "final_url": "https://veridom-pay.onrender.com",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": null,
+      "og_image": null
+    },
+    {
+      "submission_id": "9e64cdb5-c4b1-4bc9-865b-02dc76b19e66",
+      "name": "The Daily Swarm",
+      "field": "links",
+      "url": "https://the-daily-swarm.vercel.app",
       "verdict": "live",
       "truncated": false,
       "status": "ok",
       "http_status": 200,
-      "final_url": "https://veridom-pay.onrender.com",
+      "final_url": "https://the-daily-swarm.vercel.app",
       "redirects": 0,
       "content_type": "text/html",
-      "title": "Veridom Pay",
-      "og_image": null
+      "title": "The Daily Swarm — a working newsroom with a public ledger",
+      "og_image": "https://the-daily-swarm.vercel.app/opengraph-image.png?opengraph-image.22uy1-dssa5ig.png"
+    },
+    {
+      "submission_id": "9e64cdb5-c4b1-4bc9-865b-02dc76b19e66",
+      "name": "The Daily Swarm",
+      "field": "links",
+      "url": "https://the-daily-swarm.vercel.app/sample",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://the-daily-swarm.vercel.app/sample",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "Sample edition · The Daily Swarm",
+      "og_image": "https://the-daily-swarm.vercel.app/opengraph-image.png?opengraph-image.22uy1-dssa5ig.png"
     },
     {
       "submission_id": "9f2fd9a3-7e91-403e-91d2-dae5ffb47cd2",
@@ -2433,6 +2463,21 @@
       "og_image": null
     },
     {
+      "submission_id": "cfd1da7e-73ec-4a22-b0e1-801c87952e27",
+      "name": "Ashes of the Ninth Heaven",
+      "field": "links",
+      "url": "https://ashes-ninth.duckdns.org",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://ashes-ninth.duckdns.org",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "Ashes of the Ninth Heaven",
+      "og_image": null
+    },
+    {
       "submission_id": "d01a3b13-a62b-412c-a6f8-f86f59850c5e",
       "name": "Aegis",
       "field": "links",
@@ -2628,6 +2673,21 @@
       "og_image": "https://tokengo-production-195c.up.railway.app/art/cover.webp"
     },
     {
+      "submission_id": "dd592d8d-7291-444a-a939-68f24b469a13",
+      "name": "Bag worker",
+      "field": "links",
+      "url": "https://bagworker-nft.vercel.app",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://bagworker-nft.vercel.app",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "Bag Worker: An NFT That Trades",
+      "og_image": null
+    },
+    {
       "submission_id": "de2b5217-8d85-4052-a0d2-0e8e8066c2a5",
       "name": "Aegis",
       "field": "links",
@@ -2737,14 +2797,14 @@
       "name": "Throughput Treasury",
       "field": "links",
       "url": "https://throughput-treasury.onrender.com",
-      "verdict": "live",
+      "verdict": "unverified",
       "truncated": false,
-      "status": "ok",
-      "http_status": 200,
+      "status": "http-error",
+      "http_status": 503,
       "final_url": "https://throughput-treasury.onrender.com",
       "redirects": 0,
       "content_type": "text/html",
-      "title": "Throughput Treasury",
+      "title": null,
       "og_image": null
     },
     {
@@ -3007,15 +3067,15 @@
       "name": "TreasureHunt",
       "field": "links",
       "url": "https://medium.com/@sparklerlabs2026/treasure-hunt-onchain-gameplay-and-campaign-ideas-for-web3-projects-d70be9593f7a",
-      "verdict": "live",
+      "verdict": "unverified",
       "truncated": false,
-      "status": "ok",
-      "http_status": 200,
+      "status": "http-error",
+      "http_status": 403,
       "final_url": "https://medium.com/@sparklerlabs2026/treasure-hunt-onchain-gameplay-and-campaign-ideas-for-web3-projects-d70be9593f7a",
       "redirects": 0,
       "content_type": "text/html",
-      "title": "Medium",
-      "og_image": "https://miro.medium.com/v2/resize:fit:1200/1*aD-mov9jUrNsvi8-1WnNaw.png"
+      "title": null,
+      "og_image": null
     },
     {
       "submission_id": "f5be5a9d-66da-450f-a96d-0e5c419dc6e7",
@@ -3112,15 +3172,15 @@
       "name": "777 giros gratis",
       "field": "demo_url",
       "url": "https://afun.mx/?ch=430696",
-      "verdict": "live",
+      "verdict": "unverified",
       "truncated": false,
-      "status": "ok",
-      "http_status": 200,
+      "status": "http-error",
+      "http_status": 403,
       "final_url": "https://afun.mx/?ch=430696",
       "redirects": 0,
       "content_type": "text/html",
-      "title": "AFUN Mexico | Casino online y apuestas deportivas",
-      "og_image": "https://afun.mx/img/logo-512.png"
+      "title": null,
+      "og_image": null
     },
     {
       "submission_id": "fa9b456e-4566-4731-85c5-05a906a51c02",

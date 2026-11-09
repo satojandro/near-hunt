@@ -3513,5 +3513,27 @@
       }
     ],
     "links": []
+  },
+  "457e0ebc-a4ac-4ce8-9dc9-d0f8e0c1427d": {
+    "author": "artemkaQe",
+    "crawled_at": "2026-11-09T16:36:51.735Z",
+    "posts": [
+      {
+        "id": "2119728491251835066",
+        "author": "artemkaQe",
+        "text": "How NEAR does the hard part:\n- the agent holds a function-call key that can only call vault.request_payment\n- the vault checks AgentGuard's ed25519 signature on chain and enforces the budget itself\n- on testnet: 0.2 NEAR paid, injected 5 NEAR blocked, stolen key refused",
+        "links": []
+      },
+      {
+        "id": "2119728645975503173",
+        "author": "artemkaQe",
+        "text": "Try it in your browser: https://t.co/gl5yvbqZaa\nCode: https://t.co/NJbqceUGjj\n\nWhat spending rule would you give your own agent?",
+        "links": [
+          "https://tutnarezki5-dotcom.github.io/agentguard/",
+          "https://github.com/tutnarezki5-dotcom/agentguard"
+        ]
+      }
+    ],
+    "links": []
   }
 }

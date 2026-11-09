@@ -1,19 +1,19 @@
 {
-  "generated_at": "2026-11-09T09:52:47.601Z",
+  "generated_at": "2026-11-09T17:02:42.654Z",
   "account": "nearhunt.near",
   "note": "Flags only. Nothing is merged, hidden or written. `clusters`/`groups` share an identifying URL (possible duplicates). `weak_signals` share only a name or an X account and are usually different projects.",
   "summary": {
-    "submissions": 347,
-    "on_chain": 345,
-    "pending": 2,
+    "submissions": 387,
+    "on_chain": 347,
+    "pending": 40,
     "shared_urls": 1,
     "by_kind": {
       "url": 1
     },
     "clusters": 1,
     "submissions_flagged": 2,
-    "same_name_groups": 12,
-    "same_x_account_groups": 27
+    "same_name_groups": 13,
+    "same_x_account_groups": 31
   },
   "clusters": [
     {
@@ -82,6 +82,11 @@
             "on_chain": true
           },
           {
+            "submission_id": "457e0ebc-a4ac-4ce8-9dc9-d0f8e0c1427d",
+            "name": "Agentguard",
+            "on_chain": true
+          },
+          {
             "submission_id": "a0c866ab-367c-4d78-954c-88cc328930a0",
             "name": "AgentGuard",
             "on_chain": true
@@ -95,11 +100,6 @@
             "submission_id": "ff4096e0-82f9-468d-8592-ea13a28fb4c4",
             "name": "AgentGuard",
             "on_chain": true
-          },
-          {
-            "submission_id": "457e0ebc-a4ac-4ce8-9dc9-d0f8e0c1427d",
-            "name": "Agentguard",
-            "on_chain": false
           }
         ]
       },
@@ -130,6 +130,11 @@
             "submission_id": "fda85f72-004a-44cd-a28f-525b91ed0053",
             "name": "Leash",
             "on_chain": true
+          },
+          {
+            "submission_id": "a373a235-8a24-4f52-84bb-2668b7263d9a",
+            "name": "LEASH",
+            "on_chain": false
           }
         ]
       },
@@ -205,6 +210,21 @@
             "submission_id": "de2b5217-8d85-4052-a0d2-0e8e8066c2a5",
             "name": "Aegis",
             "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "agent allowance guard",
+        "submissions": [
+          {
+            "submission_id": "e4af217b-7468-46c3-a756-fde5900c550b",
+            "name": "Agent Allowance Guard",
+            "on_chain": true
+          },
+          {
+            "submission_id": "73aac154-b3fc-48e4-8089-79f73af7e7dd",
+            "name": "Agent Allowance Guard",
+            "on_chain": false
           }
         ]
       },
@@ -331,6 +351,21 @@
         ]
       },
       {
+        "key": "aloo51523593330",
+        "submissions": [
+          {
+            "submission_id": "00fdaceb-0af0-483c-a759-a661d9a79704",
+            "name": "Petri",
+            "on_chain": false
+          },
+          {
+            "submission_id": "287c0199-5dcd-42a9-86d8-0fa06123a8f3",
+            "name": "ShowUp",
+            "on_chain": false
+          }
+        ]
+      },
+      {
         "key": "alvinagustus",
         "submissions": [
           {
@@ -421,6 +456,21 @@
         ]
       },
       {
+        "key": "cryppithq",
+        "submissions": [
+          {
+            "submission_id": "f9b3e1db-59fb-4161-917a-39c28d6861c9",
+            "name": "Intent Sentinel",
+            "on_chain": true
+          },
+          {
+            "submission_id": "5c3430c6-b69e-4bee-ada7-37f5f456e258",
+            "name": "Where's My ZEC",
+            "on_chain": false
+          }
+        ]
+      },
+      {
         "key": "cryptoworld_by",
         "submissions": [
           {
@@ -481,6 +531,21 @@
         ]
       },
       {
+        "key": "jasonparsersec",
+        "submissions": [
+          {
+            "submission_id": "cb88c8e8-5724-40f8-a0b9-842a562c324b",
+            "name": "$HACK",
+            "on_chain": true
+          },
+          {
+            "submission_id": "46bc18be-e6f1-4a44-af0a-d6326d35b55b",
+            "name": "Quant Agent",
+            "on_chain": false
+          }
+        ]
+      },
+      {
         "key": "jccryp_11",
         "submissions": [
           {
@@ -537,6 +602,21 @@
             "submission_id": "8ce1e3a2-1bf0-4dc0-aeb3-0981afda5c60",
             "name": "PayPerCall on NEAR",
             "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "marc_dvci",
+        "submissions": [
+          {
+            "submission_id": "b53437ab-0092-48e0-9a0a-d1fc2d66f545",
+            "name": "Lockstep",
+            "on_chain": true
+          },
+          {
+            "submission_id": "bded2b2b-2963-45c4-8440-a3d9d905eb06",
+            "name": "LIFO",
+            "on_chain": false
           }
         ]
       },

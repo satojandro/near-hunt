@@ -7,7 +7,7 @@ https://claude.ai/artifact/TheVd1qg4LzCRzStJvKPKe (private until shared).
 
 ## Where things stand (re-audited 2026-11-09 after the NH-96 write, by Hermes)
 
-`nearhunt.near` has one funding transfer and twenty-one project-import transactions:
+`nearhunt.near` has one funding transfer and twenty-three project-import transactions:
 
 1. a 1 NEAR funding transfer (block 223,583,069);
 2. 256 `project/…` records (block 223,583,277);
@@ -79,6 +79,40 @@ https://claude.ai/artifact/TheVd1qg4LzCRzStJvKPKe (private until shared).
     `links` for 3. `MintCheck` (with repository) and `Agentguard` were created already enriched
     rather than feed-only. Signed with the FullAccess key under the same explicit choice.
 
+17. The 40 new feed submissions and 10 changes, 10 Nov — the first batch run through the cycle
+    exactly as the runbook writes it. Dry run: `new: 40, changed: 10, unchanged: 337,
+    missing from feed 0, deleted on chain 0`; `50 keys, 64248 bytes, 2 transaction(s)`. The owner
+    approved **that** diff after it was built twice (feed 382 then 387; the second build added five
+    submissions — `NearJar`, `Purser`, `$YAP`, `Petri`, `ShowUp` — and the approval was asked again
+    at the new numbers rather than reused). Execute ran behind a guard: a fresh dry run had to print
+    `50 keys, 64248 bytes, 2 transaction(s)` before the signed run was allowed to start. Transactions:
+    `7gLPKnSsiqBzYj6HCT7KiCwAG6zbPkXTsU4GwT14f6n` (49 keys) and
+    `4GubWDQpuCwWMQKbfaZGJ1kLLHy4iNCmBwnrKSehqXKh` (1 key). Importer output
+    `verified: 50/50 written keys read back` (49/50 on attempt 1, 50/50 on attempt 2).
+    Of the 40 new records: **38 carry the builder's own description, 37 `media`, 12 a verified
+    repository, 10 labelled `links`**; 2 (`NEAR-Midnight Privacy Bridge`, `VIGIL`) are feed fields
+    only because their `demo_url` is not an X post. The 10 changes: `tracks` 4 (Terra matcher,
+    IntentWatch, NEARpedia, Grind District), `demo_url` 4 (Nims and Q-day moved to a newer X post
+    from the same builder; Kinwarden and Lantern Caravan traded a live `duckdns.org` demo for the
+    builder's newer X post link), and 2 enrichment gains (`repository_url` for Payproof Global and
+    Agentguard; Agentguard also gains one `links` entry that is already 404 and is kept, marked, per
+    policy). Pipeline output this round: `threads:capture` walked 185 threads (1 usable new reply;
+    6 posts gone, 72 with no author reply), `enrich` covered 387 projects (361 recoverable, 342 with
+    media, 177 repositories checked — 174 answered, 3 dropped), `enrich:links` 217 URLs (194 live,
+    22 unverified, 1 gone), `enrich:duplicates` the same single known cluster. Signed with the
+    FullAccess key under `--accept-full-access`, as in batches 12–16.
+
+    **One defect this batch introduced, reported not hidden:** the feed gives `VIGIL`
+    (`1ca01819-1a03-4a49-81d7-eb5755db0fea`) the `demo_url`
+    `http://paypilot-approval-wallet.lovable.app/`, which the schema rejects (`/demo_url must match
+    pattern "^https://"`). The importer copies feed-owned fields verbatim, so the record went to
+    chain invalid. It is the only such submission in the feed (388 read 10 Nov), and the `http` URL
+    301-redirects to `https://paypilot-approval-wallet.lovable.app/`, which answers 200. Fixing it
+    means either normalising the scheme on the record (a one-off write with its own approval) or
+    teaching the importer to reject/normalise a non-https `demo_url` before it plans a write; both
+    are owner decisions and neither has been done.
+
+
 **After batches 12–14, read back from the indexer:** **336 records, all 336 valid** against the
 schema, 0 foreign rows, 0 tombstones; 312 carry the builder's own description, **156 a verified
 repository**, 294 `media`, 164 with links. 180 records still have no repository: the builder
@@ -95,10 +129,18 @@ prints `new: 0, changed: 0, unchanged: 345`.
 `nearhunt/project/1`, 347 distinct ids, 0 tombstones (`npm run validate:schema`); the importer dry
 run with the proposal prints `new: 0, changed: 0, unchanged: 347`.
 
-**The site serves 346 of those 347** since NH-108 (9 Nov): one record is on the owner's hide list
+**After batch 17, read back from the indexer (10 Nov):** **387 project rows**, 0 foreign rows,
+0 tombstones, 387 distinct ids; `npm run validate:schema` reports **386 valid and 1 invalid** — the
+`VIGIL` `demo_url` case above, the only record on chain that fails the schema and the first the
+import has produced. The importer dry run with the proposal printed `new: 1, changed: 0,
+unchanged: 387` immediately afterwards (the feed had already reached 388), so one new submission is
+waiting for the next approval.
+
+
+**The site serves 386 of those 387** since batch 17 (10 Nov): one record is on the owner's hide list
 (`data/hidden-projects.json`, `fa54da13-…` "777 giros gratis", a gambling referral). Hiding is a
 repo change, not a chain write — the record is untouched on chain and `/api/projects` reports
-`meta.total: 346`. `npm run validate:schema` and the importer still see all 347.
+`meta.total: 386`. `npm run validate:schema` and the importer still see all 387.
 
 **The 19-key correction** was applied in tx `Bo5ktqRx…` — 18 descriptions that ended in a dangling
 link label, plus the newest `AgentGuard` record — via `--refresh-enriched`.
