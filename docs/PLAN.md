@@ -7,7 +7,7 @@ https://claude.ai/artifact/TheVd1qg4LzCRzStJvKPKe (private until shared).
 
 ## Where things stand (re-audited 2026-11-09 after the NH-96 write, by Hermes)
 
-`nearhunt.near` has one funding transfer and sixteen project-import transactions:
+`nearhunt.near` has one funding transfer and eighteen project-import transactions:
 
 1. a 1 NEAR funding transfer (block 223,583,069);
 2. 256 `project/…` records (block 223,583,277);
@@ -35,12 +35,21 @@ https://claude.ai/artifact/TheVd1qg4LzCRzStJvKPKe (private until shared).
     function-call key exists on chain (see below), and the owner chose `--accept-full-access` for
     this batch rather than adding one first.
 
-**After the batch, read back from the indexer:** 281 records, all 281 valid against the schema, 0
-foreign rows, 0 tombstones; 265 carry the builder's own description, 99 a repository, 251 `media`
-(299 items), 96 labelled and checked `links`. 15 records keep unlabelled links (see NH-96: the 8 Nov
-correction dropped their provenance, so `--refresh-enriched` refuses them). A re-run of the same
-command now prints `changed: 0, unchanged: 281`. The feed has since grown to **335**, so 54 records
-are pending a new approval.
+13. The 55 pending feed submissions, 9 Nov, creation-only (`--enrichment
+    data/enrichment/proposal-pending-55.json`, no `--updates-only`): 55 keys, 64,284 bytes, 2
+    transactions — `EEeMQeBrymz7oS9p5iA2KH2eiNDV8FW7LPCX4r7Lbn8W` (54) and
+    `8M7MrTBYWPNNqE8cW7hvaPL3bzQe632qaTX4gp26qzoA` (1). Importer output `verified: 55/55 written
+    keys read back`; `changed: 0` on the existing 281 before the write. Of the 55: 47 carry the
+    builder's own description, 43 `media` (49 items), 14 a verified repository, 18 labelled and
+    checked `links`; 5 were `not-an-x-post` and 3 `post-unavailable`, so they carry feed fields
+    only. Signed with the FullAccess key under the same explicit choice as batch 12.
+
+**After batches 12 and 13, read back from the indexer:** **336 records, all 336 valid** against the
+schema, 0 foreign rows, 0 tombstones; 312 carry the builder's own description, 113 a verified
+repository, 294 `media`, 114 labelled and checked `links`. 15 records still keep unlabelled links
+(see NH-96: the 8 Nov correction dropped their provenance, so `--refresh-enriched` refuses them).
+Re-running either import now prints `changed: 0, unchanged: 336`; the feed and the chain are level
+at 336.
 
 **The 19-key correction** was applied in tx `Bo5ktqRx…` — 18 descriptions that ended in a dangling
 link label, plus the newest `AgentGuard` record — via `--refresh-enriched`.
@@ -327,8 +336,9 @@ removed. Images are referenced by URL, never copied.
     them and the indexer read back 257/257. `data/enrichment/proposal-nh96.json` stays frozen; do
     not regenerate it. The `--accept-full-access` flag was the owner's explicit choice because no
     importer function-call key exists on chain (see "Where things stand").
-  - **Not approved:** the 54 new feed records, restoring labels on the 15 records, and anything
-    about "777 giros gratis".
+  - **The new feed records were approved separately and written 9 Nov** (batch 13: 55 records, 2
+    tx) — see "Where things stand". Still not approved: restoring labels on the 15 records, and
+    anything about "777 giros gratis".
   - **From now on:** new submissions follow
     [`runbooks/new-submissions.md`](runbooks/new-submissions.md). `npm run enrich` now also covers
     feed submissions not yet on chain, so they are created already enriched in one approved write.
