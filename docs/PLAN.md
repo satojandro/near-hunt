@@ -1,13 +1,13 @@
 # NEAR Hunt — delivery plan and backlog to 14 Nov
 
-**Updated:** 2026-11-08 · **Deadline:** 14 Nov 2026, 23:59 UTC · **Days left:** 6
+**Updated:** 2026-11-09 · **Deadline:** 14 Nov 2026, 23:59 UTC · **Days left:** 6
 
 Mockups for every page and flow referenced below (boards 1–9) are in [`mockups/`](mockups/README.md); the editable canvas is at
 https://claude.ai/artifact/TheVd1qg4LzCRzStJvKPKe (private until shared).
 
 ## Where things stand (re-audited 2026-11-09 after the NH-96 write, by Hermes)
 
-`nearhunt.near` has one funding transfer and nineteen project-import transactions:
+`nearhunt.near` has one funding transfer and twenty project-import transactions:
 
 1. a 1 NEAR funding transfer (block 223,583,069);
 2. 256 `project/…` records (block 223,583,277);
@@ -51,6 +51,15 @@ https://claude.ai/artifact/TheVd1qg4LzCRzStJvKPKe (private until shared).
     `changed: 0, unchanged: 336`. Fields: `repository_url` 43, `links` 58 (additions only, no URL
     removed), `enrichment` 70; no description changed. Signed with the FullAccess key.
 
+15. The 9 new feed submissions, 9 Nov, creation-only: `9 keys, 4713 bytes, 1 transaction` —
+    `27W5Sw6fx2aP9EA3vMnXNZs7H3FMP9Umfo8qjywfdfzo`. The owner authorized this exact diff ("import 9
+    new projects") after the dry run printed it twice, 20 minutes apart, with `changed: 0` both
+    times (feed 345, chain 336). Names: `Four Horsemen of the Memepocalypse`, `Nearfund`, `NearJev`,
+    `The Daily Swarm`, `Hushmark`, `Bag worker`, `Ashes of the Ninth Heaven`, `Contri`,
+    `Digi Swarm Treasury`. Importer output: `verified: 9/9 written keys read back` (0/9 on attempts
+    1–2, 9/9 on attempt 3). Signed with the FullAccess key: still no importer function-call key on
+    chain, same explicit `--accept-full-access` choice as batches 12–14.
+
 **After batches 12–14, read back from the indexer:** **336 records, all 336 valid** against the
 schema, 0 foreign rows, 0 tombstones; 312 carry the builder's own description, **156 a verified
 repository**, 294 `media`, 164 with links. 180 records still have no repository: the builder
@@ -59,10 +68,14 @@ X posts, 6 posts are gone). 15 records still keep unlabelled links (see NH-96: t
 dropped their provenance, so `--refresh-enriched` refuses them). Re-running any import prints
 `changed: 0, unchanged: 336`; the feed and the chain are level at 336.
 
-**The site serves 335 of those 336** since NH-108 (9 Nov): one record is on the owner's hide list
+**After batch 15, read back from the indexer:** **345 project rows, all 345 valid** against
+`nearhunt/project/1`, 345 distinct ids, 0 tombstones (`npm run validate:schema`); the dry run now
+prints `new: 0, changed: 0, unchanged: 345`.
+
+**The site serves 344 of those 345** since NH-108 (9 Nov): one record is on the owner's hide list
 (`data/hidden-projects.json`, `fa54da13-…` "777 giros gratis", a gambling referral). Hiding is a
 repo change, not a chain write — the record is untouched on chain and `/api/projects` reports
-`meta.total: 335`. `npm run validate:schema` and the importer still see all 336.
+`meta.total: 344`. `npm run validate:schema` and the importer still see all 345.
 
 **The 19-key correction** was applied in tx `Bo5ktqRx…` — 18 descriptions that ended in a dangling
 link label, plus the newest `AgentGuard` record — via `--refresh-enriched`.
