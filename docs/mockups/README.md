@@ -76,3 +76,10 @@ Tickets NH-80 to NH-83.
 ## 9 · Roadmap and backlog
 
 ![Roadmap](png/Roadmap.png)
+
+---
+
+## Themes (proposal, 9 Nov)
+
+Dark, Golden Hour and Darkroom themes, with their token values and a build spec, are in
+[`themes/`](themes/README.md).

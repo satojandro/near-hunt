@@ -1,0 +1,21 @@
+{
+  "v": 3,
+  "createdOnFiles": {"v": 1, "at": "2026-11-09T12:00:00Z"},
+  "title": "NEAR Hunt themes",
+  "launch": {"view": "canvas"},
+  "pages": [],
+  "boards": {
+    "Main.dc.html": {"x": 0, "y": 0, "w": 1440, "h": 1240, "title": "T0 · Theme lineup and tokens", "expand": "fill"},
+    "Dark.dc.html": {"x": 0, "y": 1660, "w": 1280, "h": 1400, "title": "T1 · Directory in Dark", "expand": "fill"},
+    "GoldenHour.dc.html": {"x": 1360, "y": 1660, "w": 1280, "h": 1400, "title": "T2 · Directory in Golden Hour", "expand": "fill"},
+    "Darkroom.dc.html": {"x": 2720, "y": 1660, "w": 1280, "h": 1400, "title": "T3 · Directory in Darkroom", "expand": "fill"}
+  },
+  "order": ["Main.dc.html", "Dark.dc.html", "GoldenHour.dc.html", "Darkroom.dc.html"],
+  "notes": {
+    "rowSheet": {"x": 0, "y": -300, "text": "NEAR Hunt themes", "kind": "title1", "maxW": 1440},
+    "rowPages": {"x": 0, "y": 1360, "text": "The directory in each new theme", "kind": "title1", "maxW": 4000},
+    "brief": {"x": 1520, "y": 0, "w": 380, "text": "Four themes on one token set. Light is today's site, unchanged. Dark is its calm twin. Golden Hour and Darkroom are the playful pair: retro film stock, SF golden hour, a 70s stripe, sprocket holes and a camera date stamp. Only colours, fonts and a few flourish tokens change; the layout never does.", "fill": "orange", "size": "m"},
+    "sample": {"x": 1520, "y": 560, "w": 380, "text": "Project names and tracks are real records. Vote counts, comments, accounts and track counts are sample data, as on the other mockup boards.", "fill": "gray", "size": "s"}
+  },
+  "designSystems": []
+}
