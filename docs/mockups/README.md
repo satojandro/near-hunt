@@ -37,7 +37,7 @@ Tickets NH-10 to NH-16, plus NH-33 and NH-43.
 ![Directory](png/Main.png)
 
 ### 2 · Project page
-Tickets NH-20 to NH-24 and NH-40 to NH-42 (the near.social discussion).
+Tickets NH-20 to NH-24 and NH-44 (comments on `nearhunt.near`, redrawn 9 Nov; they replaced the near.social replies of NH-41/42).
 
 ![Project page](png/Project.png)
 

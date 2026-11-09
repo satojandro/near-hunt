@@ -86,17 +86,17 @@ a{color:#0A7F5A}a:hover{color:#075E43}
       </section>
 
       <section style="background: #FFFFFF; border: 1px solid #E3E6EB; border-radius: 14px; padding: 22px;">
-        <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 16px;">
-          <h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 19px;">Discussion <span style="color: #5A6472; font-weight: 500;">· 18 replies</span></h2>
-          <a href="https://near.social" style="font-size: 14px; font-weight: 600; color: #2557C7;">Open thread on near.social ↗</a>
+        <div style="display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 10px; margin-bottom: 16px;">
+          <h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 19px;">Discussion <span style="color: #5A6472; font-weight: 500;">· 18 comments</span></h2>
+          <span style="font-size: 13px; color: #5A6472;">Each comment is signed by its author on NEAR</span>
         </div>
 
         <form style="border: 1px solid #C9CED6; border-radius: 12px; padding: 12px; display: flex; flex-direction: column; gap: 10px;">
-          <label for="reply" style="font-size: 13px; color: #5A6472;">Reply as <strong style="color: #12161C;">alice.near</strong>. This posts to near.social, where your followers can see it.</label>
-          <textarea id="reply" rows="3" placeholder="What would you ask the builders?" style="font: inherit; font-size: 15px; border: 0; resize: vertical; outline: none; color: #12161C;"></textarea>
+          <label for="comment" style="font-size: 13px; color: #5A6472;">Comment as <strong style="color: #12161C;">alice.near</strong></label>
+          <textarea id="comment" rows="3" placeholder="What would you ask the builders?" style="font: inherit; font-size: 15px; border: 0; resize: vertical; outline: none; color: #12161C;"></textarea>
           <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px;">
-            <span style="font-size: 13px; color: #5A6472;">Adds #nearhunt and a link back to this page · 1 transaction, no fee shown</span>
-            <button type="button" style="font: inherit; font-weight: 600; font-size: 15px; background: #12161C; color: #FFFFFF; border: 0; border-radius: 10px; min-height: 44px; padding: 0 18px;">Post reply</button>
+            <span style="font-size: 13px; color: #5A6472;">Signed with your NEAR Hunt login, like an upvote. No wallet pop-up · 0 / 2,000</span>
+            <button type="button" style="font: inherit; font-weight: 600; font-size: 15px; background: #12161C; color: #FFFFFF; border: 0; border-radius: 10px; min-height: 44px; padding: 0 18px;">Post comment</button>
           </div>
         </form>
 
@@ -105,16 +105,18 @@ a{color:#0A7F5A}a:hover{color:#075E43}
             <li style="{{r.indent}}">
               <span style="width: 36px; height: 36px; border-radius: 50%; background: #EAF0FC; color: #2557C7; font-weight: 600; font-size: 14px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">{{r.initial}}</span>
               <div style="flex: 1; min-width: 0;">
-                <div style="font-size: 14px;"><strong>{{r.name}}</strong> <span style="color: #5A6472;">{{r.who}} · {{r.when}}</span></div>
+                <div style="font-size: 14px;"><strong>{{r.name}}</strong> <span style="color: #5A6472;">{{r.who}} · {{r.when}}</span> <span style="{{r.tagStyle}}">{{r.tag}}</span></div>
                 <p style="margin: 4px 0 8px; font-size: 15px; line-height: 1.55;">{{r.text}}</p>
-                <div style="display: flex; gap: 16px; font-size: 13px; color: #5A6472;">
-                  <button type="button" style="font: inherit; background: none; border: 0; padding: 0; color: #5A6472; min-height: 28px;">♡ {{r.likes}}</button>
+                <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px; font-size: 13px; color: #5A6472;">
                   <button type="button" style="font: inherit; background: none; border: 0; padding: 0; color: #5A6472; min-height: 28px;">Reply</button>
+                  <button type="button" style="{{r.deleteStyle}}">Delete</button>
+                  <span style="{{r.pendingStyle}}">Saving… confirmed when it appears on chain</span>
                 </div>
               </div>
             </li>
           </sc-for>
         </ul>
+        <p style="margin: 18px 0 0; padding-top: 14px; border-top: 1px solid #E3E6EB; font-size: 13px; color: #5A6472;">Comments are public rows on <code style="font-family: ui-monospace, monospace;">nearhunt.near</code> under <code style="font-family: ui-monospace, monospace;">comment/21996773…/</code>. Only the author can edit or delete one. NEAR Hunt can hide a comment that breaks the <a href="OpenData.dc.html">comment policy</a>.</p>
       </section>
     </div>
 
@@ -128,6 +130,7 @@ a{color:#0A7F5A}a:hover{color:#075E43}
           <dt style="color: #AEB6C2;">Schema</dt><dd style="margin: 0;">nearhunt/project/1</dd>
           <dt style="color: #AEB6C2;">Written</dt><dd style="margin: 0;">block 223,583,277</dd>
           <dt style="color: #AEB6C2;">Upvotes</dt><dd style="margin: 0;">142 signed keys</dd>
+          <dt style="color: #AEB6C2;">Comments</dt><dd style="margin: 0;">18 signed keys</dd>
         </dl>
         <div style="display: flex; gap: 8px; margin-top: 16px; flex-wrap: wrap;">
           <a href="OpenData.dc.html" style="background: #FFFFFF; color: #12161C; text-decoration: none; font-weight: 600; font-size: 14px; border-radius: 9px; padding: 0 14px; min-height: 40px; display: flex; align-items: center;">View JSON</a>
@@ -161,10 +164,24 @@ a{color:#0A7F5A}a:hover{color:#075E43}
 class Component extends DCLogic {
   renderVals() {
     var base = 'display: flex; gap: 12px;';
+    var hide = 'display: none;';
+    var del = 'font: inherit; background: none; border: 0; padding: 0; color: #B42318; min-height: 28px;';
+    var tag = 'font-size: 11px; font-weight: 600; background: #E6F4EE; color: #0A7F5A; border-radius: 5px; padding: 1px 6px; margin-left: 4px;';
+    var pend = 'font-size: 12px; color: #9A5B00; background: #FBF0DC; border-radius: 5px; padding: 1px 7px;';
+    var mk = function (o) {
+      return {
+        initial: o.initial, name: o.name, who: o.who, when: o.when, text: o.text,
+        indent: base + (o.reply ? ' margin-left: 48px;' : ''),
+        tag: o.tag || '', tagStyle: o.tag ? tag : hide,
+        deleteStyle: o.mine ? del : hide,
+        pendingStyle: o.pending ? pend : hide
+      };
+    };
     var replies = [
-      { initial: 'M', name: 'Mira', who: 'mira.near', when: '2h', likes: 9, indent: base, text: 'Spending caps per agent is exactly what I want before letting one touch my wallet. Can caps be per token?' },
-      { initial: 'T', name: 'Veto team', who: 'tarantinbv.near', when: '1h', likes: 4, indent: base + ' margin-left: 48px;', text: 'Yes. Each policy is per agent key and per token, with a daily window.' },
-      { initial: 'J', name: 'jdev', who: 'jdev.near', when: '40m', likes: 1, indent: base, text: 'How does this compare to a function-call access key with an allowance?' }
+      mk({ initial: 'M', name: 'Mira', who: 'mira.near', when: '2h', text: 'Spending caps per agent is exactly what I want before letting one touch my wallet. Can caps be per token?' }),
+      mk({ initial: 'T', name: 'Veto team', who: 'tarantinbv.near', when: '1h', reply: true, text: 'Yes. Each policy is per agent key and per token, with a daily window.' }),
+      mk({ initial: 'J', name: 'jdev', who: 'jdev.near', when: '40m', text: 'How does this compare to a function-call access key with an allowance?' }),
+      mk({ initial: 'A', name: 'Alice', who: 'alice.near', when: 'just now', reply: true, mine: true, pending: true, text: 'An allowance caps gas, not what the agent can send. Veto checks the transfer itself.' })
     ];
     var voters = 'AMJKRSLPDN QE'.replace(' ', '').split('').map(function (c) { return { initial: c, who: c.toLowerCase() + '….near' }; });
     return { replies: replies, voters: voters };
