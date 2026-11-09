@@ -8,10 +8,11 @@ import { countablePath, parseIncr, viewKeys } from '@/lib/views.mjs';
  *   GET  /api/views?path=/p/{id}     -> { views, available }
  *   POST /api/views  { path }        -> { views, available }   (adds one)
  *
- * Storage is Upstash Redis over its REST API (free tier is plenty), configured with
- * UPSTASH_REDIS_REST_URL + UPSTASH_REDIS_REST_TOKEN, or Vercel's KV_REST_API_URL + KV_REST_API_TOKEN
- * aliases. With neither set the endpoint reports `available: false` and the page shows nothing —
- * no fake numbers, no broken layout.
+ * Storage is Upstash Redis over its REST API. Which names exist depends on how the database was
+ * created, so all three spellings are read: `UPSTASH_REDIS_REST_KV_REST_API_URL/_TOKEN` (what the
+ * Vercel Marketplace integration injects), `UPSTASH_REDIS_REST_URL/_TOKEN` (the Upstash console)
+ * and `KV_REST_API_URL/_TOKEN` (older Vercel KV). With none of them the endpoint reports
+ * `available: false` and the page shows nothing — no fake numbers, no broken layout.
  *
  * Privacy: the store holds two integers per path. No IP, no cookie, no identifier. The browser
  * counts its own visit once per session; the server just adds one, so the number is a page-view
@@ -19,8 +20,14 @@ import { countablePath, parseIncr, viewKeys } from '@/lib/views.mjs';
  */
 export const dynamic = 'force-dynamic';
 
-const REST_URL = process.env.UPSTASH_REDIS_REST_URL ?? process.env.KV_REST_API_URL;
-const REST_TOKEN = process.env.UPSTASH_REDIS_REST_TOKEN ?? process.env.KV_REST_API_TOKEN;
+const REST_URL =
+  process.env.UPSTASH_REDIS_REST_KV_REST_API_URL ??
+  process.env.UPSTASH_REDIS_REST_URL ??
+  process.env.KV_REST_API_URL;
+const REST_TOKEN =
+  process.env.UPSTASH_REDIS_REST_KV_REST_API_TOKEN ??
+  process.env.UPSTASH_REDIS_REST_TOKEN ??
+  process.env.KV_REST_API_TOKEN;
 
 const CORS = {
   'access-control-allow-origin': '*',

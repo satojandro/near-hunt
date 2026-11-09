@@ -58,7 +58,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               </nav>
               {/* The counter and the analytics are aggregate and cookie-free (Analytics.tsx,
                   app/api/views). The claim is only rendered when one of them is configured. */}
-              {process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID || process.env.UPSTASH_REDIS_REST_URL || process.env.KV_REST_API_URL ? (
+              {process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID
+                || process.env.UPSTASH_REDIS_REST_KV_REST_API_URL
+                || process.env.UPSTASH_REDIS_REST_URL
+                || process.env.KV_REST_API_URL ? (
                 <span className="footer-privacy">Page views are counted in aggregate, without cookies or identifiers.</span>
               ) : null}
             </div>
