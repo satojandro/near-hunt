@@ -477,7 +477,11 @@ infrastructure — the remaining work is the server-side posting path itself.
 - `/votes` for Aegis → `alejandro.near @ 223642127`; `/api/projects/{Veto}` → `block_timestamp`
   `"1794135497728714191"` exact, `record_url` pointing at the KV API.
 - `/open-data` renders 281 records, 258 KB, 10 distinct block heights.
-- The project has no git integration: deploys are `vercel --prod` from `main`. Node 26.x on Vercel
+- ~~The project has no git integration: deploys are `vercel --prod` from `main`.~~ **Corrected 9 Nov
+  (owner):** the project is now git-linked to `satojandro/near-hunt` — `vercel git connect` answers
+  "already connected to your project" — so a push to `main` builds and deploys production
+  automatically. `vercel --prod` from a checkout stays as the emergency path only: running both on
+  one change creates competing production deployments. Node 26.x on Vercel
   means `JSON.parse`'s reviver source text exists, so `parseKvJson` keeps exact digits there.
 
 Re-verified on the merged `main` (`df7ac8c`), 9 Nov:
