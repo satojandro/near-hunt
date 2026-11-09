@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import {
-  NOT_SUPPLIED, safeHttpsUrl, linkHost, linkText, linkRow, linkRows, descriptionView, eventLabel, isXPost, extraLinkLabel,
+  NOT_SUPPLIED, safeHttpsUrl, linkHost, linkText, linkRow, linkRows, descriptionView, eventLabel, isXPost, extraLinkLabel, linkNote,
   formatBlockHeight, explorerBlockUrl, formatUtc, kvRecordUrl, recordRows, metaDescription,
 } from '../lib/project-view.mjs';
 
@@ -87,6 +87,22 @@ test('NH-96 step 1: every builder link is shown, de-duplicated, https only', () 
   assert.match(rows[2].note, /builder/);
   assert.equal(rows[5].href, 'https://plain-string.example/');
   assert.ok(rows.every((r) => r.href === null || r.href.startsWith('https://')));
+});
+
+test('NH-96 step 3: labelled links use their kind; a gone link says so, unverified says nothing', () => {
+  const rows = linkRows(item({
+    links: [
+      { url: 'https://sealed.edycu.dev', kind: 'demo', kind_basis: 'builder', check: { verdict: 'live', http_status: 200, checked_at: '2026-11-09T02:00:00.000Z' } },
+      { url: 'https://nearblocks.io/address/a.near', kind: 'explorer', kind_basis: 'host', check: { verdict: 'unverified', http_status: 403, checked_at: '2026-11-09T02:00:00.000Z' } },
+      { url: 'https://njump.me/x', kind: 'website', kind_basis: 'default', check: { verdict: 'gone', http_status: 404, checked_at: '2026-11-09T02:00:00.000Z' } },
+    ],
+  }));
+  assert.deepEqual(rows.slice(2, 5).map((r) => r.label), ['Demo', 'On-chain', 'Website']);
+  assert.equal(rows[2].note, 'Posted by the builder on X');
+  assert.equal(rows[3].note, 'Posted by the builder on X');
+  assert.equal(rows[4].note, 'Did not answer when checked on 9 Nov 2026 (HTTP 404). Posted by the builder on X');
+  assert.equal(rows[4].href, 'https://njump.me/x'); // kept, never dropped
+  assert.equal(linkNote('https://plain.example'), 'Posted by the builder on X');
 });
 
 test('isXPost and extraLinkLabel', () => {

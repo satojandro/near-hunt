@@ -22,6 +22,7 @@ import { DEFAULT_ACCOUNT, readProjects } from '../lib/kv.mjs';
 import { buildEnrichment, summarize, tweetIdFromUrl } from '../lib/enrichment.mjs';
 import { verifyRepos } from '../lib/repo-check.mjs';
 import { linksToCheck, probeLink, summarizeProbes, verdictOf } from '../lib/link-probe.mjs';
+import { applyLinkChecks } from '../lib/link-label.mjs';
 import { isXPost } from '../lib/project-view.mjs';
 
 const args = process.argv.slice(2);
@@ -40,6 +41,10 @@ const THREADS_FILE = value('--threads', null);
 const OUT = value('--out', 'data/enrichment/proposal.json');
 // A repository link is only published when it answers `git ls-remote` at proposal time.
 const CHECK_REPOS = !args.includes('--no-check-repos');
+// NH-96 step 3: every proposed link carries its last check. Results already in this file are
+// reused (one visit per URL); anything missing is visited now.
+const LINK_CHECKS = value('--link-checks', 'data/enrichment/links.json');
+const CHECK_LINKS = !args.includes('--no-check-links');
 
 const SYNDICATION = 'https://cdn.syndication.twimg.com/tweet-result';
 const MAX_PARENTS = 6;
@@ -188,6 +193,32 @@ async function main() {
       console.log(` ${urls.length - dropped}/${urls.length} answered, ${dropped} dropped.`);
     }
   }
+
+  // NH-96 step 3: repository candidates among the links (non-GitHub git hosts), then the check
+  // result for every link. Reuses the step-2 report; visits only URLs it does not have.
+  const candidates = results.flatMap((r) => (r.status === 'ok' ? r.links ?? [] : []).map((l) => l.repo)).filter(Boolean);
+  const repoAnswers = CHECK_REPOS && candidates.length ? await verifyRepos(candidates) : new Map();
+  const probes = new Map();
+  if (CHECK_LINKS) {
+    try {
+      const report = JSON.parse(await readFile(LINK_CHECKS, 'utf8'));
+      for (const row of report.rows ?? []) {
+        if (row?.url && row.verdict) probes.set(row.url, { ...row, checked_at: report.generated_at });
+      }
+    } catch {
+      // no earlier report: everything is visited below
+    }
+    const missing = [...new Set(results.flatMap((r) => (r.status === 'ok' ? r.links ?? [] : []).map((l) => l.url)))]
+      .filter((u) => !probes.has(u));
+    if (missing.length) process.stdout.write(`\nvisiting ${missing.length} link(s) not in ${LINK_CHECKS}…`);
+    for (const url of missing) {
+      const row = await probeLink(url);
+      probes.set(url, { ...row, verdict: verdictOf(row), checked_at: new Date().toISOString() });
+      await delay(DELAY_MS);
+    }
+  }
+  const linkStats = applyLinkChecks(results, { probes, repos: repoAnswers, verifiedAt: new Date().toISOString() });
+  console.log(`\nlinks: ${linkStats.checked} carry a check; ${linkStats.repositories_promoted} repository link(s) promoted after git ls-remote`);
 
   const summary = summarize(results);
   const proposal = { generated_at: new Date().toISOString(), account: DEFAULT_ACCOUNT, summary, results };

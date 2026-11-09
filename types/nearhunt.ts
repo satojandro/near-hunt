@@ -26,6 +26,12 @@ export interface ExternalCampaign {
 export interface ProjectLink {
   url: string;
   source_post_id?: string;
+  /** NH-96 step 3: what the link is. */
+  kind?: 'repository' | 'demo' | 'website' | 'video' | 'docs' | 'article' | 'explorer' | 'community';
+  /** How `kind` was decided, strongest first: host, the builder's own words, the URL, default. */
+  kind_basis?: 'host' | 'builder' | 'url' | 'default';
+  /** Last visit (NH-96 step 2). `gone` = 404/410 or no such host; `unverified` = could not tell. */
+  check?: { verdict: 'live' | 'gone' | 'unverified'; http_status: number | null; checked_at: string };
 }
 
 /**

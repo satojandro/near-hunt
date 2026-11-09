@@ -215,5 +215,5 @@ test('captured thread posts without a real id cite the submitted post, never a m
   assert.equal(out.repository_url, 'https://github.com/ade/gideon');
   assert.equal(out.repository_source, 'https://x.com/ade/status/30');
   assert.ok(out.enrichment.sources.every((u) => /\/status\/\d+$/.test(u)), out.enrichment.sources.join(' '));
-  assert.deepEqual(out.links, [{ url: 'https://gideon-near.vercel.app', source_post_id: '30' }]);
+  assert.deepEqual(out.links, [{ url: 'https://gideon-near.vercel.app', source_post_id: '30', kind: 'website', kind_basis: 'default' }]);
 });

@@ -246,7 +246,37 @@ removed. Images are referenced by URL, never copied.
   because X truncated the path. The record "777 giros gratis" (`fa54da13…`) links to a gambling site
   with a referral code (`afun.mx/?ch=…`) and looks like spam. Per AGENTS.md §1 nothing is tombstoned;
   whether to hide it is your call.
-- Steps 3 (label links from these results) and 4 (duplicate flags) are still to do.
+- **Step 3 done (9 Nov).** `lib/link-label.mjs` labels every proposed link with `kind` and
+  `kind_basis`, strongest evidence first: the host (YouTube is a video, nearblocks an explorer); the
+  builder's own word right before the link ("Demo:", "Live:", "Try it:", "Website:", nearest first,
+  only separators in between); the URL (`demo.` host, `/app` path); otherwise `website`. Each link
+  also carries its step-2 `check`. Links on non-GitHub git hosts are checked with `git ls-remote`
+  and become `repository`. A record without a repository gets one only when exactly one such repo
+  answered. The Links card shows the label, and a `gone` link says "Did not answer when checked on
+  …"; `unverified` shows nothing.
+  - **Verified repositories: 98 → 99.** SafeSpend (`efc90a1e…`) linked
+    `bitbucket.org/dualrail-builder/near-safespend`, which answers `git ls-remote`. The count comes
+    from `node scripts/enrich.mjs --threads data/enrichment/threads.json --out data/enrichment/proposal-nh96.json`
+    (`with repository: 99`). 98 are on chain today.
+  - **Labels on the 120 proposed links:** website 85, demo 22, video 3, explorer 3, community 3,
+    article 2, docs 1, repository 1. By basis: default 84, builder 21, host 12, url 3. All 21
+    builder labels were read against the post text by hand and match it.
+  - **Bug fixed:** X gives link positions in code points and JS indexes UTF-16, so an emoji earlier
+    in a post shifted the position and cut the cue window short. `linkIndex` now converts.
+  - **Dry run:** `node scripts/import.mjs --enrichment data/enrichment/proposal-nh96.json --refresh-enriched --updates-only`
+    gives 257 keys, 337,616 bytes, 6 tx. Fields: `media` 251, `links` 96 (labels and checks;
+    Charter and Sealed Exploit get their `?v=` back), `repository_url` 1 (SafeSpend), `enrichment`
+    257. No description changes and no provenance dropped. **Pending owner approval; replaces the
+    earlier 251-key batch.**
+  - **Not labelled, needs an owner decision:** 15 records keep unlabelled links (the page falls back
+    to host-only labels). All 15 were written at block 223,641,089 by the 8 Nov correction. The
+    importer then *replaced* `enrichment.fields` with `["description"]`, so their links lost their
+    enrichment provenance, and `--refresh-enriched` rightly refuses to touch them. The accumulate
+    fix above stops this recurring. Restoring them needs a one-off rule (e.g. allow a refresh when
+    `enrichment.sources` already cites the link's post) that the owner approves.
+  - Not fixed: `schema/README.md` lists `repository_source` and `repository_verified_at`, but the
+    importer has never written them; on chain, provenance is `enrichment.sources`.
+- Step 4 (duplicate flags) is still to do.
 
 ### Board 1 — Directory (home) · Day 1
 
