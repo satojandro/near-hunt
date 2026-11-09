@@ -7,7 +7,7 @@ https://claude.ai/artifact/TheVd1qg4LzCRzStJvKPKe (private until shared).
 
 ## Where things stand (re-audited 2026-11-09 after the NH-96 write, by Hermes)
 
-`nearhunt.near` has one funding transfer and twenty project-import transactions:
+`nearhunt.near` has one funding transfer and twenty-one project-import transactions:
 
 1. a 1 NEAR funding transfer (block 223,583,069);
 2. 256 `project/…` records (block 223,583,277);
@@ -60,6 +60,25 @@ https://claude.ai/artifact/TheVd1qg4LzCRzStJvKPKe (private until shared).
     1–2, 9/9 on attempt 3). Signed with the FullAccess key: still no importer function-call key on
     chain, same explicit `--accept-full-access` choice as batches 12–14.
 
+    **Correction (same day):** batch 15 was run as a plain `--execute` from the feed instead of the
+    runbook's `--enrichment data/enrichment/proposal.json` path, so the nine records landed with
+    feed fields only — `media` 0, `links` 0, `repository_url` 0, no `enrichment` — and their pages
+    had no Media card. Batch 16 fixes that. Creating records outside the runbook's cycle is the
+    mistake; steps 2–4 are what make a record complete.
+
+16. The nine batch-15 records enriched, plus the two submissions that arrived since, 9 Nov:
+    `11 keys, 14711 bytes, 1 transaction` — `7kWNKvr2x6heq1ZzttDZM9KXjHqi9QGb1FPJfstRCRNf`.
+    Importer output `verified: 11/11 written keys read back` (5/11 on attempt 1, 11/11 on attempt
+    2). Pipeline as written in [`runbooks/new-submissions.md`](runbooks/new-submissions.md):
+    `threads:capture` (189 threads walked, 3 usable new replies), `enrich` (347 projects, 323
+    recoverable, 305 with media, 163 repositories checked with `git ls-remote` — 160 answered, 3
+    dropped), `enrich:links` (213 URLs: 194 live, 19 http-error), `enrich:duplicates` (one cluster,
+    not these: `NEAR: On The Evidence` and `Pump Rider` share `pump-rider.netlify.app`). Each of the
+    nine now carries the builder's own description and one **video** (poster URL, duration,
+    `post_url`), rendered as a playable X embed on `/p/{id}`; `repository_url` for 5, labelled
+    `links` for 3. `MintCheck` (with repository) and `Agentguard` were created already enriched
+    rather than feed-only. Signed with the FullAccess key under the same explicit choice.
+
 **After batches 12–14, read back from the indexer:** **336 records, all 336 valid** against the
 schema, 0 foreign rows, 0 tombstones; 312 carry the builder's own description, **156 a verified
 repository**, 294 `media`, 164 with links. 180 records still have no repository: the builder
@@ -72,10 +91,14 @@ dropped their provenance, so `--refresh-enriched` refuses them). Re-running any 
 `nearhunt/project/1`, 345 distinct ids, 0 tombstones (`npm run validate:schema`); the dry run now
 prints `new: 0, changed: 0, unchanged: 345`.
 
-**The site serves 344 of those 345** since NH-108 (9 Nov): one record is on the owner's hide list
+**After batch 16, read back from the indexer:** **347 project rows, all 347 valid** against
+`nearhunt/project/1`, 347 distinct ids, 0 tombstones (`npm run validate:schema`); the importer dry
+run with the proposal prints `new: 0, changed: 0, unchanged: 347`.
+
+**The site serves 346 of those 347** since NH-108 (9 Nov): one record is on the owner's hide list
 (`data/hidden-projects.json`, `fa54da13-…` "777 giros gratis", a gambling referral). Hiding is a
 repo change, not a chain write — the record is untouched on chain and `/api/projects` reports
-`meta.total: 344`. `npm run validate:schema` and the importer still see all 345.
+`meta.total: 346`. `npm run validate:schema` and the importer still see all 347.
 
 **The 19-key correction** was applied in tx `Bo5ktqRx…` — 18 descriptions that ended in a dangling
 link label, plus the newest `AgentGuard` record — via `--refresh-enriched`.

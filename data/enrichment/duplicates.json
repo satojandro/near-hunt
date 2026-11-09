@@ -1,20 +1,66 @@
 {
-  "generated_at": "2026-11-09T01:52:19.270Z",
+  "generated_at": "2026-11-09T09:52:47.601Z",
   "account": "nearhunt.near",
   "note": "Flags only. Nothing is merged, hidden or written. `clusters`/`groups` share an identifying URL (possible duplicates). `weak_signals` share only a name or an X account and are usually different projects.",
   "summary": {
-    "submissions": 335,
-    "on_chain": 281,
-    "pending": 54,
-    "shared_urls": 0,
-    "by_kind": {},
-    "clusters": 0,
-    "submissions_flagged": 0,
+    "submissions": 347,
+    "on_chain": 345,
+    "pending": 2,
+    "shared_urls": 1,
+    "by_kind": {
+      "url": 1
+    },
+    "clusters": 1,
+    "submissions_flagged": 2,
     "same_name_groups": 12,
-    "same_x_account_groups": 26
+    "same_x_account_groups": 27
   },
-  "clusters": [],
-  "groups": [],
+  "clusters": [
+    {
+      "submissions": [
+        {
+          "submission_id": "080cff8f-bfd0-4f8c-92c9-1c244556b840",
+          "name": "NEAR: On The Evidence",
+          "on_chain": true
+        },
+        {
+          "submission_id": "a1bf1936-7bdc-41a7-985f-c54c0ba3be85",
+          "name": "Pump Rider",
+          "on_chain": true
+        }
+      ],
+      "shared": [
+        {
+          "kind": "url",
+          "key": "pump-rider.netlify.app"
+        }
+      ]
+    }
+  ],
+  "groups": [
+    {
+      "key": "pump-rider.netlify.app",
+      "kind": "url",
+      "submissions": [
+        {
+          "submission_id": "080cff8f-bfd0-4f8c-92c9-1c244556b840",
+          "name": "NEAR: On The Evidence",
+          "on_chain": true,
+          "fields": [
+            "links"
+          ]
+        },
+        {
+          "submission_id": "a1bf1936-7bdc-41a7-985f-c54c0ba3be85",
+          "name": "Pump Rider",
+          "on_chain": true,
+          "fields": [
+            "links"
+          ]
+        }
+      ]
+    }
+  ],
   "weak_signals": {
     "same_name": [
       {
@@ -49,6 +95,11 @@
             "submission_id": "ff4096e0-82f9-468d-8592-ea13a28fb4c4",
             "name": "AgentGuard",
             "on_chain": true
+          },
+          {
+            "submission_id": "457e0ebc-a4ac-4ce8-9dc9-d0f8e0c1427d",
+            "name": "Agentguard",
+            "on_chain": false
           }
         ]
       },
@@ -78,13 +129,18 @@
           {
             "submission_id": "fda85f72-004a-44cd-a28f-525b91ed0053",
             "name": "Leash",
-            "on_chain": false
+            "on_chain": true
           }
         ]
       },
       {
         "key": "allowance",
         "submissions": [
+          {
+            "submission_id": "4126642c-e4c0-4876-80c0-3f9729f1d81d",
+            "name": "Allowance",
+            "on_chain": true
+          },
           {
             "submission_id": "aab1bb9e-ab36-4d8c-920f-62487b5b7714",
             "name": "Allowance",
@@ -94,11 +150,6 @@
             "submission_id": "abe27d2f-1615-4025-9e0c-e78e28519207",
             "name": "Allowance",
             "on_chain": true
-          },
-          {
-            "submission_id": "4126642c-e4c0-4876-80c0-3f9729f1d81d",
-            "name": "Allowance",
-            "on_chain": false
           }
         ]
       },
@@ -168,7 +219,7 @@
           {
             "submission_id": "779185fc-dc4e-4508-ad58-8a66a3204968",
             "name": "CareRail",
-            "on_chain": false
+            "on_chain": true
           }
         ]
       },
@@ -191,14 +242,14 @@
         "key": "near sentinel",
         "submissions": [
           {
-            "submission_id": "55eb2652-5aee-4768-8800-22f5d6ee0b92",
+            "submission_id": "19769764-c445-437e-8187-e0433b18c3da",
             "name": "NEAR SENTINEL",
             "on_chain": true
           },
           {
-            "submission_id": "19769764-c445-437e-8187-e0433b18c3da",
+            "submission_id": "55eb2652-5aee-4768-8800-22f5d6ee0b92",
             "name": "NEAR SENTINEL",
-            "on_chain": false
+            "on_chain": true
           }
         ]
       },
@@ -243,12 +294,27 @@
           {
             "submission_id": "8f06285a-0cfb-40a5-b426-68e74cb37d3a",
             "name": "Torch",
-            "on_chain": false
+            "on_chain": true
           }
         ]
       }
     ],
     "same_x_account": [
+      {
+        "key": "0_x_0_0_0",
+        "submissions": [
+          {
+            "submission_id": "438e5163-d314-44c0-9fcc-42d177d0718d",
+            "name": "Sealed Ledger",
+            "on_chain": true
+          },
+          {
+            "submission_id": "9e64cdb5-c4b1-4bc9-865b-02dc76b19e66",
+            "name": "The Daily Swarm",
+            "on_chain": true
+          }
+        ]
+      },
       {
         "key": "ade_lekejr",
         "submissions": [
@@ -320,7 +386,7 @@
           {
             "submission_id": "d06bb20e-e7da-4d89-9be4-9de3d707e7ca",
             "name": "Dues",
-            "on_chain": false
+            "on_chain": true
           }
         ]
       },
@@ -335,7 +401,7 @@
           {
             "submission_id": "c50680b6-192f-4ff0-8f10-fa6e87ed9429",
             "name": "Headcount",
-            "on_chain": false
+            "on_chain": true
           }
         ]
       },
@@ -613,14 +679,14 @@
         "key": "tobadaniel_",
         "submissions": [
           {
-            "submission_id": "a1bf1936-7bdc-41a7-985f-c54c0ba3be85",
-            "name": "Pump Rider",
-            "on_chain": false
-          },
-          {
             "submission_id": "080cff8f-bfd0-4f8c-92c9-1c244556b840",
             "name": "NEAR: On The Evidence",
-            "on_chain": false
+            "on_chain": true
+          },
+          {
+            "submission_id": "a1bf1936-7bdc-41a7-985f-c54c0ba3be85",
+            "name": "Pump Rider",
+            "on_chain": true
           }
         ]
       },

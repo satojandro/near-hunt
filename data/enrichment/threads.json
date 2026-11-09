@@ -3446,5 +3446,72 @@
       }
     ],
     "links": []
+  },
+  "9e64cdb5-c4b1-4bc9-865b-02dc76b19e66": {
+    "author": "0_x_0_0_0",
+    "crawled_at": "2026-11-09T09:45:29.677Z",
+    "posts": [
+      {
+        "id": "2119689549588885723",
+        "author": "0_x_0_0_0",
+        "text": "@NEARProtocol Three desks pitch with a fee and word count; the editor commissions two under a budget; a standards desk checks every claim; readers unlock with 1 testnet NEAR; the split settles to agent sub-accounts.\n\nBuilt for the AI Swarms track. Sample (no wallet): https://t.co/3AJQLP3s19",
+        "links": [
+          "https://the-daily-swarm.vercel.app/sample"
+        ]
+      },
+      {
+        "id": "2119689627653279987",
+        "author": "0_x_0_0_0",
+        "text": "@NEARProtocol The edition is the output. The settlement is the proof.\n\nEvery payment and payout has a testnet explorer link. The public instance keeps payouts in local-ledger mode; the archived on-chain split is in the README.\n\nRepo: https://t.co/3knAZCULDj",
+        "links": [
+          "https://github.com/chaoticpunk/the-daily-swarm"
+        ]
+      }
+    ],
+    "links": []
+  },
+  "dd592d8d-7291-444a-a939-68f24b469a13": {
+    "author": "didi_xbt",
+    "crawled_at": "2026-11-09T09:45:49.323Z",
+    "posts": [
+      {
+        "id": "2119696443522855287",
+        "author": "didi_xbt",
+        "text": "Link → https://t.co/0Cstegwx22\n\nFor better experience, Use the Meteor app to test (switch to testnet)",
+        "links": [
+          "https://bagworker-nft.vercel.app/"
+        ]
+      },
+      {
+        "id": "2119699343628501303",
+        "author": "didi_xbt",
+        "text": "Link to repo →  https://t.co/tv1cDvcQFU",
+        "links": [
+          "https://github.com/Jadenprosper/perp-agent-nft"
+        ]
+      }
+    ],
+    "links": []
+  },
+  "fea85fb1-5eea-4414-abc8-5d60a913cfac": {
+    "author": "jamesalmawali",
+    "crawled_at": "2026-11-09T09:46:06.623Z",
+    "posts": [
+      {
+        "id": "2119695929242796118",
+        "author": "jamesalmawali",
+        "text": "How: 3 worker agents (NEAR sub-accounts with function-call keys) bid on Agent Market jobs. The contract awards the job, takes the payment, pays the worker its bid and sweeps profit to the owner. Cross-chain USDC payouts via NEAR Intents need the contract's OK.",
+        "links": []
+      },
+      {
+        "id": "2119695934955360626",
+        "author": "jamesalmawali",
+        "text": "In the demo a prompt-injected agent tries 8 ways to move money: blocked by the contract, rejected by NEAR, or queued for the human.\n\nRepo, runs on testnet in ~8 min: https://t.co/36pYyFffeV\n\nWhat spending rule would you want before an agent holds money? @NearBuilders @NearLegion https://t.co/k5sjMDMsyw",
+        "links": [
+          "https://github.com/saidtalib/digi-swarm-treasury"
+        ]
+      }
+    ],
+    "links": []
   }
 }
