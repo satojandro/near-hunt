@@ -32,24 +32,36 @@ const NEAR_SOCIAL = 'https://near.social/';
 
 export default function UpvoteButton({ projectId, initialCount, variant, projectName }: Props) {
   const { accountId, loading, connect, myVotes, ensureMyVotes, setMyVote, cast, voteSigning } = useWallet();
-  const [delta, setDelta] = useState(0);
+  // The number on screen. It starts at the server's count and moves by one on click; a confirmed
+  // vote revalidates the route, so `initialCount` then already includes it (issue #5).
+  const [count, setCount] = useState(initialCount);
   const [phase, setPhase] = useState<Phase>({ kind: 'idle' });
   const [copied, setCopied] = useState(false);
   const statusId = useId();
   const busy = phase.kind === 'pending';
   const voted = !!accountId && !!myVotes?.has(projectId);
-  const count = Math.max(0, initialCount + delta);
   const name = projectName ?? 'this project';
+  /** True from the click until the write settles: the optimistic number is authoritative. */
+  const inFlight = useRef(false);
+
+  // Adopt the server's number when no write is in flight. Adding a local +1 on top of a
+  // revalidated count that already includes the vote is exactly what showed two upvotes for one
+  // transaction (GitHub issue #5). An in-flight write keeps its optimistic number; when the
+  // refreshed count lands after it settles, this adopts it (the same number).
+  useEffect(() => {
+    if (!inFlight.current) setCount(initialCount);
+  }, [initialCount]);
 
   // Forget local adjustments when the account changes.
   const lastAccount = useRef(accountId);
   useEffect(() => {
     if (lastAccount.current !== accountId) {
       lastAccount.current = accountId;
-      setDelta(0);
+      inFlight.current = false;
+      setCount(initialCount);
       setPhase({ kind: 'idle' });
     }
-  }, [accountId]);
+  }, [accountId, initialCount]);
 
   // A removed-upvote notice clears itself; the share offer stays until dismissed.
   useEffect(() => {
@@ -89,14 +101,16 @@ export default function UpvoteButton({ projectId, initialCount, variant, project
 
     const upvote = !current.has(projectId);
     const step = upvote ? 1 : -1;
+    inFlight.current = true;
     setMyVote(projectId, upvote);
-    setDelta((d) => d + step);
+    setCount((c) => Math.max(0, c + step));
     setCopied(false);
     setPhase({ kind: 'pending', upvote, viaWallet: voteSigning() === 'wallet' });
 
     const rollback = (message: string) => {
+      inFlight.current = false;
       setMyVote(projectId, !upvote);
-      setDelta((d) => d - step);
+      setCount((c) => Math.max(0, c - step));
       setPhase({ kind: 'error', message });
     };
 
@@ -112,6 +126,8 @@ export default function UpvoteButton({ projectId, initialCount, variant, project
 
     switch (res.outcome) {
       case 'confirmed':
+        // The count on screen is already right; the revalidated `initialCount` will match it.
+        inFlight.current = false;
         setPhase({ kind: 'done', upvote });
         return;
       case 'rejected':
