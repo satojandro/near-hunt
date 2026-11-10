@@ -22,10 +22,10 @@ posters from their X post. Existing records get only what they are missing.
 ## When to run it
 
 When `npm run feed:check` prints a line (it is silent when nothing is new). Hermes runs it on a
-schedule through `scripts/feed-watch.sh` (every 30 min, one line only). The full read-only cycle
-(steps 2–5) also runs every 6 hours through `scripts/enrich-cycle.mjs`, which stays silent until a
-batch is ready to approve and then prints the dry-run numbers. Batching is fine: one cycle per day,
-or whenever the line appears.
+schedule through `scripts/feed-watch.sh` (every 30 min, one line only). Steps 2–5 are also packaged
+as `scripts/enrich-cycle.mjs` for a scheduled run: it stays silent until a batch is ready to approve
+and then prints the dry-run numbers. Nothing schedules it today — run it by hand, or point a job at
+it if that changes. Batching is fine: one cycle per day, or whenever the line appears.
 
 ## The cycle
 
