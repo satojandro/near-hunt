@@ -1,22 +1,113 @@
 {
-  "generated_at": "2026-11-09T17:02:04.467Z",
+  "generated_at": "2026-11-10T23:32:00.020Z",
   "account": "nearhunt.near",
   "summary": {
-    "links": 217,
+    "links": 267,
     "by_verdict": {
-      "live": 194,
-      "unverified": 22,
-      "gone": 1
+      "live": 240,
+      "unverified": 25,
+      "gone": 2
     },
     "by_status": {
-      "ok": 194,
-      "http-error": 23
+      "ok": 240,
+      "refused": 1,
+      "http-error": 26
     },
-    "with_title": 189,
-    "with_og_image": 69,
-    "redirected_to_other_host": 4
+    "with_title": 234,
+    "with_og_image": 79,
+    "redirected_to_other_host": 5
   },
   "rows": [
+    {
+      "submission_id": "00fdaceb-0af0-483c-a759-a661d9a79704",
+      "name": "Petri",
+      "field": "links",
+      "url": "https://testnet.near.rocks/tx/3aB2ktZ4Dox99TiDti8BLZrFjsAmFmMi2dCZjzZZs1LW",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://testnet.near.rocks/tx/3aB2ktZ4Dox99TiDti8BLZrFjsAmFmMi2dCZjzZZs1LW",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "NEAR Rocks - NEAR explorer by FastNear",
+      "og_image": null
+    },
+    {
+      "submission_id": "00fdaceb-0af0-483c-a759-a661d9a79704",
+      "name": "Petri",
+      "field": "links",
+      "url": "https://testnet.near.rocks/tx/2xPs1k2q684wF6GVLCQ2Nt1TfPvjb45VuiXytZnyFfA2",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://testnet.near.rocks/tx/2xPs1k2q684wF6GVLCQ2Nt1TfPvjb45VuiXytZnyFfA2",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "NEAR Rocks - NEAR explorer by FastNear",
+      "og_image": null
+    },
+    {
+      "submission_id": "00fdaceb-0af0-483c-a759-a661d9a79704",
+      "name": "Petri",
+      "field": "links",
+      "url": "https://testnet.near.rocks/tx/3WENtHQS3q6Cv9qGscGLw3fDPaxioGfYndXZVdsUdJso",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://testnet.near.rocks/tx/3WENtHQS3q6Cv9qGscGLw3fDPaxioGfYndXZVdsUdJso",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "NEAR Rocks - NEAR explorer by FastNear",
+      "og_image": null
+    },
+    {
+      "submission_id": "00fdaceb-0af0-483c-a759-a661d9a79704",
+      "name": "Petri",
+      "field": "links",
+      "url": "https://anonymusk7.github.io/petri-demo",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://anonymusk7.github.io/petri-demo/",
+      "redirects": 1,
+      "content_type": "text/html",
+      "title": "Petri: AI pets with a verified brain",
+      "og_image": null
+    },
+    {
+      "submission_id": "00fdaceb-0af0-483c-a759-a661d9a79704",
+      "name": "Petri",
+      "field": "links",
+      "url": "https://testnet.near.rocks/tx/Fr331g4Ewa6Zvc9ckBtT8cV7oiKcJCdsdDYonTtmAcCP",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://testnet.near.rocks/tx/Fr331g4Ewa6Zvc9ckBtT8cV7oiKcJCdsdDYonTtmAcCP",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "NEAR Rocks - NEAR explorer by FastNear",
+      "og_image": null
+    },
+    {
+      "submission_id": "00fdaceb-0af0-483c-a759-a661d9a79704",
+      "name": "Petri",
+      "field": "links",
+      "url": "https://testnet.near.rocks/tx/CszLGkm2YtsAykqxhHrEQccSd2T8fhHEDm8YG6SMK22J",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://testnet.near.rocks/tx/CszLGkm2YtsAykqxhHrEQccSd2T8fhHEDm8YG6SMK22J",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "NEAR Rocks - NEAR explorer by FastNear",
+      "og_image": null
+    },
     {
       "submission_id": "01d1ec5e-9ba4-49cb-88f8-8236c08285ea",
       "name": "Agent Toll",
@@ -198,6 +289,36 @@
       "og_image": null
     },
     {
+      "submission_id": "0c633311-0739-4fb0-beb5-aac1f8039735",
+      "name": "ShowUp",
+      "field": "links",
+      "url": "https://showup-near.vercel.app",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://showup-near.vercel.app",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "ShowUp — Cross-Chain Event Commitment Escrow & Sputnik DAO Routing",
+      "og_image": null
+    },
+    {
+      "submission_id": "0c633311-0739-4fb0-beb5-aac1f8039735",
+      "name": "ShowUp",
+      "field": "links",
+      "url": "https://showup-near.vercel.app/judge",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://showup-near.vercel.app/judge",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "ShowUp — Cross-Chain Event Commitment Escrow & Sputnik DAO Routing",
+      "og_image": null
+    },
+    {
       "submission_id": "0fdc3944-7e09-4607-a08a-2590472db1ea",
       "name": "Meridian",
       "field": "links",
@@ -211,6 +332,21 @@
       "content_type": "text/html",
       "title": "Meridian Town",
       "og_image": "https://meridian-town-production.up.railway.app/welcome/img/festival-night.jpg"
+    },
+    {
+      "submission_id": "11146863-2476-4490-8414-dae2119efc46",
+      "name": "Plumbline",
+      "field": "links",
+      "url": "https://plumbline-z9kg.onrender.com",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://plumbline-z9kg.onrender.com",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "Plumbline: check the quote before you sign",
+      "og_image": null
     },
     {
       "submission_id": "115b2488-dcf6-4715-8f67-eaa70cc8afb3",
@@ -243,6 +379,21 @@
       "og_image": "https://nearpocket.vercel.app/og.png"
     },
     {
+      "submission_id": "141642d1-ce6f-4005-a922-bfc5622a9e9d",
+      "name": "Antibody",
+      "field": "links",
+      "url": "https://antibody-near.vercel.app",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://antibody-near.vercel.app",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "Antibody: bug bounties that pay on proof",
+      "og_image": "https://antibody-near.vercel.app/opengraph-image?2ca4261c7541602b"
+    },
+    {
       "submission_id": "14c70946-d8de-4fed-8fc6-739886447220",
       "name": "DeadDrop",
       "field": "links",
@@ -273,6 +424,36 @@
       "og_image": "https://wakeless.pages.dev/web/assets/og-v2.png"
     },
     {
+      "submission_id": "17ad0701-1512-4907-ba5d-e5795a5aac37",
+      "name": "SealedBounty",
+      "field": "links",
+      "url": "https://jds-23.github.io/sealedbounty",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://jds-23.github.io/sealedbounty/",
+      "redirects": 1,
+      "content_type": "text/html",
+      "title": "SealedBounty",
+      "og_image": null
+    },
+    {
+      "submission_id": "187a9848-86c8-4e93-bca2-aa4f66cb40fc",
+      "name": "Pixel Wayfarers",
+      "field": "links",
+      "url": "https://pixelwayfarers.com/near",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://pixelwayfarers.com/near/",
+      "redirects": 1,
+      "content_type": "text/html",
+      "title": "Pixel Wayfarers on NEAR: NFTs that earn",
+      "og_image": null
+    },
+    {
       "submission_id": "19769764-c445-437e-8187-e0433b18c3da",
       "name": "NEAR SENTINEL",
       "field": "demo_url",
@@ -301,6 +482,22 @@
       "content_type": "text/html",
       "title": "VillageBill — Stardew SplitBill Village (NEAR)",
       "og_image": null
+    },
+    {
+      "submission_id": "1ca01819-1a03-4a49-81d7-eb5755db0fea",
+      "name": "VIGIL",
+      "field": "demo_url",
+      "url": "http://paypilot-approval-wallet.lovable.app/",
+      "verdict": "unverified",
+      "truncated": false,
+      "status": "refused",
+      "http_status": null,
+      "final_url": null,
+      "redirects": 0,
+      "content_type": null,
+      "title": null,
+      "og_image": null,
+      "error": "not https"
     },
     {
       "submission_id": "1ea9d594-1b33-4c41-9d7d-d536ff0df573",
@@ -408,6 +605,21 @@
       "og_image": null
     },
     {
+      "submission_id": "21b88ac4-20b2-4951-bb42-9b5e57695f5f",
+      "name": "The Build City Hackathon",
+      "field": "links",
+      "url": "https://luma.com/private-ai-hack",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://luma.com/private-ai-hack",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "Build City x NEAR Legion: NEAR Private AI Hackathon NYC · Luma",
+      "og_image": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=800,height=420/event-social/u9/59bfb804-8d08-4996-a0d8-46c78e47ae02.png"
+    },
+    {
       "submission_id": "247640ff-7661-42ec-8275-b2fc8ada1a9a",
       "name": "NDBOT",
       "field": "links",
@@ -420,7 +632,7 @@
       "redirects": 0,
       "content_type": "text/html",
       "title": "Telegram: Launch @ndegen_bot",
-      "og_image": "https://cdn4.telesco.pe/file/ORHSd7dBLcdbL6zd_aWKymInPKgNKWk9NAr2wXs18D0HFffZxVf9QOs4w6eGippUstxp5hWSMJAuu8Db4DqQ9P2ToucQc0kRL8W042TQJSDdib5_O6H4tsFBdrqkVy7sqFYThurgC5Pl4BslNH2SYLlp8Vq5d0sCGGtTKvwhduWwv9IOS2APcyq57lKGc-iPdFt7RX4E487U7yD8gNSLzIP_gbQj9iUZnJoWQDVILVYPS7KgUHEuyuT4HPtRRHUUSpgbM12N4yAlhTD3sE2g4UM1y7z06b84ZvO17fzCSPXI_1kkK3bPogZqFqnA3eeHv_qxL8Ycizb185SLLjmj0g.jpg"
+      "og_image": "https://cdn4.telesco.pe/file/CLThIEzDzKnpbV_ke-w91v2M4q8fHjlSSxw8ph9ukS_vbMzx7V4O0d1GgMikNHBkol7as_FXli32-Xet5cC6J3L87Knz4aTiZxTbYHj9QJ4nIHQlJjrK7ypwg8U6QsP0m3ijG2djMJrcbVyEzlKL4j8dU2zRqeVmrhPV7zcIZa2ArfF1v0rEW5wvxNYMwuFyw5vYTMVBX8vPppJ3b7Pj6F2yBkGkviTio8n49eHx1uSyPAYeSVEoHdxESn4DCCVJDmIlOMFRee9l83ahP4qFVgJYNYyIpKDOvVoeauY_aGu7qlYgeMiFvrRBJnT15cdXu5S023z_SK1fPm1lQbh8Cg.jpg"
     },
     {
       "submission_id": "2633a774-80fe-4d9c-b813-0ebe292ad450",
@@ -435,7 +647,82 @@
       "redirects": 0,
       "content_type": "text/html",
       "title": "Telegram: Launch @Cobrainvoicebot",
-      "og_image": "https://cdn4.telesco.pe/file/fzM9x0ZDyqnx0_4KU82C7jjGnFG7KJIkbRgynmh6RPocr7T89aRa-r1wNhsu7L-O7cXHXiE577H7tywlUjmBObg1iprKzVF_Jf5abKyMkS66DDOeK7DsHLnj55CvDptg6fn1NxGI5WztYv6fYLBHWirtynVFHqciIWzBBYXiL3S6LFTS1P3FUidaAuLgJmV-aBbBKWE1qXdOXiJjvQwWP8r9FKWcRjkenK_tTQxqaLxDF6c9ImDvow9NCeJSPacMZ-s8z4V-LrUi3RnZYkkd-rvdlQQkG_1fv5AjY3UA2Vojx_emTqfRwwmyRBzo0MmZtEEwciiWNuBkluvub3tT_A.jpg"
+      "og_image": "https://cdn4.telesco.pe/file/AyU_JSqwLQf5hFJBKKeMiKliRqUo-JfgKFGKVPmVPzJ-7Klth8zAxKpY1DP2j_yGJeh3OSYobu6D5qHs6VFK8ZOqBGU5Si5Rrayd-andgYyzxvmFO76S95Yh5r3Z37PseEsbMLtf7Cj5juPXptbHJLq9JDg4YD2pGxD_BZziporSLiPAyOqY8aAVJyimBUibh3NNbvS2Gj2ltk0DSVhlozbnlZQNk8Cnesa_jN4BneRub5lx339CyRBvGC4Ffzn5LF6cEtTk0PoFb1_YxdGq-ewyb2mvC5s8F1tU5cyv1ue5dPd1XIlXQvnOa9gfMOHGbx7C3VUYQpxLw_QIRMaw-g.jpg"
+    },
+    {
+      "submission_id": "27ed2a89-1984-4bfa-8f35-59e1466e58c9",
+      "name": "nearx402",
+      "field": "links",
+      "url": "https://nearx402.svmtech.xyz",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://nearx402.svmtech.xyz",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "nearx402 Spend Policy",
+      "og_image": null
+    },
+    {
+      "submission_id": "287c0199-5dcd-42a9-86d8-0fa06123a8f3",
+      "name": "ShowUp",
+      "field": "links",
+      "url": "https://testnet.near.rocks/tx/xYT4gSWch2R8nmDWNgj2EsPMauCnMQPXk5Hfo92L8j8",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://testnet.near.rocks/tx/xYT4gSWch2R8nmDWNgj2EsPMauCnMQPXk5Hfo92L8j8",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "NEAR Rocks - NEAR explorer by FastNear",
+      "og_image": null
+    },
+    {
+      "submission_id": "287c0199-5dcd-42a9-86d8-0fa06123a8f3",
+      "name": "ShowUp",
+      "field": "links",
+      "url": "https://testnet.near.rocks/tx/dPJsVpuxbxpvhevGhyHtdwQCUNY1K9WMKfKYVJVWuwo",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://testnet.near.rocks/tx/dPJsVpuxbxpvhevGhyHtdwQCUNY1K9WMKfKYVJVWuwo",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "NEAR Rocks - NEAR explorer by FastNear",
+      "og_image": null
+    },
+    {
+      "submission_id": "287c0199-5dcd-42a9-86d8-0fa06123a8f3",
+      "name": "ShowUp",
+      "field": "links",
+      "url": "https://testnet.near.rocks/tx/479KKT9qY2EkVJ1VLnJRye1rF4MfW2F5SDzxx9nv6hfH",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://testnet.near.rocks/tx/479KKT9qY2EkVJ1VLnJRye1rF4MfW2F5SDzxx9nv6hfH",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "NEAR Rocks - NEAR explorer by FastNear",
+      "og_image": null
+    },
+    {
+      "submission_id": "287c0199-5dcd-42a9-86d8-0fa06123a8f3",
+      "name": "ShowUp",
+      "field": "links",
+      "url": "https://anonymusk7.github.io/showup-demo/widget/demo.html",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://anonymusk7.github.io/showup-demo/widget/demo.html",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "ShowUp widget demo",
+      "og_image": null
     },
     {
       "submission_id": "287d08ef-3e56-4424-a00b-700e0f7d1bf9",
@@ -487,29 +774,44 @@
       "name": "StarFloor: Orbital Market Center & Zero-Gravity Colocation",
       "field": "links",
       "url": "https://starfloor.8tcap.com",
-      "verdict": "live",
+      "verdict": "unverified",
       "truncated": false,
-      "status": "ok",
-      "http_status": 200,
+      "status": "http-error",
+      "http_status": 502,
       "final_url": "https://starfloor.8tcap.com",
       "redirects": 0,
       "content_type": "text/html",
-      "title": "StarFloor™ (SF¹) // Orbital Market Center & Zero-Gravity Colocation",
-      "og_image": "https://starfloor.8tcap.com/assets/03-starfloor-og-social-banner.png"
+      "title": null,
+      "og_image": null
     },
     {
       "submission_id": "2ff34858-5a81-4248-ade5-9894def5567e",
       "name": "Lantern Caravan",
-      "field": "demo_url",
-      "url": "https://lanterncaravan.duckdns.org/",
+      "field": "links",
+      "url": "https://lanterncaravan.duckdns.org",
       "verdict": "live",
       "truncated": false,
       "status": "ok",
       "http_status": 200,
-      "final_url": "https://lanterncaravan.duckdns.org/",
+      "final_url": "https://lanterncaravan.duckdns.org",
       "redirects": 0,
       "content_type": "text/html",
       "title": "Lantern Caravan",
+      "og_image": null
+    },
+    {
+      "submission_id": "303cdf12-2553-4787-b1a0-59e33f229823",
+      "name": "Proposal X-Ray",
+      "field": "links",
+      "url": "https://near-proposal-xray.vercel.app",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://near-proposal-xray.vercel.app",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "Proposal X-Ray",
       "og_image": null
     },
     {
@@ -525,6 +827,36 @@
       "redirects": 0,
       "content_type": "text/html",
       "title": "SafeCell — contained agent execution",
+      "og_image": null
+    },
+    {
+      "submission_id": "32c75be1-ea65-4bef-8607-1df599ae847e",
+      "name": "Aureus",
+      "field": "links",
+      "url": "https://aureusagent.lovable.app/dashboard",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://aureusagent.lovable.app/dashboard",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "Command Centre — AUREUS",
+      "og_image": "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/lovp_16x961m3929azt6g50b00zr3as/b91344e3b352c0de349b69a84190afcf_1793833659290.png"
+    },
+    {
+      "submission_id": "385ea3c8-bda5-4257-87b4-550bdfc33be6",
+      "name": "DiveMarket",
+      "field": "links",
+      "url": "https://dist-swart-nu-14.vercel.app",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://dist-swart-nu-14.vercel.app",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "DiveMarket",
       "og_image": null
     },
     {
@@ -603,6 +935,21 @@
       "og_image": null
     },
     {
+      "submission_id": "3e07975d-4382-4f0a-8771-e71208a6960e",
+      "name": "Credence",
+      "field": "links",
+      "url": "https://credence-henna.vercel.app",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://credence-henna.vercel.app",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "Credence: the encyclopedia where every fact has a price",
+      "og_image": null
+    },
+    {
       "submission_id": "3e0a5372-942a-4618-b309-68cfa5c4d208",
       "name": "Launchline",
       "field": "links",
@@ -637,14 +984,14 @@
       "name": "Allowance",
       "field": "links",
       "url": "https://allowance-khm3.onrender.com",
-      "verdict": "live",
+      "verdict": "unverified",
       "truncated": false,
-      "status": "ok",
-      "http_status": 200,
+      "status": "http-error",
+      "http_status": 503,
       "final_url": "https://allowance-khm3.onrender.com",
       "redirects": 0,
       "content_type": "text/html",
-      "title": "Allowance: a budget your AI agent can't break",
+      "title": null,
       "og_image": null
     },
     {
@@ -708,6 +1055,21 @@
       "og_image": "https://sealed-ledger.vercel.app/og.png"
     },
     {
+      "submission_id": "44429927-7ac7-4068-92af-a3860bff045d",
+      "name": "Circuit Breaker",
+      "field": "links",
+      "url": "https://circuit-breaker-psi.vercel.app",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://circuit-breaker-psi.vercel.app",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "Circuit Breaker",
+      "og_image": null
+    },
+    {
       "submission_id": "44b5ae7e-aa92-4927-97e8-e0eabf4cf379",
       "name": "Orbit",
       "field": "links",
@@ -720,6 +1082,21 @@
       "redirects": 0,
       "content_type": "text/html",
       "title": "Orbit — The On-Chain Launch Studio",
+      "og_image": null
+    },
+    {
+      "submission_id": "457e0ebc-a4ac-4ce8-9dc9-d0f8e0c1427d",
+      "name": "Agentguard",
+      "field": "links",
+      "url": "https://tutnarezki5-dotcom.github.io/agentguard",
+      "verdict": "gone",
+      "truncated": false,
+      "status": "http-error",
+      "http_status": 404,
+      "final_url": "https://tutnarezki5-dotcom.github.io/agentguard",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": null,
       "og_image": null
     },
     {
@@ -753,6 +1130,21 @@
       "og_image": "https://s0.wp.com/i/blank.jpg"
     },
     {
+      "submission_id": "47cbc85d-6ab2-4d3f-9d91-7cc7e57eb3cf",
+      "name": "BEXLEY",
+      "field": "links",
+      "url": "https://bexley-sigma.vercel.app",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://bexley-sigma.vercel.app",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "Bexley",
+      "og_image": null
+    },
+    {
       "submission_id": "493021e8-fb56-49ef-8be0-b1a1060d7784",
       "name": "Warrant",
       "field": "links",
@@ -783,6 +1175,21 @@
       "og_image": null
     },
     {
+      "submission_id": "4a9a7ae0-6943-4a34-b4e3-99198eeee530",
+      "name": "Dragons Market",
+      "field": "links",
+      "url": "https://dragons.market",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://dragons.market",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "Dragons Market | Prediction markets",
+      "og_image": null
+    },
+    {
       "submission_id": "4c16c5d9-7692-4ea6-a3f7-1497da497068",
       "name": "Optionality",
       "field": "demo_url",
@@ -796,6 +1203,36 @@
       "content_type": "text/html",
       "title": "Optionality (@OptionalityNEAR) / X",
       "og_image": "https://pbs.twimg.com/profile_images/2118958081791148033/2Z9x6fQi_400x400.png"
+    },
+    {
+      "submission_id": "4dbfa08c-f465-4800-8432-8228340a38d8",
+      "name": "$YAP | Proof of yap, on NEAR.Social",
+      "field": "links",
+      "url": "https://near.social",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://near.social",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "near.social",
+      "og_image": null
+    },
+    {
+      "submission_id": "50e6a343-ca00-4423-95a9-88d2ba74a4ac",
+      "name": "Pelargo",
+      "field": "links",
+      "url": "https://main.pelargo.pages.dev",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://main.pelargo.pages.dev",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "Pelargo — Pay across chains. Settle on NEAR.",
+      "og_image": null
     },
     {
       "submission_id": "50fd3b4f-c601-4081-a463-9aa0944b7d00",
@@ -825,6 +1262,36 @@
       "redirects": 0,
       "content_type": "text/html",
       "title": "Vouch",
+      "og_image": null
+    },
+    {
+      "submission_id": "51261916-2c0e-48df-9888-4c24f52dccd5",
+      "name": "Proof of Ship on NEAR",
+      "field": "links",
+      "url": "https://robinhoodchain.blockscout.com/tx/0xd19654c02474c71beb664e8b35aefc0e57eefaa8330707037245b3e95285ab57",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://robinhoodchain.blockscout.com/tx/0xd19654c02474c71beb664e8b35aefc0e57eefaa8330707037245b3e95285ab57",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "Robinhood Chain transaction 0xd19654c02474c71beb664e8b35aefc0e57eefaa8330707037245b3e95285ab57 | Blockscout",
+      "og_image": "https://robinhoodchain.blockscout.com/assets/favicon/android-chrome-192x192.png"
+    },
+    {
+      "submission_id": "51261916-2c0e-48df-9888-4c24f52dccd5",
+      "name": "Proof of Ship on NEAR",
+      "field": "links",
+      "url": "https://nearblocks.io/txns/CHGjBYXwTNyakcnsbfn4GLsYyFWsD7dJGUvyhYH6nrHF",
+      "verdict": "unverified",
+      "truncated": false,
+      "status": "http-error",
+      "http_status": 403,
+      "final_url": "https://nearblocks.io/txns/CHGjBYXwTNyakcnsbfn4GLsYyFWsD7dJGUvyhYH6nrHF",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": null,
       "og_image": null
     },
     {
@@ -870,6 +1337,51 @@
       "redirects": 0,
       "content_type": "text/html",
       "title": "Paylink — Send a link. Get paid.",
+      "og_image": null
+    },
+    {
+      "submission_id": "56d11a5f-7ee0-47f3-a500-0e725944b5af",
+      "name": "Tape — The Machine, on NEAR",
+      "field": "links",
+      "url": "https://niravdesai7-1975.github.io/tape/try.html",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://niravdesai7-1975.github.io/tape/try.html",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "Tape · try it",
+      "og_image": null
+    },
+    {
+      "submission_id": "56d11a5f-7ee0-47f3-a500-0e725944b5af",
+      "name": "Tape — The Machine, on NEAR",
+      "field": "links",
+      "url": "https://youtu.be/Ap_CzexxB0w",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://www.youtube.com/watch?v=Ap_CzexxB0w&feature=youtu.be",
+      "redirects": 1,
+      "content_type": "text/html",
+      "title": null,
+      "og_image": null
+    },
+    {
+      "submission_id": "56da0783-da22-446f-9ebe-4b49a6c88d00",
+      "name": "OneShot",
+      "field": "links",
+      "url": "https://oneshot.pxxlspace.cv",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://oneshot.pxxlspace.cv",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "OneShot — Execution Integrity for AI Agents on NEAR",
       "og_image": null
     },
     {
@@ -933,6 +1445,21 @@
       "og_image": null
     },
     {
+      "submission_id": "5c3430c6-b69e-4bee-ada7-37f5f456e258",
+      "name": "Where's My ZEC",
+      "field": "links",
+      "url": "https://cryppit.github.io/wheres-my-zec",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://cryppit.github.io/wheres-my-zec/",
+      "redirects": 1,
+      "content_type": "text/html",
+      "title": "Where's My ZEC",
+      "og_image": null
+    },
+    {
       "submission_id": "5cc04588-f056-4c3e-96a1-fb956a10af44",
       "name": "Daykeeper",
       "field": "links",
@@ -946,6 +1473,21 @@
       "content_type": "text/html",
       "title": "Daykeeper — a public treasury with a new keeper every day",
       "og_image": "https://daykeeper-tau.vercel.app/opengraph-image?e9bd532ad9a01073"
+    },
+    {
+      "submission_id": "5d48ec5a-333e-4452-8a8d-c3d0720ca1b5",
+      "name": "cipherwork",
+      "field": "links",
+      "url": "https://cipherwork-production.up.railway.app",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://cipherwork-production.up.railway.app",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "CIPHERWORK - Private work. Public proof.",
+      "og_image": null
     },
     {
       "submission_id": "5f55a401-e97f-4c65-bfab-eca295c8a2d5",
@@ -1263,6 +1805,21 @@
       "og_image": null
     },
     {
+      "submission_id": "71dd6225-cfe1-4639-9fdb-4831629534d7",
+      "name": "LastKey Bunker",
+      "field": "links",
+      "url": "https://mastrophot.github.io/lastkey-bunker",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://mastrophot.github.io/lastkey-bunker/",
+      "redirects": 1,
+      "content_type": "text/html",
+      "title": "LastKey Bunker — Self-Custodial Crypto Bunker & Automatic Inheritance · NEAR MPC",
+      "og_image": null
+    },
+    {
       "submission_id": "722ede59-e2e6-4693-ac2c-15039142c84e",
       "name": "Werracle: Intra-Block AI Shield for NEAR Intents & Aurora EVM",
       "field": "links",
@@ -1276,6 +1833,21 @@
       "content_type": "text/html",
       "title": "Werracle — Zero-Storage On-Chain AI Decision Oracle | 32-Byte EVM & NEAR Guard",
       "og_image": "https://werracle.io/assets/og.jpg"
+    },
+    {
+      "submission_id": "72ad736a-250a-4369-92fd-271efdd60598",
+      "name": "Purser",
+      "field": "links",
+      "url": "https://purser-near.vercel.app",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://purser-near.vercel.app",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "Purser: give AI agents money without giving them the keys",
+      "og_image": null
     },
     {
       "submission_id": "735b6139-e210-44d2-9a0c-3dd305621d3c",
@@ -1338,6 +1910,21 @@
       "og_image": null
     },
     {
+      "submission_id": "7926d8c7-d08a-4c7c-a9fd-1d00ae3a476b",
+      "name": "PATCHPAY",
+      "field": "links",
+      "url": "https://patchpay-eight.vercel.app",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://patchpay-eight.vercel.app",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "PATCHPAY — Code ships. Payment follows.",
+      "og_image": null
+    },
+    {
       "submission_id": "79b57ff9-b521-470c-9a34-1d52da03f792",
       "name": "Thesis Agent",
       "field": "links",
@@ -1366,6 +1953,21 @@
       "content_type": "text/html",
       "title": null,
       "og_image": null
+    },
+    {
+      "submission_id": "7b7e0fcb-fffc-400e-82c5-b7ed941c25e3",
+      "name": "Twinnear",
+      "field": "links",
+      "url": "https://twinnear.vercel.app",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://twinnear.vercel.app",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "Twinnear — Invoicing on NEAR (Testnet demo)",
+      "og_image": "https://twinnear.vercel.app/og-image.png"
     },
     {
       "submission_id": "7c772095-71d1-4cac-a207-2d4feca6e4ff",
@@ -1428,15 +2030,30 @@
       "og_image": null
     },
     {
-      "submission_id": "82878626-d007-4202-bbd8-bdc6305c7156",
-      "name": "Kinwarden",
-      "field": "demo_url",
-      "url": "https://kinwarden.duckdns.org/",
+      "submission_id": "815d312a-1f58-4d92-9b0b-5d94daf8a36f",
+      "name": "NEAR by the Numbers",
+      "field": "links",
+      "url": "https://near-thesis-model.vercel.app",
       "verdict": "live",
       "truncated": false,
       "status": "ok",
       "http_status": 200,
-      "final_url": "https://kinwarden.duckdns.org/",
+      "final_url": "https://near-thesis-model.vercel.app",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "NEAR by the Numbers — a re-runnable long-term thesis",
+      "og_image": null
+    },
+    {
+      "submission_id": "82878626-d007-4202-bbd8-bdc6305c7156",
+      "name": "Kinwarden",
+      "field": "links",
+      "url": "https://kinwarden.duckdns.org",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://kinwarden.duckdns.org",
       "redirects": 0,
       "content_type": "text/html",
       "title": "Kinwarden",
@@ -1620,6 +2237,21 @@
       "redirects": 0,
       "content_type": "text/html",
       "title": "Petty Cash · Harbor Builders demo",
+      "og_image": null
+    },
+    {
+      "submission_id": "98b0ab95-0cb2-4824-aac6-c97c6c8e6210",
+      "name": "BFA (Built For Agents)",
+      "field": "links",
+      "url": "https://bfagateway-production.up.railway.app",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://bfagateway-production.up.railway.app",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "BFA",
       "og_image": null
     },
     {
@@ -1845,6 +2477,36 @@
       "redirects": 0,
       "content_type": "text/html",
       "title": "Readback",
+      "og_image": null
+    },
+    {
+      "submission_id": "a0a3436e-c803-4b86-920f-0ce74cf270bf",
+      "name": "StreetMarket AI by GhostTech",
+      "field": "links",
+      "url": "https://ghostdevol.github.io/Street-Market-A.i",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://ghostdevol.github.io/Street-Market-A.i/",
+      "redirects": 1,
+      "content_type": "text/html",
+      "title": "StreetMarket AI by GhostTech",
+      "og_image": null
+    },
+    {
+      "submission_id": "a0a3436e-c803-4b86-920f-0ce74cf270bf",
+      "name": "StreetMarket AI by GhostTech",
+      "field": "links",
+      "url": "https://testnet.nearblocks.io/address/board.ghosttech.testnet",
+      "verdict": "unverified",
+      "truncated": false,
+      "status": "http-error",
+      "http_status": 403,
+      "final_url": "https://testnet.nearblocks.io/address/board.ghosttech.testnet",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": null,
       "og_image": null
     },
     {
@@ -2148,6 +2810,21 @@
       "og_image": null
     },
     {
+      "submission_id": "b72fd348-8834-4739-a29c-0a109798168c",
+      "name": "NEAR-Midnight Privacy Bridge",
+      "field": "demo_url",
+      "url": "https://aryann-4.github.io/NEAR-privacy-bridge/",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://aryann-4.github.io/NEAR-privacy-bridge/",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "NEAR × Midnight — Privacy Bridge",
+      "og_image": null
+    },
+    {
       "submission_id": "b7b2dda7-6b60-4eb8-8dee-b7b27aecd045",
       "name": "VRX",
       "field": "links",
@@ -2221,6 +2898,21 @@
       "content_type": "text/html",
       "title": "Nearverse",
       "og_image": null
+    },
+    {
+      "submission_id": "bded2b2b-2963-45c4-8440-a3d9d905eb06",
+      "name": "LIFO",
+      "field": "links",
+      "url": "https://lifo-amt.pages.dev",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://lifo-amt.pages.dev",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "LIFO: the last in are the first out",
+      "og_image": "https://lifo-amt.pages.dev/og-card.png"
     },
     {
       "submission_id": "bf540568-d7a5-4255-822c-0863edb9c2d8",
@@ -2538,6 +3230,21 @@
       "og_image": "https://taint.shinc.tech/opengraph-image?b8b9b122d27b21be"
     },
     {
+      "submission_id": "d4b7fede-d382-47f6-ba50-6c20674a418e",
+      "name": "Marks",
+      "field": "links",
+      "url": "https://marks.leash.market",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://marks.leash.market",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "Marks - Trade, borrow and gift on NEAR",
+      "og_image": null
+    },
+    {
       "submission_id": "d7468e54-2c34-4138-8613-a587af2d3f1b",
       "name": "Potluck",
       "field": "demo_url",
@@ -2745,7 +3452,7 @@
       "redirects": 0,
       "content_type": "text/html",
       "title": "Phylaxtag",
-      "og_image": null
+      "og_image": "https://phylaxtag.vercel.app/og.png"
     },
     {
       "submission_id": "e2eda711-0154-4560-bcee-2504e4152ac2",
@@ -2883,6 +3590,21 @@
       "og_image": null
     },
     {
+      "submission_id": "e8a069fd-8960-4ced-bba6-ff37b36162ea",
+      "name": "Dark Vault: Pay Anywhere",
+      "field": "links",
+      "url": "https://near.zecdarkvault.xyz",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://near.zecdarkvault.xyz",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "Dark Vault — private markets on shielded Zcash",
+      "og_image": "https://near.zecdarkvault.xyz/og.jpg"
+    },
+    {
       "submission_id": "ea1c1594-d16c-4ce2-8087-3d788cbd97f9",
       "name": "AgentGuard",
       "field": "links",
@@ -3003,6 +3725,21 @@
       "og_image": null
     },
     {
+      "submission_id": "efc28b7c-f550-4ac8-919d-9989674e5e6f",
+      "name": "RunOva",
+      "field": "links",
+      "url": "https://runova-orcin.vercel.app",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://runova-orcin.vercel.app",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "RunOva — AI-Powered Autonomous Business Operating System",
+      "og_image": "https://runova-orcin.vercel.app/assets/aistudio/1002255096_7163559e.jpg"
+    },
+    {
       "submission_id": "efc90a1e-09d2-4cbb-b216-2fc0b6ca2fac",
       "name": "SafeSpend",
       "field": "links",
@@ -3067,15 +3804,15 @@
       "name": "TreasureHunt",
       "field": "links",
       "url": "https://medium.com/@sparklerlabs2026/treasure-hunt-onchain-gameplay-and-campaign-ideas-for-web3-projects-d70be9593f7a",
-      "verdict": "unverified",
+      "verdict": "live",
       "truncated": false,
-      "status": "http-error",
-      "http_status": 403,
+      "status": "ok",
+      "http_status": 200,
       "final_url": "https://medium.com/@sparklerlabs2026/treasure-hunt-onchain-gameplay-and-campaign-ideas-for-web3-projects-d70be9593f7a",
       "redirects": 0,
       "content_type": "text/html",
-      "title": null,
-      "og_image": null
+      "title": "Medium",
+      "og_image": "https://miro.medium.com/v2/resize:fit:1200/1*aD-mov9jUrNsvi8-1WnNaw.png"
     },
     {
       "submission_id": "f5be5a9d-66da-450f-a96d-0e5c419dc6e7",
@@ -3172,15 +3909,15 @@
       "name": "777 giros gratis",
       "field": "demo_url",
       "url": "https://afun.mx/?ch=430696",
-      "verdict": "unverified",
+      "verdict": "live",
       "truncated": false,
-      "status": "http-error",
-      "http_status": 403,
+      "status": "ok",
+      "http_status": 200,
       "final_url": "https://afun.mx/?ch=430696",
       "redirects": 0,
       "content_type": "text/html",
-      "title": null,
-      "og_image": null
+      "title": "AFUN Mexico | Casino online y apuestas deportivas",
+      "og_image": "https://afun.mx/img/logo-512.png"
     },
     {
       "submission_id": "fa9b456e-4566-4731-85c5-05a906a51c02",
@@ -3195,6 +3932,21 @@
       "redirects": 0,
       "content_type": "text/html",
       "title": "Hallmark — a not-held order that enforces its own execution bound",
+      "og_image": null
+    },
+    {
+      "submission_id": "fccff195-e468-4424-a5f0-6bf8785f051a",
+      "name": "EarnPatch",
+      "field": "links",
+      "url": "https://earnpatch-production.up.railway.app",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://earnpatch-production.up.railway.app",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "EarnPatch — Build what’s next. Share what it earns.",
       "og_image": null
     },
     {

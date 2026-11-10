@@ -142,6 +142,51 @@ https://claude.ai/artifact/TheVd1qg4LzCRzStJvKPKe (private until shared).
     still `VIGIL` from batch 17. Signed with the FullAccess key under the same `--accept-full-access`
     choice as batches 12–17.
 
+20. The 86 new feed submissions and 3 changes, 11 Nov — the largest batch so far, and **the first one
+    to lose a transaction since the nonce counter was added in batch 18**, in the opposite direction.
+    Dry run approved by the owner at `new: 86, changed: 3, unchanged: 410`; `89 keys, 122467 bytes,
+    2 transaction(s)`. Execute reprinted the same numbers, then:
+    `sent 1/2: 4oYqw1tpvJh3kUNzUQKmHNvQTwkQQ43QFmQEUZsMbh5k (47 keys)`,
+    `sent 2/2: Co8gtGn4xN78fdmQjBTHjuX3PVp4SxruApD5eFCYTYFQ (42 keys)`, `verified: 42/89`.
+    An audit of the chain found the **first** transaction was the one lost: `tx` returns
+    `NOT_OBSERVED` on both `free.rpc.fastnear.com` and `rpc.mainnet.near.org`, nearblocks has no such
+    transaction, and the access key's nonce advanced by exactly one (`…028 → …029`) for two
+    transactions. The second batch landed at block 223,986,432 — 39 creates and all 3 corrections.
+    The remainder was then re-run as a strict subset of the approved write
+    (`47 keys, 62841 bytes, 1 transaction`), which landed as
+    `4pFcW33FRT18gCpUba5hW8AdXCPoDDaVsJKKFndKCo42`, importer output `verified: 47/47 written keys
+    read back`.
+
+    **Open defect, reported not hidden:** in batch 18 the *second* transaction was dropped and the
+    first landed; here the *first* was dropped and the second landed. The counter alone does not
+    prevent this because `sendTransactionAsync` (`wait_until: NONE`) returns on acceptance, not
+    inclusion: if the later-nonce transaction reaches a validator first, the access key's nonce
+    advances past the earlier one and the earlier transaction is then invalid and silently dropped —
+    the RPC still reports both as "sent". The durable fix is to wait for inclusion (not execution)
+    of each batch before signing the next, so no nonce can be overtaken; that is a change to
+    `sendBatch` and has not been made.
+
+    Of the 86 new records: **84 carry the builder's own description, 81 `media`, 43 a verified
+    repository, 34 labelled and checked `links`**. The 3 corrections: `Marks` gained
+    `repository_url` (`github.com/amdonatusprince/Marks-on-Near`) and provenance; `Semilla1 NEAR
+    Thesis` gained its description, that repository and one video poster; `Krypt`'s feed-owned
+    `demo_url` moved from the still-live `https://krypt-app-nine.vercel.app/` (HTTP 200 when
+    checked) to the builder's X launch post, so its page label changes from "Demo" to "Launch post
+    on X" — no URL is kept on the record for the app. Pipeline: `threads:capture` walked 303
+    records (200 reused from cache, 39 fresh captures with author replies, 45 with none, 18 not X
+    posts, 1 gone), `enrich` covered 499 submissions (473 recoverable, 452 with media, 254
+    repositories checked with `git ls-remote` — 251 answered, 3 dropped), `enrich:links` 281 URLs
+    (240 ok, 26 http-error, 2 real 404s kept and marked, 25 unverified and not reported as dead),
+    `enrich:duplicates` one cluster (still `NEAR: On The Evidence` / `Pump Rider`, both long on
+    chain, reported only). Signed with the FullAccess key under the same `--accept-full-access`
+    choice as batches 12–19; no importer function-call key exists on chain yet.
+
+    **After batch 20, read back from the indexer:** **499 project rows**, 0 foreign rows,
+    0 tombstones, 499 distinct ids; `npm run validate:schema` reports **498 valid and 1 invalid**
+    (`VIGIL`, unchanged from batch 17, still the builder's `http://` demo URL); the importer dry run
+    prints `new: 0, changed: 0, unchanged: 499`, so feed and chain are level at 499. `npm test`
+    320/320 before the write.
+
 **Media and repositories, the two recurring gaps, now closed structurally (10 Nov):**
 `capture-threads.mjs` reads the author's replies for the media they carry (it used to throw
 `mediaDetails` away), orders a record's media as submitted post → replies in thread order →
