@@ -187,6 +187,23 @@ https://claude.ai/artifact/TheVd1qg4LzCRzStJvKPKe (private until shared).
     prints `new: 0, changed: 0, unchanged: 499`, so feed and chain are level at 499. `npm test`
     320/320 before the write.
 
+    **Both defects from this batch were addressed the same day, in code rather than by re-running
+    more carefully.** (a) `sendBatch` now calls `sendTransactionUntil(tx, 'INCLUDED')` instead of
+    `sendTransactionAsync` (`wait_until: NONE`): no batch is signed until the previous one is in a
+    block, so a later nonce can no longer overtake an earlier one, and a broadcast that is not
+    confirmed stops the run with the transaction hash instead of proceeding. The by-design
+    `CodeDoesNotExist` receipt is unaffected — `INCLUDED` does not wait for execution. This is
+    untested against a real multi-batch import (the next import is its first exercise); `npm test`
+    is 322/322. (b) `FASTNEAR_API_KEY` is now honoured: `lib/kv.mjs` sends
+    `Authorization: Bearer …` on every KV page read (optional — no header at all when unset) and the
+    importer switches to the keyed host `https://rpc.mainnet.fastnear.com` when the variable is
+    present, `NEAR_RPC_URL` still winning. Measured on the live endpoints: `rpc.mainnet.fastnear.com`
+    answers `200` without a key and `403` with an unrecognized one, so the header is honoured there;
+    `kv.main.fastnear.com` answers `200` either way, so a bad key is not a failure signal on reads.
+    Two unit tests cover the header. **Not wired to a secret yet:** `bws` is installed on the
+    importer machine but has no access token in the shell, so imports still run anonymously against
+    the free tier until `FASTNEAR_API_KEY` is exported for the run.
+
 **Media and repositories, the two recurring gaps, now closed structurally (10 Nov):**
 `capture-threads.mjs` reads the author's replies for the media they carry (it used to throw
 `mediaDetails` away), orders a record's media as submitted post → replies in thread order →
