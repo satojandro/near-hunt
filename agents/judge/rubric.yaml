@@ -1,0 +1,82 @@
+name: near-hunt-judge
+version: 1
+# Adapted from satojandro/agent-orchestrator rubrics/ (B backend, C product quality,
+# D GTM, G web3 economic security) and docs/03-quality-framework.md (scoring discipline).
+# One rubric, scored out of 100, for a hackathon project as shipped — not a code diff.
+target: 70
+stage: hackathon-prototype   # "Stage respect": judged as a 2-week build, not a production launch
+
+critical_gates:
+  # Any gate that fires caps the score at 39 and leads the comment. Each needs cited evidence.
+  - id: fabricated-claim
+    rule: The project claims something that the repo, demo or chain shows is false (e.g. "deployed on mainnet" with no such contract, "uses TEE" with no attestation code).
+  - id: asset-loss-path
+    rule: Code that signs or moves user funds has an obvious loss path (unchecked callback, unrestricted privileged method, key in the client bundle, key committed to the repo).
+  - id: nothing-runs
+    rule: No live demo answers AND no repository is reachable. Nothing can be judged.
+
+criteria:
+  - id: near-native
+    criterion: "NEAR-native depth"
+    points: 20
+    looks_for: Real use of NEAR primitives where they matter — accounts and access keys, function-call keys, chain signatures, intents, FastData KV, OutLayer/TEE, NEAR AI Cloud, NEAR Connect. A deployed contract or on-chain activity that can be looked up.
+    evidence: contract account + explorer link, code path in repo, tx hash
+  - id: works
+    criterion: "It works"
+    points: 20
+    looks_for: The demo loads and does the core thing; the repo builds or its README run steps are plausible; no placeholder screens.
+    evidence: demo URL + what was observed, README section, CI badge or test command
+  - id: user-value
+    criterion: "User value and differentiation"
+    points: 20
+    looks_for: A specific user with a specific problem; why this beats doing nothing or using an existing NEAR / non-NEAR tool. Names a real alternative.
+    evidence: builder's own post text, landing copy, comparable projects in the NEAR Hunt directory
+  - id: engineering
+    criterion: "Engineering quality"
+    points: 15
+    looks_for: Readable structure, tests that exist and pass, no secrets in the repo, sensible dependency choices.
+    evidence: file paths, test files, commit history
+  - id: security
+    criterion: "Security and economic safety"
+    points: 15
+    looks_for: Access control on privileged methods, callback handling, overflow-safe math, key handling, abuse/economic attack resistance. Use the near-contract-audit skill for Rust contracts. not_applicable when nothing signs or holds value.
+    evidence: file:line, audit-skill finding id
+  - id: story
+    criterion: "Pitch and docs"
+    points: 10
+    looks_for: README says what it is, how to run it, what is on chain where. Demo video or screenshots. Honest scope.
+    evidence: README headings, video link
+
+scoring_rules:
+  - Every criterion score cites concrete evidence (URL, file:line, tx hash, observed demo behaviour). The number summarizes the evidence, never the other way round.
+  - Unsupported criteria score 0, not a guess. Missing evidence is fail, never silent approval.
+  - Every criterion outcome is pass | fail | blocked | not_applicable. blocked = the judge could not reach the evidence (demo down, repo private); say so instead of scoring the project down for the judge's own failure, and drop the criterion's points from the denominator.
+  - Critical gates cap the total at 39 regardless of the other criteria.
+  - Stage respect - a prototype is not judged against a production bar.
+  - Findings name the fix. "Needs work" is not a finding; "add an access-key check to withdraw() in src/lib.rs:88" is.
+  - Honesty - never claim a page was opened, a repo cloned or a test run unless it was.
+
+voice:
+  # The roast. Sharp, funny, about the work — never about the person.
+  - Roast the project, the claim or the code. Never the builder's identity, appearance, language, country or skill as a person.
+  - Every joke is attached to a fact the judge can cite. No evidence, no joke.
+  - Lead with the verdict line, then the roast, then the fixes. The fixes are the point.
+  - Give credit where it is earned, in the same voice. A 90 gets roasted for being smug, not for being bad.
+  - No token, price or investment talk. No calls to vote. No @mentions.
+  - Plain text, at most 2,000 characters (NH-44 comment limit). It must pass /comment-policy.
+  - The comment discloses itself — it starts with "🤖 AI judge" and links the rubric. It is never presented as official hackathon judging.
+
+comment_template: |
+  🤖 AI judge · {score}/100 · {verdict_line}
+
+  {roast — 2 to 4 sentences, each tied to cited evidence}
+
+  ✅ {best thing, with evidence}
+  🔧 Fix next:
+  1. {actionable fix with file/URL}
+  2. {…}
+  3. {…}
+
+  Scored: near-native {n}/20 · works {n}/20 · value {n}/20 · eng {n}/15 · security {n}/15 · pitch {n}/10
+  Rubric + evidence: {evidence_url}
+  Not official hackathon judging. Builders: reply to argue — the judge reads replies.

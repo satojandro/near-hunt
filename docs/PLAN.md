@@ -720,6 +720,23 @@ taken); build starts after launch.
 | NH-100 | P2 | Publish `nearhunt/project/1` (and later `nearhunt/submission/1`) as an open, documented format: the schema file, `SKILL.md` and `/open-data` already describe it. Offering it to the near.social maintainers is optional and no longer on the critical path; [`proposals/social-kv-project.md`](proposals/social-kv-project.md) is kept as background | Schema docs list every additive field in use (today `links` and `enrichment` are accepted but undocumented) | Owner approves any outside post |
 | NH-114 | P2 | **Themes**: Light (today), Dark, Golden Hour and Darkroom from one token set, plus the header/footer picker (`System` default, stored per visitor in `localStorage`, never on chain, never in analytics). Spec and mockups: `docs/mockups/themes/README.md`; tokens in `app/globals.css`. Front end only: no chain reads or writes change | Every page renders in all four themes on desktop and at 390 px; `node docs/mockups/themes/contrast.mjs` exits 0; `npm test` and `npm run typecheck` pass; Light keeps today's values apart from the neutral letter tiles the tint table specifies | None. Built 9 Nov; the only open question is whether Light keeps the old five-colour avatar palette (change the Light `--tint-*` values) |
 
+### Agents — Scout and Judge (owner request, 10 Nov) · **proposed, awaiting owner decisions**
+
+Design: [`proposals/agents.md`](proposals/agents.md). Agent definitions: `.claude/agents/scout.md`,
+`.claude/agents/judge.md`; rubric `agents/judge/rubric.yaml`. Gaps counted 10 Nov on 413 records:
+205 without a repository, 208 without `links`, 43 without media, 25 without a description (command
+in the proposal). NH-122…124 conflict with "Explicitly out of scope" below (AI scoring, agent
+writes) and with AGENTS.md §1/§3; they start only after the owner changes those rules.
+
+| ID | P | Item | Done when | Depends on / approval |
+|---|---|---|---|---|
+| NH-120 | P1 | **Scout agent** investigates gap records (demo site, GitHub profile/search, threads, near.social, explorer) and writes `data/enrichment/scout/{submission_id}.json` with an evidence chain per proposal; no prose | A batch of 20 gap records has finding files; every proposal has ≥ 1 evidence item with url + quote | Read-only, no approval |
+| NH-121 | P1 | `scripts/scout-verify.mjs`: refetch each evidence URL and find the quote, `git ls-remote`, link check; merge survivors into the proposal with `enrichment.method: "scout"`; unit tests | Verified-repository count re-measured with the command; import dry run shows only scout fields changing | Mainnet write is the usual import approval |
+| NH-122 | P1 | **Judge agent** drafts: `data/judge/drafts/{id}.json` per project against the rubric, NEAR Agent Skills loaded | 10 drafts committed; each criterion cites evidence; every comment ≤ 2,000 chars and passes `/comment-policy` on owner read | Owner decision 1 (proposal) |
+| NH-123 | P1 | Judge key in an **OutLayer custody wallet**, policy: receivers `nearhunt.near` + `social`, deposit 0, daily cap; near.social profile discloses automation | Testnet: `/wallet/v1/call` `__fastdata_kv` on `nearhunt.testnet` writes a `comment/` row that `readProjectCommentRows` reads back | Wallet creation and mainnet funding are separate approvals |
+| NH-124 | P1 | `scripts/judge-post.mjs` (dry run prints account, prefix, texts, key/tx counts; `--execute --yes` posts via OutLayer and confirms by KV read); `data/agents.json` + "🤖 AI judge" badge on its comments; SKILL.md and comment-policy lines | First mainnet batch posted after the owner approves its dry run; badge renders | Each batch is an owner approval (AGENTS.md §1) |
+| NH-125 | P2 | Run `scout-verify` as a WASI P2 component on OutLayer; store the TDX attestation per finding | `GET /attestations/by-call/{call_id}` verifies for one batch | OutLayer payment key funding is an owner approval |
+
 ## Explicitly out of scope until after the 14th
 
 AI scoring, Valkey and agent writes. Mainnet key prefixes are limited to `project/`, `vote/`,
