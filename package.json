@@ -13,7 +13,7 @@
     "import": "node scripts/import.mjs",
     "feed:check": "node scripts/feed-watch.mjs",
     "enrich": "node scripts/enrich.mjs --threads data/enrichment/threads.json",
-    "threads:capture": "node scripts/capture-threads.mjs --missing-repo-only",
+    "threads:capture": "node scripts/capture-threads.mjs --gaps-only --include-pending",
     "enrich:links": "node scripts/enrich.mjs --links",
     "enrich:duplicates": "node scripts/enrich.mjs --duplicates",
     "validate:schema": "node scripts/validate-schema.mjs",

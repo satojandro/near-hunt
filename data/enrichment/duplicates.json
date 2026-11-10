@@ -1,19 +1,19 @@
 {
-  "generated_at": "2026-11-09T17:02:42.654Z",
+  "generated_at": "2026-11-10T00:26:01.203Z",
   "account": "nearhunt.near",
   "note": "Flags only. Nothing is merged, hidden or written. `clusters`/`groups` share an identifying URL (possible duplicates). `weak_signals` share only a name or an X account and are usually different projects.",
   "summary": {
-    "submissions": 387,
-    "on_chain": 347,
-    "pending": 40,
+    "submissions": 412,
+    "on_chain": 387,
+    "pending": 25,
     "shared_urls": 1,
     "by_kind": {
       "url": 1
     },
     "clusters": 1,
     "submissions_flagged": 2,
-    "same_name_groups": 13,
-    "same_x_account_groups": 31
+    "same_name_groups": 14,
+    "same_x_account_groups": 35
   },
   "clusters": [
     {
@@ -112,6 +112,11 @@
             "on_chain": true
           },
           {
+            "submission_id": "a373a235-8a24-4f52-84bb-2668b7263d9a",
+            "name": "LEASH",
+            "on_chain": true
+          },
+          {
             "submission_id": "b5e7fe4a-fd7c-4a94-bcb4-2e6e1b8d2ab9",
             "name": "Leash",
             "on_chain": true
@@ -132,8 +137,8 @@
             "on_chain": true
           },
           {
-            "submission_id": "a373a235-8a24-4f52-84bb-2668b7263d9a",
-            "name": "LEASH",
+            "submission_id": "7cb11fbb-008c-4d44-a933-eb3d9e5ca222",
+            "name": "Leash",
             "on_chain": false
           }
         ]
@@ -217,14 +222,14 @@
         "key": "agent allowance guard",
         "submissions": [
           {
-            "submission_id": "e4af217b-7468-46c3-a756-fde5900c550b",
+            "submission_id": "73aac154-b3fc-48e4-8089-79f73af7e7dd",
             "name": "Agent Allowance Guard",
             "on_chain": true
           },
           {
-            "submission_id": "73aac154-b3fc-48e4-8089-79f73af7e7dd",
+            "submission_id": "e4af217b-7468-46c3-a756-fde5900c550b",
             "name": "Agent Allowance Guard",
-            "on_chain": false
+            "on_chain": true
           }
         ]
       },
@@ -304,6 +309,21 @@
         ]
       },
       {
+        "key": "showup",
+        "submissions": [
+          {
+            "submission_id": "287c0199-5dcd-42a9-86d8-0fa06123a8f3",
+            "name": "ShowUp",
+            "on_chain": true
+          },
+          {
+            "submission_id": "0c633311-0739-4fb0-beb5-aac1f8039735",
+            "name": "ShowUp",
+            "on_chain": false
+          }
+        ]
+      },
+      {
         "key": "torch",
         "submissions": [
           {
@@ -336,6 +356,21 @@
         ]
       },
       {
+        "key": "0xdanya_xo",
+        "submissions": [
+          {
+            "submission_id": "0a76ac32-6b4d-48f1-b46f-2be13d13dc80",
+            "name": "NearJar",
+            "on_chain": true
+          },
+          {
+            "submission_id": "97238a57-3689-4115-b9e7-28e91245aa99",
+            "name": "NearAnyStake",
+            "on_chain": false
+          }
+        ]
+      },
+      {
         "key": "ade_lekejr",
         "submissions": [
           {
@@ -356,12 +391,12 @@
           {
             "submission_id": "00fdaceb-0af0-483c-a759-a661d9a79704",
             "name": "Petri",
-            "on_chain": false
+            "on_chain": true
           },
           {
             "submission_id": "287c0199-5dcd-42a9-86d8-0fa06123a8f3",
             "name": "ShowUp",
-            "on_chain": false
+            "on_chain": true
           }
         ]
       },
@@ -459,13 +494,28 @@
         "key": "cryppithq",
         "submissions": [
           {
-            "submission_id": "f9b3e1db-59fb-4161-917a-39c28d6861c9",
-            "name": "Intent Sentinel",
+            "submission_id": "5c3430c6-b69e-4bee-ada7-37f5f456e258",
+            "name": "Where's My ZEC",
             "on_chain": true
           },
           {
-            "submission_id": "5c3430c6-b69e-4bee-ada7-37f5f456e258",
-            "name": "Where's My ZEC",
+            "submission_id": "f9b3e1db-59fb-4161-917a-39c28d6861c9",
+            "name": "Intent Sentinel",
+            "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "cryptoworld_01",
+        "submissions": [
+          {
+            "submission_id": "665d4643-1468-4327-a7a5-31e1519f713f",
+            "name": "VAULTRY",
+            "on_chain": true
+          },
+          {
+            "submission_id": "7926d8c7-d08a-4c7c-a9fd-1d00ae3a476b",
+            "name": "PATCHPAY",
             "on_chain": false
           }
         ]
@@ -531,17 +581,32 @@
         ]
       },
       {
+        "key": "jahanzebm9",
+        "submissions": [
+          {
+            "submission_id": "2ff34858-5a81-4248-ade5-9894def5567e",
+            "name": "Lantern Caravan",
+            "on_chain": true
+          },
+          {
+            "submission_id": "82878626-d007-4202-bbd8-bdc6305c7156",
+            "name": "Kinwarden",
+            "on_chain": true
+          }
+        ]
+      },
+      {
         "key": "jasonparsersec",
         "submissions": [
+          {
+            "submission_id": "46bc18be-e6f1-4a44-af0a-d6326d35b55b",
+            "name": "Quant Agent",
+            "on_chain": true
+          },
           {
             "submission_id": "cb88c8e8-5724-40f8-a0b9-842a562c324b",
             "name": "$HACK",
             "on_chain": true
-          },
-          {
-            "submission_id": "46bc18be-e6f1-4a44-af0a-d6326d35b55b",
-            "name": "Quant Agent",
-            "on_chain": false
           }
         ]
       },
@@ -616,7 +681,7 @@
           {
             "submission_id": "bded2b2b-2963-45c4-8440-a3d9d905eb06",
             "name": "LIFO",
-            "on_chain": false
+            "on_chain": true
           }
         ]
       },
@@ -677,6 +742,21 @@
             "submission_id": "7a2c3ff0-7771-4ae5-9994-fff4c7ac8f2a",
             "name": "Claw Guard: Signing Gate for AI Agents",
             "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "samaisback",
+        "submissions": [
+          {
+            "submission_id": "bb739197-c903-456a-b25c-4e97ffe5495f",
+            "name": "Tripwire",
+            "on_chain": true
+          },
+          {
+            "submission_id": "1592bc0a-7e92-41ff-a0b3-c7f765ca291c",
+            "name": "Taskbond",
+            "on_chain": false
           }
         ]
       },

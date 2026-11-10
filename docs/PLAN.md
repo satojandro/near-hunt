@@ -112,6 +112,47 @@ https://claude.ai/artifact/TheVd1qg4LzCRzStJvKPKe (private until shared).
     teaching the importer to reject/normalise a non-https `demo_url` before it plans a write; both
     are owner decisions and neither has been done.
 
+18. The 25 new feed submissions and 35 changes, 10 Nov — the round that fixed the two recurring
+    gaps (missed repositories, missed media). Dry run approved by the owner: `new: 25, changed: 35,
+    unchanged: 352`; `60 keys, 92327 bytes, 2 transaction(s)`. **Only the first transaction landed**:
+    `GVcAbpVHWzRs8oHBKn6NNGMCjae55q5XcLCTy5Z2FsFK` (44 keys = the 25 creates + 19 corrections).
+    The importer printed `sent 2/2: 2A5CVDX6xyKKrjugwMYa3Bqz9vmdtGyGkDWjYWzCvpAG (16 keys)` and then
+    `verified: 44/60`, and an audit proved why: the access key's nonce went `…025 → …026`, one
+    increment for two transactions. `sendBatch` re-read the key at `optimistic` finality, which still
+    reported the pre-batch nonce milliseconds after the first broadcast, so the second transaction was
+    signed with a nonce already used; the RPC accepted it (`send_tx` with `wait_until: NONE`) and the
+    chain dropped it. **Fix:** the importer keeps its own counter (greater of the node's nonce and the
+    one it used last, plus one). The same round also replaced `rpc.mainnet.near.org`, which now
+    answers every call with a deprecation `-429`, with `https://free.rpc.fastnear.com`
+    (`NEAR_RPC_URL` overrides). Of the 25 new records: **25 descriptions, 22 media sets, 11 verified
+    repositories**. Pipeline: `capture-threads --gaps-only --include-pending` walked 250 records
+    (94 with author replies, 133 with none, 6 posts gone, 17 not X posts), `enrich` covered 412
+    submissions (388 recoverable, 370 with media, 208 verified repositories after `git ls-remote` on
+    209), `enrich:links` 238 URLs (194 live, 22 unverified, 1 gone).
+
+19. The 17-key completion, 10 Nov — the 16 corrections the dropped transaction carried plus the one
+    submission that arrived in the feed meanwhile (`Semilla1 NEAR Thesis`, `4909e0ef…`). Dry run,
+    approved by the owner at these exact numbers after the chain moved: `new: 1, changed: 16`;
+    `17 keys, 29759 bytes, 1 transaction` —
+    `5Pzeto9QruoyDXYnqhjR6656NLG8UUby2QmG3abtAFFZ`. Importer output `verified: 17/17 written keys
+    read back`, transaction `FINAL`. Fields: `repository_url` 9, `links` 11, `media` 4 (7 items; the
+    builders' screenshots in their own replies), `description` 2 (both were `null` on chain, so no
+    builder- or owner-set value was replaced). Afterwards: **413 records on chain, 412 valid**,
+    `0 new, 0 changed, 413 unchanged`, 0 foreign rows, 0 tombstones. The single invalid record is
+    still `VIGIL` from batch 17. Signed with the FullAccess key under the same `--accept-full-access`
+    choice as batches 12–17.
+
+**Media and repositories, the two recurring gaps, now closed structurally (10 Nov):**
+`capture-threads.mjs` reads the author's replies for the media they carry (it used to throw
+`mediaDetails` away), orders a record's media as submitted post → replies in thread order →
+ancestors, and covers feed submissions that are not on chain yet (`--include-pending`), which is
+where a new project's repository usually lives. `--gaps-only` selects records missing a repository
+**or** a media set, and a capture (including "no author reply") is reused for 7 days so a scheduled
+run does not re-crawl the same pages. Not recoverable, stated rather than hidden: 7 records name a
+repository that X truncated mid-name (`Code: github.com/neromtoobad/cr…`), 1 is genuinely ambiguous
+(`Antibody`: `Himess/antibody` and `Himess/antibody-immune-demo`), and 180 recoverable records still
+have no repository the builder published anywhere X renders to us.
+
 
 **After batches 12–14, read back from the indexer:** **336 records, all 336 valid** against the
 schema, 0 foreign rows, 0 tombstones; 312 carry the builder's own description, **156 a verified

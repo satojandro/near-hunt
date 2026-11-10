@@ -90,8 +90,13 @@ const REFRESH_ENRICHED = args.includes('--refresh-enriched');
 // Land only corrections/updates; never create records that were not part of the approved diff.
 const UPDATES_ONLY = args.includes('--updates-only');
 const CREDENTIALS_ROOT = join(homedir(), '.near-credentials');
+// `rpc.mainnet.near.org` answered every call with a deprecation -429 on 10 Nov 2026 (NEAR's own
+// message points at fastnear). The free FastNEAR endpoint serves `query`, `block`, `send_tx` and
+// `broadcast_tx_commit`, which is every method this importer uses. NEAR_RPC_URL overrides it —
+// point it at a paid node if the free tier rate-limits a batch.
 const NODE_URL =
-  NETWORK === 'mainnet' ? 'https://rpc.mainnet.near.org' : 'https://rpc.testnet.near.org';
+  process.env.NEAR_RPC_URL ||
+  (NETWORK === 'mainnet' ? 'https://free.rpc.fastnear.com' : 'https://rpc.testnet.near.org');
 
 // ---------------------------------------------------------------------------
 // Source ingestion
@@ -271,16 +276,27 @@ async function reportKeyCandidates(provider, { candidates, chosen, accountId }) 
  * sendTransactionAsync is deliberate: the receipt fails by design, so any call that
  * waits for an outcome either throws or reports failure for a write that succeeded.
  * Correctness is established afterwards, against the indexer.
+ *
+ * Nonce: a batch must never reuse the nonce of a batch sent moments earlier. The node's
+ * `view_access_key` at optimistic finality still shows the old nonce right after a
+ * transaction is broadcast (10 Nov 2026: two batches milled within a second, the second was
+ * signed with the first one's nonce, the RPC accepted it as "sent", and the chain dropped it —
+ * the key's nonce advanced by one for two transactions). So the importer takes the greater of
+ * the node's nonce and the one it used last, and adds one.
  */
+let lastUsedNonce = 0n;
+
 async function sendBatch(provider, signer, accountId, publicKey, receiverId, kvPairs) {
-  // Nonce and block hash must come from a fresh access key, and the nonce must be
-  // read per batch because each accepted transaction advances it.
   const accessKey = await provider.query({
     request_type: 'view_access_key',
     finality: 'optimistic',
     account_id: accountId,
     public_key: publicKey.toString(),
   });
+
+  // Strictly increasing, even if the node has not yet reflected the previous batch.
+  const seen = BigInt(accessKey.nonce);
+  lastUsedNonce = (seen > lastUsedNonce ? seen : lastUsedNonce) + 1n;
 
   const action = actions.functionCall(
     '__fastdata_kv',
@@ -295,7 +311,7 @@ async function sendBatch(provider, signer, accountId, publicKey, receiverId, kvP
     accountId,
     publicKey,
     receiverId,
-    BigInt(accessKey.nonce) + 1n,
+    lastUsedNonce,
     [action],
     baseDecode(accessKey.block_hash),
   );

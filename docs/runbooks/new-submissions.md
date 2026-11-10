@@ -22,8 +22,10 @@ posters from their X post. Existing records get only what they are missing.
 ## When to run it
 
 When `npm run feed:check` prints a line (it is silent when nothing is new). Hermes runs it on a
-schedule through `scripts/feed-watch.sh`. Batching is fine: one cycle per day, or whenever the line
-appears.
+schedule through `scripts/feed-watch.sh` (every 30 min, one line only). The full read-only cycle
+(steps 2–5) also runs every 6 hours through `scripts/enrich-cycle.mjs`, which stays silent until a
+batch is ready to approve and then prints the dry-run numbers. Batching is fine: one cycle per day,
+or whenever the line appears.
 
 ## The cycle
 
@@ -38,16 +40,19 @@ npm run feed:check        # one line, e.g. "NEAR Hunt feed: 12 new project recor
 ### 2. Capture the builders' reply threads (read-only)
 
 ```bash
-npm run threads:capture   # = node scripts/capture-threads.mjs --missing-repo-only
+npm run threads:capture   # = node scripts/capture-threads.mjs --gaps-only --include-pending
 ```
 
 The syndication endpoint walks a thread **up** (parents), never down, and builders put the
-repository in their first reply ("Code: github.com/…") far more often than in the submitted post.
-This step reads the server-rendered status page for each record that has no repository, keeps the
-author's own replies (never a stranger's), and stores them with post ids and expanded URLs in
-`data/enrichment/threads.json`. Raw pages are cached under `data/enrichment/x-threads/` (git-ignored)
-and fetched with an honest user agent at ~3 requests/second. It is resumable: entries already
-captured are skipped unless `--refresh`.
+repository in their first reply ("Code: github.com/…") far more often than in the submitted post —
+and their screenshots and demo videos in the replies after it. This step reads the server-rendered
+status page for every record missing a repository **or** a media set (plus every feed submission
+not on chain yet, since the import will create it), keeps the author's own replies (never a
+stranger's) with their media, and stores them with post ids and expanded URLs in
+`data/enrichment/threads.json`. Raw pages are cached under `data/enrichment/x-threads/`
+(git-ignored) and fetched with an honest user agent at ~3 requests/second. A capture is reused for
+`--max-age-days 7` (and a capture that found no author reply is stored too, so a scheduled run does
+not re-crawl it); `--refresh` re-crawls now.
 
 ### 3. Build the proposal (read-only)
 
@@ -169,7 +174,8 @@ Field definitions: [`schema/README.md`](../../schema/README.md). Agent-facing su
 | Command | Reads | Writes | Signs |
 |---|---|---|---|
 | `npm run feed:check` | feed, chain | stdout | no |
-| `npm run threads:capture` | chain, X status pages, X syndication | `data/enrichment/threads.json` | no |
+| `node scripts/enrich-cycle.mjs` | feed, chain, X, git hosts, link sites | `data/enrichment/*.json` | no |
+| `npm run threads:capture` | chain, feed, X status pages, X syndication | `data/enrichment/threads.json` | no |
 | `npm run enrich` | chain, feed, X, git hosts, link sites | `data/enrichment/proposal.json` | no |
 | `npm run enrich:links` | chain, link sites | `data/enrichment/links.json` | no |
 | `npm run enrich:duplicates` | chain, proposal, feed | `data/enrichment/duplicates.json` | no |

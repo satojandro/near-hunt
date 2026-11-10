@@ -74,6 +74,29 @@ test('mediaFromChain puts the submitted (last) post first and de-duplicates', ()
   assert.equal(items[2].post_url, 'https://x.com/builder/status/1');
 });
 
+test('mediaFromChain keeps the submitted post first, then the author\'s reply media in thread order', () => {
+  const root = post('1', [photo(1)]);
+  const focal = post('2', [photo(2)]);
+  const reply1 = { ...post('3', [photo(3)]), reply: true };
+  const reply2 = { ...post('4', [video, photo(3)]), reply: true };
+  const items = mediaFromChain([root, focal, reply1, reply2]);
+  assert.deepEqual(items.map((m) => m.url), [
+    'https://pbs.twimg.com/media/P2.jpg',
+    'https://pbs.twimg.com/media/P3.jpg',
+    video.media_url_https,
+    'https://pbs.twimg.com/media/P1.jpg',
+  ]);
+  // A reply's media is cited by the reply's own post, so the card can link to it.
+  assert.equal(items[1].post_url, 'https://x.com/builder/status/3');
+});
+
+test('mediaFromChain still puts the last post first when nothing is marked as a reply', () => {
+  assert.deepEqual(mediaFromChain([post('1', [photo(1)]), post('2', [photo(2)])]).map((m) => m.url), [
+    'https://pbs.twimg.com/media/P2.jpg',
+    'https://pbs.twimg.com/media/P1.jpg',
+  ]);
+});
+
 test('formatDuration', () => {
   assert.equal(formatDuration(35033), '0:35');
   assert.equal(formatDuration(125000), '2:05');

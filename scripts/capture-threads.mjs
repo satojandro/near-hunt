@@ -19,6 +19,8 @@
  *   node scripts/capture-threads.mjs                         # every project with an X post
  *   node scripts/capture-threads.mjs --only <submission_id>
  *   node scripts/capture-threads.mjs --missing-repo-only      # records with no repository_url
+ *   node scripts/capture-threads.mjs --include-pending        # + feed submissions not yet on chain
+ *   node scripts/capture-threads.mjs --max-age-days 7         # reuse a capture younger than this
  *   node scripts/capture-threads.mjs --out data/enrichment/threads.json --refresh
  */
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
@@ -37,7 +39,15 @@ const OUT = value('--out', 'data/enrichment/threads.json');
 const ONLY = value('--only', null);
 const REFRESH = flag('--refresh');
 const MISSING_REPO_ONLY = args.includes('--missing-repo-only');
+// A record that has a repository but no media may still have the builder's screenshots in a
+// follow-up reply, so the scheduled run looks at both gaps.
+const GAPS_ONLY = args.includes('--gaps-only');
+const INCLUDE_PENDING = args.includes('--include-pending');
 const LIMIT = Number(value('--limit', '0')) || 0;
+const FEED_API = 'https://nearhackathon.com/api/projects';
+// A capture is reused for this long, including a capture that found no author reply: a scheduled
+// run must not re-crawl 400 threads every cycle to learn the same "no replies".
+const MAX_AGE_MS = (Number(value('--max-age-days', '7')) || 7) * 86_400_000;
 
 /** Identify ourselves: this is a crawler, and the page is public. */
 const USER_AGENT = 'Mozilla/5.0 (compatible; nearhunt-enrich/1.0; +https://nearhunt.xyz)';
@@ -49,6 +59,30 @@ const DELAY_MS = 350;
 
 const CACHE_DIR = 'data/enrichment/x-threads';
 const delay = (ms) => new Promise((r) => setTimeout(r, ms));
+
+/**
+ * Every submission in the hackathon feed, `{ id, project_name, demo_url }`. Same loop as
+ * scripts/enrich.mjs: 8 per page, deduped on the source id because the feed grows mid-read.
+ */
+async function readFeed() {
+  const seen = new Map();
+  let total = Infinity;
+  let read = 0;
+  for (let page = 1; read < total; page++) {
+    const res = await fetch(`${FEED_API}?page=${page}`, {
+      headers: { 'user-agent': USER_AGENT, accept: 'application/json' },
+      signal: AbortSignal.timeout(20000),
+    });
+    if (!res.ok) throw new Error(`feed returned ${res.status} on page ${page}`);
+    const body = await res.json();
+    total = body.total;
+    if (!body.projects?.length) break;
+    for (const f of body.projects) seen.set(f.id, f);
+    read += body.projects.length;
+    await delay(400);
+  }
+  return [...seen.values()];
+}
 
 async function fetchText(url) {
   const res = await fetch(url, {
@@ -97,13 +131,30 @@ export function replyIdsFromPage(html, focalId) {
   return ids.slice(0, MAX_REPLIES);
 }
 
-/** One author post, shaped for `scripts/enrich.mjs`'s `mergeThread`. */
+/**
+ * One author post, shaped for `scripts/enrich.mjs`'s `mergeThread`.
+ *
+ * `media` carries what `lib/media.mjs:mediaFromPost` reads, trimmed to those fields: builders put
+ * screenshots and demo videos in the replies, and the syndication payload already has them.
+ */
 export function postFromPayload(payload) {
   const id = payload?.id_str;
   const author = payload?.user?.screen_name;
-  if (!id || !author || !payload.text) return null;
+  if (!id || !author) return null;
   const links = [...new Set((payload.entities?.urls ?? []).map((u) => u?.expanded_url).filter(Boolean))];
-  return { id, author, text: payload.text, links };
+  const media = (Array.isArray(payload.mediaDetails) ? payload.mediaDetails : []).map((m) => ({
+    type: m?.type,
+    media_url_https: m?.media_url_https,
+    original_info: m?.original_info,
+    ext_alt_text: m?.ext_alt_text,
+    video_info: m?.video_info,
+    ext_media_availability: m?.ext_media_availability,
+  }));
+  // An image-only post has no text; it is still the builder's own post and its media is worth keeping.
+  if (!payload.text && media.length === 0 && links.length === 0) return null;
+  const post = { id, author, text: payload.text ?? '', links };
+  if (media.length) post.media = media;
+  return post;
 }
 
 /**
@@ -147,7 +198,21 @@ async function main() {
     .filter((r) => r.value && typeof r.value === 'object')
     .map((r) => ({ ...r.value, submission_id: r.key.slice('project/'.length) }))
     .filter((p) => (ONLY ? p.submission_id === ONLY : true))
-    .filter((p) => (MISSING_REPO_ONLY ? !p.repository_url : true));
+    .filter((p) => {
+      if (GAPS_ONLY) return !p.repository_url || !(p.media ?? []).length;
+      return MISSING_REPO_ONLY ? !p.repository_url : true;
+    });
+
+  // A submission that is in the feed but not on chain yet is the one most in need of its replies:
+  // the import will create it, and a repository in the builder's first reply is the usual place.
+  if (INCLUDE_PENDING) {
+    const onChain = new Set(rows.filter((r) => r.value).map((r) => r.key.slice('project/'.length)));
+    const pending = (await readFeed())
+      .filter((f) => !onChain.has(f.id) && (ONLY ? f.id === ONLY : true))
+      .map((f) => ({ submission_id: f.id, name: f.project_name, demo_url: f.demo_url ?? null }));
+    console.log(`feed: ${pending.length} submission(s) not on chain yet, included`);
+    projects.push(...pending);
+  }
   if (LIMIT) projects = projects.slice(0, LIMIT);
 
   let threads = {};
@@ -166,23 +231,25 @@ async function main() {
       counts['not-an-x-post'] = (counts['not-an-x-post'] ?? 0) + 1;
       continue;
     }
-    if (!REFRESH && threads[p.submission_id]?.posts?.length) {
-      counts['already captured'] = (counts['already captured'] ?? 0) + 1;
+    const prev = threads[p.submission_id];
+    const age = prev?.crawled_at ? Date.now() - Date.parse(prev.crawled_at) : Infinity;
+    if (!REFRESH && age < MAX_AGE_MS) {
+      counts['captured recently'] = (counts['captured recently'] ?? 0) + 1;
       continue;
     }
     const result = await captureThread(postId, { refresh: REFRESH, log: (m) => console.log(m) });
     counts[result.status] = (counts[result.status] ?? 0) + 1;
-    if (result.posts.length) {
-      threads[p.submission_id] = {
-        author: result.author,
-        crawled_at: new Date().toISOString(),
-        posts: result.posts,
-        links: [],
-      };
-      // Persist per item: a long crawl must be resumable.
-      await mkdir(dirname(OUT), { recursive: true });
-      await writeFile(OUT, `${JSON.stringify(threads, null, 2)}\n`);
-    }
+    // A capture that found no author reply is recorded too, so the next scheduled run can skip it
+    // instead of crawling the same page again.
+    threads[p.submission_id] = {
+      author: result.author,
+      status: result.status,
+      crawled_at: new Date().toISOString(),
+      posts: result.posts,
+      links: [],
+    };
+    await mkdir(dirname(OUT), { recursive: true });
+    await writeFile(OUT, `${JSON.stringify(threads, null, 2)}\n`);
     if (++done % 10 === 0) console.log(`  ...${done}/${projects.length} ${JSON.stringify(counts)}`);
     await delay(DELAY_MS);
   }

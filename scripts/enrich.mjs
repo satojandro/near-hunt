@@ -153,6 +153,10 @@ function mergeThread(chain, captured) {
       text: p.text ?? '',
       user: { screen_name: p.author || author },
       entities: { urls: (p.links ?? []).map((url) => ({ expanded_url: url })) },
+      // A follow-up's own images/video poster are the builder's media too (lib/media.mjs reads
+      // `mediaDetails`). Marked `reply` so the submitted post keeps first place in the Media card.
+      ...(Array.isArray(p.media) ? { mediaDetails: p.media } : {}),
+      reply: true,
     });
   });
   if (links.length) {
