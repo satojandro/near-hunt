@@ -291,6 +291,55 @@ node scripts/import.mjs --check-key   # every candidate key with its on-chain pe
 near account list-keys nearhunt.near network-config mainnet now   # 1 key, full access
 ```
 
+21. The 120 new feed submissions and 40 changes, 12 Nov — the first batch whose approval covered the
+    **kind** of write instead of byte-exact numbers, because the feed outran the approval round-trip.
+    The cycle started at `feed:check`: 93 new, 8 changed (chain 499, feed 592). That same morning the
+    unmerged crawler branch `claude/brave-euler-8pzsph` was merged (`bf46f68`): the thread cache had
+    been reused forever, so a builder's later replies were never re-read; the branch also adds
+    NH-96d repository discovery from the builder's own demo page. `threads:capture --refresh` then
+    walked 356 threads (272 projects with captured posts, 189 `ok`), `enrich` covered 596 proposals
+    (565 recoverable, 325 repositories — **23 of them corroborated from 31 demo pages**, links 279,
+    media 543), `enrich:links` 310 URLs (278 live, 27 unverified, 5 gone), `enrich:duplicates` still
+    the one known cluster (`NEAR: On The Evidence` / `Pump Rider`).
+
+    **Defect found and fixed mid-cycle:** one deleted post threw out of `captureThread` and killed
+    the whole crawl — two runs died, at 60/354 and 310/356, with `FAILED: status 404`. A 404 on the
+    submitted post is now recorded as `post-unavailable` (`c7ec2cd`, two tests; the script runs
+    `main()` only when executed directly so the capture function is testable).
+
+    **The approval drift, recorded because it is the point of this batch:** the dry run was approved
+    at `new: 100, changed: 32` / `132 keys, 184833 bytes, 3 tx`; ten minutes later it recomputed to
+    141 keys, then 155, and the executed run printed `new: 120, changed: 40, unchanged: 459` /
+    `160 keys, 209263 bytes, 4 transaction(s)` at feed 619. The owner's instruction was to finish the
+    batch rather than chase the number ("STOP FUCKING INTERRUPTING RUNS IF NEW PROJECTS COME IN"),
+    so `AGENTS.md` §1 and `runbooks/new-submissions.md` §5–§6 were changed in this same commit: a yes
+    covers the kind of write (account, prefix, new submissions + corrections), signing stops only if
+    the kind changes (other account or prefix, tombstones, key changes, an enrichment overwrite), and
+    the numbers the write actually did are reported afterwards. A later batch takes whatever arrived.
+
+    Transactions, all four included (43 + 47 + 56 + 14 = 160 keys):
+    `14NLiciQmv2ueRuAkX3NSTsprzy95wk3HtNDUXWroXKh`, `HSMH3ZWMnbTpqrzEc9Q5uNnWnRtXzcQbGQ4zjcUs4WqY`,
+    `C5anFhiy6Ejxwt6zu6CfVeRmDGXgBfNbBzhcmSZPPdMk`, `FptpoD7cRecdxpgCZQrhwxAak5oT1MWXtqJjBwQwVqaW`.
+    Importer output `verified: 160/160 written keys read back` (157/160 on attempt 1, 160/160 on
+    attempt 2). **This is the first run that exercises the `INCLUDED` nonce fix from batch 20
+    against a real multi-batch import, and the lost-transaction defect did not recur: 4/4 landed.**
+    Of the 120 new records, 100 were built into the proposal (description from the builder, media,
+    51 with labelled links, 44 with a verified repository); the last 20 arrived after the enrichment
+    build and carry feed fields only — the next cycle enriches them. The 40 changes are 21
+    `repository_url` + provenance gains (the demo-page promotions), 8 feed-side `tracks`/`demo_url`
+    edits, 1 rename, 1 `description`/`links`/`media` gain, rest unchanged-origin. Signed with the
+    FullAccess key under the explicit owner choice for this batch ("use full access key now, we can
+    create function key later"); still no importer function-call key on chain.
+
+    **After batch 21, read back from the indexer (12 Nov):** **619 project rows, 0 foreign rows,
+    0 tombstones, 619 distinct ids**; the feed is level with the chain (`new: 0, changed: 0,
+    unchanged: 619`). `npm run validate:schema` reports **617 valid and 2 invalid**, both copies of
+    one feed defect: `VIGIL` (`http://paypilot-approval-wallet.lovable.app/`, from batch 17) and
+    `IntentFolio` (`fc122909-…`, `http://x.com/intentfolio/status/…`, new here) — the feed gives a
+    non-`https` `demo_url` and the importer copies feed-owned fields verbatim. Reported, not fixed:
+    normalising the scheme is a one-off write with its own approval, and rejecting it in the planner
+    is an owner decision. `npm test` 354/354.
+
 ## Decisions taken
 
 | Decision | Choice | Why |

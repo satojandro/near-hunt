@@ -6,8 +6,16 @@ value, but the old value stays in public history forever.
 
 ## 1. Mainnet writes need a human
 
-- **Never sign or broadcast a mainnet transaction without explicit human approval of the exact
-  diff.** Run the dry run, show the human its output, and wait for a yes in the conversation.
+- **Never sign or broadcast a mainnet transaction without explicit human approval.** Run the dry
+  run, show the human its output, and wait for a yes in the conversation. The yes covers a write of
+  that **kind** (account, `project/` prefix, "new submissions + corrections from the feed"), not a
+  byte-exact plan: the feed is live and grows while the approval is being read, and freezing it
+  would mean never finishing a batch. Signing stops only when the *kind* changes — a different
+  account or prefix, tombstones or deletions, key changes, a `--refresh-enriched` run that would
+  overwrite earlier enrichment, or anything outside this runbook.
+- Report the numbers the write actually did when it finishes (`would write` from the recompute and
+  `verified: N/N` read back). Growing by a handful of new submissions between the dry run and the
+  signature is normal, not a reason to abort: a later batch picks up whatever arrived after.
 - The only sanctioned write path for project records is `scripts/import.mjs`. Run it without
   flags first (dry run). Only after approval: `--execute --yes`. For new submissions and
   enrichment, follow `docs/runbooks/new-submissions.md`.
