@@ -82,6 +82,10 @@ export default function CommentsSection({
   const [deleting, setDeleting] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
+  // Comments on screen: each thread's first comment plus its replies. `nodes.length` alone is the
+  // number of threads, which made a page showing both of its 2 comments say "newest 1 of 2".
+  const shownCount = nodes.reduce((n, node) => n + 1 + node.replies.length, 0);
+
   const mine = (c: Comment) => !!accountId && c.author === accountId;
 
   function onPosted(c: Comment) {
@@ -188,9 +192,9 @@ export default function CommentsSection({
 
       {nodes.length > 0 ? (
         <>
-          {total > nodes.length ? (
+          {total > shownCount ? (
             <p className={s.note}>
-              Showing the newest {nodes.length} of {total} comments.{' '}
+              Showing the newest {shownCount} of {total} comments.{' '}
               <a href={`/api/projects/${encodeURIComponent(projectId)}/discussion?limit=100`} rel="noopener noreferrer">
                 Read all comment rows
               </a>
