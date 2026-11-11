@@ -30,6 +30,7 @@ import { buildEnrichment, summarize, tweetIdFromUrl } from '../lib/enrichment.mj
 import { verifyRepos } from '../lib/repo-check.mjs';
 import { linksToCheck, probeLink, summarizeProbes, verdictOf } from '../lib/link-probe.mjs';
 import { applyLinkChecks } from '../lib/link-label.mjs';
+import { PAGE_KINDS, applyPageRepos, fetchReadme, readmesNeeded } from '../lib/page-repos.mjs';
 import { clusters, findDuplicates, weakSignals } from '../lib/duplicates.mjs';
 import { isXPost } from '../lib/project-view.mjs';
 
@@ -251,8 +252,19 @@ async function main() {
     } catch {
       // no earlier report: everything is visited below
     }
+    // NH-96d: a report written before probes kept `repos` cannot say what a page links, so the
+    // pages of records that still lack a repository are visited once more.
+    const pagesToRead = new Set(
+      results
+        .filter((r) => r.status === 'ok' && !r.repository_url)
+        .flatMap((r) => (r.links ?? []).filter((l) => PAGE_KINDS.has(l.kind)).map((l) => l.url)),
+    );
+    const stale = (u) => {
+      const p = probes.get(u);
+      return pagesToRead.has(u) && p.verdict === 'live' && !Array.isArray(p.repos) && /html/.test(p.content_type ?? '');
+    };
     const missing = [...new Set(results.flatMap((r) => (r.status === 'ok' ? r.links ?? [] : []).map((l) => l.url)))]
-      .filter((u) => !probes.has(u));
+      .filter((u) => !probes.has(u) || stale(u));
     if (missing.length) process.stdout.write(`\nvisiting ${missing.length} link(s) not in ${LINK_CHECKS}…`);
     for (const url of missing) {
       const row = await probeLink(url);
@@ -262,6 +274,24 @@ async function main() {
   }
   const linkStats = applyLinkChecks(results, { probes, repos: repoAnswers, verifiedAt: new Date().toISOString() });
   console.log(`\nlinks: ${linkStats.checked} carry a check; ${linkStats.repositories_promoted} repository link(s) promoted after git ls-remote`);
+
+  // NH-96d: a repository the builder links from their own demo page, published only when the
+  // page's host or the repository's README corroborates it (lib/page-repos.mjs).
+  if (CHECK_LINKS && CHECK_REPOS) {
+    const readmes = new Map();
+    for (const repo of readmesNeeded(results, probes)) {
+      readmes.set(repo, await fetchReadme(repo));
+      await delay(DELAY_MS);
+    }
+    const pageRepos = [...new Set(
+      results
+        .filter((r) => r.status === 'ok' && !r.repository_url)
+        .flatMap((r) => (r.links ?? []).flatMap((l) => (PAGE_KINDS.has(l.kind) ? probes.get(l.url)?.repos ?? [] : []))),
+    )];
+    const answers = pageRepos.length ? await verifyRepos(pageRepos) : new Map();
+    const pageStats = applyPageRepos(results, { probes, readmes, repos: answers, verifiedAt: new Date().toISOString() });
+    console.log(`demo pages: ${pageStats.pages} read for a repository link; ${pageStats.found} found, ${pageStats.promoted} corroborated and promoted, ${pageStats.candidates} record(s) left with candidates`);
+  }
 
   const summary = summarize(results);
   const proposal = { generated_at: new Date().toISOString(), account: DEFAULT_ACCOUNT, summary, results };
