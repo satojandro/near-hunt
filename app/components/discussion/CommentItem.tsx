@@ -60,7 +60,10 @@ export default function CommentItem({
 }: Props) {
   const name = profile?.name ?? null;
   return (
-    <li
+    // A <div>, not an <li>: CommentsSection already wraps each comment in its own <li>. Two nested
+    // <li> are invalid HTML; the browser re-parented the inner one, so React's hydration failed
+    // (error #418) on every project page that had a comment.
+    <div
       id={`c-${comment.author}-${comment.id}`}
       className={`${s.reply} ${pending ? s.pending : ''} ${depth === 1 ? s.nested : ''}`}
     >
@@ -105,6 +108,6 @@ export default function CommentItem({
           {pending ? <span>Saving… confirmed when it appears on chain</span> : null}
         </div>
       </div>
-    </li>
+    </div>
   );
 }
