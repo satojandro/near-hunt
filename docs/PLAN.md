@@ -248,11 +248,16 @@ repo change, not a chain write — the record is untouched on chain and `/api/pr
 **The 19-key correction** was applied in tx `Bo5ktqRx…` — 18 descriptions that ended in a dangling
 link label, plus the newest `AgentGuard` record — via `--refresh-enriched`.
 
-**Importer key (state on 9 Nov):** `view_access_key_list nearhunt.near` shows two keys — the
-near.social function-call key below, and one `FullAccess` key. There is **no** function-call key
-with receiver `nearhunt.near`, so `scripts/import.mjs` refuses every import until one is added;
-batch 12 above was signed with the `FullAccess` key under `--accept-full-access` by explicit owner
-choice. `runbooks/keys.md` carries the same note.
+**Importer key (state on 12 Nov):** the scoped key now exists. Owner-approved on 12 Nov,
+`near account add-key nearhunt.near grant-function-call-access --allowance '0.25 NEAR'
+--contract-account-id nearhunt.near --function-names __fastdata_kv` added
+`ed25519:2WMyEz8FTeywPbziEhTxJhpHuViUENp1bDQ5uFFwgTeA` (FunctionCall, receiver `nearhunt.near`,
+`__fastdata_kv`) in tx `AA7pbAPeA5phsCbp664Sg8o3PAsgBFeH5D8Z1Kz2Zipc`, and the two FullAccess
+credential files were moved to `~/.near-credentials-archive/` (mode 600) so the importer resolves
+the scoped key first: `node scripts/import.mjs --check-key` prints
+`permission: FunctionCall(nearhunt.near, __fastdata_kv)`. Batches 12–21 were signed with the
+FullAccess key under `--accept-full-access` (the key did not exist then); batch 22 is the first
+scoped signing. `runbooks/keys.md` carries the same state.
 
 **near.social identity is now set up** (both owner-approved on 8 Nov): a function-call key
 `ed25519:2ozjdhsUK6iAAWrGtizUtqkx8ms9FSDzKBwedMSa2gaW` scoped to receiver `social` with methods
