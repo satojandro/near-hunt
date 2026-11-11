@@ -6,14 +6,29 @@ version: 1
 target: 70
 stage: hackathon-prototype   # "Stage respect": judged as a 2-week build, not a production launch
 
-critical_gates:
-  # Any gate that fires caps the score at 39 and leads the comment. Each needs cited evidence.
+outcomes:
+  # Exactly one per criterion. The difference between "found nothing" and "could not look" is the
+  # difference between a 0 and a smaller denominator, so it is spelled out.
+  pass: The judge reached the evidence and it supports the criterion. Full or partial points.
+  fail: The judge reached the evidence and it does not support the criterion. 0 or partial points. This is the only outcome "unsupported = 0" applies to.
+  blocked: The evidence exists but the judge could not reach it this run (demo timed out, rate limit, login wall). Dropped from the denominator; listed under not_checked.
+  not_assessed: There is nothing public to look at (no repository on the record or found, so no code to read). Dropped from the denominator; the comment says the code was not reviewed. Never scored 0 - a private repo is not bad engineering.
+  not_applicable: The criterion does not apply (security when nothing signs or holds value). Dropped from the denominator.
+
+minimum_assessed_points: 50
+# Below this the draft has no score ("unscored": true). A project whose demo is down and whose
+# repo is absent gets a comment that says what could not be reached, not a low number.
+
+flags:
+  # A flag caps the DRAFT score at 39, sets owner_review, and needs cited evidence.
+  # It is never posted as an accusation - a comment is public and permanent, and a wrong one
+  # cannot be taken out of history. The comment states what was looked for and not found.
   - id: fabricated-claim
     rule: The project claims something that the repo, demo or chain shows is false (e.g. "deployed on mainnet" with no such contract, "uses TEE" with no attestation code).
+    comment_wording: "The README says X; I looked at Y and did not find it. Point me at it and I'll correct this."
   - id: asset-loss-path
     rule: Code that signs or moves user funds has an obvious loss path (unchecked callback, unrestricted privileged method, key in the client bundle, key committed to the repo).
-  - id: nothing-runs
-    rule: No live demo answers AND no repository is reachable. Nothing can be judged.
+    comment_wording: Name the file and line and the fix. Do not describe how to exploit it.
 
 criteria:
   - id: near-native
@@ -49,9 +64,11 @@ criteria:
 
 scoring_rules:
   - Every criterion score cites concrete evidence (URL, file:line, tx hash, observed demo behaviour). The number summarizes the evidence, never the other way round.
-  - Unsupported criteria score 0, not a guess. Missing evidence is fail, never silent approval.
-  - Every criterion outcome is pass | fail | blocked | not_applicable. blocked = the judge could not reach the evidence (demo down, repo private); say so instead of scoring the project down for the judge's own failure, and drop the criterion's points from the denominator.
-  - Critical gates cap the total at 39 regardless of the other criteria.
+  - Every criterion has exactly one outcome from `outcomes` above.
+  - Where the judge reached the evidence and found nothing in support, the criterion is fail and scores 0, not a guess. Missing support is never silent approval.
+  - Where the judge could not look (blocked, not_assessed, not_applicable), the criterion's points leave the denominator. score = earned / assessed_points * 100, and the draft records assessed_points so two scores are only compared when they were measured on the same criteria.
+  - Fewer than minimum_assessed_points assessed means no score at all.
+  - A flag caps the draft score at 39 regardless of the other criteria and sends the draft to owner review.
   - Stage respect - a prototype is not judged against a production bar.
   - Findings name the fix. "Needs work" is not a finding; "add an access-key check to withdraw() in src/lib.rs:88" is.
   - Honesty - never claim a page was opened, a repo cloned or a test run unless it was.
@@ -60,14 +77,17 @@ voice:
   # The roast. Sharp, funny, about the work — never about the person.
   - Roast the project, the claim or the code. Never the builder's identity, appearance, language, country or skill as a person.
   - Every joke is attached to a fact the judge can cite. No evidence, no joke.
-  - Lead with the verdict line, then the roast, then the fixes. The fixes are the point.
+  - Lead with the verdict line (words, not a number), then the roast, then the fixes. The fixes are the point.
   - Give credit where it is earned, in the same voice. A 90 gets roasted for being smug, not for being bad.
   - No token, price or investment talk. No calls to vote. No @mentions.
+  - No number score and no per-criterion numbers in the comment (version 1). Scores stay in the draft.
+  - Never say a builder lied, faked or scammed. Say what was looked for, where, and that it was not found.
+  - Links only to the project's own demo, repository and explorer pages, and to nearhunt.xyz.
   - Plain text, at most 2,000 characters (NH-44 comment limit). It must pass /comment-policy.
   - The comment discloses itself — it starts with "🤖 AI judge" and links the rubric. It is never presented as official hackathon judging.
 
 comment_template: |
-  🤖 AI judge · {score}/100 · {verdict_line}
+  🤖 AI judge · {verdict_line}
 
   {roast — 2 to 4 sentences, each tied to cited evidence}
 
@@ -77,6 +97,6 @@ comment_template: |
   2. {…}
   3. {…}
 
-  Scored: near-native {n}/20 · works {n}/20 · value {n}/20 · eng {n}/15 · security {n}/15 · pitch {n}/10
+  Looked at: {checked, short}. Not checked: {not_checked, short}
   Rubric + evidence: {evidence_url}
-  Not official hackathon judging. Builders: reply to argue — the judge reads replies.
+  Automated review, not official hackathon judging.

@@ -1,7 +1,8 @@
 # Proposal: two NEAR Hunt agents — Scout (enrichment) and Judge (discussion)
 
 **Status:** proposed 10 Nov 2026, **awaiting owner decisions** (bottom of this file). Nothing here
-signs or writes on chain. Tickets: NH-120…NH-125 in [`../PLAN.md`](../PLAN.md).
+signs or writes on chain. Tickets: NH-120…NH-126 in [`../PLAN.md`](../PLAN.md); only NH-120 and
+NH-121 (Scout) have a priority there. Revised 11 Nov after review (see "Review changes" below).
 
 ## Why
 
@@ -41,7 +42,7 @@ It writes one **finding file** per project, `data/enrichment/scout/{submission_i
       "field": "repository_url",
       "value": "https://github.com/acme/veto",
       "evidence": [
-        { "kind": "builder-page-links-value", "url": "https://veto.app", "quote": "<a href=\"https://github.com/acme/veto\">" },
+        { "kind": "builder-page-links-value", "anchor": "demo_url", "url": "https://veto.app", "quote": "<a href=\"https://github.com/acme/veto\">" },
         { "kind": "value-links-back", "url": "https://github.com/acme/veto", "quote": "Demo: https://veto.app" }
       ]
     }
@@ -56,19 +57,29 @@ It writes one **finding file** per project, `data/enrichment/scout/{submission_i
    builder's verbatim text (NH-95). Scout may point at a *builder-written* text the scripts missed
    (e.g. their README's first paragraph) with its source, never write one.
 2. **Evidence chain, not name matching.** A repository is accepted only when a builder-controlled
-   page links it (the X post/thread, the demo site, the builder's profile), **or** the repo links back
-   to the project's demo URL or X post. "Same name on GitHub" is a `dead_end`, never a proposal.
-3. **`scripts/scout-verify.mjs` (NH-121) re-checks every proposal deterministically**: refetches each
-   evidence URL and confirms the quoted link is really there, runs `git ls-remote`, link-checks via
-   `lib/link-probe.mjs`, and drops anything that fails. Survivors merge into `proposal.json` with
-   `enrichment.method: "scout"` and the evidence URLs in `enrichment.sources`.
+   page links it. A repo that links back to the project's demo URL or X post is supporting evidence
+   only: anyone can publish a repo that links someone else's demo, so links-back alone is a lead
+   under `dead_ends`, as is "same name on GitHub".
+3. **`scripts/scout-verify.mjs` (NH-121) re-checks every proposal deterministically.** It works out
+   the builder-controlled pages **from the record**, not from Scout's say-so: the source X post and
+   the same handle's replies, the `demo_url` host, the record's `links`, and a profile page one of
+   those links. Evidence anchored anywhere else is rejected. It then refetches each evidence URL and
+   confirms the quote is in the body as served (a link that appears only after JavaScript runs does
+   not count), runs `git ls-remote`, link-checks via `lib/link-probe.mjs`, and drops anything that
+   fails. Survivors merge into `proposal.json` with `enrichment.method: "scout"` and the evidence
+   URLs in `enrichment.sources`.
 4. **Same write path as today.** `node scripts/import.mjs --enrichment …` dry run → owner approves
    the exact numbers → `--execute --yes` (AGENTS.md §1). Scout itself never holds a key.
+5. **No shell next to a key.** Scout reads untrusted pages and has a shell. AGENTS.md §2 keeps the
+   `nearhunt.near` key on the importer's machine, so Scout runs somewhere else: its prompt checks
+   for `~/.near-credentials` and stops if it is there. Fetched text is data, never instructions.
 
 **Where OutLayer fits (optional, NH-125).** The verifier is deterministic, so it can run as a
 WASI P2 component on OutLayer: input = finding file, output = accepted/rejected per proposal, plus an
 Intel TDX attestation (`GET https://api.outlayer.ai/attestations/by-call/{call_id}`) stored next to
-the finding. Then "this repository was verified" is checkable by anyone, not just a line in our log.
+the finding. That makes "the verifier ran on this input and accepted it" checkable by anyone. It
+does not prove the record's builder pages are right, so it is worth doing only if the OutLayer
+track asks for it (decision 5).
 
 ## Agent 2 — Judge (NEAR expert, roasts and reviews)
 
@@ -77,41 +88,65 @@ Definition: [`.claude/agents/judge.md`](../../.claude/agents/judge.md). Rubric:
 `satojandro/agent-orchestrator` (`docs/03-quality-framework.md` scoring discipline; rubrics B, C, D, G).
 
 **Rubric in one line:** NEAR-native depth 20 · it works 20 · user value 20 · engineering 15 ·
-security 15 · pitch 10; critical gates (fabricated claim, asset-loss path, nothing runs) cap at 39;
-every point cites evidence; unsupported = 0; `blocked` (judge couldn't reach it) doesn't count
-against the builder.
+security 15 · pitch 10; every point cites evidence. Each criterion gets one outcome: the judge
+looked and found nothing = `fail`, 0; the judge could not look (`blocked`: demo timed out;
+`not_assessed`: no public repository; `not_applicable`) = the points leave the denominator. The
+draft records `assessed_points`, and below 50 assessed points there is no score at all. With 205
+records lacking a repository, that is the common case, not the edge.
 
-**NEAR knowledge it loads:** the NEAR Agent Skills (`npx skills add near/agent-skills`:
-`near-contract-audit`, `near-smart-contracts`, `near-api-js`, `near-kit`, `near-intents`,
-`near-ai-cloud`, `near-dapp`, `near-cli-rs`), the vendored near.social skill, `public/SKILL.md`,
+**Flags, not public verdicts.** `fabricated-claim` and `asset-loss-path` cap the *draft* score at 39
+and mark the draft for owner review. They are never posted as an accusation: a comment is public
+and permanent, and a wrong "this claim is false" cannot be taken out of history. The comment says
+what was looked for, where, and that it was not found.
+
+**NEAR knowledge it loads:** the NEAR Agent Skills (`near-contract-audit`, `near-smart-contracts`,
+`near-api-js`, `near-kit`, `near-intents`, `near-ai-cloud`, `near-dapp`, `near-cli-rs`), vendored
+under `.claude/skills/` with a checksum as part of NH-122 (today only `near-social` is there:
+`ls .claude/skills`). The judge does not run `npx skills add` itself, because that fetches unpinned
+code on every run. Also the vendored near.social skill, `public/SKILL.md`,
 and `https://docs.near.org/llms.txt` for anything else. It must look things up on chain (contract
 exists? recent txs?) rather than trust a README.
 
 **Voice.** Roast the work, never the person; every joke rests on a cited fact; credit is given
 in the same voice; the fixes are the point. Starts with `🤖 AI judge`, says it is not official
 judging, no @mentions, no token talk, ≤ 2,000 characters, must pass [`/comment-policy`](https://nearhunt.xyz/comment-policy).
+Version 1 posts **no number score**: the hackathon has not announced results yet (18 Nov, per the
+sponsored-placements row in PLAN.md), and a number from an account called "AI judge" reads as a
+ranking however it is labelled. The score stays in the draft
+(decision 6).
 
 **Pipeline.**
 
 1. **Draft (NH-122, no key).** Judge writes `data/judge/drafts/{submission_id}.json`:
-   `{ score, outcomes per criterion with evidence, gates, comment_text }`. Drafts are committed, so
-   the owner reviews them as a diff.
+   `{ score, assessed_points, outcomes per criterion with evidence, flags, owner_review, comment_text }`.
+   Drafts are committed, so the owner reviews them as a diff. Like Scout, the judge has a shell and
+   clones strangers' repositories, so it runs only where no NEAR key is present.
 2. **Approve.** `scripts/judge-post.mjs` (NH-124) dry run prints: account, prefix `comment/`, the N
-   comments with their text, key count and transaction count. The owner says yes to that batch.
+   comments with their text, key count and transaction count. Before that it lints every draft in
+   code and refuses one that is over 2,000 code points, lacks the prefix, has an @mention, a number
+   score or a link outside the project's own pages and `nearhunt.xyz`, or is marked for owner
+   review. Twenty 2,000-character comments is a lot to read; the lint catches what tired eyes miss.
+   The owner says yes to that batch.
 3. **Post from the judge's own account**, never `nearhunt.near`:
    `{"comment/{submission_id}/{ms}": {"text": "…"}}` via `__fastdata_kv` on receiver
    `nearhunt.near`, exactly like a human comment (NH-44). Because the judge is the row's
-   `predecessor_id`, it is the author: it can delete its own comment (`null`), the hide list works
-   on it, and nothing in `lib/comments.mjs` changes.
-4. **Replies.** On later runs, the judge reads replies to its comments and answers builders who
-   argue with evidence (and corrects its score when they're right). Same approval per batch.
+   `predecessor_id`, it is the author: it can delete its own comment (`null`) and the hide list
+   works on it. **One thing does change:** the directory's "Most discussed" sort and the count on
+   every card come from comment counts (`sortItems` in `lib/directory.mjs`, `countComments` in
+   `lib/comments.mjs`), and a judge comment on every project would make every count at least 1.
+   NH-124 leaves `data/agents.json` accounts out of both.
+4. **Replies are not in this version** (NH-126). A reply is untrusted text written to the judge,
+   which makes it a second way to steer what the judge posts. It gets its own design after the
+   first batch has been live.
 
 **Key custody via OutLayer (NH-123).** Register an OutLayer custody wallet
 (`POST https://api.outlayer.ai/register` → `wk_…` API key + a NEAR implicit account). Its key is
 generated in and never leaves the TDX enclave. Set its policy to: receiver whitelist
 `nearhunt.near` (plus `social` for its own profile), deposit 0, a daily op cap. Then post with
 `POST /wallet/v1/call {"receiver_id":"nearhunt.near","method_name":"__fastdata_kv","args":{…},"deposit":"0"}`.
-Nobody — Hermes, Claude, the owner's laptop — holds a judge key that could write anything else.
+No machine of ours holds a NEAR key for the judge, and the policy limits *where* it can write.
+It does not limit *what* is written: whoever holds the `wk_…` API key can post any comment text as
+the judge. That key is a secret under AGENTS.md §2 and lives only where `judge-post.mjs` runs.
 **Unverified:** that `/wallet/v1/call` works against a contractless receiver (`CodeDoesNotExist` is
 the expected receipt). Prove it on testnet first (`nearhunt.testnet`).
 
@@ -128,6 +163,19 @@ and a link to the rubric, and its near.social profile says it is automated.
 | Comment policy: comments are "never official judging" | Still true — the judge says so in every comment |
 | NH-95: "no repository guessed from a name" | Unchanged in spirit: Scout needs an evidence chain to the builder, and code re-verifies it |
 
+## Review changes (11 Nov)
+
+Changed after review of this proposal; the reasons are inline above.
+
+- Both agents run only where no NEAR key is present, and treat fetched text as data.
+- Scout: links-back alone is no longer enough for a repository; the verifier derives the
+  builder-controlled pages from the record; quotes must be in the body as served.
+- Judge: `not_assessed` outcome and a minimum of 50 assessed points; the `nothing-runs` gate is
+  gone (it contradicted `blocked`); flags go to owner review instead of into the comment; no number
+  score in posted comments; skills vendored instead of fetched per run; replies moved to NH-126.
+- NH-124 gains a lint and the comment-count exclusion. NH-122 to NH-126 have no priority in PLAN.md
+  until the owner decides.
+
 ## Open decisions for the owner
 
 1. **Approve the rule changes above** (judge writes `comment/` from its own disclosed account).
@@ -139,3 +187,5 @@ and a link to the rubric, and its near.social profile says it is automated.
    `judge.nearhunt.near` (creating it is a separate key action on `nearhunt.near`).
 5. **Hackathon eligibility**: the OutLayer docs (read 10 Nov) state no hackathon requirement;
    confirm which OutLayer usage the track asks for, so NH-123/125 hit it.
+6. **Number scores in public.** Version 1 keeps them in the draft. Post them later (for example
+   after results on the 18th), only on a builder's request, or never?
