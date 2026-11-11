@@ -1,6 +1,6 @@
 import 'server-only';
 import { createHash, randomBytes } from 'node:crypto';
-import { claimKey, parseClaims } from './claims.mjs';
+import { claimKey, githubHosts, parseClaims } from './claims.mjs';
 import type { Claim } from './claims.mjs';
 import { LINK_TTL_SECONDS, isLinkCode, linkedAccount, makerKey, rowLinks } from './claim-link.mjs';
 import type { MakerRow } from './claim-link.mjs';
@@ -21,9 +21,10 @@ const REST_TOKEN =
 
 const CLIENT_ID = process.env.GITHUB_CLIENT_ID;
 const CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET;
-/** Overridable so the flow can be exercised against a stand-in; unset in production. */
-export const GITHUB_WEB = process.env.GITHUB_OAUTH_BASE_URL || 'https://github.com';
-export const GITHUB_API = process.env.GITHUB_API_BASE_URL || 'https://api.github.com';
+// Overridable only behind CLAIMS_TEST_HOSTS=1: see githubHosts (lib/claims.mjs) for why.
+const hosts = githubHosts(process.env);
+export const GITHUB_WEB = hosts.web;
+export const GITHUB_API = hosts.api;
 
 /** Claims need both the OAuth app and the store. Without either the card shows no button. */
 export const claimsConfigured = Boolean(REST_URL && REST_TOKEN && CLIENT_ID && CLIENT_SECRET);

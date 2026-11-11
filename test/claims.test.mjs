@@ -2,8 +2,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {
-  authorizeUrl, claimKey, claimRecord, claimableRepo, decodeState, encodeState, outcomeMessage,
-  ownershipBasis, parseClaims, sameState,
+  authorizeUrl, claimKey, claimRecord, claimableRepo, claimRowLabel, decodeState, encodeState,
+  githubHosts, outcomeMessage, ownershipBasis, parseClaims, sameState,
 } from '../lib/claims.mjs';
 
 const ID = '81245941-74f3-49b1-a897-4524fec4f0bf';
@@ -171,4 +171,60 @@ test('sending falls back to the wallet once when the login key is gone, and neve
   const declined = await sendMakerRow({ send: async () => { throw new Error('User rejected the request'); }, fallbackSend: () => wallet, transaction: tx });
   assert.equal(declined.kind, 'rejected');
   assert.equal(calls, 2);
+});
+
+/**
+ * The GitHub hosts decide where `client_secret` and the user's code are sent, and where the
+ * ownership answer comes from. A stray override in a deployment would let a stand-in API approve
+ * any claim for any repository, so the override must be impossible without the test flag.
+ */
+test('the GitHub hosts are not overridable without the test flag', () => {
+  const hostile = {
+    GITHUB_OAUTH_BASE_URL: 'https://github.example.test',
+    GITHUB_API_BASE_URL: 'https://api.github.example.test',
+  };
+  assert.deepEqual(githubHosts(hostile), {
+    web: 'https://github.com',
+    api: 'https://api.github.com',
+  });
+  assert.deepEqual(githubHosts({ ...hostile, CLAIMS_TEST_HOSTS: '0' }), {
+    web: 'https://github.com',
+    api: 'https://api.github.com',
+  });
+  // The flag is what a stand-in run sets; it is not something a deployment has any use for.
+  assert.deepEqual(githubHosts({ ...hostile, CLAIMS_TEST_HOSTS: '1' }), {
+    web: 'https://github.example.test',
+    api: 'https://api.github.example.test',
+  });
+  assert.deepEqual(githubHosts(undefined), { web: 'https://github.com', api: 'https://api.github.com' });
+});
+
+/**
+ * The card lays a claim row out as spans separated by CSS `gap`, which the accessibility tree does
+ * not see, so the row read as one word: "@aliceowns … on 2026-11-11NEAR account …". This label is
+ * the row's accessible name; it is pinned here so a restyle cannot quietly drop it back.
+ */
+test('a claim row reads as punctuated sentences, not one word', () => {
+  const owner = {
+    github_login: 'alice', basis: 'owner', verified_at: '2026-11-11T09:00:00.000Z',
+  };
+  assert.equal(
+    claimRowLabel(owner),
+    '@alice owns the repository, checked with GitHub on 2026-11-11.',
+  );
+  assert.equal(
+    claimRowLabel({ ...owner, basis: 'collaborator' }),
+    '@alice can push to the repository, checked with GitHub on 2026-11-11.',
+  );
+  assert.equal(
+    claimRowLabel({ ...owner, near_account: 'alice.near' }),
+    '@alice owns the repository, checked with GitHub on 2026-11-11. NEAR account alice.near, linked by a row that account signed.',
+  );
+  // Never "@undefined", "NaN" or a date glued to the next word: even a malformed row reads as a
+  // sentence, and it never borrows "owns".
+  assert.equal(claimRowLabel(null), '@ is listed for the repository, checked with GitHub on .');
+  assert.doesNotMatch(claimRowLabel(null), /undefined|NaN/);
+  // The date may end a sentence, but never run straight into the next word.
+  assert.doesNotMatch(claimRowLabel(owner), /\d{4}-\d{2}-\d{2}(?![.\s])/);
+  assert.match(claimRowLabel({ ...owner, near_account: 'alice.near' }), /\d{2}\. NEAR account/);
 });

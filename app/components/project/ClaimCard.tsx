@@ -2,7 +2,7 @@
 // Replaces NH-24's "coming after the hackathon" copy for listings that have a GitHub repository;
 // the others keep the correction route (NH-107), which is also how a repository gets added.
 import { correctionUrl } from '@/lib/links.mjs';
-import { claimableRepo, outcomeMessage } from '@/lib/claims.mjs';
+import { claimableRepo, claimRowLabel, outcomeMessage } from '@/lib/claims.mjs';
 import Link from 'next/link';
 import { claimsConfigured, getPublicClaims } from '@/lib/claims';
 import LinkNearAccount from './LinkNearAccount';
@@ -42,16 +42,16 @@ export default async function ClaimCard({ project, outcome }: { project: Listing
           <p className={s.makerNote}>GitHub accounts that control this project&apos;s repository:</p>
           <ul className={s.makers}>
             {claims.map((c) => (
-              <li key={c.github_id}>
-                <ExternalLink href={`https://github.com/${c.github_login}`}>@{c.github_login}</ExternalLink>
+              <li key={c.github_id} aria-label={claimRowLabel(c)}>
+                <ExternalLink href={`https://github.com/${c.github_login}`}>@{c.github_login}</ExternalLink>{' '}
                 <span className={s.makerNote}>
                   {c.basis === 'owner' ? 'owns' : 'can push to'} the repository, checked with GitHub on{' '}
-                  <time dateTime={c.verified_at}>{c.verified_at.slice(0, 10)}</time>
+                  <time dateTime={c.verified_at}>{c.verified_at.slice(0, 10)}</time>.
                 </span>
                 {c.near_account ? (
                   <span className={s.makerNote}>
-                    NEAR account <Link href={`/u/${c.near_account}`}>{c.near_account}</Link>, linked by a row
-                    that account signed
+                    {' '}NEAR account <Link href={`/u/${c.near_account}`}>{c.near_account}</Link>, linked by a row
+                    that account signed.
                   </span>
                 ) : null}
               </li>

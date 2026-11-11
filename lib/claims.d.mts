@@ -29,4 +29,8 @@ export declare function ownershipBasis(user: unknown, repo: unknown): ClaimBasis
 export declare function claimRecord(o: { user: unknown; repo: unknown; basis: ClaimBasis | null; now?: Date }): Claim;
 export declare function parseClaims(json: unknown): Claim[];
 export declare function outcomeMessage(code: unknown): string | null;
+export declare const GITHUB_WEB_DEFAULT: string;
+export declare const GITHUB_API_DEFAULT: string;
+export declare function githubHosts(env?: Record<string, string | undefined>): { web: string; api: string };
+export declare function claimRowLabel(claim: Partial<Claim> | null | undefined): string;
 export declare function pkceChallenge(verifier: string): string;
