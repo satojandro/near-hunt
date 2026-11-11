@@ -25,6 +25,7 @@
  */
 import { mkdir, readFile, stat, writeFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
+import { pathToFileURL } from 'node:url';
 import { tweetIdFromUrl } from '../lib/enrichment.mjs';
 import { captureStatus } from '../lib/thread-capture.mjs';
 import { readProjects, DEFAULT_ACCOUNT } from '../lib/kv.mjs';
@@ -57,9 +58,62 @@ const SYNDICATION = 'https://cdn.syndication.twimg.com/tweet-result';
 /** The status page lists the whole conversation; more than this is not the builder's thread. */
 const MAX_REPLIES = 15;
 const DELAY_MS = 350;
+/** A post rarely carries more links than this; resolving more is a crawl, not a capture. */
+const MAX_TCO_PER_POST = 5;
 
 const CACHE_DIR = 'data/enrichment/x-threads';
 const delay = (ms) => new Promise((r) => setTimeout(r, ms));
+
+/** An `x.com/…/status/…` link is media attached to a post, never the project's own page. */
+export function isXPostUrl(url) {
+  return /^https?:\/\/(www\.)?(x|twitter)\.com\//i.test(String(url ?? ''));
+}
+
+/**
+ * The `t.co` shortlinks in a post's text, de-duplicated, in order.
+ *
+ * Why this is needed: the syndication endpoint stopped filling `entities.urls` for most posts
+ * (`null` on 17 of 23 sampled on 12 Nov 2026), so the shortlink left in the text is the only
+ * copy of the link. A repository typed into the post is otherwise invisible to enrichment.
+ */
+export function tcoUrlsFromText(text) {
+  return [...new Set([...String(text ?? '').matchAll(/https:\/\/t\.co\/[A-Za-z0-9]+/g)].map((m) => m[0]))];
+}
+
+/**
+ * The URL behind a `t.co` shortlink. `redirect: 'manual'` reads the `Location` header without
+ * following it, so one request resolves the link and nothing else is fetched.
+ */
+export async function resolveTco(url, { fetchImpl = fetch } = {}) {
+  try {
+    const res = await fetchImpl(url, {
+      method: 'GET',
+      redirect: 'manual',
+      headers: { 'user-agent': USER_AGENT },
+      signal: AbortSignal.timeout(10000),
+    });
+    const location = res?.headers?.get?.('location');
+    return location ? location.replace(/^https?:\/\/(www\.)?twitter\.com/i, 'https://x.com') : null;
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Every link a post points at: `entities.urls` first, then the resolved `t.co` shortlinks in its
+ * text. Post-internal X links are dropped — they are the media, not the project.
+ */
+export async function resolveLinks(payload, { fetchImpl = fetch } = {}) {
+  const direct = (payload?.entities?.urls ?? [])
+    .map((u) => u?.expanded_url || u?.url)
+    .filter((u) => typeof u === 'string' && u);
+  const resolved = [];
+  for (const tco of tcoUrlsFromText(payload?.text).slice(0, MAX_TCO_PER_POST)) {
+    const url = await resolveTco(tco, { fetchImpl });
+    if (url) resolved.push(url);
+  }
+  return [...new Set([...direct, ...resolved])].filter((u) => !isXPostUrl(u));
+}
 
 /**
  * Every submission in the hackathon feed, `{ id, project_name, demo_url }`. Same loop as
@@ -142,11 +196,17 @@ export function replyIdsFromPage(html, focalId) {
  * `media` carries what `lib/media.mjs:mediaFromPost` reads, trimmed to those fields: builders put
  * screenshots and demo videos in the replies, and the syndication payload already has them.
  */
-export function postFromPayload(payload) {
+export function postFromPayload(payload, { extraLinks = [] } = {}) {
   const id = payload?.id_str;
   const author = payload?.user?.screen_name;
   if (!id || !author) return null;
-  const links = [...new Set((payload.entities?.urls ?? []).map((u) => u?.expanded_url).filter(Boolean))];
+  const links = [
+    ...new Set([
+      ...(payload.entities?.urls ?? []).map((u) => u?.expanded_url).filter(Boolean),
+      // Resolved `t.co` shortlinks from the text: `entities.urls` is null for most posts now.
+      ...extraLinks,
+    ]),
+  ];
   const media = (Array.isArray(payload.mediaDetails) ? payload.mediaDetails : []).map((m) => ({
     type: m?.type,
     media_url_https: m?.media_url_https,
@@ -168,16 +228,31 @@ export function postFromPayload(payload) {
  * Kept: posts by the same author that are not the submitted post itself. A reply from another
  * account is somebody else's claim and never carries the project's repository.
  */
-export async function captureThread(postId, { refresh = false, log = () => {} } = {}) {
-  const focal = await fetchJson(`${SYNDICATION}?id=${postId}&lang=en&token=a`);
+export async function captureThread(postId, { refresh = false, log = () => {}, fetchImpl = fetch } = {}) {
+  let focal;
+  try {
+    focal = await fetchJson(`${SYNDICATION}?id=${postId}&lang=en&token=a`);
+  } catch (err) {
+    // A deleted or protected post (404) is an outcome, not a crash: `enrich` already knows
+    // `post-unavailable` and keeps the record's feed fields. It used to abort the whole run
+    // half-way through the project list.
+    log(`    ${postId}: ${err.message}`);
+    return { status: 'post-unavailable', posts: [], links: [] };
+  }
   const author = focal?.user?.screen_name;
-  if (!author) return { status: 'post-unavailable', posts: [] };
+  if (!author) return { status: 'post-unavailable', posts: [], links: [] };
+
+  // The submitted post's own links. `posts[]` stays "the author's follow-ups", so these travel in
+  // the top-level `links`, which `scripts/enrich.mjs:mergeThread` already merges as an author post.
+  // Before this, the submitted post was read for its author and thrown away, so a repository in
+  // the post itself was never seen — only one in a reply was.
+  const focalLinks = await resolveLinks(focal, { fetchImpl });
 
   let html;
   try {
     html = await statusPage(postId, { refresh });
   } catch (err) {
-    return { status: `page-failed:${err.message}`, author, posts: [] };
+    return { status: `page-failed:${err.message}`, author, posts: [], links: focalLinks };
   }
 
   const ids = replyIdsFromPage(html, postId);
@@ -187,7 +262,8 @@ export async function captureThread(postId, { refresh = false, log = () => {} } 
     try {
       const payload = await fetchJson(`${SYNDICATION}?id=${id}&lang=en&token=a`);
       read++;
-      const post = postFromPayload(payload);
+      const extraLinks = await resolveLinks(payload, { fetchImpl });
+      const post = postFromPayload(payload, { extraLinks });
       if (post && post.author === author) posts.push(post);
     } catch (err) {
       log(`    ${id}: ${err.message}`);
@@ -196,7 +272,14 @@ export async function captureThread(postId, { refresh = false, log = () => {} } 
   }
   // Thread order: the reply chain, as X lists it.
   posts.sort((a, b) => (BigInt(a.id) < BigInt(b.id) ? -1 : 1));
-  return { status: captureStatus({ listed: ids.length, read, own: posts.length }), author, posts, listed: ids.length, read };
+  return {
+    status: captureStatus({ listed: ids.length, read, own: posts.length }),
+    author,
+    posts,
+    links: focalLinks,
+    listed: ids.length,
+    read,
+  };
 }
 
 async function main() {
@@ -256,7 +339,10 @@ async function main() {
       listed: result.listed ?? 0,
       read: result.read ?? 0,
       posts: result.posts,
-      links: [],
+      // The submitted post's own links, resolved. `scripts/enrich.mjs:mergeThread` merges this
+      // list as an author post; before 12 Nov 2026 it was hardcoded `[]`, so a repository in the
+      // submitted post itself could never reach the record.
+      links: result.links ?? [],
     };
     await mkdir(dirname(OUT), { recursive: true });
     await writeFile(OUT, `${JSON.stringify(threads, null, 2)}\n`);
@@ -270,7 +356,11 @@ async function main() {
   console.log('\nNext: npm run enrich  (then a dry run; nothing is written on chain here)\n');
 }
 
-main().catch((err) => {
-  console.error('FAILED:', err instanceof Error ? err.message : err);
-  process.exit(1);
-});
+// Only run when executed, so tests can import `captureThread` without crawling the chain.
+const invokedDirectly = process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href;
+if (invokedDirectly) {
+  main().catch((err) => {
+    console.error('FAILED:', err instanceof Error ? err.message : err);
+    process.exit(1);
+  });
+}
