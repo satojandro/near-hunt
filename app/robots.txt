@@ -1,0 +1,10 @@
+# NEAR Hunt (NH-116). This file tells crawlers where they may go: everywhere public.
+# It does not describe the data. AI agents and API users: read https://nearhunt.xyz/SKILL.md
+# for the endpoints, the record format and the rules. Every record is also public on NEAR mainnet.
+
+User-agent: *
+Allow: /
+# The page-view counter: nothing to index, and a crawler should not add to it.
+Disallow: /api/views
+
+Sitemap: https://nearhunt.xyz/sitemap.xml

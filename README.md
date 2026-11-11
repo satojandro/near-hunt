@@ -177,6 +177,7 @@ schema/
 types/
   nearhunt.ts                TypeScript mirrors of the record and the KV envelope
 app/                         Next.js 16 app router: directory (/) and project page (/p/[id])
+  robots.txt, sitemap.ts      where crawlers may go, and every listed page (NH-116)
   api/projects/              read-only JSON API (NH-60): list, one, /votes, /discussion
   open-data/                 the open data page (NH-62): dataset card, endpoints, sample record
   components/                cards, search, sort and track controls, sidebar
