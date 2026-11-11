@@ -23,9 +23,10 @@
  *   node scripts/capture-threads.mjs --max-age-days 7         # reuse a capture younger than this
  *   node scripts/capture-threads.mjs --out data/enrichment/threads.json --refresh
  */
-import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, stat, writeFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 import { tweetIdFromUrl } from '../lib/enrichment.mjs';
+import { captureStatus } from '../lib/thread-capture.mjs';
 import { readProjects, DEFAULT_ACCOUNT } from '../lib/kv.mjs';
 
 const args = process.argv.slice(2);
@@ -102,12 +103,16 @@ async function fetchJson(url) {
   return res.json();
 }
 
-/** Cached status page, so a re-run does not re-fetch the whole conversation. */
-async function statusPage(postId, { refresh = false } = {}) {
+/**
+ * Cached status page, so a re-run does not re-fetch the whole conversation. The cache lives as
+ * long as a capture does (`maxAgeMs`): a capture that is due again must read the page again, or
+ * it can never see a reply posted since.
+ */
+async function statusPage(postId, { refresh = false, maxAgeMs = MAX_AGE_MS } = {}) {
   const file = join(CACHE_DIR, `${postId}.html`);
   if (!refresh) {
     try {
-      return await readFile(file, 'utf8');
+      if (Date.now() - (await stat(file)).mtimeMs < maxAgeMs) return await readFile(file, 'utf8');
     } catch {
       // not cached
     }
@@ -177,9 +182,11 @@ export async function captureThread(postId, { refresh = false, log = () => {} } 
 
   const ids = replyIdsFromPage(html, postId);
   const posts = [];
+  let read = 0;
   for (const id of ids) {
     try {
       const payload = await fetchJson(`${SYNDICATION}?id=${id}&lang=en&token=a`);
+      read++;
       const post = postFromPayload(payload);
       if (post && post.author === author) posts.push(post);
     } catch (err) {
@@ -189,7 +196,7 @@ export async function captureThread(postId, { refresh = false, log = () => {} } 
   }
   // Thread order: the reply chain, as X lists it.
   posts.sort((a, b) => (BigInt(a.id) < BigInt(b.id) ? -1 : 1));
-  return { status: posts.length ? 'ok' : 'no-author-replies', author, posts };
+  return { status: captureStatus({ listed: ids.length, read, own: posts.length }), author, posts, listed: ids.length, read };
 }
 
 async function main() {
@@ -245,6 +252,9 @@ async function main() {
       author: result.author,
       status: result.status,
       crawled_at: new Date().toISOString(),
+      // How many other posts the page listed and how many of them could be read.
+      listed: result.listed ?? 0,
+      read: result.read ?? 0,
       posts: result.posts,
       links: [],
     };
