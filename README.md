@@ -22,7 +22,7 @@ a browser.
 | Records with the builder's own description / a repository / media | 473 / 253 / 452 | count the fields in `readProjects()` from [`lib/kv.mjs`](lib/kv.mjs) |
 | Upvotes on chain, and the accounts that cast them | 55 rows, 24 accounts | `vote/` rows, see [Read the chain directly](#3-read-the-chain-directly-no-near-hunt-server-involved) |
 | Comments on chain | 12 rows, 6 accounts | `comment/` rows, same call |
-| Unit tests | 320 pass | `npm test` |
+| Unit tests | 323 pass | `npm test` |
 
 These numbers move: the hackathon feed is still open and people are still voting.
 
@@ -47,7 +47,8 @@ Known gaps, so nobody finds them by surprise:
 | Do | See |
 |---|---|
 | Open https://nearhunt.xyz | The directory: a count of projects, search, track filters, and one card per project |
-| Click **Most upvoted** | The projects reorder by upvote count |
+| Click **Newest**, then **Most upvoted** | The projects reorder; most upvoted is the default |
+| Scroll to the end of the list and click **Show 50 more** | Fifty more cards appear below, numbered on from 51 |
 | Click a track pill, e.g. **DeFi**, or type in the search box | The list narrows; the URL carries the filter, so it can be shared |
 | Click a project name | Its page: description, media from the builder's X post, links, the **On-chain record** card (account, key, block height), who upvoted, and the discussion |
 | Click **View JSON** on that card | The raw record as read from mainnet |
@@ -95,7 +96,7 @@ environment variables).
 ```bash
 npm install
 npm run dev               # open http://localhost:3000 and see the same directory as the live site
-npm test                  # see: pass 320, fail 0
+npm test                  # see: pass 323, fail 0
 npm run typecheck         # see: no errors
 npm run build             # see: the route table, ending with /wallet-manifest.json
 npm run validate:schema   # see: every live record checked against the schema (1 invalid today, above)
@@ -115,8 +116,9 @@ a machine-readable record that outlives the hackathon.
 
 ## What it does (MVP)
 
-- **Directory** — cards with name, tracks, demo host, comment count and upvote count; sort by
-  newest, most upvoted or most discussed; filter by track; search.
+- **Directory** — cards with name, the first lines of the builder's description, tracks, demo
+  host, comment count and upvote count; most upvoted first, or newest or most discussed; filter by
+  track; search. Fifty cards at a time, with a "Show 50 more" link.
 - **Project page** — permanent URL, full description, source submission link, GitHub and demo
   links, upvote control, threaded discussion.
 - **Voting and comments** — connect a NEAR account, one active upvote per account per project.

@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState, useTransition } from 'react';
 import { useRouter } from 'next/navigation';
-import { buildHref, type DirectorySort } from '@/lib/directory.mjs';
+import { buildHref, DEFAULT_SORT, type DirectorySort } from '@/lib/directory.mjs';
 
 const DEBOUNCE_MS = 250;
 
@@ -75,7 +75,7 @@ export default function SearchBox({
         aria-busy={pending}
       />
       {track ? <input type="hidden" name="track" value={track} /> : null}
-      {sort !== 'newest' ? <input type="hidden" name="sort" value={sort} /> : null}
+      {sort !== DEFAULT_SORT ? <input type="hidden" name="sort" value={sort} /> : null}
     </form>
   );
 }
