@@ -43,6 +43,20 @@ test('githubRepoFromUrl normalises a repo and rejects product pages', () => {
   assert.equal(githubRepoFromUrl('not a url'), null);
 });
 
+test('githubRepoFromUrl reads a GitHub Pages site as its repository', () => {
+  // Builders link the demo, not the source: `owner.github.io/repo` is always served from
+  // `github.com/owner/repo`, so the repository needs no crawl.
+  assert.equal(githubRepoFromUrl('https://valenciayuna.github.io/q-day'), 'https://github.com/valenciayuna/q-day');
+  assert.equal(githubRepoFromUrl('https://elioz404.github.io/Setoff'), 'https://github.com/elioz404/Setoff');
+  assert.equal(githubRepoFromUrl('https://tenxagent.github.io/near-agent-economy/dist'), 'https://github.com/tenxagent/near-agent-economy');
+  assert.equal(githubRepoFromUrl('https://arashrahmaniii.github.io/halter/web/redteam.html'), 'https://github.com/arashrahmaniii/halter');
+  // A user site with no path is the owner's `<owner>.github.io` repository.
+  assert.equal(githubRepoFromUrl('https://someone.github.io/'), 'https://github.com/someone/someone.github.io');
+  // Not a Pages site.
+  assert.equal(githubRepoFromUrl('https://github.io/'), null);
+  assert.equal(githubRepoFromUrl('https://notgithub.io/a/b'), null);
+});
+
 test('cleanTweetText drops t.co links and leading mentions, keeps the pitch', () => {
   const raw = '  @NEARProtocol @NearBuilders  Live demo: prompt-injection drain blocked. Repo: https://t.co/abc123 ';
   assert.equal(cleanTweetText(raw), 'Live demo: prompt-injection drain blocked.');

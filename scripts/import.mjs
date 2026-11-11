@@ -53,7 +53,7 @@ import {
   baseDecode,
   baseEncode,
 } from 'near-api-js';
-import { readProjects, KV_HOSTS } from '../lib/kv.mjs';
+import { readProjects, KV_HOSTS, fastnearAuthHeaders, FASTNEAR_KEY_ENV } from '../lib/kv.mjs';
 import { planImport, toBatches, canonical, MAX_KEYS_PER_CALL } from '../lib/import-plan.mjs';
 import { describePermission, isFullAccess, importKeyDecision } from '../lib/key-permission.mjs';
 
@@ -92,11 +92,20 @@ const UPDATES_ONLY = args.includes('--updates-only');
 const CREDENTIALS_ROOT = join(homedir(), '.near-credentials');
 // `rpc.mainnet.near.org` answered every call with a deprecation -429 on 10 Nov 2026 (NEAR's own
 // message points at fastnear). The free FastNEAR endpoint serves `query`, `block`, `send_tx` and
-// `broadcast_tx_commit`, which is every method this importer uses. NEAR_RPC_URL overrides it —
-// point it at a paid node if the free tier rate-limits a batch.
+// `broadcast_tx_commit`, which is every method this importer uses. NEAR_RPC_URL overrides it.
+//
+// With a FastNear API key set, the importer uses the keyed host instead: same node, but the key's
+// rate limit rather than the anonymous one — a 60-key batch is ~10 RPC calls plus retries, and the
+// free tier throttles a burst. The key never leaves this process: it is read from the environment
+// (Bitwarden at run time), never from a file in the repo, and never printed.
+const FASTNEAR_MAINNET_RPC = 'https://rpc.mainnet.fastnear.com';
 const NODE_URL =
   process.env.NEAR_RPC_URL ||
-  (NETWORK === 'mainnet' ? 'https://free.rpc.fastnear.com' : 'https://rpc.testnet.near.org');
+  (NETWORK === 'mainnet'
+    ? process.env[FASTNEAR_KEY_ENV]
+      ? FASTNEAR_MAINNET_RPC
+      : 'https://free.rpc.fastnear.com'
+    : 'https://rpc.testnet.near.org');
 
 // ---------------------------------------------------------------------------
 // Source ingestion
@@ -273,16 +282,22 @@ async function reportKeyCandidates(provider, { candidates, chosen, accountId }) 
 /**
  * Send one batch and return the transaction hash.
  *
- * sendTransactionAsync is deliberate: the receipt fails by design, so any call that
- * waits for an outcome either throws or reports failure for a write that succeeded.
- * Correctness is established afterwards, against the indexer.
+ * The receipt fails by design (no contract on the receiver), so this waits for **inclusion**, not
+ * execution: `INCLUDED` returns as soon as the transaction is in a block and does not surface the
+ * `CodeDoesNotExist` failure. Correctness is established afterwards, against the indexer.
+ *
+ * Why inclusion and not `sendTransactionAsync` (`wait_until: NONE`): acceptance is not inclusion,
+ * and a transaction that is only accepted can still be overtaken. Twice now two batches were signed
+ * milliseconds apart — 10 Nov, the second landed and the first was dropped; 11 Nov, the first landed
+ * and the second was dropped — and both times the access key's nonce advanced by **one** for two
+ * transactions, because the later nonce reached a validator first and invalidated the earlier one
+ * while the RPC still reported both as "sent". Waiting for inclusion before the next signature
+ * removes the race: no batch is signed while an earlier nonce is still unconfirmed.
  *
  * Nonce: a batch must never reuse the nonce of a batch sent moments earlier. The node's
- * `view_access_key` at optimistic finality still shows the old nonce right after a
- * transaction is broadcast (10 Nov 2026: two batches milled within a second, the second was
- * signed with the first one's nonce, the RPC accepted it as "sent", and the chain dropped it —
- * the key's nonce advanced by one for two transactions). So the importer takes the greater of
- * the node's nonce and the one it used last, and adds one.
+ * `view_access_key` at optimistic finality still shows the old nonce right after a transaction is
+ * included, so the importer takes the greater of the node's nonce and the one it used last, plus
+ * one.
  */
 let lastUsedNonce = 0n;
 
@@ -318,7 +333,18 @@ async function sendBatch(provider, signer, accountId, publicKey, receiverId, kvP
   const { txHash, signedTransaction } = await signer.signTransaction(tx);
 
   const hash = baseEncode(txHash);
-  await provider.sendTransactionAsync(signedTransaction);
+  try {
+    await provider.sendTransactionUntil(signedTransaction, 'INCLUDED');
+  } catch (err) {
+    // Not confirmed in a block — do not sign anything else, because the next batch would use a
+    // nonce that may then overtake this one. The hash is printed so the transaction can be audited;
+    // re-running recomputes the diff, so stopping here loses nothing.
+    const detail = err?.message ?? String(err);
+    throw new Error(
+      `transaction ${hash} was not confirmed as included: ${detail}. Nothing further was signed; ` +
+        're-run the dry run to see what remains.',
+    );
+  }
   return hash;
 }
 
@@ -354,7 +380,7 @@ async function main() {
   // Resolve the signer, print what the key is allowed to do, and sign nothing. This is what
   // makes the key rules in docs/runbooks/keys.md testable before a real import.
   if (CHECK_KEY) {
-    const provider = new JsonRpcProvider({ url: NODE_URL });
+    const provider = new JsonRpcProvider({ url: NODE_URL, headers: fastnearAuthHeaders() });
     const { path, candidates } = await resolveKeyFile({
       network: NETWORK,
       account: ACCOUNT,
@@ -440,7 +466,7 @@ async function main() {
     return;
   }
 
-  const provider = new JsonRpcProvider({ url: NODE_URL });
+  const provider = new JsonRpcProvider({ url: NODE_URL, headers: fastnearAuthHeaders() });
   const { path, candidates } = await resolveKeyFile({
     network: NETWORK,
     account: ACCOUNT,

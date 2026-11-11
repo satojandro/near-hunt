@@ -112,7 +112,10 @@ Check it before asking:
 
 **Ask the owner** with: account `nearhunt.near`, prefix `project/`, the key count, bytes and
 transaction count from the dry run, and what changes (new records, which fields). Wait for an
-explicit yes for those numbers. An approval covers that write only.
+explicit yes. The yes covers this kind of write — new submissions plus corrections, on that
+account and prefix — not a byte-exact plan: the feed is live and keeps growing while the owner
+reads, and stopping every time it does means a batch never lands. Report the numbers the write
+actually did afterwards.
 
 ### 6. Write (needs the key and the approval)
 
@@ -122,8 +125,11 @@ Re-run the **same** command with `--execute --yes`:
 node scripts/import.mjs --enrichment data/enrichment/proposal.json --execute --yes
 ```
 
-- The importer recomputes the diff first. **If the numbers differ from the approved dry run, stop**
-  and ask again: the chain or the feed moved.
+- The importer recomputes the diff first, so a submission that arrived after the dry run is
+  included. That is expected and does **not** need a new approval — a later batch picks up what
+  came after this one. Stop only if the *kind* of write changed: a different account or prefix, a
+  deletion or tombstone, a key change, or an enrichment overwrite of values an earlier run set.
+
 - It refuses a full-access key unless told otherwise; see [`keys.md`](keys.md) before using any
   override.
 - Each transaction's receipt fails with `CodeDoesNotExist`. That is expected (no contract on

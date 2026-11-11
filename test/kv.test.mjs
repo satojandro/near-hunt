@@ -6,7 +6,7 @@ import { readLatest, readProjects, readForeignProjectRows } from '../lib/kv.mjs'
 function fakeFetch(pages) {
   const calls = [];
   const impl = async (url, init) => {
-    calls.push({ url, body: JSON.parse(init.body) });
+    calls.push({ url, body: JSON.parse(init.body), headers: init.headers });
     const page = pages[calls.length - 1] ?? { entries: [] };
     return { ok: true, json: async () => page };
   };
@@ -22,6 +22,38 @@ test('project reads are scoped to the namespace account as writer', async () => 
   await readProjects({ fetchImpl: impl });
   assert.equal(calls[0].url, 'https://kv.main.fastnear.com/v0/latest/nearhunt.near/nearhunt.near');
   assert.equal(calls[0].body.key_prefix, 'project/');
+});
+
+test('no FastNear key: KV requests carry no authorization header', async () => {
+  const saved = process.env.FASTNEAR_API_KEY;
+  delete process.env.FASTNEAR_API_KEY;
+  try {
+    const { impl, calls } = fakeFetch([{ entries: [rowBy('nearhunt.near', 'project/a')] }]);
+    await readProjects({ fetchImpl: impl });
+    assert.equal(calls[0].headers.authorization, undefined);
+  } finally {
+    if (saved !== undefined) process.env.FASTNEAR_API_KEY = saved;
+  }
+});
+
+test('a FastNear key is sent as a Bearer header on every page', async () => {
+  const saved = process.env.FASTNEAR_API_KEY;
+  process.env.FASTNEAR_API_KEY = 'test-key-not-a-secret';
+  try {
+    const { impl, calls } = fakeFetch([
+      { entries: [rowBy('nearhunt.near', 'project/a')], page_token: 't1' },
+      { entries: [rowBy('nearhunt.near', 'project/b')] },
+    ]);
+    const rows = await readLatest({ account: 'nearhunt.near', writer: 'nearhunt.near', fetchImpl: impl });
+    assert.equal(rows.length, 2);
+    assert.deepEqual(
+      calls.map((c) => c.headers.authorization),
+      ['Bearer test-key-not-a-secret', 'Bearer test-key-not-a-secret'],
+    );
+  } finally {
+    if (saved === undefined) delete process.env.FASTNEAR_API_KEY;
+    else process.env.FASTNEAR_API_KEY = saved;
+  }
 });
 
 test('rows from other writers are dropped even if the API returns them', async () => {

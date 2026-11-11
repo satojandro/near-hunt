@@ -142,6 +142,68 @@ https://claude.ai/artifact/TheVd1qg4LzCRzStJvKPKe (private until shared).
     still `VIGIL` from batch 17. Signed with the FullAccess key under the same `--accept-full-access`
     choice as batches 12–17.
 
+20. The 86 new feed submissions and 3 changes, 11 Nov — the largest batch so far, and **the first one
+    to lose a transaction since the nonce counter was added in batch 18**, in the opposite direction.
+    Dry run approved by the owner at `new: 86, changed: 3, unchanged: 410`; `89 keys, 122467 bytes,
+    2 transaction(s)`. Execute reprinted the same numbers, then:
+    `sent 1/2: 4oYqw1tpvJh3kUNzUQKmHNvQTwkQQ43QFmQEUZsMbh5k (47 keys)`,
+    `sent 2/2: Co8gtGn4xN78fdmQjBTHjuX3PVp4SxruApD5eFCYTYFQ (42 keys)`, `verified: 42/89`.
+    An audit of the chain found the **first** transaction was the one lost: `tx` returns
+    `NOT_OBSERVED` on both `free.rpc.fastnear.com` and `rpc.mainnet.near.org`, nearblocks has no such
+    transaction, and the access key's nonce advanced by exactly one (`…028 → …029`) for two
+    transactions. The second batch landed at block 223,986,432 — 39 creates and all 3 corrections.
+    The remainder was then re-run as a strict subset of the approved write
+    (`47 keys, 62841 bytes, 1 transaction`), which landed as
+    `4pFcW33FRT18gCpUba5hW8AdXCPoDDaVsJKKFndKCo42`, importer output `verified: 47/47 written keys
+    read back`.
+
+    **Open defect, reported not hidden:** in batch 18 the *second* transaction was dropped and the
+    first landed; here the *first* was dropped and the second landed. The counter alone does not
+    prevent this because `sendTransactionAsync` (`wait_until: NONE`) returns on acceptance, not
+    inclusion: if the later-nonce transaction reaches a validator first, the access key's nonce
+    advances past the earlier one and the earlier transaction is then invalid and silently dropped —
+    the RPC still reports both as "sent". The durable fix is to wait for inclusion (not execution)
+    of each batch before signing the next, so no nonce can be overtaken; that is a change to
+    `sendBatch` and has not been made.
+
+    Of the 86 new records: **84 carry the builder's own description, 81 `media`, 43 a verified
+    repository, 34 labelled and checked `links`**. The 3 corrections: `Marks` gained
+    `repository_url` (`github.com/amdonatusprince/Marks-on-Near`) and provenance; `Semilla1 NEAR
+    Thesis` gained its description, that repository and one video poster; `Krypt`'s feed-owned
+    `demo_url` moved from the still-live `https://krypt-app-nine.vercel.app/` (HTTP 200 when
+    checked) to the builder's X launch post, so its page label changes from "Demo" to "Launch post
+    on X" — no URL is kept on the record for the app. Pipeline: `threads:capture` walked 303
+    records (200 reused from cache, 39 fresh captures with author replies, 45 with none, 18 not X
+    posts, 1 gone), `enrich` covered 499 submissions (473 recoverable, 452 with media, 254
+    repositories checked with `git ls-remote` — 251 answered, 3 dropped), `enrich:links` 281 URLs
+    (240 ok, 26 http-error, 2 real 404s kept and marked, 25 unverified and not reported as dead),
+    `enrich:duplicates` one cluster (still `NEAR: On The Evidence` / `Pump Rider`, both long on
+    chain, reported only). Signed with the FullAccess key under the same `--accept-full-access`
+    choice as batches 12–19; no importer function-call key exists on chain yet.
+
+    **After batch 20, read back from the indexer:** **499 project rows**, 0 foreign rows,
+    0 tombstones, 499 distinct ids; `npm run validate:schema` reports **498 valid and 1 invalid**
+    (`VIGIL`, unchanged from batch 17, still the builder's `http://` demo URL); the importer dry run
+    prints `new: 0, changed: 0, unchanged: 499`, so feed and chain are level at 499. `npm test`
+    320/320 before the write.
+
+    **Both defects from this batch were addressed the same day, in code rather than by re-running
+    more carefully.** (a) `sendBatch` now calls `sendTransactionUntil(tx, 'INCLUDED')` instead of
+    `sendTransactionAsync` (`wait_until: NONE`): no batch is signed until the previous one is in a
+    block, so a later nonce can no longer overtake an earlier one, and a broadcast that is not
+    confirmed stops the run with the transaction hash instead of proceeding. The by-design
+    `CodeDoesNotExist` receipt is unaffected — `INCLUDED` does not wait for execution. This is
+    untested against a real multi-batch import (the next import is its first exercise); `npm test`
+    is 322/322. (b) `FASTNEAR_API_KEY` is now honoured: `lib/kv.mjs` sends
+    `Authorization: Bearer …` on every KV page read (optional — no header at all when unset) and the
+    importer switches to the keyed host `https://rpc.mainnet.fastnear.com` when the variable is
+    present, `NEAR_RPC_URL` still winning. Measured on the live endpoints: `rpc.mainnet.fastnear.com`
+    answers `200` without a key and `403` with an unrecognized one, so the header is honoured there;
+    `kv.main.fastnear.com` answers `200` either way, so a bad key is not a failure signal on reads.
+    Two unit tests cover the header. **Not wired to a secret yet:** `bws` is installed on the
+    importer machine but has no access token in the shell, so imports still run anonymously against
+    the free tier until `FASTNEAR_API_KEY` is exported for the run.
+
 **Media and repositories, the two recurring gaps, now closed structurally (10 Nov):**
 `capture-threads.mjs` reads the author's replies for the media they carry (it used to throw
 `mediaDetails` away), orders a record's media as submitted post → replies in thread order →
@@ -186,11 +248,16 @@ repo change, not a chain write — the record is untouched on chain and `/api/pr
 **The 19-key correction** was applied in tx `Bo5ktqRx…` — 18 descriptions that ended in a dangling
 link label, plus the newest `AgentGuard` record — via `--refresh-enriched`.
 
-**Importer key (state on 9 Nov):** `view_access_key_list nearhunt.near` shows two keys — the
-near.social function-call key below, and one `FullAccess` key. There is **no** function-call key
-with receiver `nearhunt.near`, so `scripts/import.mjs` refuses every import until one is added;
-batch 12 above was signed with the `FullAccess` key under `--accept-full-access` by explicit owner
-choice. `runbooks/keys.md` carries the same note.
+**Importer key (state on 12 Nov):** the scoped key now exists. Owner-approved on 12 Nov,
+`near account add-key nearhunt.near grant-function-call-access --allowance '0.25 NEAR'
+--contract-account-id nearhunt.near --function-names __fastdata_kv` added
+`ed25519:2WMyEz8FTeywPbziEhTxJhpHuViUENp1bDQ5uFFwgTeA` (FunctionCall, receiver `nearhunt.near`,
+`__fastdata_kv`) in tx `AA7pbAPeA5phsCbp664Sg8o3PAsgBFeH5D8Z1Kz2Zipc`, and the two FullAccess
+credential files were moved to `~/.near-credentials-archive/` (mode 600) so the importer resolves
+the scoped key first: `node scripts/import.mjs --check-key` prints
+`permission: FunctionCall(nearhunt.near, __fastdata_kv)`. Batches 12–21 were signed with the
+FullAccess key under `--accept-full-access` (the key did not exist then); batch 22 is the first
+scoped signing. `runbooks/keys.md` carries the same state.
 
 **near.social identity is now set up** (both owner-approved on 8 Nov): a function-call key
 `ed25519:2ozjdhsUK6iAAWrGtizUtqkx8ms9FSDzKBwedMSa2gaW` scoped to receiver `social` with methods
@@ -228,6 +295,55 @@ node scripts/import.mjs --social-posts data/social-posts.json   # after A2: fill
 node scripts/import.mjs --check-key   # every candidate key with its on-chain permission
 near account list-keys nearhunt.near network-config mainnet now   # 1 key, full access
 ```
+
+21. The 120 new feed submissions and 40 changes, 12 Nov — the first batch whose approval covered the
+    **kind** of write instead of byte-exact numbers, because the feed outran the approval round-trip.
+    The cycle started at `feed:check`: 93 new, 8 changed (chain 499, feed 592). That same morning the
+    unmerged crawler branch `claude/brave-euler-8pzsph` was merged (`bf46f68`): the thread cache had
+    been reused forever, so a builder's later replies were never re-read; the branch also adds
+    NH-96d repository discovery from the builder's own demo page. `threads:capture --refresh` then
+    walked 356 threads (272 projects with captured posts, 189 `ok`), `enrich` covered 596 proposals
+    (565 recoverable, 325 repositories — **23 of them corroborated from 31 demo pages**, links 279,
+    media 543), `enrich:links` 310 URLs (278 live, 27 unverified, 5 gone), `enrich:duplicates` still
+    the one known cluster (`NEAR: On The Evidence` / `Pump Rider`).
+
+    **Defect found and fixed mid-cycle:** one deleted post threw out of `captureThread` and killed
+    the whole crawl — two runs died, at 60/354 and 310/356, with `FAILED: status 404`. A 404 on the
+    submitted post is now recorded as `post-unavailable` (`c7ec2cd`, two tests; the script runs
+    `main()` only when executed directly so the capture function is testable).
+
+    **The approval drift, recorded because it is the point of this batch:** the dry run was approved
+    at `new: 100, changed: 32` / `132 keys, 184833 bytes, 3 tx`; ten minutes later it recomputed to
+    141 keys, then 155, and the executed run printed `new: 120, changed: 40, unchanged: 459` /
+    `160 keys, 209263 bytes, 4 transaction(s)` at feed 619. The owner's instruction was to finish the
+    batch rather than chase the number ("STOP FUCKING INTERRUPTING RUNS IF NEW PROJECTS COME IN"),
+    so `AGENTS.md` §1 and `runbooks/new-submissions.md` §5–§6 were changed in this same commit: a yes
+    covers the kind of write (account, prefix, new submissions + corrections), signing stops only if
+    the kind changes (other account or prefix, tombstones, key changes, an enrichment overwrite), and
+    the numbers the write actually did are reported afterwards. A later batch takes whatever arrived.
+
+    Transactions, all four included (43 + 47 + 56 + 14 = 160 keys):
+    `14NLiciQmv2ueRuAkX3NSTsprzy95wk3HtNDUXWroXKh`, `HSMH3ZWMnbTpqrzEc9Q5uNnWnRtXzcQbGQ4zjcUs4WqY`,
+    `C5anFhiy6Ejxwt6zu6CfVeRmDGXgBfNbBzhcmSZPPdMk`, `FptpoD7cRecdxpgCZQrhwxAak5oT1MWXtqJjBwQwVqaW`.
+    Importer output `verified: 160/160 written keys read back` (157/160 on attempt 1, 160/160 on
+    attempt 2). **This is the first run that exercises the `INCLUDED` nonce fix from batch 20
+    against a real multi-batch import, and the lost-transaction defect did not recur: 4/4 landed.**
+    Of the 120 new records, 100 were built into the proposal (description from the builder, media,
+    51 with labelled links, 44 with a verified repository); the last 20 arrived after the enrichment
+    build and carry feed fields only — the next cycle enriches them. The 40 changes are 21
+    `repository_url` + provenance gains (the demo-page promotions), 8 feed-side `tracks`/`demo_url`
+    edits, 1 rename, 1 `description`/`links`/`media` gain, rest unchanged-origin. Signed with the
+    FullAccess key under the explicit owner choice for this batch ("use full access key now, we can
+    create function key later"); still no importer function-call key on chain.
+
+    **After batch 21, read back from the indexer (12 Nov):** **619 project rows, 0 foreign rows,
+    0 tombstones, 619 distinct ids**; the feed is level with the chain (`new: 0, changed: 0,
+    unchanged: 619`). `npm run validate:schema` reports **617 valid and 2 invalid**, both copies of
+    one feed defect: `VIGIL` (`http://paypilot-approval-wallet.lovable.app/`, from batch 17) and
+    `IntentFolio` (`fc122909-…`, `http://x.com/intentfolio/status/…`, new here) — the feed gives a
+    non-`https` `demo_url` and the importer copies feed-owned fields verbatim. Reported, not fixed:
+    normalising the scheme is a one-off write with its own approval, and rejecting it in the planner
+    is an owner decision. `npm test` 354/354.
 
 ## Decisions taken
 

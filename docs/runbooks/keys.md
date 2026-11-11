@@ -96,17 +96,25 @@ failure: `nearhunt.near` has no contract, and the indexer records the row anyway
 Donations go to a separate account, for example `treasury.nearhunt.near`, created and held by the
 owner. It never signs imports.
 
-## What the chain actually holds (checked 9 Nov 2026, after the NH-96 write)
+## What the chain actually holds (checked 12 Nov 2026, after the importer key was added)
 
-`view_access_key_list nearhunt.near` returns **two** keys:
+`view_access_key_list nearhunt.near` returns **three** keys:
 
+- `ed25519:2WMyEz8FTeywPbziEhTxJhpHuViUENp1bDQ5uFFwgTeA` — **FunctionCall, receiver
+  `nearhunt.near`, `__fastdata_kv`, allowance 0.25 NEAR.** The importer key. Added 12 Nov in tx
+  `AA7pbAPeA5phsCbp664Sg8o3PAsgBFeH5D8Z1Kz2Zipc`, owner-approved, secret at
+  `~/.near-credentials/mainnet/nearhunt.near/ed25519_2WMy….json` (mode 600).
 - `ed25519:2ozjdhsUK6iAAWrGtizUtqkx8ms9FSDzKBwedMSa2gaW` — FunctionCall, receiver `social`,
-  `__fastdata_kv`/`__fastdata_fastfs`. That is the near.social key; it cannot sign an import, whose
-  calls go to receiver `nearhunt.near`.
-- `ed25519:EXQAnyijsEeUa9yKqk3z2FKDqLcaHWsZ6wuVEm2sW5yw` — **FullAccess**.
+  `__fastdata_kv`/`__fastdata_fastfs`. The near.social key; it cannot sign an import, whose calls
+  go to receiver `nearhunt.near`.
+- `ed25519:EXQAnyijsEeUa9yKqk3z2FKDqLcaHWsZ6wuVEm2sW5yw` — **FullAccess**. Used only to add or remove
+  keys. Its credential files were moved out of `~/.near-credentials` to
+  `~/.near-credentials-archive/` (mode 600) on 12 Nov, because the importer resolves the flat
+  file first and would have kept signing with full access; `--key-file <archive path>` still works
+  when a key operation needs it.
 
-So the importer key in the table at the top **does not exist right now** and `scripts/import.mjs`
-refuses to sign. The NH-96 batch (257 keys, six transactions, 9 Nov) was signed with the FullAccess
-key under `--accept-full-access`, which the owner chose explicitly for that batch instead of adding
-a key first. Adding the function-call key needs its own approval (AGENTS.md §2); until it exists,
-every import needs that same explicit choice.
+`node scripts/import.mjs --check-key` prints one candidate and its on-chain permission:
+`permission: FunctionCall(nearhunt.near, __fastdata_kv)`. Batches 12–21 were signed with the
+FullAccess key under `--accept-full-access` because the importer key did not exist then; batch 22
+is the first that signs with the scoped key.
+
