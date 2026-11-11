@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { ageText, staleNotice } from '../lib/freshness.mjs';
+import { ageText, staleNotice, readIsFailing } from '../lib/freshness.mjs';
 
 const T0 = Date.parse('2026-11-08T12:00:00.000Z');
 const at = (ms) => new Date(T0 - ms).toISOString();
@@ -43,4 +43,19 @@ test('staleNotice names the age of the copy when the last read failed', () => {
 test('staleNotice still warns when the copy has no readable time', () => {
   const n = staleNotice({ fetchedAt: 'bogus', now: T0, readFailing: true });
   assert.equal(n.headline, 'Showing an earlier copy of the data.');
+});
+
+test('readIsFailing: a copy read after the last failure clears the flag, even on another instance', () => {
+  const t = Date.parse('2026-11-11T06:45:00.000Z');
+  // Never failed.
+  assert.equal(readIsFailing({ lastFailedAt: 0, lastOkAt: 0, fetchedAt: t }), false);
+  // This instance failed and has no newer copy: failing.
+  assert.equal(readIsFailing({ lastFailedAt: t + 5000, lastOkAt: t, fetchedAt: t }), true);
+  // This instance failed once and never re-read itself, but the shared cache now holds a copy
+  // another instance read afterwards: not failing. (The banner used to stay on here.)
+  assert.equal(readIsFailing({ lastFailedAt: t + 5000, lastOkAt: 0, fetchedAt: new Date(t + 60000).toISOString() }), false);
+  // Its own later success clears it too.
+  assert.equal(readIsFailing({ lastFailedAt: t + 5000, lastOkAt: t + 9000, fetchedAt: t }), false);
+  // An unreadable time cannot clear a failure.
+  assert.equal(readIsFailing({ lastFailedAt: t, lastOkAt: 0, fetchedAt: 'nonsense' }), true);
 });

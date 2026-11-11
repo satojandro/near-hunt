@@ -2,6 +2,7 @@ import 'server-only';
 import { unstable_cache } from 'next/cache';
 import { readProjects, DEFAULT_ACCOUNT } from './kv.mjs';
 import { toListing, filterHidden, type ListingItem } from './listing.mjs';
+import { readIsFailing } from './freshness.mjs';
 import HIDDEN_PROJECTS from '../data/hidden-projects.json';
 
 /** Seconds a cached copy of the project list is served before it is re-read from the KV API. */
@@ -75,7 +76,10 @@ export async function getProjects(): Promise<ProjectList> {
   try {
     const list = await readCachedProjects();
     if (!lastGood || list.fetched_at >= lastGood.fetched_at) lastGood = list;
-    return { ...list, read_failing: lastReadFailedAt > lastReadOkAt };
+    return {
+      ...list,
+      read_failing: readIsFailing({ lastFailedAt: lastReadFailedAt, lastOkAt: lastReadOkAt, fetchedAt: list.fetched_at }),
+    };
   } catch (err) {
     console.error('[projects] KV read failed:', err instanceof Error ? err.message : err);
     if (lastGood) return { ...lastGood, read_failing: true };
