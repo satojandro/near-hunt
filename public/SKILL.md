@@ -101,7 +101,7 @@ Returns `{ items: ProjectSummary[], next_cursor: string | null, meta }`.
   ],
   "next_cursor": "…",
   "meta": {
-    "total": 281,
+    "total": 498,
     "fetched_at": "2026-11-08T17:02:11.000Z",
     "stale": false,
     "votes_available": true,

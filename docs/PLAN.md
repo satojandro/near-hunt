@@ -649,7 +649,7 @@ node scripts/import.mjs   # 29 new (feed 310), 0 changed, 281 unchanged — pend
 
 | ID | P | Item |
 |---|---|---|
-| NH-90 | P0 | Rewrite the README to match what runs: live URL, 3-command local run, what is on chain where |
+| NH-90 | P0 | Rewrite the README to match what runs: live URL, 3-command local run, what is on chain where | **Done 11 Nov** — status table with a reproducing command per number (499 on chain, 498 listed), "do X, see Y" steps for the site, the API, the chain and a local run, known gaps stated, and an AI disclosure section. CI added (`.github/workflows/ci.yml`: typecheck, test, build). Checked: `npm test` 320/320, `npm run typecheck`, `npm run build`; `npm run validate:schema` still reports 1 invalid record (`project/1ca01819-…`, `http://` demo_url), which the README states. |
 | NH-91 | P0 | README names Baby Shark, and Baby Shark's README names NEAR Hunt |
 | NH-92 | P0 | Demo video or screenshots, plus an X post tagging `@NEARProtocol` `#NEARHackathon` |
 | NH-93 | P0 | Final dry-run import; a human approves and applies any diff | **Done 8 Nov** — 4 records applied in tx `8rX5McjBeiitsRAhQsY7sqWbTQ9nXXHBDYwCJyQuGhfk`, 4/4 verified against the indexer, schema 275/275 |

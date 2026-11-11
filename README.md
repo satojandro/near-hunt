@@ -3,30 +3,109 @@
 **A human-first discovery and community voting layer for NEAR ecosystem projects.**
 
 Built for the [NEAR Hackathon](https://nearhackathon.com) (1–14 Nov 2026), Open Innovation track.
+Live at **https://nearhunt.xyz**.
 
-NEAR Hunt turns a list of hackathon submissions into a browsable directory with a project
-page, one-account-one-upvote, and threaded discussion — with every project record stored as
-open, versioned JSON on NEAR itself, and a read-only API that lets AI agents discover
-projects without browser automation.
+[![CI](https://github.com/satojandro/near-hunt/actions/workflows/ci.yml/badge.svg)](https://github.com/satojandro/near-hunt/actions/workflows/ci.yml)
 
-> **Status: data layer live on mainnet; read-only web app deployed.** All 281 NEAR Hackathon
-> submissions are stored as `nearhunt/project/1` records under `nearhunt.near` — ten import
-> transactions plus the funding transfer, no smart contract, verified readable 281/281 through the
-> public FastData indexer. 265 records now carry the builder's own description and 98 a verified
-> repository, filled by a separate approval-gated enrichment pass. `nearhunt.near` also has a
-> near.social profile that discloses the account is automated. The directory, project pages and
-> connect/upvote flow are live at **https://nearhunt.xyz**. Comments moved from near.social replies
-> to rows on `nearhunt.near` (NH-44) and are **live** (PR #8, merge `f11ea7e`, deployment
-> `near-hunt-dggp40cj3`, 9 Nov): `/comment-policy` answers, a project page takes comments, and
-> `/api/projects/{id}/discussion` reads `comment/` rows. The account page, the indexer-outage states
-> and the 390 px pass are merged and
-> **deployed** (8 Nov); the
-> [Day 3 signing and wallet checks](docs/runbooks/day3-signing-checklist.md) are still pending.
-> Day 4 — the read-only JSON API (`/api/projects…`), `/SKILL.md` for agents and the `/open-data`
-> page — is merged to `main` (PR #6) and **deployed** (8 Nov).
-> See [`docs/phase-0-spike.md`](docs/phase-0-spike.md) and [`schema/`](schema/).
+NEAR Hunt turns the hackathon's list of submissions into a browsable directory: a page per
+project, one upvote per NEAR account, and threaded comments. Every project record, vote and
+comment is a plain key-value row on NEAR mainnet under `nearhunt.near`, with no smart contract.
+A read-only JSON API and a [`SKILL.md`](public/SKILL.md) let AI agents read the same data without
+a browser.
 
----
+## Status (measured 11 Nov 2026)
+
+| What | Number | Reproduce |
+|---|---|---|
+| Project records on mainnet, written by `nearhunt.near` | 499 | `npm run validate:schema` |
+| Projects listed on the site (one is on the [hide list](data/hidden-projects.json)) | 498 | `curl -s "https://nearhunt.xyz/api/projects?limit=1"` → `meta.total` |
+| Records with the builder's own description / a repository / media | 473 / 253 / 452 | count the fields in `readProjects()` from [`lib/kv.mjs`](lib/kv.mjs) |
+| Upvotes on chain, and the accounts that cast them | 55 rows, 24 accounts | `vote/` rows, see [Read the chain directly](#3-read-the-chain-directly-no-near-hunt-server-involved) |
+| Comments on chain | 12 rows, 6 accounts | `comment/` rows, same call |
+| Unit tests | 320 pass | `npm test` |
+
+These numbers move: the hackathon feed is still open and people are still voting.
+
+Known gaps, so nobody finds them by surprise:
+
+- `npm run validate:schema` currently reports **1 invalid record of 499**:
+  `project/1ca01819-1a03-4a49-81d7-eb5755db0fea` has an `http://` `demo_url` where the schema
+  wants `https://`. It is the link as the builder submitted it. Correcting it is a mainnet write
+  that waits for the owner's approval.
+- `node scripts/import.mjs` (a dry run) shows 7 feed submissions not yet on chain. Imports are
+  applied in approved batches, so the directory can trail the feed by a few records.
+- The wallet checks in the [Day 3 checklist](docs/runbooks/day3-signing-checklist.md) (section C)
+  are not ticked off. The vote and comment rows above were written by real accounts through the
+  live site, but the checklist's wallet-by-wallet pass has not been done.
+- One upvote per account is not sybil-proof: NEAR accounts are free to create. Votes are a
+  community signal, not judging, and every voter is listed by account on the project page.
+
+## Try it
+
+### 1. On the live site
+
+| Do | See |
+|---|---|
+| Open https://nearhunt.xyz | The directory: a count of projects, search, track filters, and one card per project |
+| Click **Most upvoted** | The projects reorder by upvote count |
+| Click a track pill, e.g. **DeFi**, or type in the search box | The list narrows; the URL carries the filter, so it can be shared |
+| Click a project name | Its page: description, media from the builder's X post, links, the **On-chain record** card (account, key, block height), who upvoted, and the discussion |
+| Click **View JSON** on that card | The raw record as read from mainnet |
+| Click **Connect NEAR account**, pick a wallet, then click an upvote arrow | The count goes up by one, and your account appears under **Upvoted by**. The vote is a `vote/{project_id}` row you signed. Needs a mainnet NEAR account |
+| Write a comment on a project page while connected | It appears in the discussion, as a `comment/{project_id}/{ms}` row you signed |
+| Open https://nearhunt.xyz/open-data | The dataset card, the endpoints, and a sample record |
+
+### 2. Through the API (no key, no wallet)
+
+```bash
+# Top projects by upvotes. See: {"items":[...],"next_cursor":...,"meta":{"total":498,...}}
+curl -s "https://nearhunt.xyz/api/projects?sort=votes&limit=3"
+
+# One project. See: its nearhunt/project/1 record plus block_height, votes and url
+curl -s "https://nearhunt.xyz/api/projects/4b1d7196-ba55-494a-8ccb-3daf0087744e"
+
+# Who upvoted a project. See: a list of account ids with the block of each vote
+curl -s "https://nearhunt.xyz/api/projects/c1c7b574-850a-4f47-9af9-22a49339df07/votes"
+
+# The guide an agent reads first. See: markdown describing every endpoint
+curl -s "https://nearhunt.xyz/SKILL.md"
+```
+
+`sort` is `newest` (default), `votes` or `name`; `limit` is 1–100. The full contract is in
+[`public/SKILL.md`](public/SKILL.md) and [`docs/api-contract-day4.md`](docs/api-contract-day4.md).
+
+### 3. Read the chain directly (no NEAR Hunt server involved)
+
+```bash
+# One project record. See: {"entries":[{"predecessor_id":"nearhunt.near","key":"project/4b1d…","value":{…}}]}
+curl -s "https://kv.main.fastnear.com/v0/latest/nearhunt.near/nearhunt.near/project/4b1d7196-ba55-494a-8ccb-3daf0087744e"
+
+# Every vote row, from every voter. See: entries whose predecessor_id is the voter
+curl -s -X POST "https://kv.main.fastnear.com/v0/latest/nearhunt.near" \
+  -H 'content-type: application/json' -d '{"key_prefix":"vote/","limit":200}'
+```
+
+Change `vote/` to `comment/` for comments. More in [`schema/README.md`](schema/README.md).
+
+### 4. Run it locally
+
+Needs Node 20.9 or newer and network access (the app reads mainnet; it needs no keys and no
+environment variables).
+
+```bash
+npm install
+npm run dev               # open http://localhost:3000 and see the same directory as the live site
+npm test                  # see: pass 320, fail 0
+npm run typecheck         # see: no errors
+npm run build             # see: the route table, ending with /wallet-manifest.json
+npm run validate:schema   # see: every live record checked against the schema (1 invalid today, above)
+node scripts/import.mjs   # see: a dry-run diff of the feed against the chain; it signs nothing
+```
+
+Writing to mainnet (`node scripts/import.mjs --execute --yes`) needs a key for `nearhunt.near` and
+the owner's approval of the dry-run diff: see [`AGENTS.md`](AGENTS.md) and
+[`docs/runbooks/keys.md`](docs/runbooks/keys.md). View counts and analytics are optional and off
+unless the variables in [`.env.example`](.env.example) are set.
 
 ## Why
 
@@ -36,8 +115,8 @@ a machine-readable record that outlives the hackathon.
 
 ## What it does (MVP)
 
-- **Directory** — cards with name, description, tracks, links, upvote count; sort by newest
-  or most upvoted; filter by track; search.
+- **Directory** — cards with name, tracks, demo host, comment count and upvote count; sort by
+  newest, most upvoted or most discussed; filter by track; search.
 - **Project page** — permanent URL, full description, source submission link, GitHub and demo
   links, upvote control, threaded discussion.
 - **Voting and comments** — connect a NEAR account, one active upvote per account per project.
@@ -58,11 +137,11 @@ anyone, with no bespoke contract to deploy or audit.
 
 | Concern | Choice | Status |
 |---|---|---|
-| Project records | FastData KV writes (`__fastdata_kv`) to `nearhunt.near` | **live on mainnet** (281 records) |
-| Upvotes | `vote/{project_id}` keys written by the voter, so one vote per account | live (Day 2) |
+| Project records | FastData KV writes (`__fastdata_kv`) to `nearhunt.near` | **live on mainnet** |
+| Upvotes | `vote/{project_id}` keys written by the voter, so one vote per account | live |
 | Reading records | `https://kv.main.fastnear.com`, scoped to records written by `nearhunt.near` | verified |
-| Discussion | `comment/{project_id}/{ms}` rows in `nearhunt.near`, written by the commenter, signed with the login key (NH-44) | **live** (deployed 9 Nov, `dggp40cj3`) |
-| Public read API | Next.js route handlers over the same readers, `{items, next_cursor}` | live (Day 4, PR #6) |
+| Discussion | `comment/{project_id}/{ms}` rows in `nearhunt.near`, written by the commenter, signed with the login key (NH-44) | live |
+| Public read API | Next.js route handlers over the same readers, `{items, next_cursor}` | live |
 | Indexing | FastData indexer (no custom block scanning) | verified |
 | Smart contract | none — deliberately | proven unnecessary |
 | Cache | Valkey, optional, never a source of truth | deferred |
@@ -78,6 +157,7 @@ PRD's first draft: [`docs/research/2026-11-08-platform-findings.md`](docs/resear
 
 ```
 AGENTS.md                    rules for AI agents (mainnet writes need a human)
+.github/workflows/ci.yml     typecheck, unit tests and build on every push to main and every PR
 docs/
   PLAN.md                    roadmap and ticketed backlog to 14 Nov
   PRD.md                     product requirements (v0.2)
@@ -129,23 +209,30 @@ data/
   submissions-snapshot.json  the source feed as read on 2026-11-08, for provenance
 ```
 
-Run it:
+## How it was built (AI disclosure)
 
-```bash
-npm install
-npm run dev                             # http://localhost:3000
-npm test                                # unit tests, no network
-node scripts/import.mjs                 # dry run: diff the feed against chain; signs nothing
-node scripts/import.mjs --execute --yes # write the diff (needs a key; see docs/runbooks/keys.md)
-# New submissions, descriptions, media and links: docs/runbooks/new-submissions.md
-npm run validate:schema                 # verify every record already on chain
-```
+Most of the code, tests and documentation in this repository was written by AI coding agents,
+directed and reviewed by the project owner:
 
-The data layer and the read-only pages are live: **https://nearhunt.xyz** serves the directory and
-project pages from mainnet records (apex `A 216.198.79.1` + `64.29.17.1`, `www` CNAME
-`4b4d19b81c5a6949.vercel-dns-017.com` → 308 to the apex at Namecheap, verified by Vercel 8 Nov).
-`https://near-hunt.vercel.app` is the same deployment and still answers. The old placeholder is
-gone (its source stays in history at `4e0b5af`).
+- **Claude Code** (Anthropic) wrote most of the application, libraries and tests. Its commits
+  carry a `Co-Authored-By: Claude` trailer: `git log --grep "Co-Authored-By: Claude" --oneline`.
+- **Hermes**, the owner's agent on the operator machine, merges branches, deploys, and runs the
+  importer. Its work is committed under the owner's git identity.
+
+The owner sets the scope ([`docs/PLAN.md`](docs/PLAN.md)), takes the product decisions recorded
+there, and approves every mainnet write before it is signed. The rules the agents work under are
+in [`AGENTS.md`](AGENTS.md): no mainnet transaction without a human approving the exact diff, and
+no claim in the docs without the command that reproduces it.
+
+Two things are deliberately **not** AI:
+
+- Project descriptions, links and media are copied from the builder's own X post by fixed rules
+  ([`lib/enrichment.mjs`](lib/enrichment.mjs)). No model writes or rewrites project content.
+- Nothing is scored or ranked by AI. Order comes from upvotes, comments and block height.
+
+The work was done between 8 and 14 Nov 2026, inside the hackathon window (`git log --reverse`).
+Dependencies are listed in [`package.json`](package.json); the main ones are Next.js, React,
+`near-api-js` and NEAR Connect.
 
 ## Related project — Baby Shark
 
