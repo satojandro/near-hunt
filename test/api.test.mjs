@@ -94,7 +94,11 @@ test('sort: newest (default), votes, name; unknown is bad_request', () => {
   assert.deepEqual(ids('sort=newest'), ['b', 'd', 'c', 'a']);
   assert.deepEqual(ids('sort=votes'), ['c', 'a', 'b', 'd']); // 5,5 (newer first), 1, 0
   assert.deepEqual(ids('sort=name'), ['a', 'b', 'c', 'd']);
-  throwsCode(() => q('sort=upvoted'), 'bad_request', 400);
+  throwsCode(() => q('sort=loudest'), 'bad_request', 400);
+  // NH-118: the directory's own names are accepted and mean the same thing.
+  assert.equal(q('sort=upvoted').sort, 'votes');
+  assert.equal(q('sort=discussed').sort, 'comments');
+  assert.deepEqual(ids('sort=upvoted'), ids('sort=votes'));
   // Votes unavailable: sort=votes degrades to newest, with votes null.
   assert.deepEqual(projectsBody(LIST, { counts: {}, available: false }, q('sort=votes')).items.map((p) => p.submission_id),
     ['b', 'd', 'c', 'a']);
@@ -207,4 +211,25 @@ test('fetchThread passes a near.social cursor through to /replies', async () => 
   const replies = urls.find((u) => u.includes('/replies'));
   assert.match(replies, /limit=7/);
   assert.match(replies, /cursor=UP\+CUR/);
+});
+
+// NH-118: comment counts on the list, and sort=comments.
+test('comments: counts on each item, sort=comments, and the read-failed case', () => {
+  const COMMENTS = { counts: { d: 3, a: 1 }, available: true };
+  const body = projectsBody(LIST, VOTES, q('sort=comments'), COMMENTS);
+  assert.deepEqual(body.items.map((p) => p.submission_id), ['d', 'a', 'b', 'c']); // 3, 1, then newest
+  assert.deepEqual(body.items.map((p) => p.comments), [3, 1, 0, 0]);
+  assert.equal(body.meta.comments_available, true);
+  assert.deepEqual(projectsBody(LIST, VOTES, q('sort=discussed'), COMMENTS).items, body.items);
+
+  // Comment read failed: null counts, the flag is false, and the order is newest.
+  const failed = projectsBody(LIST, VOTES, q('sort=comments'), { counts: {}, available: false });
+  assert.deepEqual(failed.items.map((p) => p.comments), [null, null, null, null]);
+  assert.equal(failed.meta.comments_available, false);
+  assert.deepEqual(failed.items.map((p) => p.submission_id), ['b', 'd', 'c', 'a']);
+
+  // A caller that passes no comment counts gets the body as it was before.
+  const plain = projectsBody(LIST, VOTES, q(''));
+  assert.equal('comments' in plain.items[0], false);
+  assert.equal('comments_available' in plain.meta, false);
 });

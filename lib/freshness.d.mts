@@ -11,3 +11,9 @@ export declare function staleNotice(opts: {
   now: number;
   readFailing: boolean;
 }): StaleNotice | null;
+
+export declare function readIsFailing(opts: {
+  lastFailedAt: number;
+  lastOkAt: number;
+  fetchedAt: string | number | Date;
+}): boolean;

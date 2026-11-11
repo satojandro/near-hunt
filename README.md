@@ -22,7 +22,7 @@ a browser.
 | Records with the builder's own description / a repository / media | 473 / 253 / 452 | count the fields in `readProjects()` from [`lib/kv.mjs`](lib/kv.mjs) |
 | Upvotes on chain, and the accounts that cast them | 55 rows, 24 accounts | `vote/` rows, see [Read the chain directly](#3-read-the-chain-directly-no-near-hunt-server-involved) |
 | Comments on chain | 12 rows, 6 accounts | `comment/` rows, same call |
-| Unit tests | 323 pass | `npm test` |
+| Unit tests | 329 pass | `npm test` |
 
 These numbers move: the hackathon feed is still open and people are still voting.
 
@@ -72,7 +72,7 @@ curl -s "https://nearhunt.xyz/api/projects/c1c7b574-850a-4f47-9af9-22a49339df07/
 curl -s "https://nearhunt.xyz/SKILL.md"
 ```
 
-`sort` is `newest` (default), `votes` or `name`; `limit` is 1–100. The full contract is in
+`sort` is `newest` (default), `votes`, `comments` or `name`; `limit` is 1–100. The full contract is in
 [`public/SKILL.md`](public/SKILL.md) and [`docs/api-contract-day4.md`](docs/api-contract-day4.md).
 
 ### 3. Read the chain directly (no NEAR Hunt server involved)
@@ -96,7 +96,7 @@ environment variables).
 ```bash
 npm install
 npm run dev               # open http://localhost:3000 and see the same directory as the live site
-npm test                  # see: pass 323, fail 0
+npm test                  # see: pass 329, fail 0
 npm run typecheck         # see: no errors
 npm run build             # see: the route table, ending with /wallet-manifest.json
 npm run validate:schema   # see: every live record checked against the schema (1 invalid today, above)
