@@ -3,7 +3,8 @@ import type { ThreadPost } from './discussion.mjs';
 
 export declare const DEFAULT_LIMIT: 50;
 export declare const MAX_LIMIT: 100;
-export type ApiSort = 'newest' | 'votes' | 'name';
+export type ApiSort = 'newest' | 'votes' | 'comments' | 'name';
+export declare const SORT_ALIASES: { readonly upvoted: 'votes'; readonly discussed: 'comments' };
 export declare const API_SORTS: readonly ApiSort[];
 export declare const DEFAULT_API_SORT: 'newest';
 export declare const PROJECT_PREFIX: 'project/';
@@ -37,7 +38,7 @@ export declare function parseProjectsQuery(params: Params): ProjectsQuery;
 
 export declare function filterTrack<T extends { tracks: string[] }>(items: T[], track: string | null): T[];
 export declare function searchProjects<T extends { name: string; description: string | null }>(items: T[], q: string): T[];
-export declare function sortProjects<T extends ListingItem>(items: T[], sort: ApiSort, counts?: Record<string, number> | null): T[];
+export declare function sortProjects<T extends ListingItem>(items: T[], sort: ApiSort, counts?: Record<string, number> | null, commentCounts?: Record<string, number> | null): T[];
 export declare function paginate<T>(items: T[], offset: number, limit: number): { items: T[]; next_cursor: string | null };
 
 export interface ProjectSummary extends ListingItem {
@@ -52,13 +53,15 @@ export declare function recordUrl(submissionId: string, account?: string): strin
 export declare function toProject(item: ListingItem, votes: number | null): ApiProject;
 
 export interface ProjectsBody {
-  items: ProjectSummary[];
+  /** `comments` is present when the caller passed comment counts; null when their read failed. */
+  items: Array<ProjectSummary & { comments?: number | null }>;
   next_cursor: string | null;
   meta: {
     total: number;
     fetched_at: string;
     stale: boolean;
     votes_available: boolean;
+    comments_available?: boolean;
     source: { account: string; prefix: 'project/'; network: 'mainnet' };
   };
 }
@@ -66,6 +69,7 @@ export declare function projectsBody(
   list: { items: ListingItem[]; fetched_at: string; read_failing: boolean; account?: string },
   votes: { counts: Record<string, number>; available: boolean },
   query: ProjectsQuery,
+  comments?: { counts: Record<string, number>; available: boolean },
 ): ProjectsBody;
 
 export interface VoteItem { account_id: string; block_height: number }

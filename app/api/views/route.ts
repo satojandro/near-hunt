@@ -1,12 +1,20 @@
 import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
-import { countablePath, parseIncr, viewKeys } from '@/lib/views.mjs';
+import {
+  countablePath, parseIncr, projectIdOfPath, rateKeys, viewKeys, withinDayLimit, withinMinuteLimits,
+  RATE_KEY_TTL_SECONDS,
+} from '@/lib/views.mjs';
+import { getProjects } from '@/lib/projects';
 
 /**
  * Per-listing view counts (NH-113).
  *
  *   GET  /api/views?path=/p/{id}     -> { views, available }
- *   POST /api/views  { path }        -> { views, available }   (adds one)
+ *   POST /api/views  { path }        -> { views, available, counted }   (adds one, within limits)
+ *
+ * Limits (NH-118, lib/views.mjs): per path per minute and per day, and across all paths per
+ * minute. A POST past a limit, or for a `/p/{id}` that is not a listed project, is answered with
+ * the current number and `counted: false`; nothing is written to the totals.
  *
  * Storage is Upstash Redis over its REST API. Which names exist depends on how the database was
  * created, so all three spellings are read: `UPSTASH_REDIS_REST_KV_REST_API_URL/_TOKEN` (what the
@@ -86,14 +94,42 @@ export async function POST(request: NextRequest) {
 
   try {
     const keys = viewKeys(path);
-    // Two counters: all-time and today's bucket. The all-time INCR reply is the number shown.
+    const headers = { ...CORS, 'cache-control': 'no-store' };
+    // Not counted: answer with the number as it stands.
+    const current = async () => {
+      const json = await redis(['GET', keys.total]);
+      const n = json?.result == null ? 0 : parseIncr(json);
+      return NextResponse.json({ views: n ?? 0, available: true, counted: false }, { status: 200, headers });
+    };
+
+    // A listing page is counted only for a project that is listed. Anything else would let a loop
+    // over made-up ids fill the store. If the list cannot be read, nothing is counted.
+    const projectId = projectIdOfPath(path);
+    if (projectId) {
+      const listed = await getProjects()
+        .then(({ items }) => items.some((p) => p.submission_id.toLowerCase() === projectId.toLowerCase()))
+        .catch(() => false);
+      if (!listed) return current();
+    }
+
+    // The limiter: this path this minute, and all paths this minute. The keys expire on their own.
+    const rl = rateKeys(path);
+    const [pathHit, globalHit] = await Promise.all([redis(['INCR', rl.path]), redis(['INCR', rl.global])]);
+    const pathMinute = parseIncr(pathHit);
+    const globalMinute = parseIncr(globalHit);
+    await Promise.all([
+      pathMinute === 1 ? redis(['EXPIRE', rl.path, RATE_KEY_TTL_SECONDS]) : null,
+      globalMinute === 1 ? redis(['EXPIRE', rl.global, RATE_KEY_TTL_SECONDS]) : null,
+    ]);
+    if (!withinMinuteLimits({ pathMinute, globalMinute })) return current();
+
+    // Two counters: today's bucket, which also carries the daily limit, then all-time. The
+    // all-time INCR reply is the number shown.
+    const day = parseIncr(await redis(['INCR', keys.day]));
+    if (!withinDayLimit(day)) return current();
     const total = await redis(['INCR', keys.total]);
-    await redis(['INCR', keys.day]);
     const n = parseIncr(total);
-    return NextResponse.json(
-      { views: n ?? 0, available: true },
-      { status: 200, headers: { ...CORS, 'cache-control': 'no-store' } },
-    );
+    return NextResponse.json({ views: n ?? 0, available: true, counted: true }, { status: 200, headers });
   } catch (err) {
     console.error('[views] increment failed:', err instanceof Error ? err.message : err);
     return NextResponse.json({ views: null, available: false }, { status: 200, headers: CORS });

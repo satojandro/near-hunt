@@ -18,6 +18,7 @@ directly instead (see "Verify it yourself").
 |---|---|
 | List projects (newest first) | `GET /api/projects` |
 | Most upvoted first | `GET /api/projects?sort=votes` |
+| Most discussed first | `GET /api/projects?sort=comments` |
 | Projects in one track | `GET /api/projects?track=agents` |
 | Search name and description | `GET /api/projects?q=wallet` |
 | Next page | `GET /api/projects?cursor={next_cursor}` |
@@ -58,7 +59,7 @@ preflight answers `204`).
 
 | Param | Meaning |
 |---|---|
-| `sort` | `newest` (default: block height descending, then name), `votes` (upvote count descending), `name`. Nothing else: any other value is a `400` |
+| `sort` | `newest` (default: block height descending, then name), `votes` (upvote count descending), `comments` (visible comment count descending), `name`. The site's own names are accepted too: `upvoted` means `votes` and `discussed` means `comments`. Any other value is a `400` |
 | `track` | Exact track slug, e.g. `agents`, `defi`, `security`, `privacy`, `business`, `social`, `games`. An unknown slug returns an empty list, not an error |
 | `q` | Substring match on `name` and `description`, ignoring case and accents |
 | `limit` | 1–100, default 50. Anything outside that is a `400` |
@@ -96,6 +97,7 @@ Returns `{ items: ProjectSummary[], next_cursor: string | null, meta }`.
       "block_height": 223606742,
       "block_timestamp": "1794135497728714191",
       "votes": 0,
+      "comments": 0,
       "url": "https://nearhunt.xyz/p/21996773-48fa-43e9-aedc-684fdd2e4425"
     }
   ],
@@ -105,6 +107,7 @@ Returns `{ items: ProjectSummary[], next_cursor: string | null, meta }`.
     "fetched_at": "2026-11-08T17:02:11.000Z",
     "stale": false,
     "votes_available": true,
+    "comments_available": true,
     "source": { "account": "nearhunt.near", "prefix": "project/", "network": "mainnet" }
   }
 }
@@ -113,7 +116,7 @@ Returns `{ items: ProjectSummary[], next_cursor: string | null, meta }`.
 Every `meta` object is informational: read what you need and ignore the rest. The record
 fields come straight from the chain (the example is the live record for Veto, with the
 description shortened here). The API adds `submission_id`, `key`, `account`, `block_height`,
-`block_timestamp` (nanoseconds, as a decimal string), `votes` and `url`.
+`block_timestamp` (nanoseconds, as a decimal string), `votes`, `comments` (list only) and `url`.
 
 - **`block_timestamp` is a string.** Nanosecond timestamps are larger than 2^53, so a JSON number
   would be rounded by most parsers. The API sends the exact digits as a string; parse it with a
@@ -121,6 +124,9 @@ description shortened here). The API adds `submission_id`, `key`, `account`, `bl
   10^6 for milliseconds. To order records, `block_height` is still the simpler key.
 - `votes` is `null` when the vote read failed. That means "unknown", not zero. In that case
   `meta.votes_available` is `false` and `sort=votes` falls back to newest first.
+- `comments` is the number of visible comments, on the list endpoint only. It is `null` when the
+  comment read failed ("unknown", not zero); then `meta.comments_available` is `false` and
+  `sort=comments` falls back to newest first.
 - `meta.total` is the number of projects matching your filters.
 - `meta.stale: true` means the indexer did not answer and you are reading the server's last good
   copy; `meta.fetched_at` says when it was read.

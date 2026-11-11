@@ -28,7 +28,7 @@ Errors: `{ "error": "<code>", "message": "<text>" }` with codes `not_found` (404
 | `GET /api/projects/{id}/votes?cursor=&limit=` | `{items: [{account_id, block_height}], next_cursor, meta}` latest vote first |
 | `GET /api/projects/{id}/discussion?cursor=&limit=` | `{items: Comment[], next_cursor, meta: {total, source, policy_url}}`, oldest first and flat (`reply_to` links a reply) |
 
-`sort`: `newest` (default; block height desc, then name), `votes` (count desc), `name`.
+`sort`: `newest` (default; block height desc, then name), `votes` (count desc), `comments` (visible comment count desc; NH-118), `name`. `upvoted` and `discussed`, the directory's URL names, are accepted as `votes` and `comments`.
 `track`: exact track slug. `q`: case-insensitive substring on name and description.
 
 `ProjectSummary` = the `ListingItem` fields (record fields + `submission_id`, `key`, `account`,
@@ -36,7 +36,7 @@ Errors: `{ "error": "<code>", "message": "<text>" }` with codes `not_found` (404
 `url` (`https://nearhunt.xyz/p/{submission_id}`). `Project` = `ProjectSummary` plus
 `record_url` (the KV single-key URL `https://kv.main.fastnear.com/v0/latest/nearhunt.near/nearhunt.near/project/{id}`).
 
-`meta` on `/api/projects`: `{ total, fetched_at, stale, votes_available, source: { account: "nearhunt.near", prefix: "project/", network: "mainnet" } }`.
+`meta` on `/api/projects`: `{ total, fetched_at, stale, votes_available, comments_available, source: { account: "nearhunt.near", prefix: "project/", network: "mainnet" } }`.
 
 ## Public files
 
@@ -45,7 +45,7 @@ Errors: `{ "error": "<code>", "message": "<text>" }` with codes `not_found` (404
 
 ## As built (NH-60, `d2ff086`): choices the contract left open
 
-- `sort` is `newest | votes | name`; there is no `discussed`. Any other value → 400.
+- `sort` is `newest | votes | comments | name`, plus the aliases `upvoted` and `discussed`. Any other value → 400. (As first built there was no comments sort; NH-118 added it on 11 Nov, with `comments` on each list item and `meta.comments_available`. A failed comment read gives `comments: null` and newest order.)
 - An unknown `track` → empty list, not an error. `q` ignores case and accents.
 - Vote read failure: `/api/projects` and `/{id}` give `votes: null` and `meta.votes_available: false`
   (`sort=votes` falls back to newest); `/votes` answers 503.
