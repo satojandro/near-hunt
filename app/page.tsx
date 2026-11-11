@@ -9,6 +9,7 @@ import { cardCommentCount, directoryView, formatFetchedUtc, type SearchParamsRec
 import { trackLabel } from '@/lib/tracks.mjs';
 import Sidebar from '@/app/components/sidebar/Sidebar';
 import SearchBox from '@/app/components/directory/SearchBox';
+import Link from 'next/link';
 import ProjectCard from '@/app/components/directory/ProjectCard';
 import { SortTabs, TrackChips } from '@/app/components/directory/DirectoryControls';
 import StaleBanner from '@/app/components/states/StaleBanner';
@@ -64,7 +65,7 @@ async function Directory({ searchParams }: { searchParams: Promise<SearchParamsR
   // NH-44/NH-43: comment counts from the `comment/` rows on nearhunt.near, for every live project.
   const discussion = await getCommentCounts(items.map((p) => p.submission_id));
 
-  const { state, total, results, chips } = directoryView(items, params, votes, discussion.counts);
+  const { state, total, results, visible, more, chips } = directoryView(items, params, votes, discussion.counts);
   const fetched = formatFetchedUtc(fetched_at);
   const noVotesYet = state.sort === 'upvoted' && results.every((p) => !votes[p.submission_id]);
   const noCommentsYet = state.sort === 'discussed' && results.every((p) => !discussion.counts[p.submission_id]);
@@ -121,9 +122,11 @@ async function Directory({ searchParams }: { searchParams: Promise<SearchParamsR
       <main className="container dir-main">
         <div className="dir-list-col">
           <p className="dir-status" aria-live="polite">
-            {results.length === total
+            {visible.length === total
               ? `Showing all ${total} projects`
-              : `Showing ${results.length} of ${total} projects`}
+              : more
+                ? `Showing ${visible.length} of ${results.length} projects`
+                : `Showing ${results.length} of ${total} projects`}
             {state.track ? ` in ${trackLabel(state.track)}` : ''}
             {state.q ? ` matching “${state.q}”` : ''}
             {!tally.available
@@ -136,7 +139,7 @@ async function Directory({ searchParams }: { searchParams: Promise<SearchParamsR
 
           {results.length > 0 ? (
             <ol className="dir-list">
-              {results.map((item, i) => (
+              {visible.map((item, i) => (
                 <ProjectCard
                   key={item.submission_id}
                   item={item}
@@ -149,6 +152,16 @@ async function Directory({ searchParams }: { searchParams: Promise<SearchParamsR
           ) : (
             <EmptyResults state={state} />
           )}
+          {/* NH-115: the list grows a page at a time. A plain link, so it works without JavaScript
+              and the URL can be shared; `scroll={false}` keeps the reader where they are. */}
+          {more ? (
+            <p className="dir-more">
+              <Link href={more.href} className="dir-more-link" scroll={false}>
+                Show {more.count} more
+              </Link>
+              <span className="dir-more-note">{more.remaining} not shown</span>
+            </p>
+          ) : null}
         </div>
 
         <aside className="dir-aside">

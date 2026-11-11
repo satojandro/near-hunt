@@ -110,9 +110,25 @@ html[data-theme="darkroom"] .dir-eyebrow { font-weight: 700; }
 .dir-card-link:focus-visible { outline: none; }
 /* Stretch the name link over the whole card so the card is one target. */
 .dir-card-link::after { content: ''; position: absolute; inset: 0; border-radius: var(--radius-card); }
+/* NH-115: two lines of the builder's description. The stretched name link still covers it. */
+.dir-card-desc {
+  margin: 0; font-size: 14px; line-height: 1.45; color: var(--text-muted); overflow-wrap: anywhere;
+  display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-clamp: 2; overflow: hidden;
+}
 .dir-card-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; font-size: 13px; color: var(--text-muted); }
 .dir-pill { border-radius: var(--radius-sm); padding: 2px 8px; }
 .dir-demo { overflow-wrap: anywhere; }
+
+/* NH-115: "Show 50 more" under the list. */
+.dir-more { margin: 14px 0 0; display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+.dir-more-link {
+  display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 18px;
+  border: 1px solid var(--border-strong); border-radius: 12px; background: var(--surface);
+  color: var(--text); font-weight: 600; text-decoration: none;
+}
+.dir-more-link:hover { border-color: var(--text-muted); }
+.dir-more-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.dir-more-note { font-size: 13px; color: var(--text-muted); }
 
 /* Upvote box (UpvoteButton variant="card"): sits above the stretched card link so it gets the click. */
 .dir-upvote {

@@ -9,6 +9,7 @@ import ds from '@/app/components/discussion/discussion.module.css';
 
 /**
  * One row of the directory (mockup board 1). The whole card is a link to the project page.
+ * The description (NH-115) is the record's own text, shown as plain text and clamped to two lines.
  * `comments` (NH-43) is undefined when the count is unavailable: nothing is shown then.
  */
 export default function ProjectCard({ item, rank, votes, comments }: { item: ListingItem; rank: number; votes: number; comments?: number }) {
@@ -24,6 +25,8 @@ export default function ProjectCard({ item, rank, votes, comments }: { item: Lis
         <Link href={`/p/${encodeURIComponent(item.submission_id)}`} className="dir-card-link">
           <span className="visually-hidden">{rank}. </span>{item.name}
         </Link>
+        {/* NH-115: the builder's own words, cut to two lines by CSS. Nothing when there are none. */}
+        {item.description ? <p className="dir-card-desc">{item.description}</p> : null}
         <div className="dir-card-meta">
           <span className="visually-hidden">Tracks:</span>
           {item.tracks.map((t) => (

@@ -2,7 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import {
   normalizeText, parseParams, searchItems, filterByTrack, sortItems, trackChips, buildHref,
-  hostOf, formatFetchedUtc, directoryView, cardCommentCount, DEFAULT_SORT,
+  hostOf, formatFetchedUtc, directoryView, cardCommentCount, DEFAULT_SORT, PAGE_SIZE, parseShow,
 } from '../lib/directory.mjs';
 
 const item = (id, name, tracks, block_height, extra = {}) => ({
@@ -61,10 +61,10 @@ test('sortItems does not mutate its input', () => {
 
 test('parseParams applies defaults and rejects unknown values', () => {
   assert.deepEqual(parseParams({}), { q: '', track: null, sort: DEFAULT_SORT });
-  assert.equal(DEFAULT_SORT, 'newest');
+  assert.equal(DEFAULT_SORT, 'upvoted');
   assert.deepEqual(parseParams({ q: '  a   b ', track: 'defi', sort: 'upvoted' }, ['defi']), { q: 'a b', track: 'defi', sort: 'upvoted' });
-  assert.deepEqual(parseParams({ track: 'nope', sort: 'loudest' }, ['defi']), { q: '', track: null, sort: 'newest' });
-  assert.deepEqual(parseParams({ q: ['x', 'y'], track: 'all' }), { q: 'x', track: null, sort: 'newest' });
+  assert.deepEqual(parseParams({ track: 'nope', sort: 'loudest' }, ['defi']), { q: '', track: null, sort: 'upvoted' });
+  assert.deepEqual(parseParams({ q: ['x', 'y'], track: 'all' }), { q: 'x', track: null, sort: 'upvoted' });
 });
 
 test('trackChips: counts follow the search, order follows the feed, active kept', () => {
@@ -81,11 +81,11 @@ test('trackChips: counts follow the search, order follows the feed, active kept'
 });
 
 test('buildHref omits defaults and applies overrides', () => {
-  const s = { q: 'veto', track: 'defi', sort: 'newest' };
+  const s = { q: 'veto', track: 'defi', sort: 'upvoted' };
   assert.equal(buildHref(s), '/?q=veto&track=defi');
-  assert.equal(buildHref(s, { sort: 'upvoted' }), '/?q=veto&track=defi&sort=upvoted');
+  assert.equal(buildHref(s, { sort: 'newest' }), '/?q=veto&track=defi&sort=newest');
   assert.equal(buildHref(s, { q: '' , track: null }), '/');
-  assert.equal(buildHref({ q: 'a b&c', track: null, sort: 'newest' }), '/?q=a+b%26c');
+  assert.equal(buildHref({ q: 'a b&c', track: null, sort: 'upvoted' }), '/?q=a+b%26c');
 });
 
 test('hostOf strips www and rejects non-http URLs', () => {
@@ -126,4 +126,47 @@ test('cardCommentCount: 0 is data when the read worked, nothing when it did not'
   assert.equal(cardCommentCount(null, 'b'), 0);
   assert.equal(cardCommentCount({ a: 2 }, 'a', false), undefined);
   assert.equal(cardCommentCount({ a: Number.NaN }, 'a'), 0);
+});
+
+// NH-115: the list is rendered a page at a time.
+const MANY = Array.from({ length: 120 }, (_, i) => ({
+  submission_id: `p${String(i).padStart(3, '0')}`, name: `Project ${String(i).padStart(3, '0')}`,
+  tracks: [i % 2 ? 'defi' : 'open'], block_height: 1000 - i, description: null, demo_url: null,
+}));
+
+test('parseShow: whole pages, at least one, junk is one page', () => {
+  assert.equal(PAGE_SIZE, 50);
+  assert.equal(parseShow({}), 50);
+  assert.equal(parseShow({ show: '100' }), 100);
+  assert.equal(parseShow({ show: '51' }), 100);
+  assert.equal(parseShow({ show: '0' }), 50);
+  assert.equal(parseShow({ show: '-5' }), 50);
+  assert.equal(parseShow({ show: 'all' }), 50);
+  assert.equal(parseShow({ show: ['150', '50'] }), 150);
+});
+
+test('directoryView: first page, then "more" links that grow the list to the end', () => {
+  const v1 = directoryView(MANY, {});
+  assert.equal(v1.results.length, 120);
+  assert.equal(v1.visible.length, 50);
+  assert.deepEqual(v1.more, { count: 50, remaining: 70, href: '/?show=100' });
+
+  const v2 = directoryView(MANY, { show: '100' });
+  assert.equal(v2.visible.length, 100);
+  assert.deepEqual(v2.more, { count: 20, remaining: 20, href: '/?show=150' });
+
+  const v3 = directoryView(MANY, { show: '150' });
+  assert.equal(v3.visible.length, 120);
+  assert.equal(v3.more, null);
+  // The visible cards are the head of the sorted results, so ranks continue across pages.
+  assert.deepEqual(v2.visible, v2.results.slice(0, 100));
+});
+
+test('"more" keeps the search, track and sort; changing any of them drops show', () => {
+  const v = directoryView(MANY, { track: 'defi', sort: 'newest' });
+  assert.equal(v.results.length, 60);
+  assert.equal(v.more.href, '/?track=defi&sort=newest&show=100');
+  assert.equal(buildHref(v.state, { sort: 'discussed' }), '/?track=defi&sort=discussed');
+  assert.equal(buildHref({ q: '', track: null, sort: 'upvoted' }), '/');
+  assert.equal(buildHref({ q: '', track: null, sort: 'newest' }), '/?sort=newest');
 });
