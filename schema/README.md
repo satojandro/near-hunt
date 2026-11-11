@@ -103,6 +103,20 @@ fields they do not recognise — that is how this schema grows without breaking 
 
 ## Other keys and conventions
 
+### Maker links — `maker/{submission_id}` in `nearhunt.near`
+
+| | |
+|---|---|
+| Written by | a project contact, from their own account, after a GitHub check on nearhunt.xyz |
+| Value | `{ "code": "<32 hex>" }` = linked · `null` = withdrawn |
+| Account | the row's `predecessor_id` (not part of the key) |
+
+**A `maker/` row is not proof on its own**: anyone can write one for any project. The code is a
+one-time value NEAR Hunt issued to a browser that had just shown, through GitHub sign-in, control
+of the project's repository; which codes were issued, and for which GitHub account, is held by
+NEAR Hunt and is not on chain. Readers outside NEAR Hunt can see that an account made the
+statement, not that it was checked. Rules: `lib/claim-link.mjs`.
+
 ### Upvotes — `vote/{submission_id}` in `nearhunt.near`
 
 | | |

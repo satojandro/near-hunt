@@ -3,7 +3,9 @@
 // the others keep the correction route (NH-107), which is also how a repository gets added.
 import { correctionUrl } from '@/lib/links.mjs';
 import { claimableRepo, outcomeMessage } from '@/lib/claims.mjs';
-import { claimsConfigured, getClaims } from '@/lib/claims';
+import Link from 'next/link';
+import { claimsConfigured, getPublicClaims } from '@/lib/claims';
+import LinkNearAccount from './LinkNearAccount';
 import type { ListingItem } from '@/lib/listing.mjs';
 import ExternalLink from './ExternalLink';
 import p from './project.module.css';
@@ -22,7 +24,7 @@ function ClaimForm({ id, action, label, className }: { id: string; action: 'clai
 
 export default async function ClaimCard({ project, outcome }: { project: ListingItem; outcome?: string }) {
   const repo = claimableRepo(project);
-  const { claims } = claimsConfigured ? await getClaims(project.submission_id) : { claims: [] };
+  const { claims } = claimsConfigured ? await getPublicClaims(project.submission_id) : { claims: [] };
   const message = outcomeMessage(outcome);
   const correction = (
     <ExternalLink href={correctionUrl({ submissionId: project.submission_id, name: project.name })}>
@@ -46,11 +48,18 @@ export default async function ClaimCard({ project, outcome }: { project: Listing
                   {c.basis === 'owner' ? 'owns' : 'can push to'} the repository, checked with GitHub on{' '}
                   <time dateTime={c.verified_at}>{c.verified_at.slice(0, 10)}</time>
                 </span>
+                {c.near_account ? (
+                  <span className={s.makerNote}>
+                    NEAR account <Link href={`/u/${c.near_account}`}>{c.near_account}</Link>, linked by a row
+                    that account signed
+                  </span>
+                ) : null}
               </li>
             ))}
           </ul>
         </>
       ) : null}
+      {claimsConfigured ? <LinkNearAccount projectId={project.submission_id} /> : null}
 
       {claimsConfigured && repo ? (
         <>

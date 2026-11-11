@@ -36,3 +36,7 @@
   cursor: pointer;
 }
 .claimRemove:hover { color: var(--text); }
+.linkStep { margin: 0 0 16px; padding: 12px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--border); }
+.linkTitle { margin: 0 0 8px; font-size: 16px; font-weight: 600; }
+.linkStep .makerNote:empty { display: none; }
+.claimButton:disabled { opacity: 0.6; cursor: default; }

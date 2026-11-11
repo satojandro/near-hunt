@@ -107,3 +107,68 @@ test('only known outcomes produce a message', () => {
   assert.equal(outcomeMessage('constructor'), null);
   assert.equal(outcomeMessage(undefined), null);
 });
+
+// --- Linking a NEAR account (lib/claim-link.mjs) ---------------------------------------------
+import { isNearAccountId, linkedAccount, makerKey, makerTransaction, rowLinks, sendMakerRow } from '../lib/claim-link.mjs';
+
+const CODE = 'ab'.repeat(16);
+const row = (o = {}) => ({ key: `maker/${ID}`, predecessor_id: 'alice.near', value: { code: CODE }, ...o });
+
+test('the maker write is one zero-deposit call to the vote account', () => {
+  const tx = makerTransaction({ account: 'nearhunt.near', submissionId: ID, code: CODE });
+  assert.equal(tx.receiverId, 'nearhunt.near');
+  assert.deepEqual(tx.actions[0].params.args, { [`maker/${ID}`]: { code: CODE } });
+  assert.equal(tx.actions[0].params.methodName, '__fastdata_kv');
+  assert.equal(tx.actions[0].params.deposit, '0');
+  assert.throws(() => makerTransaction({ account: 'nearhunt.near', submissionId: ID, code: 'nope' }));
+  assert.throws(() => makerKey('a/b'));
+});
+
+test('a row links only its own writer, this project and the issued code', () => {
+  const q = { submissionId: ID, account: 'alice.near', code: CODE };
+  assert.equal(rowLinks([row()], q), true);
+  assert.equal(rowLinks([row({ predecessor_id: 'mallory.near' })], q), false, 'someone else copied the code');
+  assert.equal(rowLinks([row({ value: { code: 'cd'.repeat(16) } })], q), false, 'a code the server did not issue');
+  assert.equal(rowLinks([row({ value: { code: CODE, account: 'alice.near' }, predecessor_id: 'mallory.near' })], q), false, 'an account id inside the value is not the writer');
+  assert.equal(rowLinks([row({ key: 'maker/00000000-other' })], q), false, 'another project');
+  assert.equal(rowLinks([row({ value: null })], q), false, 'withdrawn');
+  assert.equal(rowLinks([row({ value: [CODE] })], q), false);
+  assert.equal(rowLinks([], q), false);
+  assert.equal(rowLinks(null, q), false);
+  assert.equal(rowLinks([row()], { ...q, account: 'Not An Account' }), false);
+});
+
+test('a stored link is shown only while the chain still agrees', () => {
+  const claim = { near_account: 'alice.near', link_code: CODE };
+  assert.equal(linkedAccount(claim, [row()], ID), 'alice.near');
+  assert.equal(linkedAccount(claim, [row({ value: null })], ID), null);
+  assert.equal(linkedAccount(claim, [], ID), null);
+  assert.equal(linkedAccount({ near_account: 'alice.near' }, [row()], ID), null);
+  assert.equal(linkedAccount({}, [row()], ID), null);
+});
+
+test('stored claims keep the NEAR link only as a valid pair', () => {
+  const base = { github_id: 42, github_login: 'octo-maker', basis: 'owner', verified_at: '2026-11-11T12:00:00.000Z' };
+  const parse = (extra) => parseClaims({ result: ['42', JSON.stringify({ ...base, ...extra })] })[0];
+  assert.equal(parse({ near_account: 'alice.near', link_code: CODE }).near_account, 'alice.near');
+  assert.equal('near_account' in parse({ near_account: 'alice.near' }), false);
+  assert.equal('near_account' in parse({ near_account: '<img>', link_code: CODE }), false);
+});
+
+test('account ids', () => {
+  for (const ok of ['alice.near', 'a-b_c.testnet', '0'.repeat(64)]) assert.equal(isNearAccountId(ok), true, ok);
+  for (const bad of ['', 'A.near', 'a..near', '.near', 'a b', 'x'.repeat(65), null]) assert.equal(isNearAccountId(bad), false, String(bad));
+});
+
+test('sending falls back to the wallet once when the login key is gone, and never resends otherwise', async () => {
+  const tx = makerTransaction({ account: 'nearhunt.near', submissionId: ID, code: CODE });
+  let calls = 0;
+  const failing = async () => { calls++; throw new Error('AccessKeyDoesNotExist'); };
+  const wallet = async () => { calls++; return { transaction: { hash: 'abc' }, status: { Failure: { ActionError: { kind: { FunctionCallError: { CompilationError: { CodeDoesNotExist: {} } } } } } } }; };
+  const sent = await sendMakerRow({ send: failing, fallbackSend: () => wallet, transaction: tx });
+  assert.equal(sent.kind, 'written');
+  assert.equal(calls, 2);
+  const declined = await sendMakerRow({ send: async () => { throw new Error('User rejected the request'); }, fallbackSend: () => wallet, transaction: tx });
+  assert.equal(declined.kind, 'rejected');
+  assert.equal(calls, 2);
+});

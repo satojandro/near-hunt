@@ -9,6 +9,9 @@ export interface Claim {
   basis: ClaimBasis;
   /** ISO 8601, server clock. */
   verified_at: string;
+  /** Confirmed NEAR account and the code its `maker/` row must carry (lib/claim-link.mjs). */
+  near_account?: string;
+  link_code?: string;
 }
 
 export declare const CLAIM_COOKIE: 'nh_claim';

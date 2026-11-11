@@ -1,7 +1,8 @@
 import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
 import { getProject } from '@/lib/projects';
-import { claimsConfigured, githubIdentity, removeClaim, saveClaim } from '@/lib/claims';
+import { claimsConfigured, githubIdentity, issueLink, removeClaim, saveClaim } from '@/lib/claims';
+import { LINK_COOKIE, LINK_TTL_SECONDS } from '@/lib/claim-link.mjs';
 import { CLAIM_COOKIE, claimRecord, claimableRepo, decodeState, ownershipBasis, sameState } from '@/lib/claims.mjs';
 
 /**
@@ -52,13 +53,25 @@ export async function GET(request: NextRequest) {
       const id = (user as { id?: unknown } | null)?.id;
       if (!Number.isInteger(id)) return back('error');
       await removeClaim(project.submission_id, id as number);
-      return back('removed');
+      const res = back('removed');
+      res.cookies.set(LINK_COOKIE, '', { path: '/api/claim', maxAge: 0 });
+      return res;
     }
 
     const basis = ownershipBasis(user, repo);
     if (!basis) return back('not_owner');
-    await saveClaim(project.submission_id, claimRecord({ user, repo, basis }));
-    return back('verified');
+    const claim = claimRecord({ user, repo, basis });
+    await saveClaim(project.submission_id, claim);
+    // Step 2 of the NEAR link (lib/claim-link.mjs): this browser may now link one NEAR account.
+    const res = back('verified');
+    res.cookies.set(LINK_COOKIE, await issueLink(project.submission_id, claim), {
+      httpOnly: true,
+      secure: request.nextUrl.protocol === 'https:',
+      sameSite: 'strict',
+      path: '/api/claim',
+      maxAge: LINK_TTL_SECONDS,
+    });
+    return res;
   } catch (err) {
     console.error('[claims] callback failed:', err instanceof Error ? err.message : err);
     return back('error');
