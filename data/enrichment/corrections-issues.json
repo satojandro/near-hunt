@@ -1,0 +1,108 @@
+{
+  "generated_at": "2026-11-11T23:08:42.189Z",
+  "source": "builder corrections, GitHub issues #17 #13 #11",
+  "results": [
+    {
+      "submission_id": "8ba03120-be2b-4be8-8474-b9e3f0afd444",
+      "status": "ok",
+      "repository_url": "https://github.com/redaicodes/loca",
+      "repository_source": "https://github.com/satojandro/near-hunt/issues/17",
+      "repository_basis": [
+        "builder"
+      ],
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-11T23:08:42.189Z",
+      "enrichment": {
+        "method": "builder-issue",
+        "sources": [
+          "https://github.com/satojandro/near-hunt/issues/17",
+          "https://github.com/redaicodes/loca"
+        ],
+        "retrieved_at": "2026-11-11T23:08:42.189Z"
+      }
+    },
+    {
+      "submission_id": "fe3ad6ca-dc32-486e-a00f-87af1cc1f8d7",
+      "status": "ok",
+      "repository_url": "https://github.com/Ankith-m1006/quorumguard",
+      "repository_source": "https://github.com/satojandro/near-hunt/issues/13",
+      "repository_basis": [
+        "builder"
+      ],
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-11T23:08:42.189Z",
+      "links": [
+        {
+          "url": "https://quorumguard-1037019152152.asia-south1.run.app",
+          "kind": "demo",
+          "kind_basis": "builder",
+          "check": {
+            "verdict": "live",
+            "http_status": 200,
+            "checked_at": "2026-11-11T23:08:42.189Z"
+          }
+        },
+        {
+          "url": "https://youtu.be/W5d7P6O3U_w",
+          "kind": "video",
+          "kind_basis": "host",
+          "check": {
+            "verdict": "live",
+            "http_status": 200,
+            "checked_at": "2026-11-11T23:08:42.189Z"
+          }
+        }
+      ],
+      "enrichment": {
+        "method": "builder-issue",
+        "sources": [
+          "https://github.com/satojandro/near-hunt/issues/13",
+          "https://github.com/Ankith-m1006/quorumguard"
+        ],
+        "retrieved_at": "2026-11-11T23:08:42.189Z"
+      }
+    },
+    {
+      "submission_id": "c1c7b574-850a-4f47-9af9-22a49339df07",
+      "status": "ok",
+      "repository_url": "https://github.com/0xzahra/Grind-district",
+      "repository_source": "https://github.com/satojandro/near-hunt/issues/11",
+      "repository_basis": [
+        "builder"
+      ],
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-11T23:08:42.189Z",
+      "links": [
+        {
+          "url": "https://grinddistrict.vercel.app",
+          "kind": "website",
+          "kind_basis": "default",
+          "source_post_id": "2119301193100837169",
+          "check": {
+            "verdict": "live",
+            "http_status": 200,
+            "checked_at": "2026-11-09T01:32:34.117Z"
+          }
+        },
+        {
+          "url": "https://grinddistrict.app/",
+          "kind": "website",
+          "kind_basis": "builder",
+          "check": {
+            "verdict": "live",
+            "http_status": 200,
+            "checked_at": "2026-11-11T23:08:42.189Z"
+          }
+        }
+      ],
+      "enrichment": {
+        "method": "builder-issue",
+        "sources": [
+          "https://github.com/satojandro/near-hunt/issues/11",
+          "https://github.com/0xzahra/Grind-district"
+        ],
+        "retrieved_at": "2026-11-11T23:08:42.189Z"
+      }
+    }
+  ]
+}

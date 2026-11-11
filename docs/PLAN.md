@@ -345,6 +345,26 @@ near account list-keys nearhunt.near network-config mainnet now   # 1 key, full 
     normalising the scheme is a one-off write with its own approval, and rejecting it in the planner
     is an owner decision. `npm test` 354/354.
 
+22. **Builder corrections from the issue queue, 12 Nov.** Three `Correction:` issues were open
+    against the listing — `#17` Loca, `#13` QuorumGuard, `#11` Grind District — all asking for a
+    repository that existed but had never been captured; two also asked for extra links. Applied as
+    `node scripts/import.mjs --enrichment data/enrichment/corrections-issues.json --updates-only
+    --refresh-enriched`: the file is built from the issues, and every URL in it answered before the
+    write (`git ls-remote` for the three repositories, `probeLink` for the app, the video and the new
+    domain). `--updates-only` is what keeps this a corrections batch — the feed had 8 new submissions,
+    none of them written here. `--refresh-enriched` was needed only so Grind District's existing
+    `links` array could gain `grinddistrict.app` while keeping the `vercel.app` one; provenance is
+    `enrichment.method: builder-issue` with the issue and the repository as sources.
+
+    Fields: Loca +`repository_url`; QuorumGuard +`repository_url`, +live app (demo), +2-minute video;
+    Grind District +`repository_url`, +`grinddistrict.app` (website). One transaction,
+    `AUBVamvbtahA9QaC9mrpaP3WQTCaEUYuisj9R77Bqsv` (3 keys, 4765 bytes), signed with the scoped
+    `ed25519:2WMyE…` FunctionCall key on `__fastdata_kv` — **the first import that needed no
+    FullAccess and no `--accept-full-access`**. `verified: 3/3 written keys read back`; the three
+    pages were then read through `nearhunt.xyz` and show the new links. `npm run validate:schema`
+    617/619 (the same two `http://` `demo_url` feed defects), `npm test` 361/361. All three issues
+    answered and closed.
+
 ## Decisions taken
 
 | Decision | Choice | Why |
