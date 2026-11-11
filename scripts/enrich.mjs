@@ -204,7 +204,11 @@ async function main() {
       continue;
     }
     const captured = threads[project.submission_id];
-    const hasCaptured = Array.isArray(captured) ? captured.length > 0 : (captured?.posts?.length ?? 0) > 0;
+    // A capture with no reply can still carry the submitted post's own links, which is the only
+    // place a repository often appears (178 of 401 captures on 12 Nov 2026 had no author reply).
+    const hasCaptured = Array.isArray(captured)
+      ? captured.length > 0
+      : (captured?.posts?.length ?? 0) > 0 || (captured?.links?.length ?? 0) > 0;
     const merged = hasCaptured ? mergeThread(chain, captured) : chain;
     results.push(
       buildEnrichment(project, { chain: merged, retrieved_at: new Date().toISOString() }),
