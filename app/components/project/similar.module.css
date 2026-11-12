@@ -15,3 +15,28 @@
 .claimText { margin: 0 0 12px; font-size: 15px; color: var(--text); }
 .claimLink { display: inline-flex; align-items: center; min-height: 44px; font-weight: 600; color: var(--accent); }
 .claimLink:hover { color: var(--accent-hover); }
+
+/* NH-119: GitHub-verified claims. */
+.claimNotice {
+  margin: 0 0 12px; padding: 10px 12px; border-radius: var(--radius); background: var(--surface);
+  border: 1px solid var(--border); font-size: 15px; font-weight: 600; color: var(--text);
+}
+.makers { list-style: none; margin: 6px 0 12px; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.makers a { font-weight: 600; }
+.makerNote { display: block; font-size: 13px; color: var(--text-muted); }
+.claimButton {
+  display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; margin: 0 0 12px;
+  border: 0; border-radius: var(--radius); background: var(--btn-bg); color: var(--btn-text);
+  font: inherit; font-weight: 600; cursor: pointer;
+}
+.claimButton:hover { background: var(--btn-bg-hover); }
+.claimRemove {
+  display: inline-flex; align-items: center; min-height: 44px; padding: 0; margin: 0 0 4px; border: 0;
+  background: none; color: var(--text-muted); font: inherit; font-size: 14px; text-decoration: underline;
+  cursor: pointer;
+}
+.claimRemove:hover { color: var(--text); }
+.linkStep { margin: 0 0 16px; padding: 12px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--border); }
+.linkTitle { margin: 0 0 8px; font-size: 16px; font-weight: 600; }
+.linkStep .makerNote:empty { display: none; }
+.claimButton:disabled { opacity: 0.6; cursor: default; }

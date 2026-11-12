@@ -1,0 +1,36 @@
+export type ClaimAction = 'claim' | 'remove';
+export type ClaimBasis = 'owner' | 'collaborator';
+
+export interface Claim {
+  github_id: number;
+  github_login: string;
+  /** `owner/repo` as GitHub named it at verification time. */
+  repository: string | null;
+  basis: ClaimBasis;
+  /** ISO 8601, server clock. */
+  verified_at: string;
+  /** Confirmed NEAR account and the code its `maker/` row must carry (lib/claim-link.mjs). */
+  near_account?: string;
+  link_code?: string;
+}
+
+export declare const CLAIM_COOKIE: 'nh_claim';
+export declare const CLAIM_STATE_TTL_SECONDS: number;
+export declare const CLAIM_ACTIONS: readonly ClaimAction[];
+export declare const CLAIM_OUTCOMES: Readonly<Record<string, string>>;
+
+export declare function claimKey(submissionId: string): string;
+export declare function claimableRepo(project: { repository_url?: string | null } | null | undefined): string | null;
+export declare function encodeState(s: { state: string; action: ClaimAction; id: string; verifier: string }): string;
+export declare function decodeState(cookie: unknown): { state: string; action: ClaimAction; id: string; verifier: string } | null;
+export declare function sameState(a: unknown, b: unknown): boolean;
+export declare function authorizeUrl(o: { base?: string; clientId: string; redirectUri: string; state: string; verifier: string }): string;
+export declare function ownershipBasis(user: unknown, repo: unknown): ClaimBasis | null;
+export declare function claimRecord(o: { user: unknown; repo: unknown; basis: ClaimBasis | null; now?: Date }): Claim;
+export declare function parseClaims(json: unknown): Claim[];
+export declare function outcomeMessage(code: unknown): string | null;
+export declare const GITHUB_WEB_DEFAULT: string;
+export declare const GITHUB_API_DEFAULT: string;
+export declare function githubHosts(env?: Record<string, string | undefined>): { web: string; api: string };
+export declare function claimRowLabel(claim: Partial<Claim> | null | undefined): string;
+export declare function pkceChallenge(verifier: string): string;

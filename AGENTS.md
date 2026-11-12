@@ -20,8 +20,9 @@ value, but the old value stays in public history forever.
   flags first (dry run). Only after approval: `--execute --yes`. For new submissions and
   enrichment, follow `docs/runbooks/new-submissions.md`.
 - Never write keys outside the prefixes in `docs/PLAN.md`. Today that means `project/` on
-  `nearhunt.near` (importer only) and nothing else from agents. Votes (`vote/`) and comments
-  (`comment/`) on `nearhunt.near` are written by end users from their own accounts, never by an agent.
+  `nearhunt.near` (importer only) and nothing else from agents. Votes (`vote/`), comments
+  (`comment/`) and maker links (`maker/`, NH-119) on `nearhunt.near` are written by end users from
+  their own accounts, never by an agent.
 - Never tombstone (write `null`) a project. Report projects missing from the feed instead.
 - Never post to near.social as `nearhunt.near` unless a ticket in `docs/PLAN.md` says so
   (NH-40) and a human has approved the batch.
@@ -65,6 +66,11 @@ gives the fetch date, the checksum and a one-line drift check.
   never an account id inside the key, the value or the comment text. Only the author can change or
   delete (`null`) their comment, so agents never write `comment/` keys, not even to remove spam.
   NEAR Hunt hides a comment only through its hide list in the repo, which is a reviewed code change.
+
+- A `maker/{submission_id}` row (owner decision, 11 Nov; `docs/PLAN.md` NH-119) proves nothing on
+  its own: anyone can write one. Show a NEAR account as a project contact only through
+  `getPublicClaims` (`lib/claims.ts`), which requires the row's `predecessor_id` and code to match
+  a claim the server confirmed after a GitHub check. Rules: `lib/claim-link.mjs`.
 
 ## 4. Claims need evidence
 

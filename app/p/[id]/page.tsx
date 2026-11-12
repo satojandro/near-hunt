@@ -21,7 +21,7 @@ import StaleBanner from '@/app/components/states/StaleBanner';
 import Discussion from '@/app/components/discussion/Discussion';
 import s from '@/app/components/project/project.module.css';
 
-type Props = { params: Promise<{ id: string }> };
+type Props = { params: Promise<{ id: string }>; searchParams: Promise<{ claim?: string | string[] }> };
 
 // No loading.tsx on purpose: a streamed fallback would commit a 200 before notFound() can set 404.
 // If the KV API is unreachable and there is no copy to serve, getProject throws and ./error.tsx
@@ -46,8 +46,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 /** `/p/{submission_id}` — NH-20 (details), NH-21 (on-chain record), NH-33 (count), NH-22 (voters). */
-export default async function ProjectPage({ params }: Props) {
+export default async function ProjectPage({ params, searchParams }: Props) {
   const { id } = await params;
+  // NH-119: the claim callback returns here with its outcome in `?claim=`.
+  const { claim } = await searchParams;
   const project = await getProject(id);
   if (!project) notFound();
 
@@ -90,7 +92,7 @@ export default async function ProjectPage({ params }: Props) {
           <RecordCard project={project} comments={comments.count} commentsAvailable={comments.available} />
           <UpvotedBy voters={voters} available={votesAvailable} />
           <SimilarProjects project={project} all={allProjects} />
-          <ClaimCard project={project} />
+          <ClaimCard project={project} outcome={typeof claim === 'string' ? claim : undefined} />
         </aside>
       </div>
       {/* NH-71: the same UpvoteButton in a bar pinned to the bottom on phones; hidden on desktop. */}
