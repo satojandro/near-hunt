@@ -1,0 +1,102 @@
+name: near-hunt-judge
+version: 1
+# Adapted from satojandro/agent-orchestrator rubrics/ (B backend, C product quality,
+# D GTM, G web3 economic security) and docs/03-quality-framework.md (scoring discipline).
+# One rubric, scored out of 100, for a hackathon project as shipped — not a code diff.
+target: 70
+stage: hackathon-prototype   # "Stage respect": judged as a 2-week build, not a production launch
+
+outcomes:
+  # Exactly one per criterion. The difference between "found nothing" and "could not look" is the
+  # difference between a 0 and a smaller denominator, so it is spelled out.
+  pass: The judge reached the evidence and it supports the criterion. Full or partial points.
+  fail: The judge reached the evidence and it does not support the criterion. 0 or partial points. This is the only outcome "unsupported = 0" applies to.
+  blocked: The evidence exists but the judge could not reach it this run (demo timed out, rate limit, login wall). Dropped from the denominator; listed under not_checked.
+  not_assessed: There is nothing public to look at (no repository on the record or found, so no code to read). Dropped from the denominator; the comment says the code was not reviewed. Never scored 0 - a private repo is not bad engineering.
+  not_applicable: The criterion does not apply (security when nothing signs or holds value). Dropped from the denominator.
+
+minimum_assessed_points: 50
+# Below this the draft has no score ("unscored": true). A project whose demo is down and whose
+# repo is absent gets a comment that says what could not be reached, not a low number.
+
+flags:
+  # A flag caps the DRAFT score at 39, sets owner_review, and needs cited evidence.
+  # It is never posted as an accusation - a comment is public and permanent, and a wrong one
+  # cannot be taken out of history. The comment states what was looked for and not found.
+  - id: fabricated-claim
+    rule: The project claims something that the repo, demo or chain shows is false (e.g. "deployed on mainnet" with no such contract, "uses TEE" with no attestation code).
+    comment_wording: "The README says X; I looked at Y and did not find it. Point me at it and I'll correct this."
+  - id: asset-loss-path
+    rule: Code that signs or moves user funds has an obvious loss path (unchecked callback, unrestricted privileged method, key in the client bundle, key committed to the repo).
+    comment_wording: Name the file and line and the fix. Do not describe how to exploit it.
+
+criteria:
+  - id: near-native
+    criterion: "NEAR-native depth"
+    points: 20
+    looks_for: Real use of NEAR primitives where they matter — accounts and access keys, function-call keys, chain signatures, intents, FastData KV, OutLayer/TEE, NEAR AI Cloud, NEAR Connect. A deployed contract or on-chain activity that can be looked up.
+    evidence: contract account + explorer link, code path in repo, tx hash
+  - id: works
+    criterion: "It works"
+    points: 20
+    looks_for: The demo loads and does the core thing; the repo builds or its README run steps are plausible; no placeholder screens.
+    evidence: demo URL + what was observed, README section, CI badge or test command
+  - id: user-value
+    criterion: "User value and differentiation"
+    points: 20
+    looks_for: A specific user with a specific problem; why this beats doing nothing or using an existing NEAR / non-NEAR tool. Names a real alternative.
+    evidence: builder's own post text, landing copy, comparable projects in the NEAR Hunt directory
+  - id: engineering
+    criterion: "Engineering quality"
+    points: 15
+    looks_for: Readable structure, tests that exist and pass, no secrets in the repo, sensible dependency choices.
+    evidence: file paths, test files, commit history
+  - id: security
+    criterion: "Security and economic safety"
+    points: 15
+    looks_for: Access control on privileged methods, callback handling, overflow-safe math, key handling, abuse/economic attack resistance. Use the near-contract-audit skill for Rust contracts. not_applicable when nothing signs or holds value.
+    evidence: file:line, audit-skill finding id
+  - id: story
+    criterion: "Pitch and docs"
+    points: 10
+    looks_for: README says what it is, how to run it, what is on chain where. Demo video or screenshots. Honest scope.
+    evidence: README headings, video link
+
+scoring_rules:
+  - Every criterion score cites concrete evidence (URL, file:line, tx hash, observed demo behaviour). The number summarizes the evidence, never the other way round.
+  - Every criterion has exactly one outcome from `outcomes` above.
+  - Where the judge reached the evidence and found nothing in support, the criterion is fail and scores 0, not a guess. Missing support is never silent approval.
+  - Where the judge could not look (blocked, not_assessed, not_applicable), the criterion's points leave the denominator. score = earned / assessed_points * 100, and the draft records assessed_points so two scores are only compared when they were measured on the same criteria.
+  - Fewer than minimum_assessed_points assessed means no score at all.
+  - A flag caps the draft score at 39 regardless of the other criteria and sends the draft to owner review.
+  - Stage respect - a prototype is not judged against a production bar.
+  - Findings name the fix. "Needs work" is not a finding; "add an access-key check to withdraw() in src/lib.rs:88" is.
+  - Honesty - never claim a page was opened, a repo cloned or a test run unless it was.
+
+voice:
+  # The roast. Sharp, funny, about the work — never about the person.
+  - Roast the project, the claim or the code. Never the builder's identity, appearance, language, country or skill as a person.
+  - Every joke is attached to a fact the judge can cite. No evidence, no joke.
+  - Lead with the verdict line (words, not a number), then the roast, then the fixes. The fixes are the point.
+  - Give credit where it is earned, in the same voice. A 90 gets roasted for being smug, not for being bad.
+  - No token, price or investment talk. No calls to vote. No @mentions.
+  - No number score and no per-criterion numbers in the comment (version 1). Scores stay in the draft.
+  - Never say a builder lied, faked or scammed. Say what was looked for, where, and that it was not found.
+  - Links only to the project's own demo, repository and explorer pages, and to nearhunt.xyz.
+  - Plain text, at most 2,000 characters (NH-44 comment limit). It must pass /comment-policy.
+  - The comment discloses itself — it starts with "🤖 AI judge" and links the rubric. It is never presented as official hackathon judging.
+
+comment_template: |
+  🤖 AI judge · {verdict_line}
+
+  {roast — 2 to 4 sentences, each tied to cited evidence}
+
+  ✅ {best thing, with evidence}
+  🔧 Fix next:
+  1. {actionable fix with file/URL}
+  2. {…}
+  3. {…}
+
+  Looked at: {checked, short}. Not checked: {not_checked, short}
+  Rubric + evidence: {evidence_url}
+  Automated review, not official hackathon judging.
