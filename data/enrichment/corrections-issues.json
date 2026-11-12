@@ -1,107 +1,100 @@
 {
-  "generated_at": "2026-11-11T23:08:42.189Z",
-  "source": "builder corrections, GitHub issues #17 #13 #11",
+  "generated_at": "2026-11-12T20:05:19.481482Z",
+  "source": "builder corrections, GitHub issues #27 #26 #25 #24 #23",
   "results": [
     {
-      "submission_id": "8ba03120-be2b-4be8-8474-b9e3f0afd444",
+      "submission_id": "d9eafab3-18e9-4c8f-9676-143d13df9289",
       "status": "ok",
-      "repository_url": "https://github.com/redaicodes/loca",
-      "repository_source": "https://github.com/satojandro/near-hunt/issues/17",
+      "repository_url": "https://github.com/0xdopewilly/emporium-near",
+      "repository_source": "https://github.com/satojandro/near-hunt/issues/27",
       "repository_basis": [
         "builder"
       ],
       "repository_verified": true,
-      "repository_verified_at": "2026-11-11T23:08:42.189Z",
+      "repository_verified_at": "2026-11-12T20:05:19.481482Z",
       "enrichment": {
         "method": "builder-issue",
         "sources": [
-          "https://github.com/satojandro/near-hunt/issues/17",
-          "https://github.com/redaicodes/loca"
+          "https://github.com/satojandro/near-hunt/issues/27",
+          "https://github.com/0xdopewilly/emporium-near"
         ],
-        "retrieved_at": "2026-11-11T23:08:42.189Z"
+        "retrieved_at": "2026-11-12T20:05:19.481482Z"
       }
     },
     {
-      "submission_id": "fe3ad6ca-dc32-486e-a00f-87af1cc1f8d7",
+      "submission_id": "6930cfcc-eed7-405b-9ec1-3eba610d16b2",
       "status": "ok",
-      "repository_url": "https://github.com/Ankith-m1006/quorumguard",
-      "repository_source": "https://github.com/satojandro/near-hunt/issues/13",
+      "repository_url": "https://github.com/0xdopewilly/veto",
+      "repository_source": "https://github.com/satojandro/near-hunt/issues/26",
       "repository_basis": [
         "builder"
       ],
       "repository_verified": true,
-      "repository_verified_at": "2026-11-11T23:08:42.189Z",
-      "links": [
-        {
-          "url": "https://quorumguard-1037019152152.asia-south1.run.app",
-          "kind": "demo",
-          "kind_basis": "builder",
-          "check": {
-            "verdict": "live",
-            "http_status": 200,
-            "checked_at": "2026-11-11T23:08:42.189Z"
-          }
-        },
-        {
-          "url": "https://youtu.be/W5d7P6O3U_w",
-          "kind": "video",
-          "kind_basis": "host",
-          "check": {
-            "verdict": "live",
-            "http_status": 200,
-            "checked_at": "2026-11-11T23:08:42.189Z"
-          }
-        }
-      ],
+      "repository_verified_at": "2026-11-12T20:05:19.481482Z",
       "enrichment": {
         "method": "builder-issue",
         "sources": [
-          "https://github.com/satojandro/near-hunt/issues/13",
-          "https://github.com/Ankith-m1006/quorumguard"
+          "https://github.com/satojandro/near-hunt/issues/26",
+          "https://github.com/0xdopewilly/veto"
         ],
-        "retrieved_at": "2026-11-11T23:08:42.189Z"
+        "retrieved_at": "2026-11-12T20:05:19.481482Z"
       }
     },
     {
-      "submission_id": "c1c7b574-850a-4f47-9af9-22a49339df07",
+      "submission_id": "3a39f44c-033f-4a5e-ad4d-3bc902e5fd35",
       "status": "ok",
-      "repository_url": "https://github.com/0xzahra/Grind-district",
-      "repository_source": "https://github.com/satojandro/near-hunt/issues/11",
+      "repository_url": "https://github.com/obiJohnbosco163/Nearfund",
+      "repository_source": "https://github.com/satojandro/near-hunt/issues/25",
       "repository_basis": [
         "builder"
       ],
       "repository_verified": true,
-      "repository_verified_at": "2026-11-11T23:08:42.189Z",
-      "links": [
-        {
-          "url": "https://grinddistrict.vercel.app",
-          "kind": "website",
-          "kind_basis": "default",
-          "source_post_id": "2119301193100837169",
-          "check": {
-            "verdict": "live",
-            "http_status": 200,
-            "checked_at": "2026-11-09T01:32:34.117Z"
-          }
-        },
-        {
-          "url": "https://grinddistrict.app/",
-          "kind": "website",
-          "kind_basis": "builder",
-          "check": {
-            "verdict": "live",
-            "http_status": 200,
-            "checked_at": "2026-11-11T23:08:42.189Z"
-          }
-        }
-      ],
+      "repository_verified_at": "2026-11-12T20:05:19.481482Z",
       "enrichment": {
         "method": "builder-issue",
         "sources": [
-          "https://github.com/satojandro/near-hunt/issues/11",
-          "https://github.com/0xzahra/Grind-district"
+          "https://github.com/satojandro/near-hunt/issues/25",
+          "https://github.com/obiJohnbosco163/Nearfund"
         ],
-        "retrieved_at": "2026-11-11T23:08:42.189Z"
+        "retrieved_at": "2026-11-12T20:05:19.481482Z"
+      }
+    },
+    {
+      "submission_id": "3b5ef8d3-509b-4b39-8efd-c7bde5ef0f2e",
+      "status": "ok",
+      "repository_url": "https://github.com/obiJohnbosco163/Umbra",
+      "repository_source": "https://github.com/satojandro/near-hunt/issues/24",
+      "repository_basis": [
+        "builder"
+      ],
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-12T20:05:19.481482Z",
+      "enrichment": {
+        "method": "builder-issue",
+        "sources": [
+          "https://github.com/satojandro/near-hunt/issues/24",
+          "https://github.com/obiJohnbosco163/Umbra"
+        ],
+        "retrieved_at": "2026-11-12T20:05:19.481482Z"
+      }
+    },
+    {
+      "submission_id": "81eec9be-7452-4b8f-b57f-c7b654447b96",
+      "status": "ok",
+      "repository_url": "https://github.com/sugoidaowarrior/NearHr",
+      "repository_source": "https://github.com/satojandro/near-hunt/issues/23",
+      "repository_basis": [
+        "builder"
+      ],
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-12T20:05:19.481482Z",
+      "enrichment": {
+        "method": "builder-issue",
+        "sources": [
+          "https://github.com/satojandro/near-hunt/issues/23",
+          "https://github.com/sugoidaowarrior/NearHr"
+        ],
+        "retrieved_at": "2026-11-12T20:05:19.481482Z"
       }
     }
   ]

@@ -436,6 +436,38 @@ near account list-keys nearhunt.near network-config mainnet now   # 1 key, full 
     feed-owned `http://` `demo_url` records batch 22 left (`VIGIL` `1ca01819…`, `IntentFolio`
     `fc122909…`), so this batch introduced no new schema defect.
 
+25. **The five builder corrections from the issue queue, 13 Nov.** `#27` Emporium, `#26` Veto,
+    `#25` Nearfund, `#24` Umbra, `#23` NearHr — every one asking for the same thing: a repository
+    the builder had published, that the feed never carried. Applied as
+    `node scripts/import.mjs --enrichment data/enrichment/corrections-issues.json --updates-only`;
+    no `--refresh-enriched` was needed because `repository_url` was null on all five, and the one
+    record that already had `links` (Umbra) is not touched by a repository correction.
+
+    Each URL was corroborated before the write, not taken from the issue: `git ls-remote` answered
+    for all five, `gh api repos/{owner}/{repo}` returned a non-archived repo whose description names
+    the same project, and the README was read for each — "Emporium, NEAR edition" (agent shop paid
+    in USDC on NEAR), "a NEAR vault where every AI-agent payment needs a second signer that can only
+    say no" (Veto), "a fundraising platform on NEAR" (Nearfund), "Umbra is private social trading
+    with public proof", "HR payroll and crypto invoicing on NEAR" (NearHr). `#27` and `#26` were
+    filed by the repository owner under the same X post the listing already carries; the other three
+    come from GitHub accounts matching the recording X authors (`obiJohnbosco163` ↔ `@Johnbosco_OG`,
+    `sugoidaowarrior` ↔ `@SugoiDaowarrior`).
+
+    Fields: five records gain `repository_url` and nothing else — checked field by field before
+    signing, `description`, `media` (1, 1, 1, 4 and 1 items) and Umbra's `links` all unchanged.
+    `enrichment` moves to `method: builder-issue` with the issue and the repository appended to the
+    sources that were already there, and `fields` accumulating `repository_url`. Dry run `5 keys,
+    7598 bytes, 1 transaction(s)`; `--updates-only` kept the 7 (then 8) new feed submissions out of
+    the batch. One transaction, `DWUjCmxKWj7MFxUw9wiNUSpeFikeLCiFEz5WpWw8Yj6a` (5 keys), signed with
+    the scoped `ed25519:2WMyE…` FunctionCall key on `__fastdata_kv` — no full-access key.
+
+    **Read back:** `verified: 5/5 written keys read back`, and the five records re-read from the
+    indexer independently show `repository_url` set with `enrichment.method: builder-issue`. The
+    importer then prints `new: 8, changed: 0, unchanged: 764` — the corrections left no residue.
+    `npm run validate:schema` 762/764, the same two feed-owned `http://` `demo_url` defects, so this
+    batch added none; `npm test` 380/380. All five pages were then fetched through `nearhunt.xyz`
+    and each shows its GitHub link. The five issues were answered and closed.
+
 ## Decisions taken
 
 | Decision | Choice | Why |
