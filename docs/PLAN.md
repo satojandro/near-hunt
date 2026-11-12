@@ -365,6 +365,48 @@ near account list-keys nearhunt.near network-config mainnet now   # 1 key, full 
     617/619 (the same two `http://` `demo_url` feed defects), `npm test` 361/361. All three issues
     answered and closed.
 
+23. The 60 new feed submissions and 28 changes, 12 Nov — batch 23, run through the runbook's cycle
+    exactly. Dry run shown to the owner and approved at `new: 54, changed: 28, unchanged: 591`;
+    `82 keys, 108027 bytes, 2 transaction(s)`. The execute run recomputed first (the feed had moved
+    to 679): `new: 60, changed: 28, unchanged: 591`; `88 keys, 111216 bytes, 2 transaction(s)` —
+    growth during the approval, covered by the approval's *kind*, reported here as what actually
+    landed. Transactions, both `FINAL`:
+    `H7KPHP3ihE9gHmdJaVUt4WKCxcycj2hA5Ff1VPRYtHjZ` (46 keys) and
+    `8QXPCxFhYxSfkG5j1iSwhuPuyb3qfVi6UpuQXvqNJ66v` (42 keys). Importer output
+    `verified: 88/88 written keys read back` (75/88 on attempt 1). Signed with the scoped
+    `ed25519:2WMyE…` FunctionCall key on `__fastdata_kv` — no FullAccess, no
+    `--accept-full-access`.
+
+    Of the 60 new records: **47 carry the builder's own description, 47 `media` (65 items), 26 a
+    verified repository, 23 labelled and checked `links`, 47 `enrichment` provenance**. 13 are
+    feed-only: 11 arrived in the feed *after* the enrichment build (late X posts, enrichable next
+    cycle) and 2 have a non-X `demo_url`. The 28 changes are fills, never overwrites: `description`
+    17, `repository_url` 9, `links` 12, `media` 16, `enrichment` 19, and **no changed record had a
+    non-null description before** (checked against chain before asking). The remaining changes are
+    feed-owned: `demo_url` 5 (Galeon moved from YouTube to its X post; Robin Arcades from a live
+    `jakeronthia.github.io` page to its X post, so its label is now "Launch post on X"), `name` 3
+    (`Busari Ibraheem (Dappest Dev)`→`Emporium`, `Private Health Reading`→`DNA Confidential`,
+    `NEAR Sentinel`→`NEAR Sentinel: Did It Land?`), `tracks` 2.
+
+    Pipeline this round: `threads:capture --gaps-only --include-pending` walked 353 threads (263
+    reused from cache, 22 fresh captures with author replies, 18 with none, 25 no-replies-listed, 24
+    not X posts, 1 post gone); `enrich` covered 669 submissions (632 recoverable, 606 with media, 341
+    repositories through `git ls-remote` — 338 answered, 3 dropped; 118 new link visits; 30 demo
+    pages read, 19 repositories corroborated and promoted); `enrich:links` 388 URLs (**352 live, 30
+    unverified, 6 gone**); `enrich:duplicates` the one known cluster (`NEAR: On The Evidence` /
+    `Pump Rider` share `pump-rider.netlify.app`, both long on chain — reported only). The 6 `gone`
+    links are 3 `testnet.nearblocks.org` transaction links whose host no longer resolves
+    (`ENOTFOUND`), `tutnarezki5-dotcom.github.io/agentguard` (404), one `njump.me` note (404) and
+    `trope.fun` (`ENOTFOUND`); they stay on the records and the page marks them. The 30 `unverified`
+    are crawler blocks and timeouts, not dead links.
+
+    **After batch 23, read back from the indexer:** **679 project rows**, 0 foreign rows,
+    0 tombstones, 679 distinct ids; the importer dry run prints `new: 0, changed: 0, unchanged:
+    679`, so feed and chain are level at 679. `npm run validate:schema` reports **677 valid and 2
+    invalid** — the same two records batch 22 left (`VIGIL` `1ca01819…` and `IntentFolio`
+    `fc122909…`, both feed-owned `http://` `demo_url`s), so this batch introduced no new schema
+    defect. `npm test` 380/380.
+
 ## Decisions taken
 
 | Decision | Choice | Why |

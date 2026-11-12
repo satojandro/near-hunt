@@ -1,22 +1,22 @@
 {
-  "generated_at": "2026-11-11T19:37:42.867Z",
+  "generated_at": "2026-11-12T09:33:28.735Z",
   "account": "nearhunt.near",
   "summary": {
-    "links": 310,
+    "links": 388,
     "by_verdict": {
-      "live": 278,
-      "unverified": 27,
-      "gone": 5
+      "live": 352,
+      "unverified": 30,
+      "gone": 6
     },
     "by_status": {
-      "ok": 278,
-      "refused": 1,
-      "http-error": 28,
-      "unreachable": 3
+      "ok": 352,
+      "http-error": 30,
+      "refused": 2,
+      "unreachable": 4
     },
-    "with_title": 269,
-    "with_og_image": 90,
-    "redirected_to_other_host": 8
+    "with_title": 336,
+    "with_og_image": 118,
+    "redirected_to_other_host": 15
   },
   "rows": [
     {
@@ -318,6 +318,56 @@
       ]
     },
     {
+      "submission_id": "09ab8743-6030-40f6-a817-d14da113de64",
+      "name": "Psephex",
+      "field": "links",
+      "url": "https://psephex.xyz",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://psephex.xyz",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "Psephex dashboard",
+      "og_image": "https://psephex.xyz/og.png",
+      "repos": []
+    },
+    {
+      "submission_id": "09ab8743-6030-40f6-a817-d14da113de64",
+      "name": "Psephex",
+      "field": "links",
+      "url": "https://docs.psephex.xyz",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://docs.psephex.xyz",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "Introduction - Psephex docs",
+      "og_image": "https://psephex.xyz/og.png",
+      "repos": [
+        "https://github.com/UnityNodes/psephex"
+      ]
+    },
+    {
+      "submission_id": "09ab8743-6030-40f6-a817-d14da113de64",
+      "name": "Psephex",
+      "field": "links",
+      "url": "https://youtu.be/kYzTd7s_mTk",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://www.youtube.com/watch?v=kYzTd7s_mTk&feature=youtu.be",
+      "redirects": 1,
+      "content_type": "text/html",
+      "title": null,
+      "og_image": null,
+      "repos": []
+    },
+    {
       "submission_id": "0b1cdfcb-d589-4018-a833-2b14875ed854",
       "name": "Alphaforge",
       "field": "demo_url",
@@ -330,6 +380,22 @@
       "redirects": 0,
       "content_type": "text/html",
       "title": "AlphaForge — Independent Strategy Workshop",
+      "og_image": null,
+      "repos": []
+    },
+    {
+      "submission_id": "0b4d122b-b98e-4b8b-afc0-08e7c13a69e6",
+      "name": "KEYFALL",
+      "field": "links",
+      "url": "https://keyfall.jdollar.site",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://keyfall.jdollar.site",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "KEYFALL",
       "og_image": null,
       "repos": []
     },
@@ -366,6 +432,22 @@
       "repos": []
     },
     {
+      "submission_id": "0e524d29-7c2a-429a-b924-f5b0f81221e0",
+      "name": "Meme Wars",
+      "field": "links",
+      "url": "https://meme-wars-iota.vercel.app",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://meme-wars-iota.vercel.app",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "Meme Wars ($WAR) — The joke needs rules",
+      "og_image": null,
+      "repos": []
+    },
+    {
       "submission_id": "0fdc3944-7e09-4607-a08a-2590472db1ea",
       "name": "Meridian",
       "field": "links",
@@ -388,16 +470,33 @@
       "name": "Plumbline",
       "field": "links",
       "url": "https://plumbline-z9kg.onrender.com",
+      "verdict": "unverified",
+      "truncated": false,
+      "status": "http-error",
+      "http_status": 503,
+      "final_url": "https://plumbline-z9kg.onrender.com",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": null,
+      "og_image": null
+    },
+    {
+      "submission_id": "111ddcd3-8815-4ce1-bed6-226f523cab6c",
+      "name": "Farm Ajo",
+      "field": "links",
+      "url": "https://explorer.testnet.near.org/accounts/circle2.farmajo-dev.testnet",
       "verdict": "live",
       "truncated": false,
       "status": "ok",
       "http_status": 200,
-      "final_url": "https://plumbline-z9kg.onrender.com",
+      "final_url": "https://explorer.testnet.near.org/accounts/circle2.farmajo-dev.testnet",
       "redirects": 0,
       "content_type": "text/html",
-      "title": "Plumbline: check the quote before you sign",
+      "title": "NEAR Explorer Selector",
       "og_image": null,
-      "repos": []
+      "repos": [
+        "https://github.com/Nearblocks/nearblocks"
+      ]
     },
     {
       "submission_id": "115b2488-dcf6-4715-8f67-eaa70cc8afb3",
@@ -412,6 +511,22 @@
       "redirects": 0,
       "content_type": "text/html",
       "title": "Overclock — skill duels for AI agents",
+      "og_image": null,
+      "repos": []
+    },
+    {
+      "submission_id": "12eef00e-4daf-42c6-99eb-6574a1dc7797",
+      "name": "Onchain Suite",
+      "field": "demo_url",
+      "url": "https://youtu.be/lIV5iNGsno8?si=pDOCTrX8r4nWQXtz",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://www.youtube.com/watch?si=pDOCTrX8r4nWQXtz&v=lIV5iNGsno8&feature=youtu.be",
+      "redirects": 1,
+      "content_type": "text/html",
+      "title": null,
       "og_image": null,
       "repos": []
     },
@@ -575,6 +690,24 @@
       ]
     },
     {
+      "submission_id": "19021f5f-cfcd-46e9-bad3-76625e82d8bb",
+      "name": "Assay",
+      "field": "links",
+      "url": "https://web-production-a10bc.up.railway.app",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://web-production-a10bc.up.railway.app",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "Assay · AI agents compete for your job on NEAR",
+      "og_image": "https://web-production-a10bc.up.railway.app/opengraph-image?f730b60aec2bbcb6",
+      "repos": [
+        "https://github.com/emer-eth/assay"
+      ]
+    },
+    {
       "submission_id": "19769764-c445-437e-8187-e0433b18c3da",
       "name": "NEAR SENTINEL",
       "field": "demo_url",
@@ -587,6 +720,45 @@
       "redirects": 0,
       "content_type": "text/html",
       "title": "NEAR Sentinel — Account Risk Intelligence",
+      "og_image": null,
+      "repos": []
+    },
+    {
+      "submission_id": "1a0c00ed-babe-43c0-9b94-eb04af104c7e",
+      "name": "Clean Ledger",
+      "field": "demo_url",
+      "url": "https://github.com/mitran27/clean-ledger/blob/main/media/clean-ledger-demo-extended.mp4",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://github.com/mitran27/clean-ledger/blob/main/media/clean-ledger-demo-extended.mp4",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "clean-ledger/media/clean-ledger-demo-extended.mp4 at main · mitran27/clean-ledger · GitHub",
+      "og_image": "https://opengraph.githubassets.com/27ccd7758d644bbcf4e7e978a4fd45e77e9b530718591ac9006fb46c9ef46096/mitran27/clean-ledger",
+      "repos": [
+        "https://github.com/mitran27/clean-ledger",
+        "https://github.com/open-source/sponsors",
+        "https://github.com/resources/articles",
+        "https://github.com/solutions/industry",
+        "https://github.com/solutions/executive-insights",
+        "https://github.com/resources/events"
+      ]
+    },
+    {
+      "submission_id": "1ae8de17-c640-4c70-963f-5018209719e9",
+      "name": "Undo",
+      "field": "links",
+      "url": "https://undo-cyan.vercel.app",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://undo-cyan.vercel.app",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "Undo — Ctrl+Z for USDC",
       "og_image": null,
       "repos": []
     },
@@ -802,6 +974,24 @@
       "repos": []
     },
     {
+      "submission_id": "21847c17-1c1c-4344-b169-174f49cfda09",
+      "name": "XYR Shield",
+      "field": "links",
+      "url": "https://rogermbenites.github.io/xyr-shield",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://rogermbenites.github.io/xyr-shield/",
+      "redirects": 1,
+      "content_type": "text/html",
+      "title": "XYR Shield",
+      "og_image": null,
+      "repos": [
+        "https://github.com/rogermbenites/xyr-shield"
+      ]
+    },
+    {
       "submission_id": "21b88ac4-20b2-4951-bb42-9b5e57695f5f",
       "name": "The Build City Hackathon",
       "field": "links",
@@ -830,7 +1020,7 @@
       "redirects": 0,
       "content_type": "text/html",
       "title": "Telegram: Launch @ndegen_bot",
-      "og_image": "https://cdn4.telesco.pe/file/CnD9H35mmkJ_ELkxOPHqRYUMTRAD6ispWTvnRpSWQ5WKpd9knIc3gTDKNTk3O5YncC-m0VjkPhVy5Zx5qRhO7kW0eiAg9EYD2nHxc9dhAVMzhQVCiTyQhHSmEmqjKAjOtCeagypRpjHu2lLKanIhQGyPDuaOeVNXvltFvLgCoJYNeKPUaOiYnFj7mqQU9JHM5nafyMmbMb1_uID_MqtX07l4wis0HY0KM4jZe0vRdrd0A3vzsy2S5z6_Z8fFpZfd1CnCIx1o6E-Fw9rDd7TgfaLKmfv18vgNOJEVnkepYdpmUh2heNaZl3s_dt4SE09loGZPNMXFcLotV-nfSqqv9Q.jpg",
+      "og_image": "https://cdn4.telesco.pe/file/CtraAF-4raidGeei4a83xhakBJF5PuOmLY0-2AJ0zPzFCeEh39QZ3CpswEi9uoftO212SMbEv1r-yudkhqv_OBKfot0KTq_rHCdDwvQgbRouFoHT3y-06hT5JY8Eh03njmHYIFtB2pApkrIT37y0VKbvmvbsrajl-JEdZXqcMgtBzl0IAAssKqWLWxb5SQKFrAp68XY4OOrq_SNXEjbXgCB58ZO-2yCdm5-ruzGMDr8dfa2ES95FEeP5JyhUQQ1h0C-ceVbE7En4_YJ4Y1d2WFtsRZgA3O4ZNzQ_PHyBHmHK6Uvk_iLKIW0ELckbf3gT0prY8mG8qPDMdJmAV-fZMw.jpg",
       "repos": []
     },
     {
@@ -846,7 +1036,7 @@
       "redirects": 0,
       "content_type": "text/html",
       "title": "Telegram: Launch @Cobrainvoicebot",
-      "og_image": "https://cdn4.telesco.pe/file/YSDpBvNvLZrPIKoVpyQpbEra09Ku71-jSjYGdCe5Bh-rlxR_Hy5MDX0N5w4TdHOuJWtibyiyk21OOItJfGqVDGRHuma7l1x4zUFkPxNw4761LIiFN3LDad4SDIelAqzpll4MByJi5uaztzHPdFtrENza1EHAzmQv4VOlEk04G4vjqG4X_GFfCRhHOGF-3vx07kkmYkFo4e8hVhUcm8QFQWXUgVXxMjqihbQaUSfPLxzaYQNwSYm68Y-xR6hq80rAtXSz6RlO7d1uNJrJbLJeJsD_0K23GqeVCO62EJjws3YwSjaBbGOvA4gW1dDQPhndJX4jfmVyUQC3ZyVzTVeRMA.jpg",
+      "og_image": "https://cdn4.telesco.pe/file/Uv4_iFR2GAXDbmYpvxhNm6p9-VK82w8ss4YL0p1YSzt-9F4aFCNv6V_pgCvmQW363xojDnFtBzHgfmsm0nu7Gj8b6QvYQY25MB6k2AHhGeE3Rln2Fui4ol45Is4U9rNLfkVuNyFqejIJ42XsXt-QHdVQkJRij3WyPEm47pt1sofRQKYBB032MXPdGQAU68Qr4NCEeZcgZLUC8cHFq26XPamWTZnbea-PcQY79Sn-oPlwHC0PRoqsZRoZZgCyo7cgf524TR4G2pyI10tN27cfkOtM0ckA_TNHdYCqYf77sWo1-KgviXucLjxjET0b_pPRvjAjuDi6SES20NnWrYZJxA.jpg",
       "repos": []
     },
     {
@@ -1047,6 +1237,43 @@
       "og_image": null
     },
     {
+      "submission_id": "2fd429e5-a08f-4cf1-99be-ac5a9b2cd1f8",
+      "name": "PROCTOR",
+      "field": "links",
+      "url": "https://market.near.ai/a/proctor-check",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://market.near.ai/a/proctor-check",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "PROCTOR check · Dev Tools · NEAR AI Agent Market",
+      "og_image": null,
+      "repos": [
+        "https://github.com/egbujor-emmanuel/proctor"
+      ]
+    },
+    {
+      "submission_id": "2fd429e5-a08f-4cf1-99be-ac5a9b2cd1f8",
+      "name": "PROCTOR",
+      "field": "links",
+      "url": "https://proctor.attrito.workers.dev",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://proctor.attrito.workers.dev",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "PROCTOR · A driving test for AI agents",
+      "og_image": null,
+      "repos": [
+        "https://github.com/egbujor-emmanuel/proctor-runner",
+        "https://github.com/egbujor-emmanuel/proctor"
+      ]
+    },
+    {
       "submission_id": "2ff34858-5a81-4248-ade5-9894def5567e",
       "name": "Lantern Caravan",
       "field": "links",
@@ -1241,6 +1468,22 @@
       "repos": []
     },
     {
+      "submission_id": "3cfe4a31-395c-4ea7-b2aa-30f84cb8afef",
+      "name": "Zero Tick",
+      "field": "links",
+      "url": "https://blasrodri.github.io/zerotick",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://blasrodri.github.io/zerotick/",
+      "redirects": 1,
+      "content_type": "text/html",
+      "title": "ZeroTick — Permissionless Synthetic Markets",
+      "og_image": null,
+      "repos": []
+    },
+    {
       "submission_id": "3d44dcae-ee40-4616-bbc5-7489ce0d360d",
       "name": "Writ: Who Pays When Your AI Agent Gets Fooled",
       "field": "links",
@@ -1373,6 +1616,24 @@
       "og_image": null,
       "repos": [
         "https://github.com/Shinigami-tech/sitedoctor"
+      ]
+    },
+    {
+      "submission_id": "4296638a-e11c-4d51-b72f-e449f6d99e06",
+      "name": "Private Health Reading",
+      "field": "links",
+      "url": "https://private-dna.indaga.ai",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://private-dna.indaga.ai",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "DNA Confidential · Indaga",
+      "og_image": null,
+      "repos": [
+        "https://github.com/indaga-ai/private-dna-reading"
       ]
     },
     {
@@ -1607,6 +1868,24 @@
       "repos": []
     },
     {
+      "submission_id": "4a7c5dc1-b0a7-4e43-beb1-2d1bc3b6f273",
+      "name": "CommonsOps",
+      "field": "links",
+      "url": "https://super-user-root.github.io/CommonsOps",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://super-user-root.github.io/CommonsOps/",
+      "redirects": 1,
+      "content_type": "text/html",
+      "title": "CommonsOps | Testnet workspace",
+      "og_image": null,
+      "repos": [
+        "https://github.com/super-user-root/CommonsOps"
+      ]
+    },
+    {
       "submission_id": "4a9a7ae0-6943-4a34-b4e3-99198eeee530",
       "name": "Dragons Market",
       "field": "links",
@@ -1639,6 +1918,22 @@
       "repos": []
     },
     {
+      "submission_id": "4cecaea4-961f-4734-b86d-e5fc9550d981",
+      "name": "Antumbra",
+      "field": "links",
+      "url": "https://valentine1898.github.io/antumbra",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://valentine1898.github.io/antumbra/",
+      "redirects": 1,
+      "content_type": "text/html",
+      "title": "Antumbra",
+      "og_image": null,
+      "repos": []
+    },
+    {
       "submission_id": "4dbfa08c-f465-4800-8432-8228340a38d8",
       "name": "$YAP | Proof of yap, on NEAR.Social",
       "field": "links",
@@ -1661,18 +1956,50 @@
       "name": "CareFund",
       "field": "links",
       "url": "https://carefund-ijf9.onrender.com",
+      "verdict": "unverified",
+      "truncated": false,
+      "status": "http-error",
+      "http_status": 503,
+      "final_url": "https://carefund-ijf9.onrender.com",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": null,
+      "og_image": null
+    },
+    {
+      "submission_id": "4e33510c-dd91-482a-ae5b-078578062e29",
+      "name": "OpenGrasp",
+      "field": "links",
+      "url": "https://huggingface.co/datasets/arrijalufr/opengrasp-episodes-v0",
       "verdict": "live",
       "truncated": false,
       "status": "ok",
       "http_status": 200,
-      "final_url": "https://carefund-ijf9.onrender.com",
+      "final_url": "https://huggingface.co/datasets/arrijalufr/opengrasp-episodes-v0",
       "redirects": 0,
       "content_type": "text/html",
-      "title": "CareFund · Help that reaches the right hand",
+      "title": "arrijalufr/opengrasp-episodes-v0 · Datasets at Hugging Face",
+      "og_image": "https://cdn-thumbnails.huggingface.co/social-thumbnails/datasets/arrijalufr/opengrasp-episodes-v0.png",
+      "repos": [
+        "https://github.com/jusst01/opengrasp"
+      ]
+    },
+    {
+      "submission_id": "4e33510c-dd91-482a-ae5b-078578062e29",
+      "name": "OpenGrasp",
+      "field": "links",
+      "url": "https://jusst01.github.io/opengrasp/v2",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://jusst01.github.io/opengrasp/v2/",
+      "redirects": 1,
+      "content_type": "text/html",
+      "title": "OpenGrasp Expedition — Rescue the Relic (MuJoCo Prototype)",
       "og_image": null,
       "repos": [
-        "https://github.com/sasindu-smart/carefund",
-        "https://github.com/sasindu-smart/allowance"
+        "https://github.com/jusst01/opengrasp"
       ]
     },
     {
@@ -1791,6 +2118,42 @@
       "repos": []
     },
     {
+      "submission_id": "52b1c613-598e-4015-aa9a-def15bceb1c2",
+      "name": "Bursar",
+      "field": "links",
+      "url": "https://bursar.network",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://bursar.network",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "Bursar",
+      "og_image": null,
+      "repos": [
+        "https://github.com/DCSteve96/Bursar"
+      ]
+    },
+    {
+      "submission_id": "54f5f088-26d2-4123-b11b-85297ae66e77",
+      "name": "Hat Tip",
+      "field": "links",
+      "url": "https://replaycourt.github.io/hat-tip/web",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://replaycourt.github.io/hat-tip/web/",
+      "redirects": 1,
+      "content_type": "text/html",
+      "title": "Hat Tip: peer thanks your DAO pays out",
+      "og_image": "https://replaycourt.github.io/hat-tip/web/og.png",
+      "repos": [
+        "https://github.com/replaycourt/hat-tip"
+      ]
+    },
+    {
       "submission_id": "56a9d82f-710c-4239-924c-944e3b838cef",
       "name": "Paylink",
       "field": "links",
@@ -1871,6 +2234,40 @@
       "repos": [
         "https://github.com/ebenbaruk/near-memecoin"
       ]
+    },
+    {
+      "submission_id": "5778e6eb-87c6-4b38-b856-f0732ed90f01",
+      "name": "CT Life: Metaverse Real Economy",
+      "field": "links",
+      "url": "https://ctlife.fun",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://ctlife.fun",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "CT Life | Crypto Twitter is a city now",
+      "og_image": "https://ctlife.fun/assets/v3/hero-reel.webp",
+      "repos": [
+        "https://github.com/devIykee/ct-life-frontend"
+      ]
+    },
+    {
+      "submission_id": "587124fe-0c55-43fc-9350-71a45dc16f77",
+      "name": "Hangry Mochi",
+      "field": "links",
+      "url": "https://wasimshekh00007-star.github.io/hangry-mochi",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://wasimshekh00007-star.github.io/hangry-mochi/",
+      "redirects": 1,
+      "content_type": "text/html",
+      "title": "Hangry Mochi · the memecoin with a stomach",
+      "og_image": null,
+      "repos": []
     },
     {
       "submission_id": "58825d9f-ae96-4b79-a276-8d42468c0dab",
@@ -2039,6 +2436,22 @@
       "repos": [
         "https://github.com/fairshare54/fairshare"
       ]
+    },
+    {
+      "submission_id": "61a86eb6-52b9-41d4-a2db-4583676d7cd2",
+      "name": "GhostAgent",
+      "field": "links",
+      "url": "https://ghostagent-production.up.railway.app",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://ghostagent-production.up.railway.app",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "GhostAgent — an AI that pays invoices. Try to rob it.",
+      "og_image": null,
+      "repos": []
     },
     {
       "submission_id": "64092c5f-df0f-41b0-98a5-697faad7314a",
@@ -2690,6 +3103,22 @@
       "repos": []
     },
     {
+      "submission_id": "838de4eb-8adf-417f-aa68-f1036b6d8f4a",
+      "name": "Ethics Keyless Trust: Raise a launch together. No one holds the vaults.",
+      "field": "links",
+      "url": "https://trust.ethics.ltd",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://trust.ethics.ltd",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "Keyless Trust · by Ethics",
+      "og_image": null,
+      "repos": []
+    },
+    {
       "submission_id": "849f9204-ed81-497b-8570-bd3ef00a21e2",
       "name": "Sealed Exploit",
       "field": "links",
@@ -2839,6 +3268,22 @@
       ]
     },
     {
+      "submission_id": "8c8755ea-2b40-409d-b8ef-43c7ae8b39c1",
+      "name": "PromisePay",
+      "field": "links",
+      "url": "https://promisepay-testnet.vercel.app",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://promisepay-testnet.vercel.app",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "PromisePay — Every business payment, organised.",
+      "og_image": null,
+      "repos": []
+    },
+    {
       "submission_id": "8ce1e3a2-1bf0-4dc0-aeb3-0981afda5c60",
       "name": "PayPerCall on NEAR",
       "field": "links",
@@ -2851,6 +3296,22 @@
       "redirects": 0,
       "content_type": "text/html",
       "title": "PayPerCall on NEAR: escrowed pay-per-call for AI agents (testnet demo)",
+      "og_image": null,
+      "repos": []
+    },
+    {
+      "submission_id": "8cee062c-f267-4762-b588-f132d18c30dc",
+      "name": "Kite - rebalancing, yield-earning vaults",
+      "field": "links",
+      "url": "https://www.usekite.xyz",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://www.usekite.xyz",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "Kite: a self-custodied portfolio that rebalances itself",
       "og_image": null,
       "repos": []
     },
@@ -2903,6 +3364,42 @@
       "repos": []
     },
     {
+      "submission_id": "935061a1-3491-423f-a320-43493074d31b",
+      "name": "Oiko",
+      "field": "links",
+      "url": "https://oikodotnear.vercel.app",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://oikodotnear.vercel.app",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "Oiko: Personal finance meets personal intelligence",
+      "og_image": null,
+      "repos": [
+        "https://github.com/devIykee/oiko"
+      ]
+    },
+    {
+      "submission_id": "94ebd119-c710-4723-a93e-59b8a512eeaf",
+      "name": "Slay the Bear",
+      "field": "links",
+      "url": "https://slay-the-bear.vercel.app",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://slay-the-bear.vercel.app",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "Slay the Bear: a memecoin town game on NEAR",
+      "og_image": null,
+      "repos": [
+        "https://github.com/vibe-code-guy/slay-the-bear"
+      ]
+    },
+    {
       "submission_id": "9660c04c-9813-4352-a83d-98ea2f024645",
       "name": "OmniYield Protocol",
       "field": "links",
@@ -2916,6 +3413,38 @@
       "content_type": "text/html",
       "title": "OmniYield Protocol | GOSUN OmniYield USDC on NEAR",
       "og_image": null,
+      "repos": []
+    },
+    {
+      "submission_id": "972da2bb-8d13-43d8-9ca5-9787cb409d86",
+      "name": "NearPay",
+      "field": "links",
+      "url": "https://nearpay-app-chi.vercel.app",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://nearpay-app-chi.vercel.app",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": null,
+      "og_image": null,
+      "repos": []
+    },
+    {
+      "submission_id": "979ba7c1-a263-4ce2-88df-2328a0bcb698",
+      "name": "Robin Arcades",
+      "field": "demo_url",
+      "url": "https://jakeronthia.github.io/RobinArcadeGames/",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://jakeronthia.github.io/RobinArcadeGames/",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "ROBIN Arcade",
+      "og_image": "https://jakeronthia.github.io/RobinArcadeGames/assets/og.jpg",
       "repos": []
     },
     {
@@ -3071,6 +3600,24 @@
       "og_image": "https://the-daily-swarm.vercel.app/opengraph-image.png?opengraph-image.22uy1-dssa5ig.png",
       "repos": [
         "https://github.com/chaoticpunk/the-daily-swarm"
+      ]
+    },
+    {
+      "submission_id": "9f194fab-f6d3-4a71-b952-9260f8f23d3c",
+      "name": "Caesura",
+      "field": "links",
+      "url": "https://near.mages.city",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://near.mages.city",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "The NEAR mage · Mages City",
+      "og_image": null,
+      "repos": [
+        "https://github.com/johnservil/sigil"
       ]
     },
     {
@@ -3296,6 +3843,58 @@
       "repos": []
     },
     {
+      "submission_id": "a10a54cf-669c-45b8-831a-82d9d8151e97",
+      "name": "nearbags",
+      "field": "links",
+      "url": "https://nearbags.com",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://nearbags.com",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "nearbags · Bag it.",
+      "og_image": null,
+      "repos": [
+        "https://github.com/prakhar728/nearbags"
+      ]
+    },
+    {
+      "submission_id": "a10a54cf-669c-45b8-831a-82d9d8151e97",
+      "name": "nearbags",
+      "field": "links",
+      "url": "https://nearbags.com/thesis",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://nearbags.com/thesis",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "Thesis · nearbags",
+      "og_image": null,
+      "repos": [
+        "https://github.com/prakhar728/nearbags"
+      ]
+    },
+    {
+      "submission_id": "a10a54cf-669c-45b8-831a-82d9d8151e97",
+      "name": "nearbags",
+      "field": "links",
+      "url": "https://t.me/nearbags",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://t.me/nearbags",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "Telegram: View @nearbags",
+      "og_image": "https://cdn5.telesco.pe/file/M852JiXVOhoigLEtH_kT6wxoT4LHLKLJK1zrs-6108Kxs_TfLEEnmpzVPmsBZwXpHW1hoz6pvGUp4PudyIYySzvbVVFWwBhRwfQgUkAo-CaFf5pEy_XBR_vZMEy6oJiwa-240pQLUeDdRNDF4ES7gzN_6t1dUar7gmnWd53B8T2n2H1eBYFQlzc4y2DpaugSGuiD7Z4bmfgEKhkU5kUUgGrqhqoUUe5wupg1npXwQqSzAHiKKpNZ-tUrKKpOOnjidqn7afM4T3KiNxuwa_GYPqINDZRN1iNhbFgfdtDlQ8AvSJODcyzUa8j6Zv56vthcfS8jrjkzN5bcYGNLDZO95g.jpg",
+      "repos": []
+    },
+    {
       "submission_id": "a1b7211e-f7ad-499a-b10c-c30d34f19d13",
       "name": "Key proof",
       "field": "links",
@@ -3410,6 +4009,24 @@
       "repos": []
     },
     {
+      "submission_id": "a3d582e7-9e8b-493a-8257-5d077f167f98",
+      "name": "Passpot",
+      "field": "links",
+      "url": "https://passpot.vercel.app",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://passpot.vercel.app",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "Passpot — the savings circle nobody can run off with",
+      "og_image": "https://passpot.vercel.app/opengraph-image?6b006b43ded445ba",
+      "repos": [
+        "https://github.com/farazeool/Passpot"
+      ]
+    },
+    {
       "submission_id": "a3e4c9d9-d587-4498-be6e-453a41003578",
       "name": "Escrow Gate for Agent Work",
       "field": "links",
@@ -3422,6 +4039,22 @@
       "redirects": 0,
       "content_type": "text/html",
       "title": null,
+      "og_image": null,
+      "repos": []
+    },
+    {
+      "submission_id": "a4623a29-c81b-4b68-beaf-d4809ea70863",
+      "name": "NexusGuard",
+      "field": "links",
+      "url": "https://nexusguard-five.vercel.app/app",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://nexusguard-five.vercel.app/app",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "NexusGuard — Mission Control",
       "og_image": null,
       "repos": []
     },
@@ -3533,6 +4166,22 @@
       "repos": []
     },
     {
+      "submission_id": "a8a488e9-4993-4f37-afd0-15265073fdcc",
+      "name": "Bizgent",
+      "field": "links",
+      "url": "https://bizgent.vercel.app",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://bizgent.vercel.app",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "Bizgent",
+      "og_image": null,
+      "repos": []
+    },
+    {
       "submission_id": "aab1bb9e-ab36-4d8c-920f-62487b5b7714",
       "name": "Allowance",
       "field": "links",
@@ -3549,6 +4198,38 @@
       "repos": []
     },
     {
+      "submission_id": "ab3211b7-3bbd-4b2d-8a86-75e5c46a669d",
+      "name": "Trope.fun",
+      "field": "links",
+      "url": "https://trope.fun",
+      "verdict": "gone",
+      "truncated": false,
+      "status": "unreachable",
+      "http_status": null,
+      "final_url": "https://trope.fun",
+      "redirects": 0,
+      "content_type": null,
+      "title": null,
+      "og_image": null,
+      "error": "ENOTFOUND"
+    },
+    {
+      "submission_id": "acbd7f76-f26a-487b-8a0c-45e5ebdc846f",
+      "name": "Kheer",
+      "field": "links",
+      "url": "https://kheer-r62c.vercel.app",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://kheer-r62c.vercel.app",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "Kheer",
+      "og_image": null,
+      "repos": []
+    },
+    {
       "submission_id": "acc5fdf7-9bbd-4d2e-97de-41e8463116f4",
       "name": "TheRascalsDotFun",
       "field": "links",
@@ -3561,6 +4242,22 @@
       "redirects": 0,
       "content_type": "text/html",
       "title": "therascals.fun — Good luck, rascal.",
+      "og_image": null,
+      "repos": []
+    },
+    {
+      "submission_id": "af66ae4f-7589-41c8-9c83-09841bdad7a5",
+      "name": "Buddies Blitz",
+      "field": "links",
+      "url": "https://buddies-rouge.vercel.app",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://buddies-rouge.vercel.app",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "Buddies Blitz — 3D WebGL Economy & Tactical Arena on NEAR",
       "og_image": null,
       "repos": []
     },
@@ -3583,6 +4280,40 @@
       ]
     },
     {
+      "submission_id": "b0f03077-7902-4704-a2bd-96611a7499fc",
+      "name": "Coop Tycoon",
+      "field": "links",
+      "url": "https://cooptycoon-peach.vercel.app",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://cooptycoon-peach.vercel.app",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "Coop Tycoon | Cozy Egg Business Sim",
+      "og_image": null,
+      "repos": []
+    },
+    {
+      "submission_id": "b1e981ab-2f74-4580-a887-9f70571fbd8a",
+      "name": "Flowmint",
+      "field": "links",
+      "url": "https://flowmint-six.vercel.app",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://flowmint-six.vercel.app",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "FlowMint — Agent commerce, with guardrails",
+      "og_image": null,
+      "repos": [
+        "https://github.com/petopen9-stack/flowmint"
+      ]
+    },
+    {
       "submission_id": "b2a653cd-5f26-44c0-a307-645615e23f39",
       "name": "AllTrades",
       "field": "links",
@@ -3599,6 +4330,22 @@
       "repos": []
     },
     {
+      "submission_id": "b2a799ca-eff3-4e24-98a7-66d03a920402",
+      "name": "NEARAuth",
+      "field": "demo_url",
+      "url": "https://pauloes-btechs.github.io/NEARAuth/",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://pauloes-btechs.github.io/NEARAuth/",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "NEARAuth — Take back your identity",
+      "og_image": null,
+      "repos": []
+    },
+    {
       "submission_id": "b3c89a06-5736-4aef-a75c-9d2b40dbcd4a",
       "name": "Recall Wallet Agent",
       "field": "links",
@@ -3610,9 +4357,11 @@
       "final_url": "https://explorer.testnet.near.org/transactions/LjE4Sn8ZTKkYnbQqwurHmvuBnAEK2uizCjhpuDPzuAs",
       "redirects": 0,
       "content_type": "text/html",
-      "title": "Near Explorer Selector",
+      "title": "NEAR Explorer Selector",
       "og_image": null,
-      "repos": []
+      "repos": [
+        "https://github.com/Nearblocks/nearblocks"
+      ]
     },
     {
       "submission_id": "b3c89a06-5736-4aef-a75c-9d2b40dbcd4a",
@@ -3627,6 +4376,72 @@
       "redirects": 0,
       "content_type": "text/html",
       "title": "Recall Wallet Agent — an agent wallet with a memory and a conscience",
+      "og_image": null,
+      "repos": []
+    },
+    {
+      "submission_id": "b3dad4a2-4107-4ea5-8965-22a6c9c6a31a",
+      "name": "Galeon",
+      "field": "demo_url",
+      "url": "https://www.youtube.com/watch?v=DxBA6xUalzk",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://www.youtube.com/watch?v=DxBA6xUalzk",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": null,
+      "og_image": null,
+      "repos": []
+    },
+    {
+      "submission_id": "b4a31d89-6f52-4610-8662-8b63a9d355c4",
+      "name": "CONSUME",
+      "field": "links",
+      "url": "https://consume.cash",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://consume.cash",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "CONSUME: the memecoin that eats memecoins, on NEAR",
+      "og_image": "https://consume.cash/opengraph-image.png?opengraph-image.176dp500keo0t.png",
+      "repos": [
+        "https://github.com/ethboi/consume"
+      ]
+    },
+    {
+      "submission_id": "b55b5319-6292-43ca-8651-747b04d11c4a",
+      "name": "NEAR Demand Ledger",
+      "field": "links",
+      "url": "https://hanafynst.github.io/near-demand-ledger/dashboard",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://hanafynst.github.io/near-demand-ledger/dashboard/",
+      "redirects": 1,
+      "content_type": "text/html",
+      "title": "NEAR Demand Ledger — Investment Thesis Dashboard",
+      "og_image": null,
+      "repos": []
+    },
+    {
+      "submission_id": "b604fc35-3f7b-4a0b-8478-41243dcd4470",
+      "name": "Drakarys: AI Competition Platform",
+      "field": "links",
+      "url": "https://www.youtube.com/watch?v=S4nS9lptpVQ",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://www.youtube.com/watch?v=S4nS9lptpVQ",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": null,
       "og_image": null,
       "repos": []
     },
@@ -3663,6 +4478,22 @@
       "repos": []
     },
     {
+      "submission_id": "b8b63a36-d57f-4178-9aeb-e7222bb02007",
+      "name": "KredoFi",
+      "field": "links",
+      "url": "https://kredofi.xyz",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://kredofi.xyz",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "KredoFi",
+      "og_image": "https://kredofi.xyz/share-card.png?v=1",
+      "repos": []
+    },
+    {
       "submission_id": "b9dbbfb9-6c08-4651-bed2-ac657ae12164",
       "name": "DeepSea Hunter",
       "field": "links",
@@ -3675,6 +4506,22 @@
       "redirects": 1,
       "content_type": "text/html",
       "title": "Deep Sea Hunter",
+      "og_image": null,
+      "repos": []
+    },
+    {
+      "submission_id": "ba294e8d-7260-4812-bae1-a2fb80b03fba",
+      "name": "Purpose Money",
+      "field": "links",
+      "url": "https://purposemoney.vercel.app",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://purposemoney.vercel.app",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "Purpose Money: money for home, spent the way your family agreed",
       "og_image": null,
       "repos": []
     },
@@ -3729,6 +4576,22 @@
       "repos": []
     },
     {
+      "submission_id": "bdb91e35-1235-4ad8-bedd-eb0faaa34c34",
+      "name": "Forwend",
+      "field": "links",
+      "url": "https://forwend.com",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://forwend.com",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "Forwend | Get paid in stablecoins, see every step",
+      "og_image": "https://forwend.com/opengraph-image?f1f357ac3a5ae5e6",
+      "repos": []
+    },
+    {
       "submission_id": "bded2b2b-2963-45c4-8440-a3d9d905eb06",
       "name": "LIFO",
       "field": "links",
@@ -3779,6 +4642,40 @@
       "repos": []
     },
     {
+      "submission_id": "c01bf5a6-5479-4126-88ad-4f31439fc248",
+      "name": "NearScope",
+      "field": "links",
+      "url": "https://huggingface.co/spaces/swish99/nearscope",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://huggingface.co/spaces/swish99/nearscope",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "NearScope - a Hugging Face Space by swish99",
+      "og_image": "https://cdn-thumbnails.huggingface.co/social-thumbnails/spaces/swish99/nearscope.png",
+      "repos": []
+    },
+    {
+      "submission_id": "c0773acd-3aaf-4a5c-8f77-48bf23480c9a",
+      "name": "Bonfire by replaycourt",
+      "field": "links",
+      "url": "https://replaycourt.github.io/bonfire/web",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://replaycourt.github.io/bonfire/web/",
+      "redirects": 1,
+      "content_type": "text/html",
+      "title": "Bonfire · a memecoin you light together",
+      "og_image": "https://replaycourt.github.io/bonfire/web/og.jpg",
+      "repos": [
+        "https://github.com/replaycourt/bonfire"
+      ]
+    },
+    {
       "submission_id": "c1705e3d-260d-41c1-9370-3cd561c6a920",
       "name": "Leash",
       "field": "links",
@@ -3807,6 +4704,22 @@
       "http_status": 200,
       "final_url": "https://grinddistrict.vercel.app",
       "redirects": 0,
+      "content_type": "text/html",
+      "title": "Grind District",
+      "og_image": "https://grinddistrict.vercel.app/og-image.png",
+      "repos": []
+    },
+    {
+      "submission_id": "c1c7b574-850a-4f47-9af9-22a49339df07",
+      "name": "Grind District",
+      "field": "links",
+      "url": "https://grinddistrict.app/",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://www.grinddistrict.app/",
+      "redirects": 1,
       "content_type": "text/html",
       "title": "Grind District",
       "og_image": "https://grinddistrict.vercel.app/og-image.png",
@@ -3895,6 +4808,40 @@
       "repos": []
     },
     {
+      "submission_id": "c6e0eae6-af9a-45ff-b262-9dc722f6a979",
+      "name": "Infinito Absoluto — The Business That Audits Itself",
+      "field": "links",
+      "url": "https://market.near.ai/a/infinito-absoluto",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://market.near.ai/a/infinito-absoluto",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "Infinito Absoluto — Verified Research · US Hispanic & LatAm Markets · Research · NEAR AI Agent Market",
+      "og_image": null,
+      "repos": []
+    },
+    {
+      "submission_id": "c8b4d257-6657-46fd-9511-a1f8bd1d54d8",
+      "name": "Krypt",
+      "field": "links",
+      "url": "https://krypt-three-navy.vercel.app",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://krypt-three-navy.vercel.app",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "Krypt: limits for an AI agent's spending",
+      "og_image": null,
+      "repos": [
+        "https://github.com/Valorian0108/krypt"
+      ]
+    },
+    {
       "submission_id": "c94136e5-eaeb-4cb1-94ea-a71cfe5f11d0",
       "name": "SETTLENEAR",
       "field": "links",
@@ -3976,6 +4923,38 @@
         "https://github.com/Watchmeecryt/tidepool-examples",
         "https://github.com/Watchmeecryt/tidepool"
       ]
+    },
+    {
+      "submission_id": "cc23b126-2a61-4135-845d-480234a84773",
+      "name": "Private Preflight",
+      "field": "links",
+      "url": "https://youtu.be/Fgn99nVjG_A",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://www.youtube.com/watch?v=Fgn99nVjG_A&feature=youtu.be",
+      "redirects": 1,
+      "content_type": "text/html",
+      "title": null,
+      "og_image": null,
+      "repos": []
+    },
+    {
+      "submission_id": "cc23b126-2a61-4135-845d-480234a84773",
+      "name": "Private Preflight",
+      "field": "links",
+      "url": "https://erpc.global/go/erpc-edge-multichain-rpc-20261106-x-kawasakirpc-video-reply",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://erpc.global/en/news/2026/11/06/erpc-edge-multichain-rpc-20261106/?utm_source=x&utm_medium=social&utm_campaign=erpc-edge-multichain-rpc-20261106&utm_content=kawasakirpc-video-reply",
+      "redirects": 1,
+      "content_type": "text/html",
+      "title": "Multichain RPC for 16 chains | Solana & Ethereum | ERPC Edge",
+      "og_image": "https://storage.elsoul.nl/website/news/2026/11/06/erpc-edge-multichain-rpc-20261106EN.jpg",
+      "repos": []
     },
     {
       "submission_id": "cf37357e-ba05-4992-bbdc-2ff8858bd71e",
@@ -4060,6 +5039,86 @@
       "repos": []
     },
     {
+      "submission_id": "d2675571-004a-490c-9693-217b4d018bae",
+      "name": "x402Interop",
+      "field": "links",
+      "url": "https://explorer.near-intents.org/transactions/0x9c832132CeAE0aD6702E75754Ec5f6D3B80aCAa1",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://explorer.near-intents.org/transactions/0x9c832132CeAE0aD6702E75754Ec5f6D3B80aCAa1",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "Explorer - NEAR Intents",
+      "og_image": null,
+      "repos": []
+    },
+    {
+      "submission_id": "d2675571-004a-490c-9693-217b4d018bae",
+      "name": "x402Interop",
+      "field": "links",
+      "url": "https://basescan.org/tx/0xcee3090247c449a6acecb79e771d6caf47dda7f7e5182c86e740bb31d7cf0789",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://basescan.org/tx/0xcee3090247c449a6acecb79e771d6caf47dda7f7e5182c86e740bb31d7cf0789",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "Base Transaction Hash: 0xcee3090247... | BaseScan",
+      "og_image": "https://basescan.org/assets/base/images/og-preview-sm.jpg?v=26.11.1.0",
+      "repos": []
+    },
+    {
+      "submission_id": "d2675571-004a-490c-9693-217b4d018bae",
+      "name": "x402Interop",
+      "field": "links",
+      "url": "https://suiscan.xyz/mainnet/tx/4dQuq5xJQQy2tC75z2RrdGQYqYzFzy4BBKb4mT7u5LuX",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://suiscan.xyz/mainnet/tx/4dQuq5xJQQy2tC75z2RrdGQYqYzFzy4BBKb4mT7u5LuX",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "Sui Explorer - Suiscan",
+      "og_image": "https://strapi-dev.scand.app/uploads/thumbnail_Suiscan_2973330a73.png",
+      "repos": []
+    },
+    {
+      "submission_id": "d2675571-004a-490c-9693-217b4d018bae",
+      "name": "x402Interop",
+      "field": "links",
+      "url": "https://explorer.near-intents.org/transactions/0x00b666850a67987553693C47215A992cFFF63cF7",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://explorer.near-intents.org/transactions/0x00b666850a67987553693C47215A992cFFF63cF7",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "Explorer - NEAR Intents",
+      "og_image": null,
+      "repos": []
+    },
+    {
+      "submission_id": "d2675571-004a-490c-9693-217b4d018bae",
+      "name": "x402Interop",
+      "field": "links",
+      "url": "https://basescan.org/tx/0xcc8f26adf752338c02d650314024f1c360b3491e39fd424139ef01dea3f63d19",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://basescan.org/tx/0xcc8f26adf752338c02d650314024f1c360b3491e39fd424139ef01dea3f63d19",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "Base Transaction Hash: 0xcc8f26adf7... | BaseScan",
+      "og_image": "https://basescan.org/assets/base/images/og-preview-sm.jpg?v=26.11.1.0",
+      "repos": []
+    },
+    {
       "submission_id": "d2db35be-04a2-496c-9585-920c97676f72",
       "name": "Boyun",
       "field": "links",
@@ -4075,6 +5134,40 @@
       "og_image": null,
       "repos": [
         "https://github.com/Boyun-Protocol/Boyun-core"
+      ]
+    },
+    {
+      "submission_id": "d32938c4-f4c7-467d-ae21-49b021324f7e",
+      "name": "Bound Wallet",
+      "field": "links",
+      "url": "https://boundwallet-app.vercel.app",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://boundwallet-app.vercel.app",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "Bound",
+      "og_image": null,
+      "repos": []
+    },
+    {
+      "submission_id": "d32938c4-f4c7-467d-ae21-49b021324f7e",
+      "name": "Bound Wallet",
+      "field": "links",
+      "url": "https://boundwallet.vercel.app",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://boundwallet.vercel.app",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "Bound — a wallet for AI agents with limits the agent cannot change",
+      "og_image": "https://boundwallet.vercel.app/assets/og.jpg",
+      "repos": [
+        "https://github.com/blocknbull/bound-wallet"
       ]
     },
     {
@@ -4228,6 +5321,24 @@
       "repos": []
     },
     {
+      "submission_id": "d98c7de0-daf9-4fc4-9277-b2bc52f99a1a",
+      "name": "Fixseal",
+      "field": "links",
+      "url": "https://morikikamio.github.io/fixseal",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://morikikamio.github.io/fixseal/",
+      "redirects": 1,
+      "content_type": "text/html",
+      "title": "Fixseal Guard Viewer",
+      "og_image": null,
+      "repos": [
+        "https://github.com/MorikiKamio/fixseal"
+      ]
+    },
+    {
       "submission_id": "d9905453-4216-49f9-b100-d6a7268b9ed9",
       "name": "Unpair",
       "field": "links",
@@ -4275,6 +5386,44 @@
       "og_image": null,
       "repos": [
         "https://github.com/DataBlock-Labs/intents-desk"
+      ]
+    },
+    {
+      "submission_id": "db0af9eb-789a-405b-9950-a299453f30e5",
+      "name": "PFWA",
+      "field": "links",
+      "url": "https://pfwa.fun",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://www.pfwa.fun/",
+      "redirects": 1,
+      "content_type": "text/html",
+      "title": "PFWA — Bet on what you know",
+      "og_image": "https://pfwa.fun/opengraph-image.jpg?opengraph-image.3je0wi3kfe3a9.jpg?dpl=dpl_3BQEPoDTDj3yaPo92VkgaqUnHUkx",
+      "repos": [
+        "https://github.com/MirakoolDev/sherwood",
+        "https://github.com/MirakoolDev/pfwa-contracts"
+      ]
+    },
+    {
+      "submission_id": "db0af9eb-789a-405b-9950-a299453f30e5",
+      "name": "PFWA",
+      "field": "links",
+      "url": "https://www.pfwa.fun/book/200000",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://www.pfwa.fun/book/200000",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "Will SPX price exceed $0.4289 by Nov 16, 2026, 01:44 PM UTC?",
+      "og_image": "https://pfwa.fun/book/200000/opengraph-image?17d54a4b30ceb625",
+      "repos": [
+        "https://github.com/MirakoolDev/sherwood",
+        "https://github.com/MirakoolDev/pfwa-contracts"
       ]
     },
     {
@@ -4742,6 +5891,22 @@
       ]
     },
     {
+      "submission_id": "ef56a5ba-a33e-4738-8494-b61169e34ed8",
+      "name": "Gachard",
+      "field": "links",
+      "url": "https://gachard-near.vercel.app",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://gachard-near.vercel.app",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "Gachard",
+      "og_image": null,
+      "repos": []
+    },
+    {
       "submission_id": "efc28b7c-f550-4ac8-919d-9989674e5e6f",
       "name": "RunOva",
       "field": "links",
@@ -4801,7 +5966,7 @@
       "final_url": "https://zerodelta.vercel.app",
       "redirects": 0,
       "content_type": "text/html",
-      "title": "ZeroDelta — Confidential Delta-Neutral Intent Swarm on NEAR",
+      "title": "ZeroDelta — Contract-Guarded Carry Strategy on NEAR",
       "og_image": null,
       "repos": []
     },
@@ -4821,6 +5986,40 @@
       "og_image": null,
       "repos": [
         "https://github.com/ykbojak-alt/nexus-aios"
+      ]
+    },
+    {
+      "submission_id": "f25d92c9-acf5-406e-8a59-a70befb2ca4a",
+      "name": "Take The L",
+      "field": "links",
+      "url": "https://take-the-l-near.vercel.app",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://take-the-l-near.vercel.app",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "Take the L | CT calls with skin in the game",
+      "og_image": "https://take-the-l-near.vercel.app/og.png",
+      "repos": []
+    },
+    {
+      "submission_id": "f25d92c9-acf5-406e-8a59-a70befb2ca4a",
+      "name": "Take The L",
+      "field": "links",
+      "url": "https://docs.near.org/getting-started/faucet",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://docs.near.org/getting-started/faucet",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "Token Faucet - NEAR Docs",
+      "og_image": "https://neardocs.mintlify.site/_mintlify/api/og/v2?division=Getting+Started&title=Token+Faucet&description=Learn+how+to+get+free+testnet+tokens+for+development+and+testing+on+the+NEAR+blockchain&theme=78b8e0f81434755d714312aa&signature=1433ff49e3387465d40c3d88ea5a7580a470668c1da64bf55dfb32206da500b3",
+      "repos": [
+        "https://github.com/pacocoursey/next-themes"
       ]
     },
     {
@@ -4909,6 +6108,22 @@
       ]
     },
     {
+      "submission_id": "f5d25a2e-6b32-4145-a151-837b33c73002",
+      "name": "Forseti",
+      "field": "links",
+      "url": "https://forsetihq.xyz",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://www.forsetihq.xyz/",
+      "redirects": 1,
+      "content_type": "text/html",
+      "title": "Forseti",
+      "og_image": null,
+      "repos": []
+    },
+    {
       "submission_id": "f6bd2d41-873e-4b16-90a7-8500590c8051",
       "name": "Realsies",
       "field": "links",
@@ -4977,6 +6192,40 @@
       ]
     },
     {
+      "submission_id": "f99af62b-0c12-4b7f-a50c-7da4825b5e6a",
+      "name": "CapFare",
+      "field": "links",
+      "url": "https://capfare-production.up.railway.app/extension",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://capfare-production.up.railway.app/extension",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "Get the extension — CapFare",
+      "og_image": "https://capfare-production.up.railway.app/opengraph-image.png?opengraph-image.2-66nbif4bf8-.png",
+      "repos": [
+        "https://github.com/thomasdevving/capfare"
+      ]
+    },
+    {
+      "submission_id": "f99af62b-0c12-4b7f-a50c-7da4825b5e6a",
+      "name": "CapFare",
+      "field": "links",
+      "url": "https://skyline-travel-demo.up.railway.app",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://skyline-travel-demo.up.railway.app/booker",
+      "redirects": 1,
+      "content_type": "text/html",
+      "title": "Skyline Travel (demo) — flights",
+      "og_image": "https://capfare-production.up.railway.app/opengraph-image.png?opengraph-image.2-66nbif4bf8-.png",
+      "repos": []
+    },
+    {
       "submission_id": "f9b3e1db-59fb-4161-917a-39c28d6861c9",
       "name": "Intent Sentinel",
       "field": "links",
@@ -4993,6 +6242,22 @@
       "repos": [
         "https://github.com/cryppit/intent-sentinel"
       ]
+    },
+    {
+      "submission_id": "f9cc9a89-f50a-4513-aa2a-da289aedf0e3",
+      "name": "Laurel",
+      "field": "links",
+      "url": "https://laurel-near.vercel.app",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://laurel-near.vercel.app",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "Laurel",
+      "og_image": "https://laurel-near.vercel.app/og.jpg",
+      "repos": []
     },
     {
       "submission_id": "fa54da13-e260-4391-ad42-937e28fa2031",
@@ -5044,6 +6309,22 @@
       ]
     },
     {
+      "submission_id": "fc122909-2cd5-4d03-ae5d-7df09aa93f1d",
+      "name": "IntentFolio",
+      "field": "demo_url",
+      "url": "http://x.com/intentfolio/status/2120638787189645753",
+      "verdict": "unverified",
+      "truncated": false,
+      "status": "refused",
+      "http_status": null,
+      "final_url": null,
+      "redirects": 0,
+      "content_type": null,
+      "title": null,
+      "og_image": null,
+      "error": "not https"
+    },
+    {
       "submission_id": "fccff195-e468-4424-a5f0-6bf8785f051a",
       "name": "EarnPatch",
       "field": "links",
@@ -5072,6 +6353,38 @@
       "redirects": 0,
       "content_type": "text/html",
       "title": "Nims",
+      "og_image": null,
+      "repos": []
+    },
+    {
+      "submission_id": "fe3ad6ca-dc32-486e-a00f-87af1cc1f8d7",
+      "name": "QuorumGuard",
+      "field": "links",
+      "url": "https://quorumguard-1037019152152.asia-south1.run.app",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://quorumguard-1037019152152.asia-south1.run.app",
+      "redirects": 0,
+      "content_type": "text/html",
+      "title": "QuorumGuard",
+      "og_image": null,
+      "repos": []
+    },
+    {
+      "submission_id": "fe3ad6ca-dc32-486e-a00f-87af1cc1f8d7",
+      "name": "QuorumGuard",
+      "field": "links",
+      "url": "https://youtu.be/W5d7P6O3U_w",
+      "verdict": "live",
+      "truncated": false,
+      "status": "ok",
+      "http_status": 200,
+      "final_url": "https://www.youtube.com/watch?v=W5d7P6O3U_w&feature=youtu.be",
+      "redirects": 1,
+      "content_type": "text/html",
+      "title": null,
       "og_image": null,
       "repos": []
     },
