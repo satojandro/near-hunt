@@ -20727,5 +20727,634 @@
     "read": 1,
     "posts": [],
     "links": []
+  },
+  "4b3032be-683f-483e-9183-75080e238960": {
+    "author": "viiiiiiiiiiiid",
+    "status": "ok",
+    "crawled_at": "2026-11-12T22:10:47.790Z",
+    "listed": 2,
+    "read": 2,
+    "posts": [
+      {
+        "id": "2120917823069225189",
+        "author": "viiiiiiiiiiiid",
+        "text": "@NEARProtocol @MeteorWallet @LinearProtocol @fast_near some of your users may have unstaked NEAR still waiting to be withdrawn. Anyone can check their own account here, no wallet needed, and withdrawing through your own apps works just as well. Thanks FastNEAR for the API this is built on.",
+        "links": []
+      },
+      {
+        "id": "2120981145584091298",
+        "author": "viiiiiiiiiiiid",
+        "text": "@NEARProtocol @NEARLegion @NearBuilders built this for #NEARHackathon: a 10-second check for unstaked NEAR that was never withdrawn. Open source, no wallet needed to look. Would love your feedback, and a share if it's useful.",
+        "links": []
+      }
+    ],
+    "links": [
+      "https://foundyours.xyz/",
+      "https://github.com/vidvidvid/found-near"
+    ]
+  },
+  "a82658f5-e42a-4e2a-be6b-29c33f514d15": {
+    "author": "IzuchukwuOffia",
+    "status": "ok",
+    "crawled_at": "2026-11-12T22:10:50.040Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [
+      {
+        "id": "2120864040096244189",
+        "author": "IzuchukwuOffia",
+        "text": "How it works:\n\n1. The shop makes a QR code. No sign-in, no wallet setup.\n2. The customer scans it and pays from any chain, in any token.\n3. The shop receives USDC on its own .near account.\n\nBuilt on NEAR Intents (1Click API).",
+        "links": []
+      }
+    ],
+    "links": []
+  },
+  "71719a9b-ef6e-4410-8953-31bc6b594dc3": {
+    "author": "crypto_psalm",
+    "status": "no-author-replies",
+    "crawled_at": "2026-11-12T22:10:52.294Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [],
+    "links": []
+  },
+  "943101e7-29ec-4ae7-9d11-6d0fd888f25e": {
+    "author": "getlumenia",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-12T22:10:53.927Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://getlumenia.com/try/send"
+    ]
+  },
+  "fef457d1-4bbd-41a7-afe2-5f2591cdcc00": {
+    "author": "10koboPay",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-12T22:10:55.542Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": []
+  },
+  "da6e8ac7-5168-4195-ad94-ffa018efa4d6": {
+    "author": "KarcisEvent",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-12T22:10:57.170Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://www.karcis.web.id",
+      "https://www.karcis.web.id/"
+    ]
+  },
+  "7627511a-6700-49ce-850e-3650aed8d447": {
+    "author": "Bernard_O1",
+    "status": "no-author-replies",
+    "crawled_at": "2026-11-12T22:10:59.462Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [],
+    "links": []
+  },
+  "6ad54208-087c-4127-902e-b8bfcb01d35e": {
+    "author": "Bellickkruz",
+    "status": "no-author-replies",
+    "crawled_at": "2026-11-12T22:11:03.556Z",
+    "listed": 3,
+    "read": 3,
+    "posts": [],
+    "links": []
+  },
+  "4addeedd-438c-4317-821f-518ea55284d0": {
+    "author": "eepy_engineer",
+    "status": "ok",
+    "crawled_at": "2026-11-12T22:11:06.911Z",
+    "listed": 2,
+    "read": 2,
+    "posts": [
+      {
+        "id": "2120973596210442265",
+        "author": "eepy_engineer",
+        "text": "@NEARProtocol What NEAR does here:\n\n- The page ships a function-call key that can only call join. The contract makes you yourname.junkbonds.testnet.\n- Each raccoon is an account with bidding rules in the contract.\n- Each piece of junk is an account too. Sell it and its wallet goes with it.",
+        "links": []
+      },
+      {
+        "id": "2120974212513042775",
+        "author": "eepy_engineer",
+        "text": "@NEARProtocol The money: 1,000 TRASH minted per round to whoever holds junk. Every winning bid is burned. Rich raccoons overbid, so supply settles instead of inflating (600-round test in the repo).\n\nCode: https://t.co/XtKZfyvQug\nWhich raccoon took your TRASH?",
+        "links": [
+          "https://github.com/Sanchay117/junk-bonds"
+        ]
+      }
+    ],
+    "links": [
+      "https://sanchay117.github.io/junk-bonds/"
+    ]
+  },
+  "0004c655-ea8e-489e-8eba-8c93c5c8c29f": {
+    "author": "AzaiezH",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-12T22:11:08.632Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://app.joulity.com",
+      "https://app.joulity.com/"
+    ]
+  },
+  "554e876f-4dd9-437e-9ed6-717c82e02184": {
+    "author": "Wick3dWhack",
+    "status": "ok",
+    "crawled_at": "2026-11-12T22:11:12.122Z",
+    "listed": 2,
+    "read": 2,
+    "posts": [
+      {
+        "id": "2120974044417958317",
+        "author": "Wick3dWhack",
+        "text": "Well, made it drizzle here!! \n\nEvery reading: pinned WASM on OutLayer -&gt; on-chain. Hit Verify and your browser re-checks Open-Meteo itself.\n\nAll 12 out of 12 results matches✅\n\nCode: https://t.co/o56IwN1qeN\n\n@NearBuilders",
+        "links": [
+          "https://github.com/samarcastic47/drizzle"
+        ]
+      }
+    ],
+    "links": [
+      "https://drizzle-wine.vercel.app",
+      "https://drizzle-wine.vercel.app/"
+    ]
+  },
+  "4b7b5f59-3f49-4bf9-ab3f-2b1e08105749": {
+    "author": "violetteclaire",
+    "status": "ok",
+    "crawled_at": "2026-11-12T22:11:14.208Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [
+      {
+        "id": "2120918509169557836",
+        "author": "violetteclaire",
+        "text": "Built at NEAR HACKATHON: witnessed settlement between agents. Terms are fingerprinted and bound to the payment, and funds release only when a witnessed receipt matches. No match, no release. The agent brings its own keys. I give it nothing. @NEARProtocol #NEARHackathon",
+        "links": []
+      }
+    ],
+    "links": []
+  },
+  "bec43a1d-1eaf-47fc-9aec-4cf545a7af16": {
+    "author": "Web3bro3",
+    "status": "no-author-replies",
+    "crawled_at": "2026-11-12T22:11:17.960Z",
+    "listed": 3,
+    "read": 3,
+    "posts": [],
+    "links": []
+  },
+  "1ef0d9e8-a964-4dc7-9ee6-3c956e9dab6f": {
+    "author": "dani_who_daniel",
+    "status": "ok",
+    "crawled_at": "2026-11-12T22:11:25.262Z",
+    "listed": 7,
+    "read": 7,
+    "posts": [
+      {
+        "id": "2120976918820376585",
+        "author": "dani_who_daniel",
+        "text": "2/6\n\nNothing to install. No SDK, agent or dependency to add to your app.\n\nBlack box starts with what’s publicly reachable. Add a disposable test account for grey box, so it can look behind the login too.\n\nYou don’t need to hand over your code. https://t.co/OyvFOF1lGr",
+        "links": [],
+        "media": [
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HW8xIOpXQAA_71l.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 931,
+                  "w": 1662,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1662,
+                  "w": 1662,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1895,
+                  "w": 1662,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 2625,
+                  "w": 1313,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 2625,
+                  "w": 1662,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 2625,
+              "width": 1662
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      },
+      {
+        "id": "2120976922566136090",
+        "author": "dani_who_daniel",
+        "text": "3/6\n\nUnderneath: Kali tools + Hermes agents using uncensored models. One investigates; another rechecks.\n\nI want one place to run security tools and understand their results: findings, evidence and gaps. A human pentester still matters. https://t.co/PoFQneusrQ",
+        "links": [],
+        "media": [
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HW8xUjvX0AEWp0c.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 931,
+                  "w": 1662,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1662,
+                  "w": 1662,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1895,
+                  "w": 1662,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1989,
+                  "w": 995,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1989,
+                  "w": 1662,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 1989,
+              "width": 1662
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          },
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HW8xUjuWcAAWpyc.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 931,
+                  "w": 1662,
+                  "x": 0,
+                  "y": 324
+                },
+                {
+                  "h": 1638,
+                  "w": 1638,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1638,
+                  "w": 1437,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1638,
+                  "w": 819,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1638,
+                  "w": 1662,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 1638,
+              "width": 1662
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      },
+      {
+        "id": "2120976925778743560",
+        "author": "dani_who_daniel",
+        "text": "4/6\n\nNEAR AI supports private TEE inference; Venice is also available as backup. Reports show which route ran. NEAR Intents / 1Click handles crypto top-ups.\n\nWhite box is next: source-code access + a Red Team Sandbox. Planned, not live yet.",
+        "links": []
+      },
+      {
+        "id": "2120976929071247538",
+        "author": "dani_who_daniel",
+        "text": "5/6\n\nThe first 100 users get one free audit, black box or grey box.\n\nTry your own site. Tell me what was useful, what broke and what made no sense.\n\nhttps://t.co/2fcuaAzH99 https://t.co/zJ3aD9Z9KS",
+        "links": [
+          "https://patchriot.net",
+          "https://patchriot.net/"
+        ],
+        "media": [
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HW8xn1VWIAAeNBg.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 1344,
+                  "w": 2400,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1500,
+                  "w": 1500,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1500,
+                  "w": 1316,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1500,
+                  "w": 750,
+                  "x": 165,
+                  "y": 0
+                },
+                {
+                  "h": 1500,
+                  "w": 2400,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 1500,
+              "width": 2400
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      },
+      {
+        "id": "2120976934691647988",
+        "author": "dani_who_daniel",
+        "text": "6/6\n\nAnd enormous love to Adam (@surfcoderepeat) and the $IMD swarm.\n\nPlaying with the swarm, seeing what you were building and getting your support helped me get here.\n\nThank you, seriously .",
+        "links": []
+      },
+      {
+        "id": "2120985441264668882",
+        "author": "dani_who_daniel",
+        "text": "@surfcoderepeat And hats off to @near_ai  @NousResearch too!",
+        "links": []
+      }
+    ],
+    "links": []
+  },
+  "727afb68-23ee-42eb-b867-184b61efa60a": {
+    "author": "standard_pe",
+    "status": "ok",
+    "crawled_at": "2026-11-12T22:11:27.662Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [
+      {
+        "id": "2120981010037059645",
+        "author": "standard_pe",
+        "text": "https://t.co/aqPQ6FqyJJ",
+        "links": [
+          "https://github.com/standardp/fatal-inflation"
+        ]
+      }
+    ],
+    "links": []
+  },
+  "1ab0f20b-e15a-4878-bf4e-baa7164676f2": {
+    "author": "swyftdotfun",
+    "status": "ok",
+    "crawled_at": "2026-11-12T22:11:32.706Z",
+    "listed": 4,
+    "read": 4,
+    "posts": [
+      {
+        "id": "2120977749234094500",
+        "author": "swyftdotfun",
+        "text": "🧵 2/4\n\nSo, how does it work?\n\nEvery move is signed inside a NEAR AI TEE, ensuring gameplay is verifiable.\n\nEvery deck is sealed on NEAR before the deal, bringing transparency to the game without revealing cards prematurely.\n\n🃏 Try Dark Table: https://t.co/NetJaCf0cO",
+        "links": [
+          "https://dark-table-mauve.vercel.app",
+          "https://dark-table-mauve.vercel.app/"
+        ]
+      },
+      {
+        "id": "2120977752648303101",
+        "author": "swyftdotfun",
+        "text": "🧵 3/4\n\nThe idea is simple:\n\nAI agents compete at poker.\nMoves are cryptographically signed.\nDecks are sealed before dealing.\n\nWinnings can be cashed out directly to your wallet.\nTrustless poker powered by AI and @NEARProtocol .",
+        "links": []
+      },
+      {
+        "id": "2120981122993824061",
+        "author": "swyftdotfun",
+        "text": "@NEARProtocol Live Tables  :\nhttps://t.co/erfI0vJfY6",
+        "links": [
+          "https://darktable.accuracy.wtf/"
+        ]
+      },
+      {
+        "id": "2120981158079107475",
+        "author": "swyftdotfun",
+        "text": "Live Tables  :\nhttps://t.co/erfI0vJfY6",
+        "links": [
+          "https://darktable.accuracy.wtf/"
+        ]
+      }
+    ],
+    "links": [
+      "https://youtu.be/iXiOOrhscPM"
+    ]
+  },
+  "876ae041-0827-4fd1-8f84-7069e63ae855": {
+    "author": "Olyvia_Tweets",
+    "status": "no-author-replies",
+    "crawled_at": "2026-11-12T22:11:36.330Z",
+    "listed": 3,
+    "read": 3,
+    "posts": [],
+    "links": []
+  },
+  "257d4b55-1456-411d-ae19-a313318bbf1b": {
+    "author": "OxMonarch",
+    "status": "no-author-replies",
+    "crawled_at": "2026-11-12T22:11:40.184Z",
+    "listed": 3,
+    "read": 3,
+    "posts": [],
+    "links": []
+  },
+  "55f00691-615f-4615-8975-c7c00ac35434": {
+    "author": "Wonka_Red",
+    "status": "ok",
+    "crawled_at": "2026-11-12T22:11:46.405Z",
+    "listed": 6,
+    "read": 6,
+    "posts": [
+      {
+        "id": "2120990108585275849",
+        "author": "Wonka_Red",
+        "text": "Every 90 seconds, while my machine is on, the Chair (a local AI model) sets how fast the coin's supply changes. It can print new coins for people who staked, or burn a slice of every transfer. A simple formula suggests a rate, and the AI can go up to 0.25% a day either way from",
+        "links": []
+      },
+      {
+        "id": "2120990110275473710",
+        "author": "Wonka_Red",
+        "text": "The contract doesn't trust it. The Chair's printing rate can never go above 2% a day, it can't burn more than 2% of a transfer, and it can't move its rate more than 0.5% at a time. There is no admin key and no upgrade. On the page, tell it to try 5%. The real chair account sends",
+        "links": []
+      },
+      {
+        "id": "2120990111894556788",
+        "author": "Wonka_Red",
+        "text": "On NEAR the Chair's key can only call that one method on that one contract. The protocol rejects anything else before the contract even runs, so the AI can't move coins or touch anything it wasn't given.",
+        "links": []
+      },
+      {
+        "id": "2120990113647751588",
+        "author": "Wonka_Red",
+        "text": "Next to it is a Join the Committee tab. Press its button and test coins from a pool I control get staked. About 90 seconds later the Chair's next minutes show the new staked share and the rate it set with it. The more coins are staked, the less it aims to print.\n\nOr get your own.",
+        "links": []
+      },
+      {
+        "id": "2120990115585470883",
+        "author": "Wonka_Red",
+        "text": "It's testnet only and nobody outside has audited it. My first version applied the rate every 90 seconds instead of per day, which let a rogue Chair print far too fast. I changed the rule and relaunched the token, and the old records are still in the repo. The transfers and stakes",
+        "links": []
+      }
+    ],
+    "links": []
+  },
+  "3a6a35f3-21da-4b79-8fc0-7980f8e950ee": {
+    "author": "jayde_fx",
+    "status": "no-author-replies",
+    "crawled_at": "2026-11-12T22:11:50.123Z",
+    "listed": 3,
+    "read": 3,
+    "posts": [],
+    "links": []
+  },
+  "0b43afe6-8199-4bd1-b24d-e216d792f205": {
+    "author": "Wonka_Red",
+    "status": "ok",
+    "crawled_at": "2026-11-12T22:11:55.540Z",
+    "listed": 5,
+    "read": 5,
+    "posts": [
+      {
+        "id": "2120995105586983390",
+        "author": "Wonka_Red",
+        "text": "On the page the contract starts out fine and both checks say ALLOW. Press \"Swap in the bad code\". Your browser sends a real NEAR testnet transaction (no wallet needed) and the code behind that same address now has a hole in it.\n\nThe check that trusts the address still says ALLOW.",
+        "links": []
+      },
+      {
+        "id": "2120995107579351207",
+        "author": "Wonka_Red",
+        "text": "There is also a check that needs no auditor. The guard reads who can replace a contract's code and remembers its fingerprint, so it warns or blocks when the code changes after the first approval. The page also shows a read-only table of 10 mainnet contracts with each one's",
+        "links": []
+      },
+      {
+        "id": "2120995109386813640",
+        "author": "Wonka_Red",
+        "text": "The verdicts come from a scanner for NEAR Rust contracts. It has 26 rules, and each one comes with an exploit that works on a vulnerable contract in a sandbox and fails on the fixed one. You can scan a contract on the page, and the scan runs in your browser.\n\nIt also flagged a",
+        "links": []
+      },
+      {
+        "id": "2120995111056093480",
+        "author": "Wonka_Red",
+        "text": "I also tried it on a real model. A local model ran as the agent on testnet and read a web page with instructions hidden in it. I wrote that page and reworded it five times before the model went along. After that it followed the page in 8 of 10 runs, which made 16 calls in all.",
+        "links": []
+      },
+      {
+        "id": "2120995112742216123",
+        "author": "Wonka_Red",
+        "text": "The scan matches patterns and proves nothing, and it is noisy. On 14 public NEAR repos it raised 90 findings. 10 were the real pattern, 65 were the pattern with a guard somewhere else in the code, and 15 were wrong. I tuned the rules on those repos. On 8 more it had never seen,",
+        "links": []
+      }
+    ],
+    "links": [
+      "https://wonkared.github.io/preflight/"
+    ]
+  },
+  "e3c3456e-876a-4838-867f-dc0acc3f5f26": {
+    "author": "omni6nt",
+    "status": "ok",
+    "crawled_at": "2026-11-12T22:11:58.759Z",
+    "listed": 2,
+    "read": 2,
+    "posts": [
+      {
+        "id": "2120995964731462024",
+        "author": "omni6nt",
+        "text": "Built at NEAR HACKATHON.\n\nNEAR's role: the AI only holds a NEAR function-call key that can call `pay`, and the rules live in a contract on NEAR that nobody can change (we deleted its deploy key, and anyone can verify it).\n\nRepo: https://t.co/KJgsAAIGLC\n\nWhat should an AI be",
+        "links": [
+          "https://github.com/omni6nt/trustpal-agent"
+        ]
+      }
+    ],
+    "links": []
+  },
+  "876c595d-5c1e-48c3-9292-860a57e2c3d2": {
+    "author": "Sanni_onX",
+    "status": "no-author-replies",
+    "crawled_at": "2026-11-12T22:12:01.266Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [],
+    "links": []
+  },
+  "fcb6e83e-ce6a-4425-ab68-181d46947acb": {
+    "author": "mattdreams",
+    "status": "no-author-replies",
+    "crawled_at": "2026-11-12T22:12:03.566Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [],
+    "links": []
+  },
+  "05235279-010a-42cd-826e-db49abaf0d55": {
+    "author": "Cryptobraskar",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-12T22:12:05.236Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://rugwall-near.netlify.app",
+      "https://rugwall-near.netlify.app/"
+    ]
   }
 }

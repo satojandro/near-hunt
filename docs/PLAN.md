@@ -468,6 +468,33 @@ near account list-keys nearhunt.near network-config mainnet now   # 1 key, full 
     batch added none; `npm test` 380/380. All five pages were then fetched through `nearhunt.xyz`
     and each shows its GitHub link. The five issues were answered and closed.
 
+26. **The 26 new feed submissions, 13 Nov — batch 25, signed from the scheduled cycle's own report.**
+    The `near-hunt-enrich-cycle` job (`ba3f66d1e6aa`, every 180m, in the default profile's cron
+    store) ran at 09:20 and printed an approval-ready report: `chain 764 · feed 789 · new 25 ·
+    changed 0`, `would write 25 keys, 33515 bytes`. The owner approved that batch; the dry run at
+    signing time had grown to `new: 26` because one more submission (`That Invoice`) arrived in
+    between — a growing feed is the normal case, so the write went ahead and the numbers reported
+    here are the ones the transaction actually did.
+
+    The importer truncates its create list to 20 (`+ … 6 more`), so the plan was recomputed in full
+    with `planImport` over all 790 feed projects — **the feed API is 8 per page and fetch-all needs
+    the `?page=N` loop**, a plain `fetch` silently reviews 8. Result: **26 creates, 0 updates, 0
+    missing from feed**, which is the useful part: no existing record was written, so nothing a
+    builder supplied could be overwritten or reverted. Carry: description **25/26**, media
+    **23/26**, links **10/26**, repository **9/26**; `That Invoice` arrived after the enrich build,
+    so it lands with feed fields only and is enriched next cycle.
+
+    One transaction, `GpVcysCvZY2g62dwHtLmTCYcmT2uQowmTRvQYbvDyMCb` (26 keys, 34034 bytes), signed
+    with the scoped `ed25519:2WMyE…` FunctionCall key on `__fastdata_kv` — no full-access key.
+    `verified: 26/26 written keys read back` (0/26 on the first indexer attempt, which is the
+    indexer's usual lag, not a partial write).
+
+    **Read back:** **790 project rows**, 790 with a value, **0 tombstones**; the 26 records written
+    at `2026-11-12T22:43:52Z` carry exactly the counts above. The importer then prints `new: 0,
+    changed: 0, unchanged: 790`, so the batch left no residue. `npm run validate:schema` **788/790**,
+    the same two feed-owned `http://` `demo_url` defects (`VIGIL`, `IntentFolio`), so this batch added
+    none; `npm test` 380/380.
+
 ## Decisions taken
 
 | Decision | Choice | Why |
