@@ -1,19 +1,20 @@
 {
-  "generated_at": "2026-11-12T09:34:31.826Z",
+  "generated_at": "2026-11-12T19:06:51.091Z",
   "account": "nearhunt.near",
   "note": "Flags only. Nothing is merged, hidden or written. `clusters`/`groups` share an identifying URL (possible duplicates). `weak_signals` share only a name or an X account and are usually different projects.",
   "summary": {
-    "submissions": 671,
-    "on_chain": 619,
-    "pending": 52,
-    "shared_urls": 1,
+    "submissions": 764,
+    "on_chain": 679,
+    "pending": 85,
+    "shared_urls": 2,
     "by_kind": {
+      "x-post": 1,
       "url": 1
     },
-    "clusters": 1,
-    "submissions_flagged": 2,
-    "same_name_groups": 17,
-    "same_x_account_groups": 63
+    "clusters": 2,
+    "submissions_flagged": 4,
+    "same_name_groups": 23,
+    "same_x_account_groups": 72
   },
   "clusters": [
     {
@@ -35,9 +36,51 @@
           "key": "pump-rider.netlify.app"
         }
       ]
+    },
+    {
+      "submissions": [
+        {
+          "submission_id": "442b6492-df62-496b-9c1a-0dbd13543687",
+          "name": "Sylic AI",
+          "on_chain": true
+        },
+        {
+          "submission_id": "113ecb11-f87d-4d1e-b4f4-c76fdfafdc2b",
+          "name": "SYLIC AI",
+          "on_chain": true
+        }
+      ],
+      "shared": [
+        {
+          "kind": "x-post",
+          "key": "x.com/status/2111693930437759285"
+        }
+      ]
     }
   ],
   "groups": [
+    {
+      "key": "x.com/status/2111693930437759285",
+      "kind": "x-post",
+      "submissions": [
+        {
+          "submission_id": "442b6492-df62-496b-9c1a-0dbd13543687",
+          "name": "Sylic AI",
+          "on_chain": true,
+          "fields": [
+            "demo_url"
+          ]
+        },
+        {
+          "submission_id": "113ecb11-f87d-4d1e-b4f4-c76fdfafdc2b",
+          "name": "SYLIC AI",
+          "on_chain": true,
+          "fields": [
+            "demo_url"
+          ]
+        }
+      ]
+    },
     {
       "key": "pump-rider.netlify.app",
       "kind": "url",
@@ -115,6 +158,11 @@
             "submission_id": "ff4096e0-82f9-468d-8592-ea13a28fb4c4",
             "name": "AgentGuard",
             "on_chain": true
+          },
+          {
+            "submission_id": "fe4d4ec3-b5d2-4f0e-8ea8-f568e7b71389",
+            "name": "AgentGuard",
+            "on_chain": false
           }
         ]
       },
@@ -230,26 +278,31 @@
             "submission_id": "c4f4956e-02e4-4fd4-b6dd-6e8582b8020a",
             "name": "Mandate",
             "on_chain": true
+          },
+          {
+            "submission_id": "68ea4ce8-2607-4fc2-8e83-d35405486953",
+            "name": "Mandate",
+            "on_chain": false
           }
         ]
       },
       {
-        "key": "near sentinel",
+        "key": "intentguard",
         "submissions": [
           {
-            "submission_id": "19769764-c445-437e-8187-e0433b18c3da",
-            "name": "NEAR SENTINEL",
+            "submission_id": "7db4528c-09fb-4a27-85d8-526aa2bc4ee4",
+            "name": "IntentGuard",
             "on_chain": true
           },
           {
-            "submission_id": "1a48435d-d9b3-4894-9a42-442ef79c0ccf",
-            "name": "NEAR Sentinel",
+            "submission_id": "fab81a4b-9c1f-4434-a1cc-cc0933f8d37f",
+            "name": "IntentGuard",
             "on_chain": true
           },
           {
-            "submission_id": "55eb2652-5aee-4768-8800-22f5d6ee0b92",
-            "name": "NEAR SENTINEL",
-            "on_chain": true
+            "submission_id": "f7a9c397-afcf-4ac4-832b-0254390cd34a",
+            "name": "IntentGuard",
+            "on_chain": false
           }
         ]
       },
@@ -304,6 +357,21 @@
         ]
       },
       {
+        "key": "agent guard",
+        "submissions": [
+          {
+            "submission_id": "529be7da-2cd5-48bc-941a-830b9f524759",
+            "name": "Agent Guard",
+            "on_chain": true
+          },
+          {
+            "submission_id": "22433e60-5bd6-4eff-b640-016947a51475",
+            "name": "Agent Guard",
+            "on_chain": false
+          }
+        ]
+      },
+      {
         "key": "carerail",
         "submissions": [
           {
@@ -334,17 +402,47 @@
         ]
       },
       {
-        "key": "intentguard",
+        "key": "near by the numbers",
         "submissions": [
           {
-            "submission_id": "7db4528c-09fb-4a27-85d8-526aa2bc4ee4",
-            "name": "IntentGuard",
+            "submission_id": "815d312a-1f58-4d92-9b0b-5d94daf8a36f",
+            "name": "NEAR by the Numbers",
             "on_chain": true
           },
           {
-            "submission_id": "fab81a4b-9c1f-4434-a1cc-cc0933f8d37f",
-            "name": "IntentGuard",
+            "submission_id": "948198bc-439e-40b4-9bd9-a549ce192698",
+            "name": "NEAR by the Numbers",
+            "on_chain": false
+          }
+        ]
+      },
+      {
+        "key": "near sentinel",
+        "submissions": [
+          {
+            "submission_id": "19769764-c445-437e-8187-e0433b18c3da",
+            "name": "NEAR SENTINEL",
             "on_chain": true
+          },
+          {
+            "submission_id": "55eb2652-5aee-4768-8800-22f5d6ee0b92",
+            "name": "NEAR SENTINEL",
+            "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "near thesis lab",
+        "submissions": [
+          {
+            "submission_id": "cf21f377-dfbe-41f2-a493-c1256effba69",
+            "name": "NEAR Thesis Lab",
+            "on_chain": true
+          },
+          {
+            "submission_id": "52c5c261-be98-42a8-8c2a-aa0710058252",
+            "name": "NEAR Thesis Lab",
+            "on_chain": false
           }
         ]
       },
@@ -379,6 +477,21 @@
         ]
       },
       {
+        "key": "payguard",
+        "submissions": [
+          {
+            "submission_id": "acbd537d-69d0-4ecf-b87b-8d63dce6619e",
+            "name": "PayGuard",
+            "on_chain": true
+          },
+          {
+            "submission_id": "e9e9e8ae-3843-4592-8987-249bb295163b",
+            "name": "PayGuard",
+            "on_chain": false
+          }
+        ]
+      },
+      {
         "key": "proofpay",
         "submissions": [
           {
@@ -404,6 +517,36 @@
           {
             "submission_id": "287c0199-5dcd-42a9-86d8-0fa06123a8f3",
             "name": "ShowUp",
+            "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "spendguard",
+        "submissions": [
+          {
+            "submission_id": "fde9ac19-13da-4b0f-84e7-8e9bc19c63ef",
+            "name": "SpendGuard",
+            "on_chain": true
+          },
+          {
+            "submission_id": "a6fb646f-7458-4780-90b6-9ce763627599",
+            "name": "SpendGuard",
+            "on_chain": false
+          }
+        ]
+      },
+      {
+        "key": "sylic ai",
+        "submissions": [
+          {
+            "submission_id": "113ecb11-f87d-4d1e-b4f4-c76fdfafdc2b",
+            "name": "SYLIC AI",
+            "on_chain": true
+          },
+          {
+            "submission_id": "442b6492-df62-496b-9c1a-0dbd13543687",
+            "name": "Sylic AI",
             "on_chain": true
           }
         ]
@@ -486,6 +629,36 @@
         ]
       },
       {
+        "key": "akangbeanas",
+        "submissions": [
+          {
+            "submission_id": "66d42841-121e-414e-a047-1ce7cfa80782",
+            "name": "iMeme",
+            "on_chain": true
+          },
+          {
+            "submission_id": "b5e92055-8e69-4edc-aab9-aa965d69d42d",
+            "name": "Swarm-for-Hire",
+            "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "algocherry",
+        "submissions": [
+          {
+            "submission_id": "ef2f6858-ddf3-43c4-8148-5f29e67fdb7a",
+            "name": "Merit",
+            "on_chain": true
+          },
+          {
+            "submission_id": "6b280e50-68bc-400d-a3de-eca871be2709",
+            "name": "Genesis",
+            "on_chain": false
+          }
+        ]
+      },
+      {
         "key": "aloo51523593330",
         "submissions": [
           {
@@ -512,6 +685,21 @@
             "submission_id": "d01a3b13-a62b-412c-a6f8-f86f59850c5e",
             "name": "Aegis",
             "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "angelhdzz",
+        "submissions": [
+          {
+            "submission_id": "52c5c261-be98-42a8-8c2a-aa0710058252",
+            "name": "NEAR Thesis Lab",
+            "on_chain": false
+          },
+          {
+            "submission_id": "ebbb6d2f-d3ab-427f-8768-4aa49c55ca38",
+            "name": "$MELT",
+            "on_chain": false
           }
         ]
       },
@@ -684,14 +872,14 @@
         "key": "drained99",
         "submissions": [
           {
-            "submission_id": "362055e6-2e3f-4d19-958c-8c3dd4cd8291",
-            "name": "THE PIT",
+            "submission_id": "2705e4be-45ed-4da7-87bd-e19a8b161941",
+            "name": "Paygate",
             "on_chain": true
           },
           {
-            "submission_id": "2705e4be-45ed-4da7-87bd-e19a8b161941",
-            "name": "Paygate",
-            "on_chain": false
+            "submission_id": "362055e6-2e3f-4d19-958c-8c3dd4cd8291",
+            "name": "THE PIT",
+            "on_chain": true
           }
         ]
       },
@@ -756,6 +944,21 @@
         ]
       },
       {
+        "key": "i",
+        "submissions": [
+          {
+            "submission_id": "74439305-e44b-4bc0-875a-5ce5dd7171d8",
+            "name": "SikaSend",
+            "on_chain": true
+          },
+          {
+            "submission_id": "7546d008-eef6-4a4d-ab97-925c31229fd7",
+            "name": "Ledgerly",
+            "on_chain": false
+          }
+        ]
+      },
+      {
         "key": "ijustabi",
         "submissions": [
           {
@@ -766,7 +969,7 @@
           {
             "submission_id": "53d9c309-ac4a-41d9-a31e-60ad073cf0c1",
             "name": "NearBowl-Feed it or it Dies",
-            "on_chain": false
+            "on_chain": true
           }
         ]
       },
@@ -826,7 +1029,7 @@
           {
             "submission_id": "3b5ef8d3-509b-4b39-8efd-c7bde5ef0f2e",
             "name": "Umbra",
-            "on_chain": false
+            "on_chain": true
           }
         ]
       },
@@ -966,6 +1169,21 @@
         ]
       },
       {
+        "key": "metaversemavin",
+        "submissions": [
+          {
+            "submission_id": "38ce2f4a-99e0-4c4e-aec2-c9a835b68df8",
+            "name": "Boundora",
+            "on_chain": true
+          },
+          {
+            "submission_id": "304b42d1-54aa-44a9-a166-1e93e839056b",
+            "name": "Tummo",
+            "on_chain": false
+          }
+        ]
+      },
+      {
         "key": "mr_ghdc",
         "submissions": [
           {
@@ -1029,14 +1247,14 @@
         "key": "nnadijoshuac",
         "submissions": [
           {
-            "submission_id": "c1cdec4a-cf17-4391-9e2d-863076917cd0",
-            "name": "Hive",
-            "on_chain": false
-          },
-          {
             "submission_id": "8a5c6ffe-289c-4140-aea1-e96f420f3a19",
             "name": "Hindsight",
-            "on_chain": false
+            "on_chain": true
+          },
+          {
+            "submission_id": "c1cdec4a-cf17-4391-9e2d-863076917cd0",
+            "name": "Hive",
+            "on_chain": true
           }
         ]
       },
@@ -1044,14 +1262,14 @@
         "key": "oraclethacat",
         "submissions": [
           {
-            "submission_id": "9b6e7306-3017-4e70-b2d1-9181848d6275",
-            "name": "Verity",
-            "on_chain": false
-          },
-          {
             "submission_id": "9b38754c-b93e-4862-80b5-1798afab065f",
             "name": "$TRUE",
-            "on_chain": false
+            "on_chain": true
+          },
+          {
+            "submission_id": "9b6e7306-3017-4e70-b2d1-9181848d6275",
+            "name": "Verity",
+            "on_chain": true
           }
         ]
       },
@@ -1156,7 +1374,7 @@
           {
             "submission_id": "6d6be589-4a36-4a66-94f4-4408c40c9057",
             "name": "ALTAR",
-            "on_chain": false
+            "on_chain": true
           }
         ]
       },
@@ -1201,7 +1419,7 @@
           {
             "submission_id": "b96e9f4e-8b35-4cd3-9a0b-5df13491ee25",
             "name": "Plinth",
-            "on_chain": false
+            "on_chain": true
           }
         ]
       },
@@ -1230,7 +1448,7 @@
           },
           {
             "submission_id": "d9eafab3-18e9-4c8f-9676-143d13df9289",
-            "name": "Busari Ibraheem (Dappest Dev)",
+            "name": "Emporium",
             "on_chain": true
           }
         ]
@@ -1251,6 +1469,21 @@
         ]
       },
       {
+        "key": "subashk22",
+        "submissions": [
+          {
+            "submission_id": "b256610a-41f1-4fa5-955a-c703b4530c98",
+            "name": "NEAR PHOENIX v5.0",
+            "on_chain": true
+          },
+          {
+            "submission_id": "1f5f881d-dbbc-419e-a049-2f84da4a9cf1",
+            "name": "NEAR CLEARLOOP",
+            "on_chain": false
+          }
+        ]
+      },
+      {
         "key": "surthenort40906",
         "submissions": [
           {
@@ -1262,6 +1495,36 @@
             "submission_id": "ebacde79-c454-41c4-b5ef-27917cf242e3",
             "name": "Patch Fund",
             "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "sylic_ai",
+        "submissions": [
+          {
+            "submission_id": "113ecb11-f87d-4d1e-b4f4-c76fdfafdc2b",
+            "name": "SYLIC AI",
+            "on_chain": true
+          },
+          {
+            "submission_id": "442b6492-df62-496b-9c1a-0dbd13543687",
+            "name": "Sylic AI",
+            "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "synndicatehq",
+        "submissions": [
+          {
+            "submission_id": "a96cded3-a635-4ea0-aa96-4a7339812289",
+            "name": "AI-Shtat Pay",
+            "on_chain": true
+          },
+          {
+            "submission_id": "22433e60-5bd6-4eff-b640-016947a51475",
+            "name": "Agent Guard",
+            "on_chain": false
           }
         ]
       },
@@ -1361,11 +1624,26 @@
           {
             "submission_id": "9b197e74-3178-417c-b763-782daa838e7a",
             "name": "Flow, Not Price — The $37B Decoupling",
-            "on_chain": false
+            "on_chain": true
           },
           {
             "submission_id": "d101d790-a77d-4feb-93cc-a95f038c2f1f",
             "name": "Near2Cash — your NEAR, in your local currency",
+            "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "zacodil",
+        "submissions": [
+          {
+            "submission_id": "477e20ad-b9eb-4ca2-9e3d-a35e671831b3",
+            "name": "Provable AI Compliance",
+            "on_chain": true
+          },
+          {
+            "submission_id": "414e8d74-fcd2-463b-a319-fe4e894566cf",
+            "name": "Attested Arena",
             "on_chain": false
           }
         ]

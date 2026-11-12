@@ -407,6 +407,35 @@ near account list-keys nearhunt.near network-config mainnet now   # 1 key, full 
     `fc122909…`, both feed-owned `http://` `demo_url`s), so this batch introduced no new schema
     defect. `npm test` 380/380.
 
+24. **The 85 new feed submissions and 12 changes, 13 Nov — batch 24, and the first batch driven by the
+    scheduled cycle.** `scripts/enrich-cycle.mjs` (threads → enrich → duplicates → import dry run) now
+    runs from a cron job every three hours; it is read-only and silent until a batch is ready to
+    approve. Dry run: `85 new, 12 changed`, `97 keys, 131632 bytes, 3 transaction(s)`; the owner
+    approved that diff in the conversation ("Yes, sign the import"). Execute reprinted the same
+    numbers and signed: `9Boc33e7zxLwVRhk6DRsjK2TvrMMMfQio2skxqojXutU` (47),
+    `CXwr6fPCoj8rDrrfF2667qcMWRHwxZjDy7TPrRw9q7s3` (46),
+    `FH2hUpjQ7uUrLJfjF6XtQMHwudRUnD7U8AHKseAmFLMn` (4). Importer output: `verified: 97/97 written keys
+    read back` (76/97 on the first indexer attempt). Signed with the FunctionCall key
+    (`FunctionCall(nearhunt.near, __fastdata_kv)`) — no full-access key was used.
+
+    Coverage of the 85 pending records: **description 82/85, media 79/85, repository 44/85**.
+    Pipeline this round: `threads:capture --gaps-only --include-pending`, `enrich` over the chain and
+    feed, `enrich:links` 388 URLs (**352 live, 30 unverified, 6 gone** — 3 `testnet.nearblocks.org`
+    tx links, `tutnarezki5-dotcom.github.io/agentguard`, one `njump.me` note, `trope.fun`),
+    `enrich:duplicates` **2 clusters / 4 submissions** (`NEAR: On The Evidence` and `Pump Rider` share
+    a URL; `Sylic AI` submitted twice), plus 23 same-name and 72 same-X-account weak-signal groups.
+
+    **Flagged to the owner:** the weak signals are dominated by coordinated "agent guard" submissions —
+    `AgentGuard` ×11, `Leash` ×7, `Tripwire` ×5, `Allowance` ×4, `Mandate` ×4, plus `IntentGuard`,
+    `Tollgate`, `Aegis`, `SpendGuard`, `PayGuard` — with 72 accounts each submitting two projects.
+    Nothing was hidden or merged; that remains the owner's decision.
+
+    **After batch 24, read back:** **764 project rows**; the importer dry run prints `new: 1,
+    changed: 0, unchanged: 764` (one submission, `FOUND`, arrived after the write — the scheduled
+    cycle picks it up). `npm run validate:schema` reports **762 valid and 2 invalid**, the same two
+    feed-owned `http://` `demo_url` records batch 22 left (`VIGIL` `1ca01819…`, `IntentFolio`
+    `fc122909…`), so this batch introduced no new schema defect.
+
 ## Decisions taken
 
 | Decision | Choice | Why |
