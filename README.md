@@ -13,26 +13,27 @@ comment is a plain key-value row on NEAR mainnet under `nearhunt.near`, with no 
 A read-only JSON API and a [`SKILL.md`](public/SKILL.md) let AI agents read the same data without
 a browser.
 
-## Status (measured 11 Nov 2026)
+## Status (measured 13 Nov 2026)
 
 | What | Number | Reproduce |
 |---|---|---|
-| Project records on mainnet, written by `nearhunt.near` | 499 | `npm run validate:schema` |
-| Projects listed on the site (one is on the [hide list](data/hidden-projects.json)) | 498 | `curl -s "https://nearhunt.xyz/api/projects?limit=1"` → `meta.total` |
-| Records with the builder's own description / a repository / media | 473 / 253 / 452 | count the fields in `readProjects()` from [`lib/kv.mjs`](lib/kv.mjs) |
-| Upvotes on chain, and the accounts that cast them | 55 rows, 24 accounts | `vote/` rows, see [Read the chain directly](#3-read-the-chain-directly-no-near-hunt-server-involved) |
-| Comments on chain | 12 rows, 6 accounts | `comment/` rows, same call |
-| Unit tests | 329 pass | `npm test` |
+| Project records on mainnet, written by `nearhunt.near` | 814 | `npm run validate:schema` |
+| Projects listed on the site (one is on the [hide list](data/hidden-projects.json)) | 813 | `curl -s "https://nearhunt.xyz/api/projects?limit=1"` → `meta.total` |
+| Records with the builder's own description / a repository / media | 766 / 444 / 733 | count the fields in `readProjects()` from [`lib/kv.mjs`](lib/kv.mjs) |
+| Upvotes on chain, and the accounts that cast them | 152 rows (131 active, 21 removed), 109 accounts | `vote/` rows, see [Read the chain directly](#3-read-the-chain-directly-no-near-hunt-server-involved) |
+| Comments on chain | 30 rows (28 active, 2 deleted), 20 accounts | `comment/` rows, same call |
+| Unit tests | 380 pass | `npm test` |
 
 These numbers move: the hackathon feed is still open and people are still voting.
 
 Known gaps, so nobody finds them by surprise:
 
-- `npm run validate:schema` currently reports **1 invalid record of 499**:
-  `project/1ca01819-1a03-4a49-81d7-eb5755db0fea` has an `http://` `demo_url` where the schema
-  wants `https://`. It is the link as the builder submitted it. Correcting it is a mainnet write
-  that waits for the owner's approval.
-- `node scripts/import.mjs` (a dry run) shows 7 feed submissions not yet on chain. Imports are
+- `npm run validate:schema` currently reports **2 invalid records of 814**:
+  `project/1ca01819-1a03-4a49-81d7-eb5755db0fea` and
+  `project/fc122909-2cd5-4d03-ae5d-7df09aa93f1d` have an `http://` `demo_url` where the schema
+  wants `https://`. They are the links as the builders submitted them. Correcting them is a
+  mainnet write that waits for the owner's approval.
+- `node scripts/import.mjs` (a dry run) shows 4 feed submissions not yet on chain. Imports are
   applied in approved batches, so the directory can trail the feed by a few records.
 - The wallet checks in the [Day 3 checklist](docs/runbooks/day3-signing-checklist.md) (section C)
   are not ticked off. The vote and comment rows above were written by real accounts through the
@@ -59,7 +60,7 @@ Known gaps, so nobody finds them by surprise:
 ### 2. Through the API (no key, no wallet)
 
 ```bash
-# Top projects by upvotes. See: {"items":[...],"next_cursor":...,"meta":{"total":498,...}}
+# Top projects by upvotes. See: {"items":[...],"next_cursor":...,"meta":{"total":813,...}}
 curl -s "https://nearhunt.xyz/api/projects?sort=votes&limit=3"
 
 # One project. See: its nearhunt/project/1 record plus block_height, votes and url
@@ -96,10 +97,10 @@ environment variables).
 ```bash
 npm install
 npm run dev               # open http://localhost:3000 and see the same directory as the live site
-npm test                  # see: pass 329, fail 0
+npm test                  # see: pass 380, fail 0
 npm run typecheck         # see: no errors
 npm run build             # see: the route table, ending with /wallet-manifest.json
-npm run validate:schema   # see: every live record checked against the schema (1 invalid today, above)
+npm run validate:schema   # see: every live record checked against the schema (2 invalid today, above)
 node scripts/import.mjs   # see: a dry-run diff of the feed against the chain; it signs nothing
 ```
 
