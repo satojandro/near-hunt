@@ -162,8 +162,8 @@ node scripts/enrich-cycle.mjs --sign     # what the cron job runs; --force to re
   (`lib/auto-sign.mjs`), which is the whole policy in one tested function. If the plan would
   replace any value that is already set (feed-owned `schema`/`id`/`source`/`name`/`tracks`/
   `demo_url` excepted), recreate a tombstoned record, add a `social_post`, publish enrichment with
-  no `sources` or a link with no measured `check.verdict`, use `--refresh-enriched`, exceed 200 keys
-  or 4 transactions, or sign with anything other than the scoped `__fastdata_kv` key, it signs
+  no `sources` or a link with no measured `check.verdict`, use `--refresh-enriched`, exceed 400 keys
+  or 8 transactions, or sign with anything other than the scoped `__fastdata_kv` key, it signs
   **nothing** and reports the blocker code. That batch then waits for a human exactly as above.
 - A signing run holds a lock (`.git/near-hunt-auto-sign.lock`): two cycles never sign from two
   proposals at once. A lock whose pid is gone is taken over, so a killed run does not wedge it.
