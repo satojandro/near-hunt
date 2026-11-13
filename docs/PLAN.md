@@ -583,6 +583,12 @@ near account list-keys nearhunt.near network-config mainnet now   # 1 key, full 
 
    **Read back:** 1002 project rows; the 96 new records carry description 95/96, media 93/96, links 54/96, repository 56/96. The importer's re-run prints `new: 0, changed: 0`; `npm run validate:schema` 1002/1002; `npm test` 412/412.
 
+31. **Unattended corrections batch, 2026-11-13 — 1 record(s) from 2 builder issue(s), 1 key(s).** Signed by the issues cycle under the owner's second authorization (14 Nov 2026): **links and repository only**, every change traceable to an issue and corroborated (`git ls-remote` + README for a repository, a probed verdict for a link). Description and media text is never signed unattended.
+
+   Issues: #34, #35. 1 transaction(s): `7gLPnFjCXA4FCwyEvfjt2SX8ajzixRPxLWgnydppfEpH`. `verified: 1/1`.
+
+   **Read back:** 1002 project rows; 1/1 of the corrected records now carry a repository and 1/1 carry links. The importer's re-run prints `new: 0, changed: 0`; `npm run validate:schema` 1002/1002; `npm test` 420/420.
+
 ## Decisions taken
 
 | Decision | Choice | Why |

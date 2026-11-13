@@ -1,100 +1,99 @@
 {
-  "generated_at": "2026-11-12T20:05:19.481482Z",
-  "source": "builder corrections, GitHub issues #27 #26 #25 #24 #23",
+  "source": "GitHub issue #34 (repository) and #35 (links) from HermitAiLabs, 13 Nov 2026; repository corroborated by git ls-remote and the repo README linking the same X post as the record demo_url",
+  "generated_at": "2026-11-13T15:58:48.936Z",
   "results": [
     {
-      "submission_id": "d9eafab3-18e9-4c8f-9676-143d13df9289",
+      "submission_id": "f159416a-3ab5-439d-8f68-73c34aba7337",
       "status": "ok",
-      "repository_url": "https://github.com/0xdopewilly/emporium-near",
-      "repository_source": "https://github.com/satojandro/near-hunt/issues/27",
+      "issue": "https://github.com/satojandro/near-hunt/issues/34",
+      "issue_number": 34,
+      "issue_numbers": [
+        34,
+        35
+      ],
+      "repository_url": "https://github.com/Hermit-Ai-Labs/hermit-app",
+      "repository_source": "https://github.com/satojandro/near-hunt/issues/34",
       "repository_basis": [
-        "builder"
+        "builder",
+        "readme"
       ],
       "repository_verified": true,
-      "repository_verified_at": "2026-11-12T20:05:19.481482Z",
+      "repository_verified_at": "2026-11-13T15:58:48.936Z",
+      "links": [
+        {
+          "url": "https://hermit.my",
+          "kind": "website",
+          "label": "Website",
+          "check": {
+            "verdict": "live",
+            "http_status": 200,
+            "checked_at": "2026-11-13T15:58:48.936Z"
+          }
+        },
+        {
+          "url": "https://hermit.my/dmg",
+          "kind": "website",
+          "label": "Mac app",
+          "check": {
+            "verdict": "live",
+            "http_status": 200,
+            "checked_at": "2026-11-13T15:58:48.936Z"
+          }
+        },
+        {
+          "url": "https://testflight.apple.com/join/ed9vUh7d",
+          "kind": "website",
+          "label": "iPhone (TestFlight)",
+          "check": {
+            "verdict": "live",
+            "http_status": 200,
+            "checked_at": "2026-11-13T15:58:48.936Z"
+          }
+        },
+        {
+          "url": "https://huggingface.co/aiquantgod/Hermit-1.3-4B-MLX-5bit",
+          "kind": "website",
+          "label": "Model (Hugging Face)",
+          "check": {
+            "verdict": "live",
+            "http_status": 200,
+            "checked_at": "2026-11-13T15:58:48.936Z"
+          }
+        },
+        {
+          "url": "https://github.com/Hermit-Ai-Labs/hermit-training",
+          "kind": "repository",
+          "label": "Training",
+          "check": {
+            "verdict": "live",
+            "http_status": 200,
+            "checked_at": "2026-11-13T15:58:48.936Z"
+          }
+        },
+        {
+          "url": "https://docs.hermit.my/near/overview/",
+          "kind": "docs",
+          "label": "NEAR docs",
+          "check": {
+            "verdict": "live",
+            "http_status": 200,
+            "checked_at": "2026-11-13T15:58:48.936Z"
+          }
+        }
+      ],
       "enrichment": {
         "method": "builder-issue",
         "sources": [
-          "https://github.com/satojandro/near-hunt/issues/27",
-          "https://github.com/0xdopewilly/emporium-near"
+          "https://github.com/satojandro/near-hunt/issues/34",
+          "https://github.com/satojandro/near-hunt/issues/35",
+          "https://github.com/Hermit-Ai-Labs/hermit-app",
+          "https://x.com/MrRyanChi/status/2121186366537244978"
         ],
-        "retrieved_at": "2026-11-12T20:05:19.481482Z"
-      }
-    },
-    {
-      "submission_id": "6930cfcc-eed7-405b-9ec1-3eba610d16b2",
-      "status": "ok",
-      "repository_url": "https://github.com/0xdopewilly/veto",
-      "repository_source": "https://github.com/satojandro/near-hunt/issues/26",
-      "repository_basis": [
-        "builder"
-      ],
-      "repository_verified": true,
-      "repository_verified_at": "2026-11-12T20:05:19.481482Z",
-      "enrichment": {
-        "method": "builder-issue",
-        "sources": [
-          "https://github.com/satojandro/near-hunt/issues/26",
-          "https://github.com/0xdopewilly/veto"
-        ],
-        "retrieved_at": "2026-11-12T20:05:19.481482Z"
-      }
-    },
-    {
-      "submission_id": "3a39f44c-033f-4a5e-ad4d-3bc902e5fd35",
-      "status": "ok",
-      "repository_url": "https://github.com/obiJohnbosco163/Nearfund",
-      "repository_source": "https://github.com/satojandro/near-hunt/issues/25",
-      "repository_basis": [
-        "builder"
-      ],
-      "repository_verified": true,
-      "repository_verified_at": "2026-11-12T20:05:19.481482Z",
-      "enrichment": {
-        "method": "builder-issue",
-        "sources": [
-          "https://github.com/satojandro/near-hunt/issues/25",
-          "https://github.com/obiJohnbosco163/Nearfund"
-        ],
-        "retrieved_at": "2026-11-12T20:05:19.481482Z"
-      }
-    },
-    {
-      "submission_id": "3b5ef8d3-509b-4b39-8efd-c7bde5ef0f2e",
-      "status": "ok",
-      "repository_url": "https://github.com/obiJohnbosco163/Umbra",
-      "repository_source": "https://github.com/satojandro/near-hunt/issues/24",
-      "repository_basis": [
-        "builder"
-      ],
-      "repository_verified": true,
-      "repository_verified_at": "2026-11-12T20:05:19.481482Z",
-      "enrichment": {
-        "method": "builder-issue",
-        "sources": [
-          "https://github.com/satojandro/near-hunt/issues/24",
-          "https://github.com/obiJohnbosco163/Umbra"
-        ],
-        "retrieved_at": "2026-11-12T20:05:19.481482Z"
-      }
-    },
-    {
-      "submission_id": "81eec9be-7452-4b8f-b57f-c7b654447b96",
-      "status": "ok",
-      "repository_url": "https://github.com/sugoidaowarrior/NearHr",
-      "repository_source": "https://github.com/satojandro/near-hunt/issues/23",
-      "repository_basis": [
-        "builder"
-      ],
-      "repository_verified": true,
-      "repository_verified_at": "2026-11-12T20:05:19.481482Z",
-      "enrichment": {
-        "method": "builder-issue",
-        "sources": [
-          "https://github.com/satojandro/near-hunt/issues/23",
-          "https://github.com/sugoidaowarrior/NearHr"
-        ],
-        "retrieved_at": "2026-11-12T20:05:19.481482Z"
+        "retrieved_at": "2026-11-13T15:58:48.936Z",
+        "fields": [
+          "repository_url",
+          "links"
+        ]
       }
     }
   ]
