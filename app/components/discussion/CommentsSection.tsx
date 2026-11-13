@@ -14,6 +14,7 @@ import Link from 'next/link';
 import { useWallet } from '@/app/components/wallet/WalletProvider';
 import { NETWORK, VOTE_ACCOUNT, VOTE_METHOD } from '@/lib/network.mjs';
 import { POLICY_PATH, submitComment, threadView, type Comment, type CommentNode } from '@/lib/comments.mjs';
+import { staleCopyText } from '@/lib/freshness.mjs';
 import { commentsChanged } from '@/app/actions/comments';
 import CommentComposer from './CommentComposer';
 import CommentItem, { type ProfileView } from './CommentItem';
@@ -28,6 +29,10 @@ type Props = {
   /** Total visible comments, including any older than `initialItems`. */
   count: number;
   available: boolean;
+  /** True when the thread shown is a stored copy, not this minute's read. */
+  stale: boolean;
+  /** When the stored copy was read (null when live or unavailable). */
+  fetchedAt: string | null;
   profiles: Record<string, ProfileView>;
   /** False when near.social (names and avatars) could not be reached; comments still show. */
   profilesAvailable: boolean;
@@ -70,6 +75,8 @@ export default function CommentsSection({
   initialItems,
   count,
   available,
+  stale,
+  fetchedAt,
   profiles,
   profilesAvailable,
   now,
@@ -171,6 +178,13 @@ export default function CommentsSection({
         <p className={s.alert} role="status">
           <strong>Comments cannot be read right now.</strong> The NEAR indexer is not answering. You can still post; it
           will show once the indexer is back.
+        </p>
+      ) : null}
+
+      {available && stale ? (
+        <p className={s.note} role="status">
+          This is a saved copy of the thread, {staleCopyText(fetchedAt, now)}. Comments posted since then may not
+          appear yet.
         </p>
       ) : null}
 

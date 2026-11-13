@@ -7,6 +7,7 @@ import Participants from '@/app/components/Participants';
 import { getVoteCounts } from '@/lib/votes';
 import { cardCommentCount, directoryView, formatFetchedUtc, type SearchParamsRecord, type Votes } from '@/lib/directory.mjs';
 import { trackLabel } from '@/lib/tracks.mjs';
+import { staleCopyText } from '@/lib/freshness.mjs';
 import Sidebar from '@/app/components/sidebar/Sidebar';
 import SearchBox from '@/app/components/directory/SearchBox';
 import Link from 'next/link';
@@ -93,7 +94,12 @@ async function Directory({ searchParams }: { searchParams: Promise<SearchParamsR
         {/* NH-112: people who have signed something, with their near.social faces. Hidden when the
             rows cannot be read — never rendered as "0 people". */}
         {people.available && people.items.length > 0 ? (
-          <Participants people={people.items} label={participantsLabel(people.items.length) ?? ''} />
+          <Participants
+            people={people.items}
+            label={`${participantsLabel(people.items.length) ?? ''}${
+              people.stale ? ` (a saved copy, ${staleCopyText(people.fetched_at)})` : ''
+            }`}
+          />
         ) : null}
         </div>
         {top ? (
@@ -131,10 +137,14 @@ async function Directory({ searchParams }: { searchParams: Promise<SearchParamsR
             {state.q ? ` matching “${state.q}”` : ''}
             {!tally.available
               ? ' · upvote counts are unavailable right now'
-              : noVotesYet && results.length > 0 ? ' · no votes yet, so this is newest first' : ''}
+              : tally.stale
+                ? ` · upvote counts ${staleCopyText(tally.fetched_at)}`
+                : noVotesYet && results.length > 0 ? ' · no votes yet, so this is newest first' : ''}
             {state.sort === 'discussed' && !discussion.available
               ? ' · comment counts are unavailable right now'
-              : noCommentsYet && results.length > 0 ? ' · no comments yet, so this is newest first' : ''}
+              : state.sort === 'discussed' && discussion.stale
+                ? ` · comment counts ${staleCopyText(discussion.fetched_at)}`
+                : noCommentsYet && results.length > 0 ? ' · no comments yet, so this is newest first' : ''}
           </p>
 
           {results.length > 0 ? (

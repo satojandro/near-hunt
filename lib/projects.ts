@@ -3,10 +3,23 @@ import { unstable_cache } from 'next/cache';
 import { readProjects, DEFAULT_ACCOUNT } from './kv.mjs';
 import { toListing, filterHidden, type ListingItem } from './listing.mjs';
 import { readIsFailing } from './freshness.mjs';
-import { loadSnapshot, saveSnapshot } from './projects-snapshot';
-import { newestSnapshot } from './projects-snapshot.mjs';
-import type { Snapshot } from './projects-snapshot.mjs';
+import { loadSnapshotValue, saveSnapshotValue } from './snapshot-store';
+import { isFreshnessRecord, newestSnapshot, snapshotKey } from './snapshot.mjs';
 import HIDDEN_PROJECTS from '../data/hidden-projects.json';
+
+/** Redis key for the durable copy of the listing (lib/snapshot.mjs). */
+const PROJECTS_SNAPSHOT_KEY = snapshotKey('projects');
+
+/** The stored shape: the listing plus when it was read and which namespace it came from. */
+interface Snapshot {
+  items: ListingItem[];
+  fetched_at: string;
+  account: string;
+}
+
+const isSnapshot = (value: unknown): boolean =>
+  isFreshnessRecord(value, (items) => Array.isArray(items)) &&
+  typeof (value as { account?: unknown }).account === 'string';
 
 /**
  * Seconds a cached copy of the project list is served before it is re-read from the KV API.
@@ -133,11 +146,11 @@ function readOnce(): Promise<CachedList> {
  */
 function loadSnapshotOnce(): Promise<Snapshot | null> {
   if (!state.snapshotInflight) {
-    state.snapshotInflight = loadSnapshot().finally(() => {
+    state.snapshotInflight = loadSnapshotValue<Snapshot>(PROJECTS_SNAPSHOT_KEY, isSnapshot, 'projects').finally(() => {
       state.snapshotInflight = null;
     });
   }
-  return state.snapshotInflight;
+  return state.snapshotInflight as Promise<Snapshot | null>;
 }
 
 /**
@@ -156,7 +169,7 @@ const readCachedProjects = unstable_cache(
       // NH-108: the owner's hide list is applied here, the one place every reader passes through.
       const items = filterHidden(toListing(entries), HIDDEN_PROJECTS);
       const list: CachedList = { items, fetched_at: new Date().toISOString(), account: DEFAULT_ACCOUNT };
-      await saveSnapshot(list);
+      await saveSnapshotValue(PROJECTS_SNAPSHOT_KEY, list, 'projects');
       return list;
     } catch (err) {
       state.lastFailedAt = Date.now();

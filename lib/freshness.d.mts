@@ -17,3 +17,9 @@ export declare function readIsFailing(opts: {
   lastOkAt: number;
   fetchedAt: string | number | Date;
 }): boolean;
+
+/**
+ * "as of 4 minutes ago" for a number or list that is a stored copy rather than a live read
+ * (lib/snapshot.mjs). Never present a copy as current.
+ */
+export declare function staleCopyText(fetchedAt: string | number | Date | null | undefined, now?: number): string;

@@ -2,6 +2,7 @@
 // and avatar. Profiles come from api2.near.social with a cache and a short timeout; if near.social
 // is down the list still shows, as account ids with initials.
 import { fetchProfiles, profileUrl, type SocialProfile } from '@/lib/social.mjs';
+import { staleCopyText } from '@/lib/freshness.mjs';
 import s from './project.module.css';
 
 /** Avatars shown before "+N more". Each one is a profile request, so this is also a fetch cap. */
@@ -27,7 +28,19 @@ function Avatar({ profile }: { profile: SocialProfile }) {
   return <span className={s.voterAvatar} aria-hidden="true">{letter}</span>;
 }
 
-export default async function UpvotedBy({ voters, available }: { voters: string[]; available: boolean }) {
+export default async function UpvotedBy({
+  voters,
+  available,
+  stale = false,
+  fetchedAt = null,
+}: {
+  voters: string[];
+  available: boolean;
+  /** True when the voter list is a stored copy rather than this minute's read. */
+  stale?: boolean;
+  /** When the stored copy was read. */
+  fetchedAt?: string | null;
+}) {
   const shown = voters.slice(0, MAX_VOTER_AVATARS);
   const more = voters.length - shown.length;
   const { status, profiles } = shown.length > 0 ? await fetchProfiles(shown) : { status: 'ok' as const, profiles: [] };
@@ -35,6 +48,11 @@ export default async function UpvotedBy({ voters, available }: { voters: string[
   return (
     <section className={s.card} aria-labelledby="upvoted-by-title">
       <h2 id="upvoted-by-title" className={s.cardTitle}>Upvoted by</h2>
+      {available && stale ? (
+        <p className={s.voterNote} role="status">
+          A saved copy of this list, {staleCopyText(fetchedAt)}. Upvotes cast since then may not appear yet.
+        </p>
+      ) : null}
       {!available ? (
         <p className={s.voterNote} role="status">Upvotes can’t be read right now. Try again in a minute.</p>
       ) : voters.length === 0 ? (

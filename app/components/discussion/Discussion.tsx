@@ -13,7 +13,7 @@ import type { ProfileView } from './CommentItem';
 const MAX_PROFILE_FETCH = 40;
 
 export default async function Discussion({ projectId }: { projectId: string }) {
-  const { items, count, available } = await getProjectComments(projectId);
+  const { items, count, available, stale, fetched_at: fetchedAt } = await getProjectComments(projectId);
   // The newest comments (oldest first inside the cut), so a busy thread shows the live end of it.
   const shown = items.slice(-PAGE_LIMIT);
   const authors = [...new Set(shown.map((c) => c.author))].slice(0, MAX_PROFILE_FETCH);
@@ -30,6 +30,8 @@ export default async function Discussion({ projectId }: { projectId: string }) {
       initialItems={shown}
       count={count}
       available={available}
+      stale={stale}
+      fetchedAt={fetchedAt}
       profiles={profiles}
       profilesAvailable={status === 'ok'}
       now={Date.now()}

@@ -55,7 +55,7 @@ export default async function ProjectPage({ params, searchParams }: Props) {
 
   // NH-33: active votes for this project (one per voter account). `available` is false when the
   // votes read failed; the page still renders, without a number.
-  const { voters, count, available: votesAvailable } = await getVoters(project.submission_id);
+  const { voters, count, available: votesAvailable, stale: votesStale, fetched_at: votesFetchedAt } = await getVoters(project.submission_id);
   // NH-43: the record card shows the same comment count as the directory card (one cached read,
   // shared with the Discussion card below).
   const comments = await getProjectComments(project.submission_id);
@@ -90,7 +90,7 @@ export default async function ProjectPage({ params, searchParams }: Props) {
         </div>
         <aside className={s.side} aria-label="Record details">
           <RecordCard project={project} comments={comments.count} commentsAvailable={comments.available} />
-          <UpvotedBy voters={voters} available={votesAvailable} />
+          <UpvotedBy voters={voters} available={votesAvailable} stale={votesStale} fetchedAt={votesFetchedAt} />
           <SimilarProjects project={project} all={allProjects} />
           <ClaimCard project={project} outcome={typeof claim === 'string' ? claim : undefined} />
         </aside>
