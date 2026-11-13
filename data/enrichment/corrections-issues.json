@@ -1,77 +1,62 @@
 {
-  "source": "GitHub issues #40 (Cynex, builder Jayanng) and #39 (Oathbox, builder Depthhub), 13-14 Nov 2026. Repository: git ls-remote Jayanng/Cynex resolved (refs/heads/Master, refs/heads/lane-b) and README.md on master names Cynex with the same pitch as the record. Link: the X post the Oathbox builder asked for probes live 200 and is a video post about Oathbox (og:image amplify_video_thumb) that also links github.com/Depthhub/oathbox.",
-  "generated_at": "2026-11-13T20:08:44.220Z",
+  "source": "GitHub issues #42 (Death Route, builder CinnamonfirJ) and #41 (Allpilot, builder zincshbar-lab), 14 Nov 2026 — repository corrections only. Both repositories resolve with `git ls-remote --heads`: CinnamonfirJ/death-route lists refs/heads/main + refs/heads/praise and its README titled 'Death Route' describes the same Godot zombie-delivery game with a NEAR economy and links deathroute.fun; zincshbar-lab/allpilot lists refs/heads/main and its README 'Allpilot — a cute AI co-pilot for NEAR' says 'Built at NEAR HACKATHON (Nov 2026)' with the same NEAR Intents demo. Issues #36 (shit-1170-rex-engine) and #30 (EmployAI) are description text and are not in this batch; #32 (Sentinel) is refused because GitHub answers 403 Repository is disabled.",
+  "generated_at": "2026-11-14T09:22:00.000Z",
   "results": [
     {
-      "submission_id": "3985c7e0-1514-4370-9ae7-98c2b905d0a7",
+      "submission_id": "210a9506-1e1a-446a-8f78-15f3fc1c55f6",
       "status": "ok",
-      "issue": "https://github.com/satojandro/near-hunt/issues/40",
-      "issue_number": 40,
+      "issue": "https://github.com/satojandro/near-hunt/issues/42",
+      "issue_number": 42,
       "issue_numbers": [
-        40
+        42
       ],
-      "repository_url": "https://github.com/Jayanng/Cynex",
-      "repository_source": "https://github.com/satojandro/near-hunt/issues/40",
+      "repository_url": "https://github.com/CinnamonfirJ/death-route",
+      "repository_source": "https://github.com/satojandro/near-hunt/issues/42",
       "repository_basis": [
         "builder",
         "readme"
       ],
       "repository_verified": true,
-      "repository_verified_at": "2026-11-13T20:08:44.220Z",
+      "repository_verified_at": "2026-11-14T09:22:00.000Z",
       "enrichment": {
         "method": "builder-issue",
         "sources": [
-          "https://github.com/satojandro/near-hunt/issues/40",
-          "https://github.com/Jayanng/Cynex",
-          "https://x.com/cynexpay/status/2121262177294098716"
+          "https://github.com/satojandro/near-hunt/issues/42",
+          "https://github.com/CinnamonfirJ/death-route",
+          "https://x.com/deathroutexe/status/2121332569098658223"
         ],
-        "retrieved_at": "2026-11-13T20:08:44.220Z",
+        "retrieved_at": "2026-11-14T09:22:00.000Z",
         "fields": [
           "repository_url"
         ]
       }
     },
     {
-      "submission_id": "4574db75-0823-45f3-8031-6511af3748d2",
+      "submission_id": "8cef41cd-d925-407f-8b7d-2bc587f40df1",
       "status": "ok",
-      "issue": "https://github.com/satojandro/near-hunt/issues/39",
-      "issue_number": 39,
+      "issue": "https://github.com/satojandro/near-hunt/issues/41",
+      "issue_number": 41,
       "issue_numbers": [
-        39
+        41
       ],
-      "links": [
-        {
-          "url": "https://oathbox.tech",
-          "check": {
-            "verdict": "live",
-            "http_status": 200,
-            "checked_at": "2026-11-13T20:08:44.220Z"
-          },
-          "kind": "website",
-          "kind_basis": "default",
-          "source_post_id": "2121258938658103468"
-        },
-        {
-          "url": "https://x.com/Builtbysammy/status/2121309103897317388",
-          "check": {
-            "verdict": "live",
-            "http_status": 200,
-            "checked_at": "2026-11-13T20:08:44.220Z"
-          },
-          "kind": "video",
-          "kind_basis": "builder"
-        }
+      "repository_url": "https://github.com/zincshbar-lab/allpilot",
+      "repository_source": "https://github.com/satojandro/near-hunt/issues/41",
+      "repository_basis": [
+        "builder",
+        "readme"
       ],
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-14T09:22:00.000Z",
       "enrichment": {
         "method": "builder-issue",
         "sources": [
-          "https://github.com/satojandro/near-hunt/issues/39",
-          "https://x.com/Builtbysammy/status/2121309103897317388",
-          "https://github.com/Depthhub/oathbox"
+          "https://github.com/satojandro/near-hunt/issues/41",
+          "https://github.com/zincshbar-lab/allpilot",
+          "https://x.com/pigtails_algo/status/2119455261379248475"
         ],
-        "retrieved_at": "2026-11-13T20:08:44.220Z",
+        "retrieved_at": "2026-11-14T09:22:00.000Z",
         "fields": [
-          "links"
+          "repository_url"
         ]
       }
     }
