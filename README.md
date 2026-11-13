@@ -47,7 +47,7 @@ project, one upvote per NEAR account, and threaded comments.
 | Comments on chain | 30 rows (28 active, 2 deleted), 20 accounts | `comment/` rows, same call |
 | NEAR accounts linked to a project through a claim | 13 `maker/` rows, 12 accounts | `maker/` rows, same call |
 | `#nearhunt` posts on near.social, shared from the upvote prompt | 20 posts, 17 accounts | `curl -s "https://api2.near.social/v1/hashtags/nearhunt?limit=20"` |
-| Unit tests | 388 pass | `npm test` |
+| Unit tests | 394 pass | `npm test` |
 
 These numbers move: the hackathon feed is still open and people are still voting.
 
@@ -126,7 +126,7 @@ environment variables).
 ```bash
 npm install
 npm run dev               # open http://localhost:3000 and see the same directory as the live site
-npm test                  # see: pass 388, fail 0
+npm test                  # see: pass 394, fail 0
 npm run typecheck         # see: no errors
 npm run build             # see: the route table, ending with /wallet-manifest.json
 npm run validate:schema   # see: every live record checked against the schema (2 invalid today, above)
