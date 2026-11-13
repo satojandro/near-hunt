@@ -38,7 +38,7 @@ export const PROJECTS_REVALIDATE_SECONDS = 120;
  * Left at 8 s on purpose. A five-page walk measures ~2.1 s from a healthy network, so this is a
  * stall detector, not a budget that needs widening; lengthening it would push the read towards the
  * platform's function limit and turn a graceful degrade into a hard failure. What needed fixing was
- * what happens *after* a timeout, which is the durable copy in lib/projects-snapshot.ts.
+ * what happens *after* a timeout, which is the durable copy in lib/snapshot.mjs.
  */
 export const PROJECTS_TIMEOUT_MS = 8000;
 
@@ -158,7 +158,7 @@ function loadSnapshotOnce(): Promise<Snapshot | null> {
  * the background; if that re-read fails the old copy stays and `lastReadFailedAt` moves on, which
  * is what turns the banner on. Errors are never cached.
  *
- * Every success also leaves a durable copy behind (lib/projects-snapshot.ts), so the next server
+ * Every success also leaves a durable copy behind (lib/snapshot.mjs), so the next server
  * instance to start has something to serve before it has read the KV API even once.
  */
 const readCachedProjects = unstable_cache(

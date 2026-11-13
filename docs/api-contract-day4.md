@@ -55,6 +55,12 @@ Errors: `{ "error": "<code>", "message": "<text>" }` with codes `not_found` (404
   gone). `meta` is `{total, source: {account, prefix: "comment/", network}, policy_url}`. Every
   project takes comments, so `items: []` is a real empty discussion; 503 when the rows cannot be
   read. `author` is the row's `predecessor_id`; `ref` is `{author}/{id}`, what `reply_to` points at.
+- Saved copies (NH-120, 13 Nov): when the indexer does not answer, vote and comment rows may come
+  from the last copy that was read. That is never presented as current. `/api/projects` meta adds
+  `votes_stale`, `votes_fetched_at`, `comments_stale` and `comments_fetched_at`; `/votes` and
+  `/discussion` meta add `stale` and `fetched_at`. `*_available: false` (or 503) still means there
+  was no copy at all. `/api/projects/{id}` has no envelope, so its `votes` carries no flag: use
+  `/votes` when the age matters.
 - Cursors: base64url of `o:<offset>` for every list, discussion included; a malformed or foreign
   cursor is `bad_request`.
 - Cache-Control `s-maxage`: projects 60 s, votes 20 s, discussion 30 s; errors `no-store`.

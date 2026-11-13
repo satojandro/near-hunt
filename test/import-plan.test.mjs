@@ -219,3 +219,26 @@ test('the dry-run change labels name media and provenance, so a media-only updat
   assert.equal(plan.update.length, 1);
   assert.deepEqual(plan.update[0].changes, ['media', 'enrichment']);
 });
+
+// Owner decision, 13 Nov: an `http://` demo link is upgraded to `https://`; nothing else changes.
+test('demo_url: http:// is upgraded to https://, and only the scheme changes', async () => {
+  const { httpsDemoUrl, ownedFields } = await import('../lib/import-plan.mjs');
+  assert.equal(httpsDemoUrl('http://x.com/a/status/1?s=20'), 'https://x.com/a/status/1?s=20');
+  assert.equal(httpsDemoUrl('HTTP://Example.app/'), 'https://Example.app/');
+  assert.equal(httpsDemoUrl('https://x.com/a/status/1'), 'https://x.com/a/status/1');
+  // not an http:// URL: passed through as supplied, so validation still catches it
+  assert.equal(httpsDemoUrl('ftp://example.com'), 'ftp://example.com');
+  assert.equal(httpsDemoUrl('example.com/http://x'), 'example.com/http://x');
+  assert.equal(httpsDemoUrl(null), null);
+  assert.equal(httpsDemoUrl(undefined), null);
+  assert.equal(ownedFields({ id: 'a', project_name: 'A', demo_url: 'http://a.example/' }).demo_url, 'https://a.example/');
+});
+
+test('demo_url: an http:// record already on chain is planned as a one-field correction', async () => {
+  const s = { ...sub('h'), demo_url: 'http://a.example/demo' };
+  const prev = { ...newRecord(sub('h'), NOW), demo_url: 'http://a.example/demo' };
+  const plan = planImport({ submissions: [s], existing: [{ key: 'project/h', value: prev }], nowIso: NOW });
+  assert.equal(plan.update.length, 1);
+  assert.deepEqual(plan.update[0].changes, ['demo_url']);
+  assert.equal(plan.update[0].value.demo_url, 'https://a.example/demo');
+});

@@ -5,6 +5,7 @@ import { NETWORK, VOTE_ACCOUNT } from './network.mjs';
 import { participantsFrom, PARTICIPANT_WINDOW_MS } from './participants.mjs';
 import { loadSnapshotValue, saveSnapshotValue } from './snapshot-store';
 import { isFreshnessRecord, snapshotKey } from './snapshot.mjs';
+import { copyIsStale } from './freshness.mjs';
 
 /** Seconds a cached participant list is served (NH-112). */
 export const PARTICIPANTS_REVALIDATE_SECONDS = 60;
@@ -83,7 +84,8 @@ const readParticipants = unstable_cache(
       throw err;
     }
   },
-  ['nearhunt-participants-v1', NETWORK, VOTE_ACCOUNT],
+  // v2: the cached value became `{items, fetched_at}`; the key changes with the shape.
+  ['nearhunt-participants-v2', NETWORK, VOTE_ACCOUNT],
   // Votes and comments both revalidate this, so a fresh vote moves the number immediately.
   { revalidate: PARTICIPANTS_REVALIDATE_SECONDS, tags: ['participants', 'votes', 'comments'] },
 );
@@ -102,7 +104,10 @@ export async function getParticipants(): Promise<ParticipantList> {
         });
       }
       const copy = await state.inflight;
-      return { items: copy.items, available: true, stale: false, fetched_at: copy.fetched_at };
+      if (!isParticipantsCopy(copy)) throw new Error('cached participants have an unexpected shape');
+      // An expired cache entry is served while the re-read runs, and stays when it fails: label it.
+      const stale = copyIsStale({ fetchedAt: copy.fetched_at, now: Date.now(), lastFailedAt: state.lastFailedAt });
+      return { items: copy.items, available: true, stale, fetched_at: copy.fetched_at };
     } catch (err) {
       console.error('[participants] KV read failed:', err instanceof Error ? err.message : err);
     }

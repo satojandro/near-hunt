@@ -61,24 +61,29 @@ export interface ProjectsBody {
     fetched_at: string;
     stale: boolean;
     votes_available: boolean;
+    /** True when the vote counts are a saved copy, read at `votes_fetched_at`. */
+    votes_stale: boolean;
+    votes_fetched_at: string | null;
     comments_available?: boolean;
+    comments_stale?: boolean;
+    comments_fetched_at?: string | null;
     source: { account: string; prefix: 'project/'; network: 'mainnet' };
   };
 }
 export declare function projectsBody(
   list: { items: ListingItem[]; fetched_at: string; read_failing: boolean; account?: string },
-  votes: { counts: Record<string, number>; available: boolean },
+  votes: { counts: Record<string, number>; available: boolean; stale?: boolean; fetched_at?: string | null },
   query: ProjectsQuery,
-  comments?: { counts: Record<string, number>; available: boolean },
+  comments?: { counts: Record<string, number>; available: boolean; stale?: boolean; fetched_at?: string | null },
 ): ProjectsBody;
 
 export interface VoteItem { account_id: string; block_height: number }
 export interface VotesBody {
   items: VoteItem[];
   next_cursor: string | null;
-  meta: { total: number; source: { account: string; prefix: 'vote/'; network: string } };
+  meta: { total: number; stale: boolean; fetched_at: string | null; source: { account: string; prefix: 'vote/'; network: string } };
 }
-export declare function votesBody(voters: VoteItem[], source: { account: string; network: string }, page: Page): VotesBody;
+export declare function votesBody(voters: VoteItem[], source: { account: string; network: string; stale?: boolean; fetched_at?: string | null }, page: Page): VotesBody;
 
 export interface DiscussionItem {
   key: string;
@@ -97,12 +102,14 @@ export interface DiscussionBody {
   next_cursor: string | null;
   meta: {
     total: number;
+    stale: boolean;
+    fetched_at: string | null;
     source: { account: string; prefix: 'comment/'; network: string };
     policy_url: string;
   };
 }
 export declare function discussionBody(
   comments: import('./comments.d.mts').Comment[],
-  source: { account: string; network: string },
+  source: { account: string; network: string; stale?: boolean; fetched_at?: string | null },
   page: Page,
 ): DiscussionBody;

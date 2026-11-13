@@ -5,6 +5,7 @@ import { readVoteRows, tallyVotes, votersFor, votesFor } from './votes.mjs';
 import { getProjects } from './projects';
 import { loadSnapshotValue, saveSnapshotValue } from './snapshot-store';
 import { isFreshnessRecord, snapshotKey } from './snapshot.mjs';
+import { copyIsStale } from './freshness.mjs';
 import type { KvEntry } from '../types/nearhunt';
 
 /** Seconds a cached copy of the vote rows is served before the KV API is read again. */
@@ -70,7 +71,9 @@ const getVoteRows = unstable_cache(
       throw err;
     }
   },
-  ['nearhunt-votes-v2', NETWORK, VOTE_ACCOUNT],
+  // v3: the cached value became `{rows, fetched_at}`. The key changes with the shape, so an entry
+  // cached by an earlier deploy is never handed to code that expects the new one.
+  ['nearhunt-votes-v3', NETWORK, VOTE_ACCOUNT],
   { revalidate: VOTES_REVALIDATE_SECONDS, tags: ['votes'] },
 );
 
@@ -84,7 +87,7 @@ function voteRowsOnce(): Promise<VoteRowsCopy> {
   return state.inflight;
 }
 
-interface VoteRowSet {
+export interface VoteRowSet {
   rows: VoteRow[];
   /** False when no rows could be read and no copy was stored: counts are then unknown, not zero. */
   available: boolean;
@@ -100,12 +103,17 @@ interface VoteRowSet {
  * The fallback is still reported as `stale: true`: a count from four minutes ago and a count from
  * four seconds ago are not the same claim — especially to somebody who has just cast a vote.
  */
-async function safeVoteRows(): Promise<VoteRowSet> {
+export async function safeVoteRows(): Promise<VoteRowSet> {
   const coolingDown = state.lastFailedAt > 0 && Date.now() - state.lastFailedAt < VOTES_RETRY_BACKOFF_MS;
   if (!coolingDown) {
     try {
       const copy = await voteRowsOnce();
-      return { rows: copy.rows, available: true, stale: false, fetched_at: copy.fetched_at };
+      // The cache is not trusted to hold the current shape (an entry from another deploy must
+      // fall through to the stored copy, not reach the tally as `undefined`).
+      if (!isVoteCopy(copy)) throw new Error('cached vote rows have an unexpected shape');
+      // Nor to be current: an expired entry is served while the re-read runs, and stays when it fails.
+      const stale = copyIsStale({ fetchedAt: copy.fetched_at, now: Date.now(), lastFailedAt: state.lastFailedAt });
+      return { rows: copy.rows, available: true, stale, fetched_at: copy.fetched_at };
     } catch (err) {
       console.error('[votes] KV read failed:', err instanceof Error ? err.message : err);
     }

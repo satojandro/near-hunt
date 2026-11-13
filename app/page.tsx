@@ -142,7 +142,7 @@ async function Directory({ searchParams }: { searchParams: Promise<SearchParamsR
                 : noVotesYet && results.length > 0 ? ' · no votes yet, so this is newest first' : ''}
             {state.sort === 'discussed' && !discussion.available
               ? ' · comment counts are unavailable right now'
-              : state.sort === 'discussed' && discussion.stale
+              : discussion.available && discussion.stale
                 ? ` · comment counts ${staleCopyText(discussion.fetched_at)}`
                 : noCommentsYet && results.length > 0 ? ' · no comments yet, so this is newest first' : ''}
           </p>
