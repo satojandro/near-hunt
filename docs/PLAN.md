@@ -589,6 +589,34 @@ near account list-keys nearhunt.near network-config mainnet now   # 1 key, full 
 
    **Read back:** 1002 project rows; 1/1 of the corrected records now carry a repository and 1/1 carry links. The importer's re-run prints `new: 0, changed: 0`; `npm run validate:schema` 1002/1002; `npm test` 420/420.
 
+**Correction to entry 31 — batch 31a, and the process failure behind it (recorded 14 Nov 2026).**
+
+The corrections run started at 02:52 AEDT read `data/enrichment/corrections-issues.json` (Hermit, issues
+#34/#35), computed the plan and passed it to the guard, which allowed **one record**. The batch file was
+then rewritten *while that run was in flight* (the Euthyna + EmployAI batch, issues #33/#29/#31), and the
+importer re-reads the file at write time. So the transaction signed was the **new** file while the guard
+had approved the **old** one:
+
+- tx `6zJQDHjsJdeHToGBzdrAEFonXjCU9X8o9cGLU92iywWU` — 2 keys, FINAL, 0.00009 NEAR burnt:
+  `project/a17e6cec…` (Euthyna, repository) and `project/bec43a1d…` (EmployAI, repository + demo link).
+  Both values were corroborated by hand (`git ls-remote` + the repo READMEs naming the project, the link
+  probed live 200) and both are inside the authorization's kind, so the **data** is correct. The
+  **integrity guarantee** was not: the guard judged different bytes than the ones signed.
+
+The run was stopped before it could claim on the issues that Hermit had landed (it had not), and the
+Hermit batch was then signed again through the fixed path (entry 31, tx `7gLPnFjC…`). Fixes, in
+`scripts/corrections-cycle.mjs`:
+
+1. the signing lock is taken **before** the batch file is read — a second run (import or corrections)
+   cannot start, and the refresh/record steps cannot interleave;
+2. the batch is **snapshotted** to `.git/corrections-signing.json` and the importer signs that file, so an
+   edit mid-run cannot change what is written;
+3. after the write the importer's key count is compared with the approved plan's, and a mismatch is
+   reported instead of recorded as success.
+
+Issues #33, #29 and #31 were answered with the tx and closed by hand after the fact; #32 (repository
+disabled by GitHub, 403) and #30/#36 (description text) were commented and left open for the owner.
+
 ## Decisions taken
 
 | Decision | Choice | Why |

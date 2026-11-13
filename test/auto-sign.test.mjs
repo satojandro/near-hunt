@@ -1,7 +1,10 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { planImport, newRecord, keyFor } from '../lib/import-plan.mjs';
-import { signoff, describeSignoff, planEntry, insertPlanEntry, lastPlanNumber, AUTO_SIGN_CAPS } from '../lib/auto-sign.mjs';
+import {
+  signoff, describeSignoff, planEntry, insertPlanEntry, lastPlanNumber, AUTO_SIGN_CAPS,
+  signoffCorrections, describeCorrections,
+} from '../lib/auto-sign.mjs';
 
 const NOW = '2026-11-14T00:00:00.000Z';
 const OLD = '2026-11-13T20:00:00.000Z';
@@ -169,4 +172,131 @@ test('the PLAN.md entry continues the numbering and lands before the next headin
   assert.ok(out.indexOf('3. **Unattended') < out.indexOf('## Decisions taken'));
   assert.match(out, /`TX1`, `TX2`/);
   assert.equal(lastPlanNumber(out), 3);
+});
+
+// ---------------------------------------------------------------------------
+// Corrections: the second, narrower authorization (links + repository only)
+// ---------------------------------------------------------------------------
+
+const ISSUE = 'https://github.com/satojandro/near-hunt/issues/34';
+const link = (url, verdict = 'live') => ({ url, kind: 'website', check: { verdict, http_status: 200, checked_at: NOW } });
+const corrEntry = (over = {}) => ({
+  submission_id: 'a',
+  status: 'ok',
+  issue: ISSUE,
+  issue_number: 34,
+  repository_verified: true,
+  repository_source: ISSUE,
+  repository_verified_at: NOW,
+  ...over,
+});
+const corrPlan = (prev, value, changes) => ({
+  create: [],
+  update: [{ key: keyFor('a'), value, changes }],
+  unchanged: 0,
+  missingFromFeed: [],
+  deletedOnChain: [],
+});
+const aRow = (over = {}) => ({ ...newRecord(sub('a'), OLD), ...over });
+
+test('corrections: a corroborated repository and a link the issue asked for are allowed', () => {
+  const prev = aRow({ description: 'Builder text stays put.', links: undefined });
+  const value = {
+    ...prev,
+    repository_url: 'https://github.com/Hermit-Ai-Labs/hermit-app',
+    links: [link('https://hermit.my')],
+    enrichment: { method: 'builder-issue', sources: [ISSUE], retrieved_at: NOW, fields: ['repository_url', 'links'] },
+    updated_at: NOW,
+  };
+  const plan = corrPlan(prev, value, ['repository_url', 'links', 'enrichment']);
+  const verdict = signoffCorrections(plan, {
+    prevByKey: new Map([[keyFor('a'), prev]]),
+    corrections: new Map([['a', corrEntry({ links: [{ url: 'https://hermit.my' }] })]]),
+    transactions: 1,
+  });
+  assert.equal(verdict.ok, true, JSON.stringify(verdict.blockers));
+  assert.equal(verdict.stats.repositoryChanges, 1);
+  assert.equal(verdict.stats.linkChanges, 1);
+});
+
+test('corrections: an unverified repository is refused, whatever the issue says', () => {
+  const prev = aRow();
+  const value = { ...prev, repository_url: 'https://github.com/x/y', updated_at: NOW };
+  const plan = corrPlan(prev, value, ['repository_url']);
+  for (const entry of [corrEntry({ repository_verified: false }), corrEntry({ repository_source: 'not a url' })]) {
+    const verdict = signoffCorrections(plan, {
+      prevByKey: new Map([[keyFor('a'), prev]]),
+      corrections: new Map([['a', entry]]),
+      transactions: 1,
+    });
+    assert.equal(verdict.ok, false);
+    assert.ok(verdict.blockers.some((b) => b.code === 'repository-not-corroborated'));
+  }
+});
+
+test('corrections: description and media are never signed unattended', () => {
+  const prev = aRow({ description: 'old text' });
+  const value = { ...prev, description: 'new text', updated_at: NOW };
+  const verdict = signoffCorrections(corrPlan(prev, value, ['description']), {
+    prevByKey: new Map([[keyFor('a'), prev]]),
+    corrections: new Map([['a', corrEntry()]]),
+    transactions: 1,
+  });
+  assert.equal(verdict.ok, false);
+  const blocker = verdict.blockers.find((b) => b.code === 'field-not-correctable');
+  assert.equal(blocker.detail.field, 'description');
+});
+
+test('corrections: a link the issue did not ask for cannot be smuggled in', () => {
+  const prev = aRow({ links: [link('https://old.example')] });
+  const value = { ...prev, links: [link('https://old.example'), link('https://sneaky.example')], updated_at: NOW };
+  const verdict = signoffCorrections(corrPlan(prev, value, ['links']), {
+    prevByKey: new Map([[keyFor('a'), prev]]),
+    corrections: new Map([['a', corrEntry({ links: [{ url: 'https://old.example' }] })]]),
+    transactions: 1,
+  });
+  assert.equal(verdict.ok, false);
+  assert.ok(verdict.blockers.some((b) => b.code === 'link-not-in-issue'));
+});
+
+test('corrections: a link without a measured verdict is refused', () => {
+  const prev = aRow();
+  const value = { ...prev, links: [{ url: 'https://hermit.my', kind: 'website' }], updated_at: NOW };
+  const verdict = signoffCorrections(corrPlan(prev, value, ['links']), {
+    prevByKey: new Map([[keyFor('a'), prev]]),
+    corrections: new Map([['a', corrEntry({ links: [{ url: 'https://hermit.my' }] })]]),
+    transactions: 1,
+  });
+  assert.equal(verdict.ok, false);
+  assert.ok(verdict.blockers.some((b) => b.code === 'link-verdict'));
+});
+
+test('corrections: a change with no issue behind it is refused', () => {
+  const prev = aRow();
+  const value = { ...prev, repository_url: 'https://github.com/x/y', updated_at: NOW };
+  const verdict = signoffCorrections(corrPlan(prev, value, ['repository_url']), {
+    prevByKey: new Map([[keyFor('a'), prev]]),
+    corrections: new Map(),
+    transactions: 1,
+  });
+  assert.equal(verdict.ok, false);
+  assert.ok(verdict.blockers.some((b) => b.code === 'no-issue-reference'));
+});
+
+test('corrections: a corrections batch never creates records', () => {
+  const plan = { create: [{ key: keyFor('b'), value: aRow() }], update: [], unchanged: 0, missingFromFeed: [], deletedOnChain: [] };
+  const verdict = signoffCorrections(plan, { transactions: 1 });
+  assert.equal(verdict.ok, false);
+  assert.ok(verdict.blockers.some((b) => b.code === 'creates-not-allowed'));
+});
+
+test('corrections: the report line names the shape and the refusal', () => {
+  const prev = aRow();
+  const value = { ...prev, repository_url: 'https://github.com/x/y', updated_at: NOW };
+  const line = describeCorrections(signoffCorrections(corrPlan(prev, value, ['repository_url']), {
+    prevByKey: new Map([[keyFor('a'), prev]]),
+    corrections: new Map([['a', corrEntry()]]),
+    transactions: 1,
+  }));
+  assert.match(line, /^auto-sign allowed: 1 record\(s\) = 1 key\(s\), 1 transaction\(s\) \(1 repository, 0 links\)/);
 });

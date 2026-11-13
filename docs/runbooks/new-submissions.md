@@ -174,6 +174,36 @@ node scripts/enrich-cycle.mjs --sign     # what the cron job runs; --force to re
 - The report is one message: keys/transactions, the guard's line, the tx hashes, verification,
   schema/test results and read-back counts. A quiet tick prints nothing.
 
+### 6c. Builder corrections, unattended (links and repository only)
+
+Builders file `Correction:` issues; the `near-hunt issues` job (every 2 hours) reads them, and since
+14 Nov 2026 the owner's **second, narrower authorization** lets it sign the ones it can corroborate:
+
+```bash
+node scripts/corrections-cycle.mjs           # dry run: what the guard would sign, and what it refuses
+node scripts/corrections-cycle.mjs --sign    # sign it, answer and close the issues it landed
+```
+
+- **Writing `data/enrichment/corrections-issues.json` is judgement, signing it is not.** An agent reads
+  each issue, resolves the submission id, and corroborates: a repository needs `git ls-remote` plus a
+  README that names the project (or links the record's own demo post); a link needs a probe result.
+  The file is per-batch — overwrite it.
+- `signoffCorrections` (`lib/auto-sign.mjs`) is the boundary, and it is deliberately narrower than the
+  import guard because this is the only unattended write that may *replace* a stored value. It allows
+  only `repository_url`, `links` and `enrichment` to change (plus the feed's own `tracks`/`demo_url`),
+  and refuses the whole batch on: any created record (`--updates-only`), a repository whose entry is
+  not `repository_verified` with a `repository_source`, a link the issue did not list, a link with no
+  measured verdict, enrichment with no sources, **any `description` / `media` / `name` / `tracks`
+  change**, a `social_post`, a tombstone, or a batch above the caps.
+- It runs the importer with `--updates-only --refresh-enriched`: refresh is needed because a record
+  that already has `links` can only gain an entry that way, and the field allowlist above is what
+  keeps that flag from becoming an overwrite. A repository that cannot be corroborated (disabled,
+  404, unreachable) leaves the issue open with a comment saying why.
+- After the write it answers each landed issue with the transaction hash and the page URL, closes it
+  as completed, appends a numbered `docs/PLAN.md` entry, and commits + pushes.
+- Description and media corrections are never signed here. The job comments on those issues and
+  leaves them open for the owner.
+
 The site needs no deploy for data: pages read the chain through a ~60 s cache (`PROJECTS_REVALIDATE_SECONDS` in `lib/projects.ts`). It needs a
 deploy only when code changes (`vercel --prod` from `main`, Hermes).
 
