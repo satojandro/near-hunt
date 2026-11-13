@@ -617,6 +617,12 @@ Hermit batch was then signed again through the fixed path (entry 31, tx `7gLPnFj
 Issues #33, #29 and #31 were answered with the tx and closed by hand after the fact; #32 (repository
 disabled by GitHub, 403) and #30/#36 (description text) were commented and left open for the owner.
 
+32. **Unattended batch, 2026-11-13 — 51 new submission(s) and 2 null-fill(s), 53 key(s).** Signed by the scheduled cycle under the owner's standing authorization (14 Nov 2026): creates and null-fills only, chain 1002 → 1054. The guard in `lib/auto-sign.mjs` passed with 4 null-fill(s), 0 feed-owned change(s) and 2 metadata change(s), and **no value another writer set was replaced**.
+
+   2 transaction(s): `BA2uYGZMdjEHBZfFHVCRkzGyQi4F89u25LUGRNjCTMcY`, `Bb6aXJLZPPSUK77zZ6LoiNLoZWkixLYbz7t9WFZZZMfe`. `verified: 54/54`.
+
+   **Read back:** 1054 project rows; the 51 new records carry description 49/51, media 48/51, links 26/51, repository 24/51. The importer's re-run prints `new: 0, changed: 0`; `npm run validate:schema` 1054/1054; `npm test` 420/420.
+
 ## Decisions taken
 
 | Decision | Choice | Why |

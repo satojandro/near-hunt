@@ -1,98 +1,33 @@
 {
-  "source": "GitHub issue #34 (repository) and #35 (links) from HermitAiLabs, 13 Nov 2026; repository corroborated by git ls-remote and the repo README linking the same X post as the record demo_url",
-  "generated_at": "2026-11-13T15:58:48.936Z",
+  "source": "GitHub issue #37 from Depthhub (Oathbox), 13 Nov 2026; repository corroborated by git ls-remote (refs/heads/main present) and the repo README, which names Oathbox, calls it a NEAR hackathon Privacy-track build and links oathbox.tech — the same site the record lists from its X thread",
+  "generated_at": "2026-11-13T17:58:00.000Z",
   "results": [
     {
-      "submission_id": "f159416a-3ab5-439d-8f68-73c34aba7337",
+      "submission_id": "4574db75-0823-45f3-8031-6511af3748d2",
       "status": "ok",
-      "issue": "https://github.com/satojandro/near-hunt/issues/34",
-      "issue_number": 34,
+      "issue": "https://github.com/satojandro/near-hunt/issues/37",
+      "issue_number": 37,
       "issue_numbers": [
-        34,
-        35
+        37
       ],
-      "repository_url": "https://github.com/Hermit-Ai-Labs/hermit-app",
-      "repository_source": "https://github.com/satojandro/near-hunt/issues/34",
+      "repository_url": "https://github.com/Depthhub/oathbox",
+      "repository_source": "https://github.com/satojandro/near-hunt/issues/37",
       "repository_basis": [
         "builder",
         "readme"
       ],
       "repository_verified": true,
-      "repository_verified_at": "2026-11-13T15:58:48.936Z",
-      "links": [
-        {
-          "url": "https://hermit.my",
-          "kind": "website",
-          "label": "Website",
-          "check": {
-            "verdict": "live",
-            "http_status": 200,
-            "checked_at": "2026-11-13T15:58:48.936Z"
-          }
-        },
-        {
-          "url": "https://hermit.my/dmg",
-          "kind": "website",
-          "label": "Mac app",
-          "check": {
-            "verdict": "live",
-            "http_status": 200,
-            "checked_at": "2026-11-13T15:58:48.936Z"
-          }
-        },
-        {
-          "url": "https://testflight.apple.com/join/ed9vUh7d",
-          "kind": "website",
-          "label": "iPhone (TestFlight)",
-          "check": {
-            "verdict": "live",
-            "http_status": 200,
-            "checked_at": "2026-11-13T15:58:48.936Z"
-          }
-        },
-        {
-          "url": "https://huggingface.co/aiquantgod/Hermit-1.3-4B-MLX-5bit",
-          "kind": "website",
-          "label": "Model (Hugging Face)",
-          "check": {
-            "verdict": "live",
-            "http_status": 200,
-            "checked_at": "2026-11-13T15:58:48.936Z"
-          }
-        },
-        {
-          "url": "https://github.com/Hermit-Ai-Labs/hermit-training",
-          "kind": "repository",
-          "label": "Training",
-          "check": {
-            "verdict": "live",
-            "http_status": 200,
-            "checked_at": "2026-11-13T15:58:48.936Z"
-          }
-        },
-        {
-          "url": "https://docs.hermit.my/near/overview/",
-          "kind": "docs",
-          "label": "NEAR docs",
-          "check": {
-            "verdict": "live",
-            "http_status": 200,
-            "checked_at": "2026-11-13T15:58:48.936Z"
-          }
-        }
-      ],
+      "repository_verified_at": "2026-11-13T17:58:00.000Z",
       "enrichment": {
         "method": "builder-issue",
         "sources": [
-          "https://github.com/satojandro/near-hunt/issues/34",
-          "https://github.com/satojandro/near-hunt/issues/35",
-          "https://github.com/Hermit-Ai-Labs/hermit-app",
-          "https://x.com/MrRyanChi/status/2121186366537244978"
+          "https://github.com/satojandro/near-hunt/issues/37",
+          "https://github.com/Depthhub/oathbox",
+          "https://x.com/Builtbysammy/status/2121255801788502098"
         ],
-        "retrieved_at": "2026-11-13T15:58:48.936Z",
+        "retrieved_at": "2026-11-13T17:58:00.000Z",
         "fields": [
-          "repository_url",
-          "links"
+          "repository_url"
         ]
       }
     }
