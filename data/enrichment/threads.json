@@ -32462,5 +32462,389 @@
       }
     ],
     "links": []
+  },
+  "239291ae-49bb-46d9-9702-ed1f607f71c1": {
+    "author": "use_Launchly",
+    "status": "ok",
+    "crawled_at": "2026-11-13T22:47:21.403Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [
+      {
+        "id": "2121341821465035162",
+        "author": "use_Launchly",
+        "text": "Ads eat startups alive. I built Launchly at NEAR HACKATHON: products launch coins, trading fees pay creators to promote them. Turn traders into your marketing team @NEARProtocol #NEARHackathon https://t.co/faIkKnjRw2",
+        "links": [],
+        "media": [
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HXCD7ycWUAEVVZ0.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 874,
+                  "w": 1561,
+                  "x": 121,
+                  "y": 0
+                },
+                {
+                  "h": 874,
+                  "w": 874,
+                  "x": 464,
+                  "y": 0
+                },
+                {
+                  "h": 874,
+                  "w": 767,
+                  "x": 518,
+                  "y": 0
+                },
+                {
+                  "h": 874,
+                  "w": 437,
+                  "x": 683,
+                  "y": 0
+                },
+                {
+                  "h": 874,
+                  "w": 1897,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 874,
+              "width": 1897
+            },
+            "ext_alt_text": "http://launchly.139.84.242.125.sslip.io",
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      }
+    ],
+    "links": []
+  },
+  "c3380a21-6d70-496e-a676-ddf1528a6930": {
+    "author": "writeawav",
+    "status": "ok",
+    "crawled_at": "2026-11-13T22:47:23.827Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [
+      {
+        "id": "2121352994826363348",
+        "author": "writeawav",
+        "text": "Every team has a watermelon project, green in standup, red inside.\nThe Mailroom: checkins sealed by private AI on @NEARProtocol. Say what you can't in standup. Your PM sees patterns, never names.\nBuilt by Prachi Gupta at #NEARHackathon NYC 2026 @buidlcity @nearlegion https://t.co/wtn9jyccov",
+        "links": [],
+        "media": [
+          {
+            "type": "video",
+            "media_url_https": "https://pbs.twimg.com/amplify_video_thumb/2121351530502553600/img/7U6V6an3jNBXfUnL.jpg",
+            "original_info": {
+              "focus_rects": [],
+              "height": 1080,
+              "width": 2026
+            },
+            "video_info": {
+              "aspect_ratio": [
+                1013,
+                540
+              ],
+              "duration_millis": 134722,
+              "variants": [
+                {
+                  "content_type": "application/x-mpegURL",
+                  "url": "https://video.twimg.com/amplify_video/2121351530502553600/pl/JAWZQ7vbzTeFR5K0.m3u8?tag=14"
+                },
+                {
+                  "bitrate": 288000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121351530502553600/vid/avc1/506x270/8t-9CnXkaESfLhD3.mp4?tag=14"
+                },
+                {
+                  "bitrate": 832000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121351530502553600/vid/avc1/674x360/yiZv0GnF4q4bZls3.mp4?tag=14"
+                },
+                {
+                  "bitrate": 2176000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121351530502553600/vid/avc1/1350x720/ZRmMs5D665K53Du3.mp4?tag=14"
+                }
+              ]
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      }
+    ],
+    "links": [
+      "https://github.com/prachigpt113-gif/The-Mailroom"
+    ]
+  },
+  "da990085-4f65-4d14-b93b-d155eedd46fb": {
+    "author": "ActimbarSpA",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-13T22:47:25.900Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://drmessi007-ui.github.io/orbithire-frontend/",
+      "https://youtu.be/DkmM6zGv_VY",
+      "https://github.com/drmessi007-ui/orbithire"
+    ]
+  },
+  "dcb47e69-d7d5-4139-b4b7-b69eba402d55": {
+    "author": "Stephenololade",
+    "status": "no-author-replies",
+    "crawled_at": "2026-11-13T22:47:29.610Z",
+    "listed": 3,
+    "read": 3,
+    "posts": [],
+    "links": []
+  },
+  "3f679a2f-72b1-4d8a-9bcb-4010748803da": {
+    "author": "joespano_",
+    "status": "ok",
+    "crawled_at": "2026-11-13T22:47:33.159Z",
+    "listed": 2,
+    "read": 2,
+    "posts": [
+      {
+        "id": "2121359124457812468",
+        "author": "joespano_",
+        "text": "How it works: the payout math runs in an attested enclave (OutLayer), each payout waits out a hold the league can vote to stop, then the league's Sputnik DAO vault pays. Testnet, test money.\n\n  Code: https://t.co/jYKGMIfclm\n  @NearLegion @NearBuilders",
+        "links": [
+          "https://github.com/joe-rlo/commish"
+        ]
+      }
+    ],
+    "links": [
+      "https://commish-2o8.pages.dev/demo"
+    ]
+  },
+  "dee39744-65ab-4c34-8d66-b9a3a8059a0c": {
+    "author": "ProofStream_",
+    "status": "ok",
+    "crawled_at": "2026-11-13T22:47:38.090Z",
+    "listed": 4,
+    "read": 4,
+    "posts": [
+      {
+        "id": "2121312017843667441",
+        "author": "ProofStream_",
+        "text": "With Proofstream, your payment wouldn't have to wait on anyone's goodwill, and doesn't rest on one AI coding assistant's word either.\n\nHere's how it works in 3 simple steps:\n→ A funder locks USDC in a @NEARProtocol escrow contract, and sets a milestone scoped to their repo.",
+        "links": []
+      },
+      {
+        "id": "2121312020746379300",
+        "author": "ProofStream_",
+        "text": "→ An OutLayer program in an Intel TDX enclave checks the facts: right repo, right author, CI green, merged.\n→ Two Agents running on different AI models review the code and ACCEPTS. The escrow contract pays the lower score on acceptance and holds the money if either objects.",
+        "links": []
+      },
+      {
+        "id": "2121312023187165323",
+        "author": "ProofStream_",
+        "text": "In the video above, the contributor's PR merges and 71 seconds later 1,500 test USDC lands in the contributor's account. Nobody needed to do anything.\n\nLive on testnet: https://t.co/tMnAEYifiz\nCode: https://t.co/xweJISZbaZ\n@NEARProtocol #NEARHackathon",
+        "links": [
+          "https://near.proofstream.site",
+          "https://github.com/Samuel-Chuku/proofstream-near",
+          "https://near.proofstream.site/"
+        ]
+      }
+    ],
+    "links": []
+  },
+  "ee019f61-8e2d-49d3-8c4c-b58ed8383dc5": {
+    "author": "EmmanuelAje7",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-13T22:47:40.098Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://nearbreakeven.vercel.app",
+      "https://github.com/Nailer/nearbreakeven",
+      "https://nearbreakeven.vercel.app/"
+    ]
+  },
+  "9e84d8d8-84b9-470d-80d1-7326135275eb": {
+    "author": "dawnik",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-13T22:47:41.753Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": []
+  },
+  "77019062-6803-4d9b-b04f-a45b3cb7585f": {
+    "author": "codeX_james",
+    "status": "no-author-replies",
+    "crawled_at": "2026-11-13T22:47:44.213Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [],
+    "links": []
+  },
+  "7e7a86bb-980f-4bb4-beea-9fbefc9eace5": {
+    "author": "millat_misu",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-13T22:47:46.062Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://github.com/millatmisu27-web/omniperps-swarm",
+      "https://millatmisu27-web.github.io/omniperps-swarm/"
+    ]
+  },
+  "facf0b78-ab2c-4743-a2e5-53c7d41cc153": {
+    "author": "thescoho",
+    "status": "ok",
+    "crawled_at": "2026-11-13T22:47:49.507Z",
+    "listed": 2,
+    "read": 2,
+    "posts": [
+      {
+        "id": "2121361625324376276",
+        "author": "thescoho",
+        "text": "Deploy a website to NEAR with Quay. https://t.co/GepigoMZuO",
+        "links": [],
+        "media": [
+          {
+            "type": "video",
+            "media_url_https": "https://pbs.twimg.com/amplify_video_thumb/2121361369497063424/img/3T7vzz6OLI4SmeCt.jpg",
+            "original_info": {
+              "focus_rects": [],
+              "height": 1080,
+              "width": 1920
+            },
+            "video_info": {
+              "aspect_ratio": [
+                16,
+                9
+              ],
+              "duration_millis": 69633,
+              "variants": [
+                {
+                  "content_type": "application/x-mpegURL",
+                  "url": "https://video.twimg.com/amplify_video/2121361369497063424/pl/GSsn23OUJOROoYzr.m3u8"
+                },
+                {
+                  "bitrate": 256000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121361369497063424/vid/avc1/480x270/YNgseD1_18Ppakh2.mp4"
+                },
+                {
+                  "bitrate": 832000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121361369497063424/vid/avc1/640x360/UBM5pdBJC9WYu-Uz.mp4"
+                },
+                {
+                  "bitrate": 2176000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121361369497063424/vid/avc1/1280x720/NHoErXJahpWj-sxl.mp4"
+                },
+                {
+                  "bitrate": 10368000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121361369497063424/vid/avc1/1920x1080/fwaizIRDVt3dbIu5.mp4"
+                }
+              ]
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      },
+      {
+        "id": "2121361824260219017",
+        "author": "thescoho",
+        "text": "@NEARProtocol Website: https://t.co/EIAjWNBLqn\nRepo: https://t.co/d9zYVamH21\n\nBuilt at NEAR Hackathon",
+        "links": [
+          "https://quay.ss251.workers.dev",
+          "https://github.com/ss251/quay",
+          "https://quay.ss251.workers.dev/"
+        ]
+      }
+    ],
+    "links": []
+  },
+  "484bb484-ee19-43e9-bf0f-8e33484ca49a": {
+    "author": "UltravioletaDAO",
+    "status": "ok",
+    "crawled_at": "2026-11-13T22:47:52.775Z",
+    "listed": 2,
+    "read": 2,
+    "posts": [
+      {
+        "id": "2121361509767102627",
+        "author": "UltravioletaDAO",
+        "text": "Every step in the video is a real transaction. The hashes are in the description:\nhttps://t.co/0D99OS09tx\n\nOn chain: identity-registry.erc-8004.near, reputation-registry.erc-8004.near and the escrow v2.arras-escrow.near.\n\nThe agents are KarmaKadabra, our own swarm. It runs on",
+        "links": [
+          "https://youtu.be/Q58UtYG6Le0"
+        ]
+      }
+    ],
+    "links": []
+  },
+  "62849ae8-1399-40b7-9481-9d75a04bacfe": {
+    "author": "AfriPayAI",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-13T22:47:54.655Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://afripay-ai.vercel.app/",
+      "https://github.com/yabsira13/afripay-ai"
+    ]
+  },
+  "4bcc5f60-e833-441e-a764-d1ceace55eb8": {
+    "author": "NikhilEth",
+    "status": "ok",
+    "crawled_at": "2026-11-13T22:47:57.870Z",
+    "listed": 2,
+    "read": 2,
+    "posts": [
+      {
+        "id": "2121369836915933197",
+        "author": "NikhilEth",
+        "text": "@NEARProtocol @ilblackdragon @iam_hinaaaa @0xnandhu Play: https://t.co/XaHh4qNLhV",
+        "links": [
+          "https://chickenoregg.exprmnts.fun",
+          "https://chickenoregg.exprmnts.fun/"
+        ]
+      }
+    ],
+    "links": []
+  },
+  "33355a01-d450-4af0-999a-e4ad2322951e": {
+    "author": "CansyLand",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-13T22:47:59.574Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://uprise.wtf",
+      "https://uprise.wtf/"
+    ]
+  },
+  "44e4bbf2-41c1-4fb3-bdc8-94cbccbb98d3": {
+    "author": "YourNotaRealAI",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-13T22:48:01.107Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://github.com/sudo-ai-git/proof-of-delivery"
+    ]
   }
 }

@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-11-13T21:35:41.158Z",
+  "generated_at": "2026-11-13T22:58:54.676Z",
   "account": "nearhunt.near",
   "note": "Flags only. Nothing is merged, hidden or written. `clusters`/`groups` share an identifying URL (possible duplicates). `weak_signals` share only a name or an X account and are usually different projects.",
   "summary": {
-    "submissions": 1127,
-    "on_chain": 1113,
-    "pending": 14,
+    "submissions": 1143,
+    "on_chain": 1127,
+    "pending": 16,
     "shared_urls": 2,
     "by_kind": {
       "x-post": 1,
@@ -13,8 +13,8 @@
     },
     "clusters": 2,
     "submissions_flagged": 4,
-    "same_name_groups": 34,
-    "same_x_account_groups": 110
+    "same_name_groups": 35,
+    "same_x_account_groups": 111
   },
   "clusters": [
     {
@@ -185,6 +185,11 @@
             "on_chain": true
           },
           {
+            "submission_id": "3e03fda5-5de2-438c-8f50-1906f829b890",
+            "name": "Leash",
+            "on_chain": true
+          },
+          {
             "submission_id": "48cdf1b1-5efc-4af3-98a9-619a87d663c2",
             "name": "Leash",
             "on_chain": true
@@ -223,11 +228,6 @@
             "submission_id": "fda85f72-004a-44cd-a28f-525b91ed0053",
             "name": "Leash",
             "on_chain": true
-          },
-          {
-            "submission_id": "3e03fda5-5de2-438c-8f50-1906f829b890",
-            "name": "Leash",
-            "on_chain": false
           }
         ]
       },
@@ -425,14 +425,14 @@
         "key": "accord",
         "submissions": [
           {
-            "submission_id": "f63cc81d-53d4-43ab-934b-8d9caa66e690",
+            "submission_id": "7de962f6-5940-4e2a-a85e-961c03320349",
             "name": "Accord",
             "on_chain": true
           },
           {
-            "submission_id": "7de962f6-5940-4e2a-a85e-961c03320349",
+            "submission_id": "f63cc81d-53d4-43ab-934b-8d9caa66e690",
             "name": "Accord",
-            "on_chain": false
+            "on_chain": true
           }
         ]
       },
@@ -628,6 +628,21 @@
             "submission_id": "972da2bb-8d13-43d8-9ca5-9787cb409d86",
             "name": "NearPay",
             "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "pact",
+        "submissions": [
+          {
+            "submission_id": "946f4721-aa58-44a0-94c9-0b45de9b80a3",
+            "name": "Pact",
+            "on_chain": true
+          },
+          {
+            "submission_id": "77019062-6803-4d9b-b04f-a45b3cb7585f",
+            "name": "Pact",
+            "on_chain": false
           }
         ]
       },
@@ -862,14 +877,14 @@
         "key": "0xmemeshe",
         "submissions": [
           {
-            "submission_id": "5cc04588-f056-4c3e-96a1-fb956a10af44",
-            "name": "Daykeeper",
+            "submission_id": "34e3c7b4-57ca-42c3-a2e6-4253cf23a955",
+            "name": "CABAL",
             "on_chain": true
           },
           {
-            "submission_id": "34e3c7b4-57ca-42c3-a2e6-4253cf23a955",
-            "name": "CABAL",
-            "on_chain": false
+            "submission_id": "5cc04588-f056-4c3e-96a1-fb956a10af44",
+            "name": "Daykeeper",
+            "on_chain": true
           }
         ]
       },
@@ -1324,6 +1339,21 @@
         ]
       },
       {
+        "key": "emmanuelaje7",
+        "submissions": [
+          {
+            "submission_id": "7804693d-84ef-4bc2-8729-03c419740ed9",
+            "name": "AccountKit",
+            "on_chain": true
+          },
+          {
+            "submission_id": "ee019f61-8e2d-49d3-8c4c-b58ed8383dc5",
+            "name": "NEAR Breakeven",
+            "on_chain": false
+          }
+        ]
+      },
+      {
         "key": "ethboi_",
         "submissions": [
           {
@@ -1522,14 +1552,14 @@
         "key": "kerneprotocol",
         "submissions": [
           {
-            "submission_id": "6e35a0a0-cc80-48c6-a85b-a2b2ab4d6566",
-            "name": "Epoch Ledger",
+            "submission_id": "3e03fda5-5de2-438c-8f50-1906f829b890",
+            "name": "Leash",
             "on_chain": true
           },
           {
-            "submission_id": "3e03fda5-5de2-438c-8f50-1906f829b890",
-            "name": "Leash",
-            "on_chain": false
+            "submission_id": "6e35a0a0-cc80-48c6-a85b-a2b2ab4d6566",
+            "name": "Epoch Ledger",
+            "on_chain": true
           }
         ]
       },
@@ -1927,14 +1957,14 @@
         "key": "pelz0x",
         "submissions": [
           {
-            "submission_id": "7de962f6-5940-4e2a-a85e-961c03320349",
-            "name": "Accord",
-            "on_chain": false
-          },
-          {
             "submission_id": "2ca46714-9f2c-4d94-b41a-e3017a01aa26",
             "name": "Last Light",
-            "on_chain": false
+            "on_chain": true
+          },
+          {
+            "submission_id": "7de962f6-5940-4e2a-a85e-961c03320349",
+            "name": "Accord",
+            "on_chain": true
           }
         ]
       },
