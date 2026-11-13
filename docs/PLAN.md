@@ -629,6 +629,12 @@ disabled by GitHub, 403) and #30/#36 (description text) were commented and left 
 
    **Read back:** 1054 project rows; 1/1 of the corrected records now carry a repository and 1/1 carry links. The importer's re-run prints `new: 0, changed: 0`; `npm run validate:schema` 1054/1054; `npm test` 420/420.
 
+34. **Unattended corrections batch, 2026-11-13 — 2 record(s) from 2 builder issue(s), 2 key(s).** Signed by the issues cycle under the owner's second authorization (14 Nov 2026): **links and repository only**, every change traceable to an issue and corroborated (`git ls-remote` + README for a repository, a probed verdict for a link). Description and media text is never signed unattended.
+
+   Issues: #40, #39. 1 transaction(s): `2mCDu7BeS4k2wyFz5yJnZ6WjUoTwZSRJtbhE5UDdSFfj`. `verified: 2/2`.
+
+   **Read back:** 1054 project rows; 2/2 of the corrected records now carry a repository and 2/2 carry links. The importer's re-run prints `new: 0, changed: 0`; `npm run validate:schema` 1054/1054; `npm test` 420/420.
+
 ## Decisions taken
 
 | Decision | Choice | Why |

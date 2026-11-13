@@ -1,33 +1,77 @@
 {
-  "source": "GitHub issue #37 from Depthhub (Oathbox), 13 Nov 2026; repository corroborated by git ls-remote (refs/heads/main present) and the repo README, which names Oathbox, calls it a NEAR hackathon Privacy-track build and links oathbox.tech — the same site the record lists from its X thread",
-  "generated_at": "2026-11-13T17:58:00.000Z",
+  "source": "GitHub issues #40 (Cynex, builder Jayanng) and #39 (Oathbox, builder Depthhub), 13-14 Nov 2026. Repository: git ls-remote Jayanng/Cynex resolved (refs/heads/Master, refs/heads/lane-b) and README.md on master names Cynex with the same pitch as the record. Link: the X post the Oathbox builder asked for probes live 200 and is a video post about Oathbox (og:image amplify_video_thumb) that also links github.com/Depthhub/oathbox.",
+  "generated_at": "2026-11-13T20:08:44.220Z",
   "results": [
     {
-      "submission_id": "4574db75-0823-45f3-8031-6511af3748d2",
+      "submission_id": "3985c7e0-1514-4370-9ae7-98c2b905d0a7",
       "status": "ok",
-      "issue": "https://github.com/satojandro/near-hunt/issues/37",
-      "issue_number": 37,
+      "issue": "https://github.com/satojandro/near-hunt/issues/40",
+      "issue_number": 40,
       "issue_numbers": [
-        37
+        40
       ],
-      "repository_url": "https://github.com/Depthhub/oathbox",
-      "repository_source": "https://github.com/satojandro/near-hunt/issues/37",
+      "repository_url": "https://github.com/Jayanng/Cynex",
+      "repository_source": "https://github.com/satojandro/near-hunt/issues/40",
       "repository_basis": [
         "builder",
         "readme"
       ],
       "repository_verified": true,
-      "repository_verified_at": "2026-11-13T17:58:00.000Z",
+      "repository_verified_at": "2026-11-13T20:08:44.220Z",
       "enrichment": {
         "method": "builder-issue",
         "sources": [
-          "https://github.com/satojandro/near-hunt/issues/37",
-          "https://github.com/Depthhub/oathbox",
-          "https://x.com/Builtbysammy/status/2121255801788502098"
+          "https://github.com/satojandro/near-hunt/issues/40",
+          "https://github.com/Jayanng/Cynex",
+          "https://x.com/cynexpay/status/2121262177294098716"
         ],
-        "retrieved_at": "2026-11-13T17:58:00.000Z",
+        "retrieved_at": "2026-11-13T20:08:44.220Z",
         "fields": [
           "repository_url"
+        ]
+      }
+    },
+    {
+      "submission_id": "4574db75-0823-45f3-8031-6511af3748d2",
+      "status": "ok",
+      "issue": "https://github.com/satojandro/near-hunt/issues/39",
+      "issue_number": 39,
+      "issue_numbers": [
+        39
+      ],
+      "links": [
+        {
+          "url": "https://oathbox.tech",
+          "check": {
+            "verdict": "live",
+            "http_status": 200,
+            "checked_at": "2026-11-13T20:08:44.220Z"
+          },
+          "kind": "website",
+          "kind_basis": "default",
+          "source_post_id": "2121258938658103468"
+        },
+        {
+          "url": "https://x.com/Builtbysammy/status/2121309103897317388",
+          "check": {
+            "verdict": "live",
+            "http_status": 200,
+            "checked_at": "2026-11-13T20:08:44.220Z"
+          },
+          "kind": "video",
+          "kind_basis": "builder"
+        }
+      ],
+      "enrichment": {
+        "method": "builder-issue",
+        "sources": [
+          "https://github.com/satojandro/near-hunt/issues/39",
+          "https://x.com/Builtbysammy/status/2121309103897317388",
+          "https://github.com/Depthhub/oathbox"
+        ],
+        "retrieved_at": "2026-11-13T20:08:44.220Z",
+        "fields": [
+          "links"
         ]
       }
     }
