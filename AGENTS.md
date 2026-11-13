@@ -4,7 +4,7 @@ These rules apply to every agent working in this repository (Hermes, Claude, Cod
 other). They exist because writes to NEAR mainnet are public and permanent: a tombstone hides a
 value, but the old value stays in public history forever.
 
-## 1. Mainnet writes need a human
+## 1. Mainnet writes need a human — with one standing authorization
 
 - **Never sign or broadcast a mainnet transaction without explicit human approval.** Run the dry
   run, show the human its output, and wait for a yes in the conversation. The yes covers a write of
@@ -13,6 +13,23 @@ value, but the old value stays in public history forever.
   would mean never finishing a batch. Signing stops only when the *kind* changes — a different
   account or prefix, tombstones or deletions, key changes, a `--refresh-enriched` run that would
   overwrite earlier enrichment, or anything outside this runbook.
+- **Standing authorization for one kind of write (owner, 14 Nov 2026): a scheduled cycle may sign
+  new submissions and null-fills by itself.** The kind is exactly that: creating a record that does
+  not exist, and filling a field that is empty or absent on a record that does. It is never a
+  replacement of a value somebody already put on chain, which is what the human gate exists for.
+  The boundary is code, not judgement: `lib/auto-sign.mjs` (`signoff`) is the only place it is
+  decided, it is unit-tested, and it refuses the whole batch when any of these is true —
+  a change that would replace an already-set value (feed-owned `schema`, `id`, `source`, `name`,
+  `tracks`, `demo_url` excepted, because the feed is their source), a tombstoned record appearing
+  in the feed, a `social_post` reference, enrichment without `sources`, a link without a measured
+  `check.verdict`, `--refresh-enriched`, more than 200 keys or 4 transactions in one run, or a key
+  that is not `FunctionCall(nearhunt.near, __fastdata_kv)`. When it refuses, **nothing is signed**,
+  the batch stays ready and a human approves it by hand as before.
+- The scheduled cycle (`node scripts/enrich-cycle.mjs --sign`, every 3 hours) also verifies its own
+  write: `verified: N/N` read back from the indexer, the importer's re-run must print `new: 0,
+  changed: 0`, `npm run validate:schema` and `npm test` must pass, and it commits `data/enrichment/*`
+  plus a numbered `docs/PLAN.md` entry before pushing. A run that cannot record itself reports that
+  instead of staying quiet.
 - Report the numbers the write actually did when it finishes (`would write` from the recompute and
   `verified: N/N` read back). Growing by a handful of new submissions between the dry run and the
   signature is normal, not a reason to abort: a later batch picks up whatever arrived after.
@@ -35,7 +52,8 @@ value, but the old value stays in public history forever.
   specific write, not which machine holds the key.**
 - Before any mainnet transaction: run the dry run, state the account, prefix, key count and
   transaction count, and wait for a yes. Authorization covers that write only — it does not carry
-  to the next one.
+  to the next one. **The one exception is §1's standing authorization for creates and null-fills**,
+  which the scheduled cycle spends only through `lib/auto-sign.mjs`.
 - Never print, log, commit or paste a secret key or seed phrase. Never commit anything under
   `~/.near-credentials`; keep those files mode `600`.
 - Adding or deleting access keys, transferring NEAR, and deleting or tombstoning records are

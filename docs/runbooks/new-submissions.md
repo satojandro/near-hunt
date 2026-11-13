@@ -149,6 +149,31 @@ Commit `data/enrichment/proposal.json`, `links.json` and `duplicates.json` with 
 the transaction hashes, and add one line to "Where things stand" in [`docs/PLAN.md`](../PLAN.md):
 date, key count, tx hashes, who approved.
 
+### 6b. When nobody is there to approve: the scheduled cycle
+
+The same steps 2–7 run unattended every 3 hours, and since 14 Nov 2026 the owner's standing
+authorization lets that run sign **new submissions and null-fills** without asking (AGENTS.md §1):
+
+```bash
+node scripts/enrich-cycle.mjs --sign     # what the cron job runs; --force to report on a quiet feed
+```
+
+- It rebuilds the plan with the same `planImport` the importer uses and hands it to `signoff`
+  (`lib/auto-sign.mjs`), which is the whole policy in one tested function. If the plan would
+  replace any value that is already set (feed-owned `schema`/`id`/`source`/`name`/`tracks`/
+  `demo_url` excepted), recreate a tombstoned record, add a `social_post`, publish enrichment with
+  no `sources` or a link with no measured `check.verdict`, use `--refresh-enriched`, exceed 200 keys
+  or 4 transactions, or sign with anything other than the scoped `__fastdata_kv` key, it signs
+  **nothing** and reports the blocker code. That batch then waits for a human exactly as above.
+- A signing run holds a lock (`.git/near-hunt-auto-sign.lock`): two cycles never sign from two
+  proposals at once. A lock whose pid is gone is taken over, so a killed run does not wedge it.
+- After the write it does step 7 itself — `verified: N/N`, the re-run at 0/0, `validate:schema`,
+  `npm test` — then commits `data/enrichment/*` with a numbered `docs/PLAN.md` entry and pushes.
+  The commit carries the tx hashes, so the write is auditable even if the report never reached the
+  owner.
+- The report is one message: keys/transactions, the guard's line, the tx hashes, verification,
+  schema/test results and read-back counts. A quiet tick prints nothing.
+
 The site needs no deploy for data: pages read the chain through a ~60 s cache (`PROJECTS_REVALIDATE_SECONDS` in `lib/projects.ts`). It needs a
 deploy only when code changes (`vercel --prod` from `main`, Hermes).
 
