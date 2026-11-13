@@ -548,6 +548,35 @@ near account list-keys nearhunt.near network-config mainnet now   # 1 key, full 
     defects (`VIGIL`, `IntentFolio`) are gone after batch 27's corrections, so this batch introduced
     no new schema defect. `npm test` 400/400.
 
+29. **The 47 new submissions and 9 null-fills, 13 Nov — batch 29, the late-evening cycle.** The feed
+    watch fired at 21:50 (`chain 859 · feed 898 · 39 new`), and by the dry run at 22:21 the feed had
+    **904** submissions: **45 creates + 9 updates = 54 keys**. Two more submissions arrived before the
+    signature, so the write was **47 creates + 9 updates = 56 keys, 2 transactions** — the approval
+    covered the kind of write, and the extra records landed with feed fields only.
+
+    The enrich build behind this batch was the 22:02–22:10 AEDT run (`proposal.json` over **901**
+    projects, 856 `status: ok`), not the 18:53 one behind batch 28.
+
+    The 9 updates are **pure null-fills**, checked one by one: the eight batch-28 late X arrivals
+    (Spade, obiba, KwesPay, Inkwell, RESCORA, Tender, Grudgebound, Mvikeli) gained `description`,
+    `media` and some `links`/`repository_url` for the first time, and `SealedSwarm` (`dbedb794…`)
+    gained `repository_url` + `links` plus a second source post on its existing `enrichment` — its
+    `description` and `media` were untouched. Nothing a builder or an earlier run wrote was
+    replaced.
+
+    Two transactions, signed with the scoped `ed25519:2WMyE…` FunctionCall key on `__fastdata_kv`:
+    `A8ibmCikFBmVsJJgddLAUxUSWMupsouVu2GAkDLkTwtG` (48 keys) and
+    `7Dt7pJLzhgAQwKUd5MZFnSoYcBdoSZbYx9kjtmVw8zb3` (8 keys). `verified: 56/56 written keys read
+    back` (50/56 on the first indexer attempt).
+
+    **Read back:** **906 project rows**, 0 tombstones. The 47 new records carry description
+    **40/47**, media **38/47**, links **19/47**, repository **21/47**, `enrichment` **40/47**. Of the
+    7 without enrichment, 6 have an X `demo_url` (Shark and Co, Sendler Dash — the two that arrived
+    after the 22:08Z build — plus Plote, Canon, House Rules, Polypus Keys, whose `demo_url` the feed
+    changed after the build) and 1 has no X post at all (Guildhall). The importer's re-run prints
+    `new: 0, changed: 0, unchanged: 906`. `npm run validate:schema` **906/906 valid, 0 invalid**;
+    `npm test` 400/400.
+
 ## Decisions taken
 
 | Decision | Choice | Why |
