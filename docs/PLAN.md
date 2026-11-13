@@ -577,6 +577,12 @@ near account list-keys nearhunt.near network-config mainnet now   # 1 key, full 
     `new: 0, changed: 0, unchanged: 906`. `npm run validate:schema` **906/906 valid, 0 invalid**;
     `npm test` 400/400.
 
+30. **Unattended batch, 2026-11-13 — 96 new submission(s) and 6 null-fill(s), 102 key(s).** Signed by the scheduled cycle under the owner's standing authorization (14 Nov 2026): creates and null-fills only, chain 906 → 1002. The guard in `lib/auto-sign.mjs` passed with 17 null-fill(s), 0 feed-owned change(s) and 6 metadata change(s), and **no value another writer set was replaced**.
+
+   3 transaction(s): `AKJxpxvDFetYSvqYEebs8SPnZb41bFtYhmU3qXUN2EYM`, `HJo7H6yS7u2Wh4sRqJVifkMD8bCnWfBMYs4NRJ5samx4`, `FJjw6j7CNSgW3kv5EeE3xi5Yd3uPiTjrf3c5U9vNZU8G`. `verified: 102/102`.
+
+   **Read back:** 1002 project rows; the 96 new records carry description 95/96, media 93/96, links 54/96, repository 56/96. The importer's re-run prints `new: 0, changed: 0`; `npm run validate:schema` 1002/1002; `npm test` 412/412.
+
 ## Decisions taken
 
 | Decision | Choice | Why |
