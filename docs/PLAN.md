@@ -518,6 +518,36 @@ near account list-keys nearhunt.near network-config mainnet now   # 1 key, full 
     during the write). `npm run validate:schema` **812/814**, the same two feed-owned `http://`
     `demo_url` defects; `npm test` 380/380.
 
+28. **The 39 new submissions and 29 changes, 13 Nov — batch 28, the evening cycle.** The feed watch
+    job fired at 19:10 (`chain 820 · feed 857 · 37 new, 13 changed`); the enrich build behind the
+    batch was the 18:47–18:55 AEDT run (`threads.json`, `proposal.json` over **851** projects, 808
+    `status: ok`), so the write was **39 creates + 29 updates = 68 keys, 83293 bytes, 2
+    transactions** by the time the dry run fetched the feed (**859** submissions). The feed grew from
+    851 to 859 while the approval was being read, which is normal and not a stop condition: the
+    late records land with feed fields only.
+
+    The plan was audited record by record with `planImport` before signing, not from the importer's
+    truncated list. The 29 updates split: **11 feed-owned `tracks`** changes, **8 `demo_url`** moved
+    by the builder to a newer post, and **10 enrichment fills** (`description` `null → text`,
+    `repository_url` `null → url`, plus `media`/`links`/`enrichment` where they were absent). **No
+    builder-written value was overwritten** — every description/repository/media change went from
+    null/undefined to a value, which is the check that matters on a batch of this shape.
+
+    Two transactions, both signed with the scoped `ed25519:2WMyE…` FunctionCall key on
+    `__fastdata_kv`: `AcXsUKAzgqkS7yZVUUwxbipiTCf8qENHEAyjUtYwTUJ1` (54 keys) and
+    `CYb5KiTaJ8Du9NzXzbVP17Y7EbPZoPyenwG2YVmfyvfs` (14 keys). `verified: 68/68 written keys read
+    back` (57/68 on the first indexer attempt).
+
+    **Read back from the indexer:** **859 project rows**, 0 tombstones. The 39 new records carry
+    description **29/39**, media **28/39**, links **12/39**, repository **11/39**, `enrichment`
+    **29/39**. The other 10 are submissions that arrived after the 18:53Z enrich build — 8 of them
+    are X posts (enrichable next cycle: Spade, Grudgebound, RESCORA, obiba, Mvikeli, Inkwell,
+    KwesPay, Tender) and 2 are not X posts at all (BaitNet, Cowrie), whose feed fields are their
+    correct end state. The importer's re-run then prints `new: 0, changed: 0, unchanged: 859`.
+    `npm run validate:schema` **859/859 valid, 0 invalid** — the two feed-owned `http://` `demo_url`
+    defects (`VIGIL`, `IntentFolio`) are gone after batch 27's corrections, so this batch introduced
+    no new schema defect. `npm test` 400/400.
+
 ## Decisions taken
 
 | Decision | Choice | Why |

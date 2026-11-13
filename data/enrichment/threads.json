@@ -21717,5 +21717,820 @@
       }
     ],
     "links": []
+  },
+  "0f613a07-580e-4413-bfe5-23f83b4f6b70": {
+    "author": "SidouGlambert",
+    "status": "ok",
+    "crawled_at": "2026-11-13T04:34:47.669Z",
+    "listed": 2,
+    "read": 2,
+    "posts": [
+      {
+        "id": "2119615263075090467",
+        "author": "SidouGlambert",
+        "text": "@NEARProtocol Dry-run demo ↓ zenvora → BLOCKED (risk 85/100): .com/.io/.ai all taken + 4 pending US trademark applications for the identical mark. clearname-demo → CLEAR (risk 0): no conflicts found. Anything it can't verify forces CAUTION — unknown is never sold as available.",
+        "links": []
+      },
+      {
+        "id": "2119785449321594885",
+        "author": "SidouGlambert",
+        "text": "@NEARProtocol And here it is actually running — a live dry-run of the checker on two names: one BLOCKED (85/100 collision risk), one CLEAR (0/100). https://t.co/oBgEFrI8qj",
+        "links": [],
+        "media": [
+          {
+            "type": "video",
+            "media_url_https": "https://pbs.twimg.com/amplify_video_thumb/2119784981820022784/img/MyqBusGB7GXGTR-c.jpg",
+            "original_info": {
+              "focus_rects": [],
+              "height": 720,
+              "width": 1280
+            },
+            "video_info": {
+              "aspect_ratio": [
+                16,
+                9
+              ],
+              "duration_millis": 27400,
+              "variants": [
+                {
+                  "content_type": "application/x-mpegURL",
+                  "url": "https://video.twimg.com/amplify_video/2119784981820022784/pl/m0KohbQvoPphT8US.m3u8?tag=14"
+                },
+                {
+                  "bitrate": 288000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2119784981820022784/vid/avc1/480x270/4oTmnNc3l6EKeCgR.mp4?tag=14"
+                },
+                {
+                  "bitrate": 832000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2119784981820022784/vid/avc1/640x360/8UDrGGEZxtM7aoV3.mp4?tag=14"
+                },
+                {
+                  "bitrate": 2176000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2119784981820022784/vid/avc1/1280x720/qlJTgZH0noFhjffh.mp4?tag=14"
+                }
+              ]
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      }
+    ],
+    "links": []
+  },
+  "13ed80d7-22e6-43dc-8ae9-7b8a01599348": {
+    "author": "playkibble",
+    "status": "ok",
+    "crawled_at": "2026-11-13T04:34:54.930Z",
+    "listed": 6,
+    "read": 6,
+    "posts": [
+      {
+        "id": "2121069496370630954",
+        "author": "playkibble",
+        "text": "2/7\nHow it works, and the code: https://t.co/xkpXdeTGhP\n\nEvery claim on the site is checked on chain: https://t.co/4H4e1ocYST\n\nWhat would you want your pet to do with its money?",
+        "links": [
+          "https://github.com/isaacessuman/kibble",
+          "https://playkibble.com/prove"
+        ]
+      },
+      {
+        "id": "2121069499046875240",
+        "author": "playkibble",
+        "text": "3/7\nWalk Kibble Town in 3D as your own pet: say hi to other pets, feed them, and play a five-chapter quest, The Lamps of Kibble Harbour.\n\nThen race go-karts in the Kibble Grand Prix, against the house pets or a friend's pet.\n\nhttps://t.co/Of4YTptTEa",
+        "links": [
+          "https://playkibble.com/town"
+        ]
+      },
+      {
+        "id": "2121069500497826178",
+        "author": "playkibble",
+        "text": "4/7\nPets duel over riddles, judged by a panel of AI models inside enclaves. You can trade on who wins.\n\nKibble Odds is a prediction market on NEAR: buy and sell shares on pet duels, the tournaments and the season, or back the house pool and earn its fees.\n\nhttps://t.co/co2rczU6on",
+        "links": [
+          "https://playkibble.com/trade"
+        ]
+      },
+      {
+        "id": "2121069502121042083",
+        "author": "playkibble",
+        "text": "5/7\nBuilt on NEAR, top to bottom:\n\n• @near_ai Cloud: pets think in private TEE enclaves, every reply signed\n• NEAR Intents: feed a pet from Base, Solana, Bitcoin and more\n• Chain Signatures: each pet has its own Base address\n• 5 mainnet contracts; every pet is a NEP-171 NFT",
+        "links": []
+      },
+      {
+        "id": "2121069504218415270",
+        "author": "playkibble",
+        "text": "6/7\nPlay it inside Telegram too: the Kibble Mini App at https://t.co/l1ftzbB3sC. Adopt with Telegram Stars, no wallet needed, and get a daily letter from your pet.\n\nOn your phone, tap \"See it in my room\" and your pet stands on your real table in AR.",
+        "links": [
+          "https://t.me/PlayKibbleBot"
+        ]
+      },
+      {
+        "id": "2121069506567307559",
+        "author": "playkibble",
+        "text": "7/7\nThe money side runs with @rhea_finance on NEAR: stake NEAR as rNEAR on the Earn page, and adopt a pet with AVAX, MON, BERA and more through RHEA's cross-chain swap.\n\n@NearLegion @NearBuilders we'd love your feedback: adopt one free and tell us what breaks.",
+        "links": []
+      }
+    ],
+    "links": [
+      "https://playkibble.com",
+      "https://playkibble.com/"
+    ]
+  },
+  "15459740-1659-43d3-8e67-fda5b9967c52": {
+    "author": "payrouta",
+    "status": "no-author-replies",
+    "crawled_at": "2026-11-13T04:34:57.173Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [],
+    "links": []
+  },
+  "2525277c-cacc-415c-b294-378946a445b3": {
+    "author": "rnltro",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-13T04:34:58.732Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": []
+  },
+  "46aee7a6-b578-4fe0-8843-5fbc3abb193e": {
+    "author": "josephspatula",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-13T04:35:00.446Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://github.com/josephspatula1992-svg/waghive"
+    ]
+  },
+  "5a5a5497-99b6-46af-a726-3629499d8a93": {
+    "author": "josephspatula",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-13T04:35:02.103Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://github.com/josephspatula1992-svg/sentient"
+    ]
+  },
+  "7da4e29f-f743-4073-858b-f94f41f1d5ea": {
+    "author": "s_apple1",
+    "status": "ok",
+    "crawled_at": "2026-11-13T04:35:06.337Z",
+    "listed": 3,
+    "read": 3,
+    "posts": [
+      {
+        "id": "2121055634414285220",
+        "author": "s_apple1",
+        "text": "@NEARProtocol What NEAR does here: every mango, coin and shop share is a NEP-245 token, and prices are worked out on chain on every trade. Each tap is a meta transaction the village relays and pays for. Shopkeepers sign their own trades, inside limits the contract enforces.",
+        "links": []
+      },
+      {
+        "id": "2121055796444508522",
+        "author": "s_apple1",
+        "text": "@NEARProtocol Code: https://t.co/vGwVIrQ2cz it locally with one command: make localnetThe hosted village is one shared testnet world, so you will meet other players' trades.Would you rescue the broke shop, or let the monsoon finish it?",
+        "links": [
+          "https://github.com/vignesh2027/haatRun"
+        ]
+      },
+      {
+        "id": "2121055925410877681",
+        "author": "s_apple1",
+        "text": "@NEARProtocol Music: \"Vadodora Chill Mix\" Kevin MacLeod (https://t.co/uHDomPpETa)Licensed under Creative Commons: By Attribution 4.0 Licensehttp://creativecommons.org/licenses/by/4.0/",
+        "links": [
+          "https://incompetech.com",
+          "https://incompetech.com/"
+        ]
+      }
+    ],
+    "links": [
+      "https://haat.140-245-16-129.sslip.io",
+      "https://haat.140-245-16-129.sslip.io/"
+    ]
+  },
+  "9a0036d2-69f3-4b3f-8f08-6931e3184945": {
+    "author": "imbanytui",
+    "status": "no-author-replies",
+    "crawled_at": "2026-11-13T04:35:09.263Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [],
+    "links": [
+      "https://hungryminds.imbanytui.xyz",
+      "https://github.com/imbanytuidoter/hungry-minds",
+      "https://hungryminds.imbanytui.xyz/"
+    ]
+  },
+  "9da55987-8fc3-4d27-b42c-040e3dba9342": {
+    "author": "mateojk_",
+    "status": "no-author-replies",
+    "crawled_at": "2026-11-13T04:35:12.362Z",
+    "listed": 2,
+    "read": 2,
+    "posts": [],
+    "links": []
+  },
+  "a9c2bf76-776c-4626-834d-a80acc9c3c5a": {
+    "author": "shafyyz",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-13T04:35:13.882Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": []
+  },
+  "b50585c7-53a5-46e8-842b-2d2d3ef8e985": {
+    "author": "josephstayhappy",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-13T04:35:15.580Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://sealed-bench.up.railway.app",
+      "https://sealed-bench.up.railway.app/"
+    ]
+  },
+  "d1924947-57e2-4e2d-a912-0ed0fd398ea2": {
+    "author": "ShadowNad_",
+    "status": "ok",
+    "crawled_at": "2026-11-13T04:35:20.273Z",
+    "listed": 4,
+    "read": 4,
+    "posts": [
+      {
+        "id": "2120932434225344541",
+        "author": "ShadowNad_",
+        "text": "@NEARProtocol 2/5 How do ants make predictions?\n\nEach colony explores different food sources using pheromone trails.\n\nThe food source with the strongest trail becomes the colony's forecast.\n\nNo AI chatbot giving opinions. Just swarm behavior turned into predictions.",
+        "links": []
+      },
+      {
+        "id": "2120932466894811150",
+        "author": "ShadowNad_",
+        "text": "@NEARProtocol 3/5 Everything runs on-chain.\n\nThe ant simulation runs inside a NEAR smart contract.\n\nRandomness comes from drand, and the contract verifies its signature.\n\nEvery simulation is reproducible. You can replay a colony in your browser and verify that you get the exact same hash.",
+        "links": []
+      },
+      {
+        "id": "2120932501782995177",
+        "author": "ShadowNad_",
+        "text": "@NEARProtocol 4/5 How well do they actually perform?\n\nAntonomy is live on testnet and has already scored 152 markets.\n\nI'm honestly curious to see how bad (or surprisingly good) these ants turn out to be.",
+        "links": []
+      },
+      {
+        "id": "2120932537078038928",
+        "author": "ShadowNad_",
+        "text": "@NEARProtocol 5/5 Try it yourself!\n\nExplore the colonies, check their forecasts, and replay their simulations.\n\n🔗 https://t.co/Xqa86cduvO\n\n$ANTO | Testnet play tokens only. Forecasts are not financial advice.",
+        "links": [
+          "https://antonomy.vercel.app/"
+        ]
+      }
+    ],
+    "links": []
+  },
+  "f24b68c8-7e29-4aa0-a6c3-cdc4352a6c3a": {
+    "author": "s_apple1",
+    "status": "ok",
+    "crawled_at": "2026-11-13T04:35:22.878Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [
+      {
+        "id": "2121057163330371722",
+        "author": "s_apple1",
+        "text": "@NEARProtocol The rituals, all in the contract: no approval, no review share. Merge in consecutive weeks for up to 40% more. Unclaimed coins burn after a 7 day fuse. Every 6 hours a feast burns half the pot and feeds the busiest reviewers. Holders can exile a farming repo.",
+        "links": []
+      }
+    ],
+    "links": [
+      "https://github.com/vignesh2027/mergoshi"
+    ]
+  },
+  "1616159b-3bdc-4e98-8a4f-4204db0c672b": {
+    "author": "acetaminofenol",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-13T04:35:24.420Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": []
+  },
+  "0887f594-b08b-491d-b050-3fe83d14f62d": {
+    "author": "H1dden_Light",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-13T04:35:25.963Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": []
+  },
+  "e33e9603-e7c0-4680-937d-cad78c34ee7d": {
+    "author": "TaoShang7",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-13T04:35:27.417Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": []
+  },
+  "5d67267d-fb3e-4e47-a777-08d437df60a5": {
+    "author": "H1dden_Light",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-13T07:46:48.604Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": []
+  },
+  "d7e9b609-c858-4439-be8e-e40b072c50b9": {
+    "author": "usefloorpad_",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-13T07:46:50.116Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": []
+  },
+  "6ed67d34-056d-4803-a207-d3a22031ccf7": {
+    "author": "lexlex99722746",
+    "status": "ok",
+    "crawled_at": "2026-11-13T07:46:56.967Z",
+    "listed": 5,
+    "read": 5,
+    "posts": [
+      {
+        "id": "2121106211160350913",
+        "author": "lexlex99722746",
+        "text": "@NEARProtocol How it works: Compact reads your Vite + Node app and splits it with explained, rule-based logic (no AI).\n\nUI code goes to a public portal. Server code and secrets go to a private critical half. Every file shows why it landed where it did.\nGit: https://t.co/mBxUvGtZG8 https://t.co/ZqeqgkTZxK",
+        "links": [
+          "https://github.com/ONOSPETER/Compact"
+        ],
+        "media": [
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HW-u2d0WAAELHBn.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 1434,
+                  "w": 2560,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1520,
+                  "w": 1520,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1520,
+                  "w": 1333,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1520,
+                  "w": 760,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1520,
+                  "w": 2560,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 1520,
+              "width": 2560
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      },
+      {
+        "id": "2121106214746460292",
+        "author": "lexlex99722746",
+        "text": "@NEARProtocol The private half sits behind a post-quantum channel: X25519 + ML-KEM-768 key exchange, ML-DSA-65 signed manifest, AES-256-GCM.\n\nPlus an encrypted vault: data is encrypted on the client, so the host only ever sees ciphertext.\nCompact-CLI git: https://t.co/xiRqiWt4PP",
+        "links": [
+          "https://github.com/ONOSPETER/Compact-CLI"
+        ]
+      },
+      {
+        "id": "2121106217791557756",
+        "author": "lexlex99722746",
+        "text": "@NEARProtocol Where NEAR fits: Compact deploys a tiny registry contract to your testnet account and anchors the manifest hash, code hash and endpoint on-chain.\n\nThe portal checks it and refuses a backend that doesn't match. @NEARProtocol\nTestnet: https://t.co/EyG8FQj1ur",
+        "links": [
+          "https://testnet.nearblocks.io/address/710e3263748d594c2c1edc57c3ef40c2151a728a46d7453709ecc2d2c0d5467c"
+        ]
+      },
+      {
+        "id": "2121106220815614245",
+        "author": "lexlex99722746",
+        "text": "@NEARProtocol Real test: I took an open-source Vite + React + Express template and ran it through Compact.\n\nBefore: https://t.co/AdWWVNIfHz\nAfter: https://t.co/rZ8fumvwnR\nLive: https://t.co/ysbaWl9LhP",
+        "links": [
+          "https://github.com/avinava/simple-vite-react-express",
+          "https://github.com/ONOSPETER/test3",
+          "https://test3-chi-khaki.vercel.app",
+          "https://test3-chi-khaki.vercel.app/"
+        ]
+      },
+      {
+        "id": "2121106223965638902",
+        "author": "lexlex99722746",
+        "text": "@NEARProtocol A 9-step UI (or a CLI) takes any Vite app from transform to a live Vercel deploy, then runs 5 live checks. Testnet only, MIT licensed.\n\nRepo: https://t.co/mBxUvGtZG8\n\nWhich app should I transform next? #NEARHackathon",
+        "links": [
+          "https://github.com/ONOSPETER/Compact"
+        ]
+      }
+    ],
+    "links": [
+      "https://compact-ui--lexbuild.replit.app/#/app"
+    ]
+  },
+  "8313a27a-740e-4ba7-aded-be0bb847e7b4": {
+    "author": "0xOceanFluxx",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-13T07:46:58.869Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://github.com/arsenicbreaker/auvorafinance",
+      "https://auvora.web.id",
+      "https://auvora.web.id/"
+    ]
+  },
+  "7cbfbb33-b1eb-460a-bf79-f8a73133a430": {
+    "author": "ryuk_nl",
+    "status": "ok",
+    "crawled_at": "2026-11-13T07:47:01.787Z",
+    "listed": 2,
+    "read": 2,
+    "posts": [
+      {
+        "id": "2121112720313627045",
+        "author": "ryuk_nl",
+        "text": "Sharingu helps teams coordinate complex work across people and AI agents. It connects nested projects, tasks, approvals and dependencies to the goals they serve, so teams can see who contributed what, what needs review and what evidence supports each decision.\n\nFor the NEAR",
+        "links": []
+      },
+      {
+        "id": "2121112722989539814",
+        "author": "ryuk_nl",
+        "text": "We see @NEARProtocol  as a chance to give Sharingu a meaningful on-chain direction and help teams connect the work they coordinate with outcomes they can verify.",
+        "links": []
+      }
+    ],
+    "links": [
+      "https://www.youtube.com/watch?v=oZtAL5Uf4Ak"
+    ]
+  },
+  "5f57fa6e-f082-40b5-9133-7f10f8dd5871": {
+    "author": "olaph_lol",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-13T07:47:03.280Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": []
+  },
+  "d5f141ed-30e8-4d7b-841f-80686ab246f8": {
+    "author": "NFTKINGIII",
+    "status": "no-author-replies",
+    "crawled_at": "2026-11-13T07:47:05.697Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [],
+    "links": []
+  },
+  "87ebd023-d1b4-418e-9a6a-6fb385c7c637": {
+    "author": "napoleonanaya",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-13T07:47:07.361Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://frontend-2mx1.vercel.app/"
+    ]
+  },
+  "988a23d9-ad77-47c3-bc49-2cf801007f6f": {
+    "author": "CingCoeg",
+    "status": "ok",
+    "crawled_at": "2026-11-13T07:47:11.163Z",
+    "listed": 3,
+    "read": 3,
+    "posts": [
+      {
+        "id": "2121124001909252261",
+        "author": "CingCoeg",
+        "text": "That's what I'm building for @NEARProtocol  hackathon. The Commons is an arena where you can simulate what happens when AI agents share one pool, each following its own motive",
+        "links": []
+      },
+      {
+        "id": "2121124004442563026",
+        "author": "CingCoeg",
+        "text": "It's already live and the question is simple, when agents share one pool do they learn restraint or does the tragedy of the commons win? no winner and judge, just the pool and the agents",
+        "links": []
+      },
+      {
+        "id": "2121124006892077515",
+        "author": "CingCoeg",
+        "text": "Test it yourself. I built an MCP so you can connect your own agent in minutes. Testnet only for now:\n\nhttps://t.co/xWbDHRQBpc\n\n@NEARProtocol #NEARHackathon",
+        "links": [
+          "https://the-commons.web.id",
+          "https://the-commons.web.id/"
+        ]
+      }
+    ],
+    "links": []
+  },
+  "131d5629-da31-4d84-b987-36c32bac1efa": {
+    "author": "richwoman_e",
+    "status": "no-author-replies",
+    "crawled_at": "2026-11-13T07:47:14.074Z",
+    "listed": 2,
+    "read": 2,
+    "posts": [],
+    "links": []
+  },
+  "7e57b1aa-a98a-4f7b-a8d8-36be9c0b1097": {
+    "author": "calpha_one",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-13T07:47:15.522Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": []
+  },
+  "d2c7f511-03fd-4ee6-b405-f78f8727e927": {
+    "author": "sarin_are",
+    "status": "ok",
+    "crawled_at": "2026-11-13T07:47:18.106Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [
+      {
+        "id": "2121125179569181036",
+        "author": "sarin_are",
+        "text": "You can’t buy $FLU. You have to catch it.\n\nCatch it from another player, pass it on to earn a bonus, then recover before your clock runs out. Miss it and a plague doctor can cull you. Vaccines can end the outbreak.",
+        "links": []
+      }
+    ],
+    "links": [
+      "https://space-rock.github.io/contagion",
+      "https://github.com/space-rock/contagion"
+    ]
+  },
+  "2b9b8d56-3666-42b7-bd00-edd5a8e014f4": {
+    "author": "playdragonlink",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-13T07:47:19.599Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": []
+  },
+  "0dff29de-ab27-45d4-91a0-747578a13906": {
+    "author": "Teon101",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-13T07:47:21.270Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://github.com/teon101/near-general-contractor"
+    ]
+  },
+  "c067795e-c663-46e8-a129-06e33a98d691": {
+    "author": "0Xuell",
+    "status": "ok",
+    "crawled_at": "2026-11-13T07:47:26.863Z",
+    "listed": 5,
+    "read": 5,
+    "posts": [
+      {
+        "id": "2121132167711375793",
+        "author": "0Xuell",
+        "text": "The problem: a cap table is private, but a DAO still needs its vote to mean something exact\nRounds turns every change into an exact plan with a SHA-256 fingerprint. The money waits in escrow. The DAO votes on the fingerprint. The contract refuses any plan that doesn't hash to it",
+        "links": []
+      },
+      {
+        "id": "2121132173290049959",
+        "author": "0Xuell",
+        "text": "Confidential mode (zero-knowledge):\n\nThe chain stores only a sealed fingerprint of the cap table plus a Groth16 proof that it adds up. Who holds what never appears on chain.\n\nThe board checks its private copy before approving. Change one number and the check refuses it.",
+        "links": []
+      },
+      {
+        "id": "2121132179262693409",
+        "author": "0Xuell",
+        "text": "Payouts without exposing who owns what\n\nA holder proves, in their own browser, that they're in the table and owed exactly their share, without saying which row is theirs. A relayer sends it to a brand-new account, so nothing links the payout to a named holder or to their wallet.",
+        "links": []
+      },
+      {
+        "id": "2121132184769855985",
+        "author": "0Xuell",
+        "text": "There's also a transparent mode: priced rounds, SAFEs, vesting, SAFT tokens and pro-rata payouts. Anyone can re-verify a round in their own browser, and make verify-onchain re-checks 31 things against the live chain.\nCode and docs: https://t.co/xGbpZZPHix",
+        "links": [
+          "https://github.com/samuel025/Rounds"
+        ]
+      }
+    ],
+    "links": [
+      "https://roundcap.vercel.app",
+      "https://roundcap.vercel.app/"
+    ]
+  },
+  "ebfe4642-5ba1-446b-b58d-b9a7daa87d4e": {
+    "author": "viannyJk",
+    "status": "ok",
+    "crawled_at": "2026-11-13T07:47:31.443Z",
+    "listed": 4,
+    "read": 4,
+    "posts": [
+      {
+        "id": "2120652289677340799",
+        "author": "viannyJk",
+        "text": "Stipend is an SDK and on chain policy engine on NEAR: cap per payment, daily budget, approved vendors, set in a contract the agent cannot change.\nIn the demo the agent buys at 0.001 NEAR and settles alone. At 0.08 NEAR, over the cap, it is held until the owner approves.",
+        "links": []
+      },
+      {
+        "id": "2120652290033918316",
+        "author": "viannyJk",
+        "text": "Wrong inputs move nothing. An expired quote, a forged price, and a vendor that was never approved are all blocked by the contract, each with its reason on the record.\nThe owner can pause all payments or revoke the agent at any time. 54 tests passing.",
+        "links": []
+      },
+      {
+        "id": "2120652290382086583",
+        "author": "viannyJk",
+        "text": "Code: https://t.co/fj8wa3E0n6\nContract live on NEAR testnet: stipend.testnet\nIf your agent had a stipend, which limit would you set first: the cap, the daily budget, or the vendor list?",
+        "links": [
+          "https://github.com/lildosnear/Stipend"
+        ]
+      }
+    ],
+    "links": []
+  },
+  "fd99826b-9c62-4a81-8255-d9077b64c341": {
+    "author": "2xQuant",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-13T07:47:32.963Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": []
+  },
+  "c1c736e8-aba6-4619-a066-967abe8d4f80": {
+    "author": "NEARPulseAI",
+    "status": "ok",
+    "crawled_at": "2026-11-13T07:47:35.563Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [
+      {
+        "id": "2121131122352640314",
+        "author": "NEARPulseAI",
+        "text": "@NEARProtocol Explore network activity, ask questions with AI, discover research reports, and inspect BigQuery-backed datasets covering 91 days of historical NEAR data.\n\nGitHub: https://t.co/am66vIlxts\n\nBuilt on NEAR. Powered by intelligence...",
+        "links": [
+          "https://github.com/cryptobyrj/Nearpulse-ai"
+        ]
+      }
+    ],
+    "links": [
+      "https://nearpulse-ai.vercel.app/"
+    ]
+  },
+  "a153f088-eff8-474b-9a78-71cd2633ceb4": {
+    "author": "MDLOG_labs",
+    "status": "no-author-replies",
+    "crawled_at": "2026-11-13T07:47:38.033Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [],
+    "links": []
+  },
+  "a2033b83-1189-4444-a98f-170fdb716a6b": {
+    "author": "bamietech_dev",
+    "status": "no-author-replies",
+    "crawled_at": "2026-11-13T07:47:41.534Z",
+    "listed": 2,
+    "read": 2,
+    "posts": [],
+    "links": [
+      "https://hierkey.web.app",
+      "https://github.com/bamiebot-maker/hierkey",
+      "https://hierkey.web.app/"
+    ]
+  },
+  "079ffca9-45e5-4c85-895f-f568098cb6ba": {
+    "author": "greenlimadev",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-13T07:47:43.201Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://github.com/greenlima/sealed-review"
+    ]
+  },
+  "8bb528bd-846b-4873-a07f-555ea2b9ab3c": {
+    "author": "MDLOG_labs",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-13T07:47:44.721Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": []
+  },
+  "3673a1b3-7cda-4de6-8917-cf30929bd2a5": {
+    "author": "fexx_off",
+    "status": "no-author-replies",
+    "crawled_at": "2026-11-13T07:47:46.919Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [],
+    "links": []
+  },
+  "76e0dc97-5ee3-49f4-9f61-39f9f80ce3c6": {
+    "author": "anjal1_tweets",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-13T07:47:48.587Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://nea-rena.vercel.app/"
+    ]
+  },
+  "0652cbda-291c-4e5d-a890-20873496b1ae": {
+    "author": "letbdu",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-13T07:47:50.286Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://omnigate.legatia.solutions",
+      "https://omnigate.legatia.solutions/"
+    ]
+  },
+  "16bcfb77-9972-45fd-872f-1e37a874a292": {
+    "author": "0Xuell",
+    "status": "ok",
+    "crawled_at": "2026-11-13T07:47:56.425Z",
+    "listed": 6,
+    "read": 6,
+    "posts": [
+      {
+        "id": "2121138603690725666",
+        "author": "0Xuell",
+        "text": "How a quake counts:\n- USGS reports M6+ with an expected-impact alert of yellow or higher\n- Five fixed bots check the official record on their own\n- It counts only when 3 of the 5 attest the exact same record\n\nA made-up quake stays pending and mints nothing.",
+        "links": []
+      },
+      {
+        "id": "2121138611705766062",
+        "author": "0Xuell",
+        "text": "What happens next: a small amount of new TREM is split between five fixed relief accounts.\n\nWeekly and monthly caps limit how much can ever be created, so holders are diluted by a bounded amount.",
+        "links": []
+      },
+      {
+        "id": "2121138619754918191",
+        "author": "0Xuell",
+        "text": "Holders can also give their own coins to the relief list. A reserve of existing coins tops each gift up by 10%.\n\nNo new coins are created for that. The match goes to relief, not to the giver, and it has daily and monthly budgets.",
+        "links": []
+      },
+      {
+        "id": "2121138629091438768",
+        "author": "0Xuell",
+        "text": "Nobody can change the rules:\n- no owner, admin or upgrade method\n- publishers, parameters and relief list fixed at launch\n- coin holdings never decide what counts\n\nThe page reads the contract live, including how many access keys remain.",
+        "links": []
+      },
+      {
+        "id": "2121138647567114507",
+        "author": "0Xuell",
+        "text": "We simulated it on 60 real days of USGS data before picking the numbers. Only 5 of the 28 M6+ quakes had enough expected impact to count.\n\nRust contract, Python reference and TypeScript engine agree on 28,537 steps across 200 scenarios.",
+        "links": []
+      },
+      {
+        "id": "2121138665904902256",
+        "author": "0Xuell",
+        "text": "Limits, stated plainly: the bots are trusted, everything depends on USGS, and the relief accounts are stand-ins that donate nothing real. It's a mechanism on testnet, not an outcome.\n\nTry it: https://t.co/Pklki2cIbU\nCode: https://t.co/y6ol77Ev4e",
+        "links": [
+          "https://samuel025.github.io/tremor/",
+          "https://github.com/samuel025/tremor"
+        ]
+      }
+    ],
+    "links": []
   }
 }
