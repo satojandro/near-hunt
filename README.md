@@ -1,17 +1,34 @@
 # NEAR Hunt
 
-**A human-first discovery and community voting layer for NEAR ecosystem projects.**
+**The Product Hunt of NEAR: a human-first discovery and community voting layer for NEAR
+ecosystem projects.**
 
 Built for the [NEAR Hackathon](https://nearhackathon.com) (1–14 Nov 2026), Open Innovation track.
 Live at **https://nearhunt.xyz**.
 
 [![CI](https://github.com/satojandro/near-hunt/actions/workflows/ci.yml/badge.svg)](https://github.com/satojandro/near-hunt/actions/workflows/ci.yml)
 
+More than 800 projects shipped at this hackathon, and the only way to see them was a list of names
+and links. So we built the thing we wanted ourselves, and people showed up: **109 NEAR accounts
+have signed upvotes on chain from their own wallets**, builders are discussing each other's work in
+the comments, and builders have filed twelve corrections to their own listings
+([the correction issues](https://github.com/satojandro/near-hunt/issues?q=is%3Aissue+correction)).
+This is not a demo waiting for users. Open https://nearhunt.xyz and look at who is voting. Every
+figure is in [Status](#status-measured-13-nov-2026) with the command that reproduces it.
+
 NEAR Hunt turns the hackathon's list of submissions into a browsable directory: a page per
-project, one upvote per NEAR account, and threaded comments. Every project record, vote and
-comment is a plain key-value row on NEAR mainnet under `nearhunt.near`, with no smart contract.
-A read-only JSON API and a [`SKILL.md`](public/SKILL.md) let AI agents read the same data without
-a browser.
+project, one upvote per NEAR account, and threaded comments.
+
+- **No smart contract.** Every project record, vote and comment is a plain key-value row on NEAR
+  mainnet under `nearhunt.near`. Nothing to deploy, nothing to audit.
+- **Your vote is yours.** The voter is whoever signed the row: one account, one vote, and nobody
+  can vote or comment as you.
+- **It feels like a normal app.** One wallet approval at login, then votes and comments sign with
+  no pop-ups.
+- **Fully open.** Read everything straight from mainnet without our server. If nearhunt.xyz
+  vanished tomorrow, the community's votes would still be there.
+- **Agent-ready.** A read-only JSON API and a [`SKILL.md`](public/SKILL.md) let an AI agent
+  browse, shortlist and verify every record against the chain by itself.
 
 ## Status (measured 13 Nov 2026)
 
@@ -111,9 +128,14 @@ unless the variables in [`.env.example`](.env.example) are set.
 
 ## Why
 
-Hackathon submissions are public but hard to browse, compare or discuss. They leak away when
-the event ends. NEAR Hunt gives each project a permanent URL, a durable community signal, and
-a machine-readable record that outlives the hackathon.
+Hackathon submissions are public but hard to browse, compare or discuss, and they leak away when
+the event ends. Two weeks of work by hundreds of builders deserves better than a list. NEAR Hunt
+gives each project a permanent URL, a durable community signal, and a machine-readable record
+that outlives the hackathon.
+
+The hackathon ends on 14 Nov. NEAR Hunt doesn't: next is open submissions (NH-101 in
+[`docs/PLAN.md`](docs/PLAN.md), not built yet), so any NEAR project can get a launch day and a
+community to cheer it on.
 
 ## What it does (MVP)
 
