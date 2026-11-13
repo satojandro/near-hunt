@@ -22,7 +22,7 @@ value, but the old value stays in public history forever.
   a change that would replace an already-set value (feed-owned `schema`, `id`, `source`, `name`,
   `tracks`, `demo_url` excepted, because the feed is their source), a tombstoned record appearing
   in the feed, a `social_post` reference, enrichment without `sources`, a link without a measured
-  `check.verdict`, `--refresh-enriched`, more than 200 keys or 4 transactions in one run, or a key
+  `check.verdict`, `--refresh-enriched`, more than 400 keys or 8 transactions in one run, or a key
   that is not `FunctionCall(nearhunt.near, __fastdata_kv)`. When it refuses, **nothing is signed**,
   the batch stays ready and a human approves it by hand as before.
 - The scheduled cycle (`node scripts/enrich-cycle.mjs --sign`, every 3 hours) also verifies its own
