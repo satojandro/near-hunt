@@ -23,3 +23,16 @@ export declare function readIsFailing(opts: {
  * (lib/snapshot.mjs). Never present a copy as current.
  */
 export declare function staleCopyText(fetchedAt: string | number | Date | null | undefined, now?: number): string;
+
+export declare const STALE_COPY_AFTER_MS: number;
+
+/**
+ * Whether a copy handed back by the cache must be labelled as a saved copy: a read failed after it
+ * was read, it is older than `maxAgeMs`, or its time is unusable.
+ */
+export declare function copyIsStale(opts: {
+  fetchedAt: string | number | Date | null | undefined;
+  now: number;
+  lastFailedAt?: number;
+  maxAgeMs?: number;
+}): boolean;

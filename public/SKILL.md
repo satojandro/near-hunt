@@ -107,7 +107,11 @@ Returns `{ items: ProjectSummary[], next_cursor: string | null, meta }`.
     "fetched_at": "2026-11-08T17:02:11.000Z",
     "stale": false,
     "votes_available": true,
+    "votes_stale": false,
+    "votes_fetched_at": "2026-11-08T17:02:10.000Z",
     "comments_available": true,
+    "comments_stale": false,
+    "comments_fetched_at": "2026-11-08T17:02:11.000Z",
     "source": { "account": "nearhunt.near", "prefix": "project/", "network": "mainnet" }
   }
 }
@@ -127,6 +131,11 @@ description shortened here). The API adds `submission_id`, `key`, `account`, `bl
 - `comments` is the number of visible comments, on the list endpoint only. It is `null` when the
   comment read failed ("unknown", not zero); then `meta.comments_available` is `false` and
   `sort=comments` falls back to newest first.
+- Counts can be a saved copy. When the NEAR indexer does not answer, the API serves the last vote
+  and comment rows it read instead of failing. `meta.votes_stale` / `meta.comments_stale` are then
+  `true`, and `meta.votes_fetched_at` / `meta.comments_fetched_at` say when those rows were read.
+  `/votes` and `/discussion` carry the same pair as `meta.stale` and `meta.fetched_at`. If you have
+  just written a vote or a comment and the copy is older than your write, it will not be in it yet.
 - `meta.total` is the number of projects matching your filters.
 - `meta.stale: true` means the indexer did not answer and you are reading the server's last good
   copy; `meta.fetched_at` says when it was read.

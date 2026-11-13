@@ -31,6 +31,7 @@ test('projects envelope: items, next_cursor and meta, nothing else', () => {
   assert.equal(body.next_cursor, null);
   assert.deepEqual(body.meta, {
     total: 4, fetched_at: LIST.fetched_at, stale: false, votes_available: true,
+    votes_stale: false, votes_fetched_at: null,
     source: { account: 'nearhunt.near', prefix: 'project/', network: 'mainnet' },
   });
   const a = body.items.find((p) => p.submission_id === 'a');
@@ -167,7 +168,7 @@ test('votes body: envelope, ordering, paging and meta', () => {
   const p1 = votesBody(voters, src, parsePage(new URLSearchParams('limit=2')));
   assert.deepEqual(Object.keys(p1), ['items', 'next_cursor', 'meta']);
   assert.deepEqual(p1.items, [{ account_id: 'a.near', block_height: 30 }, { account_id: 'c.near', block_height: 20 }]);
-  assert.deepEqual(p1.meta, { total: 3, source: { account: 'nearhunt.near', prefix: 'vote/', network: 'mainnet' } });
+  assert.deepEqual(p1.meta, { total: 3, stale: false, fetched_at: null, source: { account: 'nearhunt.near', prefix: 'vote/', network: 'mainnet' } });
   const p2 = votesBody(voters, src, parsePage(new URLSearchParams(`limit=2&cursor=${p1.next_cursor}`)));
   assert.deepEqual(p2.items, [{ account_id: 'b.near', block_height: 10 }]);
   assert.equal(p2.next_cursor, null);
@@ -185,6 +186,8 @@ test('discussion body: flat comments with reply_to, offset paging and comment me
     next_cursor: null,
     meta: {
       total: 0,
+      stale: false,
+      fetched_at: null,
       source: { account: 'nearhunt.near', prefix: 'comment/', network: 'mainnet' },
       policy_url: 'https://nearhunt.xyz/comment-policy',
     },
@@ -232,4 +235,29 @@ test('comments: counts on each item, sort=comments, and the read-failed case', (
   const plain = projectsBody(LIST, VOTES, q(''));
   assert.equal('comments' in plain.items[0], false);
   assert.equal('comments_available' in plain.meta, false);
+});
+
+// A saved copy is never presented as current: the API says so too, not only the pages.
+test('saved copies are flagged in every meta, with the time they were read', () => {
+  const AT = '2026-11-13T03:00:00.000Z';
+  const body = projectsBody(
+    LIST,
+    { ...VOTES, stale: true, fetched_at: AT },
+    q(''),
+    { counts: { a: 1 }, available: true, stale: true, fetched_at: AT },
+  );
+  assert.equal(body.meta.votes_stale, true);
+  assert.equal(body.meta.votes_fetched_at, AT);
+  assert.equal(body.meta.comments_stale, true);
+  assert.equal(body.meta.comments_fetched_at, AT);
+
+  // A failed read is "unavailable", not "stale": there is no copy to date.
+  const failed = projectsBody(LIST, { counts: {}, available: false, stale: true, fetched_at: AT }, q(''));
+  assert.equal(failed.meta.votes_stale, false);
+  assert.equal(failed.meta.votes_fetched_at, null);
+
+  const src = { account: 'nearhunt.near', network: 'mainnet', stale: true, fetched_at: AT };
+  const page = parsePage(new URLSearchParams(''));
+  assert.deepEqual([votesBody([], src, page).meta.stale, votesBody([], src, page).meta.fetched_at], [true, AT]);
+  assert.deepEqual([discussionBody([], src, page).meta.stale, discussionBody([], src, page).meta.fetched_at], [true, AT]);
 });

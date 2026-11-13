@@ -32,3 +32,31 @@ test('staleCopyText agrees with ageText, so the two cannot drift', () => {
   const fetchedAt = new Date(T0 - 7 * MIN).toISOString();
   assert.equal(staleCopyText(fetchedAt, T0), `as of ${ageText(fetchedAt, T0)}`);
 });
+
+// The warm-instance case: Next's cache answers with an expired entry and re-reads in the
+// background; when that re-read fails the old entry keeps being served. "The cache answered" is
+// therefore not "this was just read", and `copyIsStale` is what tells the two apart.
+test('copyIsStale: a copy read before the last failed read is a saved copy', async () => {
+  const { copyIsStale } = await import('../lib/freshness.mjs');
+  const readAt = new Date(T0 - 30_000).toISOString();
+  // no failure: a 30 s old copy is current
+  assert.equal(copyIsStale({ fetchedAt: readAt, now: T0, lastFailedAt: 0 }), false);
+  // the re-read failed 10 s ago, after this copy was read: it is a saved copy
+  assert.equal(copyIsStale({ fetchedAt: readAt, now: T0, lastFailedAt: T0 - 10_000 }), true);
+  // a copy read after the failure (by this or another instance) proves the indexer answered since
+  assert.equal(copyIsStale({ fetchedAt: new Date(T0 - 5_000).toISOString(), now: T0, lastFailedAt: T0 - 10_000 }), false);
+});
+
+test('copyIsStale: an old copy is labelled even when no read has failed here', async () => {
+  const { copyIsStale, STALE_COPY_AFTER_MS } = await import('../lib/freshness.mjs');
+  assert.equal(copyIsStale({ fetchedAt: T0 - STALE_COPY_AFTER_MS, now: T0 }), false);
+  assert.equal(copyIsStale({ fetchedAt: T0 - STALE_COPY_AFTER_MS - 1, now: T0 }), true);
+  assert.equal(copyIsStale({ fetchedAt: T0 - 2 * MIN, now: T0, maxAgeMs: MIN }), true);
+});
+
+test('copyIsStale: a copy with no usable time is never called current', async () => {
+  const { copyIsStale } = await import('../lib/freshness.mjs');
+  for (const value of [null, undefined, '', 'not a date', Number.NaN]) {
+    assert.equal(copyIsStale({ fetchedAt: value, now: T0 }), true);
+  }
+});

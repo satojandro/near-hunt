@@ -1,4 +1,5 @@
 import 'server-only';
+import { createHash } from 'node:crypto';
 import { unstable_cache } from 'next/cache';
 import { NETWORK, VOTE_ACCOUNT } from './network.mjs';
 import {
@@ -14,6 +15,7 @@ import {
 import type { Comment, HideEntry } from './comments.mjs';
 import { loadSnapshotValue, saveSnapshotValue } from './snapshot-store';
 import { isFreshnessRecord, snapshotKey } from './snapshot.mjs';
+import { copyIsStale } from './freshness.mjs';
 import hiddenFile from '../data/hidden-comments.json';
 
 /**
@@ -46,8 +48,14 @@ interface CommentRowsCopy {
 const isCommentRowsCopy = (value: unknown): boolean =>
   isFreshnessRecord(value, (rows) => Array.isArray(rows), 'rows');
 
-/** Per-project copies get their own key so one thread's fallback never stands in for another's. */
-const commentsKey = (projectId: string) => snapshotKey(`comments-${projectId.replace(/[^a-z0-9]/gi, '').slice(0, 32)}`);
+/**
+ * Per-project copies get their own key so one thread's fallback never stands in for another's.
+ * The id is hashed: a submission id may hold any character but `/` (lib/comments.mjs `isProjectId`),
+ * and `snapshotKey` throws on anything outside `[a-z0-9-]`. Stripping characters instead would let
+ * two ids share a key, and an uppercase id would throw on the fallback path.
+ */
+const commentsKey = (projectId: string) =>
+  snapshotKey(`comments-${createHash('sha256').update(projectId).digest('hex').slice(0, 32)}`);
 
 /** Key for the all-projects copy, which is what the directory's comment counts are built from. */
 const ALL_COMMENTS_KEY = snapshotKey('comments-all');
@@ -79,7 +87,8 @@ const projectRows = unstable_cache(
       throw err;
     }
   },
-  ['nearhunt-comments-v1', NETWORK, COMMENT_ACCOUNT],
+  // v2: the cached value became `{rows, fetched_at}`; the key changes with the shape.
+  ['nearhunt-comments-v2', NETWORK, COMMENT_ACCOUNT],
   { revalidate: COMMENTS_REVALIDATE_SECONDS, tags: ['comments'] },
 );
 
@@ -95,7 +104,7 @@ const allRows = unstable_cache(
       throw err;
     }
   },
-  ['nearhunt-comment-counts-v1', NETWORK, COMMENT_ACCOUNT],
+  ['nearhunt-comment-counts-v2', NETWORK, COMMENT_ACCOUNT],
   { revalidate: COUNTS_REVALIDATE_SECONDS, tags: ['comments'] },
 );
 
@@ -111,6 +120,16 @@ function rowsOnce(key: string, read: () => Promise<CommentRowsCopy>): Promise<Co
   });
   state.inflight.set(key, started);
   return started;
+}
+
+/**
+ * A copy the cache handed back, checked before use: the cache is not trusted to hold the current
+ * shape (an entry from another deploy), nor to be current (an expired entry is served while the
+ * re-read runs, and stays when that re-read fails).
+ */
+function checked(copy: CommentRowsCopy): { copy: CommentRowsCopy; stale: boolean } {
+  if (!isCommentRowsCopy(copy)) throw new Error('cached comment rows have an unexpected shape');
+  return { copy, stale: copyIsStale({ fetchedAt: copy.fetched_at, now: Date.now(), lastFailedAt: state.lastFailedAt }) };
 }
 
 function isCoolingDown(): boolean {
@@ -135,9 +154,9 @@ export interface ProjectComments {
 export async function getProjectComments(projectId: string): Promise<ProjectComments> {
   if (!isCoolingDown()) {
     try {
-      const copy = await rowsOnce(`project:${projectId}`, () => projectRows(projectId));
+      const { copy, stale } = checked(await rowsOnce(`project:${projectId}`, () => projectRows(projectId)));
       const { items, count } = commentThread(copy.rows as never[], projectId, { hidden: HIDDEN });
-      return { items, count, available: true, stale: false, fetched_at: copy.fetched_at, network: NETWORK, account: COMMENT_ACCOUNT };
+      return { items, count, available: true, stale, fetched_at: copy.fetched_at, network: NETWORK, account: COMMENT_ACCOUNT };
     } catch (err) {
       console.error('[comments] KV read failed:', err instanceof Error ? err.message : err);
     }
@@ -168,33 +187,39 @@ export interface CommentCounts {
   account: string;
 }
 
-/** Visible comment counts for the given projects (NH-43 "Most discussed"). Never throws. */
-export async function getCommentCounts(projectIds: string[]): Promise<CommentCounts> {
+export interface CommentRowSet {
+  rows: Array<Record<string, unknown>>;
+  /** False when no rows could be read and no copy was stored. */
+  available: boolean;
+  /** True when `rows` is a saved copy rather than this minute's read. */
+  stale: boolean;
+  fetched_at: string | null;
+}
+
+/** Every `comment/` row, falling back to the stored copy before giving up. Never throws. */
+export async function getAllCommentRows(): Promise<CommentRowSet> {
   if (!isCoolingDown()) {
     try {
-      const copy = await rowsOnce('all', () => allRows());
-      return {
-        counts: countComments(copy.rows as never[], { hidden: HIDDEN, projectIds }),
-        available: true,
-        stale: false,
-        fetched_at: copy.fetched_at,
-        network: NETWORK,
-        account: COMMENT_ACCOUNT,
-      };
+      const { copy, stale } = checked(await rowsOnce('all', () => allRows()));
+      return { rows: copy.rows, available: true, stale, fetched_at: copy.fetched_at };
     } catch (err) {
       console.error('[comments] KV count read failed:', err instanceof Error ? err.message : err);
     }
   }
   const stored = await loadSnapshotValue<CommentRowsCopy>(ALL_COMMENTS_KEY, isCommentRowsCopy, 'comment counts');
-  if (stored) {
-    return {
-      counts: countComments(stored.rows as never[], { hidden: HIDDEN, projectIds }),
-      available: true,
-      stale: true,
-      fetched_at: stored.fetched_at,
-      network: NETWORK,
-      account: COMMENT_ACCOUNT,
-    };
-  }
-  return { counts: {}, available: false, stale: false, fetched_at: null, network: NETWORK, account: COMMENT_ACCOUNT };
+  if (stored) return { rows: stored.rows, available: true, stale: true, fetched_at: stored.fetched_at };
+  return { rows: [], available: false, stale: false, fetched_at: null };
+}
+
+/** Visible comment counts for the given projects (NH-43 "Most discussed"). Never throws. */
+export async function getCommentCounts(projectIds: string[]): Promise<CommentCounts> {
+  const set = await getAllCommentRows();
+  return {
+    counts: set.available ? countComments(set.rows as never[], { hidden: HIDDEN, projectIds }) : {},
+    available: set.available,
+    stale: set.stale,
+    fetched_at: set.fetched_at,
+    network: NETWORK,
+    account: COMMENT_ACCOUNT,
+  };
 }
