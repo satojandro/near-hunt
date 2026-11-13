@@ -495,6 +495,29 @@ near account list-keys nearhunt.near network-config mainnet now   # 1 key, full 
     the same two feed-owned `http://` `demo_url` defects (`VIGIL`, `IntentFolio`), so this batch added
     none; `npm test` 380/380.
 
+27. **The 24 new submissions and 1 enrichment fill, 13 Nov — batch 26, the 12:32 cycle.** The
+    `near-hunt-enrich-cycle` job fired at 12:32:50 (its 12:20 slot, a tick late) and reported
+    `chain 790 · feed 809 · new 19 · changed 1`, `20 keys, 23692 bytes`, `status: ok`. By the time
+    the dry run ran at 13:31 the feed had 814 submissions, so the write was **24 creates + 1
+    update = 25 keys, 26237 bytes**.
+
+    The one update is the useful detail: `That Invoice` (`b52c1225…`), the submission that arrived
+    after batch 25's enrich build, gained its `description` and `media` for the first time — both
+    were `null` before, so the fill overwrote nothing a builder or an earlier run had put there.
+    `changed: 1` on a batch like this is normally exactly that, and it is worth checking one by one
+    rather than trusting the count.
+
+    One transaction, `7UJW6tpgHguvU2xcjguQhDEAtdFAn4wJsefeauqPKw1s` (25 keys), signed with the scoped
+    `ed25519:2WMyE…` FunctionCall key on `__fastdata_kv`. `verified: 25/25 written keys read back`
+    (0/25 on the first indexer attempt).
+
+    **Read back:** **814 project rows**, 0 tombstones; the 25 records carry description **15/25**,
+    media **14/25**, links **9/25**, repository **13/25**. The other 10 landed with feed fields only
+    — they are submissions that arrived after the 01:25Z enrich build, so the next cycle enriches
+    them. The importer then prints `new: 1, changed: 0, unchanged: 814` (one more submission arrived
+    during the write). `npm run validate:schema` **812/814**, the same two feed-owned `http://`
+    `demo_url` defects; `npm test` 380/380.
+
 ## Decisions taken
 
 | Decision | Choice | Why |

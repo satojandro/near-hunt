@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-11-12T22:18:06.531Z",
+  "generated_at": "2026-11-13T01:30:10.576Z",
   "account": "nearhunt.near",
   "note": "Flags only. Nothing is merged, hidden or written. `clusters`/`groups` share an identifying URL (possible duplicates). `weak_signals` share only a name or an X account and are usually different projects.",
   "summary": {
-    "submissions": 789,
-    "on_chain": 764,
-    "pending": 25,
+    "submissions": 808,
+    "on_chain": 790,
+    "pending": 18,
     "shared_urls": 2,
     "by_kind": {
       "x-post": 1,
@@ -14,7 +14,7 @@
     "clusters": 2,
     "submissions_flagged": 4,
     "same_name_groups": 23,
-    "same_x_account_groups": 74
+    "same_x_account_groups": 78
   },
   "clusters": [
     {
@@ -163,6 +163,11 @@
             "submission_id": "ff4096e0-82f9-468d-8592-ea13a28fb4c4",
             "name": "AgentGuard",
             "on_chain": true
+          },
+          {
+            "submission_id": "bda17ba4-6e88-4680-9a69-0b7d3aa49c97",
+            "name": "AgentGuard",
+            "on_chain": false
           }
         ]
       },
@@ -287,6 +292,26 @@
         ]
       },
       {
+        "key": "foreman",
+        "submissions": [
+          {
+            "submission_id": "20df5127-8326-4810-8314-c068af25650b",
+            "name": "Foreman",
+            "on_chain": true
+          },
+          {
+            "submission_id": "8ec7bfd4-68b6-4886-8d00-a48c9a7186ef",
+            "name": "Foreman",
+            "on_chain": true
+          },
+          {
+            "submission_id": "6aeb5a3a-af2d-41a4-ad4b-d74ea36e3881",
+            "name": "Foreman",
+            "on_chain": false
+          }
+        ]
+      },
+      {
         "key": "intentguard",
         "submissions": [
           {
@@ -382,21 +407,6 @@
           {
             "submission_id": "779185fc-dc4e-4508-ad58-8a66a3204968",
             "name": "CareRail",
-            "on_chain": true
-          }
-        ]
-      },
-      {
-        "key": "foreman",
-        "submissions": [
-          {
-            "submission_id": "20df5127-8326-4810-8314-c068af25650b",
-            "name": "Foreman",
-            "on_chain": true
-          },
-          {
-            "submission_id": "8ec7bfd4-68b6-4886-8d00-a48c9a7186ef",
-            "name": "Foreman",
             "on_chain": true
           }
         ]
@@ -599,6 +609,21 @@
         ]
       },
       {
+        "key": "0xkiter",
+        "submissions": [
+          {
+            "submission_id": "b52c1225-4007-4c8d-9be3-8bb484bbd2cd",
+            "name": "That Invoice",
+            "on_chain": true
+          },
+          {
+            "submission_id": "bf5a3e43-97c8-419e-97e3-01ba355c8d66",
+            "name": "Bonded",
+            "on_chain": true
+          }
+        ]
+      },
+      {
         "key": "a_djalilchougui",
         "submissions": [
           {
@@ -625,6 +650,21 @@
             "submission_id": "ecbdc52c-d6b7-480b-8e56-65e554ede735",
             "name": "Glassbox",
             "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "ajalaoluwasogo",
+        "submissions": [
+          {
+            "submission_id": "ba768474-70d2-4245-a47c-cd570aa0f29a",
+            "name": "Rajista Pay on NEAR",
+            "on_chain": false
+          },
+          {
+            "submission_id": "12b89913-8516-401e-a3a3-18bc8c3cb403",
+            "name": "AfriRadar on NEAR",
+            "on_chain": false
           }
         ]
       },
@@ -929,6 +969,21 @@
         ]
       },
       {
+        "key": "gansmaul",
+        "submissions": [
+          {
+            "submission_id": "ba5f7cf4-6faa-4f82-8d7f-48fe76a0472c",
+            "name": "Mandate Lab",
+            "on_chain": true
+          },
+          {
+            "submission_id": "6612841e-1e25-453e-94dc-c79fe66fb9e1",
+            "name": "Unwrapped",
+            "on_chain": false
+          }
+        ]
+      },
+      {
         "key": "gggodlin",
         "submissions": [
           {
@@ -984,7 +1039,7 @@
           {
             "submission_id": "a82658f5-e42a-4e2a-be6b-29c33f514d15",
             "name": "Bexley Pay",
-            "on_chain": false
+            "on_chain": true
           }
         ]
       },
@@ -1454,6 +1509,21 @@
         ]
       },
       {
+        "key": "seanmd99",
+        "submissions": [
+          {
+            "submission_id": "b62c7f04-9a8f-4b9d-939d-5f1845f33104",
+            "name": "Float",
+            "on_chain": false
+          },
+          {
+            "submission_id": "aa226645-cab6-4702-beda-363ceccbdccb",
+            "name": "Shade",
+            "on_chain": false
+          }
+        ]
+      },
+      {
         "key": "sentinel_dapper",
         "submissions": [
           {
@@ -1637,14 +1707,14 @@
         "key": "wonka_red",
         "submissions": [
           {
-            "submission_id": "55f00691-615f-4615-8975-c7c00ac35434",
-            "name": "$CHAIR",
-            "on_chain": false
-          },
-          {
             "submission_id": "0b43afe6-8199-4bd1-b24d-e216d792f205",
             "name": "Preflight",
-            "on_chain": false
+            "on_chain": true
+          },
+          {
+            "submission_id": "55f00691-615f-4615-8975-c7c00ac35434",
+            "name": "$CHAIR",
+            "on_chain": true
           }
         ]
       },
