@@ -31767,5 +31767,700 @@
     "links": [
       "https://github.com/cengizhantekin/all-in-onear"
     ]
+  },
+  "0b87806c-d2c4-438b-bb77-1374e2e9df08": {
+    "author": "nymiralabs",
+    "status": "ok",
+    "crawled_at": "2026-11-13T21:24:20.798Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [
+      {
+        "id": "2121331604400525313",
+        "author": "nymiralabs",
+        "text": "Code: https://t.co/JnXdS5yKt0\nSite: https://t.co/suSxb7LCUI\n\nA NEAR vault contract holds the USDC and checks the Groth16 proof on-chain. The circuits come from ethereum/zkapi and have had no independent review. Testnet anonymity set is small.\n\nWhere would you look for a leak?",
+        "links": [
+          "https://github.com/nymiralabs/nymira",
+          "https://nymira.pages.dev",
+          "https://nymira.pages.dev/"
+        ]
+      }
+    ],
+    "links": []
+  },
+  "0f84928c-2b4c-4a8a-beac-b80b731cc8e9": {
+    "author": "0xpalut",
+    "status": "ok",
+    "crawled_at": "2026-11-13T21:24:26.632Z",
+    "listed": 5,
+    "read": 5,
+    "posts": [
+      {
+        "id": "2121341031786696927",
+        "author": "0xpalut",
+        "text": "The price is read only when a term starts or renews, so a dip mid-term can't sell your NEAR. It stays staked with your own validator and keeps earning.\n\n7 to 30-day terms. Short at renewal? 72 h notice, then 48 h grace, before any auction.",
+        "links": []
+      },
+      {
+        "id": "2121341033841918235",
+        "author": "0xpalut",
+        "text": "Lenders deposit USDC from Base, Ethereum, Arbitrum, Polygon or Solana through @near_intents.\n\nTwo layers: Fixed is paid first. First-loss earns more and can lose everything. APY goes above 10% around 80% pool utilization",
+        "links": []
+      },
+      {
+        "id": "2121341035934892411",
+        "author": "0xpalut",
+        "text": "Live on NEAR mainnet, capped while unaudited (the pool is upgradable by the deployer until audit). Free on testnet.\n\nTry it: https://t.co/kb3pFpvVQH",
+        "links": [
+          "https://ankora.utpal.dev",
+          "https://ankora.utpal.dev/"
+        ]
+      },
+      {
+        "id": "2121341038245879877",
+        "author": "0xpalut",
+        "text": "The thesis reruns NEAR's 2020–26 history in one script, and the live claims check in one command.\n\nThesis:  https://t.co/uqfrz0iQQE \nCode: https://t.co/xlvGSBhgfW",
+        "links": [
+          "https://github.com/geekybot/ankora/blob/main/research/THESIS.md",
+          "https://github.com/geekybot/ankora"
+        ]
+      }
+    ],
+    "links": []
+  },
+  "26d7d5ac-38ab-4b7f-a3e9-e899f6513fca": {
+    "author": "TheBlockChainer",
+    "status": "ok",
+    "crawled_at": "2026-11-13T21:24:29.048Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [
+      {
+        "id": "2121330369513570734",
+        "author": "TheBlockChainer",
+        "text": "In the video, the agent's one tool is pay, over MCP. A 5 TST invoice is paid, 500 TST to an account not on the list is refused, and 60 TST waits until I approve that exact payment.\n\nTestnet only. If your agents pay for APIs, which limit would you want first? @NearBuilders",
+        "links": []
+      }
+    ],
+    "links": [
+      "https://github.com/vendrell46/near-spend-guard"
+    ]
+  },
+  "b6c59cea-5f82-4477-8f60-8ab9e19c53e6": {
+    "author": "ogleksb",
+    "status": "ok",
+    "crawled_at": "2026-11-13T21:24:37.024Z",
+    "listed": 9,
+    "read": 9,
+    "posts": [
+      {
+        "id": "2121341331477799236",
+        "author": "ogleksb",
+        "text": "2/9 – The problem\n\nBusinesses process hundreds of invoices and payments.\n\nUsing AI can make this faster, but giving an AI agent direct access to company funds is risky.\n\nOne malicious invoice or prompt injection could lead to an unauthorized payment.",
+        "links": []
+      },
+      {
+        "id": "2121341335106138179",
+        "author": "ogleksb",
+        "text": "3/9 – The idea\n\nVaultGuard follows one simple principle:\n\nLet AI do the thinking, but never give it control of the money.\n\nAI analyses invoices and identifies risks. NEAR smart contracts independently enforce the rules before a payment can proceed.3/9 – The idea",
+        "links": []
+      },
+      {
+        "id": "2121341339195580716",
+        "author": "ogleksb",
+        "text": "4/9  How it works\n→ A business submits an invoice.\n→ AI analyses it for suspicious information.\n→ Vendor and recipient details are checked.\n→ Spending limits and company policies are evaluated.\n→ The NEAR smart contract independently checks whether the payment is authorized.",
+        "links": []
+      },
+      {
+        "id": "2121341343402488308",
+        "author": "ogleksb",
+        "text": "5/9  What happens during an attack?\nImagine someone hides instructions in an invoice telling the AI to send $10,000 to an attacker's wallet.\nEven if the AI recommends approval, the smart contract checks the actual payment details.\nIf the rules are broken, the payment is rejected.",
+        "links": []
+      },
+      {
+        "id": "2121341347290575353",
+        "author": "ogleksb",
+        "text": "6/9 – What makes VaultGuard different?\n\n→ AI-powered invoice analysis.\n\n→ Restricted NEAR Function Call Keys.\n\n→ Onchain spending limits and vendor controls.\n\n→ Cryptographic attestations.\n\n→ Cross-chain settlement through NEAR Intents 1Click.\n\n→ Auditable payment activity.",
+        "links": []
+      },
+      {
+        "id": "2121341350733914150",
+        "author": "ogleksb",
+        "text": "7/9 – Cross-chain payments\n\nOnce a payment passes the required checks, VaultGuard can use NEAR Intents 1Click to facilitate payments across supported blockchains.\n\nBusinesses can pay vendors in supported tokens without manually managing every blockchain transaction.",
+        "links": []
+      },
+      {
+        "id": "2121341353988665393",
+        "author": "ogleksb",
+        "text": "8/9 – Security testing\n\nWe built a Security Center with 42 adversarial security checks covering:\n\nTreasury custody attacks.\nAttestation and TEE spoofing.\nCross-chain settlement attacks.\n\nOur reported results: 42/42 passing security gates.",
+        "links": []
+      },
+      {
+        "id": "2121341357574828305",
+        "author": "ogleksb",
+        "text": "9/9 – The bigger picture\nThe goal isn't to give AI more control over money.\nIt's to make AI-powered financial automation safer.\nAI recommends. NEAR smart contracts authorize. The payment executor executes.\nThis is VaultGuard, built for the @NEARProtocol  Hackathon.\n#NEARHackathon",
+        "links": []
+      }
+    ],
+    "links": []
+  },
+  "bab131e4-83b8-4545-878a-3f0793dba2d9": {
+    "author": "MdMahadiul77047",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-13T21:24:38.758Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://github.com/mahadiul-hasan/thesis-ci"
+    ]
+  },
+  "be9aa47a-755f-4d09-b6a1-597f3e335eb7": {
+    "author": "otxdave_",
+    "status": "no-author-replies",
+    "crawled_at": "2026-11-13T21:24:42.483Z",
+    "listed": 3,
+    "read": 3,
+    "posts": [],
+    "links": []
+  },
+  "c7236033-24cb-4a0b-91ea-50c302f34f74": {
+    "author": "shino_webX",
+    "status": "ok",
+    "crawled_at": "2026-11-13T21:24:47.242Z",
+    "listed": 4,
+    "read": 4,
+    "posts": [
+      {
+        "id": "2121342479379091461",
+        "author": "shino_webX",
+        "text": "@NEARProtocol THE PROBLEM \n\nA sender may hold USDC on Ethereum while the recipient only has a wallet on Base or NEAR. Moving funds between them usually means bridges, wrapped tokens, and extra wallets, which is confusing, risky, and expensive.",
+        "links": []
+      },
+      {
+        "id": "2121342482554175801",
+        "author": "shino_webX",
+        "text": "@NEARProtocol THE FIX\n\nUsing NEAR Intents' 1-Click Swap API, the sender makes one deposit, and solvers settle the swap and deliver the funds to the recipient on their chain within about a minute. If it fails, the funds are automatically refunded to the sender's refund address.",
+        "links": []
+      },
+      {
+        "id": "2121343592996225466",
+        "author": "shino_webX",
+        "text": "@NEARProtocol @NEARLegion @NearBuilders",
+        "links": []
+      }
+    ],
+    "links": [
+      "https://github.com/mrcruz002/near-remit"
+    ]
+  },
+  "cd078caf-dafe-459e-b66f-049aac65c05a": {
+    "author": "antismart_",
+    "status": "no-author-replies",
+    "crawled_at": "2026-11-13T21:24:50.119Z",
+    "listed": 2,
+    "read": 2,
+    "posts": [],
+    "links": []
+  },
+  "deff8973-b727-4167-89c9-15c568fabaf1": {
+    "author": "KenzieRefa",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-13T21:24:51.576Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": []
+  },
+  "bb9e8c89-95eb-44a5-b452-f078acc5237e": {
+    "author": "ganiyuafeez1",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-13T21:24:53.237Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://docspecialcare.vercel.app",
+      "https://docspecialcare.vercel.app/"
+    ]
+  },
+  "3b81eab8-3343-401e-9c8c-648cc4fd161f": {
+    "author": "kutluhaneth",
+    "status": "no-author-replies",
+    "crawled_at": "2026-11-13T21:24:56.417Z",
+    "listed": 2,
+    "read": 2,
+    "posts": [],
+    "links": []
+  },
+  "e79ac215-7d41-419f-8c1e-81a11c33578d": {
+    "author": "Abdulahadtwt",
+    "status": "no-author-replies",
+    "crawled_at": "2026-11-13T21:24:59.028Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [],
+    "links": [
+      "https://nearappweb.vercel.app",
+      "https://nearappweb.vercel.app/"
+    ]
+  },
+  "4bdc775c-fcfa-442a-a0af-acd9751eefbd": {
+    "author": "3DogsNexus",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-13T21:25:00.895Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://yxq5uhabxag4cytbo6blvklida0dkobj.lambda-url.us-east-2.on.aws/",
+      "https://github.com/DKJager/near-cross-examined"
+    ]
+  },
+  "a354e49a-a4f2-4a81-85c0-bdb03ff84eb1": {
+    "author": "OlabanjiOlalek2",
+    "status": "no-author-replies",
+    "crawled_at": "2026-11-13T21:25:04.087Z",
+    "listed": 2,
+    "read": 2,
+    "posts": [],
+    "links": []
+  },
+  "97bd8a03-56e7-46e5-9df4-92c2e400fa76": {
+    "author": "zeroxcholy",
+    "status": "no-author-replies",
+    "crawled_at": "2026-11-13T21:25:06.380Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [],
+    "links": []
+  },
+  "34e3c7b4-57ca-42c3-a2e6-4253cf23a955": {
+    "author": "0xMemeshe",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-13T21:25:08.054Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://cabal-near.fly.dev",
+      "https://cabal-near.fly.dev/"
+    ]
+  },
+  "7de962f6-5940-4e2a-a85e-961c03320349": {
+    "author": "pelz0x",
+    "status": "ok",
+    "crawled_at": "2026-11-13T21:25:12.263Z",
+    "listed": 3,
+    "read": 3,
+    "posts": [
+      {
+        "id": "2121333409129832810",
+        "author": "pelz0x",
+        "text": "The buyer confirms what arrived. The supplier confirms the invoice.\n\nNEAR holds the funds and enforces the agreed recipient and payment limits. Pending payments reserve their allowance to prevent double spending.\n\nThe screenshots show the order, payment receipt and refunds. https://t.co/DzOzxtmuWg",
+        "links": [],
+        "media": [
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HXB9d38XYAEszwd.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 541,
+                  "w": 966,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 785,
+                  "w": 785,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 785,
+                  "w": 689,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 785,
+                  "w": 393,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 785,
+                  "w": 966,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 785,
+              "width": 966
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          },
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HXB9d39WYAA1ZNX.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 482,
+                  "w": 860,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 860,
+                  "w": 860,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 980,
+                  "w": 860,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1064,
+                  "w": 532,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1064,
+                  "w": 860,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 1064,
+              "width": 860
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          },
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HXB9d3_XUAASVKV.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 364,
+                  "w": 650,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 505,
+                  "w": 505,
+                  "x": 88,
+                  "y": 0
+                },
+                {
+                  "h": 505,
+                  "w": 443,
+                  "x": 119,
+                  "y": 0
+                },
+                {
+                  "h": 505,
+                  "w": 253,
+                  "x": 214,
+                  "y": 0
+                },
+                {
+                  "h": 505,
+                  "w": 650,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 505,
+              "width": 650
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          },
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HXB9d4FXMAA7phr.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 178,
+                  "w": 318,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 318,
+                  "w": 318,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 363,
+                  "w": 318,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 589,
+                  "w": 295,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 589,
+                  "w": 318,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 589,
+              "width": 318
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      },
+      {
+        "id": "2121333414078955908",
+        "author": "pelz0x",
+        "text": "Accord is live on NEAR mainnet.\n\nTry it: https://t.co/2zX3WMmwsT\nCode: https://t.co/aDuWoA60bR\n\nWould you fund an order upfront if payments were limited to confirmed deliveries? What would you need before using it with a supplier?",
+        "links": [
+          "https://accord-payments.vercel.app/",
+          "https://github.com/Pelz01/accord"
+        ]
+      }
+    ],
+    "links": []
+  },
+  "3e03fda5-5de2-438c-8f50-1906f829b890": {
+    "author": "KerneProtocol",
+    "status": "ok",
+    "crawled_at": "2026-11-13T21:25:14.759Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [
+      {
+        "id": "2121352964766085379",
+        "author": "KerneProtocol",
+        "text": "@NEARProtocol How it holds: the key is a NEAR function-call access key (one method, one contract). The contract checks a per-key policy (receivers, per payment, per hour, lifetime). Three denied payments delete the key on chain. Testnet, not audited. What limit would you add?",
+        "links": []
+      }
+    ],
+    "links": [
+      "https://github.com/enerzy17/leash"
+    ]
+  },
+  "2ca46714-9f2c-4d94-b41a-e3017a01aa26": {
+    "author": "pelz0x",
+    "status": "ok",
+    "crawled_at": "2026-11-13T21:25:18.296Z",
+    "listed": 2,
+    "read": 2,
+    "posts": [
+      {
+        "id": "2121350960937419262",
+        "author": "pelz0x",
+        "text": "Buy oxygen, medicine and fuel. Load your rover, travel and sell where supplies are needed.\n\nCompete with a friend and Tess, an NPC merchant with her own wallet. Shortages raise prices, but a rival can deliver first. Hold stock too long and the colony could collapse. https://t.co/Cdu6SpnuZa",
+        "links": [],
+        "media": [
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HXCNcRNWAAAjun7.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 765,
+                  "w": 1366,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1214,
+                  "w": 1214,
+                  "x": 152,
+                  "y": 0
+                },
+                {
+                  "h": 1214,
+                  "w": 1065,
+                  "x": 301,
+                  "y": 0
+                },
+                {
+                  "h": 1214,
+                  "w": 607,
+                  "x": 755,
+                  "y": 0
+                },
+                {
+                  "h": 1214,
+                  "w": 1366,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 1214,
+              "width": 1366
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          },
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HXCNcRiW4AAWpp3.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 765,
+                  "w": 1366,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1197,
+                  "w": 1197,
+                  "x": 169,
+                  "y": 0
+                },
+                {
+                  "h": 1197,
+                  "w": 1050,
+                  "x": 316,
+                  "y": 0
+                },
+                {
+                  "h": 1197,
+                  "w": 599,
+                  "x": 759,
+                  "y": 0
+                },
+                {
+                  "h": 1197,
+                  "w": 1366,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 1197,
+              "width": 1366
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          },
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HXCNcRYWIAAbeMf.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 765,
+                  "w": 1366,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1128,
+                  "w": 1128,
+                  "x": 238,
+                  "y": 0
+                },
+                {
+                  "h": 1128,
+                  "w": 989,
+                  "x": 377,
+                  "y": 0
+                },
+                {
+                  "h": 1128,
+                  "w": 564,
+                  "x": 776,
+                  "y": 0
+                },
+                {
+                  "h": 1128,
+                  "w": 1366,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 1128,
+              "width": 1366
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          },
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HXCNcReWYAAG1Aa.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 765,
+                  "w": 1366,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1128,
+                  "w": 1128,
+                  "x": 238,
+                  "y": 0
+                },
+                {
+                  "h": 1128,
+                  "w": 989,
+                  "x": 377,
+                  "y": 0
+                },
+                {
+                  "h": 1128,
+                  "w": 564,
+                  "x": 776,
+                  "y": 0
+                },
+                {
+                  "h": 1128,
+                  "w": 1366,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 1128,
+              "width": 1366
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      },
+      {
+        "id": "2121350970697474289",
+        "author": "pelz0x",
+        "text": "Online matches settle on NEAR testnet. \n\nNEAR tracks cargo ownership and market trades; Tess (NPC) follows the same trading rules as players.\n\nPlay: https://t.co/pNxAuV1p2B\nCode: https://t.co/HGlJXjm8sg",
+        "links": [
+          "https://last-light-site.vercel.app/",
+          "https://github.com/Pelz01/lastlightgame"
+        ]
+      }
+    ],
+    "links": []
   }
 }

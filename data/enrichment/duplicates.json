@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-11-13T20:38:38.819Z",
+  "generated_at": "2026-11-13T21:35:41.158Z",
   "account": "nearhunt.near",
   "note": "Flags only. Nothing is merged, hidden or written. `clusters`/`groups` share an identifying URL (possible duplicates). `weak_signals` share only a name or an X account and are usually different projects.",
   "summary": {
-    "submissions": 1111,
-    "on_chain": 1054,
-    "pending": 57,
+    "submissions": 1127,
+    "on_chain": 1113,
+    "pending": 14,
     "shared_urls": 2,
     "by_kind": {
       "x-post": 1,
@@ -13,8 +13,8 @@
     },
     "clusters": 2,
     "submissions_flagged": 4,
-    "same_name_groups": 33,
-    "same_x_account_groups": 107
+    "same_name_groups": 34,
+    "same_x_account_groups": 110
   },
   "clusters": [
     {
@@ -180,6 +180,11 @@
         "key": "leash",
         "submissions": [
           {
+            "submission_id": "209aa527-c6bb-4ec4-82c4-02853b70c700",
+            "name": "Leash",
+            "on_chain": true
+          },
+          {
             "submission_id": "48cdf1b1-5efc-4af3-98a9-619a87d663c2",
             "name": "Leash",
             "on_chain": true
@@ -220,7 +225,7 @@
             "on_chain": true
           },
           {
-            "submission_id": "209aa527-c6bb-4ec4-82c4-02853b70c700",
+            "submission_id": "3e03fda5-5de2-438c-8f50-1906f829b890",
             "name": "Leash",
             "on_chain": false
           }
@@ -232,6 +237,11 @@
           {
             "submission_id": "4126642c-e4c0-4876-80c0-3f9729f1d81d",
             "name": "Allowance",
+            "on_chain": true
+          },
+          {
+            "submission_id": "48d22ff9-0917-471b-954e-519a002bf6a9",
+            "name": "ALLOWANCE",
             "on_chain": true
           },
           {
@@ -248,11 +258,6 @@
             "submission_id": "abe27d2f-1615-4025-9e0c-e78e28519207",
             "name": "Allowance",
             "on_chain": true
-          },
-          {
-            "submission_id": "48d22ff9-0917-471b-954e-519a002bf6a9",
-            "name": "ALLOWANCE",
-            "on_chain": false
           }
         ]
       },
@@ -417,6 +422,21 @@
         ]
       },
       {
+        "key": "accord",
+        "submissions": [
+          {
+            "submission_id": "f63cc81d-53d4-43ab-934b-8d9caa66e690",
+            "name": "Accord",
+            "on_chain": true
+          },
+          {
+            "submission_id": "7de962f6-5940-4e2a-a85e-961c03320349",
+            "name": "Accord",
+            "on_chain": false
+          }
+        ]
+      },
+      {
         "key": "aegis",
         "submissions": [
           {
@@ -465,14 +485,14 @@
         "key": "agentescrow",
         "submissions": [
           {
-            "submission_id": "d56cc76d-871b-445d-ba3c-db891f8ff43e",
+            "submission_id": "bfa6441d-49ff-4f0d-a349-d1aa3709d6dc",
             "name": "AgentEscrow",
             "on_chain": true
           },
           {
-            "submission_id": "bfa6441d-49ff-4f0d-a349-d1aa3709d6dc",
+            "submission_id": "d56cc76d-871b-445d-ba3c-db891f8ff43e",
             "name": "AgentEscrow",
-            "on_chain": false
+            "on_chain": true
           }
         ]
       },
@@ -600,14 +620,14 @@
         "key": "nearpay",
         "submissions": [
           {
-            "submission_id": "972da2bb-8d13-43d8-9ca5-9787cb409d86",
+            "submission_id": "57083ac2-31d6-4bbf-98b5-6592bed20eee",
             "name": "NearPay",
             "on_chain": true
           },
           {
-            "submission_id": "57083ac2-31d6-4bbf-98b5-6592bed20eee",
+            "submission_id": "972da2bb-8d13-43d8-9ca5-9787cb409d86",
             "name": "NearPay",
-            "on_chain": false
+            "on_chain": true
           }
         ]
       },
@@ -615,14 +635,14 @@
         "key": "pactum",
         "submissions": [
           {
-            "submission_id": "4abd8001-d743-4037-9d76-e75d6febf7a3",
+            "submission_id": "2c20bb89-6edd-4552-99df-1810e5e57edc",
             "name": "Pactum",
             "on_chain": true
           },
           {
-            "submission_id": "2c20bb89-6edd-4552-99df-1810e5e57edc",
+            "submission_id": "4abd8001-d743-4037-9d76-e75d6febf7a3",
             "name": "Pactum",
-            "on_chain": false
+            "on_chain": true
           }
         ]
       },
@@ -835,6 +855,21 @@
             "submission_id": "bf5a3e43-97c8-419e-97e3-01ba355c8d66",
             "name": "Bonded",
             "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "0xmemeshe",
+        "submissions": [
+          {
+            "submission_id": "5cc04588-f056-4c3e-96a1-fb956a10af44",
+            "name": "Daykeeper",
+            "on_chain": true
+          },
+          {
+            "submission_id": "34e3c7b4-57ca-42c3-a2e6-4253cf23a955",
+            "name": "CABAL",
+            "on_chain": false
           }
         ]
       },
@@ -1134,7 +1169,7 @@
           {
             "submission_id": "dbc0b45e-5070-418f-be8a-a42002cf9f62",
             "name": "Arf",
-            "on_chain": false
+            "on_chain": true
           }
         ]
       },
@@ -1159,12 +1194,12 @@
           {
             "submission_id": "80061107-323e-4c92-8e9f-20aac01ceb3d",
             "name": "Day One: AI Purchasing for Acquired Manufacturing Plants",
-            "on_chain": false
+            "on_chain": true
           },
           {
             "submission_id": "cd709fa9-eea2-4b7b-add5-c3c2b2261d3d",
             "name": "Everstreet: a launchpad and marketplace for the agentic economy, on NEAR",
-            "on_chain": false
+            "on_chain": true
           }
         ]
       },
@@ -1480,6 +1515,21 @@
             "submission_id": "5a5a5497-99b6-46af-a726-3629499d8a93",
             "name": "Sentient",
             "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "kerneprotocol",
+        "submissions": [
+          {
+            "submission_id": "6e35a0a0-cc80-48c6-a85b-a2b2ab4d6566",
+            "name": "Epoch Ledger",
+            "on_chain": true
+          },
+          {
+            "submission_id": "3e03fda5-5de2-438c-8f50-1906f829b890",
+            "name": "Leash",
+            "on_chain": false
           }
         ]
       },
@@ -1874,6 +1924,21 @@
         ]
       },
       {
+        "key": "pelz0x",
+        "submissions": [
+          {
+            "submission_id": "7de962f6-5940-4e2a-a85e-961c03320349",
+            "name": "Accord",
+            "on_chain": false
+          },
+          {
+            "submission_id": "2ca46714-9f2c-4d94-b41a-e3017a01aa26",
+            "name": "Last Light",
+            "on_chain": false
+          }
+        ]
+      },
+      {
         "key": "praise_prodigyy",
         "submissions": [
           {
@@ -2259,7 +2324,7 @@
           {
             "submission_id": "dad95fa3-1996-4005-b73b-6aef3b2e241a",
             "name": "ONHIRE",
-            "on_chain": false
+            "on_chain": true
           }
         ]
       },
@@ -2357,14 +2422,14 @@
         "key": "zek_eth",
         "submissions": [
           {
-            "submission_id": "e5f93118-da83-4ff4-bdbc-c83116f011b1",
-            "name": "Scion",
+            "submission_id": "6b1cd1d9-d0bc-4a8d-8c37-41ad1f4df161",
+            "name": "TOTEM",
             "on_chain": true
           },
           {
-            "submission_id": "6b1cd1d9-d0bc-4a8d-8c37-41ad1f4df161",
-            "name": "TOTEM",
-            "on_chain": false
+            "submission_id": "e5f93118-da83-4ff4-bdbc-c83116f011b1",
+            "name": "Scion",
+            "on_chain": true
           }
         ]
       }
