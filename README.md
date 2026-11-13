@@ -27,6 +27,12 @@ project, one upvote per NEAR account, and threaded comments.
   no pop-ups.
 - **Fully open.** Read everything straight from mainnet without our server. If nearhunt.xyz
   vanished tomorrow, the community's votes would still be there.
+- **Builders claim their projects.** "Claim this project" signs you in with GitHub, checks that
+  you own or can push to the listing's repository, and then lets you link your NEAR account with
+  one signed row. No scopes requested, and the token is revoked straight after the check.
+- **Plugged into near.social.** Names and avatars come from the near.social profile people already
+  have, every account gets a page at `/u/{account}`, and after an upvote you can share it to
+  near.social with one click. Posts tagged `#nearhunt` show up live next to the project list.
 - **Agent-ready.** A read-only JSON API and a [`SKILL.md`](public/SKILL.md) let an AI agent
   browse, shortlist and verify every record against the chain by itself.
 
@@ -39,6 +45,8 @@ project, one upvote per NEAR account, and threaded comments.
 | Records with the builder's own description / a repository / media | 766 / 444 / 733 | count the fields in `readProjects()` from [`lib/kv.mjs`](lib/kv.mjs) |
 | Upvotes on chain, and the accounts that cast them | 152 rows (131 active, 21 removed), 109 accounts | `vote/` rows, see [Read the chain directly](#3-read-the-chain-directly-no-near-hunt-server-involved) |
 | Comments on chain | 30 rows (28 active, 2 deleted), 20 accounts | `comment/` rows, same call |
+| NEAR accounts linked to a project through a claim | 13 `maker/` rows, 12 accounts | `maker/` rows, same call |
+| `#nearhunt` posts on near.social, shared from the upvote prompt | 20 posts, 17 accounts | `curl -s "https://api2.near.social/v1/hashtags/nearhunt?limit=20"` |
 | Unit tests | 388 pass | `npm test` |
 
 These numbers move: the hackathon feed is still open and people are still voting.
@@ -72,6 +80,9 @@ Known gaps, so nobody finds them by surprise:
 | Click **View JSON** on that card | The raw record as read from mainnet |
 | Click **Connect NEAR account**, pick a wallet, then click an upvote arrow | The count goes up by one, and your account appears under **Upvoted by**. The vote is a `vote/{project_id}` row you signed. Needs a mainnet NEAR account |
 | Write a comment on a project page while connected | It appears in the discussion, as a `comment/{project_id}/{ms}` row you signed |
+| After an upvote, click the share button under **Tell your near.social followers?** | The post text is copied and near.social opens; once posted with `#nearhunt` it appears under **Live on near.social** beside the project list |
+| Click any account name, or open https://nearhunt.xyz/u/alejandro.near | That account's page: near.social name and avatar, the projects it upvoted, and its comments |
+| On a project that lists a GitHub repository, click **Claim this project** | GitHub sign-in; if you own or can push to that repository, the page shows your GitHub account as controlling it, and offers to link your NEAR account. Needs a GitHub account with access to the repository |
 | Open https://nearhunt.xyz/open-data | The dataset card, the endpoints, and a sample record |
 
 ### 2. Through the API (no key, no wallet)
@@ -104,7 +115,8 @@ curl -s -X POST "https://kv.main.fastnear.com/v0/latest/nearhunt.near" \
   -H 'content-type: application/json' -d '{"key_prefix":"vote/","limit":200}'
 ```
 
-Change `vote/` to `comment/` for comments. More in [`schema/README.md`](schema/README.md).
+Change `vote/` to `comment/` for comments, or to `maker/` for the NEAR accounts linked to a claim
+(a `maker/` row alone proves nothing: the site shows it only when it matches a GitHub-checked claim). More in [`schema/README.md`](schema/README.md).
 
 ### 4. Run it locally
 
@@ -147,6 +159,16 @@ community to cheer it on.
 - **Voting and comments** — connect a NEAR account, one active upvote per account per project.
   Comments are `comment/{id}/{ms}` rows signed with the same login key; only the author can delete
   one. Anonymous browsing always works. Votes are community signals, never official judging.
+- **Claim a project** — a builder signs in with GitHub (OAuth with PKCE, no scopes); the server
+  checks that the account owns or can push to the listing's repository, then revokes the token.
+  The page then says the account "controls this project's repository". Linking a NEAR account is
+  an optional second step: a `maker/{id}` row signed by that account, shown only while it matches
+  the checked claim.
+- **Profiles** — `/u/{account}` shows the account's near.social name, avatar and bio with the
+  projects it upvoted and the comments it wrote. Editing the profile happens on near.social.
+- **near.social sharing and live feed** — after an upvote the site offers a ready-made
+  `#nearhunt` post; the sidebar shows the latest `#nearhunt` posts from near.social. NEAR Hunt
+  itself posts nothing.
 - **Open data** — a versioned `nearhunt/project/1` JSON record per project, fetchable
   independently of the frontend.
 - **Agent surface** — a documented read-only API plus a `SKILL.md` so an operator can tell an
