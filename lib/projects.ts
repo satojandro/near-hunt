@@ -2,7 +2,7 @@ import 'server-only';
 import { DEFAULT_ACCOUNT } from './kv.mjs';
 import { buildProjectsListing, type ListingItem } from './listing.mjs';
 import { copyIsStale } from './freshness.mjs';
-import { readProjectsCopy, readProjectsMarker, writeProjectsSnapshot } from './projects-store';
+import { readProjectsCopy, readProjectsMarker, seedProjectsSnapshot } from './projects-store';
 import {
   PROJECTS_MEMORY_TTL_MS,
   PROJECTS_STALE_AFTER_MS,
@@ -159,13 +159,14 @@ async function readLive(): Promise<ProjectsSnapshot> {
         account: DEFAULT_ACCOUNT,
         fetched_at: new Date().toISOString(),
       };
-      // Never throws; a walk that cannot store is still a walk worth serving.
-      const write = await writeProjectsSnapshot({
+      // Seeds an empty store only (SET NX): the cron walker stays the writer, and cold instances
+      // do not race it or each other. Never throws; a walk that cannot store is still worth serving.
+      const seed = await seedProjectsSnapshot({
         items: snapshot.items,
         account: snapshot.account,
         fetchedAt: snapshot.fetched_at,
       });
-      snapshot.digest = write.digest;
+      snapshot.digest = seed.digest;
       state.snapshot = snapshot;
       state.loadedAt = Date.now();
       return snapshot;

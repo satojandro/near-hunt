@@ -82,12 +82,22 @@ export async function touchSnapshotValue(key: string, label = key): Promise<bool
  *
  * @returns true when the copy was stored
  */
-export async function saveSnapshotValue(key: string, value: unknown, label = key): Promise<boolean> {
+export async function saveSnapshotValue(
+  key: string,
+  value: unknown,
+  label = key,
+  { onlyIfAbsent = false }: { onlyIfAbsent?: boolean } = {},
+): Promise<boolean> {
   if (!snapshotStoreConfigured) return false;
   try {
     const encoded = encodeSnapshot(value);
-    await redis(['SET', key, encoded, 'EX', SNAPSHOT_TTL_SECONDS], 5000);
-    return true;
+    // `onlyIfAbsent` (SET NX): seed an empty key without overwriting what another writer stored.
+    // Redis answers "OK" when it wrote and null when the key already existed.
+    const command = onlyIfAbsent
+      ? ['SET', key, encoded, 'NX', 'EX', SNAPSHOT_TTL_SECONDS]
+      : ['SET', key, encoded, 'EX', SNAPSHOT_TTL_SECONDS];
+    const body = (await redis(command, 5000)) as { result?: unknown } | null;
+    return onlyIfAbsent ? body?.result === 'OK' : true;
   } catch (err) {
     if (!isDynamicUsageError(err)) {
       console.error(`[snapshot] write failed for ${label}:`, err instanceof Error ? err.message : err);

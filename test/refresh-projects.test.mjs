@@ -149,6 +149,7 @@ test('resolveProjectsSnapshot dates the copy by the latest good walk, not the la
     items: [{ submission_id: 'a' }],
     account: ACCOUNT,
     fetched_at: '2026-11-14T12:00:00.000Z',
+    digest: 'sha256:x',
   };
   // The items have not changed for six hours, but the walker saw the chain a minute ago: the
   // listing *is* current as of that walk.
@@ -257,4 +258,17 @@ test('liveWalkCoolingDown pauses request-path walks for a few seconds after a fa
   assert.equal(liveWalkCoolingDown({ lastFailedAt: 0, now }), false, 'never failed');
   assert.equal(liveWalkCoolingDown({ lastFailedAt: now - 1_000, now }), true);
   assert.equal(liveWalkCoolingDown({ lastFailedAt: now - PROJECTS_RETRY_BACKOFF_MS, now }), false);
+});
+
+test('resolveProjectsSnapshot: a marker only dates the rows it describes', () => {
+  const copy = { items: [{ submission_id: 'a' }], account: ACCOUNT, fetched_at: '2026-11-14T12:00:00.000Z', digest: 'sha256:old' };
+  // The marker comes from another walk that saw different rows: its time says nothing about these.
+  const other = { fetched_at: '2026-11-14T18:00:00.000Z', digest: 'sha256:new', rows: 2 };
+  assert.equal(resolveProjectsSnapshot(copy, other).fetched_at, copy.fetched_at);
+  // A copy with no digest (written before the marker existed) cannot be vouched for either.
+  const { digest, ...legacy } = copy;
+  assert.equal(
+    resolveProjectsSnapshot(legacy, { fetched_at: '2026-11-14T18:00:00.000Z', digest: 'sha256:old', rows: 1 }).fetched_at,
+    copy.fetched_at,
+  );
 });

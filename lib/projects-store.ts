@@ -90,3 +90,42 @@ export async function writeProjectsSnapshot({
   );
   return { changed, stored, marked, digest };
 }
+
+/**
+ * Leave a copy behind after a request-path walk, without competing with the walker.
+ *
+ * The cron route is the listing's writer (`writeProjectsSnapshot`). A page that had to walk because
+ * no copy existed only *seeds* an empty store: both keys are written with SET NX, so a value the
+ * walker (or another cold instance) already stored is never overwritten, and concurrent cold
+ * instances do not each push a 685 KB value. The marker is seeded only when this call seeded the
+ * items, so it never describes rows another writer stored (and `resolveProjectsSnapshot` checks the
+ * digest regardless).
+ *
+ * Never throws. @returns the digest of `items` (for the copy in memory) and whether it was stored.
+ */
+export async function seedProjectsSnapshot({
+  items,
+  account,
+  fetchedAt,
+}: {
+  items: ListingItem[];
+  account: string;
+  fetchedAt: string;
+}): Promise<{ seeded: boolean; digest: string }> {
+  const digest = listingDigest(items);
+  const seeded = await saveSnapshotValue(
+    PROJECTS_SNAPSHOT_KEY,
+    { items, account, fetched_at: fetchedAt, digest },
+    'projects',
+    { onlyIfAbsent: true },
+  );
+  if (seeded) {
+    await saveSnapshotValue(
+      PROJECTS_MARKER_KEY,
+      { fetched_at: fetchedAt, digest, rows: items.length },
+      'projects-marker',
+      { onlyIfAbsent: true },
+    );
+  }
+  return { seeded, digest };
+}
