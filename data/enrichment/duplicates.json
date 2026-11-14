@@ -1,22 +1,42 @@
 {
-  "generated_at": "2026-11-14T07:24:36.349Z",
+  "generated_at": "2026-11-14T08:51:42.748Z",
   "account": "nearhunt.near",
   "note": "Flags only. Nothing is merged, hidden or written. `clusters`/`groups` share an identifying URL (possible duplicates). `weak_signals` share only a name or an X account and are usually different projects.",
   "summary": {
-    "submissions": 1251,
-    "on_chain": 1221,
-    "pending": 30,
-    "shared_urls": 3,
+    "submissions": 1291,
+    "on_chain": 1256,
+    "pending": 35,
+    "shared_urls": 4,
     "by_kind": {
       "x-post": 1,
-      "url": 2
+      "url": 3
     },
-    "clusters": 3,
-    "submissions_flagged": 6,
-    "same_name_groups": 38,
-    "same_x_account_groups": 121
+    "clusters": 4,
+    "submissions_flagged": 8,
+    "same_name_groups": 39,
+    "same_x_account_groups": 127
   },
   "clusters": [
+    {
+      "submissions": [
+        {
+          "submission_id": "4dbfa08c-f465-4800-8432-8228340a38d8",
+          "name": "$YAP | Proof of yap, on NEAR.Social",
+          "on_chain": true
+        },
+        {
+          "submission_id": "beee17c1-d0ee-4fdc-8531-72e51daad3b4",
+          "name": "conch",
+          "on_chain": true
+        }
+      ],
+      "shared": [
+        {
+          "kind": "url",
+          "key": "near.social"
+        }
+      ]
+    },
     {
       "submissions": [
         {
@@ -116,6 +136,28 @@
         {
           "submission_id": "688343fa-16d9-4720-9b73-c2d336ad0cd6",
           "name": "VeriPact",
+          "on_chain": true,
+          "fields": [
+            "links"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "near.social",
+      "kind": "url",
+      "submissions": [
+        {
+          "submission_id": "4dbfa08c-f465-4800-8432-8228340a38d8",
+          "name": "$YAP | Proof of yap, on NEAR.Social",
+          "on_chain": true,
+          "fields": [
+            "links"
+          ]
+        },
+        {
+          "submission_id": "beee17c1-d0ee-4fdc-8531-72e51daad3b4",
+          "name": "conch",
           "on_chain": true,
           "fields": [
             "links"
@@ -469,6 +511,26 @@
         ]
       },
       {
+        "key": "veil",
+        "submissions": [
+          {
+            "submission_id": "dcfca57e-8fb8-4ea0-88d2-ea0b0fc801d8",
+            "name": "Veil",
+            "on_chain": true
+          },
+          {
+            "submission_id": "ff82502b-0e5a-4e6a-aec5-8668e01354e2",
+            "name": "Veil",
+            "on_chain": true
+          },
+          {
+            "submission_id": "d36521aa-06a3-47bc-8a13-50312a92c831",
+            "name": "Veil",
+            "on_chain": false
+          }
+        ]
+      },
+      {
         "key": "warden",
         "submissions": [
           {
@@ -619,7 +681,7 @@
           {
             "submission_id": "b98abc29-c1ef-4afc-932a-de9d63510729",
             "name": "Clavis",
-            "on_chain": false
+            "on_chain": true
           }
         ]
       },
@@ -879,6 +941,21 @@
         ]
       },
       {
+        "key": "tacit",
+        "submissions": [
+          {
+            "submission_id": "f151c5eb-bb53-4aa9-8c94-dbb5b1e81c3b",
+            "name": "Tacit",
+            "on_chain": true
+          },
+          {
+            "submission_id": "fceb9819-efb9-4a11-9ffc-41dcbbaa6137",
+            "name": "tacit",
+            "on_chain": false
+          }
+        ]
+      },
+      {
         "key": "torch",
         "submissions": [
           {
@@ -889,21 +966,6 @@
           {
             "submission_id": "8f06285a-0cfb-40a5-b426-68e74cb37d3a",
             "name": "Torch",
-            "on_chain": true
-          }
-        ]
-      },
-      {
-        "key": "veil",
-        "submissions": [
-          {
-            "submission_id": "dcfca57e-8fb8-4ea0-88d2-ea0b0fc801d8",
-            "name": "Veil",
-            "on_chain": true
-          },
-          {
-            "submission_id": "ff82502b-0e5a-4e6a-aec5-8668e01354e2",
-            "name": "Veil",
             "on_chain": true
           }
         ]
@@ -1001,6 +1063,21 @@
         ]
       },
       {
+        "key": "0xraveesh",
+        "submissions": [
+          {
+            "submission_id": "e4c1165f-351c-4728-98d2-a93b674587f1",
+            "name": "Inferents",
+            "on_chain": true
+          },
+          {
+            "submission_id": "e6b33f2a-cb7a-4916-a397-6e2af20e15f9",
+            "name": "Tollkeeper",
+            "on_chain": false
+          }
+        ]
+      },
+      {
         "key": "0xuell",
         "submissions": [
           {
@@ -1012,6 +1089,21 @@
             "submission_id": "c067795e-c663-46e8-a129-06e33a98d691",
             "name": "Rounds",
             "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "0xweeky",
+        "submissions": [
+          {
+            "submission_id": "b1bbcacf-9c6c-4d05-83dd-0f5f24e6c881",
+            "name": "Dockside",
+            "on_chain": false
+          },
+          {
+            "submission_id": "ae0dcf6f-7dc1-40aa-99e6-7cf9c4820232",
+            "name": "RouteSpec",
+            "on_chain": false
           }
         ]
       },
@@ -1391,6 +1483,21 @@
         ]
       },
       {
+        "key": "cookiez1909",
+        "submissions": [
+          {
+            "submission_id": "4abd8001-d743-4037-9d76-e75d6febf7a3",
+            "name": "Pactum",
+            "on_chain": true
+          },
+          {
+            "submission_id": "0dc7ccd1-6b5d-441d-8f56-a2dc81145c07",
+            "name": "Heavy Is The Crown",
+            "on_chain": false
+          }
+        ]
+      },
+      {
         "key": "cryppithq",
         "submissions": [
           {
@@ -1481,6 +1588,21 @@
         ]
       },
       {
+        "key": "duhvinchii",
+        "submissions": [
+          {
+            "submission_id": "c96d9523-e061-4978-81c6-5227f4279ab4",
+            "name": "Siege",
+            "on_chain": false
+          },
+          {
+            "submission_id": "3663ccd4-3929-4fe9-a4e5-52bac5df275b",
+            "name": "Darwin",
+            "on_chain": false
+          }
+        ]
+      },
+      {
         "key": "eeeman33",
         "submissions": [
           {
@@ -1491,7 +1613,7 @@
           {
             "submission_id": "4a45f8eb-e52f-45e3-b135-647ce3af7fb4",
             "name": "NEAR SafeOrder",
-            "on_chain": false
+            "on_chain": true
           }
         ]
       },
@@ -1581,6 +1703,36 @@
           {
             "submission_id": "cee5be04-450c-431d-8fa7-35ff67eee2d1",
             "name": "ArchAngel",
+            "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "fstrategy001",
+        "submissions": [
+          {
+            "submission_id": "8be0239a-d5ae-41aa-bf7b-8e8c5746b2c5",
+            "name": "NEARAIL",
+            "on_chain": true
+          },
+          {
+            "submission_id": "c5ccf130-f959-4529-9885-ba96ab65576d",
+            "name": "Veritrail",
+            "on_chain": false
+          }
+        ]
+      },
+      {
+        "key": "game_bloc",
+        "submissions": [
+          {
+            "submission_id": "03ed1f6a-7506-47bb-889e-2826f7b62d93",
+            "name": "Pump",
+            "on_chain": true
+          },
+          {
+            "submission_id": "5fcf33c6-a437-4a8c-b7f8-6f87defb740d",
+            "name": "Remora",
             "on_chain": true
           }
         ]
@@ -2399,14 +2551,14 @@
         "key": "sathyaonx",
         "submissions": [
           {
-            "submission_id": "4c58b2a8-9193-4bba-9344-4339fbb36cbb",
-            "name": "Sourcio: agent-to-agent B2B deals on NEAR",
-            "on_chain": false
-          },
-          {
             "submission_id": "33c5c110-075c-49e8-978d-b31c319c8f4f",
             "name": "Invoice factoring on NEAR",
-            "on_chain": false
+            "on_chain": true
+          },
+          {
+            "submission_id": "4c58b2a8-9193-4bba-9344-4339fbb36cbb",
+            "name": "Sourcio: agent-to-agent B2B deals on NEAR",
+            "on_chain": true
           }
         ]
       },

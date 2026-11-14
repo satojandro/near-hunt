@@ -1,49 +1,110 @@
 {
-  "source": "Batch of 14 Nov 2026 ~17:50 AEDT (issues cron, crypto-builder). Open correction issues read: #46 Clear to Pay, #45 Crownfall, #44 Death Route Link, #36 shit-1170-rex-engine, #32 Sentinel, #30 EmployAI. Signed here: #46 and #45 — repository only. #46 https://github.com/joezzy-web3/clear-to-pay corroborated by `git ls-remote --heads` (refs listed, rc 0) and its README (raw main/master, 200) whose first line is `# Clear to Pay`; the record (project/2b198e26-…) has repository_url null. #45 https://github.com/neromtoobad/crownfall corroborated the same way (ls-remote lists refs/heads/main, README 200 with `<h1 align=\"center\">Crownfall</h1>` and the project's own live site crownfall.nerom.site); record project/57131c18-… has repository_url null. Not signed: #44 asks for an X post as the demo link — demo_url is a feed-owned field and corrections entries cannot carry it; #32 repository https://github.com/NathanOyewole/sentinel still answers `403 Repository is disabled` (uncorroborated); #36 and #30 ask for description text, never signed unattended. Both repository URLs probed live 200 via lib/link-probe.mjs.",
-  "generated_at": "2026-11-14T06:50:00.000Z",
+  "source": "Batch of 14 Nov 2026 ~20:00 AEDT (issues cron, crypto-builder). Open correction issues read: #49 Surety, #48 ECONIA, #47 PORTI, #44 Death Route Link, #36 shit-1170-rex-engine, #32 Sentinel, #30 EmployAI. Signed here: #48 (repository), #49 (repository + live board link), #44 (demo-video link). #48 https://github.com/Sanni-onX/Econia verified: git ls-remote --heads lists refs/heads/main; README raw main 200 with first line \"# Econia\"; record has repository_url null. #49 resolved by name + author + demo post (issue has no UUID): record project/40a2e147-… name \"Surety\", demo post by @Ahmardchain, issue author ahmardchain; https://github.com/ahmardchain/surety lists refs/heads/main and its README's first line is \"# Surety\", naming the same live board https://surety.ahmardchain.workers.dev/ (probe 200, title \"Surety board\"). #44: demo_url is feed-owned and cannot be replaced by a corrections entry, so the post the issue cites is added as a Video link instead (probe 200, redirects to @DeathRoutexe, post carries video/1). Not signed: #47 and #36 ask for description text, never signed unattended; #32 https://github.com/NathanOyewole/sentinel still answers \"Repository is disabled\" (HTTP 403) so nothing can be corroborated; #30 asks for description text and its repository is already set on the record. #49 also carries a proposed description, which was not signed — it waits for the owner.",
+  "generated_at": "2026-11-14T08:59:30.445Z",
   "results": [
     {
-      "submission_id": "2b198e26-7589-45a4-b6d9-0c838c248657",
+      "submission_id": "876c595d-5c1e-48c3-9292-860a57e2c3d2",
       "status": "ok",
-      "issue": "https://github.com/satojandro/near-hunt/issues/46",
-      "issue_number": 46,
-      "issue_numbers": [46],
-      "repository_url": "https://github.com/joezzy-web3/clear-to-pay",
-      "repository_source": "https://github.com/satojandro/near-hunt/issues/46",
-      "repository_basis": ["builder", "readme"],
+      "issue": "https://github.com/satojandro/near-hunt/issues/48",
+      "issue_number": 48,
+      "issue_numbers": [
+        48
+      ],
+      "repository_url": "https://github.com/Sanni-onX/Econia",
+      "repository_source": "https://github.com/satojandro/near-hunt/issues/48",
+      "repository_basis": [
+        "builder",
+        "readme"
+      ],
       "repository_verified": true,
-      "repository_verified_at": "2026-11-14T06:48:00.000Z",
+      "repository_verified_at": "2026-11-14T08:59:30.445Z",
       "enrichment": {
         "method": "builder-issue",
         "sources": [
-          "https://x.com/joezzyweb3/status/2119220897345122339",
-          "https://github.com/satojandro/near-hunt/issues/46",
-          "https://github.com/joezzy-web3/clear-to-pay"
+          "https://x.com/Sanni_onX/status/2121111023327289690",
+          "https://github.com/satojandro/near-hunt/issues/48",
+          "https://github.com/Sanni-onX/Econia"
         ],
-        "retrieved_at": "2026-11-14T06:48:00.000Z",
-        "fields": ["repository_url"]
+        "retrieved_at": "2026-11-14T08:59:30.445Z",
+        "fields": [
+          "repository_url"
+        ]
       }
     },
     {
-      "submission_id": "57131c18-0efc-45db-8fc5-2a212134f46d",
+      "submission_id": "40a2e147-c51e-4a86-b179-4b3b9f0233d2",
       "status": "ok",
-      "issue": "https://github.com/satojandro/near-hunt/issues/45",
-      "issue_number": 45,
-      "issue_numbers": [45],
-      "repository_url": "https://github.com/neromtoobad/crownfall",
-      "repository_source": "https://github.com/satojandro/near-hunt/issues/45",
-      "repository_basis": ["builder", "readme"],
+      "issue": "https://github.com/satojandro/near-hunt/issues/49",
+      "issue_number": 49,
+      "issue_numbers": [
+        49
+      ],
+      "repository_url": "https://github.com/ahmardchain/surety",
+      "repository_source": "https://github.com/satojandro/near-hunt/issues/49",
+      "repository_basis": [
+        "builder",
+        "readme"
+      ],
       "repository_verified": true,
-      "repository_verified_at": "2026-11-14T06:48:00.000Z",
+      "repository_verified_at": "2026-11-14T08:59:30.445Z",
+      "links": [
+        {
+          "url": "https://surety.ahmardchain.workers.dev/",
+          "kind": "demo",
+          "label": "Live board",
+          "check": {
+            "checked_at": "2026-11-14T08:59:30.445Z",
+            "http_status": 200,
+            "verdict": "live"
+          }
+        }
+      ],
       "enrichment": {
         "method": "builder-issue",
         "sources": [
-          "https://x.com/neromtoobad/status/2119855648150339694",
-          "https://github.com/satojandro/near-hunt/issues/45",
-          "https://github.com/neromtoobad/crownfall"
+          "https://x.com/Ahmardchain/status/2121431624369705119",
+          "https://github.com/satojandro/near-hunt/issues/49",
+          "https://github.com/ahmardchain/surety",
+          "https://surety.ahmardchain.workers.dev/"
         ],
-        "retrieved_at": "2026-11-14T06:48:00.000Z",
-        "fields": ["repository_url"]
+        "retrieved_at": "2026-11-14T08:59:30.445Z",
+        "fields": [
+          "repository_url",
+          "links"
+        ]
+      }
+    },
+    {
+      "submission_id": "210a9506-1e1a-446a-8f78-15f3fc1c55f6",
+      "status": "ok",
+      "issue": "https://github.com/satojandro/near-hunt/issues/44",
+      "issue_number": 44,
+      "issue_numbers": [
+        44
+      ],
+      "links": [
+        {
+          "url": "https://x.com/DeathRoutexe/status/2121469947461480933",
+          "kind": "video",
+          "label": "Demo video",
+          "check": {
+            "checked_at": "2026-11-14T08:59:30.445Z",
+            "http_status": 200,
+            "verdict": "live"
+          }
+        }
+      ],
+      "enrichment": {
+        "method": "builder-issue",
+        "sources": [
+          "https://x.com/deathroutexe/status/2121332569098658223",
+          "https://github.com/satojandro/near-hunt/issues/44",
+          "https://x.com/DeathRoutexe/status/2121469947461480933"
+        ],
+        "retrieved_at": "2026-11-14T08:59:30.445Z",
+        "fields": [
+          "links"
+        ]
       }
     }
   ]
