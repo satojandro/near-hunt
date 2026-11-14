@@ -72,6 +72,17 @@ export declare function liveRefreshDue(opts: {
   now: number;
 }): boolean;
 
+export declare const PROJECT_LOOKUP_TIMEOUT_MS: number;
+
+/** The latest `project/{submissionId}` row(s) written by `account`, by exact key (0 or 1 rows). */
+export declare function readProjectRecord(opts: {
+  submissionId: string;
+  account?: string;
+  network?: 'mainnet' | 'testnet';
+  fetchImpl?: typeof fetch;
+  timeoutMs?: number;
+}): Promise<KvEntry[]>;
+
 export declare function walkProjects(opts?: {
   account?: string;
   network?: 'mainnet' | 'testnet';

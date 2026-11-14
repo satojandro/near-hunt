@@ -10,6 +10,7 @@ import {
   listingDigest,
   liveRefreshDue,
   liveWalkCoolingDown,
+  readProjectRecord,
   resolveProjectsSnapshot,
   walkProjects,
 } from '../lib/refresh-projects.mjs';
@@ -271,4 +272,30 @@ test('resolveProjectsSnapshot: a marker only dates the rows it describes', () =>
     resolveProjectsSnapshot(legacy, { fetched_at: '2026-11-14T18:00:00.000Z', digest: 'sha256:old', rows: 1 }).fetched_at,
     copy.fetched_at,
   );
+});
+
+test('readProjectRecord asks for one exact key and keeps only nearhunt.near\'s row for it', async () => {
+  const { calls, fetchImpl } = stub(
+    page({
+      entries: [
+        row('project/new-one'),
+        row('project/new-one', { writer: 'mallory.near' }),
+        row('project/other'),
+      ],
+    }),
+  );
+  const rows = await readProjectRecord({ submissionId: 'new-one', fetchImpl });
+  assert.equal(calls.length, 1, 'one request, not a walk');
+  assert.equal(calls[0].url, URL_MAIN);
+  assert.deepEqual(calls[0].body, { limit: 1, key: 'project/new-one' });
+  assert.equal(rows.length, 1);
+  assert.equal(rows[0].predecessor_id, ACCOUNT);
+  assert.equal(rows[0].key, 'project/new-one');
+});
+
+test('readProjectRecord reports a failed lookup instead of answering "no such project"', async () => {
+  const { fetchImpl } = stub(failing(503));
+  await assert.rejects(readProjectRecord({ submissionId: 'x', fetchImpl }), /KV API returned 503/);
+  const empty = stub(page({ entries: [] }));
+  assert.deepEqual(await readProjectRecord({ submissionId: 'x', fetchImpl: empty.fetchImpl }), []);
 });

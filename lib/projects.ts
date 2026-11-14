@@ -9,6 +9,7 @@ import {
   advanceFromMarker,
   liveRefreshDue,
   liveWalkCoolingDown,
+  readProjectRecord,
   resolveProjectsSnapshot,
   walkProjects,
   type ProjectsSnapshot,
@@ -227,13 +228,61 @@ export async function getProjects(): Promise<ProjectList> {
 }
 
 /**
- * One project, or null when it does not exist. When the copy being served is labelled and the id
- * is not in it, the project may simply be newer than the copy, so this throws
- * `ProjectsUnavailableError` instead of claiming it does not exist.
+ * One project, or null when it does not exist on chain.
+ *
+ * Served from the copy when the copy has it. When it does not, the project may simply be newer than
+ * the copy (an import a minute ago), so the indexer is asked for that one key (`lookupProject`):
+ * null only when the indexer confirms there is no live record, and `ProjectsUnavailableError`
+ * (never a 404) when it cannot be asked.
  */
 export async function getProject(submissionId: string): Promise<ListingItem | null> {
-  const { items, read_failing } = await getProjects();
-  const found = items.find((p) => p.submission_id === submissionId) ?? null;
-  if (!found && read_failing) throw new ProjectsUnavailableError();
-  return found;
+  const { items } = await getProjects();
+  const found = items.find((p) => p.submission_id === submissionId);
+  if (found) return found;
+  // Not in the copy is not the same as not on chain: the copy can trail an import by a couple of
+  // minutes, and a 404 for a record that exists is wrong. Ask the indexer for this one key.
+  const looked = await lookupProject(submissionId);
+  // The indexer could not say either way, so neither can we: "could not be loaded", never 404.
+  if (looked === undefined) throw new ProjectsUnavailableError();
+  return looked;
+}
+
+/**
+ * How long one id's lookup answer is reused. Both `generateMetadata` and the page ask for the same
+ * project, and an unknown id (a typo, a crawler) should not cost an indexer request per hit.
+ */
+const PROJECT_LOOKUP_REUSE_MS = 30_000;
+/** Ceiling on remembered lookups; past it the memory is simply cleared. */
+const PROJECT_LOOKUP_MAX_ENTRIES = 1_000;
+
+const LOOKUPS_KEY = Symbol.for('nearhunt.projects.lookups');
+const lookups: Map<string, { at: number; result: Promise<ListingItem | null | undefined> }> = ((
+  globalThis as unknown as Record<symbol, Map<string, { at: number; result: Promise<ListingItem | null | undefined> }>>
+)[LOOKUPS_KEY] ??= new Map());
+
+/**
+ * One project read straight from the indexer by key, hide list applied.
+ *
+ * @returns the item, `null` when the indexer says there is no live record (absent, tombstoned or
+ *   hidden), or `undefined` when the lookup itself failed. Failures are not remembered.
+ */
+function lookupProject(submissionId: string): Promise<ListingItem | null | undefined> {
+  const now = Date.now();
+  const held = lookups.get(submissionId);
+  if (held && now - held.at < PROJECT_LOOKUP_REUSE_MS) return held.result;
+  if (lookups.size >= PROJECT_LOOKUP_MAX_ENTRIES) lookups.clear();
+  const result = (async () => {
+    try {
+      const rows = await readProjectRecord({ submissionId, account: DEFAULT_ACCOUNT, network: 'mainnet' });
+      const item = buildProjectsListing(rows, HIDDEN_PROJECTS).find((p) => p.submission_id === submissionId);
+      return item ?? null;
+    } catch (err) {
+      if ((err as { digest?: string })?.digest === 'DYNAMIC_SERVER_USAGE') throw err;
+      lookups.delete(submissionId);
+      console.error(`[projects] lookup of ${submissionId} failed:`, err instanceof Error ? err.message : err);
+      return undefined;
+    }
+  })();
+  lookups.set(submissionId, { at: now, result });
+  return result;
 }

@@ -1,6 +1,7 @@
 import type { NextRequest } from 'next/server';
 import HIDDEN_PROJECTS from '@/data/hidden-projects.json';
 import { CACHE } from '@/lib/api.mjs';
+import { bearerMatches } from '@/lib/bearer.mjs';
 import { buildProjectsListing } from '@/lib/listing.mjs';
 import { writeProjectsSnapshot } from '@/lib/projects-store';
 import { walkProjects } from '@/lib/refresh-projects.mjs';
@@ -33,7 +34,8 @@ function authorize(request: NextRequest): { ok: true } | { ok: false; status: nu
       message: 'CRON_SECRET is not set, so the walker will not run unauthenticated.',
     };
   }
-  if (request.headers.get('authorization') === `Bearer ${secret}`) return { ok: true };
+  // Constant-time: a plain === would let response timing reveal how much of a guess was right.
+  if (bearerMatches(request.headers.get('authorization'), secret)) return { ok: true };
   return { ok: false, status: 401, message: 'Unauthorized.' };
 }
 
