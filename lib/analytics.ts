@@ -3,9 +3,10 @@
  * Analytics.tsx). Nothing here is required for the app to work: when no website id is configured
  * the Umami script is never loaded and every call is a no-op.
  *
- * Why these five and only these: chain already records votes and comments, so the numbers that
- * are missing are the denominator (visits) and the intent signals around it — did a visitor get a
- * wallet connected, and did they leave towards a repo or a demo. Keep the set small enough that
+ * Why these and only these: chain already records votes and comments, so the numbers that are
+ * missing are the denominator (visits), the intent signals around it — did a visitor get a wallet
+ * connected, did they leave towards a repo or a demo — and whether the support cards convert at all
+ * (a donation or a stake the visitor's own wallet confirmed, NH-121). Keep the set small enough that
  * the dashboard stays readable during judging.
  */
 

@@ -8,13 +8,13 @@ Live at **https://nearhunt.xyz**.
 
 [![CI](https://github.com/satojandro/near-hunt/actions/workflows/ci.yml/badge.svg)](https://github.com/satojandro/near-hunt/actions/workflows/ci.yml)
 
-More than 800 projects shipped at this hackathon, and the only way to see them was a list of names
-and links. So we built the thing we wanted ourselves, and people showed up: **109 NEAR accounts
+More than 1,100 projects shipped at this hackathon, and the only way to see them was a list of names
+and links. So we built the thing we wanted ourselves, and people showed up: **202 NEAR accounts
 have signed upvotes on chain from their own wallets**, builders are discussing each other's work in
-the comments, and builders have filed twelve corrections to their own listings
+the comments, and builders have filed 26 corrections to their own listings
 ([the correction issues](https://github.com/satojandro/near-hunt/issues?q=is%3Aissue+correction)).
 This is not a demo waiting for users. Open https://nearhunt.xyz and look at who is voting. Every
-figure is in [Status](#status-measured-13-nov-2026) with the command that reproduces it.
+figure is in [Status](#status-measured-14-nov-2026) with the command that reproduces it.
 
 NEAR Hunt turns the hackathon's list of submissions into a browsable directory: a page per
 project, one upvote per NEAR account, and threaded comments.
@@ -48,30 +48,29 @@ Captured from the live site on 14 Nov 2026 (`docs/screenshots/`).
 | **Support** | **Phone** |
 | [![Support: donate NEAR or stake with the validator](docs/screenshots/support.png)](https://nearhunt.xyz/support) | <img src="docs/screenshots/mobile-directory.png" alt="Directory on a phone" width="280"> |
 
-## Status (measured 13 Nov 2026)
+## Status (measured 14 Nov 2026)
 
 | What | Number | Reproduce |
 |---|---|---|
-| Project records on mainnet, written by `nearhunt.near` | 814 | `npm run validate:schema` |
-| Projects listed on the site (one is on the [hide list](data/hidden-projects.json)) | 813 | `curl -s "https://nearhunt.xyz/api/projects?limit=1"` → `meta.total` |
-| Records with the builder's own description / a repository / media | 766 / 444 / 733 | count the fields in `readProjects()` from [`lib/kv.mjs`](lib/kv.mjs) |
-| Upvotes on chain, and the accounts that cast them | 152 rows (131 active, 21 removed), 109 accounts | `vote/` rows, see [Read the chain directly](#3-read-the-chain-directly-no-near-hunt-server-involved) |
-| Comments on chain | 30 rows (28 active, 2 deleted), 20 accounts | `comment/` rows, same call |
-| NEAR accounts linked to a project through a claim | 13 `maker/` rows, 12 accounts | `maker/` rows, same call |
-| `#nearhunt` posts on near.social, shared from the upvote prompt | 20 posts, 17 accounts | `curl -s "https://api2.near.social/v1/hashtags/nearhunt?limit=20"` |
-| Unit tests | 400 pass | `npm test` |
+| Project records on mainnet, written by `nearhunt.near` | 1,186 | `npm run validate:schema` |
+| Projects listed on the site (one is on the [hide list](data/hidden-projects.json)) | 1,185 | `curl -s "https://nearhunt.xyz/api/projects?limit=1"` → `meta.total` |
+| Records with the builder's own description / a repository / media | 1,135 / 644 / 1,092 | count the fields in `readProjects()` from [`lib/kv.mjs`](lib/kv.mjs) |
+| Upvotes on chain, and the accounts that cast them | 273 rows (250 active, 23 removed), 202 accounts | `vote/` rows, see [Read the chain directly](#3-read-the-chain-directly-no-near-hunt-server-involved) |
+| Comments on chain | 63 rows (59 active, 4 deleted), 51 accounts | `comment/` rows, same call |
+| NEAR accounts linked to a project through a claim | 21 `maker/` rows, 20 accounts | `maker/` rows, same call |
+| `#nearhunt` posts on near.social, shared from the upvote prompt | 38 posts, 32 accounts | `curl -s "https://api2.near.social/v1/hashtags/nearhunt?limit=100"` → `items` |
+| Unit tests | 427 pass | `npm test` |
 
 These numbers move: the hackathon feed is still open and people are still voting.
 
 Known gaps, so nobody finds them by surprise:
 
-- `npm run validate:schema` currently reports **2 invalid records of 814**:
-  `project/1ca01819-1a03-4a49-81d7-eb5755db0fea` and
-  `project/fc122909-2cd5-4d03-ae5d-7df09aa93f1d` have an `http://` `demo_url` where the schema
-  wants `https://`. They are the links as the builders submitted them. Correcting them is a
-  mainnet write that waits for the owner's approval.
-- `node scripts/import.mjs` (a dry run) shows 4 feed submissions not yet on chain. Imports are
-  applied in approved batches, so the directory can trail the feed by a few records.
+- `node scripts/import.mjs` (a dry run) lists **9 feed submissions not yet on chain** at the time of
+  writing. Imports are applied in approved batches, so the directory can trail the feed by a few
+  records.
+- Most records carry no `repository_url` (644 of 1,186 do): the builder's submission had only a demo
+  or a social post. `npm run enrich:links` looks for a repository on the record's own pages; it never
+  invents one.
 - The wallet checks in the [Day 3 checklist](docs/runbooks/day3-signing-checklist.md) (section C)
   are not ticked off. The vote and comment rows above were written by real accounts through the
   live site, but the checklist's wallet-by-wallet pass has not been done.
@@ -100,7 +99,7 @@ Known gaps, so nobody finds them by surprise:
 ### 2. Through the API (no key, no wallet)
 
 ```bash
-# Top projects by upvotes. See: {"items":[...],"next_cursor":...,"meta":{"total":813,...}}
+# Top projects by upvotes. See: {"items":[...],"next_cursor":...,"meta":{"total":1185,...}}
 curl -s "https://nearhunt.xyz/api/projects?sort=votes&limit=3"
 
 # One project. See: its nearhunt/project/1 record plus block_height, votes and url
@@ -138,10 +137,10 @@ environment variables).
 ```bash
 npm install
 npm run dev               # open http://localhost:3000 and see the same directory as the live site
-npm test                  # see: pass 400, fail 0
+npm test                  # see: pass 427, fail 0
 npm run typecheck         # see: no errors
 npm run build             # see: the route table, ending with /wallet-manifest.json
-npm run validate:schema   # see: every live record checked against the schema (2 invalid today, above)
+npm run validate:schema   # see: every live record checked against the schema (0 invalid today)
 node scripts/import.mjs   # see: a dry-run diff of the feed against the chain; it signs nothing
 ```
 
