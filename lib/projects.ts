@@ -86,6 +86,10 @@ interface ProjectsState {
   lastFailedAt: number;
   /** The read currently in progress, shared by every caller that arrives while it runs. */
   inflight: Promise<CachedList> | null;
+  /** The full KV walk in progress, shared by every cache chunk that misses at the same moment. */
+  fullInflight: Promise<CachedList> | null;
+  /** `fetched_at` of the copy last written to the shared store, so one read is stored once. */
+  lastStoredFetchedAt: string;
   /** The shared-store read in progress, so concurrent callers cost one round trip, not one each. */
   snapshotInflight: Promise<Snapshot | null> | null;
 }
@@ -96,6 +100,8 @@ const state: ProjectsState = ((globalThis as unknown as Record<symbol, ProjectsS
   lastOkAt: 0,
   lastFailedAt: 0,
   inflight: null,
+  fullInflight: null,
+  lastStoredFetchedAt: '',
   snapshotInflight: null,
 });
 
@@ -154,31 +160,124 @@ function loadSnapshotOnce(): Promise<Snapshot | null> {
 }
 
 /**
- * The KV read, cached ~120 s (NH-11). When the copy expires, Next serves it while it re-reads in
- * the background; if that re-read fails the old copy stays and `lastReadFailedAt` moves on, which
- * is what turns the banner on. Errors are never cached.
+ * How many records go into one cached entry.
  *
- * Every success also leaves a durable copy behind (lib/snapshot.mjs), so the next server
+ * Why this is not a single entry any more: the listing outgrew Next's 2 MB limit for a data-cache
+ * item. A whole-listing entry measured 2,150,157 bytes (1,255 records at ~1.6 KB each), so every
+ * cache write was refused — "items over 2MB can not be cached" in the runtime logs — the 120 s
+ * `revalidate` therefore never applied, and *every request* re-walked five KV pages, re-mapped the
+ * listing and re-gzipped ~1.2 MB of it for the snapshot write. That is CPU, not I/O: it is what
+ * put nearhunt.xyz at 90% of the plan's Fluid Active CPU. Splitting the listing into 250-record
+ * chunks keeps each entry at ~400 KB, so the cache actually stores and a warm region does no work
+ * per request. 250 also leaves room for the listing to roughly triple before a chunk nears the cap.
+ */
+export const PROJECTS_CHUNK_SIZE = 250;
+
+/** One slice of the cached listing. `chunk_count` rides along so chunk 0 can enumerate the rest. */
+interface CachedChunk extends CachedList {
+  chunk: number;
+  chunk_count: number;
+}
+
+/** The raw read, minus the caching: KV walk, hide list, durable copy. */
+async function readFullList(): Promise<CachedList> {
+  const entries = await readProjects({ account: DEFAULT_ACCOUNT, network: 'mainnet', fetchImpl: timedFetch });
+  state.lastOkAt = Date.now();
+  // NH-108: the owner's hide list is applied here, the one place every reader passes through.
+  const items = filterHidden(toListing(entries), HIDDEN_PROJECTS);
+  const list: CachedList = { items, fetched_at: new Date().toISOString(), account: DEFAULT_ACCOUNT };
+  // Store the copy once per read instead of once per caller: encodeSnapshot gzips ~1.2 MB
+  // synchronously, which is CPU spent for a value that has not changed since the last write.
+  if (state.lastStoredFetchedAt !== list.fetched_at) {
+    await saveSnapshotValue(PROJECTS_SNAPSHOT_KEY, list, 'projects');
+    state.lastStoredFetchedAt = list.fetched_at;
+  }
+  return list;
+}
+
+/**
+ * One KV walk per process, shared by every chunk that misses at the same moment.
+ *
+ * Without this, a cold region would walk the five KV pages once per chunk (five walks) whenever
+ * the chunks expire together — the exact load the chunking is meant to remove.
+ */
+function readFullListOnce(): Promise<CachedList> {
+  if (!state.fullInflight) {
+    state.fullInflight = readFullList().finally(() => {
+      state.fullInflight = null;
+    });
+  }
+  return state.fullInflight;
+}
+
+/**
+ * One cached chunk of the KV read, ~120 s (NH-11). When an entry expires Next serves it while it
+ * re-reads in the background; if that re-read fails the old entry stays and `lastFailedAt` moves
+ * on, which is what turns the banner on. Errors are never cached.
+ *
+ * The chunk number is a *key part*, not a function argument: `unstable_cache` keys on what it is
+ * given, and an explicit key per chunk cannot silently collide into one shared entry the way an
+ * argument-dependent key could.
+ *
+ * Every successful read also leaves a durable copy behind (lib/snapshot.mjs), so the next server
  * instance to start has something to serve before it has read the KV API even once.
  */
-const readCachedProjects = unstable_cache(
-  async (): Promise<CachedList> => {
-    try {
-      const entries = await readProjects({ account: DEFAULT_ACCOUNT, network: 'mainnet', fetchImpl: timedFetch });
-      state.lastOkAt = Date.now();
-      // NH-108: the owner's hide list is applied here, the one place every reader passes through.
-      const items = filterHidden(toListing(entries), HIDDEN_PROJECTS);
-      const list: CachedList = { items, fetched_at: new Date().toISOString(), account: DEFAULT_ACCOUNT };
-      await saveSnapshotValue(PROJECTS_SNAPSHOT_KEY, list, 'projects');
-      return list;
-    } catch (err) {
-      state.lastFailedAt = Date.now();
-      throw err;
+const chunkReaders = new Map<number, () => Promise<CachedChunk>>();
+
+function readCachedChunk(chunk: number): Promise<CachedChunk> {
+  let reader = chunkReaders.get(chunk);
+  if (!reader) {
+    const read = unstable_cache(
+      async (): Promise<CachedChunk> => {
+        try {
+          const list = await readFullListOnce();
+          const start = chunk * PROJECTS_CHUNK_SIZE;
+          return {
+            items: list.items.slice(start, start + PROJECTS_CHUNK_SIZE),
+            fetched_at: list.fetched_at,
+            account: list.account,
+            chunk,
+            chunk_count: Math.max(1, Math.ceil(list.items.length / PROJECTS_CHUNK_SIZE)),
+          };
+        } catch (err) {
+          state.lastFailedAt = Date.now();
+          throw err;
+        }
+      },
+      ['nearhunt-projects-chunk-v1', String(chunk)],
+      { revalidate: PROJECTS_REVALIDATE_SECONDS, tags: ['projects'] },
+    );
+    reader = read;
+    chunkReaders.set(chunk, reader);
+  }
+  return reader();
+}
+
+/**
+ * The whole listing, assembled from its cached chunks.
+ *
+ * Chunks are cached independently, so they can be a revalidation apart from each other. The
+ * assembly therefore dedupes on `submission_id` and keeps the first copy it meets: a record that
+ * moved across a chunk boundary in the newer read is served once, not twice, and the next
+ * revalidation lines the chunks up again.
+ */
+async function readCachedProjects(): Promise<CachedList> {
+  const first = await readCachedChunk(0);
+  const rest = await Promise.all(
+    Array.from({ length: Math.max(0, first.chunk_count - 1) }, (_, i) => readCachedChunk(i + 1)),
+  );
+  const seen = new Set<string>();
+  const items: ListingItem[] = [];
+  for (const chunk of [first, ...rest]) {
+    for (const item of chunk.items) {
+      const id: string = item.submission_id;
+      if (seen.has(id)) continue;
+      seen.add(id);
+      items.push(item);
     }
-  },
-  ['nearhunt-projects-v2'],
-  { revalidate: PROJECTS_REVALIDATE_SECONDS, tags: ['projects'] },
-);
+  }
+  return { items, fetched_at: first.fetched_at, account: first.account };
+}
 
 /**
  * Every live project record written by `nearhunt.near` (NH-01 via `readProjects`). Order is the
