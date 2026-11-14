@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-11-14T03:10:25.842Z",
+  "generated_at": "2026-11-14T04:34:25.107Z",
   "account": "nearhunt.near",
   "note": "Flags only. Nothing is merged, hidden or written. `clusters`/`groups` share an identifying URL (possible duplicates). `weak_signals` share only a name or an X account and are usually different projects.",
   "summary": {
-    "submissions": 1202,
-    "on_chain": 1186,
-    "pending": 16,
+    "submissions": 1210,
+    "on_chain": 1203,
+    "pending": 7,
     "shared_urls": 2,
     "by_kind": {
       "x-post": 1,
@@ -14,7 +14,7 @@
     "clusters": 2,
     "submissions_flagged": 4,
     "same_name_groups": 37,
-    "same_x_account_groups": 117
+    "same_x_account_groups": 118
   },
   "clusters": [
     {
@@ -230,14 +230,14 @@
             "on_chain": true
           },
           {
-            "submission_id": "fda85f72-004a-44cd-a28f-525b91ed0053",
+            "submission_id": "db218583-4b32-472c-a62d-a52afc792aae",
             "name": "Leash",
             "on_chain": true
           },
           {
-            "submission_id": "db218583-4b32-472c-a62d-a52afc792aae",
+            "submission_id": "fda85f72-004a-44cd-a28f-525b91ed0053",
             "name": "Leash",
-            "on_chain": false
+            "on_chain": true
           }
         ]
       },
@@ -340,6 +340,11 @@
         "key": "foreman",
         "submissions": [
           {
+            "submission_id": "0e2faac9-2439-497c-8ee5-eaea6a0e7125",
+            "name": "Foreman",
+            "on_chain": true
+          },
+          {
             "submission_id": "20df5127-8326-4810-8314-c068af25650b",
             "name": "Foreman",
             "on_chain": true
@@ -353,11 +358,6 @@
             "submission_id": "8ec7bfd4-68b6-4886-8d00-a48c9a7186ef",
             "name": "Foreman",
             "on_chain": true
-          },
-          {
-            "submission_id": "0e2faac9-2439-497c-8ee5-eaea6a0e7125",
-            "name": "Foreman",
-            "on_chain": false
           }
         ]
       },
@@ -580,14 +580,14 @@
         "key": "herald",
         "submissions": [
           {
-            "submission_id": "ea335fdf-95f0-43e7-bff1-0f1f91fb678c",
+            "submission_id": "be67e8e2-46cd-4c29-a03f-9576cb813cfa",
             "name": "Herald",
             "on_chain": true
           },
           {
-            "submission_id": "be67e8e2-46cd-4c29-a03f-9576cb813cfa",
+            "submission_id": "ea335fdf-95f0-43e7-bff1-0f1f91fb678c",
             "name": "Herald",
-            "on_chain": false
+            "on_chain": true
           }
         ]
       },
@@ -987,14 +987,14 @@
         "key": "ahmardchain",
         "submissions": [
           {
-            "submission_id": "5278473e-6acf-40b2-a013-a2ff4236f176",
-            "name": "Presafe",
+            "submission_id": "40a2e147-c51e-4a86-b179-4b3b9f0233d2",
+            "name": "Surety",
             "on_chain": true
           },
           {
-            "submission_id": "40a2e147-c51e-4a86-b179-4b3b9f0233d2",
-            "name": "Surety",
-            "on_chain": false
+            "submission_id": "5278473e-6acf-40b2-a013-a2ff4236f176",
+            "name": "Presafe",
+            "on_chain": true
           }
         ]
       },
@@ -1565,6 +1565,21 @@
             "submission_id": "53d9c309-ac4a-41d9-a31e-60ad073cf0c1",
             "name": "NearBowl-Feed it or it Dies",
             "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "incesfitriany",
+        "submissions": [
+          {
+            "submission_id": "688343fa-16d9-4720-9b73-c2d336ad0cd6",
+            "name": "VeriPact",
+            "on_chain": false
+          },
+          {
+            "submission_id": "dd72dd31-b0d0-461e-9b2d-3a5f405e6ea5",
+            "name": "NEAR Protocol P&L Workbench & Empirical Thesis",
+            "on_chain": false
           }
         ]
       },
@@ -2174,12 +2189,12 @@
           {
             "submission_id": "39e51d3d-befe-4929-bef7-3f78ba9748dc",
             "name": "NEAR Privacy Rings",
-            "on_chain": false
+            "on_chain": true
           },
           {
             "submission_id": "baf8976c-54dd-4883-819c-f58b4e40f87c",
             "name": "Hold NEAR: Intents is resilient, holders' claim is small",
-            "on_chain": false
+            "on_chain": true
           }
         ]
       },

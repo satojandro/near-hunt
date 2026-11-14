@@ -34642,5 +34642,804 @@
       }
     ],
     "links": []
+  },
+  "6d823e9e-1b84-4df3-a29f-50bab624bd13": {
+    "author": "Ved_Malkunaik",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T04:22:28.811Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://nexora-six-sable.vercel.app",
+      "https://github.com/Ved-Malkunaik/NEXORA",
+      "https://nexora-six-sable.vercel.app/"
+    ]
+  },
+  "6df3726a-1c3c-48b6-b207-809ff9522d5a": {
+    "author": "Roux187",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T04:22:30.431Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://heliquant-near.vercel.app",
+      "https://heliquant-near.vercel.app/"
+    ]
+  },
+  "ccb6ca02-fd44-4f92-a959-91e93e4e84b7": {
+    "author": "themajor_2",
+    "status": "ok",
+    "crawled_at": "2026-11-14T04:22:35.991Z",
+    "listed": 5,
+    "read": 5,
+    "posts": [
+      {
+        "id": "2121432166756135314",
+        "author": "themajor_2",
+        "text": "@NEARProtocol Tested it on a common NEAR mistake that trips up almost everyone starting out with Rust contracts:\nUsing \nPromise::new()\n to transfer tokens but updating the balance after — and no callback to handle failure. Your contract just silently loses funds.\nFlip caught it instantly: https://t.co/R7ojk1LN4M",
+        "links": [],
+        "media": [
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HXDXTeXWAAA_mIK.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 665,
+                  "w": 1188,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 665,
+                  "w": 665,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 665,
+                  "w": 583,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 665,
+                  "w": 333,
+                  "x": 25,
+                  "y": 0
+                },
+                {
+                  "h": 665,
+                  "w": 1531,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 665,
+              "width": 1531
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      },
+      {
+        "id": "2121433010385883636",
+        "author": "themajor_2",
+        "text": "@NEARProtocol • Transfer before state update – Critical • No failure callback – Critical • \n.unwrap()\n panic risk — High\n\nSo Pointing out bugs is only half the job, especially if you're not sure how to resolve them.\nType \"Flip fix near\"\n and it drops the exact boilerplate you need: state https://t.co/Cmxu7be1ut",
+        "links": [],
+        "media": [
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HXDYErUWYAAIGwW.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 679,
+                  "w": 1213,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 679,
+                  "w": 679,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 679,
+                  "w": 596,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 679,
+                  "w": 340,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 679,
+                  "w": 1530,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 679,
+              "width": 1530
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      },
+      {
+        "id": "2121433112458461508",
+        "author": "themajor_2",
+        "text": "@NEARProtocol rollback on failure with \nis_promise_success()\n, private callback logic, and clean error handling.\nPlus, every report is signed with an Ed25519 DID key for an immutable audit trail.",
+        "links": []
+      },
+      {
+        "id": "2121435483121074237",
+        "author": "themajor_2",
+        "text": "@NEARProtocol also tested it out on a classic Solidity reentrancy bug—the infamous \n.call{value:}\n pattern executed before resetting the sender's balance.\nCaught and flagged as Critical in under two seconds.\nSmooth experience across both NEAR and EVM from a single bot. https://t.co/lSUO7eU6LC",
+        "links": [],
+        "media": [
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HXDaUtFW4AAB-VC.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 538,
+                  "w": 961,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 538,
+                  "w": 538,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 538,
+                  "w": 472,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 538,
+                  "w": 269,
+                  "x": 25,
+                  "y": 0
+                },
+                {
+                  "h": 538,
+                  "w": 1280,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 538,
+              "width": 1280
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      },
+      {
+        "id": "2121439757263643107",
+        "author": "themajor_2",
+        "text": "@NEARProtocol Built for the @NEARProtocol hackathon.\nFully open source and MIT licensed: \n#NEARHackathon",
+        "links": []
+      }
+    ],
+    "links": []
+  },
+  "dde7f616-0749-4eaf-95b4-9b64fcf0ab06": {
+    "author": "sparkpointio",
+    "status": "ok",
+    "crawled_at": "2026-11-14T04:22:38.598Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [
+      {
+        "id": "2121201098560258239",
+        "author": "sparkpointio",
+        "text": "2/2 We're excited to submit Sparky AI to the NEAR Hackathon, exploring how NEAR's Chain Abstraction can power the next generation of intelligent cross-chain financial agents.\n\nSparky provides the intelligence. NEAR enables the coordination.\n\nHere's a look at what we're building. https://t.co/D8ZeCWmfaD",
+        "links": [],
+        "media": [
+          {
+            "type": "video",
+            "media_url_https": "https://pbs.twimg.com/amplify_video_thumb/2121197294825738240/img/sTdAowuYfEGQbo-S.jpg",
+            "original_info": {
+              "focus_rects": [],
+              "height": 720,
+              "width": 1280
+            },
+            "video_info": {
+              "aspect_ratio": [
+                16,
+                9
+              ],
+              "duration_millis": 111174,
+              "variants": [
+                {
+                  "content_type": "application/x-mpegURL",
+                  "url": "https://video.twimg.com/amplify_video/2121197294825738240/pl/ADiwFav7cGVFTBe4.m3u8?tag=14"
+                },
+                {
+                  "bitrate": 288000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121197294825738240/vid/avc1/480x270/qJA43UYTJyBVzBAc.mp4?tag=14"
+                },
+                {
+                  "bitrate": 832000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121197294825738240/vid/avc1/640x360/B7uVK2QvmMpEwt-U.mp4?tag=14"
+                },
+                {
+                  "bitrate": 2176000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121197294825738240/vid/avc1/1280x720/A5oNoa6t9ARSP_Ro.mp4?tag=14"
+                }
+              ]
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      }
+    ],
+    "links": [
+      "https://beta.sparkpoint.io/"
+    ]
+  },
+  "bee438f5-d00d-4cf0-8256-a809bf4e42a7": {
+    "author": "OlympusXVN",
+    "status": "ok",
+    "crawled_at": "2026-11-14T04:22:42.673Z",
+    "listed": 2,
+    "read": 2,
+    "posts": [
+      {
+        "id": "2121448536789160133",
+        "author": "OlympusXVN",
+        "text": "Screenshots 2/2: EMOI\nhttps://t.co/AeIORZKuXH\n@NEARProtocol #NEARHackathon @NearLegion @NearBuilders https://t.co/aBc8XkNE97",
+        "links": [
+          "https://emoi-landing-lyart.vercel.app",
+          "https://emoi-landing-lyart.vercel.app/"
+        ],
+        "media": [
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HXDmA2pawAEZzcs.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 672,
+                  "w": 1200,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1015,
+                  "w": 1015,
+                  "x": 93,
+                  "y": 0
+                },
+                {
+                  "h": 1015,
+                  "w": 890,
+                  "x": 155,
+                  "y": 0
+                },
+                {
+                  "h": 1015,
+                  "w": 508,
+                  "x": 346,
+                  "y": 0
+                },
+                {
+                  "h": 1015,
+                  "w": 1200,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 1015,
+              "width": 1200
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          },
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HXDmA2oa4AAHpoc.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 561,
+                  "w": 1002,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1002,
+                  "w": 1002,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1142,
+                  "w": 1002,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1200,
+                  "w": 600,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1200,
+                  "w": 1002,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 1200,
+              "width": 1002
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          },
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HXDmA7Xa8AAhymR.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 672,
+                  "w": 1200,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1016,
+                  "w": 1016,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1016,
+                  "w": 891,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1016,
+                  "w": 508,
+                  "x": 75,
+                  "y": 0
+                },
+                {
+                  "h": 1016,
+                  "w": 1200,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 1016,
+              "width": 1200
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          },
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HXDmA2vboAEA61u.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 586,
+                  "w": 1046,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1046,
+                  "w": 1046,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1192,
+                  "w": 1046,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1200,
+                  "w": 600,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1200,
+                  "w": 1046,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 1200,
+              "width": 1046
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      },
+      {
+        "id": "2121448537518915849",
+        "author": "OlympusXVN",
+        "text": "Screenshots 1/2: EMOI\nhttps://t.co/AeIORZKuXH\n@NEARProtocol #NEARHackathon @NearLegion @NearBuilders https://t.co/7vsLeFDBtJ",
+        "links": [
+          "https://emoi-landing-lyart.vercel.app",
+          "https://emoi-landing-lyart.vercel.app/"
+        ],
+        "media": [
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HXDmA3KbQAASv5P.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 672,
+                  "w": 1200,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 675,
+                  "w": 675,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 675,
+                  "w": 592,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 675,
+                  "w": 338,
+                  "x": 41,
+                  "y": 0
+                },
+                {
+                  "h": 675,
+                  "w": 1200,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 675,
+              "width": 1200
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          },
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HXDmA7VacAA9XNx.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 672,
+                  "w": 1200,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 787,
+                  "w": 787,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 787,
+                  "w": 690,
+                  "x": 44,
+                  "y": 0
+                },
+                {
+                  "h": 787,
+                  "w": 394,
+                  "x": 192,
+                  "y": 0
+                },
+                {
+                  "h": 787,
+                  "w": 1200,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 787,
+              "width": 1200
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          },
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HXDmA7VbMAAcWtL.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 672,
+                  "w": 1200,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 789,
+                  "w": 789,
+                  "x": 56,
+                  "y": 0
+                },
+                {
+                  "h": 789,
+                  "w": 692,
+                  "x": 104,
+                  "y": 0
+                },
+                {
+                  "h": 789,
+                  "w": 395,
+                  "x": 253,
+                  "y": 0
+                },
+                {
+                  "h": 789,
+                  "w": 1200,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 789,
+              "width": 1200
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          },
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HXDmA2qbkAAQ92M.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 672,
+                  "w": 1200,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1013,
+                  "w": 1013,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1013,
+                  "w": 889,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1013,
+                  "w": 507,
+                  "x": 77,
+                  "y": 0
+                },
+                {
+                  "h": 1013,
+                  "w": 1200,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 1013,
+              "width": 1200
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      }
+    ],
+    "links": [
+      "https://emoi-landing-lyart.vercel.app",
+      "https://emoi-landing-lyart.vercel.app/"
+    ]
+  },
+  "7d748e72-76c9-4e90-8372-2e0c93eb5dd7": {
+    "author": "lummy_ticket",
+    "status": "ok",
+    "crawled_at": "2026-11-14T04:22:47.287Z",
+    "listed": 3,
+    "read": 3,
+    "posts": [
+      {
+        "id": "2121451334998356353",
+        "author": "lummy_ticket",
+        "text": "Check it yourself, no account needed:\n\n- every order in the escrow, read from the contract: https://t.co/HzQAkeZeBb\n- a ticket read in NEAR AI's TEE, re-checked by our contract on NEAR: https://t.co/2nN3Mqe5Zm\n- the commands: https://t.co/QwmFql9oeF",
+        "links": [
+          "https://lummy.id/proof",
+          "https://lummy.id/near",
+          "https://github.com/Lummy-Ticket/lummy"
+        ]
+      },
+      {
+        "id": "2121451337779175484",
+        "author": "lummy_ticket",
+        "text": "We shifted: from a whole blockchain ticketing platform to one problem, resale between strangers. At home fans pay in rupiah and never see a wallet; NEAR is for shows abroad.",
+        "links": []
+      },
+      {
+        "id": "2121451340371235277",
+        "author": "lummy_ticket",
+        "text": "Where it stands: a working prototype. Real payments are our team's own for now, contracts unaudited, no users yet.\n\nWhat would stop you from buying a resale ticket this way?",
+        "links": []
+      }
+    ],
+    "links": [
+      "https://lummy.id/near",
+      "https://github.com/Lummy-Ticket/lummy"
+    ]
+  },
+  "688343fa-16d9-4720-9b73-c2d336ad0cd6": {
+    "author": "IncesFitriany",
+    "status": "ok",
+    "crawled_at": "2026-11-14T04:22:50.353Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [
+      {
+        "id": "2121456954853990565",
+        "author": "IncesFitriany",
+        "text": "@NEARProtocol @near_ai Built at NEAR HACKATHON! #NEARHackathon @NEARProtocol @NearLegion @NearBuildersNEAR enables 1Click cross-chain USDC settlement, https://t.co/TNVCCvroKj TEE inference, &amp; NEP-413 scoped-key agent spending.What guardrail should autonomous solver swarms add next?",
+        "links": [
+          "https://NEAR.AI",
+          "https://near.ai/"
+        ]
+      }
+    ],
+    "links": [
+      "https://NEAR.AI",
+      "https://mchr2314.github.io/near-clawswarm-nexus/Repo",
+      "https://github.com/mchr2314/near-clawswarm-nexus",
+      "https://near.ai/"
+    ]
+  },
+  "c34cc012-6035-487a-997f-ee34e1bcb801": {
+    "author": "nectarlabsio",
+    "status": "ok",
+    "crawled_at": "2026-11-14T04:22:54.927Z",
+    "listed": 3,
+    "read": 3,
+    "posts": [
+      {
+        "id": "2121438066191765964",
+        "author": "nectarlabsio",
+        "text": "What NEAR does here:\n\none Rust contract escrows the quotes and enforces each loan's limit\neach loan is an NFT (NEP-171): transfer it and the loan's rights move with it\nagents pay for data over x402 with NEP-366 meta-transactions\nour price bot's key can call one method only",
+        "links": []
+      },
+      {
+        "id": "2121438068356104513",
+        "author": "nectarlabsio",
+        "text": "Try it (testnet, mock assets, no value): https://t.co/yXwuz7BIGk\n\nCode: https://t.co/SNETu7OzWK\n\nhttps://t.co/y7HX2iLHFZ\n\nMarket makers: what notice period would you commit to on a weekend quote?  @NEARProtocol #NEARHackathon",
+        "links": [
+          "https://testnet.nectarlabs.io",
+          "https://github.com/NectarLabsio/nectar-labs",
+          "https://nearbuilders.org/projects/project/nectar",
+          "https://testnet.nectarlabs.io/"
+        ]
+      }
+    ],
+    "links": []
+  },
+  "9bbad838-4791-4356-ad7f-24f9f3a0d8e3": {
+    "author": "czar_skah",
+    "status": "ok",
+    "crawled_at": "2026-11-14T04:23:01.543Z",
+    "listed": 7,
+    "read": 7,
+    "posts": [
+      {
+        "id": "2121449865020600704",
+        "author": "czar_skah",
+        "text": "Claim 25,000 free WIELER from the faucet\nStake it behind Bitcoin, Ethereum or Solana\n10 minutes the epoch closes and the most staked chain is conquered\nPart of the winning stake is burned forever, so supply only goes down\nA real flag transaction is planted on the conquered chain",
+        "links": []
+      },
+      {
+        "id": "2121449869642809590",
+        "author": "czar_skah",
+        "text": "That last part is the magic. Using NEAR Chain Signatures, one smart contract controls its own wallets on Bitcoin, Ethereum and Solana. It builds the transaction itself, the NEAR MPC network signs it, and it lands on that chain. No bridge, no wrapped tokens, no custodian.",
+        "links": []
+      },
+      {
+        "id": "2121449874524914058",
+        "author": "czar_skah",
+        "text": "Every conquest is provable on the chain that was conquered. Then there’s the Barbarian, an autonomous raider with its own war chest that attacks every epoch. Take his land back and you claim the bounty he leaves behind.",
+        "links": []
+      },
+      {
+        "id": "2121449879822364984",
+        "author": "czar_skah",
+        "text": "Building it taught me a lot. Signing for three different chains from one contract means three different transaction formats. The hardest bug was Solana: a blockhash expires in about a minute, so the keeper now broadcasts every flag the moment it’s signed.",
+        "links": []
+      },
+      {
+        "id": "2121449885132345640",
+        "author": "czar_skah",
+        "text": "Four real flags have landed so far on Bitcoin testnet, Sepolia and Solana devnet. The goal is simple: show that a memecoin can be fun, deflationary and truly cross chain, all running on NEAR.",
+        "links": []
+      },
+      {
+        "id": "2121449890123513897",
+        "author": "czar_skah",
+        "text": "I built this for the NEAR Hackathon with Typescript (Next.js) and Rust\nDeployed the frontend to vercel, backend to AWS and contracts to the NEAR protocol. \nToken contract: wieler.skahlo.testnet\nRaid contract: raid.wieler.skahlo.testnet",
+        "links": []
+      },
+      {
+        "id": "2121449895282516340",
+        "author": "czar_skah",
+        "text": "It’s live on testnet. Pick your side 👇\nhttps://t.co/SuR9ARQMxF\nStake. Raid. Conquer.\nEvery claim in it matches what’s deployed: the 10-minute epochs, the faucet amount, the Barbarian’s bounty, the Solana fix, and the four confirmed flags. #NEARHackathon",
+        "links": [
+          "https://wielerzone.vercel.app",
+          "https://wielerzone.vercel.app/"
+        ]
+      }
+    ],
+    "links": []
+  },
+  "dd72dd31-b0d0-461e-9b2d-3a5f405e6ea5": {
+    "author": "IncesFitriany",
+    "status": "ok",
+    "crawled_at": "2026-11-14T04:23:04.157Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [
+      {
+        "id": "2121457491372650631",
+        "author": "IncesFitriany",
+        "text": "@NEARProtocol Built at NEAR HACKATHON! #NEARHackathon @NEARProtocol @NearLegion @NearBuildersNEAR enables cross-chain Intents settlement ($37.6B vol) alongside L1 execution &amp; 2.5% halving monetary economics.What fee-switch burn % would best balance solver liquidity &amp; $NEAR accrual?",
+        "links": []
+      }
+    ],
+    "links": [
+      "https://mchr2314.github.io/near-protocol-pnl/Repo",
+      "https://github.com/mchr2314/near-protocol-pnl"
+    ]
   }
 }
