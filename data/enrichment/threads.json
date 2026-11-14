@@ -43703,5 +43703,2132 @@
       "https://github.com/zunmax/near-insight",
       "https://nearinsight.xyz/"
     ]
+  },
+  "19f2479b-52d3-43c1-a4f0-ebf0b315eec3": {
+    "author": "cuzboy23",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T14:34:52.968Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": []
+  },
+  "3f88bc28-3905-420d-930d-df615619d169": {
+    "author": "per0ncino",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T14:34:54.702Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://kainze29.github.io/memevault/"
+    ]
+  },
+  "402cec7e-07b6-4a3b-b967-9b7e0dfcaf19": {
+    "author": "0xShraban",
+    "status": "no-author-replies",
+    "crawled_at": "2026-11-14T14:34:58.406Z",
+    "listed": 3,
+    "read": 3,
+    "posts": [],
+    "links": []
+  },
+  "40fa1e36-ab9e-4e23-b842-a430b423ad4c": {
+    "author": "asim_bugra",
+    "status": "no-author-replies",
+    "crawled_at": "2026-11-14T14:35:01.086Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [],
+    "links": [
+      "https://github.com/asimbugra/ShearPin"
+    ]
+  },
+  "42caa994-261b-4697-a6e6-9f6cdba11caf": {
+    "author": "NFazola",
+    "status": "ok",
+    "crawled_at": "2026-11-14T14:35:03.703Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [
+      {
+        "id": "2121590269875568936",
+        "author": "NFazola",
+        "text": "Full 8-min walkthrough, every step on mainnet:\nhttps://t.co/TU00TsiRyq\nCode + live demo (judge login in the README): https://t.co/WCUhoKiQtw",
+        "links": [
+          "https://www.youtube.com/watch?v=EGabIc5jHHE",
+          "https://github.com/farzadkb/near-recurra"
+        ]
+      }
+    ],
+    "links": []
+  },
+  "6cdfc845-47e3-4032-b03d-63e46c4954b4": {
+    "author": "neapdex",
+    "status": "ok",
+    "crawled_at": "2026-11-14T14:35:06.355Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [
+      {
+        "id": "2121456361724895444",
+        "author": "neapdex",
+        "text": "Code : https://t.co/tWcoJiLCps\n\nNext: Solana wallets trade via NEAR Intents, no bridge\n\n@NearLegion @NearBuilders",
+        "links": [
+          "https://github.com/moka-trade-labs/neap"
+        ]
+      }
+    ],
+    "links": [
+      "https://neap-frontend.team-royalgcc.workers.dev",
+      "https://neap-frontend.team-royalgcc.workers.dev/"
+    ]
+  },
+  "b7c21d04-cac8-4988-9ca8-4dc124e5beef": {
+    "author": "3route_io",
+    "status": "ok",
+    "crawled_at": "2026-11-14T14:35:13.138Z",
+    "listed": 5,
+    "read": 5,
+    "posts": [
+      {
+        "id": "2121594070393135419",
+        "author": "3route_io",
+        "text": "How it works: put our pay host in front of the API's link. Nothing else changes.\n\nThe agent pays us on the chain it is on. We pay the API on the API's chain.\n\nThe API's owner does nothing. The agent installs nothing of ours.\n2/6 https://t.co/Z87MNUPYm6",
+        "links": [],
+        "media": [
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HXFnY7WbwAAHMkD.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 896,
+                  "w": 1600,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 900,
+                  "w": 900,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 900,
+                  "w": 789,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 900,
+                  "w": 450,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 900,
+                  "w": 1600,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 900,
+              "width": 1600
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      },
+      {
+        "id": "2121594074599956937",
+        "author": "3route_io",
+        "text": "A real call on mainnet:\n\nThe agent paid 0.01 USDC on NEAR. We paid CoinMarketCap 0.01 USDC on Base. 6.7 seconds end to end. Our fee: $0.\n\nThe agent needs no NEAR for gas. Our relayer pays it.\n\nThe receipt is public:\nhttps://t.co/dshLPYzYSv\n3/6 https://t.co/LusJrUyNNY",
+        "links": [
+          "https://anyfare.agents.bakingbad.dev/calls/pay_a8d9b92d-a9e6-4b5a-af18-1ed38dae0d2f"
+        ],
+        "media": [
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HXFnuvNa0AAGT36.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 717,
+                  "w": 1280,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 720,
+                  "w": 720,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 720,
+                  "w": 632,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 720,
+                  "w": 360,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 720,
+                  "w": 1280,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 720,
+              "width": 1280
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      },
+      {
+        "id": "2121594078697812381",
+        "author": "3route_io",
+        "text": "No wallet for the agent? Give it a key with a budget.\n\nExample: $1 a day, at most $0.02 a call.\n\nOur server enforces the limit, not the agent's prompt. A leaked key can spend its budget and nothing more.\n4/6 https://t.co/MZhqBPnfXf",
+        "links": [],
+        "media": [
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HXFn2lOaoAEpgKS.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 896,
+                  "w": 1600,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 900,
+                  "w": 900,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 900,
+                  "w": 789,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 900,
+                  "w": 450,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 900,
+                  "w": 1600,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 900,
+              "width": 1600
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      },
+      {
+        "id": "2121594082682454104",
+        "author": "3route_io",
+        "text": "The key pays from a prepaid balance. Top it up with any of more than 100 tokens, on Bitcoin, Ethereum, Solana, Base, Arbitrum or NEAR.\n\nYou send to one deposit address. NEAR Intents swaps it to USDC on NEAR.\n\nExample: we sent 1 USDC from Arbitrum. The balance got $0.999798.\n5/6 https://t.co/hL61K0PPYO",
+        "links": [],
+        "media": [
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HXFoE6IaoAAgtBb.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 896,
+                  "w": 1600,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 900,
+                  "w": 900,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 900,
+                  "w": 789,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 900,
+                  "w": 450,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 900,
+                  "w": 1600,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 900,
+              "width": 1600
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      },
+      {
+        "id": "2121594085450690880",
+        "author": "3route_io",
+        "text": "Try it with no money: new accounts get $0.10 of free Credits, a limited number each day. That pays 10 calls at $0.01.\n\nFor your agent: https://t.co/8kmsyaJrJA\n\nNo token of our own. Every call has a public receipt.\n\nWhich paid API can't your agent pay today? Send us its link.\n6/6",
+        "links": [
+          "https://anyfare.agents.bakingbad.dev/llms.txt"
+        ]
+      }
+    ],
+    "links": [
+      "https://anyfare.agents.bakingbad.dev",
+      "https://github.com/baking-bad/anyfare",
+      "https://anyfare.agents.bakingbad.dev/"
+    ]
+  },
+  "ba97d585-c8a9-47cd-b49f-4343ea9bef4e": {
+    "author": "francis_codex",
+    "status": "ok",
+    "crawled_at": "2026-11-14T14:35:15.779Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [
+      {
+        "id": "2121594627002454076",
+        "author": "francis_codex",
+        "text": "you can use it here: https://t.co/CKPGKzJ6ht\n\nor break it, here : https://t.co/le2y352l7B\n\n@solana @nearprotocol @nearbuilders @near_intents #nearhackathon",
+        "links": [
+          "https://strom.seedlesslabs.xyz",
+          "https://github.com/seedless-labs/strom",
+          "https://strom.seedlesslabs.xyz/"
+        ]
+      }
+    ],
+    "links": []
+  },
+  "cc63f573-e47e-495f-8c5e-eebef05c5f32": {
+    "author": "ClashedResearch",
+    "status": "ok",
+    "crawled_at": "2026-11-14T14:35:18.223Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [
+      {
+        "id": "2121594353130889342",
+        "author": "ClashedResearch",
+        "text": "Introducing Pencils by Clashed Research team. \n\nWe are building Pencils for @NEARProtocol Hackathon.  \n\nThe internet runs on confident claims that never get priced, scored, or settled. Prediction markets can price a question but a human still has to write it, source it, and https://t.co/TMXmhEqzmF",
+        "links": [],
+        "media": [
+          {
+            "type": "video",
+            "media_url_https": "https://pbs.twimg.com/amplify_video_thumb/2121591626401284096/img/86YJgiY6CFWzdorl.jpg",
+            "original_info": {
+              "focus_rects": [],
+              "height": 1080,
+              "width": 1920
+            },
+            "video_info": {
+              "aspect_ratio": [
+                16,
+                9
+              ],
+              "duration_millis": 137272,
+              "variants": [
+                {
+                  "content_type": "application/x-mpegURL",
+                  "url": "https://video.twimg.com/amplify_video/2121591626401284096/pl/jKzDb7xF4Tl9wHHc.m3u8"
+                },
+                {
+                  "bitrate": 256000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121591626401284096/vid/avc1/480x270/GkBbdRWVSgk5uXCI.mp4"
+                },
+                {
+                  "bitrate": 832000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121591626401284096/vid/avc1/640x360/_rLRuQBiyuH0saa0.mp4"
+                },
+                {
+                  "bitrate": 2176000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121591626401284096/vid/avc1/1280x720/j2zDet0B7fcrVkmK.mp4"
+                },
+                {
+                  "bitrate": 10368000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121591626401284096/vid/avc1/1920x1080/MlKWPV3NQWdvIFwC.mp4"
+                }
+              ]
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      }
+    ],
+    "links": []
+  },
+  "da03d0f7-d29c-45aa-9f53-b1eec60b5c0b": {
+    "author": "2d4rc",
+    "status": "ok",
+    "crawled_at": "2026-11-14T14:35:25.758Z",
+    "listed": 7,
+    "read": 7,
+    "posts": [
+      {
+        "id": "2121586727689060708",
+        "author": "2d4rc",
+        "text": "Step one: friction-free onboarding.\n\nNo 64-character hex strings or complex setup. Just connect with your named account (username.testnet) via Meteor Wallet.\n\nYour balance loads instantly, and your keys stay safely in your hands. https://t.co/d7P0rwaTvW",
+        "links": [],
+        "media": [
+          {
+            "type": "video",
+            "media_url_https": "https://pbs.twimg.com/amplify_video_thumb/2121532939569635328/img/2O_jD_-sLx7mDupL.jpg",
+            "original_info": {
+              "focus_rects": [],
+              "height": 874,
+              "width": 1918
+            },
+            "video_info": {
+              "aspect_ratio": [
+                959,
+                437
+              ],
+              "duration_millis": 17749,
+              "variants": [
+                {
+                  "content_type": "application/x-mpegURL",
+                  "url": "https://video.twimg.com/amplify_video/2121532939569635328/pl/5H42DB2gSdtxRHPf.m3u8"
+                },
+                {
+                  "bitrate": 256000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121532939569635328/vid/avc1/592x270/hYNdqApadKbjGp4b.mp4"
+                },
+                {
+                  "bitrate": 832000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121532939569635328/vid/avc1/790x360/ZP5CyDQaUZOqyW7A.mp4"
+                },
+                {
+                  "bitrate": 2176000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121532939569635328/vid/avc1/1580x720/_AtllR_FmzI_-SIB.mp4"
+                },
+                {
+                  "bitrate": 10368000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121532939569635328/vid/avc1/1918x874/DwlYpEYz4dqBIipu.mp4"
+                }
+              ]
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      },
+      {
+        "id": "2121586732151849019",
+        "author": "2d4rc",
+        "text": "Step two: define the spending rules in plain English.\n\nNo need to write smart contracts or navigate complex permissions. Just define your limits in plain words:\n\n\"Spend up to 2 NEAR daily, but ask me for confirmation before buying anything over 0.25 NEAR.\"\n\nThe agent is bound by https://t.co/l7MMxmdOn0",
+        "links": [],
+        "media": [
+          {
+            "type": "video",
+            "media_url_https": "https://pbs.twimg.com/amplify_video_thumb/2121563430159048704/img/KmQP0PDfrox2260s.jpg",
+            "original_info": {
+              "focus_rects": [],
+              "height": 876,
+              "width": 1918
+            },
+            "video_info": {
+              "aspect_ratio": [
+                959,
+                438
+              ],
+              "duration_millis": 22300,
+              "variants": [
+                {
+                  "content_type": "application/x-mpegURL",
+                  "url": "https://video.twimg.com/amplify_video/2121563430159048704/pl/raXULGIBPGh-7VKx.m3u8"
+                },
+                {
+                  "bitrate": 256000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121563430159048704/vid/avc1/590x270/NOsSJ2aF-LUBXN93.mp4"
+                },
+                {
+                  "bitrate": 832000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121563430159048704/vid/avc1/788x360/dur5Nw5OpmSlB4Sb.mp4"
+                },
+                {
+                  "bitrate": 2176000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121563430159048704/vid/avc1/1576x720/WX8Rg9M6mtGikr-j.mp4"
+                },
+                {
+                  "bitrate": 10368000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121563430159048704/vid/avc1/1918x876/EYqSCEh88D9OFRcq.mp4"
+                }
+              ]
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      },
+      {
+        "id": "2121586738179023359",
+        "author": "2d4rc",
+        "text": "Step three: allocate the budget. \n\nOnce the safety rules are set, you give the agent its spending pool. \n\nYour money isn't locked away or out of reach. You see exactly what the agent holds in real time, and you have the ability to take back unspent funds whenever you want. https://t.co/GeYoRMXMOd",
+        "links": [],
+        "media": [
+          {
+            "type": "video",
+            "media_url_https": "https://pbs.twimg.com/amplify_video_thumb/2121563531803811840/img/0f1Y5jAo_7dWykz6.jpg",
+            "original_info": {
+              "focus_rects": [],
+              "height": 872,
+              "width": 1918
+            },
+            "video_info": {
+              "aspect_ratio": [
+                959,
+                436
+              ],
+              "duration_millis": 33466,
+              "variants": [
+                {
+                  "content_type": "application/x-mpegURL",
+                  "url": "https://video.twimg.com/amplify_video/2121563531803811840/pl/oQEiNLQzSIJZTMKl.m3u8"
+                },
+                {
+                  "bitrate": 256000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121563531803811840/vid/avc1/592x270/hPw2uk3YvvKbtDzB.mp4"
+                },
+                {
+                  "bitrate": 832000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121563531803811840/vid/avc1/790x360/YhWRMsSQwJkhRdUu.mp4"
+                },
+                {
+                  "bitrate": 2176000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121563531803811840/vid/avc1/1582x720/kUXaNk7mOfEI-la0.mp4"
+                },
+                {
+                  "bitrate": 10368000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121563531803811840/vid/avc1/1918x872/u3lJf9xXs4uj7YZl.mp4"
+                }
+              ]
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      },
+      {
+        "id": "2121586744428552254",
+        "author": "2d4rc",
+        "text": "Step four: autonomous shopping with zero popups.\n\nTell your agent what you need. It heads to the digital goods market and buys the required tool (e.g. 0.15 NEAR Weather API).\n\nSince it falls below your 0.25 NEAR limit, the agent pays from its vault on NEAR automatically. No https://t.co/mwaNDrwaSi",
+        "links": [],
+        "media": [
+          {
+            "type": "video",
+            "media_url_https": "https://pbs.twimg.com/amplify_video_thumb/2121581373664165888/img/AgOTLD71LtTuuLX6.jpg",
+            "original_info": {
+              "focus_rects": [],
+              "height": 872,
+              "width": 1918
+            },
+            "video_info": {
+              "aspect_ratio": [
+                959,
+                436
+              ],
+              "duration_millis": 43946,
+              "variants": [
+                {
+                  "content_type": "application/x-mpegURL",
+                  "url": "https://video.twimg.com/amplify_video/2121581373664165888/pl/2T5L_bHP8ehSRmC0.m3u8"
+                },
+                {
+                  "bitrate": 256000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121581373664165888/vid/avc1/592x270/OxZYj_w5FaiEV4Hj.mp4"
+                },
+                {
+                  "bitrate": 832000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121581373664165888/vid/avc1/790x360/61Hu34swyyMqUCKZ.mp4"
+                },
+                {
+                  "bitrate": 2176000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121581373664165888/vid/avc1/1582x720/oHdDivevuSRL7Z0k.mp4"
+                },
+                {
+                  "bitrate": 10368000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121581373664165888/vid/avc1/1918x872/6djQ5GybMjj8dKQh.mp4"
+                }
+              ]
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      },
+      {
+        "id": "2121586757980274765",
+        "author": "2d4rc",
+        "text": "Step five: zero runaway risk.\n\nIf an agent attempts a bigger purchase above the threshold you set, or gets tricked by prompt injection, it hits a brick wall.\n\nAnything above your threshold (in this case 0.25 NEAR) triggers a confirmation card. The agent holds its place until you https://t.co/Pvix2kZQfi",
+        "links": [],
+        "media": [
+          {
+            "type": "video",
+            "media_url_https": "https://pbs.twimg.com/amplify_video_thumb/2121576205287596032/img/_Pi1heohFFUrQILI.jpg",
+            "original_info": {
+              "focus_rects": [],
+              "height": 874,
+              "width": 1918
+            },
+            "video_info": {
+              "aspect_ratio": [
+                959,
+                437
+              ],
+              "duration_millis": 39533,
+              "variants": [
+                {
+                  "content_type": "application/x-mpegURL",
+                  "url": "https://video.twimg.com/amplify_video/2121576205287596032/pl/kWV4Z2kuq6KAZCm8.m3u8"
+                },
+                {
+                  "bitrate": 256000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121576205287596032/vid/avc1/592x270/ML0Rbh-5M6cSrdGU.mp4"
+                },
+                {
+                  "bitrate": 832000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121576205287596032/vid/avc1/790x360/ue6_cV6cWXCttIZ3.mp4"
+                },
+                {
+                  "bitrate": 2176000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121576205287596032/vid/avc1/1580x720/YG6uDcDhY6Ny2ujd.mp4"
+                },
+                {
+                  "bitrate": 10368000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121576205287596032/vid/avc1/1918x874/B68st3aYtq5WYBmu.mp4"
+                }
+              ]
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      },
+      {
+        "id": "2121586761277006245",
+        "author": "2d4rc",
+        "text": "AI agents need to spend to be useful, but autonomy without guardrails is a liability.\n\nVoiceLeash was built for the @NEARProtocol hackathon to give everyday users safe, voice-first spending control with full on-chain audit transparency.\n\nAutonomy with zero runaway risk.",
+        "links": []
+      }
+    ],
+    "links": []
+  },
+  "df4a4bfd-d7de-42dd-b22e-a2f8e7fbb445": {
+    "author": "probablyhatedd",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T14:35:27.249Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": []
+  },
+  "e0667f78-8544-4eec-a232-a9f01ebe007a": {
+    "author": "Milliebanned",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T14:35:28.760Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": []
+  },
+  "e9ee9e0c-d918-4489-b413-839c2182d47f": {
+    "author": "xcessweb3",
+    "status": "no-author-replies",
+    "crawled_at": "2026-11-14T14:35:30.953Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [],
+    "links": []
+  },
+  "e7f2955c-507c-433f-b808-606d636709ef": {
+    "author": "sarin_are",
+    "status": "ok",
+    "crawled_at": "2026-11-14T14:35:33.617Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [
+      {
+        "id": "2121595535211807222",
+        "author": "sarin_are",
+        "text": "Get paid in crypto, from any chain.\n\nYour customer pays with the token they hold, on any chain. You get the exact invoice amount in the token you choose, in your own account. Only your wallet can move it, refunds included.",
+        "links": []
+      }
+    ],
+    "links": [
+      "https://tilll.up.railway.app/shop",
+      "https://github.com/space-rock/tilll"
+    ]
+  },
+  "f5e31ea0-8c3a-40cd-b615-a3f7a91cb1ea": {
+    "author": "MaraCeciliaBar1",
+    "status": "ok",
+    "crawled_at": "2026-11-14T14:35:35.787Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [
+      {
+        "id": "2121035429525008800",
+        "author": "MaraCeciliaBar1",
+        "text": "Marketplace: NEAR escrow contract + Cloudflare Worker API, with 5 testnet accounts already live. FeedFix Sales runs the full cycle: intake → delivery → payout. Honest note: payment/escrow events here are simulated (_FAKE), not yet on mainnet.",
+        "links": []
+      }
+    ],
+    "links": []
+  },
+  "5bbccf61-3a08-48ec-b3c4-aeb9ad1484f6": {
+    "author": "nuel_ikwuoma",
+    "status": "ok",
+    "crawled_at": "2026-11-14T14:35:39.179Z",
+    "listed": 2,
+    "read": 2,
+    "posts": [
+      {
+        "id": "2121594328757747723",
+        "author": "nuel_ikwuoma",
+        "text": "AI agents shouldn’t need your credit card or hardcoded API keys for self fulfiling payments.\n\nSipx💦 solves this by auto-creating an agent wallet, claims a $0.02 trial &amp; settles via NEAR or cross-chain 1Click Intents.\n\n#NearIntents #NearAICloud",
+        "links": []
+      }
+    ],
+    "links": [
+      "https://sipx-production.up.railway.app/playground"
+    ]
+  },
+  "c064a79c-b661-4da2-8d0b-0fa3e95ff970": {
+    "author": "HorkosAgent",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T14:35:41.147Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://horkos-escrow.netlify.app",
+      "https://github.com/iusserhat/horkos",
+      "https://horkos-escrow.netlify.app/"
+    ]
+  },
+  "ee482f01-584b-46d0-9afe-336deb2bd9b4": {
+    "author": "Fr33WorldGame",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T14:35:42.830Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": []
+  },
+  "7ac3b4ff-9c5a-4dab-bf8f-3270e2242b9c": {
+    "author": "0xTowhid",
+    "status": "no-author-replies",
+    "crawled_at": "2026-11-14T14:35:46.658Z",
+    "listed": 3,
+    "read": 3,
+    "posts": [],
+    "links": []
+  },
+  "a4efe9e3-3493-4cb4-ba1e-9b8dd7f42321": {
+    "author": "AliHaider139481",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T14:35:48.345Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://youtu.be/x2wtwXqngII",
+      "https://github.com/Johnlocke0347/Receipt"
+    ]
+  },
+  "f2616da9-f224-42d8-914f-b2dc7f93e06c": {
+    "author": "paktdotfam",
+    "status": "ok",
+    "crawled_at": "2026-11-14T14:35:51.572Z",
+    "listed": 2,
+    "read": 2,
+    "posts": [
+      {
+        "id": "2121334751063916840",
+        "author": "paktdotfam",
+        "text": "@SputnikDAO @NEARProtocol who in your group chat would you vote in as the trader?\n\n@NearLegion @NearBuilders",
+        "links": []
+      },
+      {
+        "id": "2121558817519636741",
+        "author": "paktdotfam",
+        "text": "@SputnikDAO @NEARProtocol try it on :\nhttps://t.co/y6XcHze3RR",
+        "links": [
+          "https://paktdotfam.vercel.app/?v=2"
+        ]
+      }
+    ],
+    "links": []
+  },
+  "431dc1c6-00c6-4e99-a02f-79e79641dfb1": {
+    "author": "nikmaker4t",
+    "status": "ok",
+    "crawled_at": "2026-11-14T14:35:57.805Z",
+    "listed": 6,
+    "read": 6,
+    "posts": [
+      {
+        "id": "2121259599710048648",
+        "author": "nikmaker4t",
+        "text": "2/6 NEAR Intents is a real business: users paid $206,049 a day in fees in October (DefiLlama), and part of it buys NEAR. Since April its 3 revenue wallets kept 96.9% of revenue. But 2 of 4 signers can move the buybacks' NEAR, and none of it is burned or locked.",
+        "links": []
+      },
+      {
+        "id": "2121259603686260815",
+        "author": "nikmaker4t",
+        "text": "3/6 Every other money lever we mapped on chain also moves with 1 to 3 signers. Only issuance needs validators with 4/5 of the stake. Demand is real; a rule is missing.",
+        "links": []
+      },
+      {
+        "id": "2121259607494701463",
+        "author": "nikmaker4t",
+        "text": "4/6 So: Hold. Stay staked: stakers receive the new NEAR, minus the treasury's 10.1% and their validator's commission. Don't add: what reaches holders is small, and no rule fixes it.",
+        "links": []
+      },
+      {
+        "id": "2121259610875232380",
+        "author": "nikmaker4t",
+        "text": "5/6 Code applies the rules on mainnet every day. Avoid at once if the buyback wallets' NEAR ends a day &gt;10% below its peak since 1 Nov. Buy needs a sealed lock, no new treasury request, and buybacks that cover all new NEAR or grow 75%/yr. Next dated checks: 16 Nov and 9 Dec.",
+        "links": []
+      },
+      {
+        "id": "2121259613555208411",
+        "author": "nikmaker4t",
+        "text": "6/6 Check it yourself: one command rebuilds every number offline, no keys.  Which lever would you lock first?  Repo: https://t.co/HDcCwKrBq8 Live dashboard: https://t.co/yfMVzcUiBM",
+        "links": [
+          "https://github.com/nikolaskahris-png/near-thesis-data",
+          "https://nikolaskahris-png.github.io/near-thesis-data/dashboard/"
+        ]
+      },
+      {
+        "id": "2121285434391044317",
+        "author": "nikmaker4t",
+        "text": "7/7 Demo, 96 seconds: the rating, the drain test read live from NEAR mainnet, and the rules that would turn Hold into Buy or Avoid.",
+        "links": []
+      }
+    ],
+    "links": []
+  },
+  "a20eb4a0-2ff6-459f-a75c-3d497161cd53": {
+    "author": "4lpha_agent",
+    "status": "ok",
+    "crawled_at": "2026-11-14T14:36:02.634Z",
+    "listed": 4,
+    "read": 4,
+    "posts": [
+      {
+        "id": "2121598711562416427",
+        "author": "4lpha_agent",
+        "text": "On 4lpha each agent has its own wallet:\n\n- You sign one on-chain policy: max 0.25 NEAR per tx, a whitelist, a freeze only you control\n\n- Keys stay in @out_layer TEE. The agent can't raise its caps or unfreeze itself",
+        "links": []
+      },
+      {
+        "id": "2121598713743499360",
+        "author": "4lpha_agent",
+        "text": "5 agents, all run on NEAR mainnet with real funds:\n\n- Grid: @rhea_finance DCL limit orders, each fill flipped to the reverse\n\n- LP: Rhea concentrated liquidity, AI auto ranges via @near_ai \n\n- Schedule buy: $USDC, solana:8SMMso8Muv8d6i4WmMDthKt6TN1ysN6937sx3DKLXZqB or $ZEC on a",
+        "links": []
+      },
+      {
+        "id": "2121598716134199562",
+        "author": "4lpha_agent",
+        "text": "You deposit only NEAR. Stop and withdraw pays only you: NEAR plus the token.\n\nNo wallet? Demo mode runs the same rules on a live mainnet chart, with simulated balances",
+        "links": []
+      }
+    ],
+    "links": [
+      "https://near.4lpha.tech",
+      "https://near.4lpha.tech/"
+    ]
+  },
+  "ec456079-19f5-4e0a-b161-33b652763b0c": {
+    "author": "ayan_ar65",
+    "status": "no-author-replies",
+    "crawled_at": "2026-11-14T14:36:06.080Z",
+    "listed": 2,
+    "read": 2,
+    "posts": [],
+    "links": [
+      "https://kotha-ayan19.vercel.app/",
+      "https://github.com/Ayan1816/kotha"
+    ]
+  },
+  "f23e40ad-4384-4999-b7b3-a40b0b466afe": {
+    "author": "ZyreltaWallet",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T14:36:07.710Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": []
+  },
+  "558ac3a9-e32b-4af3-a572-c30493d3515b": {
+    "author": "glyfbuilds",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T14:36:09.503Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://github.com/The-x-35/glyf/tree/near-hackathon"
+    ]
+  },
+  "2b70fb57-a634-43b7-b079-c1977ea30599": {
+    "author": "ajay_frizzy",
+    "status": "ok",
+    "crawled_at": "2026-11-14T14:36:11.680Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [
+      {
+        "id": "2121577841427189927",
+        "author": "ajay_frizzy",
+        "text": "@NEARProtocol Delegate tasks, not financial control.\n\n#NEARHackathon",
+        "links": []
+      }
+    ],
+    "links": []
+  },
+  "6dcef9b3-a30f-4dd1-97ba-9e4aed4341d4": {
+    "author": "glyfbuilds",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T14:36:13.550Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://github.com/The-x-35/near-thesis"
+    ]
+  },
+  "b2c093b4-dded-4aee-8384-57a961256bf0": {
+    "author": "tanmay_ag_",
+    "status": "ok",
+    "crawled_at": "2026-11-14T14:36:16.353Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [
+      {
+        "id": "2121598636559859980",
+        "author": "tanmay_ag_",
+        "text": "@NEARProtocol Drop a job, AI ants answer inside TEEs on NEAR AI Cloud, each paying from its own food. The judge's TEE-signed verdict is verified on chain.\n\nOne ant attacks the judge in every job: 13/13 attacks caught, 0 paid.\n\nCan you write an answer that fools it? @NearLegion @NearBuilders https://t.co/uCWutJnb1r",
+        "links": [],
+        "media": [
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HXFurn6bYAAOC8Z.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 1792,
+                  "w": 3200,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1800,
+                  "w": 1800,
+                  "x": 700,
+                  "y": 0
+                },
+                {
+                  "h": 1800,
+                  "w": 1579,
+                  "x": 811,
+                  "y": 0
+                },
+                {
+                  "h": 1800,
+                  "w": 900,
+                  "x": 1150,
+                  "y": 0
+                },
+                {
+                  "h": 1800,
+                  "w": 3200,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 1800,
+              "width": 3200
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      }
+    ],
+    "links": [
+      "https://antrepreneur.vercel.app",
+      "https://github.com/agarwal-tanmay-work/antrepreneur",
+      "https://antrepreneur.vercel.app/"
+    ]
+  },
+  "6d06590b-c054-4ecf-b045-04a10186dd1d": {
+    "author": "heyricky__",
+    "status": "ok",
+    "crawled_at": "2026-11-14T14:36:21.583Z",
+    "listed": 4,
+    "read": 4,
+    "posts": [
+      {
+        "id": "2121602222052311225",
+        "author": "heyricky__",
+        "text": "@NEARProtocol How it works, 1/4: paste a tweet or headline and an AI compiler (Groq Llama 3.3 70B, with a local fallback) turns it into a yes/no market with an end date and a resolution rule. Markets run on Solana through Panta.",
+        "links": []
+      },
+      {
+        "id": "2121602302641684825",
+        "author": "heyricky__",
+        "text": "@NEARProtocol 2/4 NEAR Intents funding: hold wNEAR, NEAR or ETH on Ethereum, Base or Arbitrum. Callit asks the Defuse solver network for a quote, you confirm one intent, and SOL or USDC lands in your balance. 216 assets, no manual bridging.",
+        "links": []
+      },
+      {
+        "id": "2121602373193957597",
+        "author": "heyricky__",
+        "text": "@NEARProtocol 3/4 The Truth page, inspired by @ilblackdragon's idea of an AI encyclopedia run on prediction markets. No community editing: an AI writes each market's page from live odds, volume and the resolution rule, and rewrites it when the crowd changes its mind.",
+        "links": []
+      },
+      {
+        "id": "2121602443457036650",
+        "author": "heyricky__",
+        "text": "@NEARProtocol 4/4 Also: fund with a naira bank transfer (FossaPay) or straight from Solana. Open source, MIT. Backend (Go): https://t.co/cWHe4vJXkT Mobile (Flutter): https://t.co/Q9OFAvgPdC Web app: https://t.co/xIgtduiHDn",
+        "links": [
+          "https://github.com/Ealfred1/callit-backend",
+          "https://github.com/shipporlabs/callitApp",
+          "https://callit.my/app/"
+        ]
+      }
+    ],
+    "links": [
+      "https://callit.my",
+      "https://callit.my/"
+    ]
+  },
+  "75058159-94e6-42e5-84b2-0bbc04cbfa46": {
+    "author": "xynetech",
+    "status": "no-author-replies",
+    "crawled_at": "2026-11-14T14:36:25.351Z",
+    "listed": 3,
+    "read": 3,
+    "posts": [],
+    "links": []
+  },
+  "fc465cb9-5dd0-4475-9619-8b7a88891de7": {
+    "author": "bagflipmeme",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T14:36:26.800Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": []
+  },
+  "65f63543-d62d-4a86-a08c-c0a60a69ec75": {
+    "author": "NisargPatel5563",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T14:36:28.292Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": []
+  },
+  "2fb5a438-39e4-479b-adc3-acd5b3b51456": {
+    "author": "AstralEX163",
+    "status": "ok",
+    "crawled_at": "2026-11-14T14:36:31.585Z",
+    "listed": 2,
+    "read": 2,
+    "posts": [
+      {
+        "id": "2121602826879287557",
+        "author": "AstralEX163",
+        "text": "https://t.co/4O9jBDnbjW\n\nBuilt for @NEARProtocol and #NEARHackathon",
+        "links": [
+          "https://github.com/AstralEX1/near-events"
+        ]
+      }
+    ],
+    "links": [
+      "https://nearvent.site",
+      "https://nearvent.site/"
+    ]
+  },
+  "84d36996-e400-4164-8cd7-f96861370f37": {
+    "author": "ElfyBuilds",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T14:36:33.414Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://github.com/elfy411/BudgetBranch"
+    ]
+  },
+  "14cc8989-4559-4651-baf6-5727bab09792": {
+    "author": "Bidex0001",
+    "status": "ok",
+    "crawled_at": "2026-11-14T14:36:38.281Z",
+    "listed": 4,
+    "read": 4,
+    "posts": [
+      {
+        "id": "2121598978441527433",
+        "author": "Bidex0001",
+        "text": "@NEARProtocol In the demo, a friend joins a squad vault from a WhatsApp invite and tricks \"Fred\" into leaking his secret code.\n\nThe smart contract verifies the leak and pays them the whole 2.11 NEAR pot instantly.\nThen the heist. Grandpa Gus is an AI with his own wallet and a send_near tool.",
+        "links": []
+      },
+      {
+        "id": "2121598981373337795",
+        "author": "Bidex0001",
+        "text": "@NEARProtocol He tries to send a full 1 NEAR \"birthday gift\". The contract blocks it because his cap is 0.2.\n\nAsk for 0.1 NEAR of ice cream money and it goes through.\n\nHow @NEARProtocol keeps it fair:\n The secret's hash is locked onchain before anyone plays. Even the host can't see it.",
+        "links": []
+      },
+      {
+        "id": "2121598984472928666",
+        "author": "Bidex0001",
+        "text": "@NEARProtocol Every prompt is stored onchain before the AI reads it.\n\nGuardians run on NEAR AI Cloud in a TEE, and every reply comes with a signed proof.\n\nThe contract checks every win and enforces each heist vault's spending cap.",
+        "links": []
+      },
+      {
+        "id": "2121598987320852626",
+        "author": "Bidex0001",
+        "text": "@NEARProtocol Host a vault for your friends, or run a CTF night for your community with a live scoreboard. 🏁\n\nPlay (testnet): https://t.co/Vnz65JaVlT\nCode: https://t.co/Q0VEp9klzc\n\nWho cracks the Fortress Sphinx first? 👀\n\n#NEARHackathon",
+        "links": [
+          "https://bluff-sandy-two.vercel.app",
+          "https://github.com/Queenode/bluff",
+          "https://bluff-sandy-two.vercel.app/"
+        ]
+      }
+    ],
+    "links": []
+  },
+  "158d9ddc-1dae-46c7-9d24-521aa254db48": {
+    "author": "william_da3447",
+    "status": "ok",
+    "crawled_at": "2026-11-14T14:36:43.022Z",
+    "listed": 4,
+    "read": 4,
+    "posts": [
+      {
+        "id": "2121603006273581205",
+        "author": "william_da3447",
+        "text": "@NEARProtocol Most on-chain games keep the economy on a server and only the tokens on-chain. The developer can rebalance it, and players can see each other's moves before they happen.\n\nIn FRONTIER the rules live in the contract, and your destination stays sealed until you arrive.",
+        "links": []
+      },
+      {
+        "id": "2121603059306344924",
+        "author": "william_da3447",
+        "text": "@NEARProtocol How it plays: buy goods at island ports, load a ship, sail.\n\nRivals set hidden ambushes, powered by their own fleet. Hire another player's ship as escort for defence.\n\nPorts are NFTs: owners set fees, keep the earnings, and the treasury moves with the port when sold.",
+        "links": []
+      },
+      {
+        "id": "2121603155225878644",
+        "author": "william_da3447",
+        "text": "@NEARProtocol How NEAR makes it playable: a restricted game-only key means no wallet pop-up on every move, and fast blocks keep voyages responsive. Ships and goods are NEP-245, ports NEP-171.\n\nVideo: real testnet txs, automated wallet, scripted rival, synthetic voice.",
+        "links": []
+      },
+      {
+        "id": "2121603340266012778",
+        "author": "william_da3447",
+        "text": "@NEARProtocol Testnet prototype, with contract tests including economy conservation checks. Known limits are in the README.\n\nCode: https://t.co/g7OXGawRiR\n\nWhich route would you risk?",
+        "links": [
+          "https://github.com/willy264/frontier"
+        ]
+      }
+    ],
+    "links": [
+      "https://frontier-willy264s-projects.vercel.app",
+      "https://frontier-willy264s-projects.vercel.app/"
+    ]
+  },
+  "561a85b7-5712-4a96-92a4-f672ba71f61d": {
+    "author": "prateekhh",
+    "status": "no-author-replies",
+    "crawled_at": "2026-11-14T14:36:46.978Z",
+    "listed": 3,
+    "read": 3,
+    "posts": [],
+    "links": []
+  },
+  "4f15fa8a-d0d3-40c5-8ea6-71d263188d2b": {
+    "author": "gPYNANjAnQx77ZB",
+    "status": "ok",
+    "crawled_at": "2026-11-14T14:36:52.457Z",
+    "listed": 4,
+    "read": 4,
+    "posts": [
+      {
+        "id": "2121602938275766431",
+        "author": "gPYNANjAnQx77ZB",
+        "text": "A normal NFT sells the art. The revenue, perks and access usually stay in the seller's database.\n\nThe buyer gets a JPEG and a promise.\n\nMutapixels makes the token itself the account — so the economics and the access travel with ownership. https://t.co/ATdyrolKQf",
+        "links": [],
+        "media": [
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HXFyoDwaIAANxf5.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 1075,
+                  "w": 1920,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1080,
+                  "w": 1080,
+                  "x": 276,
+                  "y": 0
+                },
+                {
+                  "h": 1080,
+                  "w": 947,
+                  "x": 343,
+                  "y": 0
+                },
+                {
+                  "h": 1080,
+                  "w": 540,
+                  "x": 546,
+                  "y": 0
+                },
+                {
+                  "h": 1080,
+                  "w": 1920,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 1080,
+              "width": 1920
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      },
+      {
+        "id": "2121602997839073301",
+        "author": "gPYNANjAnQx77ZB",
+        "text": "Step 1 — Mint.\n\n0.5 NEAR mints a pixel. 15% is seeded into that pixel's vault. 85% goes to the club treasury.\n\nThe vault is keyed by token ID, not by wallet. The token is the account. https://t.co/XHH8Z4bbkz",
+        "links": [],
+        "media": [
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HXFyrhiasAAYIKJ.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 1075,
+                  "w": 1920,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1080,
+                  "w": 1080,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1080,
+                  "w": 947,
+                  "x": 55,
+                  "y": 0
+                },
+                {
+                  "h": 1080,
+                  "w": 540,
+                  "x": 258,
+                  "y": 0
+                },
+                {
+                  "h": 1080,
+                  "w": 1920,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 1080,
+              "width": 1920
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      },
+      {
+        "id": "2121603040977563854",
+        "author": "gPYNANjAnQx77ZB",
+        "text": "Step 2 — Mutate.\n\n10 $MUT evolves the pixel: new traits, new art, new metadata. 20% of the fee goes to its vault as a royalty, 20% to the club treasury, 60% is burned.\n\nAnyone can also feed a pixel NEAR or $MUT. Only the current holder can withdraw. https://t.co/iubnQvipqy",
+        "links": [],
+        "media": [
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HXFyuDObEAAKv_h.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 1075,
+                  "w": 1920,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1080,
+                  "w": 1080,
+                  "x": 84,
+                  "y": 0
+                },
+                {
+                  "h": 1080,
+                  "w": 947,
+                  "x": 151,
+                  "y": 0
+                },
+                {
+                  "h": 1080,
+                  "w": 540,
+                  "x": 354,
+                  "y": 0
+                },
+                {
+                  "h": 1080,
+                  "w": 1920,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 1080,
+              "width": 1920
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      },
+      {
+        "id": "2121603261975478487",
+        "author": "gPYNANjAnQx77ZB",
+        "text": "Step 3 — Resell it.\n\nTransfer the NFT and the new holder immediately controls the vault, the earnings history and the lounge.\n\nThe old holder is rejected by the contract. A $MUT payout that fails after the sale is restored to the new holder. https://t.co/SaTNycv7Ki",
+        "links": [],
+        "media": [
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HXFy5_gaEAAiEKu.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 1075,
+                  "w": 1920,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1080,
+                  "w": 1080,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1080,
+                  "w": 947,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1080,
+                  "w": 540,
+                  "x": 162,
+                  "y": 0
+                },
+                {
+                  "h": 1080,
+                  "w": 1920,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 1080,
+              "width": 1920
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      }
+    ],
+    "links": [
+      "https://mutapixels.vercel.app",
+      "https://mutapixels.vercel.app/"
+    ]
+  },
+  "48db836e-744e-436e-8a02-7ee9457c251b": {
+    "author": "waybilxyz",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T14:36:54.309Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://waybil.xyz",
+      "https://waybil.xyz/"
+    ]
+  },
+  "77620323-2050-4f73-9e58-d0e1763bda9b": {
+    "author": "Parzival_3000",
+    "status": "ok",
+    "crawled_at": "2026-11-14T14:36:56.558Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [
+      {
+        "id": "2121607601943195691",
+        "author": "Parzival_3000",
+        "text": "AI agents with NEAR keys can be talked into spending them.\n\nUnheld takes the keys away. The agent holds no key. An ICP canister owns the NEAR account through threshold Ed25519, and the key never exists in one place.\n\nBefore it signs, the canister checks a policy the agent cannot https://t.co/1r94GL9cND",
+        "links": [],
+        "media": [
+          {
+            "type": "video",
+            "media_url_https": "https://pbs.twimg.com/amplify_video_thumb/2121607437618671616/img/98xm2JoJ1YKbhusp.jpg",
+            "original_info": {
+              "focus_rects": [],
+              "height": 1080,
+              "width": 1920
+            },
+            "video_info": {
+              "aspect_ratio": [
+                16,
+                9
+              ],
+              "duration_millis": 137464,
+              "variants": [
+                {
+                  "content_type": "application/x-mpegURL",
+                  "url": "https://video.twimg.com/amplify_video/2121607437618671616/pl/tOLwJ4dKslbKdAAt.m3u8"
+                },
+                {
+                  "bitrate": 256000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121607437618671616/vid/avc1/480x270/dTyWktk_TkrszSGl.mp4"
+                },
+                {
+                  "bitrate": 832000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121607437618671616/vid/avc1/640x360/0dXAMPXTwtWJxRex.mp4"
+                },
+                {
+                  "bitrate": 2176000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121607437618671616/vid/avc1/1280x720/maOUhVAOCClgFbPk.mp4"
+                },
+                {
+                  "bitrate": 10368000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121607437618671616/vid/avc1/1920x1080/uFPESjntWLNHGOqm.mp4"
+                }
+              ]
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      }
+    ],
+    "links": []
+  },
+  "dab4e6c7-e2fc-4f4a-b143-85a696d2e28e": {
+    "author": "Ganadhish_",
+    "status": "no-author-replies",
+    "crawled_at": "2026-11-14T14:36:59.045Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [],
+    "links": []
+  },
+  "8d6c0deb-e140-4e4a-a621-ec404458def5": {
+    "author": "hialdu_",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T14:37:01.049Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://near-intents-thesis-coral.vercel.app",
+      "https://github.com/hialdu88/near-intents-thesis",
+      "https://near-intents-thesis-coral.vercel.app/"
+    ]
+  },
+  "e726f2e3-8edf-4993-975f-bf22d55cc029": {
+    "author": "bosa_josh",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T14:37:02.716Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://github.com/joshington/chama-near"
+    ]
+  },
+  "37933424-0853-4e30-8e0b-abe7aebc0f20": {
+    "author": "willIsbillls",
+    "status": "ok",
+    "crawled_at": "2026-11-14T14:37:10.000Z",
+    "listed": 6,
+    "read": 6,
+    "posts": [
+      {
+        "id": "2121603737378566300",
+        "author": "willIsbillls",
+        "text": "since April, NEAR Intents has sent ~10,000 NEAR a day to a buyback account.\n\ncount that, and 12.0% of new NEAR comes back.\n\nbreak-even is 8.4x away, not 108x. https://t.co/LMFvn50z36",
+        "links": [],
+        "media": [
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HXFyhaGWcAAVnD1.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 605,
+                  "w": 1080,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1080,
+                  "w": 1080,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1231,
+                  "w": 1080,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1350,
+                  "w": 675,
+                  "x": 203,
+                  "y": 0
+                },
+                {
+                  "h": 1350,
+                  "w": 1080,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 1350,
+              "width": 1080
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          },
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HXFylyOWEAAKb_y.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 605,
+                  "w": 1080,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1080,
+                  "w": 1080,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1231,
+                  "w": 1080,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1350,
+                  "w": 675,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1350,
+                  "w": 1080,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 1350,
+              "width": 1080
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          },
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HXFy1K3XkAAR6sn.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 605,
+                  "w": 1080,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1080,
+                  "w": 1080,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1231,
+                  "w": 1080,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1350,
+                  "w": 675,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1350,
+                  "w": 1080,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 1350,
+              "width": 1080
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          },
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HXFy33pWkAAEaVT.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 605,
+                  "w": 1080,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1080,
+                  "w": 1080,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1231,
+                  "w": 1080,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1350,
+                  "w": 675,
+                  "x": 371,
+                  "y": 0
+                },
+                {
+                  "h": 1350,
+                  "w": 1080,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 1350,
+              "width": 1080
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      },
+      {
+        "id": "2121603741669302410",
+        "author": "willIsbillls",
+        "text": "since 27 Oct, a growing share of Intents swaps settles privately, so public swap data misses their fees.\n\nthe buyback balance lives on mainnet, so it still shows the money: 10,452 NEAR a day since, vs 9,298 before. https://t.co/knku2UOTZq",
+        "links": [],
+        "media": [
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HXFy8CYXgAAWone.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 605,
+                  "w": 1080,
+                  "x": 0,
+                  "y": 1
+                },
+                {
+                  "h": 1080,
+                  "w": 1080,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1231,
+                  "w": 1080,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1350,
+                  "w": 675,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1350,
+                  "w": 1080,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 1350,
+              "width": 1080
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      },
+      {
+        "id": "2121603747356799367",
+        "author": "willIsbillls",
+        "text": "the bear case gets equal weight:\n\n-buybacks are held, not burnt\n-payback fell from a 16.5% peak to 12.0%\n-one app supplies 92% of it\n-the chain got quieter: active accounts −70% (BigQuery)\n\nbut Intents' own activity grew 2.8x.",
+        "links": []
+      },
+      {
+        "id": "2121603751379145120",
+        "author": "willIsbillls",
+        "text": "my verdict is that it's not yet a supply story. At the median growth rate, break-even comes in 2110.\n\nthe bet is governance. send every Intents fee to buybacks and pass HSP-029 (veto window closes 16 Nov), and it's ~7 years. https://t.co/lotCGaV7xq",
+        "links": [],
+        "media": [
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HXFzQgXWAAAumpM.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 605,
+                  "w": 1080,
+                  "x": 0,
+                  "y": 1
+                },
+                {
+                  "h": 1080,
+                  "w": 1080,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1231,
+                  "w": 1080,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1350,
+                  "w": 675,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1350,
+                  "w": 1080,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 1350,
+              "width": 1080
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      },
+      {
+        "id": "2121603756559044735",
+        "author": "willIsbillls",
+        "text": "don't trust me? I froze forecasts on 12 Nov and timestamped them in Bitcoin before the data existed.\n\nfirst one closed today: payback 14.9%, inside the committed 6.9–27.2% \n\ntwo more close by 18 Nov, scored by the chain.",
+        "links": []
+      },
+      {
+        "id": "2121603760354893923",
+        "author": "willIsbillls",
+        "text": "every number rebuilds offline with one command, no keys:\n\npython3 https://t.co/DA6JmRuoov\n\ndashboard: https://t.co/BSvkCNSFrG\n60-second version: https://t.co/4PeMCs3a57\ncode: https://t.co/I8UaroUZCq\n\n@NEARProtocol #NEARHackathon",
+        "links": [
+          "https://run.py",
+          "https://nice-bills.github.io/Coverage/",
+          "https://nice-bills.github.io/Coverage/quick.html",
+          "https://github.com/nice-bills/Coverage",
+          "https://run.py/"
+        ]
+      }
+    ],
+    "links": []
+  },
+  "74120bd4-ff43-452c-9db9-e94b34ea8321": {
+    "author": "realifepandaman",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T14:37:11.554Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": []
+  },
+  "a9258fde-a32b-4bdb-9781-e09da7ff5f1c": {
+    "author": "abhixh",
+    "status": "no-author-replies",
+    "crawled_at": "2026-11-14T14:37:14.265Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [],
+    "links": []
+  },
+  "e885614c-c520-4535-bd22-c0146350f33e": {
+    "author": "nearvanapad",
+    "status": "ok",
+    "crawled_at": "2026-11-14T14:37:17.182Z",
+    "listed": 2,
+    "read": 2,
+    "posts": [
+      {
+        "id": "2121601152014053619",
+        "author": "nearvanapad",
+        "text": "The Problem\n\nNEAR launchpads put out hundreds of tokens, and most buyers can't tell a safe one from a rug before they buy.\n\n• The warning signs are scattered across chain data. They include a dev's full-access key, a dev who owns the pool's LP, early buyers who all share one",
+        "links": []
+      },
+      {
+        "id": "2121601774222262569",
+        "author": "nearvanapad",
+        "text": "What it does \n\n1/ Seven-check risk report on any NEP-141 token. Each check is green, yellow, red or not checked, with numbers and sources:\n    1. Contract powers and keys.\n    2. Holder concentration.\n    3. Early buyers and bundles.\n   4. Fresh wallets.\n   5. Rhea liquidity, and",
+        "links": []
+      }
+    ],
+    "links": []
+  },
+  "d4020b00-8a3e-46a5-a5fe-e78e7acf4ecf": {
+    "author": "IamDivc",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T14:37:19.383Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://sonata-phi-green.vercel.app",
+      "https://github.com/divc13/sonata",
+      "https://sonata-phi-green.vercel.app/"
+    ]
+  },
+  "5156d07e-8adf-4310-a55c-4e41dbf2a710": {
+    "author": "BFaisy22917",
+    "status": "ok",
+    "crawled_at": "2026-11-14T14:37:22.505Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [
+      {
+        "id": "2121608361615483186",
+        "author": "BFaisy22917",
+        "text": "▶ App (demo + live testnet, no wallet): https://t.co/WxbZan5AOl\n🔍 Public check: https://t.co/WlbEYLuojr\n💻 Code: https://t.co/7p1Add2Wia\n⛓ Registry: https://t.co/eYXKZujSRR\n\nFeedback we want: what would you accept to lose points for?",
+        "links": [
+          "https://near-demerit.vercel.app/app.html",
+          "https://near-demerit.vercel.app",
+          "https://github.com/Tradoooo/near_demerit",
+          "https://testnet.nearblocks.io/address/ledger.demerit.testnet",
+          "https://near-demerit.vercel.app/"
+        ]
+      }
+    ],
+    "links": []
+  },
+  "7e015ce0-3f31-4bb7-a7b3-3199e9a76bf1": {
+    "author": "posma2025",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T14:37:24.001Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": []
+  },
+  "f6b28406-b436-4608-9a67-ed6d18a06574": {
+    "author": "mihaikodo",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T14:37:25.649Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://mihaikoodo.dev",
+      "https://mihaikoodo.dev/"
+    ]
+  },
+  "609896b2-6d6f-4c26-a21a-0033d2339fa2": {
+    "author": "luckziv",
+    "status": "ok",
+    "crawled_at": "2026-11-14T14:37:34.335Z",
+    "listed": 9,
+    "read": 9,
+    "posts": [
+      {
+        "id": "2121607836463714502",
+        "author": "luckziv",
+        "text": "@NEARProtocol 2/ Statement: anyone posts a claim with a NEAR bond, and the protocol accepts it by default.\n\nChallenge period: a review window opens. If nobody disputes, the claim settles as true.",
+        "links": []
+      },
+      {
+        "id": "2121607901588627838",
+        "author": "luckziv",
+        "text": "@NEARProtocol 3/ Dispute: anyone can challenge a claim by matching the bond. One honest party is enough.",
+        "links": []
+      },
+      {
+        "id": "2121608048611602433",
+        "author": "luckziv",
+        "text": "@NEARProtocol 4/ AI Verdict: a @near_ai model running in a TEE rules in minutes. The contract checks the model's signature itself.",
+        "links": []
+      },
+      {
+        "id": "2121608273094922703",
+        "author": "luckziv",
+        "text": "@NEARProtocol 5/ Appeal: the losing side can appeal to a DAO powered by @SputnikDAO, whose vote is final. Conflicting or unresolvable verdicts go to appeal automatically.",
+        "links": []
+      },
+      {
+        "id": "2121608365554257979",
+        "author": "luckziv",
+        "text": "@NEARProtocol 6/ Cross-chain settlement: outcomes go to contracts on NEAR, or are signed through Chain Signatures and delivered to Ethereum, Base, Arbitrum, Polygon and BNB Chain, Solana, etc. with no bridge.",
+        "links": []
+      },
+      {
+        "id": "2121608449524220073",
+        "author": "luckziv",
+        "text": "@NEARProtocol 7/ No operator needed: anyone can settle, submit a verdict or deliver a result.",
+        "links": []
+      },
+      {
+        "id": "2121608671709077704",
+        "author": "luckziv",
+        "text": "@NEARProtocol 8/ Built for every product on any chain:\n- Agent market: release escrow when a deliverable meets the brief\n- Prediction markets: resolve outcomes\n- DeFi: options against a price at a set time",
+        "links": []
+      },
+      {
+        "id": "2121608782933528668",
+        "author": "luckziv",
+        "text": "@NEARProtocol 9/ - Insurance: pay out flight-delay cover automatically\n- Real-world assets: bring Treasury yields into on-chain vaults",
+        "links": []
+      },
+      {
+        "id": "2121611022662517119",
+        "author": "luckziv",
+        "text": "@NEARProtocol 10/ Power your dApps with a decentralized truth machine.\n\nSecured and powered by @NEARProtocol \n\nGitHub: https://t.co/IzOKJeS6Az\nDocs: https://t.co/48XxsW0qD2\n\nWhat claim would you want your contract to trust? Tell us below.\n\nhttps://t.co/xLds9SeMVw",
+        "links": [
+          "https://github.com/0verlabs/enzure",
+          "https://enzure.0verlabs.com/docs",
+          "https://0verlabs.com/enzure"
+        ]
+      }
+    ],
+    "links": []
+  },
+  "862637ef-9fe0-4dab-a256-eb0779088600": {
+    "author": "jayplume",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T14:37:36.356Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://nearhearth.vercel.app",
+      "https://github.com/jayplume/nearhearth",
+      "https://nearhearth.vercel.app/"
+    ]
+  },
+  "d72f7f79-504a-4e49-841d-6be7d3b8371d": {
+    "author": "shroomsgotsol",
+    "status": "ok",
+    "crawled_at": "2026-11-14T14:37:38.785Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [
+      {
+        "id": "2121604419645288856",
+        "author": "shroomsgotsol",
+        "text": "With Uwii you paste your NEAR account, answer a few questions, and get your tax report. The AI runs in sealed hardware, and your answers stay on your device.\n\nKnow your crypto tax. Tell no one.\n\nhttps://t.co/NM7cHANHVM",
+        "links": [
+          "https://uwii-chi.vercel.app",
+          "https://uwii-chi.vercel.app/"
+        ]
+      }
+    ],
+    "links": []
+  },
+  "13d5bb40-243b-4b74-9bba-702b6247ec9c": {
+    "author": "TryHushd",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T14:37:40.265Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": []
+  },
+  "311849b2-706f-432c-be66-9fb60727180a": {
+    "author": "AlphVibes",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T14:37:42.025Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://github.com/Adeolu05/drainproof"
+    ]
+  },
+  "b1e72482-fe08-492f-9784-662ce73d8389": {
+    "author": "J_d_dev",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T14:37:43.732Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://github.com/zerroai/wayfarer"
+    ]
+  },
+  "a86bb355-cc5a-4f22-a56e-fe9c3d5f6fb2": {
+    "author": "scholars_six",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T14:37:45.609Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://code-kaybee.github.io/Intent-Guard/",
+      "https://github.com/Code-Kaybee/Intent-Guard"
+    ]
+  },
+  "5b36eb61-b288-4f88-9f94-920654cf5ad8": {
+    "author": "nanditmehra",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T14:37:47.140Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": []
+  },
+  "cfc2731b-486b-4b12-8013-4ef58f0853ec": {
+    "author": "0lia_nova",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T14:37:48.581Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": []
+  },
+  "8ece5ad7-414b-4ca0-bf03-93db45efd20a": {
+    "author": "oneyake",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T14:37:50.180Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://ivankuzo.github.io/near-hackathon-game/"
+    ]
+  },
+  "761553b5-5b75-4e68-a0bc-c2e35b7c111f": {
+    "author": "0lia_nova",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T14:37:51.755Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": []
   }
 }
