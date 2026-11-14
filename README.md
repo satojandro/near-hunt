@@ -36,6 +36,18 @@ project, one upvote per NEAR account, and threaded comments.
 - **Agent-ready.** A read-only JSON API and a [`SKILL.md`](public/SKILL.md) let an AI agent
   browse, shortlist and verify every record against the chain by itself.
 
+## Screenshots
+
+Captured from the live site on 14 Nov 2026 (`docs/screenshots/`).
+
+| Directory | Project page |
+|---|---|
+| [![Directory: 1,167 projects, most upvoted first, with the live near.social feed](docs/screenshots/directory.png)](https://nearhunt.xyz/) | [![Project page: description, media, on-chain record and the accounts that upvoted](docs/screenshots/project.png)](https://nearhunt.xyz/p/f159416a-3ab5-439d-8f68-73c34aba7337) |
+| **Profile** | **Open data** |
+| [![Profile: near.social identity, upvotes with block heights](docs/screenshots/profile.png)](https://nearhunt.xyz/u/alejandro.near) | [![Open data: where every record lives, the API and SKILL.md](docs/screenshots/open-data.png)](https://nearhunt.xyz/open-data) |
+| **Support** | **Phone** |
+| [![Support: donate NEAR or stake with the validator](docs/screenshots/support.png)](https://nearhunt.xyz/support) | <img src="docs/screenshots/mobile-directory.png" alt="Directory on a phone" width="280"> |
+
 ## Status (measured 13 Nov 2026)
 
 | What | Number | Reproduce |
@@ -147,7 +159,7 @@ that outlives the hackathon.
 
 The hackathon ends on 14 Nov. NEAR Hunt doesn't: next is open submissions (NH-101 in
 [`docs/PLAN.md`](docs/PLAN.md), not built yet), so any NEAR project can get a launch day and a
-community to cheer it on.
+community to cheer it on. See the [Roadmap](#roadmap-where-near-hunt-goes-after-the-14th).
 
 ## What it does (MVP)
 
@@ -173,9 +185,53 @@ community to cheer it on.
   independently of the frontend.
 - **Agent surface** — a documented read-only API plus a `SKILL.md` so an operator can tell an
   agent "read NEAR Hunt's skill and shortlist ten projects worth investigating."
+- **Support page** — `/support`: donate NEAR to `nearhunt.near` or stake with the team's
+  validator `avb.poolv1.near`, both signed by the visitor in their own wallet. It supports the
+  site, not any project, and never touches a ranking.
 
 Explicitly **not** in the MVP: AI scoring, crowdfunding, escrow, token rewards, agent write
 access, and any custom smart contract.
+
+## Roadmap: where NEAR Hunt goes after the 14th
+
+**The vision: the place every NEAR project launches, not just this hackathon's.** A hackathon
+proved the loop works: builders get a permanent page, the community signals what it would use, and
+every record and vote is open data anyone can build on. The roadmap turns that into a standing
+launch platform for the whole ecosystem, owned by nobody's server.
+
+Status labels are honest: **Live** runs on nearhunt.xyz today, **Built** is code in this repo not
+yet switched on, **Next** is planned and not built. Items with an NH number are designed in
+[`docs/PLAN.md`](docs/PLAN.md); the others are direction, not commitments.
+
+**Phase 1 — Hackathon (1–14 Nov): Live**
+- Directory, project pages, one-account-one-vote upvotes and comments, all on NEAR mainnet with no
+  contract. Profiles and sharing through near.social. Open data, read-only API, `SKILL.md`.
+- Builders claim their listings through a GitHub repository check and link a NEAR account (NH-119).
+- Support page: donations and validator staking fund the site without ads in the ranking (NH-121).
+
+**Phase 2 — Beyond the hackathon (late Nov – Dec): Next**
+- **Open submissions (NH-101):** any NEAR account lists a project, any day of the year. The
+  submitter is the account that signed it, shown as "submitted by", never as the maker. Needs a
+  written moderation policy and hide list before launch.
+- **Launch days:** a daily and weekly "top launches" view, so a project gets its moment instead
+  of competing with 1,000 hackathon entries at once.
+- **Makers publish their own story:** a claimed maker's description is shown ahead of the
+  submitter's (NH-105), with updates over time.
+- **Funding links (NH-102):** "Fund this project" from Baby Shark campaigns that name a listing.
+
+**Phase 3 — An open discovery layer (2027): Next**
+- **One open format for NEAR projects (NH-100):** publish `nearhunt/project/1` as a documented
+  standard so wallets, explorers, grant programs and other directories can read and write the same
+  records.
+- **Every hackathon, one place:** import future NEAR hackathons and accelerator cohorts as their
+  own collections, with a builder's history following their account across events.
+- **Agents as first-class readers:** richer `SKILL.md` queries so research and investment agents
+  can shortlist, compare and verify projects straight against the chain.
+- **Sustainable and neutral:** validator staking and donations first; one clearly labelled
+  sponsored slot outside the rankings, each placement published on chain (NH-104, **Built**, off
+  until after judging and an owner decision). Votes stay community signals, never for sale.
+
+What we will not do: tokens for votes, paid ranking, or agents writing on anyone's behalf.
 
 ## Architecture
 

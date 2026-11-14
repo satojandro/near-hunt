@@ -9,7 +9,7 @@
  * the dashboard stays readable during judging.
  */
 
-export type AnalyticsEvent = 'wallet_connect' | 'vote' | 'unvote' | 'comment' | 'outbound_click';
+export type AnalyticsEvent = 'wallet_connect' | 'vote' | 'unvote' | 'comment' | 'outbound_click' | 'donate' | 'stake';
 
 type EventData = Record<string, string | number | boolean | null | undefined>;
 

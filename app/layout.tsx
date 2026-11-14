@@ -78,6 +78,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <Link href="/">Projects</Link>
                 <Link href="/open-data">Open data</Link>
                 <Link href="/comment-policy">Comment policy</Link>
+                <Link href="/support">Support NEAR Hunt</Link>
                 <a href={correctionUrl()} target="_blank" rel="noopener noreferrer" data-outbound-kind="correction">
                   Report a problem
                 </a>

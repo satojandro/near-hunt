@@ -268,6 +268,12 @@ export default async function OpenDataPage() {
             </p>
             <a href={PROPOSAL_URL} className={s.more}>Read the draft on GitHub ↗</a>
           </section>
+
+          {/* NH-94: the support link. It supports the site, not any project. */}
+          <p className={s.small}>
+            Find this data useful? <Link href="/support">Support NEAR Hunt</Link>: it supports the site, not
+            any project.
+          </p>
         </aside>
       </main>
     </>

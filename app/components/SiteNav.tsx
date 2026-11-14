@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 const LINKS = [
   { href: '/', label: 'Projects', match: (p: string) => p === '/' || p.startsWith('/p/') },
   { href: '/open-data', label: 'Open data', match: (p: string) => p.startsWith('/open-data') },
+  { href: '/support', label: 'Support', match: (p: string) => p.startsWith('/support') },
 ];
 
 /** Header nav; marks the current section with aria-current (styled in globals.css). */
