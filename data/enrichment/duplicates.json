@@ -1,20 +1,20 @@
 {
-  "generated_at": "2026-11-14T16:29:58.066Z",
+  "generated_at": "2026-11-14T18:08:24.393Z",
   "account": "nearhunt.near",
   "note": "Flags only. Nothing is merged, hidden or written. `clusters`/`groups` share an identifying URL (possible duplicates). `weak_signals` share only a name or an X account and are usually different projects.",
   "summary": {
-    "submissions": 1568,
-    "on_chain": 1502,
-    "pending": 66,
-    "shared_urls": 4,
+    "submissions": 1669,
+    "on_chain": 1575,
+    "pending": 94,
+    "shared_urls": 5,
     "by_kind": {
-      "x-post": 1,
+      "x-post": 2,
       "url": 3
     },
-    "clusters": 4,
-    "submissions_flagged": 10,
-    "same_name_groups": 51,
-    "same_x_account_groups": 154
+    "clusters": 5,
+    "submissions_flagged": 12,
+    "same_name_groups": 58,
+    "same_x_account_groups": 166
   },
   "clusters": [
     {
@@ -90,6 +90,26 @@
     {
       "submissions": [
         {
+          "submission_id": "0a956bc3-dfc0-46f0-9a68-1bc64a29db7d",
+          "name": "RobinHoot: The Guild Chest",
+          "on_chain": false
+        },
+        {
+          "submission_id": "aa684dd5-4c93-4651-aa1e-c78a4797893f",
+          "name": "The Heist",
+          "on_chain": false
+        }
+      ],
+      "shared": [
+        {
+          "kind": "x-post",
+          "key": "x.com/status/2121657893359411565"
+        }
+      ]
+    },
+    {
+      "submissions": [
+        {
           "submission_id": "442b6492-df62-496b-9c1a-0dbd13543687",
           "name": "Sylic AI",
           "on_chain": true
@@ -125,6 +145,28 @@
           "submission_id": "113ecb11-f87d-4d1e-b4f4-c76fdfafdc2b",
           "name": "SYLIC AI",
           "on_chain": true,
+          "fields": [
+            "demo_url"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "x.com/status/2121657893359411565",
+      "kind": "x-post",
+      "submissions": [
+        {
+          "submission_id": "0a956bc3-dfc0-46f0-9a68-1bc64a29db7d",
+          "name": "RobinHoot: The Guild Chest",
+          "on_chain": false,
+          "fields": [
+            "demo_url"
+          ]
+        },
+        {
+          "submission_id": "aa684dd5-4c93-4651-aa1e-c78a4797893f",
+          "name": "The Heist",
+          "on_chain": false,
           "fields": [
             "demo_url"
           ]
@@ -283,6 +325,11 @@
             "submission_id": "ff4096e0-82f9-468d-8592-ea13a28fb4c4",
             "name": "AgentGuard",
             "on_chain": true
+          },
+          {
+            "submission_id": "d5004a09-dfb3-4c33-b00d-ecfcb75c961d",
+            "name": "AgentGuard",
+            "on_chain": false
           }
         ]
       },
@@ -400,6 +447,11 @@
             "on_chain": true
           },
           {
+            "submission_id": "6d3d9cf8-0e7b-4b56-9e30-033b3baad3b7",
+            "name": "NEAR Sentinel",
+            "on_chain": true
+          },
+          {
             "submission_id": "75b5562f-02de-414c-9281-7199ed2c8ea1",
             "name": "NEAR Sentinel",
             "on_chain": true
@@ -408,11 +460,6 @@
             "submission_id": "7ed930a3-a624-4e19-9a79-fc24f9c39117",
             "name": "NEAR Sentinel",
             "on_chain": true
-          },
-          {
-            "submission_id": "6d3d9cf8-0e7b-4b56-9e30-033b3baad3b7",
-            "name": "NEAR Sentinel",
-            "on_chain": false
           }
         ]
       },
@@ -493,6 +540,26 @@
             "submission_id": "8ec7bfd4-68b6-4886-8d00-a48c9a7186ef",
             "name": "Foreman",
             "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "assay",
+        "submissions": [
+          {
+            "submission_id": "19021f5f-cfcd-46e9-bad3-76625e82d8bb",
+            "name": "Assay",
+            "on_chain": true
+          },
+          {
+            "submission_id": "33ab9831-4cbd-4f1d-bf86-c0b992479d3d",
+            "name": "Assay",
+            "on_chain": true
+          },
+          {
+            "submission_id": "53457d06-7414-40ad-aa96-905e8d5501b7",
+            "name": "Assay",
+            "on_chain": false
           }
         ]
       },
@@ -667,6 +734,21 @@
         ]
       },
       {
+        "key": "agent allowance",
+        "submissions": [
+          {
+            "submission_id": "e212be3f-5f05-488f-ab74-cbb38b922d32",
+            "name": "Agent Allowance",
+            "on_chain": true
+          },
+          {
+            "submission_id": "cf27c58b-ddbe-4440-bb2e-9227c62a0d08",
+            "name": "Agent Allowance",
+            "on_chain": false
+          }
+        ]
+      },
+      {
         "key": "agent allowance guard",
         "submissions": [
           {
@@ -712,21 +794,6 @@
         ]
       },
       {
-        "key": "assay",
-        "submissions": [
-          {
-            "submission_id": "19021f5f-cfcd-46e9-bad3-76625e82d8bb",
-            "name": "Assay",
-            "on_chain": true
-          },
-          {
-            "submission_id": "33ab9831-4cbd-4f1d-bf86-c0b992479d3d",
-            "name": "Assay",
-            "on_chain": true
-          }
-        ]
-      },
-      {
         "key": "bridle",
         "submissions": [
           {
@@ -745,14 +812,14 @@
         "key": "cachet",
         "submissions": [
           {
-            "submission_id": "e3cbfdcd-c3a9-4bc5-a3e6-ee8220888dfc",
-            "name": "Cachet",
-            "on_chain": false
-          },
-          {
             "submission_id": "58dd5fc3-8155-4aa3-8116-2cfea01d9318",
             "name": "Cachet",
-            "on_chain": false
+            "on_chain": true
+          },
+          {
+            "submission_id": "e3cbfdcd-c3a9-4bc5-a3e6-ee8220888dfc",
+            "name": "Cachet",
+            "on_chain": true
           }
         ]
       },
@@ -790,14 +857,14 @@
         "key": "factor",
         "submissions": [
           {
-            "submission_id": "ca4ce2d5-d620-43eb-826d-25573889fe5a",
+            "submission_id": "171eceec-b123-4be3-a490-7cd313ef1df4",
             "name": "Factor",
             "on_chain": true
           },
           {
-            "submission_id": "171eceec-b123-4be3-a490-7cd313ef1df4",
+            "submission_id": "ca4ce2d5-d620-43eb-826d-25573889fe5a",
             "name": "Factor",
-            "on_chain": false
+            "on_chain": true
           }
         ]
       },
@@ -970,14 +1037,14 @@
         "key": "orbit",
         "submissions": [
           {
-            "submission_id": "44b5ae7e-aa92-4927-97e8-e0eabf4cf379",
+            "submission_id": "092c0414-a7f6-443d-acb3-dce0ad36ba75",
             "name": "Orbit",
             "on_chain": true
           },
           {
-            "submission_id": "092c0414-a7f6-443d-acb3-dce0ad36ba75",
+            "submission_id": "44b5ae7e-aa92-4927-97e8-e0eabf4cf379",
             "name": "Orbit",
-            "on_chain": false
+            "on_chain": true
           }
         ]
       },
@@ -1027,6 +1094,36 @@
         ]
       },
       {
+        "key": "quittance",
+        "submissions": [
+          {
+            "submission_id": "a2757faf-3453-4d4f-98dc-3c18598dcdf9",
+            "name": "Quittance",
+            "on_chain": true
+          },
+          {
+            "submission_id": "d9340696-d886-46fc-9550-5990810dd523",
+            "name": "Quittance",
+            "on_chain": false
+          }
+        ]
+      },
+      {
+        "key": "rainbow gate",
+        "submissions": [
+          {
+            "submission_id": "3414b859-2b92-48e8-a58b-b6e0ad7ff7ce",
+            "name": "Rainbow Gate",
+            "on_chain": true
+          },
+          {
+            "submission_id": "f3723d8c-40de-4c6d-8eb8-c358523ed271",
+            "name": "Rainbow gate",
+            "on_chain": false
+          }
+        ]
+      },
+      {
         "key": "recourse",
         "submissions": [
           {
@@ -1037,6 +1134,21 @@
           {
             "submission_id": "aac9c635-f12e-47ce-917b-6d68a86b33a0",
             "name": "Recourse",
+            "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "relay",
+        "submissions": [
+          {
+            "submission_id": "59f753c0-7a87-4506-ada7-2a1712c03e33",
+            "name": "Relay",
+            "on_chain": true
+          },
+          {
+            "submission_id": "c3811444-35d2-4567-adc1-c93088436716",
+            "name": "Relay",
             "on_chain": true
           }
         ]
@@ -1097,7 +1209,7 @@
           {
             "submission_id": "99c0bebd-96ef-4b71-aa7f-1004bd53e05a",
             "name": "Styx",
-            "on_chain": false
+            "on_chain": true
           }
         ]
       },
@@ -1177,6 +1289,51 @@
         ]
       },
       {
+        "key": "tender",
+        "submissions": [
+          {
+            "submission_id": "c9b967e2-b8a9-4afd-b6f9-3ba48a07acd6",
+            "name": "Tender",
+            "on_chain": true
+          },
+          {
+            "submission_id": "c31008a6-6566-452b-912d-7283e47fdf73",
+            "name": "Tender",
+            "on_chain": false
+          }
+        ]
+      },
+      {
+        "key": "totem",
+        "submissions": [
+          {
+            "submission_id": "6b1cd1d9-d0bc-4a8d-8c37-41ad1f4df161",
+            "name": "TOTEM",
+            "on_chain": true
+          },
+          {
+            "submission_id": "1fddefea-c1de-46da-9640-d2da431e3d40",
+            "name": "TOTEM",
+            "on_chain": false
+          }
+        ]
+      },
+      {
+        "key": "vigil",
+        "submissions": [
+          {
+            "submission_id": "1ca01819-1a03-4a49-81d7-eb5755db0fea",
+            "name": "VIGIL",
+            "on_chain": true
+          },
+          {
+            "submission_id": "4572eebe-73c2-4020-ab83-ec43f37d2b1b",
+            "name": "Vigil",
+            "on_chain": false
+          }
+        ]
+      },
+      {
         "key": "vouch",
         "submissions": [
           {
@@ -1247,14 +1404,14 @@
         "key": "0xbagelface",
         "submissions": [
           {
-            "submission_id": "86bb2341-2627-4559-87ba-99fb6650ede8",
-            "name": "Sigstack: Verifiable Private AI for Signal",
-            "on_chain": false
-          },
-          {
             "submission_id": "7a2381cd-8a81-4ba7-9d59-0aca6df97b62",
             "name": "Saving Circles on NEAR: Community Savings Without a Middleman",
-            "on_chain": false
+            "on_chain": true
+          },
+          {
+            "submission_id": "86bb2341-2627-4559-87ba-99fb6650ede8",
+            "name": "Sigstack: Verifiable Private AI for Signal",
+            "on_chain": true
           }
         ]
       },
@@ -1279,12 +1436,12 @@
           {
             "submission_id": "10583763-34b6-4fc6-957e-cf32c1bfc9e6",
             "name": "Smoke Alarm",
-            "on_chain": false
+            "on_chain": true
           },
           {
             "submission_id": "4b546a30-0008-41c9-9c0a-ddca09d28ca8",
             "name": "Unplug",
-            "on_chain": false
+            "on_chain": true
           }
         ]
       },
@@ -1644,7 +1801,7 @@
           {
             "submission_id": "d04d520b-3c04-4fe5-b128-f3aa08e0bc67",
             "name": "Morrow",
-            "on_chain": false
+            "on_chain": true
           }
         ]
       },
@@ -2009,6 +2166,21 @@
         ]
       },
       {
+        "key": "daikyukim",
+        "submissions": [
+          {
+            "submission_id": "85b2fe55-784b-48c6-a8d5-2f85929018d8",
+            "name": "Amuma",
+            "on_chain": true
+          },
+          {
+            "submission_id": "5a5031f2-fe0c-47a4-8df3-ced7aa1d0ab6",
+            "name": "RaOpenWallet",
+            "on_chain": false
+          }
+        ]
+      },
+      {
         "key": "davidhu178488",
         "submissions": [
           {
@@ -2020,6 +2192,21 @@
             "submission_id": "14c70946-d8de-4fed-8fc6-739886447220",
             "name": "DeadDrop",
             "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "dhruva_0206",
+        "submissions": [
+          {
+            "submission_id": "496e8ea2-13a1-45b0-8675-4948c80eb98e",
+            "name": "Builders First",
+            "on_chain": true
+          },
+          {
+            "submission_id": "8f4015a4-6466-495f-ae4a-031c73490084",
+            "name": "Bet on Beliefs",
+            "on_chain": false
           }
         ]
       },
@@ -2139,6 +2326,21 @@
           {
             "submission_id": "ee019f61-8e2d-49d3-8c4c-b58ed8383dc5",
             "name": "NEAR Breakeven",
+            "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "emmyloyal22",
+        "submissions": [
+          {
+            "submission_id": "0c4f64f1-58dc-4768-911b-c950002ab5c1",
+            "name": "SwarmCompute",
+            "on_chain": true
+          },
+          {
+            "submission_id": "955e4beb-ca67-43ab-90f7-321a6bd69713",
+            "name": "NearProphet",
             "on_chain": true
           }
         ]
@@ -2319,7 +2521,7 @@
           {
             "submission_id": "b24c60e8-2591-4b3d-8747-9e07394609d5",
             "name": "Brinewar",
-            "on_chain": false
+            "on_chain": true
           }
         ]
       },
@@ -2329,12 +2531,12 @@
           {
             "submission_id": "092c0414-a7f6-443d-acb3-dce0ad36ba75",
             "name": "Orbit",
-            "on_chain": false
+            "on_chain": true
           },
           {
             "submission_id": "fbfe5bdf-8112-441d-a176-de778f76835b",
             "name": "PrizeKey",
-            "on_chain": false
+            "on_chain": true
           }
         ]
       },
@@ -2394,7 +2596,7 @@
           {
             "submission_id": "dba4ae06-d10e-4b3c-bb1c-0390b47f77ab",
             "name": "Proof of Call",
-            "on_chain": false
+            "on_chain": true
           }
         ]
       },
@@ -2459,6 +2661,21 @@
         ]
       },
       {
+        "key": "justonemylo",
+        "submissions": [
+          {
+            "submission_id": "3414b859-2b92-48e8-a58b-b6e0ad7ff7ce",
+            "name": "Rainbow Gate",
+            "on_chain": true
+          },
+          {
+            "submission_id": "f3723d8c-40de-4c6d-8eb8-c358523ed271",
+            "name": "Rainbow gate",
+            "on_chain": false
+          }
+        ]
+      },
+      {
         "key": "kerneprotocol",
         "submissions": [
           {
@@ -2489,6 +2706,21 @@
         ]
       },
       {
+        "key": "ladyboyai",
+        "submissions": [
+          {
+            "submission_id": "77d76976-e45d-445a-b4fb-1f17c5197269",
+            "name": "The Fucking Pawnshop",
+            "on_chain": true
+          },
+          {
+            "submission_id": "c32bce2d-cd6a-4c50-903c-6f8f41077ec7",
+            "name": "ladyboyai Creator Fund",
+            "on_chain": false
+          }
+        ]
+      },
+      {
         "key": "leevandr_lev",
         "submissions": [
           {
@@ -2500,6 +2732,36 @@
             "submission_id": "90a4c757-60a4-4ae5-a176-04133c4f9f30",
             "name": "Attested",
             "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "linecrushbot",
+        "submissions": [
+          {
+            "submission_id": "7362494b-8ba4-4ec4-a101-eac329b1ba86",
+            "name": "Proof Market",
+            "on_chain": false
+          },
+          {
+            "submission_id": "05b3c7c7-f3b6-4e81-bd0d-160f3204ef6d",
+            "name": "Kevin from IT ($KEVIN)",
+            "on_chain": false
+          }
+        ]
+      },
+      {
+        "key": "lutascosmi89050",
+        "submissions": [
+          {
+            "submission_id": "2da8aa1b-eff0-4ca6-9320-6fd6819e3d67",
+            "name": "TaskVault",
+            "on_chain": false
+          },
+          {
+            "submission_id": "70644277-4d8a-4ef0-8241-4ba669bbf924",
+            "name": "RecallPay",
+            "on_chain": false
           }
         ]
       },
@@ -2684,6 +2946,21 @@
         ]
       },
       {
+        "key": "michael50663932",
+        "submissions": [
+          {
+            "submission_id": "15393663-84cd-4d78-9c0b-f85b969f2185",
+            "name": "Sigtrail",
+            "on_chain": false
+          },
+          {
+            "submission_id": "89382521-fab9-428c-b845-efe14cb62b09",
+            "name": "AfterVote",
+            "on_chain": false
+          }
+        ]
+      },
+      {
         "key": "mickeyjoes",
         "submissions": [
           {
@@ -2694,7 +2971,7 @@
           {
             "submission_id": "7039eda2-2854-4085-9bda-8fbbd48b0db8",
             "name": "PrivateTriage",
-            "on_chain": false
+            "on_chain": true
           }
         ]
       },
@@ -2950,6 +3227,21 @@
             "submission_id": "cbe3ec14-568f-4944-b4d9-b9efede91dfb",
             "name": "Tidepool",
             "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "r0bin_hoot_",
+        "submissions": [
+          {
+            "submission_id": "0a956bc3-dfc0-46f0-9a68-1bc64a29db7d",
+            "name": "RobinHoot: The Guild Chest",
+            "on_chain": false
+          },
+          {
+            "submission_id": "aa684dd5-4c93-4651-aa1e-c78a4797893f",
+            "name": "The Heist",
+            "on_chain": false
           }
         ]
       },
@@ -3220,6 +3512,36 @@
             "submission_id": "abe27d2f-1615-4025-9e0c-e78e28519207",
             "name": "Allowance",
             "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "spragginsdesign",
+        "submissions": [
+          {
+            "submission_id": "a9aa2119-ea48-44e2-9553-1ca324f7d87b",
+            "name": "Jury Swarm",
+            "on_chain": false
+          },
+          {
+            "submission_id": "8e8c4d18-a59a-485c-a4b8-6d29375d34cb",
+            "name": "Ghostcount",
+            "on_chain": false
+          }
+        ]
+      },
+      {
+        "key": "stylenecy",
+        "submissions": [
+          {
+            "submission_id": "40f26f8a-6514-4cd7-ae28-8a03df2cf77e",
+            "name": "RSVPay",
+            "on_chain": true
+          },
+          {
+            "submission_id": "0f666d36-ab7b-4adf-be5c-452dd493cba9",
+            "name": "Mintless",
+            "on_chain": false
           }
         ]
       },
@@ -3505,6 +3827,21 @@
             "submission_id": "e5f93118-da83-4ff4-bdbc-c83116f011b1",
             "name": "Scion",
             "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "zunem01",
+        "submissions": [
+          {
+            "submission_id": "12bb5100-8d40-4cf1-957e-4f6ed3cf2653",
+            "name": "Till Dawn Genesis",
+            "on_chain": false
+          },
+          {
+            "submission_id": "b4711b8c-2746-4f9d-8d2c-14e3515e7904",
+            "name": "gengen",
+            "on_chain": false
           }
         ]
       }

@@ -49346,5 +49346,2329 @@
       "https://bebe0307mz.github.io/prizekey/",
       "https://github.com/bebe0307mz/prizekey"
     ]
+  },
+  "00759a46-ddcf-4b68-be29-3785798cabc6": {
+    "author": "imthenoob_",
+    "status": "ok",
+    "crawled_at": "2026-11-14T17:46:09.548Z",
+    "listed": 2,
+    "read": 2,
+    "posts": [
+      {
+        "id": "2121638881661755591",
+        "author": "imthenoob_",
+        "text": "The sources:\n\nGrok / Bankr: https://t.co/b00VUwzIC9\nCornell Tech + Yale: https://t.co/jC30zruyaQ\nAgent Money Benchmark: https://t.co/zmEvYMD1so\nx402 payments: https://t.co/1lPMsrFM90\nMy own exam, every tx: https://t.co/FVpVpTqqHu",
+        "links": [
+          "https://giskard.ai/knowledge/how-grok-got-prompt-injected-an-x-user-drained-150-000-from-an-ai-wallet",
+          "https://unchainedcrypto.com/circles-emailed-passcode-is-no-barrier-for-ai-agents-with-inbox-access-study-finds",
+          "https://agentmoneybench.com",
+          "https://chainalysis.com/blog/x402-agentic-payments-adoption",
+          "https://svalin.noobshole.workers.dev/guard",
+          "https://agentmoneybench.com/"
+        ]
+      }
+    ],
+    "links": []
+  },
+  "0bbb45bc-7314-4f71-a9b9-f60cff68c3c9": {
+    "author": "Jaydearcadian",
+    "status": "ok",
+    "crawled_at": "2026-11-14T17:46:13.585Z",
+    "listed": 3,
+    "read": 3,
+    "posts": [
+      {
+        "id": "2120752606079242295",
+        "author": "Jaydearcadian",
+        "text": "building Midge for the @NEARProtocol hackathon.\n\nMidge lets a group/collective decide in private and settle on NEAR against public rules it agreed.\n\ninputs stay sealed in a hardware room.\nthe contract pays only what fits the rules, and any member can leave with their share even https://t.co/J9wgPa640W",
+        "links": [],
+        "media": [
+          {
+            "type": "video",
+            "media_url_https": "https://pbs.twimg.com/amplify_video_thumb/2120752315405643776/img/INo02HVbWRNM713w.jpg",
+            "original_info": {
+              "focus_rects": [],
+              "height": 1080,
+              "width": 1920
+            },
+            "video_info": {
+              "aspect_ratio": [
+                16,
+                9
+              ],
+              "duration_millis": 106000,
+              "variants": [
+                {
+                  "content_type": "application/x-mpegURL",
+                  "url": "https://video.twimg.com/amplify_video/2120752315405643776/pl/hoi2IiLFGxFpVPNQ.m3u8"
+                },
+                {
+                  "bitrate": 256000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2120752315405643776/vid/avc1/480x270/KTbpOjPUsHct6mlh.mp4"
+                },
+                {
+                  "bitrate": 832000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2120752315405643776/vid/avc1/640x360/CyIaPepDwdt3kzjc.mp4"
+                },
+                {
+                  "bitrate": 2176000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2120752315405643776/vid/avc1/1280x720/WpW6bvb5Rdx6HGOt.mp4"
+                },
+                {
+                  "bitrate": 10368000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2120752315405643776/vid/avc1/1920x1080/nzR4eXTmRiE2ASDt.mp4"
+                }
+              ]
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      }
+    ],
+    "links": []
+  },
+  "2a0a5002-8a68-451b-b470-b3c29059c313": {
+    "author": "solokop",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T17:46:15.494Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://workproof-verify.vercel.app",
+      "https://github.com/hieple7985/workproof",
+      "https://workproof-verify.vercel.app/"
+    ]
+  },
+  "46d71b25-e08e-4f5f-9086-7ac48bbac5cd": {
+    "author": "Cravnmoor",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T17:46:17.165Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://github.com/Solthera/nescrow"
+    ]
+  },
+  "59f753c0-7a87-4506-ada7-2a1712c03e33": {
+    "author": "wizz_spellman",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T17:46:19.034Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://relay-1vc9.onrender.com",
+      "https://github.com/samixrd/relay",
+      "https://relay-1vc9.onrender.com/"
+    ]
+  },
+  "7029da76-498f-40e8-9743-dfb3cafe6394": {
+    "author": "ifajaarrr",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T17:46:20.893Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://nolossmeme.fun/demo",
+      "https://github.com/nolossmeme/nolossmeme"
+    ]
+  },
+  "7a2381cd-8a81-4ba7-9d59-0aca6df97b62": {
+    "author": "0xbagelface",
+    "status": "ok",
+    "crawled_at": "2026-11-14T17:46:23.438Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [
+      {
+        "id": "2121633855987699762",
+        "author": "0xbagelface",
+        "text": "@breadcoop @NEARProtocol More about what saving circles are, how they're already used around the world, and how our implementation works can be found in the Bread Coop docs!\n\nhttps://t.co/WwYHnUVNug",
+        "links": [
+          "https://docs.bread.coop/tools/stacks/what-is-a-savings-circle/"
+        ]
+      }
+    ],
+    "links": [
+      "https://saving-circles.netlify.app",
+      "https://saving-circles.netlify.app/"
+    ]
+  },
+  "8b588b31-cc77-479b-99e6-b92d4131a2dd": {
+    "author": "DAOcubator",
+    "status": "ok",
+    "crawled_at": "2026-11-14T17:46:26.080Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [
+      {
+        "id": "2121637835858125195",
+        "author": "DAOcubator",
+        "text": "Early pays more on a deterministic declining curve. Points sit in a ledger, signed attestations are verified by the NEAR contract, and tokens land in your NEAR wallet or an Intents-compatible route. Rust + TypeScript, live on NEAR testnet.",
+        "links": []
+      }
+    ],
+    "links": [
+      "https://play.daocubator.org",
+      "https://github.com/daocubator/daocubator-smart-contract",
+      "https://play.daocubator.org/"
+    ]
+  },
+  "955e4beb-ca67-43ab-90f7-321a6bd69713": {
+    "author": "emmyloyal22",
+    "status": "ok",
+    "crawled_at": "2026-11-14T17:46:29.968Z",
+    "listed": 3,
+    "read": 3,
+    "posts": [
+      {
+        "id": "2121608288177475793",
+        "author": "emmyloyal22",
+        "text": "all explained in whatever language you write in, including Nigerian Pidgin, French, Spanish. Fixed rules make the calls, the AI only explains them, and nothing moves your money until you tap Confirm.\n\n@NEARProtocol \n#NEARHackathon\n\nBuild for near hackathon",
+        "links": []
+      },
+      {
+        "id": "2121608741548392487",
+        "author": "emmyloyal22",
+        "text": "Telegram link to test the bot: https://t.co/NIwWfA7LU1",
+        "links": [
+          "https://t.me/NearProphetbot"
+        ]
+      }
+    ],
+    "links": []
+  },
+  "967ef4ab-5c02-4c33-9ffd-e45112421e67": {
+    "author": "IsaacXVoxel",
+    "status": "ok",
+    "crawled_at": "2026-11-14T17:46:32.186Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [
+      {
+        "id": "2121632917101097267",
+        "author": "IsaacXVoxel",
+        "text": "Ethereum Sepolia · USDT \n0x1a11727ec18d2eaf6454df740c1971d2165b647a9b30ee067fc505f67d769898\n\n0x8ec1a5d4ed55ec1f5bf0109429e79563ada2661269205ff2f692177d322426c2\n\nBSC Testnet  USDT \n0x59ba286569c34e7bf71f4c1f517f151acb3c357a58b34b384599b357312bb6bb",
+        "links": []
+      }
+    ],
+    "links": []
+  },
+  "99c0bebd-96ef-4b71-aa7f-1004bd53e05a": {
+    "author": "ishitaaaaw",
+    "status": "ok",
+    "crawled_at": "2026-11-14T17:46:36.424Z",
+    "listed": 3,
+    "read": 3,
+    "posts": [
+      {
+        "id": "2121588331440185842",
+        "author": "ishitaaaaw",
+        "text": "A recent study: 9 of 10 models raised their own cap by reading the OTP \nhttps://t.co/9ucCEPPanX \n\nStyx Agents hold a NEAR key that can only call pause. Protocol rejects everything else. One stopped a live testnet drain after 6 payments.",
+        "links": [
+          "https://arxiv.org/abs/2610.35835"
+        ]
+      },
+      {
+        "id": "2121588334107754746",
+        "author": "ishitaaaaw",
+        "text": "How it works: agent key is a function-call access key limited to pay methods. NEAR rejects any other call before the contract runs. Watcher keys can only pause. Owner unpauses. Noisy watchers get scored,retired, replaced\nTry: https://t.co/S3B6xVWfcU \nCode: https://t.co/4lBkWHY8ns",
+        "links": [
+          "https://styxco.xyz",
+          "https://github.com/PoulavBhowmick03/Styx",
+          "https://styxco.xyz/"
+        ]
+      }
+    ],
+    "links": []
+  },
+  "a41f2e3a-21cc-4177-b855-fc1fbc12dc18": {
+    "author": "AlfaroYisus",
+    "status": "ok",
+    "crawled_at": "2026-11-14T17:46:39.536Z",
+    "listed": 2,
+    "read": 2,
+    "posts": [
+      {
+        "id": "2121611464532210170",
+        "author": "AlfaroYisus",
+        "text": "@NEARProtocol On-chain proof, NEAR testnet.\nVault: sentinel-vault-ia.testnet\n\n✅ 0.4 NEAR, within limits: executed\n❌ 1.5 NEAR: approved by the API (limit 5), reverted by the vault (limit 1)\n\nDefense in depth: the limits hold even if the off-chain layer is wrong.",
+        "links": []
+      }
+    ],
+    "links": [
+      "https://github.com/YisusCode1/sentinel"
+    ]
+  },
+  "a6fd78c0-a72a-4252-9d7b-3bbae326dcab": {
+    "author": "sledgit_com",
+    "status": "ok",
+    "crawled_at": "2026-11-14T17:46:44.714Z",
+    "listed": 4,
+    "read": 4,
+    "posts": [
+      {
+        "id": "2121638316709990813",
+        "author": "sledgit_com",
+        "text": "@NEARProtocol How it works:\n• Your agent (any model) can only propose a trade\n• The vault checks size, daily cap, price band and pace\n• Then it trades on Rhea, or signs its own NEAR Intents order via Chain Signatures, or refuses on chain\n• Only you can withdraw. Always.",
+        "links": []
+      },
+      {
+        "id": "2121638399044137211",
+        "author": "sledgit_com",
+        "text": "@NEARProtocol Proof, not screenshots:\n• Every decision is an on-chain event tied to a hashed receipt\n• Our Qwen3.6 agent runs in NEAR AI's TEE: each decision is hardware-attested and anyone can verify it\n• Every agent is ranked after costs against just holding",
+        "links": []
+      },
+      {
+        "id": "2121638483089572002",
+        "author": "sledgit_com",
+        "text": "@NEARProtocol Live on mainnet today:\n• Factory arena.sledgit.near: locked, 0 keys, reproducible build\n• 2 agents trading 24/7: one local, one TEE-attested\n• A real NEAR Intents fill with real solvers\nNon-custodial beta, capped deposits. Not financial advice.",
+        "links": []
+      },
+      {
+        "id": "2121638575704101335",
+        "author": "sledgit_com",
+        "text": "@NEARProtocol Try it: point your agent at https://t.co/b5GpBvgfAG\nLeaderboard: https://t.co/UxusPSVIDz\nCode (MIT): https://t.co/RMIoGWSxiA\nFull walkthrough: https://t.co/P0v8o3n443\nWhat would you want an AI agent to prove before you trusted it with money?\n@NearLegion @NearBuilders",
+        "links": [
+          "https://sledgit.com/skill.md",
+          "https://sledgit.com",
+          "https://github.com/sledgit/sledgit",
+          "https://youtube.com/watch?v=8TQaCRypdug",
+          "https://sledgit.com/"
+        ]
+      }
+    ],
+    "links": []
+  },
+  "a9334eaa-8279-44fc-b242-175795386d25": {
+    "author": "visualise_x",
+    "status": "ok",
+    "crawled_at": "2026-11-14T17:46:47.812Z",
+    "listed": 2,
+    "read": 2,
+    "posts": [
+      {
+        "id": "2121638216566456437",
+        "author": "visualise_x",
+        "text": "How it works: every payout passes a deterministic policy engine before anything signs. Over-threshold? It waits for one human signature. Every settlement writes a balanced journal entry linked to its on-chain tx.",
+        "links": []
+      },
+      {
+        "id": "2121638226767081900",
+        "author": "visualise_x",
+        "text": "Built on NEAR Intents for cross-chain settlement, PingPay for invoices + agent payouts, and TEE custody so keys never touch our code. Rails are a commodity — the trust-and-books layer is the product.",
+        "links": []
+      }
+    ],
+    "links": [
+      "https://crewpay-web.onrender.com/app"
+    ]
+  },
+  "cba860a2-9b7c-4a73-ad93-dd5f98a0e945": {
+    "author": "youvandraf",
+    "status": "ok",
+    "crawled_at": "2026-11-14T17:46:50.439Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [
+      {
+        "id": "2121637551257825737",
+        "author": "youvandraf",
+        "text": "Each loan gets its own NEAR account with zero keys, and the coins sit in NEAR Intents. The lender gets a Title NFT and you keep a Ticket NFT.\n\nThe code is open at https://t.co/bEPARAjUzh\n\nWould you pawn your ZEC this way?",
+        "links": [
+          "https://github.com/youvandra/mosaec"
+        ]
+      }
+    ],
+    "links": [
+      "https://mosaec.finance",
+      "https://mosaec.finance/"
+    ]
+  },
+  "cc5c3f74-cb3d-47c8-b00f-0b9672f6621d": {
+    "author": "Victorxxbtc",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T17:46:52.308Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://vetwork-three.vercel.app/",
+      "https://github.com/victorxxbtc/Vetwork"
+    ]
+  },
+  "d31e436b-bf9c-427a-89a6-f6c1f155b8a9": {
+    "author": "ODATANO_V4",
+    "status": "no-author-replies",
+    "crawled_at": "2026-11-14T17:46:54.545Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [],
+    "links": []
+  },
+  "d8172f3f-bde4-416e-a90c-f44ffa8117ce": {
+    "author": "_HEISEMMA",
+    "status": "no-author-replies",
+    "crawled_at": "2026-11-14T17:46:58.231Z",
+    "listed": 3,
+    "read": 3,
+    "posts": [],
+    "links": []
+  },
+  "de0f3d8f-e293-4caa-b78b-f1200b4da37a": {
+    "author": "Heisbei02",
+    "status": "no-author-replies",
+    "crawled_at": "2026-11-14T17:47:01.880Z",
+    "listed": 3,
+    "read": 3,
+    "posts": [],
+    "links": []
+  },
+  "e2b6009e-8e38-4371-b4d9-d8776040ee4e": {
+    "author": "EricRampz",
+    "status": "ok",
+    "crawled_at": "2026-11-14T17:47:04.786Z",
+    "listed": 2,
+    "read": 2,
+    "posts": [
+      {
+        "id": "2121636816533291238",
+        "author": "EricRampz",
+        "text": "How NEAR is used:\n- NEAR AI Cloud runs the model and speech-to-text\n- NEAR Intents compares routes and brings USDC in from Base (exchanges like OKX and Binance can't withdraw to NEAR)\n- Rhea runs the swap on NEAR mainnet\nThe AI only proposes. Limits and approval are enforced.",
+        "links": []
+      }
+    ],
+    "links": []
+  },
+  "e988db8a-6d61-4e1f-804c-6003b1720635": {
+    "author": "nearlybaskets",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T17:47:06.282Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": []
+  },
+  "f5cf1a13-4747-498f-91cf-02311dbc689d": {
+    "author": "1NeOo7",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T17:47:07.997Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://noegng.github.io/proof-of-numbers/"
+    ]
+  },
+  "f60e8036-5d61-4ed6-a64a-9dc33c352704": {
+    "author": "AloysJehwin",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T17:47:09.832Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://aloysjehwin.github.io/near-capture-without-churn"
+    ]
+  },
+  "f6b8c8d1-3aa5-4afb-96bc-f2480e059b2d": {
+    "author": "AlphaGgang",
+    "status": "no-author-replies",
+    "crawled_at": "2026-11-14T17:47:12.402Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [],
+    "links": [
+      "https://github.com/openai-lover/prooflot"
+    ]
+  },
+  "ac87869d-1279-4923-b835-8d29c3a5bce8": {
+    "author": "BenCrypt_",
+    "status": "no-author-replies",
+    "crawled_at": "2026-11-14T17:47:14.583Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [],
+    "links": []
+  },
+  "3e97ea4d-9eca-4399-b673-094c2c442ac6": {
+    "status": "post-unavailable",
+    "crawled_at": "2026-11-14T17:47:15.288Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": []
+  },
+  "3cac5881-3311-421f-8b6e-d6727341cbf7": {
+    "author": "hugshire_fun",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T17:47:16.913Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://hugshire.site",
+      "https://hugshire.site/"
+    ]
+  },
+  "89ce888e-ff55-4efb-944e-aba34ffdd6f9": {
+    "author": "mbiebuz",
+    "status": "no-author-replies",
+    "crawled_at": "2026-11-14T17:47:20.771Z",
+    "listed": 3,
+    "read": 3,
+    "posts": [],
+    "links": []
+  },
+  "4517fd8d-b676-4e77-aab3-c9161c44ccef": {
+    "author": "TioEnth",
+    "status": "no-author-replies",
+    "crawled_at": "2026-11-14T17:47:23.204Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [],
+    "links": []
+  },
+  "fc282ce1-a629-4a2e-a0c3-8bc658f6273d": {
+    "author": "notarkoroy",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T17:47:24.714Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": []
+  },
+  "df7d744d-2207-4254-adc6-f662062e7799": {
+    "author": "LoolSay",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T17:47:26.433Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://github.com/Saylool/counterweight"
+    ]
+  },
+  "79fcf8fe-54ad-4e88-b985-91c076ec288c": {
+    "author": "irifkkyyy",
+    "status": "ok",
+    "crawled_at": "2026-11-14T17:47:29.018Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [
+      {
+        "id": "2121644901985337398",
+        "author": "irifkkyyy",
+        "text": "@NEARProtocol How NEAR makes it work: bets are stNEAR (Meta Pool's staked NEAR) on Aurora. A Solidity contract reads stNEAR's rate from Meta Pool on NEAR via cross-contract calls, so the yield that pays winners needs no price feed.\n\nCode: https://t.co/KCdbTpXChh @NearLegion @NearBuilders",
+        "links": [
+          "https://github.com/pearn-protocol/pearn"
+        ]
+      }
+    ],
+    "links": [
+      "https://app.pearn.site",
+      "https://app.pearn.site/"
+    ]
+  },
+  "f95538ea-b95d-4eb5-aab5-bb0b61dfc1d7": {
+    "author": "bluvfi",
+    "status": "ok",
+    "crawled_at": "2026-11-14T17:47:31.999Z",
+    "listed": 2,
+    "read": 2,
+    "posts": [
+      {
+        "id": "2121563724196589858",
+        "author": "bluvfi",
+        "text": "Full Demo for Bluvfi Business(Day 14) - NEAR Hackathon https://t.co/k1pkOKlsow",
+        "links": [
+          "https://x.com/i/broadcasts/2ZBjvRzePlNejX"
+        ]
+      }
+    ],
+    "links": []
+  },
+  "6c729bee-08f4-4617-af4d-c7018913534a": {
+    "author": "Ibrahim_MuseOS",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T17:47:33.691Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://github.com/ibrahimadel-ai/museos-nearguard-ai"
+    ]
+  },
+  "484e23b6-98c4-42b5-a328-fcf69cd6382b": {
+    "author": "ydvsajal",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T17:47:35.314Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://near-skypay.vercel.app",
+      "https://near-skypay.vercel.app/"
+    ]
+  },
+  "8b7d4378-36b7-4aff-ab47-6d19798bef03": {
+    "author": "Crist1133",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T17:47:37.237Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://gavel-phi-snowy.vercel.app/",
+      "https://github.com/canyahale/gavel"
+    ]
+  },
+  "4d2dbd3c-9504-46cd-ae5c-18beb91e204f": {
+    "author": "zorricx",
+    "status": "ok",
+    "crawled_at": "2026-11-14T17:47:39.944Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [
+      {
+        "id": "2121640017856790965",
+        "author": "zorricx",
+        "text": "@NEARProtocol How it works: every agent request passes 4 gates (intent integrity, policy limits, trust and approval, dry-run signing). One failed gate stops the transaction. Tested on NEAR Testnet with 12 attack scenarios.",
+        "links": []
+      }
+    ],
+    "links": [
+      "https://rimbux.vercel.app",
+      "https://github.com/zorumeon/RIMBUX",
+      "https://rimbux.vercel.app/"
+    ]
+  },
+  "784f9888-1c8a-408e-87be-01bc5d0b9051": {
+    "author": "Sandra_devv",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T17:47:41.814Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://moppet-theta.vercel.app/",
+      "https://github.com/sandradevv/Moppet"
+    ]
+  },
+  "c2864c0c-1139-40b9-981c-aa9402034bcd": {
+    "author": "Okikiola_dy",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T17:47:43.559Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://github.com/odebiriokikiola06-commits/FactorFlow-NEAR"
+    ]
+  },
+  "84c62d2a-4f1b-4ebd-8f96-14f0be133f4e": {
+    "author": "suhyuncho415",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T17:47:45.068Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": []
+  },
+  "15393663-84cd-4d78-9c0b-f85b969f2185": {
+    "author": "Michael50663932",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T17:47:46.927Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://kang5647.github.io/sigtrail/",
+      "https://github.com/kang5647/sigtrail"
+    ]
+  },
+  "1fddefea-c1de-46da-9640-d2da431e3d40": {
+    "author": "TotemBaoBao",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T17:47:48.678Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://totem-x2kg.onrender.com",
+      "https://totem-x2kg.onrender.com/"
+    ]
+  },
+  "d362d730-4709-4d73-91ef-29cb1c57373c": {
+    "author": "unhawkable",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T17:47:50.336Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://github.com/sashcheka/near-hackathon-mogger"
+    ]
+  },
+  "76db576e-cf62-403b-a7a0-401b49a86948": {
+    "author": "Monegask_",
+    "status": "ok",
+    "crawled_at": "2026-11-14T17:47:52.885Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [
+      {
+        "id": "2121648104541745254",
+        "author": "Monegask_",
+        "text": "What’s next?:\n• Improvements of the UI and beginner guide\n• Make Testnet PvP easier to try\n• Expand the game economy\n• Prepare for Mainnet after an independent security audit\n\nI’d love to connect with people in @NearBuilders who want to help develop a broader gaming platform",
+        "links": []
+      }
+    ],
+    "links": [
+      "https://supply-line-game.vercel.app/",
+      "https://github.com/Monegask/hack"
+    ]
+  },
+  "4572eebe-73c2-4020-ab83-ec43f37d2b1b": {
+    "author": "whitelashy",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T17:47:54.723Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://dotandev.github.io/vigil"
+    ]
+  },
+  "ad0cb55d-0bad-41fd-b3db-40df6011a43b": {
+    "author": "Redd1xx",
+    "status": "no-author-replies",
+    "crawled_at": "2026-11-14T17:47:57.228Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [],
+    "links": []
+  },
+  "66127041-75a6-425c-8b3e-a2e70ccc5830": {
+    "author": "kirahszn",
+    "status": "no-author-replies",
+    "crawled_at": "2026-11-14T17:48:00.856Z",
+    "listed": 3,
+    "read": 3,
+    "posts": [],
+    "links": []
+  },
+  "504a3715-344f-4565-9aaa-ea2918f28fd5": {
+    "author": "2Optionss",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T17:48:02.398Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": []
+  },
+  "89382521-fab9-428c-b845-efe14cb62b09": {
+    "author": "Michael50663932",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T17:48:04.240Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://aftervote-bounties.lunarmouse9.chatgpt.site",
+      "https://github.com/kang5647/aftervote",
+      "https://aftervote-bounties.lunarmouse9.chatgpt.site/"
+    ]
+  },
+  "d9340696-d886-46fc-9550-5990810dd523": {
+    "author": "IOlatunle99017",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T17:48:05.762Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": []
+  },
+  "eb8267cf-4194-4210-a8f3-a3128ea9f1cf": {
+    "author": "V1H44N",
+    "status": "no-author-replies",
+    "crawled_at": "2026-11-14T17:48:08.366Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [],
+    "links": [
+      "https://github.com/v1h44n17/attestguard"
+    ]
+  },
+  "c31008a6-6566-452b-912d-7283e47fdf73": {
+    "author": "jhayycrypt",
+    "status": "no-author-replies",
+    "crawled_at": "2026-11-14T17:48:12.066Z",
+    "listed": 3,
+    "read": 3,
+    "posts": [],
+    "links": []
+  },
+  "1816a57f-bbf9-40c9-9b42-c8babe29553b": {
+    "author": "zinobase",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T17:48:13.555Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": []
+  },
+  "022d642a-94df-4817-a27b-abfc908adbbf": {
+    "author": "tedinroc",
+    "status": "ok",
+    "crawled_at": "2026-11-14T17:48:17.799Z",
+    "listed": 3,
+    "read": 3,
+    "posts": [
+      {
+        "id": "2121647325345091751",
+        "author": "tedinroc",
+        "text": "NEAR can refuse, but it can't take: the contract holds no key that spends alone. If NEAR goes away, a cold key gets the coins out after a Bitcoin timelock. The queue is public: amount and destination show before Bitcoin moves. NEAR testnet and Bitcoin signet only, unaudited.",
+        "links": []
+      },
+      {
+        "id": "2121647390038044944",
+        "author": "tedinroc",
+        "text": "Hand an AI agent the spend key itself: every spend it proposes waits in public, and it can't cancel, rotate or shorten the wait. The repo's verify script re-fetches those NEAR testnet transactions, no wallet needed.\n\nHow long a wait would you accept on your own coins?",
+        "links": []
+      },
+      {
+        "id": "2121647589506576818",
+        "author": "tedinroc",
+        "text": "In the film, my iPhone (Safari, Face ID) cancels the theft. The thief's tab is headless Chrome on a Mac, clicked by a script. Test networks, synthetic voice.\n\nWatching on a phone? Run it there; the page plays the thief: https://t.co/iRrGDg8zZo\n\n@NearLegion @NearBuilders",
+        "links": [
+          "https://undo-btc.pages.dev/try/"
+        ]
+      }
+    ],
+    "links": [
+      "https://undo-btc.pages.dev",
+      "https://github.com/tedinroc/undo",
+      "https://undo-btc.pages.dev/"
+    ]
+  },
+  "2da8aa1b-eff0-4ca6-9320-6fd6819e3d67": {
+    "author": "lutascosmi89050",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T17:48:19.234Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": []
+  },
+  "6dbc9623-165e-4b23-afed-33e8842fae60": {
+    "author": "kurodenjiro",
+    "status": "no-author-replies",
+    "crawled_at": "2026-11-14T17:48:21.443Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [],
+    "links": []
+  },
+  "655b7e80-dc89-44d4-a46b-435aa9ae3988": {
+    "author": "subaskar_s",
+    "status": "ok",
+    "crawled_at": "2026-11-14T17:48:25.872Z",
+    "listed": 3,
+    "read": 3,
+    "posts": [
+      {
+        "id": "2121648840524840974",
+        "author": "subaskar_s",
+        "text": "Demo on a local NEAR sandbox (real transactions):\n\nResearchAgent buys a 2 NEAR analysis from AnalysisAgent. Approved, the seller gets exactly 2 NEAR.\n\nThen 5 attacks, all blocked: overcharge, 2nd purchase over budget, injected payment to a stranger, an impostor, a paused agent. https://t.co/yn5o6jz0Gn",
+        "links": [],
+        "media": [
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HXGcLA6bkAArLEc.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 1568,
+                  "w": 2800,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 2230,
+                  "w": 2230,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 2230,
+                  "w": 1956,
+                  "x": 71,
+                  "y": 0
+                },
+                {
+                  "h": 2230,
+                  "w": 1115,
+                  "x": 492,
+                  "y": 0
+                },
+                {
+                  "h": 2230,
+                  "w": 2800,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 2230,
+              "width": 2800
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      },
+      {
+        "id": "2121649115075576262",
+        "author": "subaskar_s",
+        "text": "Why it holds up:\n\nagent key can only call request_transfer\nGateway forwards, can't approve\nSentinel can only call pause_agent\ndashboard holds no keys\nThe contract is the final authority. Identity comes from the chain, not from request fields. https://t.co/Ynx87rmEMa",
+        "links": [],
+        "media": [
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HXGclrEaAAE10k_.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 1160,
+                  "w": 2071,
+                  "x": 430,
+                  "y": 0
+                },
+                {
+                  "h": 1160,
+                  "w": 1160,
+                  "x": 885,
+                  "y": 0
+                },
+                {
+                  "h": 1160,
+                  "w": 1018,
+                  "x": 956,
+                  "y": 0
+                },
+                {
+                  "h": 1160,
+                  "w": 580,
+                  "x": 1175,
+                  "y": 0
+                },
+                {
+                  "h": 1160,
+                  "w": 2800,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 1160,
+              "width": 2800
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      },
+      {
+        "id": "2121650487783227737",
+        "author": "subaskar_s",
+        "text": "Built with function-call access keys, a 1 yoctoNEAR admin gate, reserve-before-pay accounting with a callback, and NEP-297 events.\n\n132 contract tests, 17 threat scenarios.\n\nhttps://t.co/J6O51UTLG6\n\n@NEARProtocol #NEARHackathon #NEARHACKATHON",
+        "links": [
+          "https://github.com/Subaskar-S/NearSentra"
+        ]
+      }
+    ],
+    "links": [
+      "https://github.com/Subaskar-S/NearSentra"
+    ]
+  },
+  "68d2b228-2419-4ffe-b75a-795189bf0332": {
+    "author": "JacentaOkojie0",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T17:48:27.485Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://github.com/jacenta1/Doorlist"
+    ]
+  },
+  "15f76705-dc2a-4d6a-a22a-b8f4a648d9d0": {
+    "author": "Devendra_116",
+    "status": "ok",
+    "crawled_at": "2026-11-14T17:48:32.924Z",
+    "listed": 5,
+    "read": 5,
+    "posts": [
+      {
+        "id": "2121648096316940789",
+        "author": "Devendra_116",
+        "text": "2/\nYour balance melts a little every second. Nobody pays a fee and nobody signs anything. The contract just does the math.\n\nHolding gets a bit costly. Spending and sharing get easier.",
+        "links": []
+      },
+      {
+        "id": "2121648098665766999",
+        "author": "Devendra_116",
+        "text": "3/\nWhere does the melted coin go?\n\nTo a treasury. A DAO can pay it back out to people, but the contract caps it at 10% of the treasury per day.\n\nSupply is fixed at 1 Million. Nothing is ever minted or burned.",
+        "links": []
+      },
+      {
+        "id": "2121648101161369982",
+        "author": "Devendra_116",
+        "text": "4/ \nThe math\nEvery second, your balance is multiplied by a tiny number.\n\nThe real setting is 1% per month:\n\n0.99^(1 / (30 × 24 × 3600)) = 0.9999999961\n\nThat is 2,592,000 seconds in a month. Do the multiplication that many times and you have lost exactly 1%.\n\nStarting with 100",
+        "links": []
+      },
+      {
+        "id": "2121648103526953091",
+        "author": "Devendra_116",
+        "text": "5/ \nThe trick: nothing runs every second\nNobody updates your balance. The contract stores only your shares, plus one global index that depends only on the clock:\n\nindex = factor ^ (seconds since start)\nbalance = shares × index\n\nYour balance is worked out when someone reads it.",
+        "links": []
+      },
+      {
+        "id": "2121648105775124958",
+        "author": "Devendra_116",
+        "text": "6/ \nTry it\nYou can watch your balance melt in real time. The simulation needs no wallet.\n\nSite: https://t.co/sR1hy5wB3B\nCode: https://t.co/gRyfGjPVSO\n\nWould you use a currency that melts in your community? Tell me why or why not.\n\n@NearLegion @NearBuilders",
+        "links": [
+          "https://worgl.vercel.app",
+          "https://github.com/Devendra116/worgl",
+          "https://worgl.vercel.app/"
+        ]
+      }
+    ],
+    "links": []
+  },
+  "c2c425be-4452-4c1b-90a2-67892511b7da": {
+    "author": "_Ja_V1",
+    "status": "no-author-replies",
+    "crawled_at": "2026-11-14T17:48:35.209Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [],
+    "links": []
+  },
+  "e5e82756-5ae0-441a-a5e5-ed39bd61b020": {
+    "author": "blockframelabs",
+    "status": "ok",
+    "crawled_at": "2026-11-14T17:48:37.669Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [
+      {
+        "id": "2121655188473929970",
+        "author": "blockframelabs",
+        "text": "Live App: https://t.co/9tbIcXpsBh",
+        "links": [
+          "https://scopeguard.blockframe.cloud",
+          "https://scopeguard.blockframe.cloud/"
+        ]
+      }
+    ],
+    "links": [
+      "https://github.com/Sergeo01/Scopeguard"
+    ]
+  },
+  "60b72a2e-94b5-451c-8d5d-c5cef785a5e0": {
+    "author": "BuildWithBeast",
+    "status": "no-author-replies",
+    "crawled_at": "2026-11-14T17:48:41.201Z",
+    "listed": 2,
+    "read": 2,
+    "posts": [],
+    "links": [
+      "https://sealround-demo.vercel.app/judges"
+    ]
+  },
+  "a0efba03-3507-4f95-b78e-219b0cc58cbd": {
+    "author": "SultanAbdu5122",
+    "status": "no-author-replies",
+    "crawled_at": "2026-11-14T17:48:43.810Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [],
+    "links": [
+      "https://procureswarm.onrender.com",
+      "https://github.com/moon-code12/procureswarm",
+      "https://procureswarm.onrender.com/"
+    ]
+  },
+  "adfc0ec2-be4b-40b5-99be-59c7a4fb42a5": {
+    "author": "jaypopat0",
+    "status": "ok",
+    "crawled_at": "2026-11-14T17:48:48.811Z",
+    "listed": 4,
+    "read": 4,
+    "posts": [
+      {
+        "id": "2121623305371197926",
+        "author": "jaypopat0",
+        "text": "the wallet has no private key at all. NEAR's MPC signs for whoever holds the NFT, and before a sale the contract burns the seller's nonce on Base and proves it landed\n\nin the video I replay a real saved withdrawal at the end. Base rejects it\n\ncode: https://t.co/Cc0cyYvYb7",
+        "links": [
+          "https://github.com/jaypopat/quitclaim"
+        ]
+      },
+      {
+        "id": "2121623307640275214",
+        "author": "jaypopat0",
+        "text": "would love to hear some thoughts @NearBuilders @NearLegion",
+        "links": []
+      },
+      {
+        "id": "2121623310408749356",
+        "author": "jaypopat0",
+        "text": "onto the next one. met @RAYK69420  off twitter irl and we're building something cool together, more on that soon",
+        "links": []
+      }
+    ],
+    "links": [
+      "https://quitclaim-web.jaypopat.me",
+      "https://quitclaim-web.jaypopat.me/"
+    ]
+  },
+  "d4db09f0-26e4-45bb-bf93-6805cc0cdffa": {
+    "author": "TheWordWeaver_",
+    "status": "ok",
+    "crawled_at": "2026-11-14T17:48:59.238Z",
+    "listed": 10,
+    "read": 10,
+    "posts": [
+      {
+        "id": "2121643028301455598",
+        "author": "TheWordWeaver_",
+        "text": "That problem goes far beyond contractors\n\nBusinesses make commitments every day: orders, \ndeliveries, \nrepayments, \nservices and project milestones\n\nThe hard part isn't recording a promise\n\nIt is knowing whether it was fulfilled and what to do when it wasn't https://t.co/mYH8gRQUUM",
+        "links": [],
+        "media": [
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HXGXEjkXwAAdq6O.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 1017,
+                  "w": 1816,
+                  "x": 0,
+                  "y": 332
+                },
+                {
+                  "h": 1816,
+                  "w": 1816,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 2070,
+                  "w": 1816,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 3055,
+                  "w": 1528,
+                  "x": 288,
+                  "y": 0
+                },
+                {
+                  "h": 3055,
+                  "w": 1816,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 3055,
+              "width": 1816
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      },
+      {
+        "id": "2121644406281293907",
+        "author": "TheWordWeaver_",
+        "text": "Too often,\nthe answer is scattered across documents, messages, transactions and evidence\n\nPeople are left piecing together what was agreed, what happened, what's still outstanding and what action is justified\n\nThat gap is where accountability breaks down https://t.co/3sk65HFa3n",
+        "links": [],
+        "media": [
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HXGYTRWWIAAkxzr.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 1024,
+                  "w": 1829,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1829,
+                  "w": 1829,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 2085,
+                  "w": 1829,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 2729,
+                  "w": 1365,
+                  "x": 232,
+                  "y": 0
+                },
+                {
+                  "h": 2729,
+                  "w": 1829,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 2729,
+              "width": 1829
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          },
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HXGYUZyXUAAUyPC.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 1024,
+                  "w": 1829,
+                  "x": 0,
+                  "y": 926
+                },
+                {
+                  "h": 1829,
+                  "w": 1829,
+                  "x": 0,
+                  "y": 473
+                },
+                {
+                  "h": 2085,
+                  "w": 1829,
+                  "x": 0,
+                  "y": 217
+                },
+                {
+                  "h": 2302,
+                  "w": 1151,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 2302,
+                  "w": 1829,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 2302,
+              "width": 1829
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          },
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HXGYVVdXQAA0JxM.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 1024,
+                  "w": 1828,
+                  "x": 0,
+                  "y": 436
+                },
+                {
+                  "h": 1828,
+                  "w": 1828,
+                  "x": 0,
+                  "y": 34
+                },
+                {
+                  "h": 2084,
+                  "w": 1828,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 2235,
+                  "w": 1118,
+                  "x": 710,
+                  "y": 0
+                },
+                {
+                  "h": 2235,
+                  "w": 1828,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 2235,
+              "width": 1828
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      },
+      {
+        "id": "2121645405662257427",
+        "author": "TheWordWeaver_",
+        "text": "That's the problem we are building OUTCOME to solve\n\nIt connects commitments, events, evidence, risks and decisions- \n\nhelping businesses move from recording promises to verifying outcomes and deciding what happens next https://t.co/d0sysHnLvS",
+        "links": [],
+        "media": [
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HXGZPUSXQAApQM7.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 1024,
+                  "w": 1829,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1829,
+                  "w": 1829,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 2085,
+                  "w": 1829,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 3356,
+                  "w": 1678,
+                  "x": 151,
+                  "y": 0
+                },
+                {
+                  "h": 3356,
+                  "w": 1829,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 3356,
+              "width": 1829
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      },
+      {
+        "id": "2121645671228854370",
+        "author": "TheWordWeaver_",
+        "text": "Take Acme Supplies.\n\nThe agreement: deliver 50 cartons.\n\nThe verified delivery: 42\n\nOUTCOME identifies the 8-carton shortfall and \n\nthe estimated $40 exposure, then surfaces a recommended next step.\n\nThe discrepancy is no longer buried in separate records",
+        "links": []
+      },
+      {
+        "id": "2121646669926371679",
+        "author": "TheWordWeaver_",
+        "text": "OUTCOME doesn't just store records\n\nIts intelligence helps interpret evidence, spot discrepancies, assess exposure and recommend next steps\n\nWe integrated NEAR AI Cloud, \ncalled Qwen/Qwen3.6-35B-A3B-FP8, and verified the provider signature and Intel TDX attestation https://t.co/So07pI9Pr2",
+        "links": [],
+        "media": [
+          {
+            "type": "video",
+            "media_url_https": "https://pbs.twimg.com/amplify_video_thumb/2121646560287043585/img/eUgvw4NxeCpH5wKR.jpg",
+            "original_info": {
+              "focus_rects": [],
+              "height": 1076,
+              "width": 480
+            },
+            "video_info": {
+              "aspect_ratio": [
+                120,
+                269
+              ],
+              "duration_millis": 19123,
+              "variants": [
+                {
+                  "content_type": "application/x-mpegURL",
+                  "url": "https://video.twimg.com/amplify_video/2121646560287043585/pl/FZbuJxcJ8H19IzCS.m3u8"
+                },
+                {
+                  "bitrate": 632000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121646560287043585/vid/avc1/320x716/S2Of31ZeRQ7PCTLU.mp4"
+                },
+                {
+                  "bitrate": 950000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121646560287043585/vid/avc1/480x1076/B6iWPTy9ksedmbHy.mp4"
+                }
+              ]
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      },
+      {
+        "id": "2121647390574743760",
+        "author": "TheWordWeaver_",
+        "text": "Accountability also needs an evidence trail\n\nOUTCOME uses a NEAR testnet audit contract to record hashes of events,\n\nnot the underlying business data\n\nThat gives the system an append-only on-chain record to help verify what was recorded and when. https://t.co/1VeGAXlfiz",
+        "links": [],
+        "media": [
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HXGbCrRWUAABOvo.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 1024,
+                  "w": 1829,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1829,
+                  "w": 1829,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 2085,
+                  "w": 1829,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 2776,
+                  "w": 1388,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 2776,
+                  "w": 1829,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 2776,
+              "width": 1829
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      },
+      {
+        "id": "2121651591253991469",
+        "author": "TheWordWeaver_",
+        "text": "We tested the boundaries, too\n\nAn authorised \"record_event\" call succeeded\n\nAn unauthorised \"admin_probe\" call was rejected with \"MethodNameMismatch\"\n\nPermissions need to be enforced by the system, \n\nnot just promised in its documentation https://t.co/pK9nH0gqVi",
+        "links": [],
+        "media": [
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HXGe31nWgAENvLo.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 357,
+                  "w": 638,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 357,
+                  "w": 357,
+                  "x": 139,
+                  "y": 0
+                },
+                {
+                  "h": 357,
+                  "w": 313,
+                  "x": 161,
+                  "y": 0
+                },
+                {
+                  "h": 357,
+                  "w": 179,
+                  "x": 228,
+                  "y": 0
+                },
+                {
+                  "h": 357,
+                  "w": 1827,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 357,
+              "width": 1827
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      },
+      {
+        "id": "2121652590907724143",
+        "author": "TheWordWeaver_",
+        "text": "One principle matters throughout: intelligence is not authority\n\nOUTCOME can evaluate payment proposals against agreed rules, \nbut even a passing result is not approval\n\nIt does not sign or submit transfers. People remain responsible for the decision https://t.co/lYv91JiuPY",
+        "links": [],
+        "media": [
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HXGfw3AXMAAkWGM.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 1022,
+                  "w": 1825,
+                  "x": 0,
+                  "y": 697
+                },
+                {
+                  "h": 1825,
+                  "w": 1825,
+                  "x": 0,
+                  "y": 296
+                },
+                {
+                  "h": 2081,
+                  "w": 1825,
+                  "x": 0,
+                  "y": 168
+                },
+                {
+                  "h": 2843,
+                  "w": 1422,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 2843,
+                  "w": 1825,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 2843,
+              "width": 1825
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          },
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HXGfx7-WUAAMlnO.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 1024,
+                  "w": 1829,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1418,
+                  "w": 1418,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1418,
+                  "w": 1244,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1418,
+                  "w": 709,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1418,
+                  "w": 1829,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 1418,
+              "width": 1829
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      },
+      {
+        "id": "2121654179206692971",
+        "author": "TheWordWeaver_",
+        "text": "Promises are easy to make. \nVerifiable outcomes are harder.\n\nOUTCOME connects commitments to evidence, so people can see what happened and decide what comes next.\n\nBuilt for @NEARProtocol #NEARHackathon @NearBuilders @ilblackdragon https://t.co/vkvfwEQPrL",
+        "links": [],
+        "media": [
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HXGhNLsXEAA_dUw.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 1024,
+                  "w": 1829,
+                  "x": 0,
+                  "y": 422
+                },
+                {
+                  "h": 1829,
+                  "w": 1829,
+                  "x": 0,
+                  "y": 20
+                },
+                {
+                  "h": 2085,
+                  "w": 1829,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 3398,
+                  "w": 1699,
+                  "x": 130,
+                  "y": 0
+                },
+                {
+                  "h": 3398,
+                  "w": 1829,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 3398,
+              "width": 1829
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          },
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HXGhOGiXkAA85_i.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 1024,
+                  "w": 1829,
+                  "x": 0,
+                  "y": 768
+                },
+                {
+                  "h": 1829,
+                  "w": 1829,
+                  "x": 0,
+                  "y": 366
+                },
+                {
+                  "h": 2085,
+                  "w": 1829,
+                  "x": 0,
+                  "y": 238
+                },
+                {
+                  "h": 2696,
+                  "w": 1348,
+                  "x": 240,
+                  "y": 0
+                },
+                {
+                  "h": 2696,
+                  "w": 1829,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 2696,
+              "width": 1829
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      },
+      {
+        "id": "2121654313311240417",
+        "author": "TheWordWeaver_",
+        "text": "@NEARProtocol @NearBuilders @ilblackdragon Try it: https://t.co/urKBTsqKXB\n\nCode: https://t.co/9E25fgHRvy",
+        "links": [
+          "https://outcome-puce.vercel.app",
+          "https://github.com/agbajeabdulsobur2024-hue/OUTCOME",
+          "https://outcome-puce.vercel.app/"
+        ]
+      }
+    ],
+    "links": []
+  },
+  "d17dfc17-73b7-46df-a8fe-d5e2b460e248": {
+    "author": "sadabaevb",
+    "status": "ok",
+    "crawled_at": "2026-11-14T17:49:02.437Z",
+    "listed": 2,
+    "read": 2,
+    "posts": [
+      {
+        "id": "2121653291578957860",
+        "author": "sadabaevb",
+        "text": "How it works: each agent runs a node that gossips what it has and wants over libp2p. When wants form a loop (A→B→C→A), each agent signs its leg and one transaction settles them all, or none. No central order book, no custodian, no contract of our own. It ran on mainnet.",
+        "links": []
+      },
+      {
+        "id": "2121653294217273369",
+        "author": "sadabaevb",
+        "text": "Proof, not slides:\n• mainnet ring across 3 machines in 3 networks, settled in 2 s\n• Claude Code trades on it over MCP\n• 100 agents clear a market, in your browser:\nhttps://t.co/gftkYp4ST3\n\nWhat would your agents trade? @NearLegion @NearBuilders",
+        "links": [
+          "https://sadabaevb.github.io/gossip-market/watch/"
+        ]
+      }
+    ],
+    "links": [
+      "https://github.com/sadabaevb/gossip-market"
+    ]
+  },
+  "0c491e4b-cf90-4b1f-8444-06c0241aeab6": {
+    "author": "n_bvj9",
+    "status": "ok",
+    "crawled_at": "2026-11-14T17:49:07.164Z",
+    "listed": 4,
+    "read": 4,
+    "posts": [
+      {
+        "id": "2121655107834302723",
+        "author": "n_bvj9",
+        "text": "When AI starts signing transactions, granting approvals, and moving your funds, the most important question is no longer just “How smart is it?” It is “How much power should it have?”\n\nNeodot is a multichain AI agent with a NEAR wallet at its center, connecting wallets and Web3",
+        "links": []
+      },
+      {
+        "id": "2121656374321119371",
+        "author": "n_bvj9",
+        "text": "https://t.co/3TQk0h1Ro8",
+        "links": [
+          "https://github.com/williamsdconnor/neodot"
+        ]
+      },
+      {
+        "id": "2121657115446219182",
+        "author": "n_bvj9",
+        "text": "https://t.co/Hq610Rk6wh",
+        "links": [
+          "https://neodot.pages.dev/"
+        ]
+      }
+    ],
+    "links": []
+  },
+  "da47aabf-3f6f-42cc-9a10-9c48ba68b92c": {
+    "author": "patrick_jane298",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T17:49:08.658Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": []
+  },
+  "ab397114-b61b-461a-a773-ebe487e78280": {
+    "author": "Bearcrypto2021",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T17:49:10.088Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": []
+  },
+  "161861ab-956a-4699-8811-b92415d6e880": {
+    "author": "NgWY827",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T17:49:11.723Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://github.com/Wy8827/kutu-DAO"
+    ]
+  },
+  "c32bce2d-cd6a-4c50-903c-6f8f41077ec7": {
+    "author": "ladyboyai",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T17:49:13.326Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://github.com/ladyboyai/creatorfund"
+    ]
+  },
+  "5a5031f2-fe0c-47a4-8df3-ced7aa1d0ab6": {
+    "author": "daikyukim",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T17:49:14.748Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": []
+  },
+  "97d8c2eb-e9a2-453a-a5bb-a36ea9036609": {
+    "author": "Edoye_",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T17:49:16.247Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": []
+  },
+  "67422bd7-68b0-43a0-bee4-08a8728e39f0": {
+    "author": "xxzuyee",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T17:49:17.832Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://sentraio.vercel.app",
+      "https://sentraio.vercel.app/"
+    ]
+  },
+  "83fffa91-1eee-4d43-9900-477b44af7bba": {
+    "author": "chillymcfrost",
+    "status": "ok",
+    "crawled_at": "2026-11-14T17:49:22.824Z",
+    "listed": 4,
+    "read": 4,
+    "posts": [
+      {
+        "id": "2121654882373402655",
+        "author": "chillymcfrost",
+        "text": "2/ every CTOad is an NFT that’s also its own NEAR account\n\nit holds its share of the fees and can trade with them.,\nsell the toad, and everything inside goes with it",
+        "links": []
+      },
+      {
+        "id": "2121655247227801888",
+        "author": "chillymcfrost",
+        "text": "@NEARProtocol 3/ the way in:\n\nsell $CTO at a loss of 1+ NEAR,\nmembership costs a loss\n\n500 toads, art by @jsigwart former newspaper artist,\ndrawn on-chain\n\nat #500 the toads take over the fees and vote on the treasury",
+        "links": []
+      },
+      {
+        "id": "2121655671623950738",
+        "author": "chillymcfrost",
+        "text": "@NEARProtocol 4/ code (MIT) and a two-minute tour for judges: https://t.co/dMcIN9LKSO",
+        "links": [
+          "https://github.com/rosasmar/ctoads"
+        ]
+      },
+      {
+        "id": "2121655812347298299",
+        "author": "chillymcfrost",
+        "text": "@NEARProtocol 5/ the iMessage part runs on https://t.co/WUOENszLPo\n\nthanks for making it possible!",
+        "links": [
+          "https://msgbubbles.com",
+          "https://msgbubbles.com/"
+        ]
+      }
+    ],
+    "links": [
+      "https://ctoads.xyz",
+      "https://ctoads.xyz/"
+    ]
+  },
+  "5570f88d-b9a1-4dc7-8760-fa93c9ccc9f2": {
+    "author": "agentablehq",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T17:49:24.319Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": []
+  },
+  "61d07196-7994-4934-a8ac-7773f2f76614": {
+    "author": "OlsOls4",
+    "status": "ok",
+    "crawled_at": "2026-11-14T17:49:27.434Z",
+    "listed": 2,
+    "read": 2,
+    "posts": [
+      {
+        "id": "2121657641248129352",
+        "author": "OlsOls4",
+        "text": "@NEARProtocol Repo: https://t.co/RYq3haB81X — testnet contract: apathetic-party.testnet. Testnet only, no production-network funds, no intent-based settlement in the demo path. The demo seller is a demonstrator service, not a live seller listing",
+        "links": [
+          "https://github.com/OlsOls4/meteredpay"
+        ]
+      },
+      {
+        "id": "2121657729244606818",
+        "author": "OlsOls4",
+        "text": "@NEARProtocol The video shows one service. The same contract also pays a second seller, a deterministic summariser at 0.05/call on a third instance — and the repo proves the failure paths on-chain: a dishonest buyer detected, three forged claims rejected",
+        "links": []
+      }
+    ],
+    "links": []
+  },
+  "23e3415a-bc0e-48de-b25a-82a90b855107": {
+    "author": "imFerdinandd",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T17:49:29.439Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://valtrums.xyz",
+      "https://docs.valtrums.xyz",
+      "https://valtrums.xyz/",
+      "https://docs.valtrums.xyz/"
+    ]
+  },
+  "6d752dd0-4dd1-4130-8c40-5d1ec86a11d9": {
+    "author": "CyrilMoron0x",
+    "status": "ok",
+    "crawled_at": "2026-11-14T17:49:32.131Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [
+      {
+        "id": "2121657932823622111",
+        "author": "CyrilMoron0x",
+        "text": "@NEARProtocol Demo and live status page: https://t.co/YeNNZW8dJV\nCode: https://t.co/WNqZFC9rrq",
+        "links": [
+          "https://cmoron.github.io/near-preflight/",
+          "https://github.com/cmoron/near-preflight"
+        ]
+      }
+    ],
+    "links": []
+  },
+  "6435bdaa-8c46-4b46-ae5b-dee7ebc5546e": {
+    "author": "jijoeth",
+    "status": "no-author-replies",
+    "crawled_at": "2026-11-14T17:49:34.300Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [],
+    "links": []
+  },
+  "6edfdcc8-9d2e-4231-8f10-a90988b6a7d8": {
+    "author": "zecvilan",
+    "status": "ok",
+    "crawled_at": "2026-11-14T17:49:37.592Z",
+    "listed": 2,
+    "read": 2,
+    "posts": [
+      {
+        "id": "2121604432672718936",
+        "author": "zecvilan",
+        "text": "What holds ✅\nIntents volume 3.07× YoY\nCaptured revenue 3.02×\nFees per user 1.98×\n\nWhat fails ❌\nBase-layer usage 0.25×\nBuyback + burn vs issuance 0.19× (needs ≥1.0×)\nIntents leading price: 0.079\n\nRepo + tests: https://t.co/HJEVrWQZQ5\nWhich claim should I stress-test next?",
+        "links": [
+          "https://github.com/zecvilan/falsifiable-near"
+        ]
+      },
+      {
+        "id": "2121604436636430806",
+        "author": "zecvilan",
+        "text": "Disclosure: I set the thresholds after seeing the Nov 12 snapshot, so that data is in-sample. Only gradings on data after the freeze (tag thresholds-v1) count as out-of-sample. A CI test pins the thresholds' hash, so they can't be tuned later.",
+        "links": []
+      }
+    ],
+    "links": [
+      "https://falsifiable-near-sand.vercel.app",
+      "https://falsifiable-near-sand.vercel.app/"
+    ]
+  },
+  "08c23bff-a8a9-4527-9aed-4175d34596e8": {
+    "author": "trytredio",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T17:49:39.064Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": []
+  },
+  "bfc9e6ec-fc5c-4256-b35c-0a8d9f3102c2": {
+    "author": "usezigs",
+    "status": "ok",
+    "crawled_at": "2026-11-14T17:49:41.359Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [
+      {
+        "id": "2121652866314318259",
+        "author": "usezigs",
+        "text": "@NEARProtocol @Helius @near_intents @Zcash think you'll be pleasantly surprised by what we've managed to build here.\n\n@ilblackdragon @mert @eddylazzarin @avichal @kain @hosseeb @cyntro_py\n\nlooking forward to your thoughts.",
+        "links": []
+      }
+    ],
+    "links": []
+  },
+  "0a956bc3-dfc0-46f0-9a68-1bc64a29db7d": {
+    "author": "R0bin_Hoot_",
+    "status": "ok",
+    "crawled_at": "2026-11-14T17:49:44.811Z",
+    "listed": 2,
+    "read": 2,
+    "posts": [
+      {
+        "id": "2121660051387457569",
+        "author": "R0bin_Hoot_",
+        "text": "@NEARProtocol Also built at NEAR HACKATHON 🏹\nThe Heist: a tap-to-run crash game on NEAR. Tap RUN, the contract checks the flight time and only then rolls the crash with NEAR randomness. Up to 1000×.\nhttps://t.co/ZmF2sNLKy9\n@NEARProtocol #NEARHackathon https://t.co/caJGwtr3On",
+        "links": [
+          "https://github.com/HuRiKh4n/robinhoot-heist"
+        ],
+        "media": [
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HXGmklcWcAEREHM.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 896,
+                  "w": 1600,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 900,
+                  "w": 900,
+                  "x": 70,
+                  "y": 0
+                },
+                {
+                  "h": 900,
+                  "w": 789,
+                  "x": 126,
+                  "y": 0
+                },
+                {
+                  "h": 900,
+                  "w": 450,
+                  "x": 295,
+                  "y": 0
+                },
+                {
+                  "h": 900,
+                  "w": 1600,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 900,
+              "width": 1600
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      }
+    ],
+    "links": [
+      "https://github.com/HuRiKh4n/robinhoot-outlaw-guild"
+    ]
+  },
+  "61c8c286-04c4-43ee-8698-36729c0b28ba": {
+    "author": "mike_genproof",
+    "status": "ok",
+    "crawled_at": "2026-11-14T17:49:50.938Z",
+    "listed": 6,
+    "read": 6,
+    "posts": [
+      {
+        "id": "2121656645868572707",
+        "author": "mike_genproof",
+        "text": "@NEARProtocol Try to break it. On testnet the board pays 1 NEAR for a proof of False on the checker, and 0.3 NEAR for each of two open patches. Our own review broke the first deployment that way: v1 is marked broken on chain, v2 is live.\n\nOne command claims a bounty: https://t.co/hXdcdV3hDq",
+        "links": [
+          "https://github.com/formalized-si/emet#try-it"
+        ]
+      },
+      {
+        "id": "2121656646875181438",
+        "author": "mike_genproof",
+        "text": "@NEARProtocol Why NEAR: a proof check is one function call (137 TGas, about 0.014 NEAR). The gate is the only holder of the contract's own Upgrader role. Every contract here deleted its key in the transaction that deployed it.",
+        "links": []
+      },
+      {
+        "id": "2121656647802093693",
+        "author": "mike_genproof",
+        "text": "@NEARProtocol An open-weight model on @near_ai Cloud found a counterexample to a wrong patch and wrote the Lean proof. The board on testnet paid for it. The model holds no key, and a script sent the proof. NEAR AI's attested service signed every response",
+        "links": []
+      },
+      {
+        "id": "2121656648720634233",
+        "author": "mike_genproof",
+        "text": "@NEARProtocol @near_ai The same checker on testnet took NEAR Proof Arena's Lean spec of nearcore's transfers, by @ilblackdragon, as it is. It accepted two of the Arena's own theorems in one transaction each (395 TGas). We prove nothing about nearcore.",
+        "links": []
+      },
+      {
+        "id": "2121656649635012833",
+        "author": "mike_genproof",
+        "text": "@NEARProtocol @near_ai @ilblackdragon The NEAR Intents team found and fixed the refund bug. Emet found nothing new: their code is the test subject.\n\nA question for builders: which sentence in the comments of your contract belongs in front of its upgrade key?\n\n@NearLegion @NearBuilders",
+        "links": []
+      }
+    ],
+    "links": []
+  },
+  "4a6a7b98-c993-4346-bd1f-33b9140d9db2": {
+    "author": "nurlab_dev",
+    "status": "ok",
+    "crawled_at": "2026-11-14T17:49:54.168Z",
+    "listed": 2,
+    "read": 2,
+    "posts": [
+      {
+        "id": "2121660001118986271",
+        "author": "nurlab_dev",
+        "text": "Under the hood:\n- A Repo Deed NFT proves who owns the repo\n- A token and a live market on NEAR\n- Launch MC = $10k + $10 per GitHub star\n- 0.5% builder / 0.3% platform / 0.5% stakers\n- Sells stay open after graduation\n\nThe repo is the asset.\nTestnet is live. Feedback welcome.",
+        "links": []
+      }
+    ],
+    "links": [
+      "https://docs.gitfi.fun",
+      "https://docs.gitfi.fun/"
+    ]
+  },
+  "562ad3b2-0eaf-441d-ae40-fad8893919c0": {
+    "author": "ezrahesperos",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T17:49:56.141Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://shake-app.onrender.com/welcome",
+      "https://github.com/ketutezraugm/shake"
+    ]
+  },
+  "12bb5100-8d40-4cf1-957e-4f6ed3cf2653": {
+    "author": "zUnEm01",
+    "status": "ok",
+    "crawled_at": "2026-11-14T17:50:01.618Z",
+    "listed": 4,
+    "read": 4,
+    "posts": [
+      {
+        "id": "2120484843956129968",
+        "author": "zUnEm01",
+        "text": "Each merchant is its own NEAR sub-account. Its key can set prices, not move a coin.\n\nYour key is made on your device. Each trade is a signed intent a relayer pays for.\n\nThe contract checks the AI's hardware signature before a price moves.\n\nCode (MIT): https://t.co/y0YRpHcRRi",
+        "links": [
+          "https://github.com/zunem001/till-dawn-merchants"
+        ]
+      },
+      {
+        "id": "2120484847839821962",
+        "author": "zUnEm01",
+        "text": "One trade, both sides.\n\nLeft: a sale on a merchant's card in the game.\nRight: that sale as a transaction on NEAR testnet.\n\nGold and six goods are NEP-245 tokens in one contract. Gold's supply is fixed at 16,415 and nothing can make more. https://t.co/eCqXMfLoNr",
+        "links": [],
+        "media": [
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HW13IfmWMAAqHzT.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 717,
+                  "w": 1280,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 720,
+                  "w": 720,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 720,
+                  "w": 632,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 720,
+                  "w": 360,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 720,
+                  "w": 1280,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 720,
+              "width": 1280
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      },
+      {
+        "id": "2120484852294185108",
+        "author": "zUnEm01",
+        "text": "The real AI refused my scam. So I ran a test, labelled as one: a stand-in AI said yes to 95% off.\n\nThe contract allowed 30%, for one trade, and never below the merchant's own cost.\n\nThe limit lives in the contract, not in the prompt. https://t.co/OB3ojU3MJL",
+        "links": [],
+        "media": [
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HW13OusWUAA-QBL.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 717,
+                  "w": 1280,
+                  "x": 0,
+                  "y": 3
+                },
+                {
+                  "h": 720,
+                  "w": 720,
+                  "x": 280,
+                  "y": 0
+                },
+                {
+                  "h": 720,
+                  "w": 632,
+                  "x": 324,
+                  "y": 0
+                },
+                {
+                  "h": 720,
+                  "w": 360,
+                  "x": 460,
+                  "y": 0
+                },
+                {
+                  "h": 720,
+                  "w": 1280,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 720,
+              "width": 1280
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      },
+      {
+        "id": "2120484856459354417",
+        "author": "zUnEm01",
+        "text": "Can you talk a merchant down? Haggle in plain words at https://t.co/3iCvD1HZVe and tell me what he said.\n\nMy own AI agent, the Steward, was ordered to spend everything. It stopped at its daily limit.\n\nWhat would you try first?\n\n@NearBuilders @NearLegion",
+        "links": [
+          "https://tilldawngame.com/?market"
+        ]
+      }
+    ],
+    "links": [
+      "https://tilldawngame.com/?market"
+    ]
+  },
+  "aa684dd5-4c93-4651-aa1e-c78a4797893f": {
+    "author": "R0bin_Hoot_",
+    "status": "ok",
+    "crawled_at": "2026-11-14T17:50:03.564Z",
+    "listed": 2,
+    "read": 2,
+    "posts": [
+      {
+        "id": "2121660051387457569",
+        "author": "R0bin_Hoot_",
+        "text": "@NEARProtocol Also built at NEAR HACKATHON 🏹\nThe Heist: a tap-to-run crash game on NEAR. Tap RUN, the contract checks the flight time and only then rolls the crash with NEAR randomness. Up to 1000×.\nhttps://t.co/ZmF2sNLKy9\n@NEARProtocol #NEARHackathon https://t.co/caJGwtr3On",
+        "links": [
+          "https://github.com/HuRiKh4n/robinhoot-heist"
+        ],
+        "media": [
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HXGmklcWcAEREHM.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 896,
+                  "w": 1600,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 900,
+                  "w": 900,
+                  "x": 70,
+                  "y": 0
+                },
+                {
+                  "h": 900,
+                  "w": 789,
+                  "x": 126,
+                  "y": 0
+                },
+                {
+                  "h": 900,
+                  "w": 450,
+                  "x": 295,
+                  "y": 0
+                },
+                {
+                  "h": 900,
+                  "w": 1600,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 900,
+              "width": 1600
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      }
+    ],
+    "links": [
+      "https://github.com/HuRiKh4n/robinhoot-outlaw-guild"
+    ]
   }
 }
