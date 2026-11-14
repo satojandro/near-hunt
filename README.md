@@ -184,7 +184,7 @@ community to cheer it on. See the [Roadmap](#roadmap-where-near-hunt-goes-after-
   independently of the frontend.
 - **Agent surface** — a documented read-only API plus a `SKILL.md` so an operator can tell an
   agent "read NEAR Hunt's skill and shortlist ten projects worth investigating."
-- **Support page** — `/support`: donate NEAR to `nearhunt.near` or stake with the team's
+- **Support page** — `/support`: donate NEAR to `team.nearhunt.near` or stake with the team's
   validator `avb.poolv1.near`, both signed by the visitor in their own wallet. It supports the
   site, not any project, and never touches a ranking.
 

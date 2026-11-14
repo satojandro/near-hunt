@@ -93,8 +93,9 @@ failure: `nearhunt.near` has no contract, and the indexer records the row anyway
 
 ## Treasury (NH-94)
 
-Donations go to a separate account, for example `treasury.nearhunt.near`, created and held by the
-owner. It never signs imports.
+> Donations: `team.nearhunt.near`, a sub-account of `nearhunt.near` holding no data and no key that
+> signs writes (created 14 Nov, tx `2Z4KYZ6…`), so the data-publishing account never also holds
+> funds. `NEXT_PUBLIC_DONATION_ACCOUNT` overrides it. Nothing here is signed by an agent.
 
 ## What the chain actually holds (checked 12 Nov 2026, after the importer key was added)
 

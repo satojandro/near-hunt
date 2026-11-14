@@ -17,9 +17,10 @@ export const metadata: Metadata = {
 };
 
 /**
- * Who receives donations. Owner decision 14 Nov: the account that runs NEAR Hunt. Set
- * NEXT_PUBLIC_DONATION_ACCOUNT to move them to a separate treasury (NH-94's original plan)
- * without a code change.
+ * Who receives donations. Owner decision 14 Nov: a treasury separate from the data account —
+ * `team.nearhunt.near`, a sub-account of `nearhunt.near`, set through
+ * NEXT_PUBLIC_DONATION_ACCOUNT in Vercel (Production and Preview). An empty value falls back to
+ * the account that runs NEAR Hunt, which is the old behaviour before the treasury existed.
  */
 const DONATION_ACCOUNT = accountFromEnv(process.env.NEXT_PUBLIC_DONATION_ACCOUNT) ?? VOTE_ACCOUNT;
 /**
