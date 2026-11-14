@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-11-14T08:51:42.748Z",
+  "generated_at": "2026-11-14T10:19:32.840Z",
   "account": "nearhunt.near",
   "note": "Flags only. Nothing is merged, hidden or written. `clusters`/`groups` share an identifying URL (possible duplicates). `weak_signals` share only a name or an X account and are usually different projects.",
   "summary": {
-    "submissions": 1291,
-    "on_chain": 1256,
-    "pending": 35,
+    "submissions": 1333,
+    "on_chain": 1294,
+    "pending": 39,
     "shared_urls": 4,
     "by_kind": {
       "x-post": 1,
@@ -13,8 +13,8 @@
     },
     "clusters": 4,
     "submissions_flagged": 8,
-    "same_name_groups": 39,
-    "same_x_account_groups": 127
+    "same_name_groups": 44,
+    "same_x_account_groups": 129
   },
   "clusters": [
     {
@@ -491,6 +491,26 @@
         ]
       },
       {
+        "key": "spendguard",
+        "submissions": [
+          {
+            "submission_id": "a6fb646f-7458-4780-90b6-9ce763627599",
+            "name": "SpendGuard",
+            "on_chain": true
+          },
+          {
+            "submission_id": "fde9ac19-13da-4b0f-84e7-8e9bc19c63ef",
+            "name": "SpendGuard",
+            "on_chain": true
+          },
+          {
+            "submission_id": "b6408065-651d-4ae2-8903-469110b78b69",
+            "name": "SpendGuard",
+            "on_chain": false
+          }
+        ]
+      },
+      {
         "key": "tollgate",
         "submissions": [
           {
@@ -511,8 +531,33 @@
         ]
       },
       {
+        "key": "torch",
+        "submissions": [
+          {
+            "submission_id": "5b9a485e-baae-4ed9-86a4-2bc73cf944a8",
+            "name": "Torch",
+            "on_chain": true
+          },
+          {
+            "submission_id": "8f06285a-0cfb-40a5-b426-68e74cb37d3a",
+            "name": "Torch",
+            "on_chain": true
+          },
+          {
+            "submission_id": "cc5c5821-10e2-4698-bdfb-8dd39939a796",
+            "name": "torch",
+            "on_chain": false
+          }
+        ]
+      },
+      {
         "key": "veil",
         "submissions": [
+          {
+            "submission_id": "d36521aa-06a3-47bc-8a13-50312a92c831",
+            "name": "Veil",
+            "on_chain": true
+          },
           {
             "submission_id": "dcfca57e-8fb8-4ea0-88d2-ea0b0fc801d8",
             "name": "Veil",
@@ -522,11 +567,6 @@
             "submission_id": "ff82502b-0e5a-4e6a-aec5-8668e01354e2",
             "name": "Veil",
             "on_chain": true
-          },
-          {
-            "submission_id": "d36521aa-06a3-47bc-8a13-50312a92c831",
-            "name": "Veil",
-            "on_chain": false
           }
         ]
       },
@@ -701,6 +741,21 @@
         ]
       },
       {
+        "key": "headroom",
+        "submissions": [
+          {
+            "submission_id": "4d923fa4-dad9-4962-8f3c-a5d0db33e84e",
+            "name": "Headroom",
+            "on_chain": true
+          },
+          {
+            "submission_id": "d96060e7-58d8-404a-b634-41481c9606e4",
+            "name": "headroom",
+            "on_chain": false
+          }
+        ]
+      },
+      {
         "key": "herald",
         "submissions": [
           {
@@ -712,6 +767,21 @@
             "submission_id": "ea335fdf-95f0-43e7-bff1-0f1f91fb678c",
             "name": "Herald",
             "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "meridian",
+        "submissions": [
+          {
+            "submission_id": "0fdc3944-7e09-4607-a08a-2590472db1ea",
+            "name": "Meridian",
+            "on_chain": true
+          },
+          {
+            "submission_id": "84168165-440a-498e-a686-199e2b73defb",
+            "name": "Meridian",
+            "on_chain": false
           }
         ]
       },
@@ -806,6 +876,21 @@
         ]
       },
       {
+        "key": "nearverse",
+        "submissions": [
+          {
+            "submission_id": "bcd11306-4a6c-46bc-98b9-333e0527820f",
+            "name": "Nearverse",
+            "on_chain": true
+          },
+          {
+            "submission_id": "b4c4e0ad-2dea-43c9-9f14-09d7f9116914",
+            "name": "NearVerse",
+            "on_chain": false
+          }
+        ]
+      },
+      {
         "key": "pact",
         "submissions": [
           {
@@ -866,6 +951,21 @@
         ]
       },
       {
+        "key": "recourse",
+        "submissions": [
+          {
+            "submission_id": "25af44dd-37ca-46c1-9d15-d54e9d81e90c",
+            "name": "Recourse",
+            "on_chain": true
+          },
+          {
+            "submission_id": "aac9c635-f12e-47ce-917b-6d68a86b33a0",
+            "name": "Recourse",
+            "on_chain": false
+          }
+        ]
+      },
+      {
         "key": "showup",
         "submissions": [
           {
@@ -896,17 +996,17 @@
         ]
       },
       {
-        "key": "spendguard",
+        "key": "spendguard ai",
         "submissions": [
           {
-            "submission_id": "a6fb646f-7458-4780-90b6-9ce763627599",
-            "name": "SpendGuard",
+            "submission_id": "008dcf6e-df4c-4fac-ba92-dccdeccff142",
+            "name": "SpendGuard AI",
             "on_chain": true
           },
           {
-            "submission_id": "fde9ac19-13da-4b0f-84e7-8e9bc19c63ef",
-            "name": "SpendGuard",
-            "on_chain": true
+            "submission_id": "ba9689a8-f606-4026-9ad9-fc5a4ec77bc5",
+            "name": "SpendGuard AI",
+            "on_chain": false
           }
         ]
       },
@@ -951,21 +1051,6 @@
           {
             "submission_id": "fceb9819-efb9-4a11-9ffc-41dcbbaa6137",
             "name": "tacit",
-            "on_chain": false
-          }
-        ]
-      },
-      {
-        "key": "torch",
-        "submissions": [
-          {
-            "submission_id": "5b9a485e-baae-4ed9-86a4-2bc73cf944a8",
-            "name": "Torch",
-            "on_chain": true
-          },
-          {
-            "submission_id": "8f06285a-0cfb-40a5-b426-68e74cb37d3a",
-            "name": "Torch",
             "on_chain": true
           }
         ]
@@ -1073,7 +1158,7 @@
           {
             "submission_id": "e6b33f2a-cb7a-4916-a397-6e2af20e15f9",
             "name": "Tollkeeper",
-            "on_chain": false
+            "on_chain": true
           }
         ]
       },
@@ -1096,14 +1181,14 @@
         "key": "0xweeky",
         "submissions": [
           {
-            "submission_id": "b1bbcacf-9c6c-4d05-83dd-0f5f24e6c881",
-            "name": "Dockside",
-            "on_chain": false
-          },
-          {
             "submission_id": "ae0dcf6f-7dc1-40aa-99e6-7cf9c4820232",
             "name": "RouteSpec",
-            "on_chain": false
+            "on_chain": true
+          },
+          {
+            "submission_id": "b1bbcacf-9c6c-4d05-83dd-0f5f24e6c881",
+            "name": "Dockside",
+            "on_chain": true
           }
         ]
       },
@@ -1318,6 +1403,36 @@
         ]
       },
       {
+        "key": "bazydlomis57623",
+        "submissions": [
+          {
+            "submission_id": "2a9a5c18-a000-4baa-9395-39aa0cda0b46",
+            "name": "Blindbook",
+            "on_chain": false
+          },
+          {
+            "submission_id": "3575b927-183b-4650-b72c-6b56f95e6f7a",
+            "name": "CHAIR",
+            "on_chain": false
+          }
+        ]
+      },
+      {
+        "key": "bellickkruz",
+        "submissions": [
+          {
+            "submission_id": "6ad54208-087c-4127-902e-b8bfcb01d35e",
+            "name": "Market Radar",
+            "on_chain": true
+          },
+          {
+            "submission_id": "afa3e983-aa44-4f2c-baa8-f867f583a725",
+            "name": "PayPact",
+            "on_chain": false
+          }
+        ]
+      },
+      {
         "key": "bhapp_zarr",
         "submissions": [
           {
@@ -1486,14 +1601,14 @@
         "key": "cookiez1909",
         "submissions": [
           {
-            "submission_id": "4abd8001-d743-4037-9d76-e75d6febf7a3",
-            "name": "Pactum",
+            "submission_id": "0dc7ccd1-6b5d-441d-8f56-a2dc81145c07",
+            "name": "Heavy Is The Crown",
             "on_chain": true
           },
           {
-            "submission_id": "0dc7ccd1-6b5d-441d-8f56-a2dc81145c07",
-            "name": "Heavy Is The Crown",
-            "on_chain": false
+            "submission_id": "4abd8001-d743-4037-9d76-e75d6febf7a3",
+            "name": "Pactum",
+            "on_chain": true
           }
         ]
       },
@@ -1591,14 +1706,14 @@
         "key": "duhvinchii",
         "submissions": [
           {
-            "submission_id": "c96d9523-e061-4978-81c6-5227f4279ab4",
-            "name": "Siege",
-            "on_chain": false
-          },
-          {
             "submission_id": "3663ccd4-3929-4fe9-a4e5-52bac5df275b",
             "name": "Darwin",
-            "on_chain": false
+            "on_chain": true
+          },
+          {
+            "submission_id": "c96d9523-e061-4978-81c6-5227f4279ab4",
+            "name": "Siege",
+            "on_chain": true
           }
         ]
       },
@@ -1718,7 +1833,7 @@
           {
             "submission_id": "c5ccf130-f959-4529-9885-ba96ab65576d",
             "name": "Veritrail",
-            "on_chain": false
+            "on_chain": true
           }
         ]
       },
