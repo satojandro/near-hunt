@@ -755,6 +755,12 @@ disabled by GitHub, 403) and #30/#36 (description text) were commented and left 
 
    **Read back:** 1681 project rows; the 105 new records carry description 69/105, media 68/105, links 30/105, repository 35/105. The importer's re-run prints `new: 0, changed: 0`; `npm run validate:schema` 1681/1681; `npm test` 427/427.
 
+55. **Unattended batch, 2026-11-14 — 150 new submission(s) and 30 null-fill(s), 180 key(s).** Signed by the scheduled cycle under the owner's standing authorization (14 Nov 2026): creates and null-fills only, chain 1681 → 1839. The guard in `lib/auto-sign.mjs` passed with 89 null-fill(s), 0 feed-owned change(s) and 30 metadata change(s), and **no value another writer set was replaced**.
+
+   4 transaction(s): `CMoQTxoH87KH3mor6PCGiohNPyojfzCMGMHBKGJjsCA9`, `95sJo6uhDkTUXyTijwthXBTnkv97G4o7NFcWWPPoRSQM`, `WQYpepVKFpSmHKKtfEpuxiadfZWebEGhUdTcp8ceDsZ`, `7LEW2FkY8KxWhj84EUSnLA4BzbrvjDrA4MRM2JiFCGa4`. `verified: 188/188`.
+
+   **Read back:** 1839 project rows; the 150 new records carry description 100/150, media 99/150, links 48/150, repository 51/150. The importer's re-run prints `new: 0, changed: 0`; `npm run validate:schema` 1839/1839; `npm test` 441/441.
+
 ## Decisions taken
 
 | Decision | Choice | Why |
