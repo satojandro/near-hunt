@@ -45,6 +45,18 @@ test('staleNotice still warns when the copy has no readable time', () => {
   assert.equal(n.headline, 'Showing an earlier copy of the data.');
 });
 
+test('staleNotice refuses to call a copy younger than a minute stale', () => {
+  // The banner used to be able to say "Showing data from less than a minute ago. The NEAR indexer
+  // is slow to respond": a failed read plus a copy another instance had stored seconds earlier.
+  // The age it prints is its whole claim, so a sub-minute copy is never labelled (NH-122).
+  assert.equal(staleNotice({ fetchedAt: at(30_000), now: T0, readFailing: true }), null);
+  assert.equal(staleNotice({ fetchedAt: at(59_999), now: T0, readFailing: true }), null);
+  assert.equal(staleNotice({ fetchedAt: at(60_000), now: T0, readFailing: true }).age, '1 minute ago');
+  // A caller that knows better than the default can widen or narrow the floor.
+  assert.equal(staleNotice({ fetchedAt: at(30_000), now: T0, readFailing: true, minAgeMs: 10_000 }).age, 'less than a minute ago');
+  assert.equal(staleNotice({ fetchedAt: at(4 * MIN), now: T0, readFailing: true, minAgeMs: 5 * MIN }), null);
+});
+
 test('readIsFailing: a copy read after the last failure clears the flag, even on another instance', () => {
   const t = Date.parse('2026-11-11T06:45:00.000Z');
   // Never failed.

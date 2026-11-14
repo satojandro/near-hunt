@@ -24,3 +24,12 @@ export declare function filterHidden(
   hidden: { projects?: Array<{ submission_id?: string } | string> } | Array<string | { submission_id?: string }>,
 ): ListingItem[];
 export declare function trackCounts(items: ListingItem[]): Array<{ track: string; count: number }>;
+
+/**
+ * KV rows -> the listing the app serves: `toListing` then the owner's hide list. Used by both the
+ * cron walker and the request-path fallback, so both produce the same copy.
+ */
+export declare function buildProjectsListing(
+  entries: KvEntry[],
+  hidden: { projects?: Array<{ submission_id?: string } | string> } | Array<string | { submission_id?: string }>,
+): ListingItem[];

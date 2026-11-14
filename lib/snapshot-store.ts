@@ -39,6 +39,15 @@ async function redis(command: (string | number)[], timeoutMs: number): Promise<u
 }
 
 /**
+ * Next marks a build-time prerender attempt with this digest on any fetch that opts out of
+ * caching. It means "this route is dynamic", not "the store is broken": logging it on every build
+ * trains people to ignore the log, and it is caught here so the caller simply sees "no copy".
+ */
+function isDynamicUsageError(err: unknown): boolean {
+  return (err as { digest?: string } | null)?.digest === 'DYNAMIC_SERVER_USAGE';
+}
+
+/**
  * Store the value that was just read.
  *
  * Awaited rather than fired and forgotten: a serverless invocation can be frozen as soon as the
@@ -57,7 +66,9 @@ export async function saveSnapshotValue(key: string, value: unknown, label = key
     await redis(['SET', key, encoded, 'EX', SNAPSHOT_TTL_SECONDS], 5000);
     return true;
   } catch (err) {
-    console.error(`[snapshot] write failed for ${label}:`, err instanceof Error ? err.message : err);
+    if (!isDynamicUsageError(err)) {
+      console.error(`[snapshot] write failed for ${label}:`, err instanceof Error ? err.message : err);
+    }
     return false;
   }
 }
@@ -79,7 +90,9 @@ export async function loadSnapshotValue<T>(
     const body = (await redis(['GET', key], 3000)) as { result?: unknown } | null;
     return decodeSnapshot(body?.result, isValid) as T | null;
   } catch (err) {
-    console.error(`[snapshot] read failed for ${label}:`, err instanceof Error ? err.message : err);
+    if (!isDynamicUsageError(err)) {
+      console.error(`[snapshot] read failed for ${label}:`, err instanceof Error ? err.message : err);
+    }
     return null;
   }
 }

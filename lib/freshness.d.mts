@@ -10,8 +10,14 @@ export declare function staleNotice(opts: {
   fetchedAt: string | number | Date;
   now: number;
   readFailing: boolean;
+  /** Youngest age that may be called stale (default one minute). */
+  minAgeMs?: number;
 }): StaleNotice | null;
 
+/**
+ * Whether a read's own failure clock says the copy being served is late. Not used for the project
+ * listing since NH-122 (that copy is labelled by age, `PROJECTS_STALE_AFTER_MS`).
+ */
 export declare function readIsFailing(opts: {
   lastFailedAt: number;
   lastOkAt: number;

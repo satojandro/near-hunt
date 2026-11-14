@@ -25,6 +25,9 @@ const timeoutMs = Number(values.timeout);
 const failures = [];
 const notes = [];
 
+/** Walk intervals (one a minute) after which the listing is late enough to report (NH-122). */
+const STALE_LISTING_MINUTES = 9;
+
 async function get(path) {
   const url = `${base}${path}`;
   const res = await fetch(url, {
@@ -60,6 +63,17 @@ try {
       else submissionId = item.submission_id;
       if (typeof total !== 'number' || total < 100) fail('api', `meta.total is ${JSON.stringify(total)}`);
       if (json.meta?.stale === true) notes.push('api: serving a stale copy');
+      // NH-122: the listing is refreshed by a cron walker every minute. A copy older than a few
+      // walk intervals means that walker (or the indexer) is in trouble, which the page only shows
+      // as a banner — this is the line that says it out loud.
+      const readAt = Date.parse(json.meta?.fetched_at ?? '');
+      if (Number.isNaN(readAt)) notes.push('api: meta.fetched_at is missing or unreadable');
+      else {
+        const ageMinutes = (Date.now() - readAt) / 60_000;
+        if (ageMinutes > STALE_LISTING_MINUTES) {
+          notes.push(`api: listing last read ${ageMinutes.toFixed(1)} minutes ago — check the refresh cron`);
+        }
+      }
       if (values.verbose) console.log(`ok api: ${total} records, first ${submissionId}`);
     }
   }
