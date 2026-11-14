@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-11-14T05:58:28.137Z",
+  "generated_at": "2026-11-14T07:24:36.349Z",
   "account": "nearhunt.near",
   "note": "Flags only. Nothing is merged, hidden or written. `clusters`/`groups` share an identifying URL (possible duplicates). `weak_signals` share only a name or an X account and are usually different projects.",
   "summary": {
-    "submissions": 1220,
-    "on_chain": 1210,
-    "pending": 10,
+    "submissions": 1251,
+    "on_chain": 1221,
+    "pending": 30,
     "shared_urls": 3,
     "by_kind": {
       "x-post": 1,
@@ -13,8 +13,8 @@
     },
     "clusters": 3,
     "submissions_flagged": 6,
-    "same_name_groups": 37,
-    "same_x_account_groups": 119
+    "same_name_groups": 38,
+    "same_x_account_groups": 121
   },
   "clusters": [
     {
@@ -424,7 +424,7 @@
           {
             "submission_id": "7ed930a3-a624-4e19-9a79-fc24f9c39117",
             "name": "NEAR Sentinel",
-            "on_chain": false
+            "on_chain": true
           }
         ]
       },
@@ -605,6 +605,21 @@
             "submission_id": "779185fc-dc4e-4508-ad58-8a66a3204968",
             "name": "CareRail",
             "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "clavis",
+        "submissions": [
+          {
+            "submission_id": "6a769d7b-374a-4213-a1bd-977e9eed1b5b",
+            "name": "Clavis",
+            "on_chain": true
+          },
+          {
+            "submission_id": "b98abc29-c1ef-4afc-932a-de9d63510729",
+            "name": "Clavis",
+            "on_chain": false
           }
         ]
       },
@@ -1466,6 +1481,21 @@
         ]
       },
       {
+        "key": "eeeman33",
+        "submissions": [
+          {
+            "submission_id": "439b9881-3a45-4f1a-8a16-6394de10b62d",
+            "name": "AI Wallet Guardian",
+            "on_chain": true
+          },
+          {
+            "submission_id": "4a45f8eb-e52f-45e3-b135-647ce3af7fb4",
+            "name": "NEAR SafeOrder",
+            "on_chain": false
+          }
+        ]
+      },
+      {
         "key": "elioz404",
         "submissions": [
           {
@@ -1491,7 +1521,7 @@
           {
             "submission_id": "cea415a8-9b55-4ecf-9283-ac4f40db4bd2",
             "name": "Odd One In",
-            "on_chain": false
+            "on_chain": true
           }
         ]
       },
@@ -2362,6 +2392,21 @@
             "submission_id": "4de7a804-009f-4841-9908-010eed4b1abb",
             "name": "CareFund",
             "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "sathyaonx",
+        "submissions": [
+          {
+            "submission_id": "4c58b2a8-9193-4bba-9344-4339fbb36cbb",
+            "name": "Sourcio: agent-to-agent B2B deals on NEAR",
+            "on_chain": false
+          },
+          {
+            "submission_id": "33c5c110-075c-49e8-978d-b31c319c8f4f",
+            "name": "Invoice factoring on NEAR",
+            "on_chain": false
           }
         ]
       },

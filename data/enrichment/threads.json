@@ -35608,5 +35608,421 @@
     "read": 0,
     "posts": [],
     "links": []
+  },
+  "bc99afc5-0c03-4a24-9af7-3efebe75cdcc": {
+    "author": "Jimuelle17",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T07:11:28.954Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://github.com/Jimuelle07/eclipse-near"
+    ]
+  },
+  "40743a25-d037-4905-86ca-6c9b23fafc26": {
+    "author": "Vexanaks123",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T07:11:30.694Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://github.com/Vexanaks123/sotto"
+    ]
+  },
+  "b98abc29-c1ef-4afc-932a-de9d63510729": {
+    "author": "0xchris82",
+    "status": "ok",
+    "crawled_at": "2026-11-14T07:11:33.077Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [
+      {
+        "id": "2118408331220193332",
+        "author": "0xchris82",
+        "text": "We've been spending quite some time building something for the @NEARProtocol hackathon.\n\nnot ready to show everything yet, but here's a little glimpse of what i've been working on.\n\ncalling it Clavis.\n\nwhat are you guys building for the hackathon? https://t.co/FXUPJCCb3x",
+        "links": [],
+        "media": [
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HWYZJM8XAAA6QCz.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 588,
+                  "w": 1050,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 588,
+                  "w": 588,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 588,
+                  "w": 516,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 588,
+                  "w": 294,
+                  "x": 77,
+                  "y": 0
+                },
+                {
+                  "h": 588,
+                  "w": 1280,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 588,
+              "width": 1280
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      }
+    ],
+    "links": []
+  },
+  "70ef8c06-c28c-4fa4-b949-e486852bfb63": {
+    "author": "adindacq",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T07:11:35.097Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://adindamochamad.github.io/subsidy-filter/"
+    ]
+  },
+  "03b361c8-6859-4b55-aff2-e898eb048840": {
+    "author": "Sannagk8",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T07:11:36.751Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://github.com/Sannagk8/count-me-in"
+    ]
+  },
+  "d6a8873d-c1c0-4573-bfe9-81ce6c8a92c6": {
+    "author": "WayfindCloud",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T07:11:38.474Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://one.wayfind.click/"
+    ]
+  },
+  "8ddda1d2-34a6-4f57-9d9f-31ba1fc45c8b": {
+    "author": "Edvin325",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T07:11:40.154Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://github.com/Edvin325/bork"
+    ]
+  },
+  "f7c277df-a43f-4d79-a4fc-577be7b350e3": {
+    "author": "fraser_frsr",
+    "status": "no-author-replies",
+    "crawled_at": "2026-11-14T07:11:42.388Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [],
+    "links": []
+  },
+  "d4218078-2996-44d3-a9d0-74ece9783016": {
+    "author": "MiracleOtugo",
+    "status": "ok",
+    "crawled_at": "2026-11-14T07:11:46.697Z",
+    "listed": 3,
+    "read": 3,
+    "posts": [
+      {
+        "id": "2121492162064068821",
+        "author": "MiracleOtugo",
+        "text": "you can try it out here https://t.co/qbtZCcPj2o\nobv you can practice run without touching the onchain side",
+        "links": [
+          "https://ham-maze.vercel.app/"
+        ]
+      },
+      {
+        "id": "2121492164488110307",
+        "author": "MiracleOtugo",
+        "text": "github repo https://t.co/DhVO4e60Er",
+        "links": [
+          "https://github.com/MirakoolDev/ham-maze"
+        ]
+      }
+    ],
+    "links": []
+  },
+  "eb268a65-caa0-4f5a-aa26-7154e3ade0a9": {
+    "author": "shariq_ai",
+    "status": "no-author-replies",
+    "crawled_at": "2026-11-14T07:11:48.911Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [],
+    "links": []
+  },
+  "6af59910-0ebe-4dce-b07a-2d188a344181": {
+    "author": "Alanjoskar123",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T07:11:50.657Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://github.com/Alanjoskar/maul-street"
+    ]
+  },
+  "4c58b2a8-9193-4bba-9344-4339fbb36cbb": {
+    "author": "sathyaonX",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T07:11:52.236Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": []
+  },
+  "33c5c110-075c-49e8-978d-b31c319c8f4f": {
+    "author": "sathyaonX",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T07:11:53.853Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": []
+  },
+  "0d5b06d5-60cf-46ca-ad61-a62a4e476916": {
+    "author": "fawazdevs",
+    "status": "ok",
+    "crawled_at": "2026-11-14T07:11:58.134Z",
+    "listed": 3,
+    "read": 3,
+    "posts": [
+      {
+        "id": "2121494292363620533",
+        "author": "fawazdevs",
+        "text": "How it works:\n\nSimulated buyer agents match compatible shop orders. Supplier agents return structured quotes. A server-side policy engine ranks eligible offers and checks each shop’s price and spend limits before approval.\n\nA high score can’t bypass those rules.",
+        "links": []
+      },
+      {
+        "id": "2121494299108139273",
+        "author": "fawazdevs",
+        "text": "NEAR adds an optional testnet approval layer: a Rust contract records the round and supports merchant approval of exact allocations. It holds no funds. Demo payments are simulated.\n\nDemo: https://t.co/jBhBSmFSaZ\n\nCode: https://t.co/WUQu100wcb",
+        "links": [
+          "https://restock-relay.vercel.app",
+          "https://github.com/fawazdevx/restock-relay",
+          "https://restock-relay.vercel.app/"
+        ]
+      }
+    ],
+    "links": []
+  },
+  "beee17c1-d0ee-4fdc-8531-72e51daad3b4": {
+    "author": "Sreekubro",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T07:12:00.167Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://near.social",
+      "https://github.com/Sreekubro/conch",
+      "https://near.social/"
+    ]
+  },
+  "aa0f3986-3ed2-48c3-a207-aef046edcda4": {
+    "author": "kiddiepop",
+    "status": "ok",
+    "crawled_at": "2026-11-14T07:12:03.401Z",
+    "listed": 2,
+    "read": 2,
+    "posts": [
+      {
+        "id": "2121495381691564084",
+        "author": "kiddiepop",
+        "text": "Key Invariants Verified OnChain:\n&gt; Zero Human Private Keys: Parent contract is sole protocol auth.\n&gt; Time-Locked SLA: Lease AI compute onchain w/ block-timestamp precision.\n&gt; NEP-178 Transfer Freeze\n&gt; Streaming Yield: 100% non custodial revenue routing to token owners.",
+        "links": []
+      },
+      {
+        "id": "2121495383948005732",
+        "author": "kiddiepop",
+        "text": "🌐 Live dApp: https://t.co/i7PorYMQKk\n📦 GitHub: https://t.co/wDsl4tNfVl\n📜 Contract: raga-protocol-mw93m309.testnet\n\nBuilt with Rust near-sdk 5.30.1 &amp; Next.js 14. cc @NearBuilders @NearLegion",
+        "links": [
+          "https://raganear.vercel.app/",
+          "https://github.com/erisandev/raganear"
+        ]
+      }
+    ],
+    "links": []
+  },
+  "c105e3a5-de7f-4efa-8071-8de1a9e11c78": {
+    "author": "lir1754642",
+    "status": "ok",
+    "crawled_at": "2026-11-14T07:12:06.881Z",
+    "listed": 2,
+    "read": 2,
+    "posts": [
+      {
+        "id": "2120672252140409098",
+        "author": "lir1754642",
+        "text": "@NEARProtocol Fair Share: lying about yourself cannot pay. Ever seen a rating split get gamed?",
+        "links": []
+      }
+    ],
+    "links": [
+      "https://kylne700.github.io/near-fair-share/",
+      "https://github.com/Kylne700/near-fair-share"
+    ]
+  },
+  "42c205e5-ac2e-40f0-88d6-25c8c739b056": {
+    "author": "DEJIOFWEB3",
+    "status": "ok",
+    "crawled_at": "2026-11-14T07:12:11.587Z",
+    "listed": 3,
+    "read": 3,
+    "posts": [
+      {
+        "id": "2121495134810579134",
+        "author": "DEJIOFWEB3",
+        "text": "@NEARProtocol @NearBuilders @ilblackdragon NEARMARK combines Authority Intelligence, a six-scenario NASB-0.1 benchmark and a native payment Gate.\n\nIt checks owner-defined recipient, method and amount rules, returning ALLOW, WARN or BLOCK.\n\nThe recorded local benchmark passed all 6 scenarios.",
+        "links": []
+      },
+      {
+        "id": "2121495282697503008",
+        "author": "DEJIOFWEB3",
+        "text": "@NEARProtocol @NearBuilders @ilblackdragon NEAR stack: JSON-RPC, near-sdk-rs, Workspaces, near-cli-rs, NEP-141, FastNear.\n\nEcosystem tools: @near_ai @out_layer @near_intents @NearAgentMarket.\n\nNASB: 6/6 local scenarios passed.\n\nDemo: https://t.co/4EjVXseqy5\n\nRepo: https://t.co/YqZaOIDgcH",
+        "links": [
+          "https://nearmark.nearmark-security.workers.dev",
+          "https://github.com/GODGRACE07/nearmark-hackathon-2026",
+          "https://nearmark.nearmark-security.workers.dev/"
+        ]
+      }
+    ],
+    "links": []
+  },
+  "f40ce6b3-d34d-48b8-b106-2d4e288b7dd1": {
+    "author": "ramatleranab",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T07:12:13.509Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://ramaltman05-sudo.github.io/roll-call/site/",
+      "https://github.com/ramaltman05-sudo/roll-call"
+    ]
+  },
+  "f0336fa2-0881-4611-8ed8-88ee263cd752": {
+    "author": "nanoodledev",
+    "status": "ok",
+    "crawled_at": "2026-11-14T07:12:17.693Z",
+    "listed": 3,
+    "read": 3,
+    "posts": [
+      {
+        "id": "2121494781906067624",
+        "author": "nanoodledev",
+        "text": "@NEARProtocol Internally this settles in nano to use nano-gpt's incredible x402 support.\n@NanoGPTcom @vinibarbosabr",
+        "links": []
+      },
+      {
+        "id": "2121494987355615739",
+        "author": "nanoodledev",
+        "text": "@NEARProtocol @NanoGPTcom @vinibarbosabr as always, open source at https://t.co/TXLwp5UtE7",
+        "links": [
+          "https://github.com/nanoodlecom"
+        ]
+      },
+      {
+        "id": "2121497965022056853",
+        "author": "nanoodledev",
+        "text": "@NEARProtocol @NanoGPTcom @vinibarbosabr access the near mcp at https://t.co/xa2n9HdIMV",
+        "links": [
+          "https://near.nanoodle.com",
+          "https://near.nanoodle.com/"
+        ]
+      }
+    ],
+    "links": []
+  },
+  "de87f9af-5da9-44fd-aca5-ae0ddef1c611": {
+    "author": "young_crypton",
+    "status": "no-author-replies",
+    "crawled_at": "2026-11-14T07:12:21.510Z",
+    "listed": 3,
+    "read": 3,
+    "posts": [],
+    "links": []
+  },
+  "daa82e85-20ba-4b5b-8064-c09bff3dc0ff": {
+    "author": "Ashiklijo123",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T07:12:23.334Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://github.com/Ashiklijo/grapevine"
+    ]
+  },
+  "5fcf33c6-a437-4a8c-b7f8-6f87defb740d": {
+    "author": "game_bloc",
+    "status": "ok",
+    "crawled_at": "2026-11-14T07:12:28.572Z",
+    "listed": 5,
+    "read": 5,
+    "posts": [
+      {
+        "id": "2121291254314992062",
+        "author": "game_bloc",
+        "text": "2/6 — The problem and inspiration\n\nAn agent can do valuable research and reach a useful decision. Other agents should be able to use that work in their own circumstances, without repeating all the reasoning or inheriting someone else’s spending authority.\n\nThe inspiration is the",
+        "links": []
+      },
+      {
+        "id": "2121291257246839144",
+        "author": "game_bloc",
+        "text": "3/6 — What the attached demo actually shows\n\n• Shark uses DeepSeek through NEAR AI to evaluate and execute a Rhea rebalance with 0.002 test wNEAR input.\n• Remora uses local Qwen 2.5 1.5B for advisory review and sizes its copy at 50%: 0.001 test wNEAR.\n• A 45-second owner-veto",
+        "links": []
+      },
+      {
+        "id": "2121291261344948394",
+        "author": "game_bloc",
+        "text": "4/6 — Reuse a decision without surrendering control\n\nThe follower checks allowed assets, input size, slippage and action age. Its model can flag concerns; it cannot rewrite those guards.\n\nAn owner can block a candidate during its veto window. Without a veto, execution is",
+        "links": []
+      },
+      {
+        "id": "2121291264318382591",
+        "author": "game_bloc",
+        "text": "5/6 — How Remora uses NEAR and OutLayer\n\nNEAR contracts settle the USDC subscription. Rhea executes the rebalance, and the NEAR registry lets the website discover publishers.\n\nWe use OutLayer (@out_layer) to run Remora’s protected feed worker in an Intel TDX enclave. It checks",
+        "links": []
+      },
+      {
+        "id": "2121291267527094463",
+        "author": "game_bloc",
+        "text": "6/6 — Try Remora\n\nInstall with Node 22.22.2+:\nnpm install -g @ola-893/agentstreams-cli\n\nExplore an agent’s activity, history and rate, copy its agent ID, then use the CLI to configure your own subscription and execution limits.\n\nExplore: https://t.co/Z4sayUXC1C\nSetup + evidence:",
+        "links": [
+          "https://remora-agents.pages.dev/explore"
+        ]
+      }
+    ],
+    "links": []
   }
 }
