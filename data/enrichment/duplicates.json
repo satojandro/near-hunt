@@ -1,20 +1,20 @@
 {
-  "generated_at": "2026-11-14T04:34:25.107Z",
+  "generated_at": "2026-11-14T05:58:28.137Z",
   "account": "nearhunt.near",
   "note": "Flags only. Nothing is merged, hidden or written. `clusters`/`groups` share an identifying URL (possible duplicates). `weak_signals` share only a name or an X account and are usually different projects.",
   "summary": {
-    "submissions": 1210,
-    "on_chain": 1203,
-    "pending": 7,
-    "shared_urls": 2,
+    "submissions": 1220,
+    "on_chain": 1210,
+    "pending": 10,
+    "shared_urls": 3,
     "by_kind": {
       "x-post": 1,
-      "url": 1
+      "url": 2
     },
-    "clusters": 2,
-    "submissions_flagged": 4,
+    "clusters": 3,
+    "submissions_flagged": 6,
     "same_name_groups": 37,
-    "same_x_account_groups": 118
+    "same_x_account_groups": 119
   },
   "clusters": [
     {
@@ -34,6 +34,26 @@
         {
           "kind": "url",
           "key": "pump-rider.netlify.app"
+        }
+      ]
+    },
+    {
+      "submissions": [
+        {
+          "submission_id": "139d53ec-ff79-4780-85fa-e8f2c57f4d29",
+          "name": "Paysure AI",
+          "on_chain": true
+        },
+        {
+          "submission_id": "688343fa-16d9-4720-9b73-c2d336ad0cd6",
+          "name": "VeriPact",
+          "on_chain": true
+        }
+      ],
+      "shared": [
+        {
+          "kind": "url",
+          "key": "near.ai"
         }
       ]
     },
@@ -77,6 +97,28 @@
           "on_chain": true,
           "fields": [
             "demo_url"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "near.ai",
+      "kind": "url",
+      "submissions": [
+        {
+          "submission_id": "139d53ec-ff79-4780-85fa-e8f2c57f4d29",
+          "name": "Paysure AI",
+          "on_chain": true,
+          "fields": [
+            "links"
+          ]
+        },
+        {
+          "submission_id": "688343fa-16d9-4720-9b73-c2d336ad0cd6",
+          "name": "VeriPact",
+          "on_chain": true,
+          "fields": [
+            "links"
           ]
         }
       ]
@@ -362,26 +404,6 @@
         ]
       },
       {
-        "key": "intentguard",
-        "submissions": [
-          {
-            "submission_id": "7db4528c-09fb-4a27-85d8-526aa2bc4ee4",
-            "name": "IntentGuard",
-            "on_chain": true
-          },
-          {
-            "submission_id": "f7a9c397-afcf-4ac4-832b-0254390cd34a",
-            "name": "IntentGuard",
-            "on_chain": true
-          },
-          {
-            "submission_id": "fab81a4b-9c1f-4434-a1cc-cc0933f8d37f",
-            "name": "IntentGuard",
-            "on_chain": true
-          }
-        ]
-      },
-      {
         "key": "near sentinel",
         "submissions": [
           {
@@ -397,6 +419,31 @@
           {
             "submission_id": "75b5562f-02de-414c-9281-7199ed2c8ea1",
             "name": "NEAR Sentinel",
+            "on_chain": true
+          },
+          {
+            "submission_id": "7ed930a3-a624-4e19-9a79-fc24f9c39117",
+            "name": "NEAR Sentinel",
+            "on_chain": false
+          }
+        ]
+      },
+      {
+        "key": "intentguard",
+        "submissions": [
+          {
+            "submission_id": "7db4528c-09fb-4a27-85d8-526aa2bc4ee4",
+            "name": "IntentGuard",
+            "on_chain": true
+          },
+          {
+            "submission_id": "f7a9c397-afcf-4ac4-832b-0254390cd34a",
+            "name": "IntentGuard",
+            "on_chain": true
+          },
+          {
+            "submission_id": "fab81a4b-9c1f-4434-a1cc-cc0933f8d37f",
+            "name": "IntentGuard",
             "on_chain": true
           }
         ]
@@ -1434,6 +1481,21 @@
         ]
       },
       {
+        "key": "emer__eth",
+        "submissions": [
+          {
+            "submission_id": "19021f5f-cfcd-46e9-bad3-76625e82d8bb",
+            "name": "Assay",
+            "on_chain": true
+          },
+          {
+            "submission_id": "cea415a8-9b55-4ecf-9283-ac4f40db4bd2",
+            "name": "Odd One In",
+            "on_chain": false
+          }
+        ]
+      },
+      {
         "key": "emeraldpop15035",
         "submissions": [
           {
@@ -1574,12 +1636,12 @@
           {
             "submission_id": "688343fa-16d9-4720-9b73-c2d336ad0cd6",
             "name": "VeriPact",
-            "on_chain": false
+            "on_chain": true
           },
           {
             "submission_id": "dd72dd31-b0d0-461e-9b2d-3a5f405e6ea5",
             "name": "NEAR Protocol P&L Workbench & Empirical Thesis",
-            "on_chain": false
+            "on_chain": true
           }
         ]
       },

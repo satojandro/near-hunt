@@ -35441,5 +35441,172 @@
       "https://mchr2314.github.io/near-protocol-pnl/Repo",
       "https://github.com/mchr2314/near-protocol-pnl"
     ]
+  },
+  "62f0e8a9-9e9a-4d49-ba14-1d74056dc1f2": {
+    "author": "Havertz3349",
+    "status": "no-author-replies",
+    "crawled_at": "2026-11-14T05:46:29.147Z",
+    "listed": 3,
+    "read": 3,
+    "posts": [],
+    "links": [
+      "https://github.com/Isaaco3349/Kobo"
+    ]
+  },
+  "b6bda5bd-b32f-49b5-9ee1-3e0311981a5b": {
+    "author": "MSAbhishek022",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T05:46:30.672Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": []
+  },
+  "afa21d36-e345-434b-b687-28d0d34e9803": {
+    "author": "anuraggdubeyy",
+    "status": "ok",
+    "crawled_at": "2026-11-14T05:46:34.827Z",
+    "listed": 3,
+    "read": 3,
+    "posts": [
+      {
+        "id": "2121286791387095429",
+        "author": "anuraggdubeyy",
+        "text": "Well, i was on to this\n\nFloor, what is that ?\nit is a stablecoin depeg cover.\n\nPosting the full demo video with links soon, built this for near hackathon https://t.co/DQ3pG2AHPC",
+        "links": [],
+        "media": [
+          {
+            "type": "video",
+            "media_url_https": "https://pbs.twimg.com/amplify_video_thumb/2121286760403750912/img/p0ScB_jS0jo7mbnq.jpg",
+            "original_info": {
+              "focus_rects": [],
+              "height": 720,
+              "width": 1280
+            },
+            "video_info": {
+              "aspect_ratio": [
+                16,
+                9
+              ],
+              "duration_millis": 26368,
+              "variants": [
+                {
+                  "content_type": "application/x-mpegURL",
+                  "url": "https://video.twimg.com/amplify_video/2121286760403750912/pl/yxYY78nhPkIq2DL2.m3u8"
+                },
+                {
+                  "bitrate": 256000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121286760403750912/vid/avc1/480x270/GeChv76UiSdQi_lG.mp4"
+                },
+                {
+                  "bitrate": 832000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121286760403750912/vid/avc1/640x360/b3NqO6b5ibwRlt-5.mp4"
+                },
+                {
+                  "bitrate": 2176000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121286760403750912/vid/avc1/1280x720/mBf7MDleM6phWjyT.mp4"
+                }
+              ]
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      },
+      {
+        "id": "2121466112395416042",
+        "author": "anuraggdubeyy",
+        "text": "@NEARProtocol @NearBuilders @near_ai @ilblackdragon @eddylazzarin @avichal @cyntro_py Built at Near Hackathon\n\nLive link :- https://t.co/b5KW9sQAEI",
+        "links": [
+          "https://floorxa.vercel.app/"
+        ]
+      }
+    ],
+    "links": []
+  },
+  "ffc7a125-82f0-424f-b2f8-285497bca970": {
+    "author": "grey_labs",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T05:46:36.526Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://github.com/grey-labz/lockpad"
+    ]
+  },
+  "cea415a8-9b55-4ecf-9283-ac4f40db4bd2": {
+    "author": "emer__eth",
+    "status": "ok",
+    "crawled_at": "2026-11-14T05:46:39.218Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [
+      {
+        "id": "2121463735747498453",
+        "author": "emer__eth",
+        "text": "Every pick is sealed on chain, then opened the next round. Rounds take 3 minutes. Each regular plays from its own wallet with a public record.\n\nCheck it with one command: npm run judge\nhttps://t.co/7O2TtJj0Pe",
+        "links": [
+          "https://github.com/emer-eth/odd-one-in"
+        ]
+      }
+    ],
+    "links": [
+      "https://odd-one-in-zeta.vercel.app",
+      "https://odd-one-in-zeta.vercel.app/"
+    ]
+  },
+  "55486006-1d69-437a-a5be-a8b397873962": {
+    "author": "kyle_kim_tg",
+    "status": "no-author-replies",
+    "crawled_at": "2026-11-14T05:46:41.612Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [],
+    "links": []
+  },
+  "67257e5d-4d65-4b07-8148-78432cbdbe2a": {
+    "author": "Namaku76761529",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T05:46:43.279Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://github.com/fachruz/gatekeeper-near-hackaton"
+    ]
+  },
+  "601d9c70-d108-4277-9043-aa952fe10420": {
+    "author": "dex_cipher",
+    "status": "no-author-replies",
+    "crawled_at": "2026-11-14T05:46:45.828Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [],
+    "links": []
+  },
+  "7ed930a3-a624-4e19-9a79-fc24f9c39117": {
+    "author": "aidrop_lizz21",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T05:46:47.567Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://github.com/liddpzz-ops/near-sentinel"
+    ]
+  },
+  "3995cb3d-a73c-4f4c-b674-a79ff27ec059": {
+    "author": "ardmere_io",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T05:46:49.100Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": []
   }
 }
