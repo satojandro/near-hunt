@@ -11,12 +11,18 @@ export declare const REFRESH: {
   readonly perPageTimeoutMs: number;
   readonly retryDelayMs: number;
   readonly maxPages: number;
+  /** The whole walk, retries included, gives up after this long. */
+  readonly walkBudgetMs: number;
 };
 
 export declare const PROJECTS_SNAPSHOT_KEY: string;
 export declare const PROJECTS_MARKER_KEY: string;
 export declare const PROJECTS_MEMORY_TTL_MS: number;
 export declare const PROJECTS_STALE_AFTER_MS: number;
+export declare const PROJECTS_RETRY_BACKOFF_MS: number;
+
+/** Whether a request-path walk is still in its pause after a failure (no copy to serve). */
+export declare function liveWalkCoolingDown(opts: { lastFailedAt: number; now: number }): boolean;
 
 /** The stored listing plus when it was read. */
 export interface ProjectsSnapshot {

@@ -2,12 +2,14 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import {
   PROJECTS_MEMORY_TTL_MS,
+  PROJECTS_RETRY_BACKOFF_MS,
   REFRESH,
   advanceFromMarker,
   isProjectsMarker,
   isProjectsSnapshot,
   listingDigest,
   liveRefreshDue,
+  liveWalkCoolingDown,
   resolveProjectsSnapshot,
   walkProjects,
 } from '../lib/refresh-projects.mjs';
@@ -207,4 +209,52 @@ test('liveRefreshDue: only without a store marker, only for an aged copy, at mos
   );
   // No copy at all is the cold-start path in getProjects, not this one.
   assert.equal(liveRefreshDue({ snapshot: null, storeAnswered: false, lastAttemptAt: 0, now }), false);
+});
+
+test('walkProjects gives up within its overall budget instead of running past the platform limit', async () => {
+  // Each page answers, slowly. Per-page limits alone would let the walk go on; the budget stops it.
+  const slow = (body) => async () => {
+    await new Promise((r) => setTimeout(r, 30));
+    return page(body);
+  };
+  const answers = [
+    slow({ entries: [row('project/a')], page_token: 'tok-2' }),
+    slow({ entries: [row('project/b')], page_token: 'tok-3' }),
+    slow({ entries: [row('project/c')] }),
+  ];
+  let calls = 0;
+  const fetchImpl = async () => answers[calls++]();
+
+  await assert.rejects(
+    walkProjects({ fetchImpl, limits: { walkBudgetMs: 45, retryDelayMs: 1 } }),
+    /KV walk ran out of its 45 ms budget at page 3/,
+  );
+  assert.equal(calls, 2, 'no request is started once the budget is spent');
+});
+
+test('walkProjects cuts each attempt to what is left of the budget', async () => {
+  const signals = [];
+  const fetchImpl = async (_url, init) => {
+    signals.push(init.signal);
+    // A request that never answers. AbortSignal.timeout's timer does not keep the event loop alive,
+    // so a ref'd guard timer does (and fails the test if the budget never fires).
+    return new Promise((_, reject) => {
+      const guard = setTimeout(() => reject(new Error('budget never aborted the request')), 2_000);
+      init.signal.addEventListener('abort', () => {
+        clearTimeout(guard);
+        reject(init.signal.reason);
+      });
+    });
+  };
+  const started = Date.now();
+  await assert.rejects(walkProjects({ fetchImpl, limits: { walkBudgetMs: 60, perPageTimeoutMs: 15_000, retryDelayMs: 1 } }));
+  assert.ok(Date.now() - started < 1_000, 'aborted by the 60 ms budget, not the 15 s page timeout');
+  assert.equal(signals.length >= 1, true);
+});
+
+test('liveWalkCoolingDown pauses request-path walks for a few seconds after a failure', () => {
+  const now = 1_000_000;
+  assert.equal(liveWalkCoolingDown({ lastFailedAt: 0, now }), false, 'never failed');
+  assert.equal(liveWalkCoolingDown({ lastFailedAt: now - 1_000, now }), true);
+  assert.equal(liveWalkCoolingDown({ lastFailedAt: now - PROJECTS_RETRY_BACKOFF_MS, now }), false);
 });

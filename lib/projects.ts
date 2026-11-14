@@ -8,6 +8,7 @@ import {
   PROJECTS_STALE_AFTER_MS,
   advanceFromMarker,
   liveRefreshDue,
+  liveWalkCoolingDown,
   resolveProjectsSnapshot,
   walkProjects,
   type ProjectsSnapshot,
@@ -72,6 +73,13 @@ export class ProjectsUnavailableError extends Error {
 export const PROJECTS_TIMEOUT_MS = 8000;
 
 /**
+ * The whole request-path walk gives up after this long, however many pages are left. Eight seconds
+ * a page alone would let nine pages hold a page render for ~72 s, near the function limit; a page
+ * that cannot be rendered in 25 s is better served the "indexer not responding" page.
+ */
+export const PROJECTS_LIVE_WALK_BUDGET_MS = 25_000;
+
+/**
  * Everything this module remembers between requests.
  *
  * On `globalThis` rather than in module scope because Next builds this file into more than one
@@ -91,6 +99,8 @@ interface ProjectsState {
   storeAnswered: boolean;
   /** When this instance last started a live walk (0 = never), to walk at most once a minute. */
   lastLiveAttemptAt: number;
+  /** When this instance's last live walk failed (0 = never), for `liveWalkCoolingDown`. */
+  lastLiveFailedAt: number;
 }
 
 const STATE_KEY = Symbol.for('nearhunt.projects.state');
@@ -101,6 +111,7 @@ const state: ProjectsState = ((globalThis as unknown as Record<symbol, ProjectsS
   walkInflight: null,
   storeAnswered: false,
   lastLiveAttemptAt: 0,
+  lastLiveFailedAt: 0,
 });
 
 /**
@@ -141,7 +152,7 @@ async function readLive(): Promise<ProjectsSnapshot> {
       const { entries } = await walkProjects({
         account: DEFAULT_ACCOUNT,
         network: 'mainnet',
-        limits: { attemptsPerPage: 1, perPageTimeoutMs: PROJECTS_TIMEOUT_MS },
+        limits: { attemptsPerPage: 1, perPageTimeoutMs: PROJECTS_TIMEOUT_MS, walkBudgetMs: PROJECTS_LIVE_WALK_BUDGET_MS },
       });
       const snapshot: ProjectsSnapshot = {
         items: buildProjectsListing(entries, HIDDEN_PROJECTS),
@@ -191,6 +202,11 @@ export async function getProjects(): Promise<ProjectList> {
     now: Date.now(),
   });
   if (snapshot && !refresh) return asList(snapshot);
+  // No copy, and a walk failed moments ago: do not start another one per caller. (With a copy,
+  // `liveRefreshDue` already limits refreshes to one a minute.)
+  if (!snapshot && !state.walkInflight && liveWalkCoolingDown({ lastFailedAt: state.lastLiveFailedAt, now: Date.now() })) {
+    throw new ProjectsUnavailableError();
+  }
   try {
     return asList(await readLive());
   } catch (err) {
@@ -198,6 +214,7 @@ export async function getProjects(): Promise<ProjectList> {
     // the page is dynamic, and wrapping the error would turn the build's quiet "dynamic route"
     // note into a "walk failed" log line.
     if ((err as { digest?: string })?.digest === 'DYNAMIC_SERVER_USAGE') throw err;
+    state.lastLiveFailedAt = Date.now();
     if (snapshot) {
       // A refresh that failed still leaves the copy we had; its age labels it (`asList`).
       console.error('[projects] live refresh failed, serving the copy in memory:', err instanceof Error ? err.message : err);
