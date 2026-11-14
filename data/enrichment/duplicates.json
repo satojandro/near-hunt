@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-11-13T22:58:54.676Z",
+  "generated_at": "2026-11-14T00:22:44.038Z",
   "account": "nearhunt.near",
   "note": "Flags only. Nothing is merged, hidden or written. `clusters`/`groups` share an identifying URL (possible duplicates). `weak_signals` share only a name or an X account and are usually different projects.",
   "summary": {
-    "submissions": 1143,
-    "on_chain": 1127,
-    "pending": 16,
+    "submissions": 1166,
+    "on_chain": 1147,
+    "pending": 19,
     "shared_urls": 2,
     "by_kind": {
       "x-post": 1,
@@ -13,8 +13,8 @@
     },
     "clusters": 2,
     "submissions_flagged": 4,
-    "same_name_groups": 35,
-    "same_x_account_groups": 111
+    "same_name_groups": 36,
+    "same_x_account_groups": 113
   },
   "clusters": [
     {
@@ -228,6 +228,11 @@
             "submission_id": "fda85f72-004a-44cd-a28f-525b91ed0053",
             "name": "Leash",
             "on_chain": true
+          },
+          {
+            "submission_id": "16a8d414-d050-4812-bf01-80e993e1ca33",
+            "name": "Leash",
+            "on_chain": false
           }
         ]
       },
@@ -602,6 +607,21 @@
         ]
       },
       {
+        "key": "nearena",
+        "submissions": [
+          {
+            "submission_id": "76e0dc97-5ee3-49f4-9f61-39f9f80ce3c6",
+            "name": "NEARena",
+            "on_chain": true
+          },
+          {
+            "submission_id": "c4b2951c-bbc2-457d-91ea-24cd563ffda1",
+            "name": "Nearena",
+            "on_chain": true
+          }
+        ]
+      },
+      {
         "key": "nearguard",
         "submissions": [
           {
@@ -635,14 +655,14 @@
         "key": "pact",
         "submissions": [
           {
-            "submission_id": "946f4721-aa58-44a0-94c9-0b45de9b80a3",
+            "submission_id": "77019062-6803-4d9b-b04f-a45b3cb7585f",
             "name": "Pact",
             "on_chain": true
           },
           {
-            "submission_id": "77019062-6803-4d9b-b04f-a45b3cb7585f",
+            "submission_id": "946f4721-aa58-44a0-94c9-0b45de9b80a3",
             "name": "Pact",
-            "on_chain": false
+            "on_chain": true
           }
         ]
       },
@@ -1114,6 +1134,21 @@
         ]
       },
       {
+        "key": "birinets",
+        "submissions": [
+          {
+            "submission_id": "4296638a-e11c-4d51-b72f-e449f6d99e06",
+            "name": "DNA Confidential",
+            "on_chain": true
+          },
+          {
+            "submission_id": "9eda243f-d183-4556-bda2-d319230afd2e",
+            "name": "Indaga Next Check",
+            "on_chain": false
+          }
+        ]
+      },
+      {
         "key": "bz3ir93ejx81014",
         "submissions": [
           {
@@ -1349,7 +1384,7 @@
           {
             "submission_id": "ee019f61-8e2d-49d3-8c4c-b58ed8383dc5",
             "name": "NEAR Breakeven",
-            "on_chain": false
+            "on_chain": true
           }
         ]
       },
@@ -1665,6 +1700,21 @@
             "submission_id": "fe292050-bdfa-482d-ab08-4d1355e49f3f",
             "name": "Nims",
             "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "marvinsunday4",
+        "submissions": [
+          {
+            "submission_id": "25e86b27-fbcd-438b-99ba-769046b4741c",
+            "name": "PROTEAN",
+            "on_chain": true
+          },
+          {
+            "submission_id": "e8ce91f1-0ced-4739-b56e-ea96e38c692f",
+            "name": "MARVII Wallet",
+            "on_chain": false
           }
         ]
       },
