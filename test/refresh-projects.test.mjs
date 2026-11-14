@@ -10,6 +10,7 @@ import {
   listingDigest,
   liveRefreshDue,
   liveWalkCoolingDown,
+  needsCopyRepair,
   readProjectRecord,
   resolveProjectsSnapshot,
   walkProjects,
@@ -298,4 +299,21 @@ test('readProjectRecord reports a failed lookup instead of answering "no such pr
   await assert.rejects(readProjectRecord({ submissionId: 'x', fetchImpl }), /KV API returned 503/);
   const empty = stub(page({ entries: [] }));
   assert.deepEqual(await readProjectRecord({ submissionId: 'x', fetchImpl: empty.fetchImpl }), []);
+});
+
+test('needsCopyRepair: a marker that cannot vouch for the stored items forces one rewrite', () => {
+  // The production state on 15 Nov: a fresh marker, an items value whose digest it could not match,
+  // so `resolveProjectsSnapshot` refused to date the copy and the banner froze at "23 minutes ago".
+  assert.equal(needsCopyRepair(null), true, 'nothing stored: write the pair');
+  assert.equal(needsCopyRepair({ fetched_at: 'x', digest: 'sha256:a', rows: 1 }), true, 'copy_digest absent');
+  assert.equal(
+    needsCopyRepair({ fetched_at: 'x', digest: 'sha256:a', rows: 1, copy_digest: 'sha256:b' }),
+    true,
+    'the marker describes items the store does not hold',
+  );
+  assert.equal(
+    needsCopyRepair({ fetched_at: 'x', digest: 'sha256:a', rows: 1, copy_digest: 'sha256:a' }),
+    false,
+    'a consistent pair needs no rewrite',
+  );
 });

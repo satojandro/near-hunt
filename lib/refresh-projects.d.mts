@@ -38,7 +38,15 @@ export interface ProjectsMarker {
   fetched_at: string;
   digest: string;
   rows: number;
+  /**
+   * The digest of the items value this marker was written alongside. When it is missing or differs
+   * from `digest`, the stored pair is inconsistent and the writer repairs it (`needsCopyRepair`).
+   */
+  copy_digest?: string;
 }
+
+/** Whether the marker can vouch for the items value the store actually holds. */
+export declare function needsCopyRepair(marker: ProjectsMarker | null): boolean;
 
 export declare function isProjectsSnapshot(value: unknown): boolean;
 export declare function isProjectsMarker(value: unknown): boolean;

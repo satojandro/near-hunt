@@ -58,7 +58,13 @@ export async function GET(request: NextRequest) {
       walk_ms: walk.ms,
       took_ms: Date.now() - started,
       fetched_at,
-      snapshot: { changed: write.changed, stored: write.stored, marked: write.marked },
+      snapshot: {
+        changed: write.changed,
+        repaired: write.repaired,
+        stored: write.stored,
+        marked: write.marked,
+        digest: write.digest.slice(7, 19),
+      },
     };
     if (!write.marked) {
       console.error('[cron] project snapshot write failed:', JSON.stringify(body));
@@ -70,7 +76,8 @@ export async function GET(request: NextRequest) {
     }
     console.log(
       `[cron] project listing: ${body.rows} rows, ${body.pages} pages, ${body.walk_ms} ms, ` +
-        `${write.changed ? 'content changed' : 'unchanged'}`,
+        `${write.changed ? 'content changed' : 'unchanged'}, digest ${body.snapshot.digest}` +
+        `${write.repaired ? ', repaired an inconsistent stored pair' : ''}`,
     );
     return json(body, CACHE.error);
   } catch (err) {

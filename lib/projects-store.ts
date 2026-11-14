@@ -6,6 +6,7 @@ import {
   isProjectsMarker,
   isProjectsSnapshot,
   listingDigest,
+  needsCopyRepair,
   resolveProjectsSnapshot,
   type ProjectsMarker,
   type ProjectsSnapshot,
@@ -65,31 +66,35 @@ export async function writeProjectsSnapshot({
   items: ListingItem[];
   account: string;
   fetchedAt?: string;
-}): Promise<{ changed: boolean; stored: boolean; marked: boolean; digest: string }> {
+}): Promise<{ changed: boolean; repaired: boolean; stored: boolean; marked: boolean; digest: string }> {
   const digest = listingDigest(items);
   const previous = await readProjectsMarker();
   const changed = previous?.digest !== digest;
+  // A marker that cannot vouch for the store's items (see `needsCopyRepair`) forces one rewrite, so
+  // an items value left without — or with a different — digest is repaired instead of freezing the
+  // age the reader prints for it.
+  const repaired = needsCopyRepair(previous);
   // Unchanged rows are not rewritten, but the heavy key carries a 7-day TTL: keep it alive on every
   // walk, and write it again when it is gone (expired, evicted). Without this a quiet week with no
   // imports lets it expire while the marker still matches, and every instance is back to walking.
-  const present = changed ? false : await touchSnapshotValue(PROJECTS_SNAPSHOT_KEY, 'projects');
+  const present = changed || repaired ? false : await touchSnapshotValue(PROJECTS_SNAPSHOT_KEY, 'projects');
 
   let stored = false;
-  if (changed || !present) {
+  if (changed || repaired || !present) {
     stored = await saveSnapshotValue(
       PROJECTS_SNAPSHOT_KEY,
       { items, account, fetched_at: fetchedAt, digest },
       'projects',
     );
-    if (!stored) return { changed, stored, marked: false, digest };
+    if (!stored) return { changed, repaired, stored, marked: false, digest };
   }
 
   const marked = await saveSnapshotValue(
     PROJECTS_MARKER_KEY,
-    { fetched_at: fetchedAt, digest, rows: items.length },
+    { fetched_at: fetchedAt, digest, rows: items.length, copy_digest: digest },
     'projects-marker',
   );
-  return { changed, stored, marked, digest };
+  return { changed, repaired, stored, marked, digest };
 }
 
 /**
@@ -123,7 +128,7 @@ export async function seedProjectsSnapshot({
   if (seeded) {
     await saveSnapshotValue(
       PROJECTS_MARKER_KEY,
-      { fetched_at: fetchedAt, digest, rows: items.length },
+      { fetched_at: fetchedAt, digest, rows: items.length, copy_digest: digest },
       'projects-marker',
       { onlyIfAbsent: true },
     );
