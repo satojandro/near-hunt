@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-11-14T11:48:43.957Z",
+  "generated_at": "2026-11-14T13:20:04.740Z",
   "account": "nearhunt.near",
   "note": "Flags only. Nothing is merged, hidden or written. `clusters`/`groups` share an identifying URL (possible duplicates). `weak_signals` share only a name or an X account and are usually different projects.",
   "summary": {
-    "submissions": 1375,
-    "on_chain": 1337,
-    "pending": 38,
+    "submissions": 1424,
+    "on_chain": 1378,
+    "pending": 46,
     "shared_urls": 4,
     "by_kind": {
       "x-post": 1,
@@ -14,7 +14,7 @@
     "clusters": 4,
     "submissions_flagged": 10,
     "same_name_groups": 45,
-    "same_x_account_groups": 130
+    "same_x_account_groups": 135
   },
   "clusters": [
     {
@@ -592,6 +592,26 @@
         ]
       },
       {
+        "key": "veyra",
+        "submissions": [
+          {
+            "submission_id": "2a9f97f1-6b68-42be-90a5-7b180b9c0a49",
+            "name": "Veyra",
+            "on_chain": true
+          },
+          {
+            "submission_id": "b9882517-35e2-413f-b417-8fe9998dc735",
+            "name": "Veyra",
+            "on_chain": true
+          },
+          {
+            "submission_id": "583a70fc-49af-4d0f-bdac-2c5157974402",
+            "name": "Veyra",
+            "on_chain": false
+          }
+        ]
+      },
+      {
         "key": "warden",
         "submissions": [
           {
@@ -1020,14 +1040,14 @@
         "key": "swarm-for-hire",
         "submissions": [
           {
-            "submission_id": "b5e92055-8e69-4edc-aab9-aa965d69d42d",
-            "name": "Swarm-for-Hire",
+            "submission_id": "0a9a5beb-e9f5-4403-9010-8e628bae54d0",
+            "name": "swarm-for-hire",
             "on_chain": true
           },
           {
-            "submission_id": "0a9a5beb-e9f5-4403-9010-8e628bae54d0",
-            "name": "swarm-for-hire",
-            "on_chain": false
+            "submission_id": "b5e92055-8e69-4edc-aab9-aa965d69d42d",
+            "name": "Swarm-for-Hire",
+            "on_chain": true
           }
         ]
       },
@@ -1073,21 +1093,6 @@
             "submission_id": "fceb9819-efb9-4a11-9ffc-41dcbbaa6137",
             "name": "tacit",
             "on_chain": true
-          }
-        ]
-      },
-      {
-        "key": "veyra",
-        "submissions": [
-          {
-            "submission_id": "b9882517-35e2-413f-b417-8fe9998dc735",
-            "name": "Veyra",
-            "on_chain": true
-          },
-          {
-            "submission_id": "2a9f97f1-6b68-42be-90a5-7b180b9c0a49",
-            "name": "Veyra",
-            "on_chain": false
           }
         ]
       }
@@ -1204,6 +1209,21 @@
         ]
       },
       {
+        "key": "0xoceanfluxx",
+        "submissions": [
+          {
+            "submission_id": "8313a27a-740e-4ba7-aded-be0bb847e7b4",
+            "name": "Auvora",
+            "on_chain": true
+          },
+          {
+            "submission_id": "8dffe02a-0fcf-489d-bfcf-b341b0369196",
+            "name": "HOMR",
+            "on_chain": false
+          }
+        ]
+      },
+      {
         "key": "0xraveesh",
         "submissions": [
           {
@@ -1215,6 +1235,21 @@
             "submission_id": "e6b33f2a-cb7a-4916-a397-6e2af20e15f9",
             "name": "Tollkeeper",
             "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "0xsameey",
+        "submissions": [
+          {
+            "submission_id": "e32b6993-378b-4a88-afe5-bb60433dd931",
+            "name": "SentiNEAR(Sentinel)",
+            "on_chain": true
+          },
+          {
+            "submission_id": "0c632504-e962-4c21-860e-4d7e8be64539",
+            "name": "Near Pulse",
+            "on_chain": false
           }
         ]
       },
@@ -1290,6 +1325,36 @@
             "submission_id": "5278473e-6acf-40b2-a013-a2ff4236f176",
             "name": "Presafe",
             "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "ahnafalfariza",
+        "submissions": [
+          {
+            "submission_id": "7e1dc9de-0788-4c52-a244-9ccb4e2cac65",
+            "name": "Last Flag",
+            "on_chain": true
+          },
+          {
+            "submission_id": "bca96607-f3aa-4851-9700-471fc4f90041",
+            "name": "Dig Here",
+            "on_chain": false
+          }
+        ]
+      },
+      {
+        "key": "ahumanbeingsw42",
+        "submissions": [
+          {
+            "submission_id": "d777d134-c116-45b5-aacf-db89cc6aa53b",
+            "name": "Hireclaw",
+            "on_chain": true
+          },
+          {
+            "submission_id": "8b4faf92-261b-4c41-99d6-50b5fae01675",
+            "name": "Dry-Run",
+            "on_chain": false
           }
         ]
       },
@@ -1455,6 +1520,21 @@
             "submission_id": "4d923fa4-dad9-4962-8f3c-a5d0db33e84e",
             "name": "Headroom",
             "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "bangdropid",
+        "submissions": [
+          {
+            "submission_id": "3cf8860a-c4c1-4c06-86e1-2e1489840735",
+            "name": "Pusaka",
+            "on_chain": true
+          },
+          {
+            "submission_id": "348d1402-4eed-4dc4-a2ef-e357bef2b6a0",
+            "name": "Koperasi",
+            "on_chain": false
           }
         ]
       },
