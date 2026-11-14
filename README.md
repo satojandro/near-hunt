@@ -36,6 +36,11 @@ project, one upvote per NEAR account, and threaded comments.
 - **Agent-ready.** A read-only JSON API and a [`SKILL.md`](public/SKILL.md) let an AI agent
   browse, shortlist and verify every record against the chain by itself.
 
+**Demo presentation:** [slides (PDF)](docs/presentation/near-hunt-demo.pdf) ·
+[speaker notes](docs/presentation/speaker-notes.md) · [how the numbers were measured](docs/presentation/README.md).
+Objectives, the near.social integration, the open data approach, UI/UX, the Support page and the
+roadmap, in 16 slides.
+
 ## Screenshots
 
 Captured from the live site on 14 Nov 2026 (`docs/screenshots/`).

@@ -1,0 +1,1004 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NEAR Hunt Demo</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+* { margin: 0; box-sizing: border-box; }
+html { background: #0B0E12; }
+body { margin: 0; padding: 24px 0; display: flex; flex-direction: column; align-items: center; gap: 24px; font: 32px/1.2 'Inter', Arial, sans-serif; }
+body > section { width: 1920px; height: 1080px; overflow: hidden; position: relative; isolation: isolate; flex: none; zoom: var(--zoom, 0.5); }
+section > .s-light, section > .s-dark { box-sizing: border-box; }
+h1 { font-size: 96px; font-weight: 600; } h2 { font-size: 64px; font-weight: 600; } h3 { font-size: 44px; font-weight: 600; }
+x-icon, x-shape { display: block; flex: none; }
+x-icon svg { width: 100%; height: 100%; display: block; }
+x-shape[kind="arrow-right"] { clip-path: polygon(0 30%, 60% 30%, 60% 0, 100% 50%, 60% 100%, 60% 70%, 0 70%); }
+x-shape[kind="arrow-up"] { clip-path: polygon(30% 100%, 30% 40%, 0 40%, 50% 0, 100% 40%, 70% 40%, 70% 100%); }
+@page { size: 1920px 1080px; margin: 0; }
+@media print {
+  html { background: none; }
+  body { padding: 0; gap: 0; display: block; }
+  body > section { zoom: 1; break-after: page; }
+  .in { animation: none !important; }
+}
+:root {
+  --ink: #12161C;
+  --ink-2: #1C222B;
+  --paper: #F5F6F8;
+  --card: #FBFBFC;
+  --line: #E3E6EB;
+  --muted: #4E5866;
+  --green: #0A7F5A;
+  --green-soft: #E6F4EE;
+  --mint: #7FE0B9;
+  --blue: #2557C7;
+  --blue-soft: #EAF0FC;
+  --on-dark: #F2F4F7;
+  --on-dark-muted: #B5BCC7;
+}
+
+section { counter-increment: page; }
+
+body {
+  font-family: 'Inter', Arial, sans-serif;
+  color: var(--ink);
+}
+
+h1, h2, h3, .display {
+  font-family: 'Space Grotesk', Arial, sans-serif;
+  letter-spacing: -1px;
+}
+
+.mono { font-family: 'JetBrains Mono', 'Courier New', monospace; }
+
+/* Slide shells */
+.s-light {
+  background: var(--paper);
+  padding: 128px 128px 160px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+.s-dark {
+  background: var(--ink);
+  color: var(--on-dark);
+  padding: 128px 128px 160px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+.s-accent {
+  background: var(--green);
+  color: #F4FBF8;
+  padding: 128px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 40px;
+}
+
+/* Type scale: 120 / 72 / 44 / 32 / 24 */
+.eyebrow {
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--green);
+}
+.s-dark .eyebrow { color: var(--mint); }
+.s-accent .eyebrow { color: #D4F3E6; }
+
+.title {
+  font-size: 72px;
+  font-weight: 700;
+  line-height: 1.05;
+  max-width: 1500px;
+}
+.head { display: flex; flex-direction: column; gap: 20px; }
+
+.lede {
+  font-size: 32px;
+  line-height: 1.45;
+  color: var(--muted);
+  max-width: 1300px;
+}
+.s-dark .lede { color: var(--on-dark-muted); }
+
+.footer {
+  position: absolute;
+  left: 128px;
+  bottom: 64px;
+  width: 1664px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 24px;
+  color: var(--muted);
+}
+.s-dark .footer { color: var(--on-dark-muted); }
+.footer .pg::after { content: counter(page); }
+
+/* Cards */
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+.grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px; }
+.grid4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 28px; }
+
+.card {
+  background: var(--card);
+  border: 2px solid var(--line);
+  border-radius: 24px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.s-dark .card {
+  background: var(--ink-2);
+  border: 2px solid #2C3440;
+}
+.card h3 { font-size: 44px; font-weight: 600; line-height: 1.1; }
+.card .body { font-size: 28px; line-height: 1.45; color: var(--muted); }
+.s-dark .card .body { color: var(--on-dark-muted); }
+.grid4 .card { padding: 32px; }
+.grid4 .card .body { font-size: 24px; }
+.card .num-badge {
+  font-family: 'Space Grotesk', Arial, sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--green);
+}
+.s-dark .card .num-badge { color: var(--mint); }
+.card .tag {
+  align-self: flex-start;
+  font-size: 24px;
+  font-weight: 600;
+  padding: 6px 16px;
+  border-radius: 999px;
+  background: var(--green-soft);
+  color: #0B4B36;
+}
+.card .tag.blue { background: var(--blue-soft); color: #1B3F94; }
+
+.code {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 26px;
+  line-height: 1.5;
+  background: #ECEEF2;
+  color: var(--ink);
+  border-radius: 12px;
+  padding: 16px 20px;
+}
+.s-dark .code { background: #252C36; color: #E8ECF1; }
+
+/* Big numbers */
+.stat { display: flex; flex-direction: column; gap: 8px; }
+.stat .n {
+  font-family: 'Space Grotesk', Arial, sans-serif;
+  font-size: 120px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -3px;
+  color: var(--mint);
+}
+.stat .l { font-size: 28px; line-height: 1.4; color: var(--on-dark); }
+.stat .sub { font-size: 24px; color: var(--on-dark-muted); }
+
+/* Screenshot frames */
+.shot {
+  border-radius: 20px;
+  border: 2px solid var(--line);
+  box-shadow: 0 24px 64px rgba(18, 22, 28, 0.16);
+  object-fit: contain;
+  background: var(--card);
+}
+.s-dark .shot { border: 2px solid #2C3440; }
+
+/* Split: text left, picture right */
+.split { display: flex; gap: 72px; align-items: center; flex: 1; }
+.split .col { display: flex; flex-direction: column; gap: 32px; width: 640px; }
+
+.points { display: flex; flex-direction: column; gap: 28px; }
+.pt { display: flex; gap: 20px; align-items: flex-start; }
+.pt x-icon { width: 40px; height: 40px; color: var(--green); }
+.s-dark .pt x-icon { color: var(--mint); }
+.pt .tx { display: flex; flex-direction: column; gap: 6px; }
+.pt .k { font-size: 32px; font-weight: 600; line-height: 1.25; }
+.pt .v { font-size: 26px; line-height: 1.45; color: var(--muted); }
+.s-dark .pt .v { color: var(--on-dark-muted); }
+
+/* Flow steps */
+.flow { display: flex; align-items: stretch; gap: 0; }
+.step {
+  flex: 1;
+  background: var(--card);
+  border: 2px solid var(--line);
+  border-radius: 24px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.step .k { font-family: 'Space Grotesk', Arial, sans-serif; font-size: 32px; font-weight: 600; line-height: 1.2; }
+.step .v { font-size: 24px; line-height: 1.45; color: var(--muted); }
+.step .num {
+  font-family: 'Space Grotesk', Arial, sans-serif;
+  font-size: 24px; font-weight: 700; color: var(--green);
+}
+.step.social { background: var(--blue-soft); border: 2px solid #C7D6F5; }
+.step.social .num { color: var(--blue); }
+.arrow { width: 72px; display: flex; align-items: center; justify-content: center; }
+.arrow x-shape { width: 40px; height: 22px; background: #8A93A0; }
+
+/* Motion: arrive staged */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.in { animation: rise 600ms cubic-bezier(.2,.7,.2,1) both; animation-delay: calc(var(--i, 0) * 110ms); }
+
+/* Fragments: speaker-paced reveals */
+.fragment { opacity: 0.18; transition: opacity 300ms ease; }
+.fragment.visible { opacity: 1; }
+</style>
+</head>
+<body>
+<section id="cover" style="background:#12161C;color:#F2F4F7;padding:128px;display:flex;flex-direction:column;justify-content:space-between;">
+<div style="display:flex;align-items:center;gap:28px;" class="in">
+<div style="width:96px;height:96px;border-radius:24px;background:#F2F4F7;display:flex;align-items:center;justify-content:center;"><x-shape kind="arrow-up" style="width:40px;height:52px;background:#12161C;"></x-shape></div>
+<p class="display" style="font-size:44px;font-weight:700;">NEAR Hunt</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:36px;">
+<p class="eyebrow in" style="--i:1;color:#7FE0B9;">NEAR Hackathon · Open Innovation · 1–14 Nov 2026</p>
+<h1 class="in" style="--i:2;font-size:120px;font-weight:700;line-height:1.02;letter-spacing:-3px;max-width:1500px;">The Product Hunt of NEAR.</h1>
+<p class="in" style="--i:3;font-size:32px;line-height:1.45;color:#B5BCC7;max-width:1200px;">A human-first discovery and community voting layer for the NEAR ecosystem, built on NEAR Social and open data.</p>
+</div>
+<div style="display:flex;justify-content:space-between;align-items:flex-end;" class="in">
+<p style="font-size:32px;font-weight:600;color:#7FE0B9;">nearhunt.xyz</p>
+<p style="font-size:24px;color:#B5BCC7;">Live demo · [Presenter name]</p>
+</div>
+
+</section>
+
+<section id="problem" class="s-light">
+<div class="head">
+<p class="eyebrow in">The problem</p>
+<h2 class="title in" style="--i:1;">More than 2,100 projects shipped at this hackathon. The only way to see them was a list of names and links.</h2>
+</div>
+<div class="grid3" style="flex:1;align-items:stretch;">
+<div class="card in" style="--i:2;">
+<x-icon style="width:48px;height:48px;color:#0A7F5A;"><svg aria-hidden="true"
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="11" cy="11" r="8" />
+  <path d="m21 21-4.3-4.3" />
+</svg></x-icon>
+<h3>Hard to browse</h3>
+<p class="body">No way to search, filter by track or sort by what people actually like.</p>
+</div>
+<div class="card in" style="--i:3;">
+<x-icon style="width:48px;height:48px;color:#0A7F5A;"><svg aria-hidden="true"
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" />
+</svg></x-icon>
+<h3>No conversation</h3>
+<p class="body">Builders couldn’t discuss each other’s work, and users had no way to say “I’d use this”.</p>
+</div>
+<div class="card in" style="--i:4;">
+<x-icon style="width:48px;height:48px;color:#0A7F5A;"><svg aria-hidden="true"
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="12" cy="12" r="10" />
+  <polyline points="12 6 12 12 16 14" />
+</svg></x-icon>
+<h3>Gone after the event</h3>
+<p class="body">Two weeks of work by hundreds of builders leaks away when the hackathon ends.</p>
+</div>
+</div>
+<div class="footer"><span>NEAR Hunt · nearhunt.xyz</span><span class="pg"></span></div>
+
+</section>
+
+<section id="objectives" class="s-light">
+<div class="head">
+<p class="eyebrow in">Objectives for this hack</p>
+<h2 class="title in" style="--i:1;">Four things we set out to prove</h2>
+</div>
+<div class="grid4" style="flex:1;align-items:stretch;">
+<div class="card in" style="--i:2;">
+<p class="num-badge">01</p>
+<x-icon style="width:48px;height:48px;color:#2557C7;"><svg aria-hidden="true"
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+  <circle cx="9" cy="7" r="4" />
+  <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+</svg></x-icon>
+<h3>Grow NEAR Social</h3>
+<p class="body">Drive adoption of a NEAR product: log in with your NEAR account, show near.social profiles, and send people back to near.social to share.</p>
+</div>
+<div class="card in" style="--i:3;">
+<p class="num-badge">02</p>
+<x-icon style="width:48px;height:48px;color:#0A7F5A;"><svg aria-hidden="true"
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <ellipse cx="12" cy="5" rx="9" ry="3" />
+  <path d="M3 5V19A9 3 0 0 0 21 19V5" />
+  <path d="M3 12A9 3 0 0 0 21 12" />
+</svg></x-icon>
+<h3>Show off the stack</h3>
+<p class="body">Open data and FastData KV: every project, vote and comment is a plain row on mainnet. No smart contract.</p>
+</div>
+<div class="card in" style="--i:4;">
+<p class="num-badge">03</p>
+<x-icon style="width:48px;height:48px;color:#0A7F5A;"><svg aria-hidden="true"
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" />
+</svg></x-icon>
+<h3>Help projects get found</h3>
+<p class="body">Make new projects discoverable and build a sense of community through upvotes, comments and builder claims.</p>
+</div>
+<div class="card in" style="--i:5;">
+<p class="num-badge">04</p>
+<x-icon style="width:48px;height:48px;color:#0A7F5A;"><svg aria-hidden="true"
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z" />
+</svg></x-icon>
+<h3>Top-tier UI/UX</h3>
+<p class="body">It should feel like a normal app: one wallet approval, then no pop-ups. Fast, themed and works on a phone.</p>
+</div>
+</div>
+<div class="footer"><span>NEAR Hunt · nearhunt.xyz</span><span class="pg"></span></div>
+
+</section>
+
+<section id="traction" class="s-dark">
+<div class="head">
+<p class="eyebrow in">Not a demo waiting for users</p>
+<h2 class="title in" style="--i:1;">People showed up</h2>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;justify-content:center;"><div class="grid4" style="align-items:start;">
+<div class="stat in" style="--i:2;">
+<p class="n">287</p>
+<p class="l">NEAR accounts signed upvotes from their own wallets</p>
+<p class="sub">395 vote rows on chain</p>
+</div>
+<div class="stat in" style="--i:3;">
+<p class="n">58</p>
+<p class="l">accounts discussing each other’s work</p>
+<p class="sub">70 comment rows</p>
+</div>
+<div class="stat in" style="--i:4;">
+<p class="n">48</p>
+<p class="l">#nearhunt posts on near.social</p>
+<p class="sub">from 38 accounts</p>
+</div>
+<div class="stat in" style="--i:5;">
+<p class="n">2,130</p>
+<p class="l">project records on mainnet</p>
+<p class="sub">36 corrections filed by builders</p>
+</div>
+</div>
+</div>
+<div class="footer"><span>Measured 14 Nov 2026, 22:40 UTC; numbers keep moving. Commands to reproduce each one are in the README.</span><span class="pg"></span></div>
+
+</section>
+
+<section id="social-intro" style="background:#2557C7;color:#F3F6FD;padding:128px;display:flex;flex-direction:column;justify-content:center;gap:40px;">
+<p class="eyebrow in" style="color:#D6E2FA;">Part 1 · NEAR Social integration</p>
+<h2 class="in" style="--i:1;font-size:120px;font-weight:700;line-height:1.02;letter-spacing:-3px;max-width:1600px;">Your near.social identity, everywhere on NEAR Hunt.</h2>
+<p class="in" style="--i:2;font-size:32px;line-height:1.45;color:#E1E9FB;max-width:1300px;">We don’t build another social silo. We bring people to the one NEAR already has, and send them back.</p>
+
+</section>
+
+<section id="social-profiles" class="s-light">
+<div class="head">
+<p class="eyebrow in" style="color:#2557C7;">NEAR Social · login and profiles</p>
+<h2 class="title in" style="--i:1;">Sign in once, show up as yourself</h2>
+</div>
+<div class="split">
+<div class="col">
+<div class="points">
+<div class="pt in" style="--i:2;"><x-icon style="color:#2557C7;"><svg aria-hidden="true"
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m15.5 7.5 2.3 2.3a1 1 0 0 0 1.4 0l2.1-2.1a1 1 0 0 0 0-1.4L19 4" />
+  <path d="m21 2-9.6 9.6" />
+  <circle cx="7.5" cy="15.5" r="5.5" />
+</svg></x-icon><div class="tx"><p class="k">Connect your NEAR account</p><p class="v">One wallet approval. After that, votes and comments sign with no pop-ups.</p></div></div>
+<div class="pt in" style="--i:3;"><x-icon style="color:#2557C7;"><svg aria-hidden="true"
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+  <circle cx="9" cy="7" r="4" />
+  <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+</svg></x-icon><div class="tx"><p class="k">Your near.social profile</p><p class="v">Name, avatar and bio come from the profile you already have.</p></div></div>
+<div class="pt in" style="--i:4;"><x-icon style="color:#2557C7;"><svg aria-hidden="true"
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" />
+  <path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+</svg></x-icon><div class="tx"><p class="k">A page for every account</p><p class="v"><span class="mono">/u/{account}</span>: upvotes, comments, followers and posts.</p></div></div>
+<div class="pt in" style="--i:5;"><x-icon style="color:#2557C7;"><svg aria-hidden="true"
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+</svg></x-icon><div class="tx"><p class="k">Edit on near.social</p><p class="v">We never keep a second copy of your profile.</p></div></div>
+</div>
+</div>
+<img class="shot in" style="--i:3;width:952px;height:540px;" src="images/profile.png" alt="A NEAR Hunt profile page for alejandro.near: near.social avatar and name, 10 upvotes, 9 near.social followers, 2 near.social posts, and cards for the projects it upvoted with block heights">
+</div>
+<div class="footer"><span>NEAR Hunt · nearhunt.xyz/u/alejandro.near</span><span class="pg"></span></div>
+
+</section>
+
+<section id="social-share" class="s-light">
+<div class="head">
+<p class="eyebrow in" style="color:#2557C7;">NEAR Social · the share loop</p>
+<h2 class="title in" style="--i:1;">Every upvote can become a near.social post</h2>
+</div>
+<div class="flow">
+<div class="step in" style="--i:2;"><p class="num">1 · NEAR Hunt</p><p class="k">Upvote a project</p><p class="v">A <span class="mono">vote/</span> row you sign from your own account.</p></div>
+<div class="arrow in" style="--i:2;"><x-shape kind="arrow-right"></x-shape></div>
+<div class="step in" style="--i:3;"><p class="num">2 · NEAR Hunt</p><p class="k">“Tell your followers?”</p><p class="v">A ready-made post appears under the button. One click copies it.</p></div>
+<div class="arrow in" style="--i:3;"><x-shape kind="arrow-right"></x-shape></div>
+<div class="step social in" style="--i:4;"><p class="num">3 · near.social</p><p class="k">You post it</p><p class="v">near.social opens. You post from your own account.</p></div>
+<div class="arrow in" style="--i:4;"><x-shape kind="arrow-right"></x-shape></div>
+<div class="step in" style="--i:5;"><p class="num">4 · NEAR Hunt</p><p class="k">It shows up live</p><p class="v">#nearhunt posts appear in the sidebar and bring new visitors in.</p></div>
+</div>
+<div style="display:flex;gap:48px;align-items:center;flex:1;">
+<div style="flex:1;display:flex;flex-direction:column;gap:20px;" class="in">
+<p class="mono" style="font-size:30px;line-height:1.5;background:#EAF0FC;color:#1B3F94;border-radius:16px;padding:24px 28px;">Just upvoted Hermit on NEAR Hunt #nearhunt nearhunt.xyz/p/f159…</p>
+<p style="font-size:26px;line-height:1.45;color:#4E5866;">NEAR Hunt never posts for you. You do, from your own account: 48 posts from 38 accounts so far.</p>
+</div>
+<img class="shot in" style="--i:6;width:280px;height:220px;" src="images/near-social-feed.png" alt="The Live on near.social sidebar on NEAR Hunt, showing #nearhunt posts such as kutluhaneth.near: Just upvoted KeyCage on NEAR Hunt">
+</div>
+<div class="footer"><span>NEAR Hunt · nearhunt.xyz</span><span class="pg"></span></div>
+
+</section>
+
+<section id="opendata-intro" class="s-accent">
+<p class="eyebrow in">Part 2 · The open data approach</p>
+<h2 class="in" style="--i:1;font-size:120px;font-weight:700;line-height:1.02;letter-spacing:-3px;max-width:1600px;">Everything on NEAR Hunt is readable without NEAR Hunt.</h2>
+<p class="in" style="--i:2;font-size:32px;line-height:1.45;color:#E2F6EE;max-width:1300px;">NEAR Hunt is a view over public NEAR data. If nearhunt.xyz vanished tomorrow, the projects, votes and conversations would stay on chain, and anyone could rebuild the index.</p>
+
+</section>
+
+<section id="opendata-keys" class="s-light">
+<div class="head">
+<p class="eyebrow in">Open data · FastData KV</p>
+<h2 class="title in" style="--i:1;">Plain key-value rows on mainnet. No smart contract.</h2>
+</div>
+<div class="grid4" style="align-items:stretch;">
+<div class="card in" style="--i:2;">
+<h3>Projects</h3>
+<p class="code">project/{id}</p>
+<p class="tag">written by nearhunt.near</p>
+<p class="body">One versioned JSON record per project, schema <span class="mono">nearhunt/project/1</span>.</p>
+</div>
+<div class="card in" style="--i:3;">
+<h3>Upvotes</h3>
+<p class="code">vote/{id}</p>
+<p class="tag blue">written by the voter</p>
+<p class="body">The voter is the account that signed the row, so one account holds one vote.</p>
+</div>
+<div class="card in" style="--i:4;">
+<h3>Comments</h3>
+<p class="code">comment/{id}/{ms}</p>
+<p class="tag blue">written by the author</p>
+<p class="body">Signed with the same login key. Only the author can delete their own.</p>
+</div>
+<div class="card in" style="--i:5;">
+<h3>Makers</h3>
+<p class="code">maker/{id}</p>
+<p class="tag blue">written by the builder</p>
+<p class="body">Links a NEAR account to a project, shown only after a GitHub check.</p>
+</div>
+</div>
+<div style="display:flex;gap:56px;" class="in">
+<div class="pt"><x-icon><svg aria-hidden="true"
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
+  <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+</svg></x-icon><p class="v" style="font-size:26px;color:#4E5866;"><b style="color:#12161C;">Nobody can vote as you.</b> Identity is the row’s signer, never a name in the data.</p></div>
+<div class="pt"><x-icon><svg aria-hidden="true"
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+</svg></x-icon><p class="v" style="font-size:26px;color:#4E5866;"><b style="color:#12161C;">Nothing to deploy or audit.</b> Each write is one <span class="mono">__fastdata_kv</span> call.</p></div>
+</div>
+<div class="footer"><span>All four live on mainnet under nearhunt.near</span><span class="pg"></span></div>
+
+</section>
+
+<section id="opendata-flow" class="s-dark">
+<div class="head">
+<p class="eyebrow in">Open data · how it flows</p>
+<h2 class="title in" style="--i:1;">One source of truth, many readers</h2>
+</div>
+<div style="display:flex;align-items:center;flex:1;">
+<div class="card in" style="--i:2;width:360px;padding:28px;">
+<x-icon style="width:48px;height:48px;color:#7FE0B9;"><svg aria-hidden="true"
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m15.5 7.5 2.3 2.3a1 1 0 0 0 1.4 0l2.1-2.1a1 1 0 0 0 0-1.4L19 4" />
+  <path d="m21 2-9.6 9.6" />
+  <circle cx="7.5" cy="15.5" r="5.5" />
+</svg></x-icon>
+<h3 style="font-size:36px;">Your wallet</h3>
+<p class="body" style="font-size:24px;">Signs a vote or comment from your own account</p>
+</div>
+<div class="arrow in" style="--i:3;width:64px;"><x-shape kind="arrow-right" style="width:48px;height:26px;background:#7FE0B9;"></x-shape></div>
+<div class="card in" style="--i:3;width:380px;padding:28px;border:2px solid #7FE0B9;">
+<x-icon style="width:48px;height:48px;color:#7FE0B9;"><svg aria-hidden="true"
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <ellipse cx="12" cy="5" rx="9" ry="3" />
+  <path d="M3 5V19A9 3 0 0 0 21 19V5" />
+  <path d="M3 12A9 3 0 0 0 21 12" />
+</svg></x-icon>
+<h3 style="font-size:36px;">NEAR mainnet</h3>
+<p class="body" style="font-size:24px;">A <span class="mono">__fastdata_kv</span> row on <span class="mono">nearhunt.near</span>, public for good</p>
+</div>
+<div class="arrow in" style="--i:4;width:64px;"><x-shape kind="arrow-right" style="width:48px;height:26px;background:#7FE0B9;"></x-shape></div>
+<div class="card in" style="--i:4;width:360px;padding:28px;">
+<x-icon style="width:48px;height:48px;color:#7FE0B9;"><svg aria-hidden="true"
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="11" cy="11" r="8" />
+  <path d="m21 21-4.3-4.3" />
+</svg></x-icon>
+<h3 style="font-size:36px;">FastData indexer</h3>
+<p class="body" style="font-size:24px;">kv.main.fastnear.com serves it back. No custom indexer.</p>
+</div>
+<div class="arrow in" style="--i:5;width:64px;"><x-shape kind="arrow-right" style="width:48px;height:26px;background:#7FE0B9;"></x-shape></div>
+<div class="in" style="--i:5;flex:1;display:flex;flex-direction:column;gap:16px;">
+<p style="font-size:24px;color:#B5BCC7;">Read by</p>
+<p style="font-size:28px;font-weight:600;padding:14px 20px;border-radius:12px;background:#1C222B;">nearhunt.xyz</p>
+<p style="font-size:28px;font-weight:600;padding:14px 20px;border-radius:12px;background:#1C222B;">Public JSON API</p>
+<p style="font-size:28px;font-weight:600;padding:14px 20px;border-radius:12px;background:#1C222B;">AI agents</p>
+<p style="font-size:28px;font-weight:600;padding:14px 20px;border-radius:12px;background:#1C222B;">Anyone with curl</p>
+</div>
+</div>
+<p class="code in" style="--i:6;font-size:24px;">curl -s "https://kv.main.fastnear.com/v0/latest/nearhunt.near/nearhunt.near/project/{id}"</p>
+<div class="footer"><span>The site’s cache is just a cache: anyone can rebuild it from the chain</span><span class="pg"></span></div>
+
+</section>
+
+<section id="agents" class="s-light">
+<div class="head">
+<p class="eyebrow in">Open data · agent-ready</p>
+<h2 class="title in" style="--i:1;">Built for people, and for their agents</h2>
+</div>
+<div class="split">
+<div class="col" style="width:620px;">
+<div class="points">
+<div class="pt in" style="--i:2;"><x-icon><svg aria-hidden="true"
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <polyline points="16 18 22 12 16 6" />
+  <polyline points="8 6 2 12 8 18" />
+</svg></x-icon><div class="tx"><p class="k">Read-only JSON API</p><p class="v">List, sort, filter and page through projects, votes and discussions. No key, no wallet.</p></div></div>
+<div class="pt in" style="--i:3;"><x-icon><svg aria-hidden="true"
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20" />
+</svg></x-icon><div class="tx"><p class="k">A SKILL.md for agents</p><p class="v">One file tells an AI agent every endpoint and how to check each record against the chain.</p></div></div>
+<div class="pt in" style="--i:4;"><x-icon><svg aria-hidden="true"
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z" />
+  <path d="m9 12 2 2 4-4" />
+</svg></x-icon><div class="tx"><p class="k">Read-only by design</p><p class="v">Agents can browse and verify. They can’t vote or write for anyone.</p></div></div>
+</div>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:28px;">
+<img class="shot in" style="--i:3;width:972px;height:400px;" src="images/open-data.png" alt="The NEAR Hunt Open data page: Everything on this site is readable without this site, with cards for Projects, Upvotes and Comments and their key formats">
+<p class="in" style="--i:5;font-size:28px;line-height:1.45;background:#E6F4EE;color:#0B4B36;border-radius:16px;padding:20px 28px;">“Read <b>nearhunt.xyz/SKILL.md</b> and shortlist ten projects worth investigating.”</p>
+</div>
+</div>
+<div class="footer"><span>nearhunt.xyz/open-data · nearhunt.xyz/SKILL.md</span><span class="pg"></span></div>
+
+</section>
+
+<section id="ux" class="s-light">
+<div class="head">
+<p class="eyebrow in">Part 3 · UI/UX</p>
+<h2 class="title in" style="--i:1;">It feels like a normal app</h2>
+</div>
+<div class="split">
+<div class="col" style="width:600px;">
+<div class="points">
+<div class="pt in" style="--i:2;"><x-icon><svg aria-hidden="true"
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z" />
+</svg></x-icon><div class="tx"><p class="k">No wallet pop-ups</p><p class="v">Approve once at login. Votes and comments sign quietly after that.</p></div></div>
+<div class="pt in" style="--i:3;"><x-icon><svg aria-hidden="true"
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="11" cy="11" r="8" />
+  <path d="m21 21-4.3-4.3" />
+</svg></x-icon><div class="tx"><p class="k">Find things fast</p><p class="v">Search, track filters and sorts, all kept in a URL you can share.</p></div></div>
+<div class="pt in" style="--i:4;"><x-icon><svg aria-hidden="true"
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" />
+  <circle cx="12" cy="12" r="3" />
+</svg></x-icon><div class="tx"><p class="k">Four themes</p><p class="v">Light, dark and two playful ones, all checked for contrast.</p></div></div>
+<div class="pt in" style="--i:5;"><x-icon><svg aria-hidden="true"
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="12" cy="12" r="10" />
+  <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+  <path d="M2 12h20" />
+</svg></x-icon><div class="tx"><p class="k">Works on a phone</p><p class="v">The same directory and voting, in your pocket.</p></div></div>
+</div>
+</div>
+<div style="flex:1;display:flex;gap:36px;align-items:center;">
+<img class="shot in" style="--i:3;width:720px;height:450px;" src="images/directory.png" alt="The NEAR Hunt directory on desktop: 1838 projects, search, sort tabs, track filters and the live near.social sidebar">
+<img class="shot in" style="--i:4;width:236px;height:510px;" src="images/mobile.png" alt="The NEAR Hunt directory on a phone">
+</div>
+</div>
+<div class="footer"><span>NEAR Hunt · nearhunt.xyz</span><span class="pg"></span></div>
+
+</section>
+
+<section id="claims" class="s-dark">
+<div class="head">
+<p class="eyebrow in">Community · builders own their pages</p>
+<h2 class="title in" style="--i:1;">Builders claim their projects</h2>
+</div>
+<div class="grid3" style="align-items:stretch;">
+<div class="card in" style="--i:2;">
+<p class="num-badge">1</p>
+<h3>Sign in with GitHub</h3>
+<p class="body">“Claim this project” on any listing with a repository. No scopes requested.</p>
+</div>
+<div class="card in" style="--i:3;">
+<p class="num-badge">2</p>
+<h3>We check the repo</h3>
+<p class="body">If you own it or can push to it, the page says so. The token is revoked straight after the check.</p>
+</div>
+<div class="card in" style="--i:4;">
+<p class="num-badge">3</p>
+<h3>Link your NEAR account</h3>
+<p class="body">Optional: one signed <span class="mono">maker/</span> row ties your account to your project.</p>
+</div>
+</div>
+<div style="display:flex;gap:96px;align-items:flex-start;" class="in">
+<div class="stat" style="flex:1;"><p class="n" style="font-size:72px;">22</p><p class="l">NEAR accounts linked to a project</p></div>
+<div class="stat" style="flex:1;"><p class="n" style="font-size:72px;">36</p><p class="l">corrections filed by builders to their own listings</p></div>
+<div class="stat" style="flex:1;"><p class="n" style="font-size:72px;">0</p><p class="l">AI-written descriptions: builders’ own words only</p></div>
+</div>
+<div class="footer"><span>Measured 14 Nov 2026, 22:40 UTC</span><span class="pg"></span></div>
+
+</section>
+
+<section id="support" class="s-light">
+<div class="head">
+<p class="eyebrow in">Support us · nearhunt.xyz/support</p>
+<h2 class="title in" style="--i:1;">Kept running by its community</h2>
+</div>
+<div class="split">
+<div class="col" style="width:620px;">
+<div class="points">
+<div class="pt in" style="--i:2;"><x-icon><svg aria-hidden="true"
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z" />
+  <path d="m21.854 2.147-10.94 10.939" />
+</svg></x-icon><div class="tx"><p class="k">Donate NEAR</p><p class="v">Send to <span class="mono">team.nearhunt.near</span> from your own wallet. Every transfer is public on chain.</p></div></div>
+<div class="pt in" style="--i:3;"><x-icon><svg aria-hidden="true"
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
+  <path d="m9 12 2 2 4-4" />
+</svg></x-icon><div class="tx"><p class="k">Stake with our validator</p><p class="v">Stake with <span class="mono">avb.poolv1.near</span>. Your NEAR stays yours and keeps earning; the commission funds the site.</p></div></div>
+<div class="pt in" style="--i:4;"><x-icon><svg aria-hidden="true"
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M7 10v12" />
+  <path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z" />
+</svg></x-icon><div class="tx"><p class="k">Or help for free</p><p class="v">Upvote, comment, share on near.social, or build on the open data.</p></div></div>
+</div>
+<p class="in" style="--i:5;font-size:26px;line-height:1.45;background:#E6F4EE;color:#0B4B36;border-radius:16px;padding:20px 28px;">No token, no paywall, and no money ever touches a ranking.</p>
+</div>
+<img class="shot in" style="--i:3;width:952px;height:563px;" src="images/support.png" alt="The NEAR Hunt Support page: a Donate card to send NEAR to team.nearhunt.near, and a Stake card to stake with the validator avb.poolv1.near, each with preset amounts and a Connect button">
+</div>
+<div class="footer"><span>NEAR Hunt · nearhunt.xyz/support</span><span class="pg"></span></div>
+
+</section>
+
+<section id="roadmap" class="s-light">
+<div class="head">
+<p class="eyebrow in">Roadmap</p>
+<h2 class="title in" style="--i:1;">From one hackathon to where every NEAR project launches</h2>
+</div>
+<div class="grid3" style="align-items:stretch;flex:1;">
+<div class="card in" style="--i:2;border:2px solid #0A7F5A;">
+<p class="tag">Live · 1–14 Nov</p>
+<h3>Hackathon</h3>
+<p class="body">Directory, upvotes and comments on mainnet. near.social profiles and sharing. Open data, API and SKILL.md. Builder claims. Support page.</p>
+</div>
+<div class="card in" style="--i:3;">
+<p class="tag blue">Next · late Nov – Dec</p>
+<h3>Open to everyone</h3>
+<p class="body">Any NEAR account can list a project, any day. Daily and weekly launch views. Makers tell their own story.</p>
+</div>
+<div class="card in" style="--i:4;">
+<p class="tag blue">Next · 2027</p>
+<h3>An open standard</h3>
+<p class="body">Publish <span class="mono">nearhunt/project/1</span> for wallets, explorers and grant programs. Every NEAR hackathon in one place.</p>
+</div>
+</div>
+<p class="in" style="--i:5;font-size:28px;color:#4E5866;"><b style="color:#12161C;">What we won’t do:</b> tokens for votes, paid ranking, or agents writing on anyone’s behalf.</p>
+<div class="footer"><span>Full roadmap: README and docs/PLAN.md</span><span class="pg"></span></div>
+
+</section>
+
+<section id="close" style="background:#12161C;color:#F2F4F7;padding:128px;display:flex;flex-direction:column;justify-content:space-between;">
+<div style="display:flex;align-items:center;gap:28px;" class="in">
+<div style="width:96px;height:96px;border-radius:24px;background:#F2F4F7;display:flex;align-items:center;justify-content:center;"><x-shape kind="arrow-up" style="width:40px;height:52px;background:#12161C;"></x-shape></div>
+<p class="display" style="font-size:44px;font-weight:700;">NEAR Hunt</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:32px;">
+<p class="eyebrow in" style="--i:1;color:#7FE0B9;">Try it now</p>
+<h2 class="in" style="--i:2;font-size:120px;font-weight:700;line-height:1.02;letter-spacing:-3px;">Go upvote something you’d actually use.</h2>
+</div>
+<div class="in" style="--i:3;display:grid;grid-template-columns:1fr 1.2fr 1.6fr;gap:32px;">
+<div style="display:flex;flex-direction:column;gap:8px;"><p style="font-size:24px;color:#B5BCC7;">The app</p><p style="font-size:32px;font-weight:600;color:#7FE0B9;">nearhunt.xyz</p></div>
+<div style="display:flex;flex-direction:column;gap:8px;"><p style="font-size:24px;color:#B5BCC7;">The data</p><p style="font-size:32px;font-weight:600;color:#7FE0B9;">nearhunt.xyz/open-data</p></div>
+<div style="display:flex;flex-direction:column;gap:8px;"><p style="font-size:24px;color:#B5BCC7;">The code</p><p style="font-size:32px;font-weight:600;color:#7FE0B9;">github.com/satojandro/near-hunt</p></div>
+</div>
+
+</section>
+
+<script>
+  // Fit each 1920×1080 slide to the window width.
+  const fit = () => document.documentElement.style.setProperty('--zoom', Math.min(1, (innerWidth - 32) / 1920));
+  addEventListener('resize', fit); fit();
+</script>
+</body>
+</html>
