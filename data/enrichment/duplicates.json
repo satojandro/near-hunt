@@ -1,20 +1,20 @@
 {
-  "generated_at": "2026-11-14T10:19:32.840Z",
+  "generated_at": "2026-11-14T11:48:43.957Z",
   "account": "nearhunt.near",
   "note": "Flags only. Nothing is merged, hidden or written. `clusters`/`groups` share an identifying URL (possible duplicates). `weak_signals` share only a name or an X account and are usually different projects.",
   "summary": {
-    "submissions": 1333,
-    "on_chain": 1294,
-    "pending": 39,
+    "submissions": 1375,
+    "on_chain": 1337,
+    "pending": 38,
     "shared_urls": 4,
     "by_kind": {
       "x-post": 1,
       "url": 3
     },
     "clusters": 4,
-    "submissions_flagged": 8,
-    "same_name_groups": 44,
-    "same_x_account_groups": 129
+    "submissions_flagged": 10,
+    "same_name_groups": 45,
+    "same_x_account_groups": 130
   },
   "clusters": [
     {
@@ -27,6 +27,16 @@
         {
           "submission_id": "beee17c1-d0ee-4fdc-8531-72e51daad3b4",
           "name": "conch",
+          "on_chain": true
+        },
+        {
+          "submission_id": "f4928b4c-9d6a-498f-8678-47433b50b0cf",
+          "name": "crypt",
+          "on_chain": true
+        },
+        {
+          "submission_id": "cc5c5821-10e2-4698-bdfb-8dd39939a796",
+          "name": "torch",
           "on_chain": true
         }
       ],
@@ -122,28 +132,6 @@
       ]
     },
     {
-      "key": "near.ai",
-      "kind": "url",
-      "submissions": [
-        {
-          "submission_id": "139d53ec-ff79-4780-85fa-e8f2c57f4d29",
-          "name": "Paysure AI",
-          "on_chain": true,
-          "fields": [
-            "links"
-          ]
-        },
-        {
-          "submission_id": "688343fa-16d9-4720-9b73-c2d336ad0cd6",
-          "name": "VeriPact",
-          "on_chain": true,
-          "fields": [
-            "links"
-          ]
-        }
-      ]
-    },
-    {
       "key": "near.social",
       "kind": "url",
       "submissions": [
@@ -158,6 +146,44 @@
         {
           "submission_id": "beee17c1-d0ee-4fdc-8531-72e51daad3b4",
           "name": "conch",
+          "on_chain": true,
+          "fields": [
+            "links"
+          ]
+        },
+        {
+          "submission_id": "f4928b4c-9d6a-498f-8678-47433b50b0cf",
+          "name": "crypt",
+          "on_chain": true,
+          "fields": [
+            "links"
+          ]
+        },
+        {
+          "submission_id": "cc5c5821-10e2-4698-bdfb-8dd39939a796",
+          "name": "torch",
+          "on_chain": true,
+          "fields": [
+            "links"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "near.ai",
+      "kind": "url",
+      "submissions": [
+        {
+          "submission_id": "139d53ec-ff79-4780-85fa-e8f2c57f4d29",
+          "name": "Paysure AI",
+          "on_chain": true,
+          "fields": [
+            "links"
+          ]
+        },
+        {
+          "submission_id": "688343fa-16d9-4720-9b73-c2d336ad0cd6",
+          "name": "VeriPact",
           "on_chain": true,
           "fields": [
             "links"
@@ -361,36 +387,6 @@
         ]
       },
       {
-        "key": "allowance",
-        "submissions": [
-          {
-            "submission_id": "4126642c-e4c0-4876-80c0-3f9729f1d81d",
-            "name": "Allowance",
-            "on_chain": true
-          },
-          {
-            "submission_id": "48d22ff9-0917-471b-954e-519a002bf6a9",
-            "name": "ALLOWANCE",
-            "on_chain": true
-          },
-          {
-            "submission_id": "6254e8e0-a8a3-4a19-a891-10067a78d535",
-            "name": "Allowance",
-            "on_chain": true
-          },
-          {
-            "submission_id": "aab1bb9e-ab36-4d8c-920f-62487b5b7714",
-            "name": "Allowance",
-            "on_chain": true
-          },
-          {
-            "submission_id": "abe27d2f-1615-4025-9e0c-e78e28519207",
-            "name": "Allowance",
-            "on_chain": true
-          }
-        ]
-      },
-      {
         "key": "tripwire",
         "submissions": [
           {
@@ -416,6 +412,31 @@
           {
             "submission_id": "e11d68a3-2e49-42c5-ad25-9f7e91039300",
             "name": "Tripwire",
+            "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "allowance",
+        "submissions": [
+          {
+            "submission_id": "48d22ff9-0917-471b-954e-519a002bf6a9",
+            "name": "ALLOWANCE",
+            "on_chain": true
+          },
+          {
+            "submission_id": "6254e8e0-a8a3-4a19-a891-10067a78d535",
+            "name": "Allowance",
+            "on_chain": true
+          },
+          {
+            "submission_id": "aab1bb9e-ab36-4d8c-920f-62487b5b7714",
+            "name": "Allowance",
+            "on_chain": true
+          },
+          {
+            "submission_id": "abe27d2f-1615-4025-9e0c-e78e28519207",
+            "name": "Allowance",
             "on_chain": true
           }
         ]
@@ -499,14 +520,14 @@
             "on_chain": true
           },
           {
-            "submission_id": "fde9ac19-13da-4b0f-84e7-8e9bc19c63ef",
+            "submission_id": "b6408065-651d-4ae2-8903-469110b78b69",
             "name": "SpendGuard",
             "on_chain": true
           },
           {
-            "submission_id": "b6408065-651d-4ae2-8903-469110b78b69",
+            "submission_id": "fde9ac19-13da-4b0f-84e7-8e9bc19c63ef",
             "name": "SpendGuard",
-            "on_chain": false
+            "on_chain": true
           }
         ]
       },
@@ -546,7 +567,7 @@
           {
             "submission_id": "cc5c5821-10e2-4698-bdfb-8dd39939a796",
             "name": "torch",
-            "on_chain": false
+            "on_chain": true
           }
         ]
       },
@@ -751,7 +772,7 @@
           {
             "submission_id": "d96060e7-58d8-404a-b634-41481c9606e4",
             "name": "headroom",
-            "on_chain": false
+            "on_chain": true
           }
         ]
       },
@@ -781,7 +802,7 @@
           {
             "submission_id": "84168165-440a-498e-a686-199e2b73defb",
             "name": "Meridian",
-            "on_chain": false
+            "on_chain": true
           }
         ]
       },
@@ -879,14 +900,14 @@
         "key": "nearverse",
         "submissions": [
           {
-            "submission_id": "bcd11306-4a6c-46bc-98b9-333e0527820f",
-            "name": "Nearverse",
+            "submission_id": "b4c4e0ad-2dea-43c9-9f14-09d7f9116914",
+            "name": "NearVerse",
             "on_chain": true
           },
           {
-            "submission_id": "b4c4e0ad-2dea-43c9-9f14-09d7f9116914",
-            "name": "NearVerse",
-            "on_chain": false
+            "submission_id": "bcd11306-4a6c-46bc-98b9-333e0527820f",
+            "name": "Nearverse",
+            "on_chain": true
           }
         ]
       },
@@ -901,21 +922,6 @@
           {
             "submission_id": "946f4721-aa58-44a0-94c9-0b45de9b80a3",
             "name": "Pact",
-            "on_chain": true
-          }
-        ]
-      },
-      {
-        "key": "pactum",
-        "submissions": [
-          {
-            "submission_id": "2c20bb89-6edd-4552-99df-1810e5e57edc",
-            "name": "Pactum",
-            "on_chain": true
-          },
-          {
-            "submission_id": "4abd8001-d743-4037-9d76-e75d6febf7a3",
-            "name": "Pactum",
             "on_chain": true
           }
         ]
@@ -961,7 +967,7 @@
           {
             "submission_id": "aac9c635-f12e-47ce-917b-6d68a86b33a0",
             "name": "Recourse",
-            "on_chain": false
+            "on_chain": true
           }
         ]
       },
@@ -1006,6 +1012,21 @@
           {
             "submission_id": "ba9689a8-f606-4026-9ad9-fc5a4ec77bc5",
             "name": "SpendGuard AI",
+            "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "swarm-for-hire",
+        "submissions": [
+          {
+            "submission_id": "b5e92055-8e69-4edc-aab9-aa965d69d42d",
+            "name": "Swarm-for-Hire",
+            "on_chain": true
+          },
+          {
+            "submission_id": "0a9a5beb-e9f5-4403-9010-8e628bae54d0",
+            "name": "swarm-for-hire",
             "on_chain": false
           }
         ]
@@ -1054,9 +1075,44 @@
             "on_chain": true
           }
         ]
+      },
+      {
+        "key": "veyra",
+        "submissions": [
+          {
+            "submission_id": "b9882517-35e2-413f-b417-8fe9998dc735",
+            "name": "Veyra",
+            "on_chain": true
+          },
+          {
+            "submission_id": "2a9f97f1-6b68-42be-90a5-7b180b9c0a49",
+            "name": "Veyra",
+            "on_chain": false
+          }
+        ]
       }
     ],
     "same_x_account": [
+      {
+        "key": "fstrategy001",
+        "submissions": [
+          {
+            "submission_id": "1ca01819-1a03-4a49-81d7-eb5755db0fea",
+            "name": "VIGIL",
+            "on_chain": true
+          },
+          {
+            "submission_id": "8be0239a-d5ae-41aa-bf7b-8e8c5746b2c5",
+            "name": "NEARAIL",
+            "on_chain": true
+          },
+          {
+            "submission_id": "c5ccf130-f959-4529-9885-ba96ab65576d",
+            "name": "Veritrail",
+            "on_chain": true
+          }
+        ]
+      },
       {
         "key": "0_x_0_0_0",
         "submissions": [
@@ -1408,12 +1464,12 @@
           {
             "submission_id": "2a9a5c18-a000-4baa-9395-39aa0cda0b46",
             "name": "Blindbook",
-            "on_chain": false
+            "on_chain": true
           },
           {
             "submission_id": "3575b927-183b-4650-b72c-6b56f95e6f7a",
             "name": "CHAIR",
-            "on_chain": false
+            "on_chain": true
           }
         ]
       },
@@ -1428,7 +1484,7 @@
           {
             "submission_id": "afa3e983-aa44-4f2c-baa8-f867f583a725",
             "name": "PayPact",
-            "on_chain": false
+            "on_chain": true
           }
         ]
       },
@@ -1818,21 +1874,6 @@
           {
             "submission_id": "cee5be04-450c-431d-8fa7-35ff67eee2d1",
             "name": "ArchAngel",
-            "on_chain": true
-          }
-        ]
-      },
-      {
-        "key": "fstrategy001",
-        "submissions": [
-          {
-            "submission_id": "8be0239a-d5ae-41aa-bf7b-8e8c5746b2c5",
-            "name": "NEARAIL",
-            "on_chain": true
-          },
-          {
-            "submission_id": "c5ccf130-f959-4529-9885-ba96ab65576d",
-            "name": "Veritrail",
             "on_chain": true
           }
         ]
@@ -2652,7 +2693,7 @@
         "submissions": [
           {
             "submission_id": "4126642c-e4c0-4876-80c0-3f9729f1d81d",
-            "name": "Allowance",
+            "name": "Allowance (NEAR AI agent wallet)",
             "on_chain": true
           },
           {
@@ -2958,6 +2999,21 @@
           {
             "submission_id": "d101d790-a77d-4feb-93cc-a95f038c2f1f",
             "name": "Near2Cash — your NEAR, in your local currency",
+            "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "yournotarealai",
+        "submissions": [
+          {
+            "submission_id": "26528dd0-7ee8-4795-b70c-aff81068f366",
+            "name": "Self-Verifying Smart Contract",
+            "on_chain": true
+          },
+          {
+            "submission_id": "44e4bbf2-41c1-4fb3-bdc8-94cbccbb98d3",
+            "name": "Proof-of-Delivery",
             "on_chain": true
           }
         ]
