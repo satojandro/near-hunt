@@ -409,7 +409,7 @@ near account list-keys nearhunt.near network-config mainnet now   # 1 key, full 
 
 24. **The 85 new feed submissions and 12 changes, 13 Nov — batch 24, and the first batch driven by the
     scheduled cycle.** `scripts/enrich-cycle.mjs` (threads → enrich → duplicates → import dry run) now
-    runs from a cron job every three hours; it is read-only and silent until a batch is ready to
+    runs from a cron job every three hours (hourly since 15 Nov, every 20 minutes during the submission peak — see `docs/runbooks/new-submissions.md`); it is read-only and silent until a batch is ready to
     approve. Dry run: `85 new, 12 changed`, `97 keys, 131632 bytes, 3 transaction(s)`; the owner
     approved that diff in the conversation ("Yes, sign the import"). Execute reprinted the same
     numbers and signed: `9Boc33e7zxLwVRhk6DRsjK2TvrMMMfQio2skxqojXutU` (47),

@@ -23,8 +23,12 @@ posters from their X post. Existing records get only what they are missing.
 
 When `npm run feed:check` prints a line, there is new work (it is silent when nothing is new).
 
-Steps 2–5 are packaged as `scripts/enrich-cycle.mjs`, and **a Hermes cron job runs it every three
-hours** (`near-hunt-enrich-cycle`, wrapper `~/.hermes/scripts/near-hunt-enrich.sh`). It stays silent
+Steps 2–5 are packaged as `scripts/enrich-cycle.mjs`, and **a Hermes cron job runs it every hour**
+(`near-hunt-enrich-cycle`, wrapper `~/.hermes/scripts/near-hunt-enrich.sh`; the job lives in the
+**default** profile's cron, not this one's). The interval is counted from the start of each run, so a
+tick that takes ~6 minutes lands ~6 minutes later each hour. During the submission peak the owner
+shortened it to **every 20 minutes** (15 Nov): three times the signed batches, each still bounded and
+checked by `lib/auto-sign.mjs`. It stays silent
 until a batch is ready to approve, then prints the dry-run numbers once. It is read-only: it never
 signs, so a scheduled run can only ever produce numbers for the owner to approve. `npm run
 feed:check` and the individual steps remain available for running by hand.
@@ -151,7 +155,7 @@ date, key count, tx hashes, who approved.
 
 ### 6b. When nobody is there to approve: the scheduled cycle
 
-The same steps 2–7 run unattended every 3 hours, and since 14 Nov 2026 the owner's standing
+The same steps 2–7 run unattended every hour, and since 14 Nov 2026 the owner's standing
 authorization lets that run sign **new submissions and null-fills** without asking (AGENTS.md §1):
 
 ```bash

@@ -25,7 +25,9 @@ value, but the old value stays in public history forever.
   `check.verdict`, `--refresh-enriched`, more than 400 keys or 8 transactions in one run, or a key
   that is not `FunctionCall(nearhunt.near, __fastdata_kv)`. When it refuses, **nothing is signed**,
   the batch stays ready and a human approves it by hand as before.
-- The scheduled cycle (`node scripts/enrich-cycle.mjs --sign`, every 3 hours) also verifies its own
+- The scheduled cycle (`node scripts/enrich-cycle.mjs --sign`; `near-hunt-enrich-cycle`, wrapper
+  `~/.hermes/scripts/near-hunt-enrich.sh`, `no_agent`; hourly, and every 20 minutes while the
+  hackathon feed is busy — owner, 15 Nov) also verifies its own
   write: `verified: N/N` read back from the indexer, the importer's re-run must print `new: 0,
   changed: 0`, `npm run validate:schema` and `npm test` must pass, and it commits `data/enrichment/*`
   plus a numbered `docs/PLAN.md` entry before pushing. A run that cannot record itself reports that
