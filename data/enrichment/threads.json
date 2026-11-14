@@ -34185,5 +34185,462 @@
     "links": [
       "https://youtu.be/b0dg6w16970"
     ]
+  },
+  "0fbf1aad-db5c-4ccf-94d5-d3f7c0c6290a": {
+    "author": "useAllocard",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T02:58:22.266Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": []
+  },
+  "6f72e028-f7e7-47b6-918c-f75f0180080d": {
+    "author": "callmeaoyama",
+    "status": "ok",
+    "crawled_at": "2026-11-14T02:58:26.338Z",
+    "listed": 3,
+    "read": 3,
+    "posts": [
+      {
+        "id": "2121416035110924601",
+        "author": "callmeaoyama",
+        "text": "@NEARProtocol DAOs: 2,190 created, 22% never used. Of the 1,437 ever active, 337 are still alive, and 24% survive year one.\n\nBenchmark vs Snapshot (DAOs with 5+ proposals): NEAR 36%, Snapshot 27%.",
+        "links": []
+      },
+      {
+        "id": "2121416125510807912",
+        "author": "callmeaoyama",
+        "text": "@NEARProtocol Contracts since 2025: half are launchpad memecoins. Apps: 65% still alive. Tokens: 34%, with a median life of 2 months.\n\nEvery number is reproducible. Clone it, re-run it, and the thesis re-scores itself.\n\nLive: https://t.co/3yYfWY57f6\nRepo: https://t.co/We76sHSHjP",
+        "links": [
+          "https://aoyamari.github.io/void/",
+          "https://github.com/aoyamari/void"
+        ]
+      }
+    ],
+    "links": []
+  },
+  "db218583-4b32-472c-a62d-a52afc792aae": {
+    "author": "GumballPGL",
+    "status": "ok",
+    "crawled_at": "2026-11-14T02:58:29.286Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [
+      {
+        "id": "2121423194397810861",
+        "author": "GumballPGL",
+        "text": "@NEARProtocol Built at NEAR HACKATHON. Can you talk the bot into paying you? The contract decides.",
+        "links": []
+      }
+    ],
+    "links": [
+      "https://leash-vault.vercel.app",
+      "https://github.com/gumballchief/leash",
+      "https://leash-vault.vercel.app/"
+    ]
+  },
+  "f3fcaa80-7986-47e1-8dcc-e800279eb5fc": {
+    "author": "BebeqKun",
+    "status": "ok",
+    "crawled_at": "2026-11-14T02:58:31.947Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [
+      {
+        "id": "2121419601418616921",
+        "author": "BebeqKun",
+        "text": "Live simulator &amp; testnet inspector: https://t.co/KN8qJrgWkW\nPublic repo : https://t.co/lDvUMdEipV\n\nHow would you calibrate bond B &gt;= A*(1-q)/q for larger vaults? @NearLegion @NearBuilders",
+        "links": [
+          "https://proof-of-grudge.vercel.app",
+          "https://github.com/StevBeq/Proof-Of-Grudge",
+          "https://proof-of-grudge.vercel.app/"
+        ]
+      }
+    ],
+    "links": []
+  },
+  "19d83ed5-50cd-4ca0-a1f3-fea839a3d6bb": {
+    "author": "skippo0007",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T02:58:33.431Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": []
+  },
+  "51c6756e-4845-410b-be69-6d97c2e7690f": {
+    "author": "augoustics",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T02:58:35.157Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": []
+  },
+  "d614f17e-4c64-4320-a272-df143500350c": {
+    "author": "Cassxbt",
+    "status": "no-author-replies",
+    "crawled_at": "2026-11-14T02:58:37.542Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [],
+    "links": []
+  },
+  "be67e8e2-46cd-4c29-a03f-9576cb813cfa": {
+    "author": "hrld_ai",
+    "status": "ok",
+    "crawled_at": "2026-11-14T02:58:40.579Z",
+    "listed": 2,
+    "read": 2,
+    "posts": [
+      {
+        "id": "2121430315407454253",
+        "author": "hrld_ai",
+        "text": "@NEARProtocol 2/ How is Herald different from @pingpay_io Agent Pay? Ping requires buyers to support upfront flow with quote and swaps every payment through NEAR Intents. Herald skips the quote and swap. The payment stays on the buyer's chain without any additional setup.",
+        "links": []
+      },
+      {
+        "id": "2121430374014501119",
+        "author": "hrld_ai",
+        "text": "@NEARProtocol 3/ Herald is live. Try it here: https://t.co/nLoCP85neR",
+        "links": [
+          "https://herald.0verlabs.com",
+          "https://herald.0verlabs.com/"
+        ]
+      }
+    ],
+    "links": []
+  },
+  "40a2e147-c51e-4a86-b179-4b3b9f0233d2": {
+    "author": "Ahmardchain",
+    "status": "no-author-replies",
+    "crawled_at": "2026-11-14T02:58:42.821Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [],
+    "links": []
+  },
+  "b3debb59-dd63-42fa-915f-3c3e7628b6e6": {
+    "author": "Stacked_Ghost",
+    "status": "ok",
+    "crawled_at": "2026-11-14T02:58:47.119Z",
+    "listed": 3,
+    "read": 3,
+    "posts": [
+      {
+        "id": "2121433772168200223",
+        "author": "Stacked_Ghost",
+        "text": "Use case 1 — agent commerce: an agent delivers work, Sealgate judges it against the order's criteria, and the contract pays out only on a pass. Live on testnet, a good delivery was paid and only then opened; a poor one was refunded, never opened by the buyer. https://t.co/kdxtB2n0NC",
+        "links": [],
+        "media": [
+          {
+            "type": "video",
+            "media_url_https": "https://pbs.twimg.com/amplify_video_thumb/2121433760369680384/img/Qw5tg1I9iwVXBWZv.jpg",
+            "original_info": {
+              "focus_rects": [],
+              "height": 720,
+              "width": 1280
+            },
+            "video_info": {
+              "aspect_ratio": [
+                16,
+                9
+              ],
+              "duration_millis": 12666,
+              "variants": [
+                {
+                  "content_type": "application/x-mpegURL",
+                  "url": "https://video.twimg.com/amplify_video/2121433760369680384/pl/XBUj9BAUjosaM3Js.m3u8?tag=14"
+                },
+                {
+                  "bitrate": 288000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121433760369680384/vid/avc1/480x270/ZIASY6gCeXctlI1v.mp4?tag=14"
+                },
+                {
+                  "bitrate": 832000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121433760369680384/vid/avc1/640x360/Q6NRN2Tpq6J4c2Qk.mp4?tag=14"
+                },
+                {
+                  "bitrate": 2176000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121433760369680384/vid/avc1/1280x720/X7O_8IVKQmLaTH4A.mp4?tag=14"
+                }
+              ]
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      },
+      {
+        "id": "2121433788505084311",
+        "author": "Stacked_Ghost",
+        "text": "Use case 2 — platform decisions reviewed: a marketplace suspended a seller's account. In live case 3, Sealgate judged the sealed record and did not uphold the suspension: two listings were within the stated limit of three, and no listing IDs or timestamps had been recorded. https://t.co/qG0ujMQUIt",
+        "links": [],
+        "media": [
+          {
+            "type": "video",
+            "media_url_https": "https://pbs.twimg.com/amplify_video_thumb/2121433775846682624/img/4JZWNmaS6256eCLY.jpg",
+            "original_info": {
+              "focus_rects": [],
+              "height": 720,
+              "width": 1280
+            },
+            "video_info": {
+              "aspect_ratio": [
+                16,
+                9
+              ],
+              "duration_millis": 13166,
+              "variants": [
+                {
+                  "content_type": "application/x-mpegURL",
+                  "url": "https://video.twimg.com/amplify_video/2121433775846682624/pl/u-0vSi0KTOEMcYKZ.m3u8?tag=14"
+                },
+                {
+                  "bitrate": 288000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121433775846682624/vid/avc1/480x270/AnFB-QWxu5zdDlhJ.mp4?tag=14"
+                },
+                {
+                  "bitrate": 832000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121433775846682624/vid/avc1/640x360/WgBXXguuG3pH34UO.mp4?tag=14"
+                },
+                {
+                  "bitrate": 2176000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121433775846682624/vid/avc1/1280x720/WccQbmUfMygN0Udq.mp4?tag=14"
+                }
+              ]
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      },
+      {
+        "id": "2121433804359553110",
+        "author": "Stacked_Ghost",
+        "text": "Use case 3 — contest and bounty judging: entries are judged one by one against published criteria, and the signed reason can carry a score. Our live demo entry received \"Score: 8/10.\" — organizers, as a party, can verify the signed reason behind the score. https://t.co/AUz3imx0Fr",
+        "links": [],
+        "media": [
+          {
+            "type": "video",
+            "media_url_https": "https://pbs.twimg.com/amplify_video_thumb/2121433791713759232/img/kOMWRhLRLkb6aL1i.jpg",
+            "original_info": {
+              "focus_rects": [],
+              "height": 720,
+              "width": 1280
+            },
+            "video_info": {
+              "aspect_ratio": [
+                16,
+                9
+              ],
+              "duration_millis": 13166,
+              "variants": [
+                {
+                  "content_type": "application/x-mpegURL",
+                  "url": "https://video.twimg.com/amplify_video/2121433791713759232/pl/xO9U_-AR4fBHJi4Y.m3u8?tag=14"
+                },
+                {
+                  "bitrate": 288000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121433791713759232/vid/avc1/480x270/CMRuc7YufeUpWwuG.mp4?tag=14"
+                },
+                {
+                  "bitrate": 832000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121433791713759232/vid/avc1/640x360/ORpzJ5OlFW9dcYGs.mp4?tag=14"
+                },
+                {
+                  "bitrate": 2176000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121433791713759232/vid/avc1/1280x720/v2zYSfv6leCsA6rN.mp4?tag=14"
+                }
+              ]
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      }
+    ],
+    "links": []
+  },
+  "0e2faac9-2439-497c-8ee5-eaea6a0e7125": {
+    "author": "Selimar30",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T02:58:48.664Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://youtu.be/Qesx296c-aU"
+    ]
+  },
+  "19c05912-103a-44e8-8147-96b0860df928": {
+    "author": "MrDvdMedina",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T02:58:50.362Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://github.com/Alberto-Campos-de-la-Torre/near-settlement-thesis"
+    ]
+  },
+  "90ddf07f-bf87-445d-a3a8-08c854d4ef4f": {
+    "author": "_ashmask18",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T02:58:52.041Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": []
+  },
+  "fa9ba865-08d5-4c29-bcfb-2414ecca22dc": {
+    "author": "jorge4ugusto",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T02:58:53.718Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://github.com/Jorge4ugusto/guardian-qa"
+    ]
+  },
+  "39e51d3d-befe-4929-bef7-3f78ba9748dc": {
+    "author": "ringsonnear",
+    "status": "ok",
+    "crawled_at": "2026-11-14T02:58:58.219Z",
+    "listed": 4,
+    "read": 4,
+    "posts": [
+      {
+        "id": "2121417054532301286",
+        "author": "ringsonnear",
+        "text": "Q1: How there's no relayer: a NEAR key can be limited to one method on one contract. We publish keys that can only call transact on the pool.\n\nAnyone can submit a private transaction with them. Nobody can move funds with them.",
+        "links": []
+      },
+      {
+        "id": "2121417056474333427",
+        "author": "ringsonnear",
+        "text": "Q2: Private swaps: the pool funds a brand-new single-use account. It swaps on Rhea, deposits the result back as a private note, and deletes itself.\n\nNEAR to USDC, USDT, ZEC, RHEA and AURORA, live on mainnet.",
+        "links": []
+      },
+      {
+        "id": "2121417058403733536",
+        "author": "ringsonnear",
+        "text": "Q3: AI agents: the agent runs on NEAR AI Cloud, and the app checks that its signing key lives in an Intel TDX enclave.\n\nSpending caps are enforced in code, not by the model. In the demo it refused a tip hidden in a prompt injection.",
+        "links": []
+      },
+      {
+        "id": "2121417060375011454",
+        "author": "ringsonnear",
+        "text": "It's open source: https://t.co/4VtsysghQJ\n\nDeposits are capped while it's young. An independent audit and a multi-party ceremony are next before the post quantum upgrade.",
+        "links": [
+          "https://github.com/gourab337/near-privacy-rings"
+        ]
+      }
+    ],
+    "links": []
+  },
+  "baf8976c-54dd-4883-819c-f58b4e40f87c": {
+    "author": "ringsonnear",
+    "status": "ok",
+    "crawled_at": "2026-11-14T02:59:03.755Z",
+    "listed": 5,
+    "read": 5,
+    "posts": [
+      {
+        "id": "2120853765771419656",
+        "author": "ringsonnear",
+        "text": "1Click swaps were -5% vs August in the 4 weeks after the freeze; 17 of 25 big integrators kept at least half their volume.\n\nThe \"collapse\" on-chain was a move: since 27 Oct, 1Click settles on a permissioned NEAR instance. Public records fell from 98% to 7% of sampled swaps.",
+        "links": []
+      },
+      {
+        "id": "2120853771056209936",
+        "author": "ringsonnear",
+        "text": "NEAR issues ~86,966 NEAR/day; the buyback takes in ~13,571. Nothing is paid to holders, staked or burned, and a few signers can move it.\n\nBuy trigger: revenue wallets take in 21,700 NEAR/day for 3 months (last 3 averaged 15,486). Predictions timestamped, scored 31 Mar 2027.",
+        "links": []
+      },
+      {
+        "id": "2120853774642352218",
+        "author": "ringsonnear",
+        "text": "Every number rebuilds from committed data with one command, checked on every push. The pre-registered test was inconclusive, and the thesis says so.\n\nRepo and dashboard go public on the 13th. What would make you rate NEAR a Buy? @NEARLegion @NearBuilders",
+        "links": []
+      },
+      {
+        "id": "2120853862123012218",
+        "author": "ringsonnear",
+        "text": "The full walkthrough, narrated: https://t.co/y2eXcluOYa",
+        "links": [],
+        "media": [
+          {
+            "type": "video",
+            "media_url_https": "https://pbs.twimg.com/amplify_video_thumb/2120853777909792768/img/3SgC6H84cnos0-x4.jpg",
+            "original_info": {
+              "focus_rects": [],
+              "height": 1080,
+              "width": 1920
+            },
+            "video_info": {
+              "aspect_ratio": [
+                16,
+                9
+              ],
+              "duration_millis": 136400,
+              "variants": [
+                {
+                  "content_type": "application/x-mpegURL",
+                  "url": "https://video.twimg.com/amplify_video/2120853777909792768/pl/upCb1ByJyaI9iqpz.m3u8"
+                },
+                {
+                  "bitrate": 256000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2120853777909792768/vid/avc1/480x270/MqvcfhZJrD6dSR7U.mp4"
+                },
+                {
+                  "bitrate": 832000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2120853777909792768/vid/avc1/640x360/hYExz0towcg9k-yz.mp4"
+                },
+                {
+                  "bitrate": 2176000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2120853777909792768/vid/avc1/1280x720/Z01Q20A9piGGytfi.mp4"
+                },
+                {
+                  "bitrate": 10368000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2120853777909792768/vid/avc1/1920x1080/yNUd2grtS-DhWGkp.mp4"
+                }
+              ]
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      },
+      {
+        "id": "2121419580765852038",
+        "author": "ringsonnear",
+        "text": "Thesis &amp; code is now opensourced:\n\nRead the full thesis and the live dashboard: https://t.co/BtmBHL2GDv\nEvery number rebuilds from public data, code here: https://t.co/f6ZZrIgavC",
+        "links": [
+          "https://gourab337.github.io/near-holders-claim-thesis",
+          "https://github.com/gourab337/near-holders-claim-thesis"
+        ]
+      }
+    ],
+    "links": []
   }
 }
