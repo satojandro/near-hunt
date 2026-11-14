@@ -50,6 +50,11 @@ interface WalletContextValue {
    * Typed for any transaction shape so the comment module does not depend on the vote types.
    */
   commentSender: () => { send: (tx: unknown) => Promise<unknown>; fallbackSend: () => ((tx: unknown) => Promise<unknown>) | null };
+  /**
+   * Any other transaction (NH-121: a donation or a stake). It carries a deposit, which the login
+   * key cannot attach, so the plugin passes it to the wallet and the visitor confirms it there.
+   */
+  walletSend: (tx: unknown) => Promise<unknown>;
 }
 
 const WalletContext = createContext<WalletContextValue | null>(null);
@@ -199,6 +204,11 @@ function Inner({ children }: { children: React.ReactNode }) {
     return { send, fallbackSend };
   }, []);
 
+  const walletSend = useCallback(
+    (tx: unknown) => (nearRef.current.signAndSendTransaction as unknown as (tx: unknown) => Promise<unknown>)(tx),
+    [],
+  );
+
   const value = useMemo<WalletContextValue>(
     () => ({
       loading,
@@ -213,8 +223,9 @@ function Inner({ children }: { children: React.ReactNode }) {
       setMyVote,
       cast,
       commentSender,
+      walletSend,
     }),
-    [loading, accountId, connect, disconnect, myVotes, votesError, ensureMyVotes, setMyVote, cast, commentSender],
+    [loading, accountId, connect, disconnect, myVotes, votesError, ensureMyVotes, setMyVote, cast, commentSender, walletSend],
   );
 
   return <WalletContext.Provider value={value}>{children}</WalletContext.Provider>;

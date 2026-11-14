@@ -21,6 +21,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${SITE}/open-data`, changeFrequency: 'daily', priority: 0.6 },
     { url: `${SITE}/SKILL.md`, changeFrequency: 'weekly', priority: 0.5 },
     { url: `${SITE}/comment-policy`, changeFrequency: 'monthly', priority: 0.2 },
+    { url: `${SITE}/support`, changeFrequency: 'monthly', priority: 0.3 },
   ];
   try {
     const { items } = await getProjects();
