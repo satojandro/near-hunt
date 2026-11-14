@@ -23,6 +23,8 @@ export interface ProjectsSnapshot {
   items: ListingItem[];
   fetched_at: string;
   account: string;
+  /** `listingDigest(items)`, when known: lets the marker alone say the rows are unchanged. */
+  digest?: string;
 }
 
 /** When the listing was last read successfully, what it hashed to, and how many rows it held. */
@@ -46,6 +48,23 @@ export declare function resolveProjectsSnapshot(
   copy: ProjectsSnapshot | null,
   marker: ProjectsMarker | null,
 ): ProjectsSnapshot | null;
+
+/**
+ * The memory copy advanced by the marker when the rows are unchanged (same digest), the memory
+ * copy as is when the marker is not newer, or null when the heavy copy has to be read.
+ */
+export declare function advanceFromMarker(
+  memory: ProjectsSnapshot | null,
+  marker: ProjectsMarker | null,
+): ProjectsSnapshot | null;
+
+/** Whether a request should walk live: only when the store gave no marker, at most once a minute. */
+export declare function liveRefreshDue(opts: {
+  snapshot: { fetched_at: string } | null;
+  storeAnswered: boolean;
+  lastAttemptAt: number;
+  now: number;
+}): boolean;
 
 export declare function walkProjects(opts?: {
   account?: string;

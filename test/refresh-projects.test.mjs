@@ -1,10 +1,13 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import {
+  PROJECTS_MEMORY_TTL_MS,
   REFRESH,
+  advanceFromMarker,
   isProjectsMarker,
   isProjectsSnapshot,
   listingDigest,
+  liveRefreshDue,
   resolveProjectsSnapshot,
   walkProjects,
 } from '../lib/refresh-projects.mjs';
@@ -159,4 +162,49 @@ test('resolveProjectsSnapshot dates the copy by the latest good walk, not the la
   assert.equal(resolveProjectsSnapshot(copy, null).fetched_at, copy.fetched_at);
   // No copy anywhere: nothing to serve.
   assert.equal(resolveProjectsSnapshot(null, { fetched_at: copy.fetched_at }), null);
+});
+
+test('resolveProjectsSnapshot carries the copy digest so the marker alone can vouch for it later', () => {
+  const copy = { items: [], account: ACCOUNT, fetched_at: '2026-11-14T12:00:00.000Z', digest: 'sha256:a' };
+  assert.equal(resolveProjectsSnapshot(copy, null).digest, 'sha256:a');
+  const { digest, ...noDigest } = copy;
+  assert.equal('digest' in resolveProjectsSnapshot(noDigest, null), false);
+});
+
+test('advanceFromMarker: an unchanged listing re-walked later costs no heavy read', () => {
+  const memory = { items: [{ submission_id: 'a' }], account: ACCOUNT, fetched_at: '2026-11-14T12:00:00.000Z', digest: 'sha256:a' };
+  // The walker re-read the same rows a minute later: same items, newer time, nothing downloaded.
+  const same = advanceFromMarker(memory, { fetched_at: '2026-11-14T12:01:00.000Z', digest: 'sha256:a', rows: 1 });
+  assert.equal(same.fetched_at, '2026-11-14T12:01:00.000Z');
+  assert.equal(same.items, memory.items);
+  // A marker that is not newer: the memory copy as it is.
+  assert.equal(advanceFromMarker(memory, { fetched_at: '2026-11-14T11:59:00.000Z', digest: 'sha256:b', rows: 1 }), memory);
+  // New rows on chain: the heavy copy must be read.
+  assert.equal(advanceFromMarker(memory, { fetched_at: '2026-11-14T12:01:00.000Z', digest: 'sha256:b', rows: 2 }), null);
+  // A memory copy with no digest cannot be vouched for by the marker.
+  const { digest, ...unknown } = memory;
+  assert.equal(advanceFromMarker(unknown, { fetched_at: '2026-11-14T12:01:00.000Z', digest: 'sha256:a', rows: 1 }), null);
+  // Nothing in memory, or no marker: read the copy.
+  assert.equal(advanceFromMarker(null, { fetched_at: '2026-11-14T12:01:00.000Z', digest: 'sha256:a', rows: 1 }), null);
+  assert.equal(advanceFromMarker(memory, null), null);
+});
+
+test('liveRefreshDue: only without a store marker, only for an aged copy, at most once a minute', () => {
+  const now = Date.parse('2026-11-14T12:10:00.000Z');
+  const old = { fetched_at: new Date(now - 5 * 60_000).toISOString() };
+  const young = { fetched_at: new Date(now - 10_000).toISOString() };
+  // No store answering: an old copy is refreshed by this instance, or it would never change.
+  assert.equal(liveRefreshDue({ snapshot: old, storeAnswered: false, lastAttemptAt: 0, now }), true);
+  // A working store: the walker owns freshness; an old copy is labelled, not re-walked per request.
+  assert.equal(liveRefreshDue({ snapshot: old, storeAnswered: true, lastAttemptAt: 0, now }), false);
+  // A copy younger than one walk interval is current enough.
+  assert.equal(liveRefreshDue({ snapshot: young, storeAnswered: false, lastAttemptAt: 0, now }), false);
+  // A walk attempted moments ago (and failed) is not repeated per visitor.
+  assert.equal(liveRefreshDue({ snapshot: old, storeAnswered: false, lastAttemptAt: now - 5_000, now }), false);
+  assert.equal(
+    liveRefreshDue({ snapshot: old, storeAnswered: false, lastAttemptAt: now - PROJECTS_MEMORY_TTL_MS, now }),
+    true,
+  );
+  // No copy at all is the cold-start path in getProjects, not this one.
+  assert.equal(liveRefreshDue({ snapshot: null, storeAnswered: false, lastAttemptAt: 0, now }), false);
 });

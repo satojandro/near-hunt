@@ -48,6 +48,29 @@ function isDynamicUsageError(err: unknown): boolean {
 }
 
 /**
+ * Push a stored value's expiry out by another `SNAPSHOT_TTL_SECONDS` without rewriting it.
+ *
+ * For a value that is deliberately not rewritten while its content is unchanged (the project
+ * listing, NH-122): without this its TTL runs out after a quiet week and the copy vanishes.
+ *
+ * Never throws. @returns true when the key exists and its TTL was reset; false when it is missing
+ * (expired, evicted, never written), the store is not configured, or the call failed — in each of
+ * those the caller should write the value again.
+ */
+export async function touchSnapshotValue(key: string, label = key): Promise<boolean> {
+  if (!snapshotStoreConfigured) return false;
+  try {
+    const body = (await redis(['EXPIRE', key, SNAPSHOT_TTL_SECONDS], 3000)) as { result?: unknown } | null;
+    return body?.result === 1;
+  } catch (err) {
+    if (!isDynamicUsageError(err)) {
+      console.error(`[snapshot] expire failed for ${label}:`, err instanceof Error ? err.message : err);
+    }
+    return false;
+  }
+}
+
+/**
  * Store the value that was just read.
  *
  * Awaited rather than fired and forgotten: a serverless invocation can be frozen as soon as the

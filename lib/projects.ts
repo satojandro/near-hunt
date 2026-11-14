@@ -6,6 +6,8 @@ import { readProjectsCopy, readProjectsMarker, writeProjectsSnapshot } from './p
 import {
   PROJECTS_MEMORY_TTL_MS,
   PROJECTS_STALE_AFTER_MS,
+  advanceFromMarker,
+  liveRefreshDue,
   resolveProjectsSnapshot,
   walkProjects,
   type ProjectsSnapshot,
@@ -26,9 +28,11 @@ import HIDDEN_PROJECTS from '../data/hidden-projects.json';
  *   1. this instance's memory (one store round trip a minute at most);
  *   2. the stored copy in Upstash, written by `walkProjects` in app/api/cron/refresh-projects
  *      once a minute — one walk a minute instead of one per region per request;
- *   3. the live walk, only when no copy exists at all: a cold deployment with an empty store, or
- *      a checkout without Upstash configured. That path is what a page used to do every time, so
- *      it is kept, not trusted.
+ *   3. the live walk, only when no copy exists at all (a cold deployment with an empty store), or
+ *      when the store gives no marker (a checkout without Upstash, or the store is down) — then
+ *      nothing else refreshes this instance, so it walks itself, at most once a minute
+ *      (`liveRefreshDue`). That path is what a page used to do every time, so it is kept, not
+ *      trusted.
  *
  * The banner's trigger changed with it. It used to be "a read on this instance failed after the
  * copy was read", which said nothing about the copy's age and could contradict it ("showing data
@@ -83,6 +87,10 @@ interface ProjectsState {
   snapshotInflight: Promise<ProjectsSnapshot | null> | null;
   /** The fallback walk in progress, shared by every caller that arrives while it runs. */
   walkInflight: Promise<ProjectsSnapshot> | null;
+  /** Whether the last store check returned a marker; false means nothing else refreshes memory. */
+  storeAnswered: boolean;
+  /** When this instance last started a live walk (0 = never), to walk at most once a minute. */
+  lastLiveAttemptAt: number;
 }
 
 const STATE_KEY = Symbol.for('nearhunt.projects.state');
@@ -91,22 +99,28 @@ const state: ProjectsState = ((globalThis as unknown as Record<symbol, ProjectsS
   loadedAt: 0,
   snapshotInflight: null,
   walkInflight: null,
+  storeAnswered: false,
+  lastLiveAttemptAt: 0,
 });
 
 /**
  * The stored copy, re-checked at most once per `PROJECTS_MEMORY_TTL_MS`.
  *
- * The marker is read first because it is ~120 bytes: when it has not moved since the copy in
- * memory was read, there is nothing newer to fetch and the 314 KB value is not downloaded again.
+ * The marker is read first because it is small (176 B measured): when its digest matches the copy
+ * in memory the rows have not changed, only the time of the last walk has, and the heavy value
+ * (685 KB stored) is not downloaded again (`advanceFromMarker`).
  */
 async function loadSnapshot(): Promise<ProjectsSnapshot | null> {
   if (state.snapshot && Date.now() - state.loadedAt < PROJECTS_MEMORY_TTL_MS) return state.snapshot;
   if (!state.snapshotInflight) {
     state.snapshotInflight = (async () => {
       const marker = await readProjectsMarker();
-      const memoryAt = state.snapshot ? new Date(state.snapshot.fetched_at).getTime() : 0;
-      const markerAt = marker ? new Date(marker.fetched_at).getTime() : 0;
-      if (state.snapshot && Number.isFinite(markerAt) && markerAt <= memoryAt) return state.snapshot;
+      state.storeAnswered = marker !== null;
+      const advanced = advanceFromMarker(state.snapshot, marker) as ProjectsSnapshot | null;
+      if (advanced) {
+        state.snapshot = advanced;
+        return advanced;
+      }
       const copy = await readProjectsCopy();
       const next = resolveProjectsSnapshot(copy, marker) as ProjectsSnapshot | null;
       if (next) state.snapshot = next;
@@ -122,6 +136,7 @@ async function loadSnapshot(): Promise<ProjectsSnapshot | null> {
 /** The live walk, kept as the last resort. Also leaves a copy behind for the next cold instance. */
 async function readLive(): Promise<ProjectsSnapshot> {
   if (!state.walkInflight) {
+    state.lastLiveAttemptAt = Date.now();
     state.walkInflight = (async () => {
       const { entries } = await walkProjects({
         account: DEFAULT_ACCOUNT,
@@ -134,7 +149,12 @@ async function readLive(): Promise<ProjectsSnapshot> {
         fetched_at: new Date().toISOString(),
       };
       // Never throws; a walk that cannot store is still a walk worth serving.
-      await writeProjectsSnapshot({ items: snapshot.items, account: snapshot.account, fetchedAt: snapshot.fetched_at });
+      const write = await writeProjectsSnapshot({
+        items: snapshot.items,
+        account: snapshot.account,
+        fetchedAt: snapshot.fetched_at,
+      });
+      snapshot.digest = write.digest;
       state.snapshot = snapshot;
       state.loadedAt = Date.now();
       return snapshot;
@@ -162,7 +182,15 @@ function asList(snapshot: ProjectsSnapshot): ProjectList {
  */
 export async function getProjects(): Promise<ProjectList> {
   const snapshot = await loadSnapshot();
-  if (snapshot) return asList(snapshot);
+  // With a working store the walker keeps the copy fresh. Without one (no Upstash, store down, no
+  // marker yet) nothing else ever would, so this instance refreshes its own copy, once a minute.
+  const refresh = liveRefreshDue({
+    snapshot,
+    storeAnswered: state.storeAnswered,
+    lastAttemptAt: state.lastLiveAttemptAt,
+    now: Date.now(),
+  });
+  if (snapshot && !refresh) return asList(snapshot);
   try {
     return asList(await readLive());
   } catch (err) {
@@ -170,6 +198,11 @@ export async function getProjects(): Promise<ProjectList> {
     // the page is dynamic, and wrapping the error would turn the build's quiet "dynamic route"
     // note into a "walk failed" log line.
     if ((err as { digest?: string })?.digest === 'DYNAMIC_SERVER_USAGE') throw err;
+    if (snapshot) {
+      // A refresh that failed still leaves the copy we had; its age labels it (`asList`).
+      console.error('[projects] live refresh failed, serving the copy in memory:', err instanceof Error ? err.message : err);
+      return asList(snapshot);
+    }
     console.error('[projects] live walk failed and there is no copy:', err instanceof Error ? err.message : err);
     throw new ProjectsUnavailableError(err);
   }

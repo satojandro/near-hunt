@@ -1,5 +1,5 @@
 import 'server-only';
-import { loadSnapshotValue, saveSnapshotValue } from './snapshot-store';
+import { loadSnapshotValue, saveSnapshotValue, touchSnapshotValue } from './snapshot-store';
 import {
   PROJECTS_MARKER_KEY,
   PROJECTS_SNAPSHOT_KEY,
@@ -52,7 +52,8 @@ export async function readProjectsSnapshot(): Promise<ProjectsSnapshot | null> {
  * @param {string} [opts.account]
  * @param {string} [opts.fetchedAt]   when the read happened (ISO)
  * @returns {Promise<{changed: boolean, stored: boolean, marked: boolean, digest: string}>}
- *   `stored` false with `changed` false means "nothing to write"; `marked` false means the store
+ *   `stored` false with `changed` false means "nothing to write, TTL refreshed"; `stored` true with
+ *   `changed` false means the heavy key had gone and was written again; `marked` false means the store
  *   refused the write and the copy is no fresher than it was.
  */
 export async function writeProjectsSnapshot({
@@ -67,9 +68,13 @@ export async function writeProjectsSnapshot({
   const digest = listingDigest(items);
   const previous = await readProjectsMarker();
   const changed = previous?.digest !== digest;
+  // Unchanged rows are not rewritten, but the heavy key carries a 7-day TTL: keep it alive on every
+  // walk, and write it again when it is gone (expired, evicted). Without this a quiet week with no
+  // imports lets it expire while the marker still matches, and every instance is back to walking.
+  const present = changed ? false : await touchSnapshotValue(PROJECTS_SNAPSHOT_KEY, 'projects');
 
   let stored = false;
-  if (changed) {
+  if (changed || !present) {
     stored = await saveSnapshotValue(
       PROJECTS_SNAPSHOT_KEY,
       { items, account, fetched_at: fetchedAt, digest },
