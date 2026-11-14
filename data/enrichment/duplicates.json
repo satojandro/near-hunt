@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-11-14T14:53:32.253Z",
+  "generated_at": "2026-11-14T16:29:58.066Z",
   "account": "nearhunt.near",
   "note": "Flags only. Nothing is merged, hidden or written. `clusters`/`groups` share an identifying URL (possible duplicates). `weak_signals` share only a name or an X account and are usually different projects.",
   "summary": {
-    "submissions": 1499,
-    "on_chain": 1430,
-    "pending": 69,
+    "submissions": 1568,
+    "on_chain": 1502,
+    "pending": 66,
     "shared_urls": 4,
     "by_kind": {
       "x-post": 1,
@@ -13,8 +13,8 @@
     },
     "clusters": 4,
     "submissions_flagged": 10,
-    "same_name_groups": 47,
-    "same_x_account_groups": 146
+    "same_name_groups": 51,
+    "same_x_account_groups": 154
   },
   "clusters": [
     {
@@ -387,6 +387,36 @@
         ]
       },
       {
+        "key": "near sentinel",
+        "submissions": [
+          {
+            "submission_id": "19769764-c445-437e-8187-e0433b18c3da",
+            "name": "NEAR SENTINEL",
+            "on_chain": true
+          },
+          {
+            "submission_id": "55eb2652-5aee-4768-8800-22f5d6ee0b92",
+            "name": "NEAR SENTINEL",
+            "on_chain": true
+          },
+          {
+            "submission_id": "75b5562f-02de-414c-9281-7199ed2c8ea1",
+            "name": "NEAR Sentinel",
+            "on_chain": true
+          },
+          {
+            "submission_id": "7ed930a3-a624-4e19-9a79-fc24f9c39117",
+            "name": "NEAR Sentinel",
+            "on_chain": true
+          },
+          {
+            "submission_id": "6d3d9cf8-0e7b-4b56-9e30-033b3baad3b7",
+            "name": "NEAR Sentinel",
+            "on_chain": false
+          }
+        ]
+      },
+      {
         "key": "tripwire",
         "submissions": [
           {
@@ -462,31 +492,6 @@
           {
             "submission_id": "8ec7bfd4-68b6-4886-8d00-a48c9a7186ef",
             "name": "Foreman",
-            "on_chain": true
-          }
-        ]
-      },
-      {
-        "key": "near sentinel",
-        "submissions": [
-          {
-            "submission_id": "19769764-c445-437e-8187-e0433b18c3da",
-            "name": "NEAR SENTINEL",
-            "on_chain": true
-          },
-          {
-            "submission_id": "55eb2652-5aee-4768-8800-22f5d6ee0b92",
-            "name": "NEAR SENTINEL",
-            "on_chain": true
-          },
-          {
-            "submission_id": "75b5562f-02de-414c-9281-7199ed2c8ea1",
-            "name": "NEAR Sentinel",
-            "on_chain": true
-          },
-          {
-            "submission_id": "7ed930a3-a624-4e19-9a79-fc24f9c39117",
-            "name": "NEAR Sentinel",
             "on_chain": true
           }
         ]
@@ -737,6 +742,21 @@
         ]
       },
       {
+        "key": "cachet",
+        "submissions": [
+          {
+            "submission_id": "e3cbfdcd-c3a9-4bc5-a3e6-ee8220888dfc",
+            "name": "Cachet",
+            "on_chain": false
+          },
+          {
+            "submission_id": "58dd5fc3-8155-4aa3-8116-2cfea01d9318",
+            "name": "Cachet",
+            "on_chain": false
+          }
+        ]
+      },
+      {
         "key": "carerail",
         "submissions": [
           {
@@ -763,6 +783,21 @@
             "submission_id": "b98abc29-c1ef-4afc-932a-de9d63510729",
             "name": "Clavis",
             "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "factor",
+        "submissions": [
+          {
+            "submission_id": "ca4ce2d5-d620-43eb-826d-25573889fe5a",
+            "name": "Factor",
+            "on_chain": true
+          },
+          {
+            "submission_id": "171eceec-b123-4be3-a490-7cd313ef1df4",
+            "name": "Factor",
+            "on_chain": false
           }
         ]
       },
@@ -932,6 +967,21 @@
         ]
       },
       {
+        "key": "orbit",
+        "submissions": [
+          {
+            "submission_id": "44b5ae7e-aa92-4927-97e8-e0eabf4cf379",
+            "name": "Orbit",
+            "on_chain": true
+          },
+          {
+            "submission_id": "092c0414-a7f6-443d-acb3-dce0ad36ba75",
+            "name": "Orbit",
+            "on_chain": false
+          }
+        ]
+      },
+      {
         "key": "pact",
         "submissions": [
           {
@@ -1037,6 +1087,21 @@
         ]
       },
       {
+        "key": "styx",
+        "submissions": [
+          {
+            "submission_id": "0f2e3793-1498-4517-a539-e26b994c2e29",
+            "name": "STYX",
+            "on_chain": true
+          },
+          {
+            "submission_id": "99c0bebd-96ef-4b71-aa7f-1004bd53e05a",
+            "name": "Styx",
+            "on_chain": false
+          }
+        ]
+      },
+      {
         "key": "surety",
         "submissions": [
           {
@@ -1047,7 +1112,7 @@
           {
             "submission_id": "74120bd4-ff43-452c-9db9-e94b34ea8321",
             "name": "Surety",
-            "on_chain": false
+            "on_chain": true
           }
         ]
       },
@@ -1122,7 +1187,7 @@
           {
             "submission_id": "65f63543-d62d-4a86-a08c-c0a60a69ec75",
             "name": "Vouch",
-            "on_chain": false
+            "on_chain": true
           }
         ]
       }
@@ -1167,13 +1232,28 @@
         "key": "0lia_nova",
         "submissions": [
           {
+            "submission_id": "761553b5-5b75-4e68-a0bc-c2e35b7c111f",
+            "name": "IPSOMNIA",
+            "on_chain": true
+          },
+          {
             "submission_id": "cfc2731b-486b-4b12-8013-4ef58f0853ec",
             "name": "KAMERTON",
+            "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "0xbagelface",
+        "submissions": [
+          {
+            "submission_id": "86bb2341-2627-4559-87ba-99fb6650ede8",
+            "name": "Sigstack: Verifiable Private AI for Signal",
             "on_chain": false
           },
           {
-            "submission_id": "761553b5-5b75-4e68-a0bc-c2e35b7c111f",
-            "name": "IPSOMNIA",
+            "submission_id": "7a2381cd-8a81-4ba7-9d59-0aca6df97b62",
+            "name": "Saving Circles on NEAR: Community Savings Without a Middleman",
             "on_chain": false
           }
         ]
@@ -1190,6 +1270,21 @@
             "submission_id": "97238a57-3689-4115-b9e7-28e91245aa99",
             "name": "NearAnyStake",
             "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "0xdegenlord",
+        "submissions": [
+          {
+            "submission_id": "10583763-34b6-4fc6-957e-cf32c1bfc9e6",
+            "name": "Smoke Alarm",
+            "on_chain": false
+          },
+          {
+            "submission_id": "4b546a30-0008-41c9-9c0a-ddca09d28ca8",
+            "name": "Unplug",
+            "on_chain": false
           }
         ]
       },
@@ -1227,14 +1322,14 @@
         "key": "0xkelechii",
         "submissions": [
           {
-            "submission_id": "dd68abe9-479c-4aa3-9725-14a826f61c4c",
-            "name": "Bizzy-Fy",
+            "submission_id": "cac0f46c-8d2d-408d-899c-55b1a9e8d65d",
+            "name": "Herit",
             "on_chain": true
           },
           {
-            "submission_id": "cac0f46c-8d2d-408d-899c-55b1a9e8d65d",
-            "name": "Herit",
-            "on_chain": false
+            "submission_id": "dd68abe9-479c-4aa3-9725-14a826f61c4c",
+            "name": "Bizzy-Fy",
+            "on_chain": true
           }
         ]
       },
@@ -1317,14 +1412,14 @@
         "key": "0xtowhid",
         "submissions": [
           {
-            "submission_id": "a31b88c1-2b0b-4890-a854-01f8a286e66b",
-            "name": "Pixel Bazaar",
+            "submission_id": "7ac3b4ff-9c5a-4dab-bf8f-3270e2242b9c",
+            "name": "Sealed calls",
             "on_chain": true
           },
           {
-            "submission_id": "7ac3b4ff-9c5a-4dab-bf8f-3270e2242b9c",
-            "name": "Sealed calls",
-            "on_chain": false
+            "submission_id": "a31b88c1-2b0b-4890-a854-01f8a286e66b",
+            "name": "Pixel Bazaar",
+            "on_chain": true
           }
         ]
       },
@@ -1539,6 +1634,36 @@
         ]
       },
       {
+        "key": "anki_anc",
+        "submissions": [
+          {
+            "submission_id": "82821a03-0701-4e30-90e5-cdc42fbf8a03",
+            "name": "GhostSign",
+            "on_chain": true
+          },
+          {
+            "submission_id": "d04d520b-3c04-4fe5-b128-f3aa08e0bc67",
+            "name": "Morrow",
+            "on_chain": false
+          }
+        ]
+      },
+      {
+        "key": "anshv7845",
+        "submissions": [
+          {
+            "submission_id": "248d71cc-419b-449c-8582-a333b6870ccb",
+            "name": "Oathline",
+            "on_chain": true
+          },
+          {
+            "submission_id": "a4929ba7-13b5-4bf2-a735-4033a21ec356",
+            "name": "Facedown",
+            "on_chain": true
+          }
+        ]
+      },
+      {
         "key": "apexsys_dev",
         "submissions": [
           {
@@ -1647,14 +1772,14 @@
         "key": "bfaisy22917",
         "submissions": [
           {
-            "submission_id": "79dedfc0-015e-4ebb-ab14-76416f396d2d",
-            "name": "Tidewater",
+            "submission_id": "5156d07e-8adf-4310-a55c-4e41dbf2a710",
+            "name": "Demerit",
             "on_chain": true
           },
           {
-            "submission_id": "5156d07e-8adf-4310-a55c-4e41dbf2a710",
-            "name": "Demerit",
-            "on_chain": false
+            "submission_id": "79dedfc0-015e-4ebb-ab14-76416f396d2d",
+            "name": "Tidewater",
+            "on_chain": true
           }
         ]
       },
@@ -2099,12 +2224,12 @@
           {
             "submission_id": "558ac3a9-e32b-4af3-a572-c30493d3515b",
             "name": "Glyf × NEAR: NEAR Intents in every chat",
-            "on_chain": false
+            "on_chain": true
           },
           {
             "submission_id": "6dcef9b3-a30f-4dd1-97ba-9e4aed4341d4",
             "name": "NEAR Thesis: an investment case you can re-run",
-            "on_chain": false
+            "on_chain": true
           }
         ]
       },
@@ -2142,14 +2267,14 @@
         "key": "iamdivc",
         "submissions": [
           {
-            "submission_id": "ffbc1445-c8e3-4c10-ad21-15408ab30369",
-            "name": "Ironblock",
+            "submission_id": "d4020b00-8a3e-46a5-a5fe-e78e7acf4ecf",
+            "name": "Sonata - NFT Songs with account",
             "on_chain": true
           },
           {
-            "submission_id": "d4020b00-8a3e-46a5-a5fe-e78e7acf4ecf",
-            "name": "Sonata - NFT Songs with account",
-            "on_chain": false
+            "submission_id": "ffbc1445-c8e3-4c10-ad21-15408ab30369",
+            "name": "Ironblock",
+            "on_chain": true
           }
         ]
       },
@@ -2164,7 +2289,7 @@
           {
             "submission_id": "c12fcadd-3fab-4bcb-8ab6-083b9d5411a7",
             "name": "Cautio",
-            "on_chain": false
+            "on_chain": true
           }
         ]
       },
@@ -2180,6 +2305,36 @@
             "submission_id": "53d9c309-ac4a-41d9-a31e-60ad073cf0c1",
             "name": "NearBowl-Feed it or it Dies",
             "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "imbanytui",
+        "submissions": [
+          {
+            "submission_id": "9a0036d2-69f3-4b3f-8f08-6931e3184945",
+            "name": "Hungry Minds",
+            "on_chain": true
+          },
+          {
+            "submission_id": "b24c60e8-2591-4b3d-8747-9e07394609d5",
+            "name": "Brinewar",
+            "on_chain": false
+          }
+        ]
+      },
+      {
+        "key": "imzoexp777",
+        "submissions": [
+          {
+            "submission_id": "092c0414-a7f6-443d-acb3-dce0ad36ba75",
+            "name": "Orbit",
+            "on_chain": false
+          },
+          {
+            "submission_id": "fbfe5bdf-8112-441d-a176-de778f76835b",
+            "name": "PrizeKey",
+            "on_chain": false
           }
         ]
       },
@@ -2225,6 +2380,21 @@
             "submission_id": "82878626-d007-4202-bbd8-bdc6305c7156",
             "name": "Kinwarden",
             "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "jalufadhli",
+        "submissions": [
+          {
+            "submission_id": "4e33510c-dd91-482a-ae5b-078578062e29",
+            "name": "OpenGrasp",
+            "on_chain": true
+          },
+          {
+            "submission_id": "dba4ae06-d10e-4b3c-bb1c-0390b47f77ab",
+            "name": "Proof of Call",
+            "on_chain": false
           }
         ]
       },
@@ -2514,6 +2684,21 @@
         ]
       },
       {
+        "key": "mickeyjoes",
+        "submissions": [
+          {
+            "submission_id": "43a6229e-35e2-4fb4-a9de-70ab344eedbb",
+            "name": "Pursewarden",
+            "on_chain": true
+          },
+          {
+            "submission_id": "7039eda2-2854-4085-9bda-8fbbd48b0db8",
+            "name": "PrivateTriage",
+            "on_chain": false
+          }
+        ]
+      },
+      {
         "key": "mr_ghdc",
         "submissions": [
           {
@@ -2684,12 +2869,12 @@
           {
             "submission_id": "e7f08e24-35f6-491d-931c-bf8db7587dbd",
             "name": "Last Server",
-            "on_chain": false
+            "on_chain": true
           },
           {
             "submission_id": "f45adb62-38c4-4f28-b38a-f03d640ae978",
             "name": "Context Firewall",
-            "on_chain": false
+            "on_chain": true
           }
         ]
       },
@@ -2929,7 +3114,7 @@
           {
             "submission_id": "e7f2955c-507c-433f-b808-606d636709ef",
             "name": "Tilll: Get paid in crypto, from any chain",
-            "on_chain": false
+            "on_chain": true
           }
         ]
       },
@@ -3014,12 +3199,12 @@
           {
             "submission_id": "0aa21101-98be-4c1a-b521-9d9116b21e99",
             "name": "Lyco",
-            "on_chain": false
+            "on_chain": true
           },
           {
             "submission_id": "89fb424a-da41-4d54-8d69-83c16c846d00",
             "name": "Thine",
-            "on_chain": false
+            "on_chain": true
           }
         ]
       },
