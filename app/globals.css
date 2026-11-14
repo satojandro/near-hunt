@@ -401,6 +401,15 @@ html[data-theme="darkroom"] .rank-plain { display: none; }
 .site-nav { display: flex; gap: 18px; font-size: 15px; font-weight: 500; }
 .site-nav a { color: var(--text-muted); text-decoration: none; min-height: 44px; display: inline-flex; align-items: center; }
 .site-nav a[aria-current="page"] { color: var(--text); }
+/* NH-121: the one warm link in the menu — a quiet accent heart beside "Support us". Decorative
+   only (aria-hidden in SiteNav), so the link's accessible name stays "Support us". */
+.site-nav .nav-heart { color: var(--accent); font-size: 0.85em; line-height: 1; }
+.site-nav a:hover .nav-heart { transform: scale(1.15); transition: transform 120ms ease-out; }
+/* "Support us ♥" is wider than the old "Support": tighten the menu so the header keeps one row
+   down to ~700 px (iPad portrait is 834 px). Phones below 640 px hide the nav entirely. */
+@media (max-width: 900px) {
+  .site-nav { gap: 12px; font-size: 14px; }
+}
 .header-spacer { flex: 1 1 0; }
 .connect-btn {
   background: var(--btn-bg); color: var(--btn-text); font-weight: 600; font-size: 15px; padding: 0 18px;
