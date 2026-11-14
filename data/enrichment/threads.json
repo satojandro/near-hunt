@@ -33660,5 +33660,530 @@
       "https://usevaluo.vercel.app",
       "https://usevaluo.vercel.app/"
     ]
+  },
+  "45ffeb57-e5e9-4888-8f7b-016e0f6a2961": {
+    "author": "adityaraj_41545",
+    "status": "ok",
+    "crawled_at": "2026-11-14T01:34:24.833Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [
+      {
+        "id": "2121398402533695805",
+        "author": "adityaraj_41545",
+        "text": "@NEARProtocol Live link: https://t.co/uGJ6qkAy9O",
+        "links": [
+          "https://lineage-near.vercel.app/"
+        ]
+      }
+    ],
+    "links": []
+  },
+  "4e6bedd0-f35c-4e07-9395-6ae62d9f1364": {
+    "author": "theras_labs",
+    "status": "ok",
+    "crawled_at": "2026-11-14T01:34:30.473Z",
+    "listed": 4,
+    "read": 4,
+    "posts": [
+      {
+        "id": "2121395019609522440",
+        "author": "theras_labs",
+        "text": "2/5\nHow it works:\n\n1. Go on a mining trip underground.\n2. Collect materials: ore, gems, and more.\n3. Sell them to an AI merchant.\n4. Get paid in NEAR.\n\nRemember, your gear has endurance and It wears down. When it breaks, the trip ends.\n\nTo explore deeper, you need better gear. https://t.co/vsX2tRMDV5",
+        "links": [],
+        "media": [
+          {
+            "type": "video",
+            "media_url_https": "https://pbs.twimg.com/amplify_video_thumb/2121392489940811777/img/pBZq_Z-cPcSFOd6z.jpg",
+            "original_info": {
+              "focus_rects": [],
+              "height": 1558,
+              "width": 2330
+            },
+            "video_info": {
+              "aspect_ratio": [
+                1165,
+                779
+              ],
+              "duration_millis": 21710,
+              "variants": [
+                {
+                  "content_type": "application/x-mpegURL",
+                  "url": "https://video.twimg.com/amplify_video/2121392489940811777/pl/3FlY6w7Nlg6XpKvz.m3u8?tag=14"
+                },
+                {
+                  "bitrate": 288000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121392489940811777/vid/avc1/402x270/NaMPujDxOnmunHJ-.mp4?tag=14"
+                },
+                {
+                  "bitrate": 832000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121392489940811777/vid/avc1/538x360/lDDe4u7cY04uZsDl.mp4?tag=14"
+                },
+                {
+                  "bitrate": 2176000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121392489940811777/vid/avc1/1076x720/2YCqssS_ig6SkLMo.mp4?tag=14"
+                }
+              ]
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      },
+      {
+        "id": "2121395022629323159",
+        "author": "theras_labs",
+        "text": "3/5\nBetter gear is crafted from materials, and every recipe adapts to the world's supply.\n\nThe cost follows what players bring up from the underground, not a dev patch.\n\nSkill upgrades use the same loop: materials, keys, and souls, all from exploration. https://t.co/QAqybFUhXz",
+        "links": [],
+        "media": [
+          {
+            "type": "video",
+            "media_url_https": "https://pbs.twimg.com/amplify_video_thumb/2121393196324601856/img/fyLmUDXYeEy1FXFO.jpg",
+            "original_info": {
+              "focus_rects": [],
+              "height": 1558,
+              "width": 2330
+            },
+            "video_info": {
+              "aspect_ratio": [
+                1165,
+                779
+              ],
+              "duration_millis": 27148,
+              "variants": [
+                {
+                  "content_type": "application/x-mpegURL",
+                  "url": "https://video.twimg.com/amplify_video/2121393196324601856/pl/2gDOQ3X7CI9vCUj2.m3u8?tag=14"
+                },
+                {
+                  "bitrate": 288000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121393196324601856/vid/avc1/402x270/t11VecdrFFOZ9ojr.mp4?tag=14"
+                },
+                {
+                  "bitrate": 832000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121393196324601856/vid/avc1/538x360/nHH5U-zF0krHAK65.mp4?tag=14"
+                },
+                {
+                  "bitrate": 2176000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121393196324601856/vid/avc1/1076x720/RZBKDaXgy5OtWcZv.mp4?tag=14"
+                }
+              ]
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      },
+      {
+        "id": "2121395025913487694",
+        "author": "theras_labs",
+        "text": "4/5\nSo you choose how to play:\n\n- Explore for depth and chase the core.\n- Or farm the game, with mining, and sell your materials or what you craft from them. https://t.co/Vj7xOQTgna",
+        "links": [],
+        "media": [
+          {
+            "type": "video",
+            "media_url_https": "https://pbs.twimg.com/amplify_video_thumb/2121392535847522305/img/K3i5PJd0Y7U7bNtZ.jpg",
+            "original_info": {
+              "focus_rects": [],
+              "height": 1014,
+              "width": 1288
+            },
+            "video_info": {
+              "aspect_ratio": [
+                644,
+                507
+              ],
+              "duration_millis": 12263,
+              "variants": [
+                {
+                  "content_type": "application/x-mpegURL",
+                  "url": "https://video.twimg.com/amplify_video/2121392535847522305/pl/RvLFs4Y9UqhU0Omv.m3u8?tag=14"
+                },
+                {
+                  "bitrate": 288000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121392535847522305/vid/avc1/342x270/o3O2BORJo-BlPOVk.mp4?tag=14"
+                },
+                {
+                  "bitrate": 832000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121392535847522305/vid/avc1/456x360/B2kVOswCq88XYKVl.mp4?tag=14"
+                },
+                {
+                  "bitrate": 2176000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121392535847522305/vid/avc1/914x720/rUXdCtdmz5IVRtAq.mp4?tag=14"
+                }
+              ]
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      },
+      {
+        "id": "2121395028958531921",
+        "author": "theras_labs",
+        "text": "5/5\nYou never have to find a buyer, set a price, or wait. The merchant is always there.\n\nEvery material and gear item is an NEP-245 token on NEAR, so what you craft is yours to sell.\n\nDemo: https://t.co/diTfiPfEJ1\nRepo: https://t.co/XSkF9d85PX\n\n@NearLegion @NearBuilders https://t.co/wIBW9ILG85",
+        "links": [
+          "https://testnet.minear.fun",
+          "https://github.com/Theras-Labs/minear-fun-demo",
+          "https://testnet.minear.fun/"
+        ],
+        "media": [
+          {
+            "type": "video",
+            "media_url_https": "https://pbs.twimg.com/amplify_video_thumb/2121394612690653185/img/4ny8F8UyJb6Zyj7m.jpg",
+            "original_info": {
+              "focus_rects": [],
+              "height": 1558,
+              "width": 2330
+            },
+            "video_info": {
+              "aspect_ratio": [
+                1165,
+                779
+              ],
+              "duration_millis": 17810,
+              "variants": [
+                {
+                  "content_type": "application/x-mpegURL",
+                  "url": "https://video.twimg.com/amplify_video/2121394612690653185/pl/ctFtYfdlunAdtK5z.m3u8?tag=14"
+                },
+                {
+                  "bitrate": 288000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121394612690653185/vid/avc1/402x270/IA0jK9CgobYlinSi.mp4?tag=14"
+                },
+                {
+                  "bitrate": 832000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121394612690653185/vid/avc1/538x360/sjZsf-osrPjjNC7w.mp4?tag=14"
+                },
+                {
+                  "bitrate": 2176000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121394612690653185/vid/avc1/1076x720/JQLABZXnZbHmnsUC.mp4?tag=14"
+                }
+              ]
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      }
+    ],
+    "links": []
+  },
+  "688781d6-9fe1-46d7-bba5-c3bb4c629eec": {
+    "author": "AlexanderG94747",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T01:34:31.947Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": []
+  },
+  "d05df301-e2cb-4753-a9be-5c35c5b8a2b6": {
+    "author": "yemigraffix",
+    "status": "no-author-replies",
+    "crawled_at": "2026-11-14T01:34:35.641Z",
+    "listed": 3,
+    "read": 3,
+    "posts": [],
+    "links": []
+  },
+  "d279e175-2a79-4d73-979b-6b16032d21e0": {
+    "author": "liqueedice",
+    "status": "ok",
+    "crawled_at": "2026-11-14T01:34:38.707Z",
+    "listed": 2,
+    "read": 2,
+    "posts": [
+      {
+        "id": "2121384359424926166",
+        "author": "liqueedice",
+        "text": "⚙️ How it works:\n\n🤖 Ollama AI processes customer tasks.\n✅ A deterministic verifier checks the output.\n⚖️ Defective work can be challenged.\n⛓️ NEAR testnet escrow manages funding, challenge windows, payouts &amp; refunds.\n\nNo blind trust. Verifiable outcomes.",
+        "links": []
+      },
+      {
+        "id": "2121384362155331941",
+        "author": "liqueedice",
+        "text": "💸 We demonstrated it working!\n\n✅ AI cleaned 6 CSV rows into 4.\n✅ Independent verification passed.\n✅ 0.01 NEAR paid to the worker on-chain.\n✅ A separate dispute resulted in a customer refund.\n\nBuilt on @NEARProtocol 🔗\n\nhttps://t.co/p5NlGmu9e0\n\n#NEARHackathon",
+        "links": [
+          "https://github.com/Leequidice/Writbound"
+        ]
+      }
+    ],
+    "links": []
+  },
+  "dc8e5e43-695c-4d32-b69c-e0aaabfca104": {
+    "author": "AlexanderG94747",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T01:34:40.147Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": []
+  },
+  "cf6f5478-d515-4f63-94eb-5145ec68f703": {
+    "author": "Mzee_4",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T01:34:41.868Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://mzee04.github.io/takeback"
+    ]
+  },
+  "98776d60-5b4c-496f-b9d4-b29536160730": {
+    "author": "CRYPTFRANI",
+    "status": "no-author-replies",
+    "crawled_at": "2026-11-14T01:34:44.338Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [],
+    "links": []
+  },
+  "5e6eab66-810b-4bc0-b4fe-85b4ab88ad4c": {
+    "author": "intern_live",
+    "status": "ok",
+    "crawled_at": "2026-11-14T01:34:46.945Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [
+      {
+        "id": "2121397730698575872",
+        "author": "intern_live",
+        "text": "Code, and a 5-minute check anyone can run with no keys and no funds:\nhttps://t.co/KMi6PWJ7iY\n\nWhat would you try to talk it into?\n\n@NearLegion @NearBuilders #memecoin",
+        "links": [
+          "https://github.com/Intern-Near/intern"
+        ]
+      }
+    ],
+    "links": [
+      "https://intern-org.xyz",
+      "https://intern-org.xyz/"
+    ]
+  },
+  "773226da-40fb-4c9b-b091-504ef173307f": {
+    "author": "NearGateHQ",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T01:34:48.613Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://github.com/nnovida/neargate"
+    ]
+  },
+  "282af250-9cc4-4eb5-8fd2-bca6442efcb4": {
+    "author": "thewyrmisnear",
+    "status": "ok",
+    "crawled_at": "2026-11-14T01:34:51.276Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [
+      {
+        "id": "2121402668383863142",
+        "author": "thewyrmisnear",
+        "text": "@NEARProtocol The code, and one command that checks 15 rules against mainnet:\nhttps://t.co/RDKLnIzq0N\n\nThe buying strategy was tuned on real trades of 2,884 past Nearly coins.\n\nWhat should the Council vote on first? @NearLegion @NearBuilders",
+        "links": [
+          "https://github.com/invoke-crypto/wyrm"
+        ]
+      }
+    ],
+    "links": [
+      "https://thewyrm.xyz",
+      "https://thewyrm.xyz/"
+    ]
+  },
+  "677522ca-9ead-4a3b-a24d-599bb832e742": {
+    "author": "TamerCrypto",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T01:34:52.942Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://github.com/CryptoLeaks/powered-site-qualifier/tree/hackathon/near-evidence"
+    ]
+  },
+  "610061f4-2819-44b6-bbbd-8a4adc07d783": {
+    "author": "0xidan",
+    "status": "ok",
+    "crawled_at": "2026-11-14T01:34:57.151Z",
+    "listed": 3,
+    "read": 3,
+    "posts": [
+      {
+        "id": "2121110811515195645",
+        "author": "0xidan",
+        "text": "Github Link - https://t.co/WCpN7x0hJe",
+        "links": [
+          "https://github.com/BigSamNFT21/near-guardrail"
+        ]
+      }
+    ],
+    "links": []
+  },
+  "92267724-58d9-46ee-b8bd-34950989d6d2": {
+    "author": "fe2VI",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T01:34:58.659Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": []
+  },
+  "4ec71c24-2e23-47e4-8591-04f3dbf2eac1": {
+    "author": "3x10r",
+    "status": "ok",
+    "crawled_at": "2026-11-14T01:35:00.944Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [
+      {
+        "id": "2121407018686878173",
+        "author": "3x10r",
+        "text": "How it works: invoices are encrypted to a sealed engine, matched and netted there, and each company gets back only its own result. \nOnly a signed receipt is public, and it can be anchored on NEAR. \nPayments can be priced in stablecoins via NEAR Intents.",
+        "links": []
+      }
+    ],
+    "links": []
+  },
+  "3a87fe9f-9928-49cc-8a2c-8c3cf8b5f3e9": {
+    "author": "legbriell",
+    "status": "ok",
+    "crawled_at": "2026-11-14T01:35:04.980Z",
+    "listed": 3,
+    "read": 3,
+    "posts": [
+      {
+        "id": "2121408497560817971",
+        "author": "legbriell",
+        "text": "How NEAR Powers $SOGOK:\n1. Native Enclave Settlement: NEAR smart contracts verify Intel SGX Ed25519 hardware attestation signatures directly on-chain (`env::ed25519_verify`) with anti-replay protection.\n2. Programmatic Flywheel\n3. NEAR Intents &amp; Defuse",
+        "links": []
+      },
+      {
+        "id": "2121408500274516376",
+        "author": "legbriell",
+        "text": "Watch the 8-feature walkthrough:\n• Explore &amp; multi-sentinel registry\n• 4-step Intel SGX Defender launchpad\n• Gasless adversarial heuristic Practice Lab\n• Live Cyber Terminal attack settlement\n• On-chain Evidence archive &amp; client-side TEE verifier\n• Defuse 1Click cross-chain",
+        "links": []
+      },
+      {
+        "id": "2121408502849749390",
+        "author": "legbriell",
+        "text": "🌐 App: https://t.co/WklUXCD9W6\n💻 GitHub : https://t.co/Ts6YWkSPWe\n\nCan you craft an adversarial prompt to extract Sentinel #0 canary key? Claim 50,000 $SOGOK from our faucet and test it out! What jailbreak vector should we add next?\n\ncc @NearBuilders @NearLegion",
+        "links": [
+          "https://sogok-near.vercel.app",
+          "https://github.com/0xyudz/sogok-near",
+          "https://sogok-near.vercel.app/"
+        ]
+      }
+    ],
+    "links": []
+  },
+  "8e7e1458-4ffc-49e2-b918-6b629358d135": {
+    "author": "gerald_Chzu",
+    "status": "ok",
+    "crawled_at": "2026-11-14T01:35:07.543Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [
+      {
+        "id": "2121405057455276189",
+        "author": "gerald_Chzu",
+        "text": "Live: https://t.co/VNxAYdzi2G\nCode: https://t.co/HIjML2W42X\n\nLearn how peers earn crypto without paying a stranger &amp; hoping, rather, NEAR is held in an escrow contract &amp; released weekly, with refunds, disputes, a mandatory AI scam check &amp; ethos reputation score to examine tutors.",
+        "links": [
+          "https://portwell.vercel.app",
+          "https://github.com/MarkGeraldo34/Portwell",
+          "https://portwell.vercel.app/"
+        ]
+      }
+    ],
+    "links": []
+  },
+  "37e78684-69a1-4f2e-82ed-f1ce1efeb18c": {
+    "author": "oberiglabs",
+    "status": "ok",
+    "crawled_at": "2026-11-14T01:35:12.341Z",
+    "listed": 4,
+    "read": 4,
+    "posts": [
+      {
+        "id": "2121409101880304111",
+        "author": "oberiglabs",
+        "text": "Code, MIT, zero dependencies: https://t.co/TQca4MGthg: https://t.co/1HXTmHcFgx Runs on 127.0.0.1 only, stores nothing, no telemetry. Works with Claude Code, Codex and OpenCode. Node 18.17+ on any OS.",
+        "links": [
+          "https://github.com/oberiglabs-dev/oberig",
+          "https://oberiglabs.com/"
+        ]
+      },
+      {
+        "id": "2121409105235677202",
+        "author": "oberiglabs",
+        "text": "How it works: Verify: a fresh attestation, checked locally before anything is sent. Mask: keys and emails become [[OBERIG_SECRET_1]]. Shield: hidden instructions in READMEs and pages are cut out. Seal: every answer gets a signed receipt and its own stitched seal.",
+        "links": []
+      },
+      {
+        "id": "2121409108758888562",
+        "author": "oberiglabs",
+        "text": "Scrub: oberig scrub cleans agent traces before you share them. Limits: Intel TCB status and the GPU verdict need OBERIG_VERIFY=full, and all instances of a model share one signing key. Receipts say so. Issues and pull requests are welcome.",
+        "links": []
+      }
+    ],
+    "links": []
+  },
+  "2852896b-a19c-4022-829a-b4850ad3ecdb": {
+    "author": "Sabercodes123",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-14T01:35:14.350Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://youtu.be/_A-9YrplzMQ",
+      "https://waybill-gules.vercel.app",
+      "https://waybill-gules.vercel.app/"
+    ]
+  },
+  "e07e8922-3715-4316-a94b-d1f527870766": {
+    "author": "ekviar",
+    "status": "ok",
+    "crawled_at": "2026-11-14T01:35:17.865Z",
+    "listed": 2,
+    "read": 2,
+    "posts": [
+      {
+        "id": "2121411463529345308",
+        "author": "ekviar",
+        "text": "Why AgentLedger?\n\nA submitted transaction ≠ a successful payment.\n\nNetwork failures and unsafe retries risk duplicate payments.\n\nOur solution:\n🔐 Wallet authorization\n✅ Verified on-chain settlement\n🛡️ Safe recovery for uncertain outcomes\nSafer payments on NEAR.",
+        "links": []
+      },
+      {
+        "id": "2121411466536587598",
+        "author": "ekviar",
+        "text": "🧪 111 passing automated tests.\n⚡ Real NEAR Testnet payment &amp; refund.\n💻 Fully open source.\n🌐 Live App:\nhttps://t.co/BxK66cuxov\n📂 GitHub:\nhttps://t.co/r7XRwcgquf\n\nBuilt on NEAR. Verified by evidence.",
+        "links": [
+          "https://agentledger-os.vercel.app/",
+          "https://github.com/zzzyyyddd/agentledger-os"
+        ]
+      }
+    ],
+    "links": [
+      "https://youtu.be/b0dg6w16970"
+    ]
   }
 }
