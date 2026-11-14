@@ -118,9 +118,10 @@ const state: ProjectsState = ((globalThis as unknown as Record<symbol, ProjectsS
 /**
  * The stored copy, re-checked at most once per `PROJECTS_MEMORY_TTL_MS`.
  *
- * The marker is read first because it is small (176 B measured): when its digest matches the copy
- * in memory the rows have not changed, only the time of the last walk has, and the heavy value
- * (685 KB stored) is not downloaded again (`advanceFromMarker`).
+ * The marker is read first because it is small (176 B stored against ~730 KB for the items,
+ * `node scripts/listing-sizes.mjs`, 14 Nov 2026): when its digest matches the copy in memory the
+ * rows have not changed, only the time of the last walk has, and the heavy value is not downloaded
+ * again (`advanceFromMarker`).
  */
 async function loadSnapshot(): Promise<ProjectsSnapshot | null> {
   if (state.snapshot && Date.now() - state.loadedAt < PROJECTS_MEMORY_TTL_MS) return state.snapshot;

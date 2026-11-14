@@ -15,10 +15,11 @@ import type { ListingItem } from './listing.mjs';
 /**
  * The listing's two keys in the shared store (NH-122), and the only place they are read or written.
  *
- * Why two: the items are ~1.2 MB of JSON (314 KB gzipped) and only change when an import batch
- * lands, but "when did we last see chain" changes every minute. Writing the heavy value each
- * minute would be ~450 MB of Redis bandwidth a day; writing only a ~120-byte marker keeps the
- * copy honest and the bill near zero.
+ * Why two: the items only change when an import batch lands, but "when did we last see chain"
+ * changes every minute. Measured 14 Nov 2026 with `node scripts/listing-sizes.mjs` (1,838 rows):
+ * the items key is ~2.7 MB of JSON, stored as ~730 KB (gzip + base64), so writing it every minute
+ * would be ~1 GB of Redis writes a day; the marker is 176 B stored (~250 KB a day). The sizes grow
+ * with the listing; re-run the script for today's numbers.
  *
  * Both functions never throw (lib/snapshot-store.ts absorbs store failures): a missing store must
  * put the app back on its request-path walk, not break it.
@@ -97,7 +98,7 @@ export async function writeProjectsSnapshot({
  * The cron route is the listing's writer (`writeProjectsSnapshot`). A page that had to walk because
  * no copy existed only *seeds* an empty store: both keys are written with SET NX, so a value the
  * walker (or another cold instance) already stored is never overwritten, and concurrent cold
- * instances do not each push a 685 KB value. The marker is seeded only when this call seeded the
+ * instances do not each push a ~730 KB value. The marker is seeded only when this call seeded the
  * items, so it never describes rows another writer stored (and `resolveProjectsSnapshot` checks the
  * digest regardless).
  *
