@@ -1,59 +1,30 @@
 {
-  "source": "Batch of 14 Nov 2026 ~20:00 AEDT (issues cron, crypto-builder). Open correction issues read: #49 Surety, #48 ECONIA, #47 PORTI, #44 Death Route Link, #36 shit-1170-rex-engine, #32 Sentinel, #30 EmployAI. Signed here: #48 (repository), #49 (repository + live board link), #44 (demo-video link). #48 https://github.com/Sanni-onX/Econia verified: git ls-remote --heads lists refs/heads/main; README raw main 200 with first line \"# Econia\"; record has repository_url null. #49 resolved by name + author + demo post (issue has no UUID): record project/40a2e147-… name \"Surety\", demo post by @Ahmardchain, issue author ahmardchain; https://github.com/ahmardchain/surety lists refs/heads/main and its README's first line is \"# Surety\", naming the same live board https://surety.ahmardchain.workers.dev/ (probe 200, title \"Surety board\"). #44: demo_url is feed-owned and cannot be replaced by a corrections entry, so the post the issue cites is added as a Video link instead (probe 200, redirects to @DeathRoutexe, post carries video/1). Not signed: #47 and #36 ask for description text, never signed unattended; #32 https://github.com/NathanOyewole/sentinel still answers \"Repository is disabled\" (HTTP 403) so nothing can be corroborated; #30 asks for description text and its repository is already set on the record. #49 also carries a proposed description, which was not signed — it waits for the owner.",
-  "generated_at": "2026-11-14T08:59:30.445Z",
+  "source": "Batch of 14 Nov 2026 22:17 AEDT (issues cron, crypto-builder). Open correction issues read: #51 Proven, #50 Presafe, #47 PORTI, #36 shit-1170-rex-engine, #32 Sentinel, #30 EmployAI. Signed here: #51 (repository + live site link), #50 (repository). Not signed: #47, #36 and #30 ask for description text, which this job never signs unattended; #32's repository https://github.com/NathanOyewole/sentinel still answers 'Repository is disabled' (git ls-remote 403) so nothing can be corroborated. Evidence — #51: git ls-remote --heads https://github.com/Ololadestephen/Proven lists refs/heads/main and refs/heads/builds; README raw main first line '# Proven' and line 5 names useproven.xyz ('It runs on NEAR mainnet at useproven.xyz'), which is also the link the issue asked for; probe of https://useproven.xyz/ 200, title 'Proven — Pay for what passes'. #50: git ls-remote --heads https://github.com/ahmardchain/presafe lists refs/heads/main; README raw main names '# Presafe' and links the record's own demo post https://x.com/Ahmardchain/status/2118905952887816627 twice (launch post / demo video), and the issue author is the repo owner. Neither record had a repository_url; neither has a links array.",
+  "generated_at": "2026-11-14T11:17:15.000Z",
   "results": [
     {
-      "submission_id": "876c595d-5c1e-48c3-9292-860a57e2c3d2",
+      "submission_id": "dcb47e69-d7d5-4139-b4b7-b69eba402d55",
       "status": "ok",
-      "issue": "https://github.com/satojandro/near-hunt/issues/48",
-      "issue_number": 48,
+      "issue": "https://github.com/satojandro/near-hunt/issues/51",
+      "issue_number": 51,
       "issue_numbers": [
-        48
+        51
       ],
-      "repository_url": "https://github.com/Sanni-onX/Econia",
-      "repository_source": "https://github.com/satojandro/near-hunt/issues/48",
+      "repository_url": "https://github.com/Ololadestephen/Proven",
+      "repository_source": "https://github.com/satojandro/near-hunt/issues/51",
       "repository_basis": [
         "builder",
         "readme"
       ],
       "repository_verified": true,
-      "repository_verified_at": "2026-11-14T08:59:30.445Z",
-      "enrichment": {
-        "method": "builder-issue",
-        "sources": [
-          "https://x.com/Sanni_onX/status/2121111023327289690",
-          "https://github.com/satojandro/near-hunt/issues/48",
-          "https://github.com/Sanni-onX/Econia"
-        ],
-        "retrieved_at": "2026-11-14T08:59:30.445Z",
-        "fields": [
-          "repository_url"
-        ]
-      }
-    },
-    {
-      "submission_id": "40a2e147-c51e-4a86-b179-4b3b9f0233d2",
-      "status": "ok",
-      "issue": "https://github.com/satojandro/near-hunt/issues/49",
-      "issue_number": 49,
-      "issue_numbers": [
-        49
-      ],
-      "repository_url": "https://github.com/ahmardchain/surety",
-      "repository_source": "https://github.com/satojandro/near-hunt/issues/49",
-      "repository_basis": [
-        "builder",
-        "readme"
-      ],
-      "repository_verified": true,
-      "repository_verified_at": "2026-11-14T08:59:30.445Z",
+      "repository_verified_at": "2026-11-14T11:17:15.000Z",
       "links": [
         {
-          "url": "https://surety.ahmardchain.workers.dev/",
+          "url": "https://useproven.xyz/",
           "kind": "demo",
-          "label": "Live board",
+          "label": "Live site",
           "check": {
-            "checked_at": "2026-11-14T08:59:30.445Z",
+            "checked_at": "2026-11-14T11:17:15.000Z",
             "http_status": 200,
             "verdict": "live"
           }
@@ -62,12 +33,11 @@
       "enrichment": {
         "method": "builder-issue",
         "sources": [
-          "https://x.com/Ahmardchain/status/2121431624369705119",
-          "https://github.com/satojandro/near-hunt/issues/49",
-          "https://github.com/ahmardchain/surety",
-          "https://surety.ahmardchain.workers.dev/"
+          "https://github.com/satojandro/near-hunt/issues/51",
+          "https://github.com/Ololadestephen/Proven",
+          "https://x.com/Stephenololade/status/2121350647454847046"
         ],
-        "retrieved_at": "2026-11-14T08:59:30.445Z",
+        "retrieved_at": "2026-11-14T11:17:15.000Z",
         "fields": [
           "repository_url",
           "links"
@@ -75,35 +45,31 @@
       }
     },
     {
-      "submission_id": "210a9506-1e1a-446a-8f78-15f3fc1c55f6",
+      "submission_id": "5278473e-6acf-40b2-a013-a2ff4236f176",
       "status": "ok",
-      "issue": "https://github.com/satojandro/near-hunt/issues/44",
-      "issue_number": 44,
+      "issue": "https://github.com/satojandro/near-hunt/issues/50",
+      "issue_number": 50,
       "issue_numbers": [
-        44
+        50
       ],
-      "links": [
-        {
-          "url": "https://x.com/DeathRoutexe/status/2121469947461480933",
-          "kind": "video",
-          "label": "Demo video",
-          "check": {
-            "checked_at": "2026-11-14T08:59:30.445Z",
-            "http_status": 200,
-            "verdict": "live"
-          }
-        }
+      "repository_url": "https://github.com/ahmardchain/presafe",
+      "repository_source": "https://github.com/satojandro/near-hunt/issues/50",
+      "repository_basis": [
+        "builder",
+        "readme"
       ],
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-14T11:17:15.000Z",
       "enrichment": {
         "method": "builder-issue",
         "sources": [
-          "https://x.com/deathroutexe/status/2121332569098658223",
-          "https://github.com/satojandro/near-hunt/issues/44",
-          "https://x.com/DeathRoutexe/status/2121469947461480933"
+          "https://github.com/satojandro/near-hunt/issues/50",
+          "https://github.com/ahmardchain/presafe",
+          "https://x.com/Ahmardchain/status/2118905952887816627"
         ],
-        "retrieved_at": "2026-11-14T08:59:30.445Z",
+        "retrieved_at": "2026-11-14T11:17:15.000Z",
         "fields": [
-          "links"
+          "repository_url"
         ]
       }
     }
