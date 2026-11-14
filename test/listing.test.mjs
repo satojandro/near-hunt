@@ -33,6 +33,16 @@ test('toListing drops tombstones, wrong schema, non-objects and key mismatches',
   assert.deepEqual(out.map((p) => p.submission_id), ['f']);
 });
 
+test('buildProjectsListing is the one builder: live records, then the hide list', async () => {
+  const { buildProjectsListing } = await import('../lib/listing.mjs');
+  const out = buildProjectsListing(
+    [row('project/a', rec('a')), row('project/b', rec('b')), row('project/c', null)],
+    { projects: [{ submission_id: 'b' }] },
+  );
+  // `c` is a tombstone, so it never reaches the listing; `b` is hidden, so it is dropped from it.
+  assert.deepEqual(out.map((p) => p.submission_id), ['a']);
+});
+
 test('trackCounts sorts by count then slug', () => {
   const items = toListing([
     row('project/a', rec('a', { tracks: ['defi', 'agents'] })),

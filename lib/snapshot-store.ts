@@ -39,6 +39,38 @@ async function redis(command: (string | number)[], timeoutMs: number): Promise<u
 }
 
 /**
+ * Next marks a build-time prerender attempt with this digest on any fetch that opts out of
+ * caching. It means "this route is dynamic", not "the store is broken": logging it on every build
+ * trains people to ignore the log, and it is caught here so the caller simply sees "no copy".
+ */
+function isDynamicUsageError(err: unknown): boolean {
+  return (err as { digest?: string } | null)?.digest === 'DYNAMIC_SERVER_USAGE';
+}
+
+/**
+ * Push a stored value's expiry out by another `SNAPSHOT_TTL_SECONDS` without rewriting it.
+ *
+ * For a value that is deliberately not rewritten while its content is unchanged (the project
+ * listing, NH-122): without this its TTL runs out after a quiet week and the copy vanishes.
+ *
+ * Never throws. @returns true when the key exists and its TTL was reset; false when it is missing
+ * (expired, evicted, never written), the store is not configured, or the call failed — in each of
+ * those the caller should write the value again.
+ */
+export async function touchSnapshotValue(key: string, label = key): Promise<boolean> {
+  if (!snapshotStoreConfigured) return false;
+  try {
+    const body = (await redis(['EXPIRE', key, SNAPSHOT_TTL_SECONDS], 3000)) as { result?: unknown } | null;
+    return body?.result === 1;
+  } catch (err) {
+    if (!isDynamicUsageError(err)) {
+      console.error(`[snapshot] expire failed for ${label}:`, err instanceof Error ? err.message : err);
+    }
+    return false;
+  }
+}
+
+/**
  * Store the value that was just read.
  *
  * Awaited rather than fired and forgotten: a serverless invocation can be frozen as soon as the
@@ -50,14 +82,26 @@ async function redis(command: (string | number)[], timeoutMs: number): Promise<u
  *
  * @returns true when the copy was stored
  */
-export async function saveSnapshotValue(key: string, value: unknown, label = key): Promise<boolean> {
+export async function saveSnapshotValue(
+  key: string,
+  value: unknown,
+  label = key,
+  { onlyIfAbsent = false }: { onlyIfAbsent?: boolean } = {},
+): Promise<boolean> {
   if (!snapshotStoreConfigured) return false;
   try {
     const encoded = encodeSnapshot(value);
-    await redis(['SET', key, encoded, 'EX', SNAPSHOT_TTL_SECONDS], 5000);
-    return true;
+    // `onlyIfAbsent` (SET NX): seed an empty key without overwriting what another writer stored.
+    // Redis answers "OK" when it wrote and null when the key already existed.
+    const command = onlyIfAbsent
+      ? ['SET', key, encoded, 'NX', 'EX', SNAPSHOT_TTL_SECONDS]
+      : ['SET', key, encoded, 'EX', SNAPSHOT_TTL_SECONDS];
+    const body = (await redis(command, 5000)) as { result?: unknown } | null;
+    return onlyIfAbsent ? body?.result === 'OK' : true;
   } catch (err) {
-    console.error(`[snapshot] write failed for ${label}:`, err instanceof Error ? err.message : err);
+    if (!isDynamicUsageError(err)) {
+      console.error(`[snapshot] write failed for ${label}:`, err instanceof Error ? err.message : err);
+    }
     return false;
   }
 }
@@ -79,7 +123,9 @@ export async function loadSnapshotValue<T>(
     const body = (await redis(['GET', key], 3000)) as { result?: unknown } | null;
     return decodeSnapshot(body?.result, isValid) as T | null;
   } catch (err) {
-    console.error(`[snapshot] read failed for ${label}:`, err instanceof Error ? err.message : err);
+    if (!isDynamicUsageError(err)) {
+      console.error(`[snapshot] read failed for ${label}:`, err instanceof Error ? err.message : err);
+    }
     return null;
   }
 }
