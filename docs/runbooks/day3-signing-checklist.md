@@ -88,8 +88,10 @@ nobody has run them yet.
       so far.
 - [ ] **C3. Remove a vote from `/u/{you}`.** The row disappears, stays gone after a reload, and
       the project's count drops.
-- [ ] **C4. "Edit profile on near.social"** link on your own account page opens a working editor
-      (`https://near.social/mob.near/widget/ProfileEditor`; nobody has seen it render yet).
+- [ ] **C4. "Edit Profile in NEAR Social"** button on an account page opens
+      `https://near.social/{account}` in a new tab (one button only; the old
+      `https://near.social/mob.near/widget/ProfileEditor` link is gone). Editing there still
+      means being signed in as that account, which nobody has run end to end yet.
 - [ ] **C5. Reply to a project thread** (NH-42), once A2 has posted at least one project. Check
       the reply appears in the thread and on near.social, and that a rejected or rate-limited
       reply keeps the draft (NH-83). This also confirms the wallet accepts a 1 Ggas call to `social`

@@ -3,7 +3,6 @@
 // account has no profile, the header still shows the account id with a letter avatar.
 import { profileUrl } from '@/lib/social.mjs';
 import type { AccountProfile } from '@/lib/account.mjs';
-import EditProfileLink from './EditProfileLink';
 import s from './account.module.css';
 
 const nf = new Intl.NumberFormat('en-US');
@@ -57,9 +56,8 @@ export default function ProfileHeader({ profile, profileStatus, upvoteCount, vie
           ) : null}
         </div>
         <div className={s.headerActions}>
-          <EditProfileLink accountId={id} className={s.editBtn} />
           <a className={s.socialBtn} href={profileUrl(id)} target="_blank" rel="noopener noreferrer">
-            View on near.social <span aria-hidden="true">↗</span>
+            Edit Profile in NEAR Social <span aria-hidden="true">↗</span>
             <span className="visually-hidden"> (opens in a new tab)</span>
           </a>
         </div>
