@@ -1,31 +1,52 @@
 {
-  "source": "Batch of 15 Nov 2026 08:45 AEDT (issues cron, crypto-builder profile). Open correction issues read: #53 Rook, #47 PORTI, #36 shit-1170-rex-engine, #32 Sentinel, #30 EmployAI. Signed here: #47 PORTI (repository + live app link only) — the builder supplied both in a comment on 14 Nov 15:40Z, which the earlier passes did not read. Not signed: #53, #36, #30 and #47's description half ask for description text, which this job never signs unattended; #32's repository https://github.com/NathanOyewole/sentinel still answers 'Repository is disabled' on the git transport (git ls-remote --heads 403) while its raw README returns 200, so it remains uncorroborated. Evidence — #47: git ls-remote --heads https://github.com/hoymick/porti-near lists refs/heads/main (plus agent-wallet-deposits, chat-agent-deposits, cloudflare-standalone, docs/...); raw README main's first line is '# Porti — your NEAR companion' and its header links the same live app the builder named, https://porti-near.hoymick240.workers.dev/ ('[Open Porti](...)'); the issue author hoymick owns the repository; probeLink of the app returns 200 with title 'Porti — Your NEAR Companion' → verdict live. The record had repository_url null and links [], so both changes are fills, not replacements of builder values. The description the builder wants ('Porti is an AI-assisted workspace built on NEAR ...') stays in the issue for the owner. Previous batch (#51 Proven, #50 Presafe) landed in commit 1ead00e; the prior empty run is commit bd302e8.",
-  "generated_at": "2026-11-14T21:45:00.000Z",
+  "source": "Batch of 15 Nov 2026 11:50 AEDT (issues cron, crypto-builder profile). Open correction issues read: #55 EurekaScout, #54 Mihenk AI, #53 Rook, #47 PORTI, #36 shit-1170-rex-engine, #32 Sentinel, #30 EmployAI. Signed here: #55 EurekaScout (repository only) and #54 Mihenk AI (website link only). Not signed: #53, #47, #36 and #30 ask for description text, and #54's description half does too — this job never signs prose unattended, so those stay open for the owner; #32's repository https://github.com/NathanOyewole/sentinel still answers 'Repository is disabled' (403 on the git transport) and therefore cannot be corroborated. Evidence — #55: git ls-remote --heads https://github.com/EurekaScout/eurekascout lists refs/heads/main; raw README main opens '# EurekaScout', describes the EurekaScout/Witty product built at NEAR HACKATHON and links the record's own site (eurekascout.com/how.html); the issue author EurekaScout owns the repository; the record had repository_url null, so the change is a fill. #54: the issue names 'Website: https://mihenkai.com' beside the description; probeLink returns 200, final https://mihenkai.com, title 'Mihenk — The touchstone for crypto influence' -> verdict live; the record had links undefined, so the entry is a fill, and its existing repository_url https://github.com/MihenkAI/near-pay-per-call is untouched. The X launch post and the nearblocks txns in #54 are not published as links: one is a media/post change and the other two are description evidence, neither is a product link the issue asked to list. Previous batch (#47 PORTI) landed in commit 66074d1.",
+  "generated_at": "2026-11-15T00:50:00.000Z",
   "results": [
     {
-      "submission_id": "6aa225c7-44a1-455d-b136-7b479788ec04",
+      "submission_id": "6bccc6a1-b5e5-45e4-8719-a070d2cb68b0",
       "status": "ok",
-      "issue": "https://github.com/satojandro/near-hunt/issues/47",
-      "issue_number": 47,
+      "issue": "https://github.com/satojandro/near-hunt/issues/55",
+      "issue_number": 55,
       "issue_numbers": [
-        47
+        55
       ],
-      "repository_url": "https://github.com/hoymick/porti-near",
-      "repository_source": "https://github.com/satojandro/near-hunt/issues/47",
+      "repository_url": "https://github.com/EurekaScout/eurekascout",
+      "repository_source": "https://github.com/satojandro/near-hunt/issues/55",
       "repository_basis": [
         "builder",
         "readme"
       ],
       "repository_verified": true,
-      "repository_verified_at": "2026-11-14T21:45:00.000Z",
+      "repository_verified_at": "2026-11-15T00:48:00.000Z",
+      "enrichment": {
+        "method": "builder-issue",
+        "sources": [
+          "https://github.com/satojandro/near-hunt/issues/55",
+          "https://github.com/EurekaScout/eurekascout",
+          "https://x.com/eurekascout_/status/2121672788851224826"
+        ],
+        "retrieved_at": "2026-11-15T00:50:00.000Z",
+        "fields": [
+          "repository_url"
+        ]
+      }
+    },
+    {
+      "submission_id": "3525d5b6-6bfb-47e7-81c7-71505f35702e",
+      "status": "ok",
+      "issue": "https://github.com/satojandro/near-hunt/issues/54",
+      "issue_number": 54,
+      "issue_numbers": [
+        54
+      ],
       "links": [
         {
-          "url": "https://porti-near.hoymick240.workers.dev/",
-          "kind": "demo",
-          "label": "Live app",
-          "source_post_id": "2121294726926159884",
+          "url": "https://mihenkai.com",
+          "kind": "website",
+          "label": "Website",
+          "kind_basis": "builder",
           "check": {
-            "checked_at": "2026-11-14T21:44:58.000Z",
+            "checked_at": "2026-11-15T00:47:37.523Z",
             "http_status": 200,
             "verdict": "live"
           }
@@ -34,13 +55,12 @@
       "enrichment": {
         "method": "builder-issue",
         "sources": [
-          "https://github.com/satojandro/near-hunt/issues/47",
-          "https://github.com/hoymick/porti-near",
-          "https://x.com/dee_nftarmy/status/2121294726926159884"
+          "https://github.com/satojandro/near-hunt/issues/54",
+          "https://mihenkai.com",
+          "https://x.com/MihenkAIdotcom/status/2120797980831977731"
         ],
-        "retrieved_at": "2026-11-14T21:45:00.000Z",
+        "retrieved_at": "2026-11-15T00:50:00.000Z",
         "fields": [
-          "repository_url",
           "links"
         ]
       }
