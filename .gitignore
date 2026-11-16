@@ -49,4 +49,5 @@ next-env.d.ts
 .claude/worktrees/
 
 # project-review agent output (private until the owner decides; see .claude/agents/project-reviewer.md)
-review/assessments/
+review/assessments*/
+review/logs/
