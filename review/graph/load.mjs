@@ -173,6 +173,7 @@ async function cmdAssessments(dirArg) {
        CALL (p) { WITH p WHERE $repo IS NOT NULL
          MERGE (r:Repo {url:$repo}) SET r += $repoProps MERGE (p)-[:HAS_REPO]->(r)
          MERGE (u:GitHubUser {login:$repoOwner}) MERGE (r)-[:OWNED_BY]->(u) }
+       CALL (p) { UNWIND $others AS o MERGE (r:Repo {url:o}) MERGE (p)-[x:HAS_REPO]->(r) SET x.role = 'other' }
        CALL (p) { UNWIND $rejected AS rj MERGE (r:Repo {url:rj.url}) MERGE (p)-[x:REJECTED_REPO]->(r) SET x.why = rj.why }
        CALL (p) { UNWIND $gh AS login MERGE (u:GitHubUser {login:login}) MERGE (p)-[:TEAM]->(u) }
        CALL (p) { UNWIND $x AS h MERGE (a:XAccount {handle:h}) MERGE (p)-[:TEAM]->(a) }
@@ -189,6 +190,7 @@ async function cmdAssessments(dirArg) {
         repoProps: { commit: meta.repo_commit ?? null, first_commit: bw.first_commit ? String(bw.first_commit) : null,
           last_commit: bw.last_commit ? String(bw.last_commit) : null, commits: num(bw.commits), authors: num(bw.authors) },
         rejected,
+        others: list(meta.repos_other).map(repoKey).concat(repoKey(meta.repo_submitted)).filter((u) => u && u !== repo),
         gh: list(team.github).map((s) => String(s).replace(/^@/, '').toLowerCase()),
         x: list(team.x).map((s) => String(s).replace(/^@/, '').toLowerCase()),
         contracts,

@@ -103,7 +103,9 @@ submission_id: <uuid>
 name: <project name>
 reviewed_at: <ISO time>
 tracks: [..]
-repo_url: <https://github.com/owner/repo or null>
+repo_submitted: <the repository on the NEAR Hunt record / submission, as given, or null>
+repo_url: <the repository holding the work you judged — where the NEAR code is — or null>
+repos_other: [<other repositories of this project you read, e.g. a frontend next to a backend>]
 repo_status: found | not_found | private | multiple_unresolved
 repo_commit: <short sha read, or null>
 repo_candidates_rejected: [{url: ..., why: ...}]
