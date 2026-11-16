@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-15T01:35:08.039Z",
+  "generated_at": "2026-11-16T02:54:06.059Z",
   "account": "nearhunt.near",
   "note": "Flags only. Nothing is merged, hidden or written. `clusters`/`groups` share an identifying URL (possible duplicates). `weak_signals` share only a name or an X account and are usually different projects.",
   "summary": {
@@ -3575,21 +3575,6 @@
         ]
       },
       {
-        "key": "daikyukim",
-        "submissions": [
-          {
-            "submission_id": "5a5031f2-fe0c-47a4-8df3-ced7aa1d0ab6",
-            "name": "RaOpenWallet",
-            "on_chain": true
-          },
-          {
-            "submission_id": "85b2fe55-784b-48c6-a8d5-2f85929018d8",
-            "name": "Amuma",
-            "on_chain": true
-          }
-        ]
-      },
-      {
         "key": "dailconcierge",
         "submissions": [
           {
@@ -5310,6 +5295,21 @@
           {
             "submission_id": "bb739197-c903-456a-b25c-4e97ffe5495f",
             "name": "Tripwire",
+            "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "sametether",
+        "submissions": [
+          {
+            "submission_id": "4874d725-d5ac-491d-b2a7-6a9ab16e9c63",
+            "name": "Rolet NEAR",
+            "on_chain": true
+          },
+          {
+            "submission_id": "e8fc5a20-371e-4e4a-8e76-27f6d8a3cad9",
+            "name": "Bondline",
             "on_chain": true
           }
         ]

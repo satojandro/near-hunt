@@ -791,6 +791,12 @@ disabled by GitHub, 403) and #30/#36 (description text) were commented and left 
 
    The same commit carries a fix to the corrections pipeline: `closableIssues` (`lib/auto-sign.mjs`) plus a `keep_open` field, so a record that answers several issues closes only the ones whose whole ask landed. Before it, the run that closed #66, #63 and #62 reported "landed" and closed threads whose description text still waits for the owner; all three were reopened.
 
+61. **Unattended batch, 2026-11-16 — 0 new submission(s) and 4 null-fill(s), 4 key(s).** Signed by the scheduled cycle under the owner's standing authorization (14 Nov 2026): creates and null-fills only, chain 2438 → 2438. The guard in `lib/auto-sign.mjs` passed with 8 null-fill(s), 0 feed-owned change(s) and 4 metadata change(s), and **no value another writer set was replaced**.
+
+   1 transaction(s): `HvEdHGAnCC2BGUGgUJat2m52HzpsATAk8cZBLvTyqG7N`. `verified: 4/4`.
+
+   **Read back:** 2438 project rows; the 0 new records carry description 0/0, media 0/0, links 0/0, repository 0/0. The importer's re-run prints `new: 0, changed: 0`; `npm run validate:schema` 2438/2438; `npm test` 451/451.
+
 ## Decisions taken
 
 | Decision | Choice | Why |

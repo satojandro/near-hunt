@@ -79804,5 +79804,28 @@
     "links": [
       "https://testnet.nearblocks.io/txns/4PXxxm35Ap7grXbwRHkadTTnMMJWfsJbGMCeX2c8xNu1"
     ]
+  },
+  "4874d725-d5ac-491d-b2a7-6a9ab16e9c63": {
+    "author": "SameTether",
+    "status": "no-author-replies",
+    "crawled_at": "2026-11-16T02:25:20.423Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [],
+    "links": [
+      "https://github.com/SmtDcs/rolet-near"
+    ]
+  },
+  "fde913f8-cbf6-4d40-8dfe-de2deeb6b7af": {
+    "author": "Doorstepnear",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-16T02:25:22.089Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://doorstep-near-live.onrender.com",
+      "https://doorstep-near-live.onrender.com/"
+    ]
   }
 }

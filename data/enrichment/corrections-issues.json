@@ -1,353 +1,85 @@
 {
-  "source": "Batch of 16 Nov 2026 12:35 AEDT (issues cron, crypto-builder profile). Open correction issues read: #69 Port66, #68 LumosCore, #67 Near Onchain Gen Art, #66 Azzle, #65 AD FONTES, #64 Intentra, #63 Hive, #62 DYA Trade, #61 NEARPORTAL, #60 Meow Division, #59/#58/#57 Origami Verse, #56 Token Orbit, #54 Mihenk AI, #53 Rook, #47 PORTI, #36 shit-1170-rex-engine, #32 Sentinel, #30 EmployAI. Signed here (repository and/or links only, never prose): #69, #66, #65, #64, #63 (repository + demo link), #62 (demo link), #61, #60, #59 + #58 (one record), #56. Not signed: #68, #67, #57, #53, #47, #36, #30 ask for description text (and #54's remaining half does too) — the unattended cycle may not sign prose; #54's website link and #55 landed on 15 Nov (commit 40b41ec); #32's repository https://github.com/NathanOyewole/sentinel still answers 403 'Repository is disabled' on the git transport, so it cannot be corroborated. Evidence — #69: git ls-remote --heads https://github.com/port66-official/Near-intent lists refs/heads/main; raw README opens '# Port66 × NEAR Intents: buy luxury from any chain' and describes the NEAR Hackathon checkout; the record's repository_url is null (the issue calls it a wrong link, the field was empty), so it is a fill. #66: git ls-remote lists 8 branches on azzle-lab/azzle; README opens '# AZZLE Protocol V2' and links x.com/azzleAI, the same account as the record's demo post; the issue names it 'Azzle (Main Repository)'. The second repository the issue lists (azzle-lab/near-hire) is not written: one repository_url per record, so it is reported in the reply instead. #65: git ls-remote lists main and v2; README opens '# AD FONTES' and links adfontes.fun, which is the record's own link; the issue author cnpierrepapi owns the repository. #64: git ls-remote lists main and near/enforcement; README opens '# INTENTRA', names the NEAR Hackathon submission and its own 'Repository:' line is the same root URL; the /tree/near/enforcement path in the issue is normalised to the repository root. #63: git ls-remote lists master; README opens '# Hive' and names the mainnet hiveswarm.near contracts; probeLink on the issue's demo URL returns 200, title 'Hive — a swarm of experts on NEAR', verdict live. #62: probeLink https://app.dya.trade returns 200, final same, title 'Dya.trade · A private financial world, connected.' -> live; the issue names it under 'Try it at', so it is a demo link fill. #61: git ls-remote lists main; README opens '# NearPortal' and links https://nearportal.com, which is the record's own link; issue author unholy0X owns the repository. #60: git ls-remote lists main and fix; README opens '# Meow Division', links game.meowdivision.fun and the record's own demo post; the issue author ryudeniv1-cmd is named in the public-source section with that same evidence. #59/#58: git ls-remote lists main; README opens '# Origami Verse' and links the record's own demo post, the same website, /docs/ and whitepaper; probeLink returns 200 on all three -> live. #56: git ls-remote lists main; README opens '# Token Orbit contracts' and describes the Token Orbit pool/points contracts; the issue carries no template sections but names the repository and its owner daocubator matches the record's demo post author DAOcubator. The X launch posts quoted in #59, #54 and #63 are not published as links: one is a media/post change and the others are the record's own demo_url, so no product link depends on them.",
-  "generated_at": "2026-11-16T01:34:46.000Z",
+  "source": "Batch of 16 Nov 2026 13:25 AEDT (issues cron, crypto-builder profile). Open correction issues read: #70, #68 (LumosCore), #67 Near Onchain Gen Art, #66 Azzle, #63 Hive, #62 DYA Trade, #57 Origami Verse, #54 Mihenk AI, #53 Rook, #47 PORTI, #36 shit-1170-rex-engine, #32 Sentinel, #30 EmployAI. Signed here (links only, never prose): #70 (website link correction), #67 (on-chain gallery link). Not signed: #68/#67/#57/#53/#47/#36/#30/#54 ask for description text, which the unattended cycle may not sign. #66, #63, #62 were answered by the previous batch at 02:19Z and their remaining ask is prose or a builder reply. #32 reports that github.com/NathanOyewole/sentinel still answers 403 Repository is disabled on the git transport, so its repository cannot be corroborated. Evidence - #70: the record f8eb6347 carries two website links, https://lumoscore.com (builder) and https://chain.link/article/blockchain-interoperability-problem (from thread post 2121750115346256173); the builder states the Chainlink article is not their site and names https://lumoscore.com/ and https://lumoscore.com/whitepaper as theirs. probeLink now returns 200 on both (titles LumosCore - Trade, Pool and Bridge on Stellar / Whitepaper - Architecture, Fees and Token Model | LumosCore) -> live. There is no repository change: repository_url already https://github.com/RazaRizv1/lumoscore-near. #67: the issue names an on-chain gallery https://seed-garden-nft.testnet.page/ (probeLink 200, title Seed Garden -> live) alongside the mint site that is already the record demo_url; repository_url https://github.com/javaing/seed-garden-near is already set and is the issue own public source, so no repository change.",
+  "generated_at": "2026-11-16T02:24:11.248Z",
   "results": [
     {
-      "submission_id": "d665b877-4776-4401-8ef6-a01f445fa19f",
+      "submission_id": "f8eb6347-15ec-4a9f-8041-7917e7dd83dd",
       "status": "ok",
-      "issue": "https://github.com/satojandro/near-hunt/issues/69",
-      "issue_number": 69,
+      "issue": "https://github.com/satojandro/near-hunt/issues/70",
+      "issue_number": 70,
       "issue_numbers": [
-        69
-      ],
-      "repository_url": "https://github.com/port66-official/Near-intent",
-      "repository_source": "https://github.com/satojandro/near-hunt/issues/69",
-      "repository_basis": [
-        "builder",
-        "readme"
-      ],
-      "repository_verified": true,
-      "repository_verified_at": "2026-11-16T01:30:00.000Z",
-      "enrichment": {
-        "method": "builder-issue",
-        "sources": [
-          "https://github.com/satojandro/near-hunt/issues/69",
-          "https://github.com/port66-official/Near-intent",
-          "https://x.com/port66x/status/2121733541717286927"
-        ],
-        "retrieved_at": "2026-11-16T01:34:46.000Z",
-        "fields": [
-          "repository_url"
-        ]
-      }
-    },
-    {
-      "submission_id": "75fd541c-a9b4-48f5-853a-6bd778e2cdcd",
-      "status": "ok",
-      "issue": "https://github.com/satojandro/near-hunt/issues/66",
-      "issue_number": 66,
-      "issue_numbers": [
-        66
-      ],
-      "repository_url": "https://github.com/azzle-lab/azzle",
-      "repository_source": "https://github.com/satojandro/near-hunt/issues/66",
-      "repository_basis": [
-        "builder",
-        "readme"
-      ],
-      "repository_verified": true,
-      "repository_verified_at": "2026-11-16T01:30:00.000Z",
-      "enrichment": {
-        "method": "builder-issue",
-        "sources": [
-          "https://github.com/satojandro/near-hunt/issues/66",
-          "https://github.com/azzle-lab/azzle",
-          "https://x.com/AzzleAI/status/2120473340695531975"
-        ],
-        "retrieved_at": "2026-11-16T01:34:46.000Z",
-        "fields": [
-          "repository_url"
-        ]
-      }
-    },
-    {
-      "submission_id": "7b1795d1-6907-4d66-95bd-294aabdd470a",
-      "status": "ok",
-      "issue": "https://github.com/satojandro/near-hunt/issues/65",
-      "issue_number": 65,
-      "issue_numbers": [
-        65
-      ],
-      "repository_url": "https://github.com/cnpierrepapi/adfontes",
-      "repository_source": "https://github.com/satojandro/near-hunt/issues/65",
-      "repository_basis": [
-        "builder",
-        "readme"
-      ],
-      "repository_verified": true,
-      "repository_verified_at": "2026-11-16T01:30:00.000Z",
-      "enrichment": {
-        "method": "builder-issue",
-        "sources": [
-          "https://github.com/satojandro/near-hunt/issues/65",
-          "https://github.com/cnpierrepapi/adfontes",
-          "https://x.com/0xbrrro/status/2120585598448627753"
-        ],
-        "retrieved_at": "2026-11-16T01:34:46.000Z",
-        "fields": [
-          "repository_url"
-        ]
-      }
-    },
-    {
-      "submission_id": "90c5addc-454f-4be3-86f4-b9ddccf8843e",
-      "status": "ok",
-      "issue": "https://github.com/satojandro/near-hunt/issues/64",
-      "issue_number": 64,
-      "issue_numbers": [
-        64
-      ],
-      "repository_url": "https://github.com/HillaryIkhais/INTENTRA",
-      "repository_source": "https://github.com/satojandro/near-hunt/issues/64",
-      "repository_basis": [
-        "builder",
-        "readme"
-      ],
-      "repository_verified": true,
-      "repository_verified_at": "2026-11-16T01:30:00.000Z",
-      "enrichment": {
-        "method": "builder-issue",
-        "sources": [
-          "https://github.com/satojandro/near-hunt/issues/64",
-          "https://github.com/HillaryIkhais/INTENTRA",
-          "https://x.com/maisonlarii/status/2121674729618587678"
-        ],
-        "retrieved_at": "2026-11-16T01:34:46.000Z",
-        "fields": [
-          "repository_url"
-        ]
-      }
-    },
-    {
-      "submission_id": "6231cc5e-5e12-44f9-82b2-0fc334a8ef07",
-      "status": "ok",
-      "issue": "https://github.com/satojandro/near-hunt/issues/63",
-      "issue_number": 63,
-      "issue_numbers": [
-        63
-      ],
-      "repository_url": "https://github.com/Sunnesoft/hive",
-      "repository_source": "https://github.com/satojandro/near-hunt/issues/63",
-      "repository_basis": [
-        "builder",
-        "readme"
-      ],
-      "repository_verified": true,
-      "repository_verified_at": "2026-11-16T01:30:00.000Z",
-      "links": [
-        {
-          "url": "https://254a453296de0fea7b1848e2b50d071c24b2a820-8080.dstack-pha1-prod5.phala.network/",
-          "kind": "demo",
-          "label": "Demo",
-          "kind_basis": "builder",
-          "check": {
-            "checked_at": "2026-11-16T01:28:00.000Z",
-            "http_status": 200,
-            "verdict": "live"
-          }
-        }
-      ],
-      "enrichment": {
-        "method": "builder-issue",
-        "sources": [
-          "https://github.com/satojandro/near-hunt/issues/63",
-          "https://github.com/Sunnesoft/hive",
-          "https://254a453296de0fea7b1848e2b50d071c24b2a820-8080.dstack-pha1-prod5.phala.network/"
-        ],
-        "retrieved_at": "2026-11-16T01:34:46.000Z",
-        "fields": [
-          "repository_url",
-          "links"
-        ]
-      }
-    },
-    {
-      "submission_id": "3e7f3339-5eb3-42f9-8d4e-1d37fa7e9cec",
-      "status": "ok",
-      "issue": "https://github.com/satojandro/near-hunt/issues/62",
-      "issue_number": 62,
-      "issue_numbers": [
-        62
+        70
       ],
       "links": [
         {
-          "url": "https://app.dya.trade",
-          "kind": "demo",
-          "label": "Demo",
-          "kind_basis": "builder",
-          "check": {
-            "checked_at": "2026-11-16T01:28:00.000Z",
-            "http_status": 200,
-            "verdict": "live"
-          }
-        }
-      ],
-      "enrichment": {
-        "method": "builder-issue",
-        "sources": [
-          "https://github.com/satojandro/near-hunt/issues/62",
-          "https://app.dya.trade",
-          "https://x.com/dyatrade/status/2121736846174716096"
-        ],
-        "retrieved_at": "2026-11-16T01:34:46.000Z",
-        "fields": [
-          "links"
-        ]
-      }
-    },
-    {
-      "submission_id": "754bc1d0-3596-44dd-9721-3f45eae3eeda",
-      "status": "ok",
-      "issue": "https://github.com/satojandro/near-hunt/issues/61",
-      "issue_number": 61,
-      "issue_numbers": [
-        61
-      ],
-      "repository_url": "https://github.com/unholy0X/nearportal",
-      "repository_source": "https://github.com/satojandro/near-hunt/issues/61",
-      "repository_basis": [
-        "builder",
-        "readme"
-      ],
-      "repository_verified": true,
-      "repository_verified_at": "2026-11-16T01:30:00.000Z",
-      "enrichment": {
-        "method": "builder-issue",
-        "sources": [
-          "https://github.com/satojandro/near-hunt/issues/61",
-          "https://github.com/unholy0X/nearportal",
-          "https://x.com/0xunholy/status/2118484384340684976"
-        ],
-        "retrieved_at": "2026-11-16T01:34:46.000Z",
-        "fields": [
-          "repository_url"
-        ]
-      }
-    },
-    {
-      "submission_id": "054124eb-d3b6-446a-b41f-07da998b2e4a",
-      "status": "ok",
-      "issue": "https://github.com/satojandro/near-hunt/issues/60",
-      "issue_number": 60,
-      "issue_numbers": [
-        60
-      ],
-      "repository_url": "https://github.com/Meow-Division/meow-division",
-      "repository_source": "https://github.com/satojandro/near-hunt/issues/60",
-      "repository_basis": [
-        "builder",
-        "readme"
-      ],
-      "repository_verified": true,
-      "repository_verified_at": "2026-11-16T01:30:00.000Z",
-      "enrichment": {
-        "method": "builder-issue",
-        "sources": [
-          "https://github.com/satojandro/near-hunt/issues/60",
-          "https://github.com/Meow-Division/meow-division",
-          "https://x.com/meow_division/status/2121698431471337598"
-        ],
-        "retrieved_at": "2026-11-16T01:34:46.000Z",
-        "fields": [
-          "repository_url"
-        ]
-      }
-    },
-    {
-      "submission_id": "55b1a5ad-4027-45ee-96b2-6159bd72d0d9",
-      "status": "ok",
-      "issue": "https://github.com/satojandro/near-hunt/issues/58",
-      "issue_number": 58,
-      "issue_numbers": [
-        58,
-        59
-      ],
-      "repository_url": "https://github.com/skyyycodes/multiverse-near",
-      "repository_source": "https://github.com/satojandro/near-hunt/issues/58",
-      "repository_basis": [
-        "builder",
-        "readme"
-      ],
-      "repository_verified": true,
-      "repository_verified_at": "2026-11-16T01:30:00.000Z",
-      "links": [
-        {
-          "url": "https://multiverse-lending.vercel.app",
+          "url": "https://lumoscore.com/",
           "kind": "website",
-          "label": "Website",
           "kind_basis": "builder",
           "check": {
-            "checked_at": "2026-11-16T01:28:00.000Z",
+            "verdict": "live",
             "http_status": 200,
-            "verdict": "live"
+            "checked_at": "2026-11-16T02:24:11.248Z"
           }
         },
         {
-          "url": "https://multiverse-lending.vercel.app/docs/",
+          "url": "https://lumoscore.com/whitepaper",
           "kind": "docs",
-          "label": "Docs",
           "kind_basis": "builder",
           "check": {
-            "checked_at": "2026-11-16T01:28:00.000Z",
+            "verdict": "live",
             "http_status": 200,
-            "verdict": "live"
-          }
-        },
-        {
-          "url": "https://multiverse-lending.vercel.app/origami-verse-whitepaper.pdf",
-          "kind": "docs",
-          "label": "Whitepaper",
-          "kind_basis": "builder",
-          "check": {
-            "checked_at": "2026-11-16T01:28:00.000Z",
-            "http_status": 200,
-            "verdict": "live"
+            "checked_at": "2026-11-16T02:24:11.248Z"
           }
         }
       ],
       "enrichment": {
         "method": "builder-issue",
         "sources": [
-          "https://github.com/satojandro/near-hunt/issues/58",
-          "https://github.com/satojandro/near-hunt/issues/59",
-          "https://github.com/skyyycodes/multiverse-near",
-          "https://x.com/SkyyCodes/status/2121726270098825401"
+          "https://github.com/satojandro/near-hunt/issues/70",
+          "https://lumoscore.com/",
+          "https://x.com/LumosCore/status/2121749675904844000"
         ],
-        "retrieved_at": "2026-11-16T01:34:46.000Z",
+        "retrieved_at": "2026-11-16T02:24:11.248Z",
         "fields": [
-          "repository_url",
           "links"
         ]
       }
     },
     {
-      "submission_id": "8b588b31-cc77-479b-99e6-b92d4131a2dd",
+      "submission_id": "99804abc-4c86-410a-88c4-a5193b5b33fa",
       "status": "ok",
-      "issue": "https://github.com/satojandro/near-hunt/issues/56",
-      "issue_number": 56,
+      "issue": "https://github.com/satojandro/near-hunt/issues/67",
+      "issue_number": 67,
       "issue_numbers": [
-        56
+        67
       ],
-      "repository_url": "https://github.com/daocubator/daocubator-smart-contracts",
-      "repository_source": "https://github.com/satojandro/near-hunt/issues/56",
-      "repository_basis": [
-        "builder",
-        "readme"
+      "links": [
+        {
+          "url": "https://seed-garden-nft.testnet.page/",
+          "kind": "demo",
+          "kind_basis": "builder",
+          "check": {
+            "verdict": "live",
+            "http_status": 200,
+            "checked_at": "2026-11-16T02:24:11.248Z"
+          }
+        }
       ],
-      "repository_verified": true,
-      "repository_verified_at": "2026-11-16T01:30:00.000Z",
       "enrichment": {
         "method": "builder-issue",
         "sources": [
-          "https://github.com/satojandro/near-hunt/issues/56",
-          "https://github.com/daocubator/daocubator-smart-contracts",
-          "https://x.com/DAOcubator/status/2121637834142749130"
+          "https://github.com/satojandro/near-hunt/issues/67",
+          "https://github.com/javaing/seed-garden-near",
+          "https://javaing.github.io/seed-garden-near/"
         ],
-        "retrieved_at": "2026-11-16T01:34:46.000Z",
+        "retrieved_at": "2026-11-16T02:24:11.248Z",
         "fields": [
-          "repository_url"
+          "links"
         ]
-      }
+      },
+      "keep_open": [
+        67
+      ]
     }
   ]
 }
