@@ -80072,5 +80072,1125 @@
       "https://citario.vercel.app",
       "https://citario.vercel.app/"
     ]
+  },
+  "19769764-c445-437e-8187-e0433b18c3da": {
+    "author": "pilozenz",
+    "status": "ok",
+    "crawled_at": "2026-11-16T11:39:23.872Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [
+      {
+        "id": "2119595288084246944",
+        "author": "pilozenz",
+        "text": "@NEARProtocol @NEARProtocol\n  lets goo\n#NEARHackaton https://t.co/BjEFxMMT3y",
+        "links": [],
+        "media": [
+          {
+            "type": "video",
+            "media_url_https": "https://pbs.twimg.com/amplify_video_thumb/2119595251375677441/img/OBnwcjbb7_aldeLL.jpg",
+            "original_info": {
+              "focus_rects": [],
+              "height": 720,
+              "width": 1280
+            },
+            "video_info": {
+              "aspect_ratio": [
+                16,
+                9
+              ],
+              "duration_millis": 15000,
+              "variants": [
+                {
+                  "content_type": "application/x-mpegURL",
+                  "url": "https://video.twimg.com/amplify_video/2119595251375677441/pl/0gKWTwarE-MQAfME.m3u8"
+                },
+                {
+                  "bitrate": 256000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2119595251375677441/vid/avc1/480x270/cQUMp1ronso0NDkY.mp4"
+                },
+                {
+                  "bitrate": 832000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2119595251375677441/vid/avc1/640x360/nnoJmSpyxm8gu3ff.mp4"
+                },
+                {
+                  "bitrate": 2176000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2119595251375677441/vid/avc1/1280x720/HwzbHUdwPUdp8rCK.mp4"
+                }
+              ]
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      }
+    ],
+    "links": [
+      "https://sentinel.ivmaladin.workers.dev",
+      "https://github.com/ivanmlnnn/sentinel",
+      "https://sentinel.ivmaladin.workers.dev/"
+    ]
+  },
+  "1c490e04-9882-4bc8-bb93-32ed1244b3ae": {
+    "author": "JoseFra49220812",
+    "status": "ok",
+    "crawled_at": "2026-11-16T11:39:26.878Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [
+      {
+        "id": "2121768070738051277",
+        "author": "JoseFra49220812",
+        "text": "@NEARProtocol Full 14-min walkthrough: https://t.co/3yqTWgCZZo\nTry the live demo (one-click roles): https://t.co/dzSJ5VkwqT\nCode: https://t.co/3ciNVBAnUR\n\nWhat rule would you add before letting an AI agent pay your bills? @NearLegion @NearBuilders",
+        "links": [
+          "https://tesorero.gesco.ec",
+          "https://demo.tesorero.gesco.ec",
+          "https://github.com/josefranciscocruzcorro/near-hackaton",
+          "https://tesorero.gesco.ec/",
+          "https://demo.tesorero.gesco.ec/"
+        ]
+      }
+    ],
+    "links": [
+      "https://tesorero.gesco.ec",
+      "https://tesorero.gesco.ec/"
+    ]
+  },
+  "2d524a1d-09b4-489d-aa2c-9696515e597d": {
+    "author": "varl999",
+    "status": "no-author-replies",
+    "crawled_at": "2026-11-16T11:39:31.859Z",
+    "listed": 4,
+    "read": 4,
+    "posts": [],
+    "links": [
+      "http://asksphinx.xyz",
+      "http://github.com/Jennivarl/sphinx",
+      "https://asksphinx.xyz"
+    ]
+  },
+  "5b3f46a8-8c4c-42da-bb3c-3a0f8857a90f": {
+    "author": "Defi_Manolo",
+    "status": "ok",
+    "crawled_at": "2026-11-16T11:39:37.623Z",
+    "listed": 5,
+    "read": 5,
+    "posts": [
+      {
+        "id": "2121754439342027114",
+        "author": "Defi_Manolo",
+        "text": "Businesses don't just need to send and receive money. They need to know what they owe, why they owe it, whether it has been approved, and whether the payment actually settled.\nMATCHFLOW connects business invoices, supplier bills, procurement, approvals and cross-chain payments",
+        "links": []
+      },
+      {
+        "id": "2121754443297251345",
+        "author": "Defi_Manolo",
+        "text": "through NEAR Intents.\nA customer can pay a USD invoice using a supported crypto asset. A business can verify supplier invoices against purchase orders and delivery records before approving payment.\nBoth collections and supplier payments use the same settlement engine.",
+        "links": []
+      },
+      {
+        "id": "2121870066958360815",
+        "author": "Defi_Manolo",
+        "text": "Here's a view on MATCHFLOW 👇\nhttps://t.co/bvdouloh0j\n\n#NEARHackathon https://t.co/C8Z7AxOuJK",
+        "links": [
+          "https://matchflow.deepwhale.fun",
+          "https://matchflow.deepwhale.fun/"
+        ],
+        "media": [
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HXJld_sW4AAP110.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 1613,
+                  "w": 2880,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 2328,
+                  "w": 2328,
+                  "x": 202,
+                  "y": 0
+                },
+                {
+                  "h": 2328,
+                  "w": 2042,
+                  "x": 345,
+                  "y": 0
+                },
+                {
+                  "h": 2328,
+                  "w": 1164,
+                  "x": 784,
+                  "y": 0
+                },
+                {
+                  "h": 2328,
+                  "w": 2880,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 2328,
+              "width": 2880
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          },
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HXJle4DWMAAfneh.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 865,
+                  "w": 1545,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1498,
+                  "w": 1498,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1498,
+                  "w": 1314,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1498,
+                  "w": 749,
+                  "x": 128,
+                  "y": 0
+                },
+                {
+                  "h": 1498,
+                  "w": 1545,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 1498,
+              "width": 1545
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          },
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HXJlftYXIAAYAa2.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 1613,
+                  "w": 2880,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1920,
+                  "w": 1920,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1920,
+                  "w": 1684,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1920,
+                  "w": 960,
+                  "x": 312,
+                  "y": 0
+                },
+                {
+                  "h": 1920,
+                  "w": 2880,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 1920,
+              "width": 2880
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          },
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HXJlgh5XsAAP2DO.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 1613,
+                  "w": 2880,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1920,
+                  "w": 1920,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1920,
+                  "w": 1684,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1920,
+                  "w": 960,
+                  "x": 312,
+                  "y": 0
+                },
+                {
+                  "h": 1920,
+                  "w": 2880,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 1920,
+              "width": 2880
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          },
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HXJlhdSWQAAqwik.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 1613,
+                  "w": 2880,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1920,
+                  "w": 1920,
+                  "x": 408,
+                  "y": 0
+                },
+                {
+                  "h": 1920,
+                  "w": 1684,
+                  "x": 526,
+                  "y": 0
+                },
+                {
+                  "h": 1920,
+                  "w": 960,
+                  "x": 888,
+                  "y": 0
+                },
+                {
+                  "h": 1920,
+                  "w": 2880,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 1920,
+              "width": 2880
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          },
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HXJliFHWcAA4FB_.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 1613,
+                  "w": 2880,
+                  "x": 0,
+                  "y": 130
+                },
+                {
+                  "h": 1920,
+                  "w": 1920,
+                  "x": 480,
+                  "y": 0
+                },
+                {
+                  "h": 1920,
+                  "w": 1684,
+                  "x": 598,
+                  "y": 0
+                },
+                {
+                  "h": 1920,
+                  "w": 960,
+                  "x": 960,
+                  "y": 0
+                },
+                {
+                  "h": 1920,
+                  "w": 2880,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 1920,
+              "width": 2880
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          },
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HXJliuwXEAAHZdr.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 1613,
+                  "w": 2880,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1920,
+                  "w": 1920,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1920,
+                  "w": 1684,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1920,
+                  "w": 960,
+                  "x": 312,
+                  "y": 0
+                },
+                {
+                  "h": 1920,
+                  "w": 2880,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 1920,
+              "width": 2880
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          },
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HXJlji0WMAArz_a.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 1613,
+                  "w": 2880,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1920,
+                  "w": 1920,
+                  "x": 960,
+                  "y": 0
+                },
+                {
+                  "h": 1920,
+                  "w": 1684,
+                  "x": 1196,
+                  "y": 0
+                },
+                {
+                  "h": 1920,
+                  "w": 960,
+                  "x": 1920,
+                  "y": 0
+                },
+                {
+                  "h": 1920,
+                  "w": 2880,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 1920,
+              "width": 2880
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          },
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HXJlkj-WcAA0PQt.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 1613,
+                  "w": 2880,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1920,
+                  "w": 1920,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1920,
+                  "w": 1684,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1920,
+                  "w": 960,
+                  "x": 312,
+                  "y": 0
+                },
+                {
+                  "h": 1920,
+                  "w": 2880,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 1920,
+              "width": 2880
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      },
+      {
+        "id": "2122143563521663174",
+        "author": "Defi_Manolo",
+        "text": "@NEARProtocol https://t.co/tpBF4VxV3T",
+        "links": [
+          "https://x.com/Defi_Manolo/status/2121870066958360815?a=dycZaIrStn3qgSeDLPY&s=19"
+        ]
+      },
+      {
+        "id": "2122143873040519198",
+        "author": "Defi_Manolo",
+        "text": "@NEARProtocol MATCHFLOW Repo: https://t.co/x4QejQZwjK\n\n#NEARHACKATHON @NEARProtocol",
+        "links": [
+          "https://github.com/joelbulldev/matchflow"
+        ]
+      }
+    ],
+    "links": []
+  },
+  "5bcfec5d-3a5e-44bb-bab9-0ade7834d212": {
+    "author": "fstack_ai",
+    "status": "ok",
+    "crawled_at": "2026-11-16T11:39:46.929Z",
+    "listed": 9,
+    "read": 9,
+    "posts": [
+      {
+        "id": "2121754643776840131",
+        "author": "fstack_ai",
+        "text": "everything NEAR does for Foundry Stack:\n\n→ payments — players buy a pass or an item in NEAR, straight into company revenue\n\n→ ledger — every contribution, sale, expense and payout is a transaction, checkable by anyone\n\n→ accounting — the contract tracks revenue, expenses, reserve and net, and splits it by contribution units\n\n→ identity — workers prove they're the wallet they claim with a signed NEP-413 message, no password\n\n→ governance — contributors vote on budgets with their units as weight\n\n→ payouts — contributors withdraw their share straight from the contract, no finance team in between\n\n→ cross-chain — NEAR Intents let a payer swap in from another chain and still land as NEAR revenueone chain running the whole company, not just one feature.",
+        "links": []
+      },
+      {
+        "id": "2121756635064639649",
+        "author": "fstack_ai",
+        "text": "@NEARProtocol @NEARProtocol  is the financial layer: smart contracts track contributions, treasury, expenses, votes, and distributions. Currently live on the NEAR testnet",
+        "links": []
+      },
+      {
+        "id": "2121874467794129044",
+        "author": "fstack_ai",
+        "text": "@NEARProtocol You have unused AI token crumbs sitting in your subscriptions. Now you can turn 3% usage remaining into profit.\n\nPut them to work for an AI company that runs itself: picks features, plans outreach, chooses research directions, etc.\n\nContributors run AI workers on their devices. https://t.co/435sONlin6",
+        "links": [],
+        "media": [
+          {
+            "type": "video",
+            "media_url_https": "https://pbs.twimg.com/amplify_video_thumb/2121820776902852608/img/6sCU4lpRyOZpt8C9.jpg",
+            "original_info": {
+              "focus_rects": [],
+              "height": 1080,
+              "width": 1920
+            },
+            "video_info": {
+              "aspect_ratio": [
+                16,
+                9
+              ],
+              "duration_millis": 20000,
+              "variants": [
+                {
+                  "content_type": "application/x-mpegURL",
+                  "url": "https://video.twimg.com/amplify_video/2121820776902852608/pl/WAkDUgSduWoOMHi4.m3u8"
+                },
+                {
+                  "bitrate": 256000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121820776902852608/vid/avc1/480x270/EAK94NQH9R3Am3-k.mp4"
+                },
+                {
+                  "bitrate": 832000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121820776902852608/vid/avc1/640x360/5QzvMwGkeIg--1m7.mp4"
+                },
+                {
+                  "bitrate": 2176000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121820776902852608/vid/avc1/1280x720/2uO5Z4s6Iyh3QTgW.mp4"
+                },
+                {
+                  "bitrate": 10368000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121820776902852608/vid/avc1/1920x1080/iNCpxSnWumajBc4m.mp4"
+                }
+              ]
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      },
+      {
+        "id": "2121874758694265217",
+        "author": "fstack_ai",
+        "text": "@NEARProtocol @ilblackdragon @ClaudeDevs @eddylazzarin @avichal @cyntro_py @bcherny Two layers, one company.\n\n- product is fully AI: agents decide what to build, where to point research, who to reach out to, which growth bets to run\n\n- company board is fully human: contributors vote on the budget, the spend cap, the reserve, the kill switch https://t.co/9MoBscjaAE",
+        "links": [],
+        "media": [
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HXJp0daXUAAcdZP.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 672,
+                  "w": 1200,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 675,
+                  "w": 675,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 675,
+                  "w": 592,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 675,
+                  "w": 338,
+                  "x": 41,
+                  "y": 0
+                },
+                {
+                  "h": 675,
+                  "w": 1200,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 675,
+              "width": 1200
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      },
+      {
+        "id": "2121875027821826207",
+        "author": "fstack_ai",
+        "text": "@NEARProtocol @ilblackdragon @ClaudeDevs @eddylazzarin @avichal @cyntro_py @bcherny everything NEAR does for Foundry Stack:\n\n→ payments — players buy a pass or an item in NEAR, straight into company revenue\n\n→ ledger — every contribution, sale, expense and payout is a transaction, checkable by anyone\n\n→ accounting — the contract tracks revenue, expenses, https://t.co/vmHKhX1azg",
+        "links": [],
+        "media": [
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HXJqFFJWAAAjhkk.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 896,
+                  "w": 1600,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1100,
+                  "w": 1100,
+                  "x": 250,
+                  "y": 0
+                },
+                {
+                  "h": 1100,
+                  "w": 965,
+                  "x": 318,
+                  "y": 0
+                },
+                {
+                  "h": 1100,
+                  "w": 550,
+                  "x": 525,
+                  "y": 0
+                },
+                {
+                  "h": 1100,
+                  "w": 1600,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 1100,
+              "width": 1600
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          },
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HXJqFE1WQAAz9cc.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 896,
+                  "w": 1600,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1000,
+                  "w": 1000,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1000,
+                  "w": 877,
+                  "x": 2,
+                  "y": 0
+                },
+                {
+                  "h": 1000,
+                  "w": 500,
+                  "x": 190,
+                  "y": 0
+                },
+                {
+                  "h": 1000,
+                  "w": 1600,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 1000,
+              "width": 1600
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          },
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HXJqFEuXYAAcst9.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 896,
+                  "w": 1600,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1000,
+                  "w": 1000,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1000,
+                  "w": 877,
+                  "x": 2,
+                  "y": 0
+                },
+                {
+                  "h": 1000,
+                  "w": 500,
+                  "x": 190,
+                  "y": 0
+                },
+                {
+                  "h": 1000,
+                  "w": 1600,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 1000,
+              "width": 1600
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          },
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HXJqFEtWYAAwzic.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 896,
+                  "w": 1600,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1000,
+                  "w": 1000,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1000,
+                  "w": 877,
+                  "x": 2,
+                  "y": 0
+                },
+                {
+                  "h": 1000,
+                  "w": 500,
+                  "x": 190,
+                  "y": 0
+                },
+                {
+                  "h": 1000,
+                  "w": 1600,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 1000,
+              "width": 1600
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      },
+      {
+        "id": "2121875479158202389",
+        "author": "fstack_ai",
+        "text": "@NEARProtocol @ilblackdragon @ClaudeDevs @eddylazzarin @avichal @cyntro_py @bcherny We needed something you could actually contribute tokens to, so we built a small stealth game: sneak past guards, steal RAM, get out. 1 testnet NEAR for escape if you got caught.\n\nThe point was never the game. The point was proving the loop: \na sale → company revenue → expenses https://t.co/AhAzAbW7mx",
+        "links": [],
+        "media": [
+          {
+            "type": "video",
+            "media_url_https": "https://pbs.twimg.com/amplify_video_thumb/2121875241689321472/img/L3-xNgSRhN6e4Q0C.jpg",
+            "original_info": {
+              "focus_rects": [],
+              "height": 720,
+              "width": 1280
+            },
+            "video_info": {
+              "aspect_ratio": [
+                16,
+                9
+              ],
+              "duration_millis": 35360,
+              "variants": [
+                {
+                  "content_type": "application/x-mpegURL",
+                  "url": "https://video.twimg.com/amplify_video/2121875241689321472/pl/luBtIfCSpvgR678X.m3u8"
+                },
+                {
+                  "bitrate": 256000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121875241689321472/vid/avc1/480x270/d-F2A1fcdDxdzjpY.mp4"
+                },
+                {
+                  "bitrate": 832000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121875241689321472/vid/avc1/640x360/HTzcuh26gI30rgJD.mp4"
+                },
+                {
+                  "bitrate": 2176000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121875241689321472/vid/avc1/1280x720/_jlPXQBE4sQ0dm5D.mp4"
+                }
+              ]
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      },
+      {
+        "id": "2121875725904941343",
+        "author": "fstack_ai",
+        "text": "@NEARProtocol @ilblackdragon @ClaudeDevs @eddylazzarin @avichal @cyntro_py @bcherny We built this MVP in 2 days at the #NearHackathon. Here's where we're going next:\n\n1 make it real. \nMove the company contract to mainnet, accept real payments, and plug in NEAR Intents so someone on another chain can pay in and still land as NEAR revenue. Before any of that https://t.co/Epe0gVQV6C",
+        "links": [],
+        "media": [
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HXJquLdWMAAhjdP.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 620,
+                  "w": 1107,
+                  "x": 93,
+                  "y": 0
+                },
+                {
+                  "h": 620,
+                  "w": 620,
+                  "x": 580,
+                  "y": 0
+                },
+                {
+                  "h": 620,
+                  "w": 544,
+                  "x": 656,
+                  "y": 0
+                },
+                {
+                  "h": 620,
+                  "w": 310,
+                  "x": 775,
+                  "y": 0
+                },
+                {
+                  "h": 620,
+                  "w": 1200,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 620,
+              "width": 1200
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      },
+      {
+        "id": "2121875951168508155",
+        "author": "fstack_ai",
+        "text": "@NEARProtocol @ilblackdragon @ClaudeDevs @eddylazzarin @avichal @cyntro_py @bcherny How much can you earn?\n\nAnywhere from nothing to potentially a lot. This is an experimental research project, not a guaranteed income opportunity. Your returns depend on the company's actual performance and may be zero. \n\nYou could even lose money through participation costs. You",
+        "links": []
+      },
+      {
+        "id": "2121876187119018194",
+        "author": "fstack_ai",
+        "text": "@NEARProtocol @ilblackdragon @ClaudeDevs @eddylazzarin @avichal @cyntro_py @bcherny Isn't this breaking Anthropic's Terms of Service?\n\nWe don't believe our model constitutes resale of Claude usage, but compliance still needs to be verified.\n\nWe're not selling AI tokens, subscriptions, or API access. Your credentials stay on your device, and your local worker https://t.co/VOdhorJAzV",
+        "links": [],
+        "media": [
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HXJrH67XsAActxZ.png",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 380,
+                  "w": 679,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 380,
+                  "w": 380,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 380,
+                  "w": 333,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 380,
+                  "w": 190,
+                  "x": 12,
+                  "y": 0
+                },
+                {
+                  "h": 380,
+                  "w": 861,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 380,
+              "width": 861
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      },
+      {
+        "id": "2121876614632116491",
+        "author": "fstack_ai",
+        "text": "@NEARProtocol @ilblackdragon @ClaudeDevs @eddylazzarin @avichal @cyntro_py @bcherny Built by Kostiantyn Ostapenko (@kastet_99)\n- serial Web3 founder, ex-KPMG consultant\n- hacking on @NEARProtocol since 2021 https://t.co/bzVAYeZnEq",
+        "links": [],
+        "media": [
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HXJraZfW4AA5VDz.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 269,
+                  "w": 480,
+                  "x": 0,
+                  "y": 186
+                },
+                {
+                  "h": 480,
+                  "w": 480,
+                  "x": 0,
+                  "y": 80
+                },
+                {
+                  "h": 547,
+                  "w": 480,
+                  "x": 0,
+                  "y": 47
+                },
+                {
+                  "h": 854,
+                  "w": 427,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 854,
+                  "w": 480,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 854,
+              "width": 480
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      }
+    ],
+    "links": []
+  },
+  "afff46d7-46ec-45fb-a4fc-e84403dff49a": {
+    "author": "pharoxe",
+    "status": "ok",
+    "crawled_at": "2026-11-16T11:39:50.132Z",
+    "listed": 2,
+    "read": 2,
+    "posts": [
+      {
+        "id": "2121951088354201609",
+        "author": "pharoxe",
+        "text": "here's what I built in 2 days for the @NEARProtocol hackathon to explore the benefits of agents as participants in a persistent game economy with RMT (real money trading)\n\n1:12 players can soon hire worker droids 🤖 at NEAR Hive booths across @bakelandxyz for repetitive actions: starting with farming, watering and harvesting spores (hard currency)\n\n0:03 just as MEV is an unavoidable byproduct of public blockchains, botting is the same for games with real economies. they create a fundamental misalignment of incentives, robbing one of the core requirements of forming a +ev network\n\nwe're exploring whether on-demand agents for automation can turn this behaviour into an open market to achieve:\n\n- better economic efficiency (democratized access to automation)\n- a network with fewer extractive participants (botting is not lucrative)\n\nstill quite a rough outline of what we envision the agents to be capable of within the game. hope to see demand around this to take it a couple steps further\n\n#nearhackathon",
+        "links": []
+      },
+      {
+        "id": "2121951091109826728",
+        "author": "pharoxe",
+        "text": "p.s missed the submission deadline by a hair (could swear it closed a minute early) \n\nhoping the team will consider (cc @haenko21 @ilblackdragon @NearBuilders)\n\neither way been a blast working on this",
+        "links": []
+      }
+    ],
+    "links": []
+  },
+  "bd08f250-aa42-4572-aa8a-fa005384cf40": {
+    "author": "nirmalplays1",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-16T11:39:51.673Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": []
+  },
+  "c3deca64-850b-4fb8-a614-251ca121fb69": {
+    "author": "0xhabibi1",
+    "status": "ok",
+    "crawled_at": "2026-11-16T11:39:54.972Z",
+    "listed": 2,
+    "read": 2,
+    "posts": [
+      {
+        "id": "2118687375609975219",
+        "author": "0xhabibi1",
+        "text": "I wanted to build an NFT that actually does something after it's minted.\n\nSo for the NEAR Hackathon, I built Zinc, a campaign-based revenue-rights platform on NEAR.\n\nTeams define how campaign revenue is split, and contributors receive NFTs representing their share\n\nWhen an NFT is transferred, future earnings go to the new owner, while revenue earned before the transfer remains claimable by the previous owner.",
+        "links": []
+      },
+      {
+        "id": "2121190639903580384",
+        "author": "0xhabibi1",
+        "text": "Github repo: https://t.co/GC5cqW910I\n\nSite demo: https://t.co/lKDGZyIdT0",
+        "links": [
+          "https://github.com/beeb-builds/zinc-build",
+          "https://zinc-demo-production.up.railway.app/"
+        ]
+      }
+    ],
+    "links": [
+      "https://t.me/xhabibi_bot",
+      "https://github.com/beeb-builds/zinc-build",
+      "https://zinc-demo-production.up.railway.app/"
+    ]
+  },
+  "f44c285a-9c95-486b-9882-3fcdfa5c8e7b": {
+    "author": "0x_zaheer",
+    "status": "no-author-replies",
+    "crawled_at": "2026-11-16T11:39:58.964Z",
+    "listed": 3,
+    "read": 3,
+    "posts": [],
+    "links": [
+      "https://rylta-production.up.railway.app/"
+    ]
   }
 }

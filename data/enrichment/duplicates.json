@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-11-16T10:29:56.407Z",
+  "generated_at": "2026-11-16T12:09:46.109Z",
   "account": "nearhunt.near",
   "note": "Flags only. Nothing is merged, hidden or written. `clusters`/`groups` share an identifying URL (possible duplicates). `weak_signals` share only a name or an X account and are usually different projects.",
   "summary": {
     "submissions": 2453,
-    "on_chain": 2443,
-    "pending": 10,
+    "on_chain": 2453,
+    "pending": 0,
     "shared_urls": 16,
     "by_kind": {
       "x-post": 7,
@@ -15,7 +15,7 @@
     "clusters": 11,
     "submissions_flagged": 34,
     "same_name_groups": 91,
-    "same_x_account_groups": 239
+    "same_x_account_groups": 240
   },
   "clusters": [
     {
@@ -1032,6 +1032,11 @@
             "on_chain": true
           },
           {
+            "submission_id": "bd08f250-aa42-4572-aa8a-fa005384cf40",
+            "name": "Veil",
+            "on_chain": true
+          },
+          {
             "submission_id": "d36521aa-06a3-47bc-8a13-50312a92c831",
             "name": "Veil",
             "on_chain": true
@@ -1045,11 +1050,6 @@
             "submission_id": "ff82502b-0e5a-4e6a-aec5-8668e01354e2",
             "name": "Veil",
             "on_chain": true
-          },
-          {
-            "submission_id": "bd08f250-aa42-4572-aa8a-fa005384cf40",
-            "name": "Veil",
-            "on_chain": false
           }
         ]
       },
@@ -2269,7 +2269,7 @@
           {
             "submission_id": "2d524a1d-09b4-489d-aa2c-9696515e597d",
             "name": "SPHINX",
-            "on_chain": false
+            "on_chain": true
           }
         ]
       },
@@ -2656,6 +2656,21 @@
           {
             "submission_id": "cfc2731b-486b-4b12-8013-4ef58f0853ec",
             "name": "KAMERTON",
+            "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "0x_zaheer",
+        "submissions": [
+          {
+            "submission_id": "ea562aa2-1b87-4d27-bdf1-a2d991ba1204",
+            "name": "Zetra",
+            "on_chain": true
+          },
+          {
+            "submission_id": "f44c285a-9c95-486b-9882-3fcdfa5c8e7b",
+            "name": "rylta",
             "on_chain": true
           }
         ]
@@ -5956,7 +5971,7 @@
           {
             "submission_id": "8963d294-0782-49db-b947-ff7f48638256",
             "name": "Citario",
-            "on_chain": false
+            "on_chain": true
           }
         ]
       },
