@@ -1,85 +1,69 @@
 {
-  "source": "Batch of 16 Nov 2026 13:25 AEDT (issues cron, crypto-builder profile). Open correction issues read: #70, #68 (LumosCore), #67 Near Onchain Gen Art, #66 Azzle, #63 Hive, #62 DYA Trade, #57 Origami Verse, #54 Mihenk AI, #53 Rook, #47 PORTI, #36 shit-1170-rex-engine, #32 Sentinel, #30 EmployAI. Signed here (links only, never prose): #70 (website link correction), #67 (on-chain gallery link). Not signed: #68/#67/#57/#53/#47/#36/#30/#54 ask for description text, which the unattended cycle may not sign. #66, #63, #62 were answered by the previous batch at 02:19Z and their remaining ask is prose or a builder reply. #32 reports that github.com/NathanOyewole/sentinel still answers 403 Repository is disabled on the git transport, so its repository cannot be corroborated. Evidence - #70: the record f8eb6347 carries two website links, https://lumoscore.com (builder) and https://chain.link/article/blockchain-interoperability-problem (from thread post 2121750115346256173); the builder states the Chainlink article is not their site and names https://lumoscore.com/ and https://lumoscore.com/whitepaper as theirs. probeLink now returns 200 on both (titles LumosCore - Trade, Pool and Bridge on Stellar / Whitepaper - Architecture, Fees and Token Model | LumosCore) -> live. There is no repository change: repository_url already https://github.com/RazaRizv1/lumoscore-near. #67: the issue names an on-chain gallery https://seed-garden-nft.testnet.page/ (probeLink 200, title Seed Garden -> live) alongside the mint site that is already the record demo_url; repository_url https://github.com/javaing/seed-garden-near is already set and is the issue own public source, so no repository change.",
-  "generated_at": "2026-11-16T02:24:11.248Z",
+  "source": "Batch of 16 Nov 2026 15:30 AEDT (issues cron, crypto-builder profile). Open correction issues read: #71 Snow Moon, #68 LumosCore, #67 Near Onchain Gen Art, #66 Azzle, #63 Hive, #62 DYA Trade, #57 Origami Verse, #54 Mihenk AI, #53 Rook, #47 PORTI, #36 shit-1170-rex-engine, #32 Sentinel, #30 EmployAI. Signed here (repository and links only, never prose): #71 (repository), #66 (second repository published as a labelled link). Evidence - #71: project/53d2d6e3 carries no repository_url; the issue names https://github.com/zaxcrypto/SnowMoon. verifyRepos true (git ls-remote --heads lists refs/heads/main), and README.md on main opens '# SnowMoon - Verifiable AI Commerce & Escrow on NEAR Mainnet', matching the record name 'Snow Moon' and its description of an autonomous AI workforce for the NEAR hackathon; the issue author is zaxcrypto, the repository owner. #66: the record 75fd541c already has repository_url https://github.com/azzle-lab/azzle (landed 02:19Z); the issue lists a second deliverable, https://github.com/azzle-lab/near-hire, and asks that both be included, which a single repository field cannot hold, so it is published as a labelled link; verifyRepos true, probeLink 200 (title 'GitHub - azzle-lab/near-hire'). Not signed: #68/#67/#57/#53/#54/#47/#36/#30 ask for description text (and #54 also a media/post change), which the unattended cycle may not sign. #63 and #62 are the same: repository and links landed, prose queued for the owner. #32 reports that github.com/NathanOyewole/sentinel still answers 403 'Repository is disabled' on the git transport while raw.githubusercontent serves the README, so its repository is still not corroborable and no comment is repeated.",
+  "generated_at": "2026-11-16T04:24:05.000Z",
   "results": [
     {
-      "submission_id": "f8eb6347-15ec-4a9f-8041-7917e7dd83dd",
+      "submission_id": "53d2d6e3-5b5b-4b97-950a-ddb99fe601a0",
       "status": "ok",
-      "issue": "https://github.com/satojandro/near-hunt/issues/70",
-      "issue_number": 70,
+      "issue": "https://github.com/satojandro/near-hunt/issues/71",
+      "issue_number": 71,
       "issue_numbers": [
-        70
+        71
       ],
-      "links": [
-        {
-          "url": "https://lumoscore.com/",
-          "kind": "website",
-          "kind_basis": "builder",
-          "check": {
-            "verdict": "live",
-            "http_status": 200,
-            "checked_at": "2026-11-16T02:24:11.248Z"
-          }
-        },
-        {
-          "url": "https://lumoscore.com/whitepaper",
-          "kind": "docs",
-          "kind_basis": "builder",
-          "check": {
-            "verdict": "live",
-            "http_status": 200,
-            "checked_at": "2026-11-16T02:24:11.248Z"
-          }
-        }
+      "repository_url": "https://github.com/zaxcrypto/SnowMoon",
+      "repository_source": "https://github.com/satojandro/near-hunt/issues/71",
+      "repository_basis": [
+        "builder",
+        "readme"
       ],
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-16T04:24:05.000Z",
       "enrichment": {
         "method": "builder-issue",
         "sources": [
-          "https://github.com/satojandro/near-hunt/issues/70",
-          "https://lumoscore.com/",
-          "https://x.com/LumosCore/status/2121749675904844000"
+          "https://github.com/satojandro/near-hunt/issues/71",
+          "https://github.com/zaxcrypto/SnowMoon",
+          "https://x.com/0x_zax/status/2121747667718213765"
         ],
-        "retrieved_at": "2026-11-16T02:24:11.248Z",
+        "retrieved_at": "2026-11-16T04:24:05.000Z",
         "fields": [
-          "links"
+          "repository_url"
         ]
       }
     },
     {
-      "submission_id": "99804abc-4c86-410a-88c4-a5193b5b33fa",
+      "submission_id": "75fd541c-a9b4-48f5-853a-6bd778e2cdcd",
       "status": "ok",
-      "issue": "https://github.com/satojandro/near-hunt/issues/67",
-      "issue_number": 67,
+      "issue": "https://github.com/satojandro/near-hunt/issues/66",
+      "issue_number": 66,
       "issue_numbers": [
-        67
+        66
       ],
       "links": [
         {
-          "url": "https://seed-garden-nft.testnet.page/",
-          "kind": "demo",
+          "url": "https://github.com/azzle-lab/near-hire",
+          "kind": "repository",
           "kind_basis": "builder",
+          "label": "NEAR Hire (repository)",
           "check": {
             "verdict": "live",
             "http_status": 200,
-            "checked_at": "2026-11-16T02:24:11.248Z"
+            "checked_at": "2026-11-16T04:24:05.000Z"
           }
         }
       ],
       "enrichment": {
         "method": "builder-issue",
         "sources": [
-          "https://github.com/satojandro/near-hunt/issues/67",
-          "https://github.com/javaing/seed-garden-near",
-          "https://javaing.github.io/seed-garden-near/"
+          "https://github.com/satojandro/near-hunt/issues/66",
+          "https://github.com/azzle-lab/near-hire",
+          "https://x.com/AzzleAI/status/2120473340695531975"
         ],
-        "retrieved_at": "2026-11-16T02:24:11.248Z",
+        "retrieved_at": "2026-11-16T04:24:05.000Z",
         "fields": [
           "links"
         ]
-      },
-      "keep_open": [
-        67
-      ]
+      }
     }
   ]
 }
