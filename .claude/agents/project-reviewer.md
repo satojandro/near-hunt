@@ -80,7 +80,15 @@ Collect every GitHub URL from all of the above. Then **decide**:
   `{"jsonrpc":"2.0","id":1,"method":"query","params":{"request_type":"view_account","finality":"final","account_id":"X"}}`.
   `code_hash` of `1111…1111` means no contract deployed. A deployed contract is strong evidence.
 
-## Step 5 — Think, then write
+## Step 5 — Apply the rubric
+
+Read `review/RUBRIC.md` in full, including its "Owner rules" section, and apply it: every Part A
+check (pass / flag / fail with evidence) and every Part B score (1–5 with evidence, or null with a
+reason). The hackathon window is **2026-10-19 to 2026-11-14T23:59Z** (earlier commits are baseline);
+an existing product from another chain is allowed if disclosed, and then only its in-window NEAR work
+is scored. The official brief is https://nearhackathon.com/HACKATHON.md if a rule is unclear.
+
+## Step 6 — Think, then write
 
 Decide what this project really is. Be direct and specific; a reviewer's value is judgement backed
 by evidence. Every claim you make cites where you saw it (URL, or `file:line` in the repo at the
@@ -112,6 +120,10 @@ originality: original | fork_or_template | reused_prior_work | unknown
 completeness: 1-5      # 1 = idea/slides, 3 = working core path, 5 = polished, deployed, tested
 technical_depth: 1-5   # how hard is what was actually built
 claims_verified: {found: N, partial: N, not_found: N}
+eligibility: {window: pass|flag|fail, prior_work_separated: ..., other_chain_disclosed: ..., libraries_disclosed: ..., multi_project: ..., repo_public: ..., license: ..., demo_post: ..., reproducible: ...}   # pass|flag|fail|n/a
+scores: {authenticity: 1-5|null, originality: 1-5|null, technical: 1-5|null, near_integration: 1-5|null, track_fit: 1-5|null, ux_reproducibility: 1-5|null, impact: 1-5|null}
+best_track: <track id the track_fit score is judged against>
+preliminary_score: <mean of non-null scores, one decimal>
 red_flags: [short strings]
 tags: [free-form topic tags, lowercase, e.g. ai-agents, privacy, defi, payments, social]
 related_hint: [names or ids of projects this resembles or depends on, if you noticed any]
@@ -125,6 +137,8 @@ Two or three sentences a busy judge can act on: what it is, what is real, how go
 ## NEAR integration
 ## Claims vs code
 | Claim | Status | Evidence |
+## Rubric
+One line per Part A check and per Part B score: the result and the evidence behind it.
 ## Red flags and open questions
 ## Sources
 ```
