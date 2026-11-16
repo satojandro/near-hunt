@@ -7,6 +7,7 @@ import {
   resolveLinks,
   resolveTco,
   tcoUrlsFromText,
+  noteFromPage,
 } from '../scripts/capture-threads.mjs';
 
 /**
@@ -178,4 +179,22 @@ test('a post whose only link is its own media records no links', async (t) => {
 
   const result = await captureThread('1900000000000000003');
   assert.deepEqual(result.links, []);
+});
+
+test('a long-form post keeps the links and body X only puts in the status page', () => {
+  // Shape taken from @AvbNear's submission: the syndication payload carries a 280-char stub and
+  // `note_tweet: {id}`; the real body and its entity set live in the page's embedded JSON.
+  const html = `x<script>{"__typename":"NoteTweet","entity_set":{"hashtags":[{"text":"NEARhackathon"}],
+    "urls":[{"display_url":"nearhunt.xyz","expanded_url":"http://nearhunt.xyz"},
+            {"display_url":"github.com/satojandro/nea…","expanded_url":"https://github.com/satojandro/near-hunt"}]},
+    "id":"Tm90ZVR3ZWV0OjE=","text":"I'm officially throwing my hat in the ring with NEAR Hunt.\\n\\nRepo: https://t.co/zs4DwaSJ8p"}</script>`;
+  const note = noteFromPage(html);
+  assert.deepEqual(note.urls.sort(), ['http://nearhunt.xyz', 'https://github.com/satojandro/near-hunt']);
+  assert.match(note.text, /throwing my hat in the ring/);
+  assert.ok(note.text.length > 'NEARhackathon'.length, 'the note body wins over a hashtag label');
+});
+
+test('a page with no NoteTweet yields nothing rather than a guess', () => {
+  assert.deepEqual(noteFromPage('<html><body>a short post</body></html>'), { text: null, urls: [] });
+  assert.deepEqual(noteFromPage(null), { text: null, urls: [] });
 });

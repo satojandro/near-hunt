@@ -1,0 +1,36 @@
+{
+ "source": "Owner-reported gap: submission 50af5821 'NEAR Hunt' is @AvbNear's own hackathon entry, posted as a long-form (Note) tweet. The syndication payload carries only a 280-character stub with `note_tweet: {id}`; the real body and its entity set — including `Repo: github.com/satojandro/near-hunt` and `nearhunt.xyz` — live in the status page's embedded JSON, which capture-threads.mjs now reads (noteFromPage). Links were probed before writing; the repository is verified with git ls-remote plus its README.",
+ "generated_at": "2026-11-16T07:40:00Z",
+ "results": [
+  {
+   "submission_id": "50af5821-eacd-43ad-ab80-e0505c1b1857",
+   "status": "ok",
+   "issue": "owner report (no GitHub issue)",
+   "repository_url": "https://github.com/satojandro/near-hunt",
+   "repository_source": "https://x.com/AvbNear/status/2121745268538511660",
+   "repository_basis": ["builder", "note-tweet-entity", "readme"],
+   "repository_verified": true,
+   "repository_verified_at": "2026-11-16T07:40:00Z",
+   "links": [
+    {
+     "url": "https://nearhunt.xyz",
+     "kind": "website",
+     "label": "Website",
+     "source_post_id": "2121745268538511660",
+     "check": { "verdict": "live", "http_status": 200, "checked_at": "2026-11-16T07:40:00Z" }
+    }
+   ],
+   "description": "I'm officially throwing my hat in the ring entering #NEARhackathon with NEAR Hunt - the Product Hunt for NEAR\n\nNEAR Hunt is the place to discover ALL hackathon submissions (2200+), have discussion and upvote.\n\nCool features:\n- Authenticate with your Near.social profile\n- Claim project with Github OAuth\n- Give a skill.md file to your agent ;)\n- Open Data: no smart contracts(!). Just Key-value rows on a NEAR account calling fast data_kv\n\nLive now: https://nearhunt.xyz\nRepo: https://github.com/satojandro/near-hunt\n\nherrow @NEARProtocol",
+   "enrichment": {
+    "method": "x-thread",
+    "sources": [
+     "https://x.com/AvbNear/status/2121745268538511660",
+     "https://nearhunt.xyz",
+     "https://github.com/satojandro/near-hunt"
+    ],
+    "retrieved_at": "2026-11-16T07:40:00Z",
+    "fields": ["description", "repository_url", "links"]
+   }
+  }
+ ]
+}

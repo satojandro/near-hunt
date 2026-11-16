@@ -246,7 +246,7 @@ export async function captureThread(postId, { refresh = false, log = () => {}, f
   // the top-level `links`, which `scripts/enrich.mjs:mergeThread` already merges as an author post.
   // Before this, the submitted post was read for its author and thrown away, so a repository in
   // the post itself was never seen — only one in a reply was.
-  const focalLinks = await resolveLinks(focal, { fetchImpl });
+  let focalLinks = await resolveLinks(focal, { fetchImpl });
 
   let html;
   try {
@@ -254,6 +254,10 @@ export async function captureThread(postId, { refresh = false, log = () => {}, f
   } catch (err) {
     return { status: `page-failed:${err.message}`, author, posts: [], links: focalLinks };
   }
+
+  // A long-form post keeps its real body — and its links — outside the syndication payload.
+  const note = noteFromPage(html);
+  if (note.urls.length) focalLinks = [...new Set([...focalLinks, ...note.urls])];
 
   const ids = replyIdsFromPage(html, postId);
   const posts = [];
@@ -272,14 +276,58 @@ export async function captureThread(postId, { refresh = false, log = () => {}, f
   }
   // Thread order: the reply chain, as X lists it.
   posts.sort((a, b) => (BigInt(a.id) < BigInt(b.id) ? -1 : 1));
+  // The long-form body of the submitted post belongs at the head of the chain: it is the same
+  // author and the same thread, and it is the only place the full description exists.
+  const chain = note.text && note.text.length > String(focal?.text ?? '').length
+    ? [{ id: postId, author, text: note.text, links: [] }, ...posts]
+    : posts;
   return {
-    status: captureStatus({ listed: ids.length, read, own: posts.length }),
+    status: captureStatus({ listed: ids.length, read, own: chain.length }),
     author,
-    posts,
+    posts: chain,
     links: focalLinks,
     listed: ids.length,
     read,
   };
+}
+
+/**
+ * The long-form ("Note") version of a post, read from the status page it is already fetching.
+ *
+ * X's syndication payload gives a note tweet a 280-character `text`, an `entities` list covering
+ * only that stub, and `note_tweet: {id}` — the full body, with its own `entity_set.urls`, lives in
+ * the status page's embedded GraphQL JSON. Ignoring it loses exactly the links a long submission
+ * puts at the end of the post: `@AvbNear`'s NEAR Hackathon entry ended with `nearhunt.xyz` and
+ * `Repo: github.com/satojandro/near-hunt`, and the pipeline saw neither, publishing a record with
+ * no repository and a 250-character description.
+ *
+ * @param {string} html the status page
+ * @returns {{text: string|null, urls: string[]}} empty when the page carries no NoteTweet
+ */
+export function noteFromPage(html) {
+  const flat = String(html ?? '').replace(/\\+"/g, '"');
+  const at = flat.indexOf('"__typename":"NoteTweet"');
+  if (at === -1) return { text: null, urls: [] };
+  const window = flat.slice(at, at + 20000);
+  const urls = [];
+  for (const m of window.matchAll(/"expanded_url":"(https?:\/\/[^"]+)"/g)) {
+    // "…" is X's own truncation of a display name, never part of a URL we want.
+    if (!m[1].includes('…')) urls.push(m[1]);
+  }
+  // The longest `text` in the window is the note body: the shorter ones are hashtag and mention
+  // labels inside `entity_set` ("NEARhackathon" came back first when this took the first match).
+  let text = null;
+  for (const t of window.matchAll(/"text":"((?:[^"\\]|\\.)*)"/g)) {
+    try {
+      const value = JSON.parse(`"${t[1]}"`);
+      // Whichever depth of escaping the page used, a parsed body must not keep literal \n.
+      const clean = typeof value === 'string' ? value.replace(/\\+n/g, '\n') : value;
+      if (typeof clean === 'string' && (!text || clean.length > text.length)) text = clean;
+    } catch {
+      // not a JSON string; skip
+    }
+  }
+  return { text, urls: [...new Set(urls)].filter((u) => !isXPostUrl(u)) };
 }
 
 async function main() {

@@ -817,6 +817,10 @@ disabled by GitHub, 403) and #30/#36 (description text) were commented and left 
 
    Transaction: `EW9fDTwZc4z7LPUMQFXDvrhqRPHxve8XRG1pAEojkazP`. `verified: 1/1`.
 
+66. **Long-form (Note) posts: the body and its links were never read, 2026-11-16.** `@AvbNear`'s own hackathon entry (`project/50af5821`, "NEAR Hunt") was published with no repository, a `near.social` "website" and a 250-character description. The cause was not the tweet: X serves a long post as a 280-character **stub** with `note_tweet: {id}`, so `entities.urls` covers only the stub while the real body — `Live now: nearhunt.xyz`, `Repo: github.com/satojandro/near-hunt` — sits in the status page's embedded GraphQL JSON that `capture-threads.mjs` was already downloading for reply ids. `noteFromPage()` now parses that `NoteTweet` object for its entity URLs and its body, and the body joins the author's chain so the description is the full post; `cleanTweetText` also collapses the literal `\n` escapes such a body carries. A 25-record sample of repo-less records with an X `demo_url` found **12 long-form posts and 10 repositories only visible in the note** — ~40% of that gap was this bug. The hourly `capture-threads --gaps-only` step self-heals it from the next cycle on. 459 tests.
+
+   Its own record was corrected with the recovered values: `repository_url https://github.com/satojandro/near-hunt` (git `ls-remote` resolves, README "# NEAR Hunt"), website `https://nearhunt.xyz` (probed 200) and the full 538-character body — tx `3Boc2SDmkGytyp7fcKWeNYhsrj7Mkz4ARhTRJ6QGGZzu`, `verified: 1/1`.
+
 ## Decisions taken
 
 | Decision | Choice | Why |
