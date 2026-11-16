@@ -79836,5 +79836,241 @@
       "https://doorstep-near-live.onrender.com",
       "https://doorstep-near-live.onrender.com/"
     ]
+  },
+  "03af8803-8eec-4ed1-b317-2f6dad9428cd": {
+    "author": "0xKenichi",
+    "status": "ok",
+    "crawled_at": "2026-11-16T09:59:26.505Z",
+    "listed": 3,
+    "read": 3,
+    "posts": [
+      {
+        "id": "2120330822389534890",
+        "author": "0xKenichi",
+        "text": "@NEARProtocol Feedback welcome. Should showing up be enough to earn a vote? @NearLegion @NearBuilders",
+        "links": []
+      },
+      {
+        "id": "2121228479689805976",
+        "author": "0xKenichi",
+        "text": "@NEARProtocol New look, same contract. The app can now replay any past block from chain state, so this cut shows Ada's real path at the exact blocks it happened. Live: https://t.co/NyVh4oyisB https://t.co/uh9HM9jLEH",
+        "links": [
+          "https://opendoor-door-vw50k1.testnet.page",
+          "https://opendoor-door-vw50k1.testnet.page/"
+        ],
+        "media": [
+          {
+            "type": "video",
+            "media_url_https": "https://pbs.twimg.com/amplify_video_thumb/2121228315801325568/img/l3h6c9q24AM5unrh.jpg",
+            "original_info": {
+              "focus_rects": [],
+              "height": 1080,
+              "width": 1920
+            },
+            "video_info": {
+              "aspect_ratio": [
+                16,
+                9
+              ],
+              "duration_millis": 94944,
+              "variants": [
+                {
+                  "content_type": "application/x-mpegURL",
+                  "url": "https://video.twimg.com/amplify_video/2121228315801325568/pl/YJORL35H62SxmBMx.m3u8?tag=14"
+                },
+                {
+                  "bitrate": 288000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121228315801325568/vid/avc1/480x270/uYa8uIFBvkco-17K.mp4?tag=14"
+                },
+                {
+                  "bitrate": 832000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121228315801325568/vid/avc1/640x360/KuuYZ4sGd7BS4yAT.mp4?tag=14"
+                },
+                {
+                  "bitrate": 2176000,
+                  "content_type": "video/mp4",
+                  "url": "https://video.twimg.com/amplify_video/2121228315801325568/vid/avc1/1280x720/Jf0oD0wAR7VfbZZl.mp4?tag=14"
+                }
+              ]
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      }
+    ],
+    "links": [
+      "https://opendoor-door-vw50k1.testnet.page",
+      "https://opendoor-door-vw50k1.testnet.page/"
+    ]
+  },
+  "1768d6e9-36aa-4240-ba13-50260a2679b4": {
+    "author": "emperorsixpacks",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-16T09:59:27.980Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": []
+  },
+  "87c3d095-b9eb-4927-98c6-84c7ce440d6f": {
+    "author": "irvinxyz",
+    "status": "no-author-replies",
+    "crawled_at": "2026-11-16T09:59:31.004Z",
+    "listed": 2,
+    "read": 2,
+    "posts": [],
+    "links": []
+  },
+  "d1fd329c-4e0f-4696-bb72-de86e575a5a6": {
+    "author": "Lambada_eth",
+    "status": "no-author-replies",
+    "crawled_at": "2026-11-16T09:59:35.147Z",
+    "listed": 3,
+    "read": 3,
+    "posts": [],
+    "links": [
+      "https://ftf-game.xyz",
+      "https://github.com/SpacexCeo/forget-to-foresee",
+      "https://ftf-game.xyz/"
+    ]
+  },
+  "d94ab515-6b1e-4000-b030-05587feb2d0d": {
+    "author": "0xKenichi",
+    "status": "ok",
+    "crawled_at": "2026-11-16T09:59:38.788Z",
+    "listed": 2,
+    "read": 2,
+    "posts": [
+      {
+        "id": "2121221962659705202",
+        "author": "0xKenichi",
+        "text": "@NEARProtocol Every number rebuilds from public data with one command, and the dashboard recomputes live on each visit. The full thesis lists the evidence against it too. What would change your mind on NEAR? @NearLegion @NearBuilders",
+        "links": []
+      },
+      {
+        "id": "2121228738713006420",
+        "author": "0xKenichi",
+        "text": "@NEARProtocol The dashboard now reads like a front page. Same numbers, recomputed live on every visit: https://t.co/MNn9uVPRc4 https://t.co/3OKCVDMqfZ",
+        "links": [
+          "https://near-settlement-thesis.testnet.page",
+          "https://near-settlement-thesis.testnet.page/"
+        ],
+        "media": [
+          {
+            "type": "photo",
+            "media_url_https": "https://pbs.twimg.com/media/HXAeOhcWQAEx072.jpg",
+            "original_info": {
+              "focus_rects": [
+                {
+                  "h": 1344,
+                  "w": 2400,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1400,
+                  "w": 1400,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1400,
+                  "w": 1228,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 1400,
+                  "w": 700,
+                  "x": 69,
+                  "y": 0
+                },
+                {
+                  "h": 1400,
+                  "w": 2400,
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "height": 1400,
+              "width": 2400
+            },
+            "ext_media_availability": {
+              "status": "Available"
+            }
+          }
+        ]
+      }
+    ],
+    "links": [
+      "https://near-settlement-thesis.testnet.page",
+      "https://near-settlement-thesis.testnet.page/"
+    ]
+  },
+  "c0f31af4-ecee-4286-8e6a-f2bdcb67150e": {
+    "author": "man0_space",
+    "status": "ok",
+    "crawled_at": "2026-11-16T09:59:41.084Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [
+      {
+        "id": "2121877655666499995",
+        "author": "man0_space",
+        "text": "@x402 @NEARProtocol sorry, the mention was mangled 🥲",
+        "links": []
+      }
+    ],
+    "links": [
+      "https://youtube.com/watch?v=nn0ZIRpjf_I"
+    ]
+  },
+  "16e30887-ec73-47e2-b621-3e30162d8558": {
+    "author": "manisai001",
+    "status": "no-author-replies",
+    "crawled_at": "2026-11-16T09:59:43.349Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [],
+    "links": []
+  },
+  "ecfe9f01-e3b6-4446-bb86-a3a925004e72": {
+    "author": "DOWNUNDERMJ",
+    "status": "ok",
+    "crawled_at": "2026-11-16T09:59:46.664Z",
+    "listed": 1,
+    "read": 1,
+    "posts": [
+      {
+        "id": "2121754825985843362",
+        "author": "DOWNUNDERMJ",
+        "text": "2/2\n\nHow to try it (NEAR testnet) \n\n1️⃣ Passport Home \nhttps://t.co/8D7GW2Pebb\n\n2️⃣ Partner apps built on it\nSodax: https://t.co/0R2JA9x0Qh\nStamps: https://t.co/6mXSgsbmgL\n\n3️⃣ Want to build your own dapp? The partner console is invite only. DM us for access\nhttps://t.co/9Hhguv6SfB",
+        "links": [
+          "https://hana-id-auth-sandbox-dev.tingtc.workers.dev/home",
+          "https://sdx-demo-1cov6t4uo9.tingtc.workers.dev/",
+          "https://hana-id-stamps-sandbox-dev.tingtc.workers.dev/",
+          "https://hana-id-console-sandbox-dev.tingtc.workers.dev/"
+        ]
+      }
+    ],
+    "links": [
+      "https://github.com/Hana-Technology/hana-id"
+    ]
+  },
+  "8963d294-0782-49db-b947-ff7f48638256": {
+    "author": "xxzuyee",
+    "status": "no-replies-listed",
+    "crawled_at": "2026-11-16T09:59:48.334Z",
+    "listed": 0,
+    "read": 0,
+    "posts": [],
+    "links": [
+      "https://citario.vercel.app",
+      "https://citario.vercel.app/"
+    ]
   }
 }

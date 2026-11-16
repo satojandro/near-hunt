@@ -1,21 +1,21 @@
 {
-  "generated_at": "2026-11-16T08:49:39.594Z",
+  "generated_at": "2026-11-16T10:29:56.407Z",
   "account": "nearhunt.near",
   "note": "Flags only. Nothing is merged, hidden or written. `clusters`/`groups` share an identifying URL (possible duplicates). `weak_signals` share only a name or an X account and are usually different projects.",
   "summary": {
-    "submissions": 2438,
-    "on_chain": 2438,
-    "pending": 0,
-    "shared_urls": 15,
+    "submissions": 2453,
+    "on_chain": 2443,
+    "pending": 10,
+    "shared_urls": 16,
     "by_kind": {
       "x-post": 7,
-      "repository": 2,
+      "repository": 3,
       "url": 6
     },
     "clusters": 11,
-    "submissions_flagged": 33,
+    "submissions_flagged": 34,
     "same_name_groups": 91,
-    "same_x_account_groups": 236
+    "same_x_account_groups": 239
   },
   "clusters": [
     {
@@ -76,6 +76,11 @@
           "on_chain": true
         },
         {
+          "submission_id": "d1fd329c-4e0f-4696-bb72-de86e575a5a6",
+          "name": "Forget to Foresee",
+          "on_chain": true
+        },
+        {
           "submission_id": "beee17c1-d0ee-4fdc-8531-72e51daad3b4",
           "name": "conch",
           "on_chain": true
@@ -97,6 +102,10 @@
         }
       ],
       "shared": [
+        {
+          "kind": "repository",
+          "key": "github.com/spacexceo/forget-to-foresee"
+        },
         {
           "kind": "url",
           "key": "near.social"
@@ -566,6 +575,28 @@
       ]
     },
     {
+      "key": "github.com/spacexceo/forget-to-foresee",
+      "kind": "repository",
+      "submissions": [
+        {
+          "submission_id": "4dbfa08c-f465-4800-8432-8228340a38d8",
+          "name": "$YAP | Proof of yap, on NEAR.Social",
+          "on_chain": true,
+          "fields": [
+            "repository_url"
+          ]
+        },
+        {
+          "submission_id": "d1fd329c-4e0f-4696-bb72-de86e575a5a6",
+          "name": "Forget to Foresee",
+          "on_chain": true,
+          "fields": [
+            "repository_url"
+          ]
+        }
+      ]
+    },
+    {
       "key": "near.social",
       "kind": "url",
       "submissions": [
@@ -921,11 +952,6 @@
             "on_chain": true
           },
           {
-            "submission_id": "a832f6b8-b553-4e63-b996-91c082cc7417",
-            "name": "Mandate",
-            "on_chain": true
-          },
-          {
             "submission_id": "c4f4956e-02e4-4fd4-b6dd-6e8582b8020a",
             "name": "Mandate",
             "on_chain": true
@@ -994,6 +1020,36 @@
             "submission_id": "e11d68a3-2e49-42c5-ad25-9f7e91039300",
             "name": "Tripwire",
             "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "veil",
+        "submissions": [
+          {
+            "submission_id": "671a3233-b973-4fb0-8baa-966f2590ae0b",
+            "name": "VEIL",
+            "on_chain": true
+          },
+          {
+            "submission_id": "d36521aa-06a3-47bc-8a13-50312a92c831",
+            "name": "Veil",
+            "on_chain": true
+          },
+          {
+            "submission_id": "dcfca57e-8fb8-4ea0-88d2-ea0b0fc801d8",
+            "name": "Veil",
+            "on_chain": true
+          },
+          {
+            "submission_id": "ff82502b-0e5a-4e6a-aec5-8668e01354e2",
+            "name": "Veil",
+            "on_chain": true
+          },
+          {
+            "submission_id": "bd08f250-aa42-4572-aa8a-fa005384cf40",
+            "name": "Veil",
+            "on_chain": false
           }
         ]
       },
@@ -1093,31 +1149,6 @@
           {
             "submission_id": "f77b7fc2-ffa1-4724-8e0f-c934f3e50134",
             "name": "Tender",
-            "on_chain": true
-          }
-        ]
-      },
-      {
-        "key": "veil",
-        "submissions": [
-          {
-            "submission_id": "671a3233-b973-4fb0-8baa-966f2590ae0b",
-            "name": "VEIL",
-            "on_chain": true
-          },
-          {
-            "submission_id": "d36521aa-06a3-47bc-8a13-50312a92c831",
-            "name": "Veil",
-            "on_chain": true
-          },
-          {
-            "submission_id": "dcfca57e-8fb8-4ea0-88d2-ea0b0fc801d8",
-            "name": "Veil",
-            "on_chain": true
-          },
-          {
-            "submission_id": "ff82502b-0e5a-4e6a-aec5-8668e01354e2",
-            "name": "Veil",
             "on_chain": true
           }
         ]
@@ -2228,6 +2259,21 @@
         ]
       },
       {
+        "key": "sphinx",
+        "submissions": [
+          {
+            "submission_id": "2020c576-7df7-4d5c-8251-7b693b74b1b9",
+            "name": "Sphinx",
+            "on_chain": true
+          },
+          {
+            "submission_id": "2d524a1d-09b4-489d-aa2c-9696515e597d",
+            "name": "SPHINX",
+            "on_chain": false
+          }
+        ]
+      },
+      {
         "key": "stipend",
         "submissions": [
           {
@@ -2328,21 +2374,6 @@
           {
             "submission_id": "fceb9819-efb9-4a11-9ffc-41dcbbaa6137",
             "name": "tacit",
-            "on_chain": true
-          }
-        ]
-      },
-      {
-        "key": "totem",
-        "submissions": [
-          {
-            "submission_id": "1fddefea-c1de-46da-9640-d2da431e3d40",
-            "name": "TOTEM",
-            "on_chain": true
-          },
-          {
-            "submission_id": "6b1cd1d9-d0bc-4a8d-8c37-41ad1f4df161",
-            "name": "TOTEM",
             "on_chain": true
           }
         ]
@@ -2750,6 +2781,21 @@
         ]
       },
       {
+        "key": "0xkenichi",
+        "submissions": [
+          {
+            "submission_id": "03af8803-8eec-4ed1-b317-2f6dad9428cd",
+            "name": "Open Door",
+            "on_chain": true
+          },
+          {
+            "submission_id": "d94ab515-6b1e-4000-b030-05587feb2d0d",
+            "name": "NEAR Settlement Thesis",
+            "on_chain": true
+          }
+        ]
+      },
+      {
         "key": "0xkiddok",
         "submissions": [
           {
@@ -3074,7 +3120,7 @@
           },
           {
             "submission_id": "dc8e5e43-695c-4d32-b69c-e0aaabfca104",
-            "name": "Agent-Exti",
+            "name": "Agent-Exit",
             "on_chain": true
           }
         ]
@@ -3795,6 +3841,21 @@
           {
             "submission_id": "955e4beb-ca67-43ab-90f7-321a6bd69713",
             "name": "NearProphet",
+            "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "emperorsixpacks",
+        "submissions": [
+          {
+            "submission_id": "1768d6e9-36aa-4240-ba13-50260a2679b4",
+            "name": "persistara",
+            "on_chain": true
+          },
+          {
+            "submission_id": "c55cddc3-e6c5-4060-a6c2-76d7ea094a3d",
+            "name": "3rike pay",
             "on_chain": true
           }
         ]
@@ -5881,6 +5942,21 @@
             "submission_id": "7ffd044b-e45d-4942-a79d-bd0ca9d31e0e",
             "name": "QUEUE",
             "on_chain": true
+          }
+        ]
+      },
+      {
+        "key": "xxzuyee",
+        "submissions": [
+          {
+            "submission_id": "67422bd7-68b0-43a0-bee4-08a8728e39f0",
+            "name": "Sentraio",
+            "on_chain": true
+          },
+          {
+            "submission_id": "8963d294-0782-49db-b947-ff7f48638256",
+            "name": "Citario",
+            "on_chain": false
           }
         ]
       },
