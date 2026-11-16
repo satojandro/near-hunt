@@ -47,3 +47,6 @@ next-env.d.ts
 
 # agent worktrees (local only)
 .claude/worktrees/
+
+# project-review agent output (private until the owner decides; see .claude/agents/project-reviewer.md)
+review/assessments/
