@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { planImport, newRecord, keyFor } from '../lib/import-plan.mjs';
 import {
   signoff, describeSignoff, planEntry, insertPlanEntry, lastPlanNumber, AUTO_SIGN_CAPS,
-  signoffCorrections, describeCorrections,
+  signoffCorrections, describeCorrections, closableIssues,
 } from '../lib/auto-sign.mjs';
 
 const NOW = '2026-11-14T00:00:00.000Z';
@@ -299,4 +299,12 @@ test('corrections: the report line names the shape and the refusal', () => {
     transactions: 1,
   }));
   assert.match(line, /^auto-sign allowed: 1 record\(s\) = 1 key\(s\), 1 transaction\(s\) \(1 repository, 0 links\)/);
+});
+
+test('corrections: an issue whose prose still waits for the owner is answered but not closed', () => {
+  // #66 asked for a repository (signable) and a description (owner-only): closing it would tell the
+  // builder the whole report was handled.
+  assert.deepEqual(closableIssues({ issue_numbers: [66, 67], keep_open: [66] }), [67]);
+  assert.deepEqual(closableIssues({ issue_number: 56 }), [56]);
+  assert.deepEqual(closableIssues({ issue_numbers: ['63'], keep_open: [63] }), []);
 });

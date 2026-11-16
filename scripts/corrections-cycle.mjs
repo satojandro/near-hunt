@@ -25,7 +25,7 @@ import { promisify } from 'node:util';
 import { DEFAULT_ACCOUNT, readProjects } from '../lib/kv.mjs';
 import { planImport, toBatches } from '../lib/import-plan.mjs';
 import {
-  describeCorrections, insertPlanEntry, lastPlanNumber, planEntryCorrections, signoffCorrections,
+  closableIssues, describeCorrections, insertPlanEntry, lastPlanNumber, planEntryCorrections, signoffCorrections,
 } from '../lib/auto-sign.mjs';
 
 const execFileAsync = promisify(execFile);
@@ -248,9 +248,14 @@ async function main() {
     const what = [entry.repository_url && 'the repository', entry.links?.length && 'the links'].filter(Boolean).join(' and ');
     const body = `Landed on chain — ${what || 'the correction'} is now live at ${url} (tx \`${txs[0] ?? 'see commit'}\`). ` +
       'The listing reads from `nearhunt.near` on mainnet; the page picks it up within about a minute.';
+    const closable = new Set(closableIssues(entry));
     for (const n of entryIssues) {
       try {
         await run('gh', ['issue', 'comment', String(n), '--body', body], 120_000);
+        if (!closable.has(Number(n))) {
+          lines.push(`  · #${n} answered, kept open (its prose asks still wait for the owner)`);
+          continue;
+        }
         await run('gh', ['issue', 'close', String(n), '--reason', 'completed'], 120_000);
         lines.push(`  ✓ #${n} answered and closed`);
       } catch (err) {

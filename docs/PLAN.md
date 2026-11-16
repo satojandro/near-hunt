@@ -785,6 +785,12 @@ disabled by GitHub, 403) and #30/#36 (description text) were commented and left 
 
    **Read back:** 2438 project rows; 9/10 of the corrected records now carry a repository and 7/10 carry links. The importer's re-run prints `new: 0, changed: 0`; `npm run validate:schema` 2438/2438; `npm test` 451/451.
 
+60. **Owner-approved enrichment batch, 2026-11-16 — 404 key(s), 10 transaction(s).** Not the scheduled cycle: the backlog the post-submission shutdown froze was already over the guard's caps (405 keys at 11:06 on 15 Nov, then 10 transactions at 12:46), so it refused both runs and nothing was signed. The owner approved the manual run, and `node scripts/import.mjs --enrichment data/enrichment/proposal.json --execute --yes` wrote it: 385 null-fills (description, media, repository_url, links) and 19 replacements, of which 15 are feed-owned `demo_url`/`tracks` and 6 are `enrichment` provenance re-stamps that only add a source post. `verified: 404/404`; the importer's re-run prints `new: 0, changed: 0`; `npm run validate:schema` 2438/2438; `npm test` 451/451.
+
+   Transactions: `GbmctwamERi2Svr7CdJ2MgnQvgq53Wj2bHxXh6AQPz5q`, `FooHREXb37Y6PFLjENTHm5ZoagbDoeT58VDwCMgwWh8j`, `BZeRcPN45AoCuijtkHacctz16zdXmk2rmCR1zEhtUVxq`, `GzKvzT5NJCSm6PZMQVtKCYA7MFJRz9LKbkmEak6rTMnT`, `EmQmVrykrrC8XgVjuxidPKYooKz6SDMK3dHkAuBBwgeZ`, `GBdQry63wjbJcuJCnjpAvuaMUEgrjWxjnJinh2vWNNM6`, `6wXnhJm7TUBbQkrogULvwKFmj4RSwhuUk5AYZM6fEgah`, `XxYSe6S5RheGWAgKLN3mr7ZDTbp7JshdrcqRAunnU8B`, `4qjvjRicUUyaGRthefXxGzkn4Wdr1icXhCMkzPkpfsjw`, `5fZ6tq4gWax1WQFmVLEYKZpGeZSYv5tEn4rv6Uf5Wtm4`. Unenriched records 467 → 76 (39 with an X `demo_url`, of which 37 had their `demo_url` changed by the feed after the 01:11Z build; 37 non-X demo URLs are feed fields by design).
+
+   The same commit carries a fix to the corrections pipeline: `closableIssues` (`lib/auto-sign.mjs`) plus a `keep_open` field, so a record that answers several issues closes only the ones whose whole ask landed. Before it, the run that closed #66, #63 and #62 reported "landed" and closed threads whose description text still waits for the owner; all three were reopened.
+
 ## Decisions taken
 
 | Decision | Choice | Why |

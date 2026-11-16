@@ -203,6 +203,12 @@ node scripts/corrections-cycle.mjs --sign    # sign it, answer and close the iss
   that already has `links` can only gain an entry that way, and the field allowlist above is what
   keeps that flag from becoming an overwrite. A repository that cannot be corroborated (disabled,
   404, unreachable) leaves the issue open with a comment saying why.
+- **A record can answer several issues, and not all of them are done when it lands.** One issue may
+  ask for a repository (signable) and a description (owner-only). Name it in `issue_numbers` so it
+  still gets the "landed" comment, and add its number to `keep_open`: `closableIssues`
+  (`lib/auto-sign.mjs`) then closes only the issues whose whole ask went live. Closing all of them
+  regresses a one-issue-per-report builder into thinking their description was applied, which is the
+  failure that field exists to prevent.
 - After the write it answers each landed issue with the transaction hash and the page URL, closes it
   as completed, appends a numbered `docs/PLAN.md` entry, and commits + pushes.
 - Description and media corrections are never signed here. The job comments on those issues and
