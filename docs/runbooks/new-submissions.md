@@ -192,6 +192,13 @@ node scripts/corrections-cycle.mjs --sign    # sign it, answer and close the iss
   each issue, resolves the submission id, and corroborates: a repository needs `git ls-remote` plus a
   README that names the project (or links the record's own demo post); a link needs a probe result.
   The file is per-batch — overwrite it.
+- **A `403` from `git ls-remote` is not the same answer as "not public".** `lib/repo-check.mjs` asks
+  git first and, when git refuses, falls back to the repository's REST metadata: `private: false`,
+  `disabled: false` and a `default_branch` mean a reader can open it, which is what the listing
+  promises. `NathanOyewole/sentinel` is the case that forced this — its page, raw README and API all
+  served it while every clone said `Repository is disabled`. Such a repository is published with the
+  refusal recorded in `repository_basis` (`git-transport-403`), never hidden; a `403` with a 404 API
+  or a 404 README stays dead and the issue stays open.
 - `signoffCorrections` (`lib/auto-sign.mjs`) is the boundary, and it is deliberately narrower than the
   import guard because this is the only unattended write that may *replace* a stored value. It allows
   only `repository_url`, `links` and `enrichment` to change (plus the feed's own `tracks`/`demo_url`),
