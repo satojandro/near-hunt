@@ -74280,10 +74280,16 @@
   "50af5821-eacd-43ad-ab80-e0505c1b1857": {
     "author": "AvbNear",
     "status": "ok",
-    "crawled_at": "2026-11-15T00:58:50.316Z",
+    "crawled_at": "2026-11-16T07:23:10.486Z",
     "listed": 2,
     "read": 2,
     "posts": [
+      {
+        "id": "2121745268538511660",
+        "author": "AvbNear",
+        "text": "I'm officially throwing my hat in the ring entering #NEARhackathon with NEAR Hunt - the Product Hunt for NEAR \n\nNEAR Hunt is the place to discover ALL hackathon submissions (2200+), have discussion and upvote.\n\nCool features:\n- Authenticate with https://t.co/YgWZfPigmH profile\n- Claim project with Github OAuth\n- Give a skill.md file to your agent ;)\n- Open Data: no smart contracts(!). Just Key-value rows on a NEAR account calling fast data_kv\n\nLive now: https://t.co/boHW77cxrq\nRepo: https://t.co/zs4DwaSJ8p\n\nherrow @NEARProtocol",
+        "links": []
+      },
       {
         "id": "2121755397233283298",
         "author": "AvbNear",
@@ -74338,7 +74344,10 @@
     ],
     "links": [
       "https://Near.social",
-      "https://near.social/"
+      "https://near.social/",
+      "http://Near.social",
+      "http://nearhunt.xyz",
+      "https://github.com/satojandro/near-hunt"
     ]
   },
   "51e9b9a4-9a1c-4504-a398-b566461a2644": {

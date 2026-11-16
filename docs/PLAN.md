@@ -821,6 +821,12 @@ disabled by GitHub, 403) and #30/#36 (description text) were commented and left 
 
    Its own record was corrected with the recovered values: `repository_url https://github.com/satojandro/near-hunt` (git `ls-remote` resolves, README "# NEAR Hunt"), website `https://nearhunt.xyz` (probed 200) and the full 538-character body — tx `3Boc2SDmkGytyp7fcKWeNYhsrj7Mkz4ARhTRJ6QGGZzu`, `verified: 1/1`.
 
+67. **Unattended batch, 2026-11-16 — 5 new submission(s) and 36 null-fill(s), 41 key(s).** Signed by the scheduled cycle under the owner's standing authorization (14 Nov 2026): creates and null-fills only, chain 2438 → 2443. The guard in `lib/auto-sign.mjs` passed with 1 null-fill(s), 37 feed-owned change(s) and 1 metadata change(s), and **no value another writer set was replaced**.
+
+   1 transaction(s): `FrAtZD3Pik64astCXGxcdVabiTM4oN8yZdD8EhAQmz9t`. `verified: 41/41`.
+
+   **Read back:** 2443 project rows; the 5 new records carry description 0/5, media 0/5, links 0/5, repository 0/5. The importer's re-run prints `new: 0, changed: 0`; `npm run validate:schema` 2443/2443; `npm test` 459/459.
+
 ## Decisions taken
 
 | Decision | Choice | Why |
