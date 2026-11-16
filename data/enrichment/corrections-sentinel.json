@@ -1,0 +1,27 @@
+{
+ "source": "Owner-chased correction #32 (Sentinel). GitHub's git transport answers 403 'Repository is disabled. Please ask the owner to check their account' to BOTH anonymous and token clone requests, while the same repository serves its web page (owner opened it), raw README (HTTP 200, '# Sentinel — AI Payment Security Layer') and REST metadata (private:false, disabled:false, archived:false, default_branch:main). The owner opened the page himself on 16 Nov and asked for it to be published, so the corroboration here is README + REST + a human viewing the page; the git-transport refusal is recorded in repository_basis rather than hidden.",
+ "generated_at": "2026-11-16T06:40:00Z",
+ "results": [
+  {
+   "submission_id": "171b08cc-8096-4605-928e-0dfbb4209e1a",
+   "status": "ok",
+   "issue": "https://github.com/satojandro/near-hunt/issues/32",
+   "issue_number": 32,
+   "repository_url": "https://github.com/NathanOyewole/sentinel",
+   "repository_source": "https://github.com/satojandro/near-hunt/issues/32",
+   "repository_basis": ["builder", "readme-raw-200", "rest-public", "owner-viewed-page", "git-transport-403"],
+   "repository_verified": true,
+   "repository_verified_at": "2026-11-16T06:40:00Z",
+   "enrichment": {
+    "method": "builder-issue",
+    "sources": [
+     "https://github.com/satojandro/near-hunt/issues/32",
+     "https://github.com/NathanOyewole/sentinel",
+     "https://x.com/NathanOyewole/status/2116976865646653840"
+    ],
+    "retrieved_at": "2026-11-16T06:40:00Z",
+    "fields": ["repository_url"]
+   }
+  }
+ ]
+}

@@ -809,6 +809,14 @@ disabled by GitHub, 403) and #30/#36 (description text) were commented and left 
 
    **Read back:** 2438 project rows; 2/2 of the corrected records now carry a repository and 1/2 carry links. The importer's re-run prints `new: 0, changed: 0`; `npm run validate:schema` 2438/2438; `npm test` 451/451.
 
+64. **Owner-approved prose corrections, 2026-11-16 — 10 record(s), 10 key(s), 1 transaction.** The 11 issues still open after batch 59 asked for **description or media text**, and the scheduled cycle may never sign those, so they sat until the owner approved one manual batch (`--updates-only --refresh-enriched --execute --yes`). `--refresh-enriched` is required because `enrichmentFragment` only fills an empty field: a description the pipeline had already set could not be replaced at all, which is why every scheduled run reported them as no-ops. Nine descriptions and one media swap were written with the builders' verbatim wording — #47 from the builder's clarifying comment (his issue body held the tagline "Porti for all"), #54 from the paragraph under his `Description:` label, #63 after dropping the already-landed repository/demo lines, #68 in full including the `### Live on NEAR` block his body had chopped with two failed video uploads (and one broken bridge link repaired to `lumoscore.com/bridge/near`), and #72 replacing the two feed-picked photos while keeping the record's video object byte-for-byte. #68 and #72 are one record, merged into one entry because the importer keys by `submission_id`. `verified: 10/10`; `validate:schema` 2438/2438; `npm test` 457/457.
+
+   Transaction: `EWNJDju5qwb3GfA37mFVKLMqTAsWvLdj4s1EjRsRTDGK`. Issues answered and closed: #30, #36, #47, #53, #54, #57, #62, #63, #67, #68, #72. The 34 redundant automated comments those threads had accumulated (up to 10 each, re-posting the same "waiting for the owner" essay every two hours) were deleted; builder replies were left untouched, and each thread now carries one comment.
+
+65. **Sentinel: the repository gate was wrong, not the repository, 2026-11-16 — 1 record, 1 key.** #32 could not be corroborated for three days because `git ls-remote` answers `403 Repository is disabled. Please ask the owner to check their account` for `NathanOyewole/sentinel` — while the same repository's page, raw README (`# Sentinel — AI Payment Security Layer`, HTTP 200) and REST metadata (`private:false, disabled:false, archived:false, default_branch:main`) all serve it, and the owner opened it in a browser. `repoIsPublic` (`lib/repo-check.mjs`, commit `6ed6dae`) now falls back to the REST metadata when git refuses, publishing only when the repository is public, enabled and has a branch; a `403` with a 404 API stays dead. Published with `git-transport-403` recorded in `repository_basis`.
+
+   Transaction: `EW9fDTwZc4z7LPUMQFXDvrhqRPHxve8XRG1pAEojkazP`. `verified: 1/1`.
+
 ## Decisions taken
 
 | Decision | Choice | Why |

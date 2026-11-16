@@ -1,0 +1,217 @@
+{
+ "source": "Owner-approved prose batch 2026-11-16T06:24:52.249205Z — every open Correction: issue that asks for description or media text (#30, #36, #47, #53, #54, #57, #62, #63, #67, #68, #72). Text is the builder's verbatim wording; #47 uses the builder's clarifying comment because the issue body held a tagline. #72 replaces the two feed-picked photos and keeps the video.",
+ "generated_at": "2026-11-16T06:24:52.249205Z",
+ "results": [
+  {
+   "submission_id": "bec43a1d-1eaf-47fc-9aec-4cf545a7af16",
+   "status": "ok",
+   "issue": "https://github.com/satojandro/near-hunt/issues/30",
+   "issue_number": 30,
+   "description": "EmployAI is an autonomous AI workforce for small businesses. The owner describes the business in plain words, and EmployAI (powered by NEAR AI) finds the repetitive work and proposes AI employees to handle it, each with clear duties and limits. Once approved, they work in the background: customer messages are answered from the owner's own catalogue, orders are captured for the owner to confirm, and complaints or refunds are escalated to the owner. Every automatic reply is safety-checked first, and the owner can review drafts or stop everything with a kill switch. Payments are guarded by a NEAR smart contract with spending caps and owner approval.",
+   "enrichment": {
+    "method": "builder-issue",
+    "sources": [
+     "https://github.com/satojandro/near-hunt/issues/30",
+     "https://github.com/theboyzikky/EmployAI"
+    ],
+    "retrieved_at": "2026-11-16T06:24:52.249205Z",
+    "fields": [
+     "description"
+    ]
+   }
+  },
+  {
+   "submission_id": "243638b6-ac95-42ea-ab89-b78f77b1b79c",
+   "status": "ok",
+   "issue": "https://github.com/satojandro/near-hunt/issues/36",
+   "issue_number": 36,
+   "description": "An AI agent that can send a transaction is one bad prompt away from draining an account. shit-1170 rex engine is the missing middle: the agent prepares a fully-verified transaction, the engine holds it, a human signs it in one page. The agent never holds a key.",
+   "enrichment": {
+    "method": "builder-issue",
+    "sources": [
+     "https://github.com/satojandro/near-hunt/issues/36",
+     "_No response_"
+    ],
+    "retrieved_at": "2026-11-16T06:24:52.249205Z",
+    "fields": [
+     "description"
+    ]
+   }
+  },
+  {
+   "submission_id": "6aa225c7-44a1-455d-b136-7b479788ec04",
+   "status": "ok",
+   "issue": "https://github.com/satojandro/near-hunt/issues/47",
+   "issue_number": 47,
+   "description": "Porti is an AI-assisted workspace built on NEAR that helps users research tokens, follow wallets and prepare transfers, swaps and staking actions for review and signing in their own wallets. It also includes Phone Pocket, a capped spending account with a web-based USSD simulator. The Phone Pocket demo is live on NEAR testnet and lets users send free test NEAR and verify transactions on NearBlocks.\n\nLive app: https://porti-near.hoymick240.workers.dev/\nGitHub: https://github.com/hoymick/porti-near",
+   "enrichment": {
+    "method": "builder-issue",
+    "sources": [
+     "https://github.com/satojandro/near-hunt/issues/47",
+     "https://x.com/dee_nftarmy/status/2121170601003868613?a=MnM3UJthsxf2tOCCt0g&s=20"
+    ],
+    "retrieved_at": "2026-11-16T06:24:52.249205Z",
+    "fields": [
+     "description"
+    ]
+   }
+  },
+  {
+   "submission_id": "d5f9c93a-e738-4d0a-855c-28c7842b0c8b",
+   "status": "ok",
+   "issue": "https://github.com/satojandro/near-hunt/issues/53",
+   "issue_number": 53,
+   "description": "One AI model can’t be great at everything, and stitching specialist AI tools together by hand is slow. You have to find each one, pay each one, check its work, and combine the results yourself.\n\nRook does it for you. You give it one task and a budget. It splits the task into parts it can check, hires the best specialist agent for each part from the NEAR AI Agent Market, checks every result, replaces any agent that falls short, and hands you one finished result. You see every agent and its price before anything starts, and you watch them work live.\n\nNEAR is how Rook hires and pays. Agents are hired over A2A and paid in USDC through x402, only when they deliver, so failed work costs nothing. Tasks can be funded from a NEAR Intents agent wallet you own, set up through the Agent API: you state your spending rules in the chat, like “max 2 USDC per task, ask me before each spend”, and NEAR enforces them on every spend, not just Rook.",
+   "enrichment": {
+    "method": "builder-issue",
+    "sources": [
+     "https://github.com/satojandro/near-hunt/issues/53",
+     "_No response_"
+    ],
+    "retrieved_at": "2026-11-16T06:24:52.249205Z",
+    "fields": [
+     "description"
+    ]
+   }
+  },
+  {
+   "submission_id": "3525d5b6-6bfb-47e7-81c7-71505f35702e",
+   "status": "ok",
+   "issue": "https://github.com/satojandro/near-hunt/issues/54",
+   "issue_number": 54,
+   "description": "An AI agent with its own NEAR account buys data on how crypto influencers' (KOL) token calls actually performed after they were posted, one call at a time, and pays in USDC on NEAR. The API answers 402, the agent pays with ft_transfer, and the server checks the payment on-chain before the data goes out. On 14 Nov 2026 at 21:08:58 UTC, on NEAR mainnet, the agent paid 0.01 USDC for a call, then acted on the data with a capped swap through NEAR Intents.",
+   "enrichment": {
+    "method": "builder-issue",
+    "sources": [
+     "https://github.com/satojandro/near-hunt/issues/54",
+     "https://x.com/MihenkAIdotcom/status/2121724574714749108"
+    ],
+    "retrieved_at": "2026-11-16T06:24:52.249205Z",
+    "fields": [
+     "description"
+    ]
+   }
+  },
+  {
+   "submission_id": "55b1a5ad-4027-45ee-96b2-6159bd72d0d9",
+   "status": "ok",
+   "issue": "https://github.com/satojandro/near-hunt/issues/57",
+   "issue_number": 57,
+   "description": "Origami Verse turns real-world what-ifs into worlds. Pick one to three real events, for example \"Will SPICE ship on NEAR mainnet by Mar 31, 2027?\" and \"Will the Fed cut at its December 8-9, 2026 meeting?\". Every way those events can turn out is a world: two yes-or-no events make four. One wNEAR splits into one NEAR-if-world token per world, each paying out only if its world comes true. You trade each world in its own pool or order book, keep NEAR in the worlds you like, sell it for dollars in the ones you fear, and borrow real USDC against your worst world. When the events are answered from their public sources, the worlds that did not happen die, and what you hold in the surviving world redeems one for one into real wNEAR or USDC.\n\nEverything runs in one Rust contract on NEAR testnet (app.ifverse-staging.testnet) with test tokens, a live web app and a hosted keeper.",
+   "enrichment": {
+    "method": "builder-issue",
+    "sources": [
+     "https://github.com/satojandro/near-hunt/issues/57",
+     "https://x.com/SkyyCodes/status/2121726270098825401"
+    ],
+    "retrieved_at": "2026-11-16T06:24:52.249205Z",
+    "fields": [
+     "description"
+    ]
+   }
+  },
+  {
+   "submission_id": "3e7f3339-5eb3-42f9-8d4e-1d37fa7e9cec",
+   "status": "ok",
+   "issue": "https://github.com/satojandro/near-hunt/issues/62",
+   "issue_number": 62,
+   "description": "Introducing DYA Trade at NEARHackathon 🌱\n\nA cross-chain trading terminal powered by NEAR Intents, with charts, market and limit orders, private balances, passkey wallets, and agentic trading.\n\nTry it at https://app.dya.trade",
+   "enrichment": {
+    "method": "builder-issue",
+    "sources": [
+     "https://github.com/satojandro/near-hunt/issues/62",
+     "_No response_"
+    ],
+    "retrieved_at": "2026-11-16T06:24:52.249205Z",
+    "fields": [
+     "description"
+    ]
+   }
+  },
+  {
+   "submission_id": "6231cc5e-5e12-44f9-82b2-0fc334a8ef07",
+   "status": "ok",
+   "issue": "https://github.com/satojandro/near-hunt/issues/63",
+   "issue_number": 63,
+   "description": "When we face a difficult problem, we ask experts for advice. But no single expert knows everything, and even the best experts can make mistakes. Bringing together different perspectives helps us find better, more reliable answers. That's the idea behind **Hive — a hive of AI experts**. \nYou describe your task and pay on NEAR. A team of AI experts then works on it inside a secure, confidential execution environment designed to keep your task private. Anyone can turn their knowledge into an AI expert using just a NEAR wallet. Their proprietary expertise remains protected — even from us. \nInstead of simply working independently, experts review, challenge, and cross-check each other's findings. Their combined expertise helps produce more reliable results than relying on a single expert. Experts are rewarded for their verified contributions, creating a marketplace where private expertise has real economic value.",
+   "enrichment": {
+    "method": "builder-issue",
+    "sources": [
+     "https://github.com/satojandro/near-hunt/issues/63",
+     "https://github.com/Sunnesoft/hive"
+    ],
+    "retrieved_at": "2026-11-16T06:24:52.249205Z",
+    "fields": [
+     "description"
+    ]
+   }
+  },
+  {
+   "submission_id": "99804abc-4c86-410a-88c4-a5193b5b33fa",
+   "status": "ok",
+   "issue": "https://github.com/satojandro/near-hunt/issues/67",
+   "issue_number": 67,
+   "description": "Fully on-chain generative-art NFTs on NEAR. The artwork is a live program, not a static image, and that program, the page that runs it and every token's seed are all served by the contract itself through web4: no IPFS, no web server. Every token gets a unique seed on-chain at mint time; the same seed always renders the same piece. Built for the NEAR Hackathon, NFTs track — NFTs That Do Something.\n\nOn-chain gallery: https://seed-garden-nft.testnet.page/\nMint site: https://javaing.github.io/seed-garden-near/\n\n在 NEAR 上的全鏈上生成藝術 NFT。作品是一段程式，不是靜態圖；頁面與每個 token 的 seed 都由合約透過 web4 送出。同一個 seed 永遠畫出同一張圖。",
+   "enrichment": {
+    "method": "builder-issue",
+    "sources": [
+     "https://github.com/satojandro/near-hunt/issues/67",
+     "https://github.com/javaing/seed-garden-near#readme"
+    ],
+    "retrieved_at": "2026-11-16T06:24:52.249205Z",
+    "fields": [
+     "description"
+    ]
+   }
+  },
+  {
+   "submission_id": "f8eb6347-15ec-4a9f-8041-7917e7dd83dd",
+   "status": "ok",
+   "issue": "https://github.com/satojandro/near-hunt/issues/68",
+   "issue_number": 68,
+   "description": "## About LumosCore\n\n**Blockchains keep multiplying. The complexity shouldn't.**\n\nEvery new blockchain and DeFi application expands what's possible, but also fragments liquidity, tools, and user experiences across more platforms.\n\n**LumosCore is building the unified, non-custodial interface for a multichain future.**\n\nWith **Stellar, XRPL, and NEAR** live, users can trade, bridge, launch tokens, manage liquidity, and access MCP tools—all from one platform, while retaining full control of their assets.\n\n### Live on NEAR\n- **DEX Trading:** [https://lumoscore.com/trade/near](https://lumoscore.com/trade/near)\n- **Cross-chain:** [https://lumoscore.com/bridge/near](https://lumoscore.com/bridge/near)\n- **Launchpad:** [https://lumoscore.com/launchpad/near](https://lumoscore.com/launchpad/near)\n- **Liquidity Pools:** [https://lumoscore.com/pools/near](https://lumoscore.com/pools/near)\n- **MCP:** [https://lumoscore.com/mcp](https://lumoscore.com/mcp)\n\n### Our Vision\n\nAs blockchain networks and applications multiply, the number of platforms users need shouldn't.\n\n**One Platform. All Chains. Zero Complexity.**",
+   "enrichment": {
+    "method": "builder-issue",
+    "sources": [
+     "https://github.com/satojandro/near-hunt/issues/68",
+     "https://github.com/satojandro/near-hunt/issues/72"
+    ],
+    "retrieved_at": "2026-11-16T06:24:52.249205Z",
+    "fields": [
+     "description",
+     "media"
+    ]
+   },
+   "issue_numbers": [
+    68,
+    72
+   ],
+   "media": [
+    {
+     "type": "photo",
+     "url": "https://github.com/user-attachments/assets/eb0b69ea-3b62-4686-863f-72143ceca855",
+     "width": 1254,
+     "height": 1254,
+     "alt": "LumosCore DeFi Infrastructure on NEAR",
+     "post_url": "https://github.com/satojandro/near-hunt/issues/72"
+    },
+    {
+     "type": "photo",
+     "url": "https://github.com/user-attachments/assets/b6e0651b-269f-48ca-9e1c-dd994cb40402",
+     "width": 1671,
+     "height": 941,
+     "alt": "LumosCore Cross-Chain Feature Showcase",
+     "post_url": "https://github.com/satojandro/near-hunt/issues/72"
+    },
+    {
+     "duration_ms": 270983,
+     "height": 1082,
+     "post_url": "https://x.com/LumosCore/status/2121749675904844000",
+     "type": "video",
+     "url": "https://pbs.twimg.com/amplify_video_thumb/2121749010683985920/img/bVCc57fTRTXGFJIU.jpg",
+     "width": 1918
+    }
+   ]
+  }
+ ]
+}
