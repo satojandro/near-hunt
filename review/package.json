@@ -1,0 +1,18 @@
+{
+  "name": "near-hunt-review",
+  "private": true,
+  "type": "module",
+  "description": "Project review agents and the Neo4j review graph. Separate from the site's package so the app build is untouched.",
+  "scripts": {
+    "graph:schema": "node graph/load.mjs schema",
+    "graph:projects": "node graph/load.mjs projects",
+    "graph:assessments": "node graph/load.mjs assessments assessments",
+    "graph:embed": "node graph/load.mjs embed",
+    "graph:link": "node graph/load.mjs link",
+    "graph:all": "node graph/load.mjs schema && node graph/load.mjs projects && node graph/load.mjs assessments assessments && node graph/load.mjs embed && node graph/load.mjs link"
+  },
+  "dependencies": {
+    "neo4j-driver": "6.3.2",
+    "yaml": "2.8.1"
+  }
+}

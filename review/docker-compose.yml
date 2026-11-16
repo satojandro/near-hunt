@@ -1,0 +1,21 @@
+# Neo4j for the review graph, on the Mac Mini.
+#   NEO4J_PASSWORD=... docker compose -f review/docker-compose.yml up -d
+# Browser: http://localhost:7474  ·  Bolt: bolt://localhost:7687 (both bound to localhost only)
+# If an older neo4j container is already running, stop it first or change the host ports below:
+#   docker ps -a --filter ancestor=neo4j
+services:
+  neo4j:
+    image: neo4j:5.26-community
+    container_name: nearhunt-review-neo4j
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:7474:7474"
+      - "127.0.0.1:7687:7687"
+    environment:
+      NEO4J_AUTH: "neo4j/${NEO4J_PASSWORD:?set NEO4J_PASSWORD}"
+      NEO4J_server_memory_heap_max__size: 1G
+      NEO4J_server_memory_pagecache_size: 512M
+    volumes:
+      - nearhunt-review-neo4j:/data
+volumes:
+  nearhunt-review-neo4j:
