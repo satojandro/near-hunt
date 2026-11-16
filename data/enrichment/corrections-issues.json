@@ -1,33 +1,33 @@
 {
-  "source": "Batch of 17 Nov 2026 05:00 AEDT (issues cron, crypto-builder profile). Open correction issues read: #75 NEAR Saboteur only. Signed here (repository and links only, never prose): #75. Evidence - project/af36ad33 has repository_url null (demo_url https://x.com/NearSaboteur/status/2120862694026940559, name 'NEAR Saboteur', tracks agents/games/memecoins). git ls-remote --heads https://github.com/Om7eth/near-saboteur-frontend lists refs/heads/dev and refs/heads/main (5b888384); raw README on main opens '# NEAR Saboteur' and links the record's own demo post ('Demo video (5:24, with timestamps): https://x.com/NearSaboteur/status/2120862694026940559'), so the repository is tied to the submitted project, not merely to a name match. Issue author Om7eth is the repository owner. The issue asks for nothing else: no links, no description, no media change in this batch.",
-  "generated_at": "2026-11-16T18:02:00.000Z",
+  "source": "Batch of 17 Nov 2026 09:35 AEDT (issues cron, crypto-builder profile). Open correction issues read: #76 Arras only. Signed here (repository and links only, never prose): #76. Evidence - project/484bb484 has repository_url null (name 'Arras', demo_url https://x.com/UltravioletaDAO/status/2121361507258601615, tracks business/swarms/security/agents/realworld/nfts); the issue body gives the uuid 484bb484-ee19-43e9-bf0f-8e33484ca49a directly. git ls-remote --heads https://github.com/UltravioletaDAO/arras lists 17 heads including refs/heads/main at 5d5b1c89 (the commit the issue cites, 2026-11-13 21:17 UTC); raw README on main opens '# Arras' and describes the same escrow + ERC-8004 + x402 project as the record's demo post. The README does not carry the demo-post URL itself, so the tie is the README naming the project plus issue author UltravioletaDAO being the repository owner. The issue asks for nothing else: no links, no description, no media change in this batch.",
+  "generated_at": "2026-11-16T22:38:00.000Z",
   "results": [
     {
-      "submission_id": "af36ad33-d6eb-4ca3-b3e3-67ea07abfb4a",
+      "submission_id": "484bb484-ee19-43e9-bf0f-8e33484ca49a",
       "status": "ok",
-      "issue": "https://github.com/satojandro/near-hunt/issues/75",
-      "issue_number": 75,
+      "issue": "https://github.com/satojandro/near-hunt/issues/76",
+      "issue_number": 76,
       "issue_numbers": [
-        75
+        76
       ],
-      "repository_url": "https://github.com/Om7eth/near-saboteur-frontend",
-      "repository_source": "https://github.com/satojandro/near-hunt/issues/75",
+      "repository_url": "https://github.com/UltravioletaDAO/arras",
+      "repository_source": "https://github.com/satojandro/near-hunt/issues/76",
       "repository_basis": [
         "builder",
         "readme",
-        "readme-links-demo-post",
+        "ls-remote-resolves",
         "issue-author-matches-owner"
       ],
       "repository_verified": true,
-      "repository_verified_at": "2026-11-16T18:01:30.000Z",
+      "repository_verified_at": "2026-11-16T22:36:00.000Z",
       "enrichment": {
         "method": "builder-issue",
         "sources": [
-          "https://github.com/satojandro/near-hunt/issues/75",
-          "https://github.com/Om7eth/near-saboteur-frontend",
-          "https://x.com/NearSaboteur/status/2120862694026940559"
+          "https://github.com/satojandro/near-hunt/issues/76",
+          "https://github.com/UltravioletaDAO/arras",
+          "https://x.com/UltravioletaDAO/status/2121361507258601615"
         ],
-        "retrieved_at": "2026-11-16T18:01:30.000Z",
+        "retrieved_at": "2026-11-16T22:36:00.000Z",
         "fields": [
           "repository_url"
         ]
