@@ -1,87 +1,33 @@
 {
-  "source": "Batch of 16 Nov 2026 22:25 AEDT (issues cron, crypto-builder profile). Open correction issues read: #74 BLVCK MINDZ x NEAR, #73 Shelter Connect. Signed here (repository and links only, never prose): both. Evidence - #74: project/0297a7cc has repository_url null and no links; git ls-remote --heads https://github.com/DGuedz/blvckmindz-near lists refs/heads/codex/near-hackathon (API: private false, disabled false, default_branch codex/near-hackathon), README on that branch opens \"# BLVCK MINDZ x NEAR\" and links the same demo URL; issue author DGuedz is the repository owner. Links published are the two the issue names: demo https://blvckmindz-near-demo.vercel.app/ (200, title \"Music income - BLVCK MINDZ x NEAR testnet\") and website https://blckmndzlbs.com/ (200 after one redirect to /pt/, title \"BLVCK MINDZ\"). #73: project/a1184a58 has repository_url null; git ls-remote --heads https://github.com/naz3eh/shelter lists refs, API default_branch main, README opens \"# Shelter\" and describes the same Confidential Intents / NEP-413 Meteor / NEAR AI TEE stack as the record description. The issue asks for nothing else; no prose or media change is in this batch.",
-  "generated_at": "2026-11-16T11:26:38.594Z",
+  "source": "Batch of 17 Nov 2026 05:00 AEDT (issues cron, crypto-builder profile). Open correction issues read: #75 NEAR Saboteur only. Signed here (repository and links only, never prose): #75. Evidence - project/af36ad33 has repository_url null (demo_url https://x.com/NearSaboteur/status/2120862694026940559, name 'NEAR Saboteur', tracks agents/games/memecoins). git ls-remote --heads https://github.com/Om7eth/near-saboteur-frontend lists refs/heads/dev and refs/heads/main (5b888384); raw README on main opens '# NEAR Saboteur' and links the record's own demo post ('Demo video (5:24, with timestamps): https://x.com/NearSaboteur/status/2120862694026940559'), so the repository is tied to the submitted project, not merely to a name match. Issue author Om7eth is the repository owner. The issue asks for nothing else: no links, no description, no media change in this batch.",
+  "generated_at": "2026-11-16T18:02:00.000Z",
   "results": [
     {
-      "submission_id": "0297a7cc-5bba-4298-8f71-58b2371a8fad",
+      "submission_id": "af36ad33-d6eb-4ca3-b3e3-67ea07abfb4a",
       "status": "ok",
-      "issue": "https://github.com/satojandro/near-hunt/issues/74",
-      "issue_number": 74,
+      "issue": "https://github.com/satojandro/near-hunt/issues/75",
+      "issue_number": 75,
       "issue_numbers": [
-        74
+        75
       ],
-      "repository_url": "https://github.com/DGuedz/blvckmindz-near",
-      "repository_source": "https://github.com/satojandro/near-hunt/issues/74",
+      "repository_url": "https://github.com/Om7eth/near-saboteur-frontend",
+      "repository_source": "https://github.com/satojandro/near-hunt/issues/75",
       "repository_basis": [
         "builder",
         "readme",
-        "default-branch-readme",
+        "readme-links-demo-post",
         "issue-author-matches-owner"
       ],
       "repository_verified": true,
-      "repository_verified_at": "2026-11-16T11:26:38.594Z",
-      "links": [
-        {
-          "url": "https://blvckmindz-near-demo.vercel.app/",
-          "kind": "demo",
-          "kind_basis": "builder",
-          "source_post_id": "2121751968498471085",
-          "check": {
-            "verdict": "live",
-            "http_status": 200,
-            "checked_at": "2026-11-16T11:26:38.594Z"
-          }
-        },
-        {
-          "url": "https://blckmndzlbs.com/",
-          "kind": "website",
-          "kind_basis": "builder",
-          "source_post_id": "2121751968498471085",
-          "check": {
-            "verdict": "live",
-            "http_status": 200,
-            "checked_at": "2026-11-16T11:26:38.594Z"
-          }
-        }
-      ],
+      "repository_verified_at": "2026-11-16T18:01:30.000Z",
       "enrichment": {
         "method": "builder-issue",
         "sources": [
-          "https://github.com/satojandro/near-hunt/issues/74",
-          "https://github.com/DGuedz/blvckmindz-near",
-          "https://x.com/dg_doublegreen/status/2121751968498471085"
+          "https://github.com/satojandro/near-hunt/issues/75",
+          "https://github.com/Om7eth/near-saboteur-frontend",
+          "https://x.com/NearSaboteur/status/2120862694026940559"
         ],
-        "retrieved_at": "2026-11-16T11:26:38.594Z",
-        "fields": [
-          "repository_url",
-          "links"
-        ]
-      }
-    },
-    {
-      "submission_id": "a1184a58-cbc6-4378-a055-eb6c6c43e6fc",
-      "status": "ok",
-      "issue": "https://github.com/satojandro/near-hunt/issues/73",
-      "issue_number": 73,
-      "issue_numbers": [
-        73
-      ],
-      "repository_url": "https://github.com/naz3eh/shelter",
-      "repository_source": "https://github.com/satojandro/near-hunt/issues/73",
-      "repository_basis": [
-        "builder",
-        "readme"
-      ],
-      "repository_verified": true,
-      "repository_verified_at": "2026-11-16T11:26:38.594Z",
-      "enrichment": {
-        "method": "builder-issue",
-        "sources": [
-          "https://github.com/satojandro/near-hunt/issues/73",
-          "https://github.com/naz3eh/shelter",
-          "https://x.com/Viraz04/status/2121672078088863754"
-        ],
-        "retrieved_at": "2026-11-16T11:26:38.594Z",
+        "retrieved_at": "2026-11-16T18:01:30.000Z",
         "fields": [
           "repository_url"
         ]
