@@ -889,6 +889,12 @@ disabled by GitHub, 403) and #30/#36 (description text) were commented and left 
 
    **Known residue:** 112 records still have no repository — the Loops page has none either, or the URL failed `git ls-remote`; and the 6 name matches wait on the owner. Two further owner decisions from this session are unresolved: whether to keep the X `capture-threads` step on its 400-per-run backfill now that Loops House covers the channel, and whether Mend's proof page (`mend-demo.vercel.app/how-it-works`) belongs in `links` as a `docs` link, which needs `--refresh-enriched`.
 
+76. **Unattended corrections batch, 2026-11-17 — 1 record(s) from 1 builder issue(s), 1 key(s).** Signed by the issues cycle under the owner's second authorization (14 Nov 2026): **links and repository only**, every change traceable to an issue and corroborated (`git ls-remote` + README for a repository, a probed verdict for a link). Description and media text is never signed unattended.
+
+   Issues: #85. 1 transaction(s): `BYczR5t5vPSRTm1vUghWdWz1GMiWR5aWWNF9rE6ysgba`. `verified: 1/1`.
+
+   **Read back:** 2454 project rows; 1/1 of the corrected records now carry a repository and 1/1 carry links. The importer's re-run prints `new: 0, changed: 0`; `npm run validate:schema` 2454/2454; `npm test` 476/476.
+
 ## Decisions taken
 
 | Decision | Choice | Why |

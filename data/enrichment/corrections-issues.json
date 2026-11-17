@@ -1,35 +1,80 @@
 {
-  "_note": "Builder correction issue #82 (Tabbaci): repository only, corroborated by git ls-remote --heads plus a README that names the project and matches the record description. Issue #81 (Rook) is held back: its record carries \"_No response_\" in enrichment.sources, which the provenance guard refuses.",
-  "source": "issue #82 — https://github.com/satojandro/near-hunt/issues/82",
-  "generated_at": "2026-11-17T11:37:52.095Z",
+  "_note": "Per-batch corrections file, overwritten each run. Batch: issue #85 (BasketCase) — the listing already carried the repository and both apps (mainnet basketcase-near.vercel.app, testnet); what it lacked was the on-chain artifact the issue names through the README section it links (https://github.com/LeoFranklin015/BasketCase#live-on-near-mainnet). Verified: mainnet RPC view_account on degen.basketcase.near returns a deployed contract (code_hash FxyEnGgbKMnzsVoj8e7AyuNoP2t3VeQyiee8Y2YQsWTX, storage_usage 360034); git ls-remote --heads resolves and the README names Basketcase. Every link carries a measured probe verdict; nearblocks answers 403 to the crawler (Cloudflare) so it is unverified, never dead.",
+  "source": "issue #85 — https://github.com/satojandro/near-hunt/issues/85 (links only; repository unchanged, already correct on chain)",
+  "generated_at": "2026-11-17T16:20:00.000Z",
   "results": [
     {
-      "submission_id": "34177dec-58a4-45cd-9d7c-389976e47e99",
+      "submission_id": "84b2979b-a8d9-45d0-ae0d-d47384a69293",
       "status": "ok",
-      "issue": "https://github.com/satojandro/near-hunt/issues/82",
-      "issue_number": 82,
+      "issue": "https://github.com/satojandro/near-hunt/issues/85",
+      "issue_number": 85,
       "issue_numbers": [
-        82
+        85
       ],
-      "repository_url": "https://github.com/Sireadell/tabbaci",
-      "repository_source": "https://github.com/satojandro/near-hunt/issues/82",
+      "repository_url": "https://github.com/LeoFranklin015/BasketCase",
+      "repository_source": "https://github.com/satojandro/near-hunt/issues/85",
       "repository_basis": [
         "builder",
         "ls-remote",
         "readme-names-project"
       ],
       "repository_verified": true,
-      "repository_verified_at": "2026-11-17T11:37:52.095Z",
+      "repository_verified_at": "2026-11-17T16:16:00.000Z",
+      "links": [
+        {
+          "url": "https://meme.cooking",
+          "kind": "website",
+          "kind_basis": "default",
+          "source_post_id": "2121700638803591679",
+          "check": {
+            "verdict": "live",
+            "http_status": 200,
+            "checked_at": "2026-11-17T16:16:00.000Z"
+          }
+        },
+        {
+          "url": "https://basketcase-near.vercel.app",
+          "kind": "website",
+          "kind_basis": "default",
+          "source_post_id": "2121701029976895961",
+          "check": {
+            "verdict": "live",
+            "http_status": 200,
+            "checked_at": "2026-11-17T16:16:00.000Z"
+          }
+        },
+        {
+          "url": "https://basketcase-testnet.vercel.app",
+          "kind": "website",
+          "kind_basis": "default",
+          "source_post_id": "2121701029976895961",
+          "check": {
+            "verdict": "live",
+            "http_status": 200,
+            "checked_at": "2026-11-17T16:16:00.000Z"
+          }
+        },
+        {
+          "url": "https://nearblocks.io/address/degen.basketcase.near",
+          "kind": "explorer",
+          "kind_basis": "host",
+          "check": {
+            "verdict": "unverified",
+            "http_status": 403,
+            "checked_at": "2026-11-17T16:16:00.000Z"
+          }
+        }
+      ],
       "enrichment": {
         "method": "builder-issue",
         "sources": [
-          "https://github.com/satojandro/near-hunt/issues/82",
-          "https://github.com/Sireadell/tabbaci",
-          "https://x.com/Sireadell/status/2121733796496367647"
+          "https://github.com/satojandro/near-hunt/issues/85",
+          "https://github.com/LeoFranklin015/BasketCase",
+          "https://x.com/wanttoexplore0/status/2121699172428697717"
         ],
-        "retrieved_at": "2026-11-17T11:37:52.095Z",
+        "retrieved_at": "2026-11-17T16:16:00.000Z",
         "fields": [
-          "repository_url"
+          "links"
         ]
       }
     }
