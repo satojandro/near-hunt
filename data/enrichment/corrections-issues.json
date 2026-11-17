@@ -1,80 +1,35 @@
 {
-  "_note": "Per-batch corrections file, overwritten each run. Batch: issue #85 (BasketCase) — the listing already carried the repository and both apps (mainnet basketcase-near.vercel.app, testnet); what it lacked was the on-chain artifact the issue names through the README section it links (https://github.com/LeoFranklin015/BasketCase#live-on-near-mainnet). Verified: mainnet RPC view_account on degen.basketcase.near returns a deployed contract (code_hash FxyEnGgbKMnzsVoj8e7AyuNoP2t3VeQyiee8Y2YQsWTX, storage_usage 360034); git ls-remote --heads resolves and the README names Basketcase. Every link carries a measured probe verdict; nearblocks answers 403 to the crawler (Cloudflare) so it is unverified, never dead.",
-  "source": "issue #85 — https://github.com/satojandro/near-hunt/issues/85 (links only; repository unchanged, already correct on chain)",
-  "generated_at": "2026-11-17T16:20:00.000Z",
+  "_note": "Per-batch corrections file, overwritten each run. Batch: issue #88 (Tycoon Ready — Proofgate) — repository_url was null on chain (record updated_at 2026-11-14T22:46:51Z), and the builder supplied https://github.com/ciscojrai/tycoon-ready in both the 'What it should say' and 'Public source' sections. Corroborated: `git ls-remote --heads` resolves (refs/heads/main 4aa3fa1290aa51ad2b9739c4111a520feee12ca6) and the README opens '# Tycoon Ready: who watches the guard?' naming the project, with the live console at https://tycoon-ready.netlify.app. The issue requests no links, so this batch touches repository_url only. Issue #87 (Inti) is not in this batch: the record already carries repository_url https://github.com/JaDi03/inti (updated_at 2026-11-17T11:56:03Z) and https://nearhunt.xyz/p/c2c425be-4452-4c1b-90a2-67892511b7da renders it, so there is nothing to sign; its re-review request is the owner's (NH Picks). Issue #86 (NH Picks scoring memo) is not a listing correction and has no signable field.",
+  "source": "issue #88 — https://github.com/satojandro/near-hunt/issues/88 (repository only; no links requested)",
+  "generated_at": "2026-11-17T20:37:11Z",
   "results": [
     {
-      "submission_id": "84b2979b-a8d9-45d0-ae0d-d47384a69293",
+      "submission_id": "ebac304e-de4a-435f-a1fe-3ceb9934f9a5",
       "status": "ok",
-      "issue": "https://github.com/satojandro/near-hunt/issues/85",
-      "issue_number": 85,
+      "issue": "https://github.com/satojandro/near-hunt/issues/88",
+      "issue_number": 88,
       "issue_numbers": [
-        85
+        88
       ],
-      "repository_url": "https://github.com/LeoFranklin015/BasketCase",
-      "repository_source": "https://github.com/satojandro/near-hunt/issues/85",
+      "repository_url": "https://github.com/ciscojrai/tycoon-ready",
+      "repository_source": "https://github.com/satojandro/near-hunt/issues/88",
       "repository_basis": [
         "builder",
         "ls-remote",
         "readme-names-project"
       ],
       "repository_verified": true,
-      "repository_verified_at": "2026-11-17T16:16:00.000Z",
-      "links": [
-        {
-          "url": "https://meme.cooking",
-          "kind": "website",
-          "kind_basis": "default",
-          "source_post_id": "2121700638803591679",
-          "check": {
-            "verdict": "live",
-            "http_status": 200,
-            "checked_at": "2026-11-17T16:16:00.000Z"
-          }
-        },
-        {
-          "url": "https://basketcase-near.vercel.app",
-          "kind": "website",
-          "kind_basis": "default",
-          "source_post_id": "2121701029976895961",
-          "check": {
-            "verdict": "live",
-            "http_status": 200,
-            "checked_at": "2026-11-17T16:16:00.000Z"
-          }
-        },
-        {
-          "url": "https://basketcase-testnet.vercel.app",
-          "kind": "website",
-          "kind_basis": "default",
-          "source_post_id": "2121701029976895961",
-          "check": {
-            "verdict": "live",
-            "http_status": 200,
-            "checked_at": "2026-11-17T16:16:00.000Z"
-          }
-        },
-        {
-          "url": "https://nearblocks.io/address/degen.basketcase.near",
-          "kind": "explorer",
-          "kind_basis": "host",
-          "check": {
-            "verdict": "unverified",
-            "http_status": 403,
-            "checked_at": "2026-11-17T16:16:00.000Z"
-          }
-        }
-      ],
+      "repository_verified_at": "2026-11-17T20:37:11Z",
       "enrichment": {
         "method": "builder-issue",
         "sources": [
-          "https://github.com/satojandro/near-hunt/issues/85",
-          "https://github.com/LeoFranklin015/BasketCase",
-          "https://x.com/wanttoexplore0/status/2121699172428697717"
+          "https://github.com/satojandro/near-hunt/issues/88",
+          "https://github.com/ciscojrai/tycoon-ready",
+          "https://x.com/addylifeapp/status/2121737521369407584"
         ],
-        "retrieved_at": "2026-11-17T16:16:00.000Z",
+        "retrieved_at": "2026-11-17T20:37:11Z",
         "fields": [
-          "links"
+          "repository_url"
         ]
       }
     }
