@@ -10,6 +10,7 @@ import { mediaView } from '@/lib/media.mjs';
 import ProjectHeader from '@/app/components/project/ProjectHeader';
 import ViewCount from '@/app/components/project/ViewCount';
 import AboutCard from '@/app/components/project/AboutCard';
+import PickCard from '@/app/components/project/PickCard';
 import LinksCard from '@/app/components/project/LinksCard';
 import MediaCard from '@/app/components/project/MediaCard';
 import RecordCard from '@/app/components/project/RecordCard';
@@ -83,6 +84,7 @@ export default async function ProjectPage({ params, searchParams }: Props) {
       />
       <div className={s.grid}>
         <div className={s.main}>
+          <PickCard projectId={project.submission_id} />
           <AboutCard description={project.description} />
           <MediaCard media={project.media} />
           <LinksCard project={project} />

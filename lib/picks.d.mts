@@ -4,6 +4,10 @@ export interface Pick {
   track: string;
   pitch: string;
   primitives: string[];
+  /** AI score shown, 0–5, two decimals (human override when set). */
+  score: number;
+  /** The judge memo, as written. */
+  memo: string;
 }
 
 export interface PicksFile {
@@ -29,3 +33,6 @@ export declare function selectPicks(
 ): Pick[];
 export declare function groupByTrack(picks: Pick[] | null | undefined): Array<{ track: string; items: Pick[] }>;
 export declare function trackSlug(track: string): string;
+export declare const JUDGE_TRACK_SLUG: Record<string, string>;
+export declare function judgeTrackSlug(track: string): string;
+export declare function findPick(picks: Pick[] | null | undefined, submissionId: string): Pick | null;

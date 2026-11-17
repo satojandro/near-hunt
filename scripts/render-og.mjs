@@ -110,8 +110,8 @@ const CARDS = [
     html: cardHtml({
       eyebrow: 'NH Picks',
       headline: 'Hackathon projects we&rsquo;d point a friend to.',
-      lede: 'Like the staff picks shelf in a bookshop: builds that work and put NEAR at the centre of their design, in every track.',
-      foot: 'Not official judging · not a ranking',
+      lede: 'Like the staff picks shelf in a bookshop: builds that work and put NEAR at the centre of their design, with our AI reviewer’s notes on each.',
+      foot: 'Not official hackathon judging',
     }),
   },
 ];

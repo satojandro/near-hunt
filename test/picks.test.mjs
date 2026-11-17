@@ -53,15 +53,29 @@ test('one submission per duplicate cluster, the best scoring', () => {
   assert.deepEqual(selectPicks(rows, { duplicates }).map((p) => p.submission_id).sort(), ['x2', 'y']);
 });
 
-test('public fields only, ordered by track then name, never by score', () => {
-  const rows = [R('1', 'Zeta', '4.9', { name: 'beta' }), R('2', 'Alpha', '4.5', { name: 'Zed' }), R('3', 'Zeta', '4.6', { name: 'Alpha' })];
+test('published fields: score and memo yes, peer comparison and spice never; ordered by track then name', () => {
+  const rows = [
+    R('1', 'Zeta', '4.9', { name: 'beta', judge_memo: 'memo 1' }),
+    R('2', 'Alpha', '4.5', { name: 'Zed', judge_memo: null }),
+    R('3', 'Zeta', '4.6', { name: 'Alpha', human_spice: 'private spice' }),
+  ];
   const picks = selectPicks(rows);
   assert.deepEqual(picks.map((p) => p.name), ['Zed', 'Alpha', 'beta']);
   for (const p of picks) {
-    assert.deepEqual(Object.keys(p).sort(), ['name', 'pitch', 'primitives', 'submission_id', 'track']);
+    assert.deepEqual(Object.keys(p).sort(), ['memo', 'name', 'pitch', 'primitives', 'score', 'submission_id', 'track']);
   }
-  assert.ok(!JSON.stringify(picks).includes('private'));
-  assert.ok(!JSON.stringify(picks).includes('4.'));
+  assert.deepEqual(picks.map((p) => [p.score, p.memo]), [[4.5, ''], [4.6, 'private memo'], [4.9, 'memo 1']]);
+  assert.ok(!JSON.stringify(picks).includes('private comparison'));
+  assert.ok(!JSON.stringify(picks).includes('private spice'));
+});
+
+test('reviewer tracks map to directory slugs', async () => {
+  const { judgeTrackSlug, findPick } = await import('../lib/picks.mjs');
+  assert.equal(judgeTrackSlug('AI Security & Defense'), 'security');
+  assert.equal(judgeTrackSlug('Real-World Money'), 'realworld');
+  assert.equal(judgeTrackSlug('Unknown'), 'open');
+  assert.equal(findPick([{ submission_id: 'a' }], 'a').submission_id, 'a');
+  assert.equal(findPick([], 'a'), null);
 });
 
 test('the human override wins over the weighted score', () => {
