@@ -47,3 +47,8 @@ next-env.d.ts
 
 # agent worktrees (local only)
 .claude/worktrees/
+
+# AI judge notes: scores and rankings of other teams' projects. Kept local, never published
+# (NH Picks shows recommendations only; see lib/picks.mjs).
+data/judge-trends.md
+data/shortlist-pass2.md

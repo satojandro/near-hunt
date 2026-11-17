@@ -5,6 +5,15 @@
  *   node scripts/judge-ingest.mjs --limit 50 --dry-run
  *   node scripts/judge-ingest.mjs --limit 100
  *   node scripts/judge-ingest.mjs --all
+ *
+ * Scores are private working data: they stay in the local Supabase table and are never committed.
+ * What is published comes out through scripts/picks-export.mjs (NH Picks), which keeps only the
+ * name, track, one-line pitch and NEAR primitives.
+ *
+ * Known gap: the rows in the table today were not all written by this script. The second-pass
+ * calibration (rescored weighted_score), peer_comparison and the trimmed scorecard were written
+ * outside it, and no embeddings are stored yet. Re-running this script over existing rows
+ * (--force) replaces those values with a fresh first-pass score.
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -97,16 +106,30 @@ function loadProposalProjects(existingIds, { limit, force }) {
   return projects;
 }
 
-async function fetchExistingIds() {
+/**
+ * Ids already scored, so a re-run skips them. Paged: PostgREST returns at most `max_rows` (1,000 in
+ * supabase/config.toml) per request, and a truncated list would re-score, and overwrite, every
+ * project past the first page, including calibrated scores. A failed read throws for the same
+ * reason instead of returning an empty set; only a dry run without Supabase settings may go on.
+ */
+const ID_PAGE = 1000;
+async function fetchExistingIds({ dryRun }) {
   const url = process.env.SUPABASE_URL;
   const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
-  if (!url || !key) return new Set();
-  const res = await fetch(`${url}/rest/v1/project_evaluations?select=project_id`, {
-    headers: { apikey: key, Authorization: `Bearer ${key}` },
-  });
-  if (!res.ok) return new Set();
-  const rows = await res.json();
-  return new Set(rows.map((r) => r.project_id));
+  if (!url || !key) {
+    if (dryRun) return new Set();
+    throw new Error('SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY are required (env or .env.local)');
+  }
+  const ids = new Set();
+  for (let from = 0; ; from += ID_PAGE) {
+    const res = await fetch(`${url}/rest/v1/project_evaluations?select=project_id&order=project_id`, {
+      headers: { apikey: key, Authorization: `Bearer ${key}`, Range: `${from}-${from + ID_PAGE - 1}`, 'Range-Unit': 'items' },
+    });
+    if (!res.ok) throw new Error(`Supabase read of existing ids ${res.status}: ${await res.text()}`);
+    const rows = await res.json();
+    for (const r of rows) ids.add(r.project_id);
+    if (rows.length < ID_PAGE) return ids;
+  }
 }
 
 async function fetchGitHubContext(owner, repo, ghToken) {
@@ -260,7 +283,7 @@ async function main() {
   loadEnvLocal();
   const args = parseArgs(process.argv.slice(2));
   const ghToken = getGitHubToken();
-  const existingIds = await fetchExistingIds();
+  const existingIds = await fetchExistingIds({ dryRun: args.dryRun });
   const projects = loadProposalProjects(existingIds, args);
 
   console.log(`Existing in Supabase: ${existingIds.size} | Queued from proposal.json: ${projects.length} (dryRun=${args.dryRun})`);
@@ -296,6 +319,8 @@ async function main() {
             judge_memo: scorecard.judge_memo || null,
             scorecard,
             embedding,
+            // The column default only fires on insert; an upsert that re-scores a row must say so.
+            updated_at: new Date().toISOString(),
           });
           console.log(`Saved: ${p.name} | ${scorecard.best_fit_track} | ${weighted} | gate=${scorecard.gate_pass}`);
         } catch (err) {
