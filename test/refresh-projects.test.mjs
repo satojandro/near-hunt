@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import {
   PROJECTS_MEMORY_TTL_MS,
   PROJECTS_RETRY_BACKOFF_MS,
+  PROJECTS_STALE_AFTER_MS,
   REFRESH,
   advanceFromMarker,
   isProjectsMarker,
@@ -316,4 +317,18 @@ test('needsCopyRepair: a marker that cannot vouch for the stored items forces on
     false,
     'a consistent pair needs no rewrite',
   );
+});
+
+test('the memory TTL must stay under the banner threshold (NH-126)', () => {
+  // One constant does two jobs: it is how long an instance may serve its rows *and* how often it
+  // polls the 176 B marker that keeps `fetched_at` honest. The banner fires at
+  // PROJECTS_STALE_AFTER_MS off that time, so a TTL at or above it would make a warm instance claim
+  // "the indexer is slow" about an indexer it had simply not asked. Raising the TTL for bandwidth is
+  // therefore not available: a cold instance reads the whole copy whatever this number says.
+  assert.ok(
+    PROJECTS_MEMORY_TTL_MS < PROJECTS_STALE_AFTER_MS,
+    `${PROJECTS_MEMORY_TTL_MS} must stay under ${PROJECTS_STALE_AFTER_MS}`,
+  );
+  // And it must not be tightened back to a per-request poll either: that was the pre-NH-122 design.
+  assert.ok(PROJECTS_MEMORY_TTL_MS >= 60_000, 'at least one walk interval');
 });
