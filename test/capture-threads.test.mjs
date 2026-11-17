@@ -8,6 +8,8 @@ import {
   resolveTco,
   tcoUrlsFromText,
   noteFromPage,
+  needsCapture,
+  CAPTURE_VERSION,
 } from '../scripts/capture-threads.mjs';
 
 /**
@@ -197,4 +199,28 @@ test('a long-form post keeps the links and body X only puts in the status page',
 test('a page with no NoteTweet yields nothing rather than a guess', () => {
   assert.deepEqual(noteFromPage('<html><body>a short post</body></html>'), { text: null, urls: [] });
   assert.deepEqual(noteFromPage(null), { text: null, urls: [] });
+});
+
+/**
+ * A parsing fix must reach the captures already on file. `MAX_AGE_MS` reused a capture for 7 days,
+ * so the long-form `NoteTweet` fix of 16 Nov 2026 could not see the records it was written for:
+ * `Taply.` (`project/e0770ba5`) still had no repository on 17 Nov because its capture was dated
+ * 12 Nov and was skipped as "captured recently".
+ */
+test('needsCapture re-reads a capture an older parser took, and keeps a current one', () => {
+  const now = Date.parse('2026-11-17T10:00:00Z');
+  const fresh = { crawled_at: '2026-11-17T09:00:00Z', capture_version: CAPTURE_VERSION };
+  assert.equal(needsCapture(fresh, { now }), 'fresh');
+  // No entry at all: the record has never been crawled.
+  assert.equal(needsCapture(undefined, { now }), 'missing');
+  // Old parser, recent crawl: the entry predates the parse bump, so its data may be missing.
+  assert.equal(needsCapture({ crawled_at: '2026-11-12T09:22:36.170Z' }, { now }), 'stale');
+  // Unstamped but taken after the last parse fix: nothing to gain from crawling it again.
+  assert.equal(needsCapture({ crawled_at: '2026-11-16T12:00:00Z' }, { now }), 'fresh');
+  // Older than the reuse window, whatever the stamp says.
+  assert.equal(needsCapture({ crawled_at: '2026-11-01T00:00:00Z', capture_version: CAPTURE_VERSION }, { now }), 'stale');
+  // A stamp from a future version is not "fresh" either: this code cannot read it.
+  assert.equal(needsCapture({ crawled_at: '2026-11-17T09:00:00Z', capture_version: CAPTURE_VERSION + 1 }, { now }), 'stale');
+  // An unusable timestamp is not evidence of a recent crawl.
+  assert.equal(needsCapture({ crawled_at: 'not-a-date', capture_version: CAPTURE_VERSION }, { now }), 'stale');
 });

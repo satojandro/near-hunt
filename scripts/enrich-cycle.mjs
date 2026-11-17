@@ -272,6 +272,11 @@ async function main() {
   const steps = [];
   steps.push(await run('capture-threads.mjs', ['--gaps-only', '--include-pending']));
   steps.push(await run('enrich.mjs', ['--threads', 'data/enrichment/threads.json']));
+  // Loops House publishes the builder's repository next to the same submitted demo link, and the X
+  // crawl cannot see a repository the builder never posted. Same-post / same-demo joins only; a name
+  // match goes to the owner's worksheet instead. Pages are cached for 7 days, so a cycle re-reads
+  // only what is new.
+  steps.push(await run('loops-repos.mjs', ['--write-proposal', PROPOSAL], 1_200_000));
   steps.push(await run('enrich.mjs', ['--duplicates', '--proposal', PROPOSAL]));
   const dryRun = await run('import.mjs', ['--enrichment', PROPOSAL], 300_000);
 

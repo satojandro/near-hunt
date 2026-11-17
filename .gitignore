@@ -52,3 +52,6 @@ next-env.d.ts
 # (NH Picks shows recommendations only; see lib/picks.mjs).
 data/judge-trends.md
 data/shortlist-pass2.md
+
+# Loops House pages fetched by scripts/loops-repos.mjs (the derived JSON is committed)
+data/enrichment/loops/

@@ -50,6 +50,12 @@ const FEED_API = 'https://nearhackathon.com/api/projects';
 // A capture is reused for this long, including a capture that found no author reply: a scheduled
 // run must not re-crawl 400 threads every cycle to learn the same "no replies".
 const MAX_AGE_MS = (Number(value('--max-age-days', '7')) || 7) * 86_400_000;
+/**
+ * How many stale captures one run may re-read. A parse bump makes every cached entry look stale at
+ * once; unbounded, the scheduled cycle would spend its whole window re-crawling and never sign. The
+ * rest are queued (`re-crawl queued` in the run's counts) and the next runs drain them.
+ */
+const BACKFILL_LIMIT = Number(value('--backfill-limit', '400')) || 400;
 
 /** Identify ourselves: this is a crawler, and the page is public. */
 const USER_AGENT = 'Mozilla/5.0 (compatible; nearhunt-enrich/1.0; +https://nearhunt.xyz)';
@@ -60,6 +66,41 @@ const MAX_REPLIES = 15;
 const DELAY_MS = 350;
 /** A post rarely carries more links than this; resolving more is a crawl, not a capture. */
 const MAX_TCO_PER_POST = 5;
+
+/**
+ * The shape and the parsing a capture is made with. Bump it whenever a change in this script would
+ * extract something an older capture cannot contain — the long-form `NoteTweet` body and its links
+ * (16 Nov 2026) is the case that forced this: captures taken before that fix sit in
+ * `threads.json` for up to `MAX_AGE_MS` (7 days) and are skipped as "captured recently", so the
+ * fix cannot reach them until the cache expires. On 17 Nov 2026 a record whose post *did* end with
+ * `github.com/KendineCrypto/taply` was still repo-less five days after the note fix, because its
+ * capture was dated 12 Nov.
+ */
+export const CAPTURE_VERSION = 2;
+
+/**
+ * When the parser last gained something a capture could not otherwise contain. A stored capture
+ * written after this moment was taken by a parser that already had the fix, so an unstamped entry
+ * from after it is not re-crawled. Keeps the backfill to the captures that are actually missing data.
+ */
+export const PARSER_EPOCH = Date.parse('2026-11-16T00:00:00Z');
+
+/**
+ * Whether a stored capture may be reused.
+ *
+ * `stale` means the capture is old enough to re-read, or was taken by an older parser and cannot
+ * carry what the current one extracts; `fresh` means reusing it loses nothing today.
+ */
+export function needsCapture(prev, { now = Date.now(), maxAgeMs = MAX_AGE_MS, version = CAPTURE_VERSION, epoch = PARSER_EPOCH } = {}) {
+  if (!prev) return 'missing';
+  const at = prev.crawled_at ? Date.parse(prev.crawled_at) : NaN;
+  if (!Number.isFinite(at) || now - at >= maxAgeMs) return 'stale';
+  // An entry written before the stamp existed has version 0: it predates every parsing fix, unless
+  // its own timestamp is after the fix landed.
+  const stamped = prev.capture_version ?? (at >= epoch ? version : 0);
+  if (stamped !== version) return 'stale';
+  return 'fresh';
+}
 
 const CACHE_DIR = 'data/enrichment/x-threads';
 const delay = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -361,6 +402,12 @@ async function main() {
   }
 
   console.log(`capturing ${projects.length} project thread(s) from mainnet records`);
+  // Uncaptured submissions first, then ones an older parser took (they may hold a repository the
+  // current one can see), then captures that are merely old. The parse-bump backfill is bounded per
+  // run so one cycle never tries to re-crawl every cached thread before signing.
+  const rank = { missing: 0, stale: 1, fresh: 2 };
+  if (!REFRESH) projects.sort((a, b) => rank[needsCapture(threads[a.submission_id])] - rank[needsCapture(threads[b.submission_id])]);
+  let backfilled = 0;
   const counts = {};
   let done = 0;
   for (const p of projects) {
@@ -370,11 +417,16 @@ async function main() {
       continue;
     }
     const prev = threads[p.submission_id];
-    const age = prev?.crawled_at ? Date.now() - Date.parse(prev.crawled_at) : Infinity;
-    if (!REFRESH && age < MAX_AGE_MS) {
+    const how = REFRESH ? 'stale' : needsCapture(prev);
+    if (how === 'fresh') {
       counts['captured recently'] = (counts['captured recently'] ?? 0) + 1;
       continue;
     }
+    if (how === 'stale' && backfilled >= BACKFILL_LIMIT) {
+      counts['re-crawl queued'] = (counts['re-crawl queued'] ?? 0) + 1;
+      continue;
+    }
+    if (how === 'stale') backfilled += 1;
     const result = await captureThread(postId, { refresh: REFRESH, log: (m) => console.log(m) });
     counts[result.status] = (counts[result.status] ?? 0) + 1;
     // A capture that found no author reply is recorded too, so the next scheduled run can skip it
@@ -383,6 +435,8 @@ async function main() {
       author: result.author,
       status: result.status,
       crawled_at: new Date().toISOString(),
+      // Which parser took it: `needsCapture` re-crawls an entry stamped with an older one.
+      capture_version: CAPTURE_VERSION,
       // How many other posts the page listed and how many of them could be read.
       listed: result.listed ?? 0,
       read: result.read ?? 0,
