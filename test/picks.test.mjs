@@ -34,6 +34,13 @@ test('gate failures, hidden projects and NEAR Hunt itself are never picked', () 
   assert.deepEqual(ids, ['ok']);
 });
 
+test('only projects with a listing, and the track top falls to the best listed one', () => {
+  const rows = [R('unlisted', 'Games', '4.9'), R('listed', 'Games', '4.6'), R('low', 'Social', '4.3'), R('lower', 'Social', '4.2')];
+  const ids = selectPicks(rows, { listed: ['listed', 'lower'] }).map((p) => p.submission_id);
+  assert.deepEqual(ids, ['listed', 'lower']);
+  assert.equal(selectPicks(rows).length, 3); // no `listed` given: no listing filter
+});
+
 test('one submission per duplicate cluster, the best scoring', () => {
   const rows = [R('x1', 'DeFi', '4.6'), R('x2', 'DeFi', '4.7'), R('y', 'DeFi', '4.55')];
   const duplicates = { clusters: [{ submissions: [{ submission_id: 'x1' }, { submission_id: 'x2' }] }] };

@@ -15,6 +15,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { DEFAULT_CUTOFF, selectPicks } from '../lib/picks.mjs';
+import { readProjects } from '../lib/kv.mjs';
 
 const ROOT = process.cwd();
 const OUT = path.join(ROOT, 'data/picks.json');
@@ -79,9 +80,17 @@ async function main() {
   if (!url || !key) throw new Error('SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY are required (env or .env.local)');
 
   const rows = await fetchAll(url, key);
+  // Only projects with a live listing on chain, so every card's /p/{id} link resolves.
+  const entries = await readProjects();
+  const listed = new Set(
+    entries.filter((e) => e.value !== null && e.value !== undefined).map((e) => String(e.key).replace(/^project\//, '')),
+  );
+  if (listed.size === 0) throw new Error('Read no project listings from chain; refusing to write an empty list');
+  const unlisted = rows.filter((r) => r.gate_pass && !listed.has(r.project_id)).length;
   const picks = selectPicks(rows, {
     cutoff: args.cutoff,
     perTrackTop: args.perTrackTop,
+    listed,
     hidden: readJson('data/hidden-projects.json'),
     duplicates: readJson('data/enrichment/duplicates.json'),
   });
@@ -95,7 +104,7 @@ async function main() {
   };
 
   const tracks = new Set(picks.map((p) => p.track));
-  console.log(`reviewed: ${rows.length}  passed gate: ${rows.filter((r) => r.gate_pass).length}`);
+  console.log(`reviewed: ${rows.length}  passed gate: ${rows.filter((r) => r.gate_pass).length}  listings on chain: ${listed.size}  passed but not listed: ${unlisted}`);
   console.log(`picks: ${picks.length} across ${tracks.size} tracks (cutoff ${args.cutoff}, top of each track: ${args.perTrackTop ? 'yes' : 'no'})`);
   if (!args.write) {
     for (const p of picks) console.log(`  ${p.track.padEnd(28)} ${p.name}`);

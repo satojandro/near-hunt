@@ -22,6 +22,7 @@ export declare function selectPicks(
     cutoff?: number;
     perTrackTop?: boolean;
     hidden?: unknown;
+    listed?: Iterable<string>;
     duplicates?: { clusters?: Array<{ submissions?: Array<{ submission_id: string }> }> };
   },
 ): Pick[];
