@@ -6,6 +6,10 @@ import { trackLabel } from '@/lib/tracks.mjs';
 import { tintClass, tintIndex } from '@/lib/tints.mjs';
 import { getVoteCounts } from '@/lib/votes';
 import { getCommentCounts } from '@/lib/comments';
+import { getProjects } from '@/lib/projects';
+import LiveOnSocial, { LiveOnSocialSkeleton } from '@/app/components/sidebar/LiveOnSocial';
+import sb from '@/app/components/sidebar/sidebar.module.css';
+import { Suspense } from 'react';
 import ProjectAvatar from '@/app/components/ProjectAvatar';
 import InlineMarks from '@/app/components/InlineMarks';
 import UpvoteButton from '@/app/components/vote/UpvoteButton';
@@ -48,21 +52,26 @@ const PICK_ISSUE_URL = 'https://github.com/satojandro/near-hunt/issues/new?title
 
 /** Live counts, like the home page. If a read fails the page still renders, with zeros and no comment counts. */
 async function liveCounts(ids: string[]) {
-  const [votes, comments] = await Promise.all([
+  const [votes, comments, tracks] = await Promise.all([
     getVoteCounts().then((v) => v.counts as Record<string, number>).catch(() => ({}) as Record<string, number>),
     getCommentCounts(ids)
       .then((c) => (c.available ? (c.counts as Record<string, number>) : null))
       .catch(() => null),
+    // Each project's own tracks, as on the home page; the judge's single track is the section it sits in.
+    getProjects()
+      .then(({ items }) => new Map(items.map((p) => [p.submission_id, p.tracks] as const)))
+      .catch(() => new Map<string, string[]>()),
   ]);
-  return { votes, comments };
+  return { votes, comments, tracks };
 }
 
-function PickRow({ pick, votes, comments }: { pick: Pick; votes: number; comments?: number }) {
+function PickRow({ pick, votes, comments, tracks }: { pick: Pick; votes: number; comments?: number; tracks?: string[] }) {
   const slug = judgeTrackSlug(pick.track);
+  const tags = tracks?.length ? tracks : [slug];
   return (
     <li className={`dir-card ${s.row}`}>
       <span className="dir-avatar">
-        <ProjectAvatar id={pick.submission_id} name={pick.name} track={slug} />
+        <ProjectAvatar id={pick.submission_id} name={pick.name} track={tags[0]} />
       </span>
       <div className="dir-card-body">
         <Link href={`/p/${encodeURIComponent(pick.submission_id)}`} className="dir-card-link">
@@ -71,13 +80,10 @@ function PickRow({ pick, votes, comments }: { pick: Pick; votes: number; comment
         {pick.pitch ? <p className={s.pitch}><InlineMarks text={pick.pitch} /></p> : null}
         {pick.memo ? <p className={s.memo}><InlineMarks text={pick.memo} /></p> : null}
         <div className="dir-card-meta">
-          <span className={`dir-pill ${tintClass(slug)}`}>{trackLabel(slug)}</span>
-          {pick.primitives.length ? (
-            <>
-              <span aria-hidden="true">·</span>
-              <span className={s.uses}>Uses {pick.primitives.join(', ')}</span>
-            </>
-          ) : null}
+          <span className="visually-hidden">Tracks:</span>
+          {tags.map((t) => (
+            <span key={t} className={`dir-pill ${tintClass(t)}`}>{trackLabel(t)}</span>
+          ))}
           {typeof comments === 'number' ? (
             <>
               <span aria-hidden="true">·</span>
@@ -97,10 +103,38 @@ function PickRow({ pick, votes, comments }: { pick: Pick; votes: number; comment
   );
 }
 
+/** The selection, in the home sidebar's dark card style. Mirrors lib/picks.mjs; keep the two in step. */
+function HowWePicked({ reviewed, cutoff, picks }: { reviewed: number; cutoff: number; picks: number }) {
+  return (
+    <section className={`${sb.card} ${sb.cardDark} ${sb.cardFeature}`} aria-labelledby="how-we-picked-title">
+      <div className={sb.sprocket} aria-hidden="true" />
+      <div className={sb.featureInner}>
+        <h2 className={sb.title} id="how-we-picked-title" style={{ marginBottom: 12 }}>How we picked</h2>
+        <ol className={sb.steps}>
+          <li>
+            <strong>Read every repo.</strong> Our AI reviewer read the README and files of all {nf.format(reviewed)}{' '}
+            submissions with a public GitHub repository.
+          </li>
+          <li>
+            <strong>Scored each one</strong> on whether it works, how deeply it uses NEAR, originality and fit to its
+            track, real-world use, and docs and demo. A second pass compared the leaders in each track side by side.
+          </li>
+          <li>
+            <strong>Kept the standouts:</strong> passed the screening check and scored {cutoff.toFixed(2)} or more, plus
+            the top project in every track. {nf.format(picks)} made it. NEAR Hunt never picks itself.
+          </li>
+        </ol>
+        <a href={METHOD_URL} className={sb.code}>lib/picks.mjs</a>
+      </div>
+      <div className={sb.sprocket} aria-hidden="true" />
+    </section>
+  );
+}
+
 export default async function PicksPage() {
   await connection(); // Live upvote and comment counts, like the home page.
   const groups = groupByTrack(DATA.picks);
-  const { votes, comments } = await liveCounts(DATA.picks.map((p) => p.submission_id));
+  const { votes, comments, tracks } = await liveCounts(DATA.picks.map((p) => p.submission_id));
   const updated = new Date(DATA.generated_at).toLocaleDateString('en-US', {
     day: 'numeric',
     month: 'short',
@@ -139,6 +173,8 @@ export default async function PicksPage() {
         ))}
       </nav>
 
+      <div className="dir-main">
+        <div className="dir-list-col">
       {groups.map((g) => (
         <section key={g.track} id={trackSlug(g.track)} className={s.group} aria-labelledby={`h-${trackSlug(g.track)}`}>
           <h2 id={`h-${trackSlug(g.track)}`}>
@@ -151,6 +187,7 @@ export default async function PicksPage() {
                 pick={p}
                 votes={votes[p.submission_id] ?? 0}
                 comments={comments ? (comments[p.submission_id] ?? 0) : undefined}
+                tracks={tracks.get(p.submission_id)}
               />
             ))}
           </ol>
@@ -158,6 +195,16 @@ export default async function PicksPage() {
       ))}
 
       {groups.length === 0 ? <p className={s.lede}>No picks yet. The first ones appear once reviews are in.</p> : null}
+        </div>
+        <aside className="dir-aside">
+          <div className={sb.stack}>
+            <Suspense fallback={<LiveOnSocialSkeleton />}>
+              <LiveOnSocial />
+            </Suspense>
+            <HowWePicked reviewed={DATA.reviewed} cutoff={DATA.method.cutoff} picks={DATA.picks.length} />
+          </div>
+        </aside>
+      </div>
     </main>
   );
 }
