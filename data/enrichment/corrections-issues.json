@@ -1,63 +1,33 @@
 {
-  "_note": "Builder correction issues #79 (ACH) and #80 (NearBligo): repository only, each corroborated by git ls-remote --heads plus a README that names the project. No description or media text in this batch.",
-  "source": "issues #79, #80 — https://github.com/satojandro/near-hunt/issues",
-  "generated_at": "2026-11-17T11:09:11.757Z",
+  "_note": "Builder correction issue #82 (Tabbaci): repository only, corroborated by git ls-remote --heads plus a README that names the project and matches the record description. Issue #81 (Rook) is held back: its record carries \"_No response_\" in enrichment.sources, which the provenance guard refuses.",
+  "source": "issue #82 — https://github.com/satojandro/near-hunt/issues/82",
+  "generated_at": "2026-11-17T11:37:52.095Z",
   "results": [
     {
-      "submission_id": "e4d89b4b-a373-4c29-becf-be44352130be",
+      "submission_id": "34177dec-58a4-45cd-9d7c-389976e47e99",
       "status": "ok",
-      "issue": "https://github.com/satojandro/near-hunt/issues/80",
-      "issue_number": 80,
+      "issue": "https://github.com/satojandro/near-hunt/issues/82",
+      "issue_number": 82,
       "issue_numbers": [
-        80
+        82
       ],
-      "repository_url": "https://github.com/jerrysamuel/NEAR-Obligo",
-      "repository_source": "https://github.com/satojandro/near-hunt/issues/80",
+      "repository_url": "https://github.com/Sireadell/tabbaci",
+      "repository_source": "https://github.com/satojandro/near-hunt/issues/82",
       "repository_basis": [
         "builder",
         "ls-remote",
         "readme-names-project"
       ],
       "repository_verified": true,
-      "repository_verified_at": "2026-11-17T11:09:11.757Z",
+      "repository_verified_at": "2026-11-17T11:37:52.095Z",
       "enrichment": {
         "method": "builder-issue",
         "sources": [
-          "https://github.com/satojandro/near-hunt/issues/80",
-          "https://github.com/jerrysamuel/NEAR-Obligo",
-          "https://x.com/TechPalNigeria/status/2121748000448172152"
+          "https://github.com/satojandro/near-hunt/issues/82",
+          "https://github.com/Sireadell/tabbaci",
+          "https://x.com/Sireadell/status/2121733796496367647"
         ],
-        "retrieved_at": "2026-11-17T11:09:11.757Z",
-        "fields": [
-          "repository_url"
-        ]
-      }
-    },
-    {
-      "submission_id": "98776d60-5b4c-496f-b9d4-b29536160730",
-      "status": "ok",
-      "issue": "https://github.com/satojandro/near-hunt/issues/79",
-      "issue_number": 79,
-      "issue_numbers": [
-        79
-      ],
-      "repository_url": "https://github.com/NSEVEjk0/ACH",
-      "repository_source": "https://github.com/satojandro/near-hunt/issues/79",
-      "repository_basis": [
-        "builder",
-        "ls-remote",
-        "readme-names-project"
-      ],
-      "repository_verified": true,
-      "repository_verified_at": "2026-11-17T11:09:11.757Z",
-      "enrichment": {
-        "method": "builder-issue",
-        "sources": [
-          "https://github.com/satojandro/near-hunt/issues/79",
-          "https://github.com/NSEVEjk0/ACH",
-          "https://x.com/CRYPTFRANI/status/2121394457882861623"
-        ],
-        "retrieved_at": "2026-11-17T11:09:11.757Z",
+        "retrieved_at": "2026-11-17T11:37:52.095Z",
         "fields": [
           "repository_url"
         ]
