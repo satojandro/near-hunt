@@ -17,6 +17,7 @@ import StaleBanner from '@/app/components/states/StaleBanner';
 import EmptyResults from '@/app/components/states/EmptyResults';
 import DirectorySkeleton from '@/app/components/states/DirectorySkeleton';
 import { getCommentCounts } from '@/lib/comments';
+import PICKS_FILE from '@/data/picks.json';
 import './directory.css';
 
 // The directory's share card (NH-109). Without this the front page — the URL the demo post links
@@ -91,6 +92,18 @@ async function Directory({ searchParams }: { searchParams: Promise<SearchParamsR
           Every project is an open record on NEAR. Every upvote and every comment is a write you sign
           from your own NEAR account. Votes are community signals, not official judging.
         </p>
+        {/* Phones hide the header menu, so this is their way to NH Picks (owner request, 17 Nov).
+            Shown below 640 px only; wider screens have the pill in the menu. */}
+        <Link href="/picks" className="dir-picks-cta">
+          <svg className="dir-picks-sparkle" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="currentColor" d="M12 2l2.2 6.6L21 11l-6.8 2.4L12 20l-2.2-6.6L3 11l6.8-2.4z" />
+          </svg>
+          <span className="dir-picks-text">
+            <strong>New here? Start with NH Picks</strong>
+            <span>{PICKS_FILE.picks.length} projects we&apos;d point a friend to</span>
+          </span>
+          <span className="dir-picks-arrow" aria-hidden="true">→</span>
+        </Link>
         {/* NH-112: people who have signed something, with their near.social faces. Hidden when the
             rows cannot be read — never rendered as "0 people". */}
         {people.available && people.items.length > 0 ? (

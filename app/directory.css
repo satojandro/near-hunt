@@ -139,6 +139,21 @@ html[data-theme="darkroom"] .dir-eyebrow { font-weight: 700; }
 }
 
 /* Phone (board 5) */
+/* Phone-only way into NH Picks: the header menu is hidden below 640 px. */
+.dir-picks-cta { display: none; }
+@media (max-width: 640px) {
+  .dir-picks-cta {
+    display: flex; align-items: center; gap: 12px; margin-top: 16px; padding: 12px 14px; min-height: 44px;
+    border-radius: 14px; background: var(--accent-soft); color: var(--accent-hover); text-decoration: none;
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 35%, transparent);
+  }
+  .dir-picks-cta:active { box-shadow: inset 0 0 0 1.5px var(--accent); }
+  .dir-picks-sparkle { color: var(--accent); flex-shrink: 0; }
+  .dir-picks-text { display: flex; flex-direction: column; min-width: 0; line-height: 1.35; }
+  .dir-picks-text strong { font-size: 15px; font-weight: 600; }
+  .dir-picks-text span { font-size: 13px; color: var(--text-muted); }
+  .dir-picks-arrow { margin-left: auto; font-size: 18px; color: var(--accent); }
+}
 @media (max-width: 640px) {
   .dir-hero { padding-top: 24px; gap: 0; }
   .dir-hero h1 { font-size: 30px; }
