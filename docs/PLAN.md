@@ -857,6 +857,14 @@ disabled by GitHub, 403) and #30/#36 (description text) were commented and left 
 
    **Read back:** 2453 project rows; 1/1 of the corrected records now carry a repository and 1/1 carry links. The importer's re-run prints `new: 0, changed: 0`; `npm run validate:schema` 2453/2453; `npm test` 459/459.
 
+73. **Owner-supplied repository, 2026-11-17 — 1 record, 1 key (fill only).** The owner reported `project/02221874-bc99-48f3-ae74-c7c66dca3fee` ("Mend: Public Maintenance with Memory", @IamDivc) missing its repository. Corroborated before writing: `git ls-remote` resolves `https://github.com/divc13/mend` (created 8 Nov), the repository's own `homepage` is the record's `demo_url` (`https://mend-demo.vercel.app`), and its README opens `# MEND — Maintenance with memory` describing the same pothole-report → DAO budget → escrow → inspection product. The crawl could not have found it: the submitted post carries only the demo link, the thread has no author reply, and the demo page HTML links no repository. Batched through `scripts/repo-worksheet.mjs --apply` (`method: owner`), `--updates-only`, so the only changed fields were `repository_url` (null → value) and `enrichment` — no value another writer set was replaced.
+
+   1 transaction: `3NxG51isgko2H1d3eNyPiZ3Zbf5YfvuDrVK5W11HyVqi`. `verified: 1/1`.
+
+   **Read back:** the record now carries `repository_url` and `enrichment.fields` gains `repository_url`; the importer's re-run prints `new: 0, changed: 0` (2453 unchanged); `npm run validate:schema` 2453/2453 valid, 0 foreign rows, 0 tombstones; `npm test` 459/459.
+
+   **Measured the same session, for the repository gap that remains:** 1102 of 2453 records (44.9%) have no repository. 1071 of those have an X post as `demo_url` (the only enrichable form), 1068 already have a thread capture, and only 12 captures hold a GitHub link the record lacks — 3 of them attributable to the builder's own post. The X-side channel is exhausted, not lagging: `no-replies-listed` 381, `no-author-replies` 333, `ok` 318, `post-unavailable` 36 in that set. Closing the gap needs a different channel (GitHub name search corroborated per row, authenticated reply crawl, per-post `t.co` expansion), which is an owner decision.
+
 ## Decisions taken
 
 | Decision | Choice | Why |

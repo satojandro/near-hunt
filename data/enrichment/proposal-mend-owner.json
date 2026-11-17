@@ -1,0 +1,54 @@
+{
+  "_note": "Trimmed record of the batch signed on 2026-11-17 (tx 3NxG51isgko2H1d3eNyPiZ3Zbf5YfvuDrVK5W11HyVqi). The execute ran from the full proposal scripts/repo-worksheet.mjs --apply produced; only this row was changed by it, so the full file is not duplicated here. Row shape is verbatim.",
+  "source": "owner request in session 17 Nov 2026; repository corroborated by git ls-remote + README + repository homepage",
+  "generated_at": "2026-11-17T08:21:09.081Z",
+  "results": [
+    {
+      "submission_id": "02221874-bc99-48f3-ae74-c7c66dca3fee",
+      "status": "ok",
+      "post_id": "2121695233541054938",
+      "author": "IamDivc",
+      "posts": 2,
+      "description": "A pothole. Everyone swerves. Nobody owns it. MEND makes one repair real: walletless report, public area, GPS stripped, private AI suggests, 2/3 DAO decides, NEAR escrow pays after inspection. Built at NEAR HACKATHON \u00b7 @NEARProtocol #NEARHackathon",
+      "description_source": "https://x.com/IamDivc/status/2121695233541054938",
+      "repository_url": "https://github.com/divc13/mend",
+      "repository_source": "https://github.com/divc13/mend",
+      "links": [
+        {
+          "url": "https://mend-demo.vercel.app",
+          "source_post_id": "2121695233541054938",
+          "kind": "demo",
+          "kind_basis": "url",
+          "check": {
+            "verdict": "live",
+            "http_status": 200,
+            "checked_at": "2026-11-17T06:45:01.172Z"
+          }
+        }
+      ],
+      "media": [
+        {
+          "type": "video",
+          "url": "https://pbs.twimg.com/amplify_video_thumb/2121691922758864896/img/lIyEtT-LPBiVDEoq.jpg",
+          "width": 1920,
+          "height": 1080,
+          "post_url": "https://x.com/IamDivc/status/2121695233541054938",
+          "duration_ms": 213566
+        }
+      ],
+      "enrichment": {
+        "method": "x-thread",
+        "retrieved_at": "2026-11-17T06:42:20.852Z",
+        "sources": [
+          "https://x.com/IamDivc/status/2121695233541054938",
+          "https://github.com/divc13/mend"
+        ]
+      },
+      "repository_basis": [
+        "owner"
+      ],
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-17T08:21:09.081Z"
+    }
+  ]
+}
