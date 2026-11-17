@@ -1,33 +1,63 @@
 {
-  "source": "Batch of 17 Nov 2026 09:35 AEDT (issues cron, crypto-builder profile). Open correction issues read: #76 Arras only. Signed here (repository and links only, never prose): #76. Evidence - project/484bb484 has repository_url null (name 'Arras', demo_url https://x.com/UltravioletaDAO/status/2121361507258601615, tracks business/swarms/security/agents/realworld/nfts); the issue body gives the uuid 484bb484-ee19-43e9-bf0f-8e33484ca49a directly. git ls-remote --heads https://github.com/UltravioletaDAO/arras lists 17 heads including refs/heads/main at 5d5b1c89 (the commit the issue cites, 2026-11-13 21:17 UTC); raw README on main opens '# Arras' and describes the same escrow + ERC-8004 + x402 project as the record's demo post. The README does not carry the demo-post URL itself, so the tie is the README naming the project plus issue author UltravioletaDAO being the repository owner. The issue asks for nothing else: no links, no description, no media change in this batch.",
-  "generated_at": "2026-11-16T22:38:00.000Z",
+  "_note": "Builder correction issues #79 (ACH) and #80 (NearBligo): repository only, each corroborated by git ls-remote --heads plus a README that names the project. No description or media text in this batch.",
+  "source": "issues #79, #80 — https://github.com/satojandro/near-hunt/issues",
+  "generated_at": "2026-11-17T11:09:11.757Z",
   "results": [
     {
-      "submission_id": "484bb484-ee19-43e9-bf0f-8e33484ca49a",
+      "submission_id": "e4d89b4b-a373-4c29-becf-be44352130be",
       "status": "ok",
-      "issue": "https://github.com/satojandro/near-hunt/issues/76",
-      "issue_number": 76,
+      "issue": "https://github.com/satojandro/near-hunt/issues/80",
+      "issue_number": 80,
       "issue_numbers": [
-        76
+        80
       ],
-      "repository_url": "https://github.com/UltravioletaDAO/arras",
-      "repository_source": "https://github.com/satojandro/near-hunt/issues/76",
+      "repository_url": "https://github.com/jerrysamuel/NEAR-Obligo",
+      "repository_source": "https://github.com/satojandro/near-hunt/issues/80",
       "repository_basis": [
         "builder",
-        "readme",
-        "ls-remote-resolves",
-        "issue-author-matches-owner"
+        "ls-remote",
+        "readme-names-project"
       ],
       "repository_verified": true,
-      "repository_verified_at": "2026-11-16T22:36:00.000Z",
+      "repository_verified_at": "2026-11-17T11:09:11.757Z",
       "enrichment": {
         "method": "builder-issue",
         "sources": [
-          "https://github.com/satojandro/near-hunt/issues/76",
-          "https://github.com/UltravioletaDAO/arras",
-          "https://x.com/UltravioletaDAO/status/2121361507258601615"
+          "https://github.com/satojandro/near-hunt/issues/80",
+          "https://github.com/jerrysamuel/NEAR-Obligo",
+          "https://x.com/TechPalNigeria/status/2121748000448172152"
         ],
-        "retrieved_at": "2026-11-16T22:36:00.000Z",
+        "retrieved_at": "2026-11-17T11:09:11.757Z",
+        "fields": [
+          "repository_url"
+        ]
+      }
+    },
+    {
+      "submission_id": "98776d60-5b4c-496f-b9d4-b29536160730",
+      "status": "ok",
+      "issue": "https://github.com/satojandro/near-hunt/issues/79",
+      "issue_number": 79,
+      "issue_numbers": [
+        79
+      ],
+      "repository_url": "https://github.com/NSEVEjk0/ACH",
+      "repository_source": "https://github.com/satojandro/near-hunt/issues/79",
+      "repository_basis": [
+        "builder",
+        "ls-remote",
+        "readme-names-project"
+      ],
+      "repository_verified": true,
+      "repository_verified_at": "2026-11-17T11:09:11.757Z",
+      "enrichment": {
+        "method": "builder-issue",
+        "sources": [
+          "https://github.com/satojandro/near-hunt/issues/79",
+          "https://github.com/NSEVEjk0/ACH",
+          "https://x.com/CRYPTFRANI/status/2121394457882861623"
+        ],
+        "retrieved_at": "2026-11-17T11:09:11.757Z",
         "fields": [
           "repository_url"
         ]

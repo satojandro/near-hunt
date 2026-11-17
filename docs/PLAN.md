@@ -865,6 +865,12 @@ disabled by GitHub, 403) and #30/#36 (description text) were commented and left 
 
    **Measured the same session, for the repository gap that remains:** 1102 of 2453 records (44.9%) have no repository. 1071 of those have an X post as `demo_url` (the only enrichable form), 1068 already have a thread capture, and only 12 captures hold a GitHub link the record lacks — 3 of them attributable to the builder's own post. The X-side channel is exhausted, not lagging: `no-replies-listed` 381, `no-author-replies` 333, `ok` 318, `post-unavailable` 36 in that set. Closing the gap needs a different channel (GitHub name search corroborated per row, authenticated reply crawl, per-post `t.co` expansion), which is an owner decision.
 
+74. **Unattended corrections batch, 2026-11-17 — 2 record(s) from 2 builder issue(s), 2 key(s).** Signed by the issues cycle under the owner's second authorization (14 Nov 2026): **links and repository only**, every change traceable to an issue and corroborated (`git ls-remote` + README for a repository, a probed verdict for a link). Description and media text is never signed unattended.
+
+   Issues: #80, #79. 1 transaction(s): `BNHkxw2z2Mc7KEpdAh4USZ4m1k5TD9rzdDxtvMPK4SWQ`. `verified: 2/2`.
+
+   **Read back:** 2453 project rows; 2/2 of the corrected records now carry a repository and 0/2 carry links. The importer's re-run prints `new: 0, changed: 0`; `npm run validate:schema` 2453/2453; `npm test` 476/476.
+
 ## Decisions taken
 
 | Decision | Choice | Why |
