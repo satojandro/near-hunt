@@ -1,4 +1,4 @@
-// Render the share cards (og:image) for the front page and /open-data.
+// Render the share cards (og:image) for the front page, /open-data and /picks.
 //
 //   node scripts/render-og.mjs
 //
@@ -102,6 +102,16 @@ const CARDS = [
       headline: 'Every record, readable by anyone.',
       lede: 'A read-only JSON API, a SKILL.md for agents, and the raw KV rows on NEAR. No key needed to read.',
       foot: 'API · SKILL.md · schema · chain',
+    }),
+  },
+  {
+    // NH-123. No pick count or project names: both change with every export.
+    file: 'picks.png',
+    html: cardHtml({
+      eyebrow: 'NH Picks',
+      headline: 'Hackathon projects we&rsquo;d point a friend to.',
+      lede: 'Like the staff picks shelf in a bookshop: builds that work and put NEAR at the centre of their design, in every track.',
+      foot: 'Not official judging · not a ranking',
     }),
   },
 ];

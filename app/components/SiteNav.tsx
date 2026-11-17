@@ -7,6 +7,7 @@ type NavLink = { href: string; label: string; match: (p: string) => boolean; hea
 
 const LINKS: NavLink[] = [
   { href: '/', label: 'Projects', match: (p: string) => p === '/' || p.startsWith('/p/') },
+  { href: '/picks', label: 'NH Picks', match: (p: string) => p.startsWith('/picks') },
   { href: '/open-data', label: 'Open data', match: (p: string) => p.startsWith('/open-data') },
   // "Support" alone reads as tech support / troubleshooting. The ask is collaboration (donate or
   // stake), so the label says who is being supported, and a quiet accent heart marks it as the
