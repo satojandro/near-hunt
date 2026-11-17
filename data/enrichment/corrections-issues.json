@@ -1,87 +1,33 @@
 {
-  "source": "Batch of 16 Nov 2026 22:25 AEDT (issues cron, crypto-builder profile). Open correction issues read: #74 BLVCK MINDZ x NEAR, #73 Shelter Connect. Signed here (repository and links only, never prose): both. Evidence - #74: project/0297a7cc has repository_url null and no links; git ls-remote --heads https://github.com/DGuedz/blvckmindz-near lists refs/heads/codex/near-hackathon (API: private false, disabled false, default_branch codex/near-hackathon), README on that branch opens \"# BLVCK MINDZ x NEAR\" and links the same demo URL; issue author DGuedz is the repository owner. Links published are the two the issue names: demo https://blvckmindz-near-demo.vercel.app/ (200, title \"Music income - BLVCK MINDZ x NEAR testnet\") and website https://blckmndzlbs.com/ (200 after one redirect to /pt/, title \"BLVCK MINDZ\"). #73: project/a1184a58 has repository_url null; git ls-remote --heads https://github.com/naz3eh/shelter lists refs, API default_branch main, README opens \"# Shelter\" and describes the same Confidential Intents / NEP-413 Meteor / NEAR AI TEE stack as the record description. The issue asks for nothing else; no prose or media change is in this batch.",
-  "generated_at": "2026-11-16T11:26:38.594Z",
+  "source": "Batch of 17 Nov 2026 09:35 AEDT (issues cron, crypto-builder profile). Open correction issues read: #76 Arras only. Signed here (repository and links only, never prose): #76. Evidence - project/484bb484 has repository_url null (name 'Arras', demo_url https://x.com/UltravioletaDAO/status/2121361507258601615, tracks business/swarms/security/agents/realworld/nfts); the issue body gives the uuid 484bb484-ee19-43e9-bf0f-8e33484ca49a directly. git ls-remote --heads https://github.com/UltravioletaDAO/arras lists 17 heads including refs/heads/main at 5d5b1c89 (the commit the issue cites, 2026-11-13 21:17 UTC); raw README on main opens '# Arras' and describes the same escrow + ERC-8004 + x402 project as the record's demo post. The README does not carry the demo-post URL itself, so the tie is the README naming the project plus issue author UltravioletaDAO being the repository owner. The issue asks for nothing else: no links, no description, no media change in this batch.",
+  "generated_at": "2026-11-16T22:38:00.000Z",
   "results": [
     {
-      "submission_id": "0297a7cc-5bba-4298-8f71-58b2371a8fad",
+      "submission_id": "484bb484-ee19-43e9-bf0f-8e33484ca49a",
       "status": "ok",
-      "issue": "https://github.com/satojandro/near-hunt/issues/74",
-      "issue_number": 74,
+      "issue": "https://github.com/satojandro/near-hunt/issues/76",
+      "issue_number": 76,
       "issue_numbers": [
-        74
+        76
       ],
-      "repository_url": "https://github.com/DGuedz/blvckmindz-near",
-      "repository_source": "https://github.com/satojandro/near-hunt/issues/74",
+      "repository_url": "https://github.com/UltravioletaDAO/arras",
+      "repository_source": "https://github.com/satojandro/near-hunt/issues/76",
       "repository_basis": [
         "builder",
         "readme",
-        "default-branch-readme",
+        "ls-remote-resolves",
         "issue-author-matches-owner"
       ],
       "repository_verified": true,
-      "repository_verified_at": "2026-11-16T11:26:38.594Z",
-      "links": [
-        {
-          "url": "https://blvckmindz-near-demo.vercel.app/",
-          "kind": "demo",
-          "kind_basis": "builder",
-          "source_post_id": "2121751968498471085",
-          "check": {
-            "verdict": "live",
-            "http_status": 200,
-            "checked_at": "2026-11-16T11:26:38.594Z"
-          }
-        },
-        {
-          "url": "https://blckmndzlbs.com/",
-          "kind": "website",
-          "kind_basis": "builder",
-          "source_post_id": "2121751968498471085",
-          "check": {
-            "verdict": "live",
-            "http_status": 200,
-            "checked_at": "2026-11-16T11:26:38.594Z"
-          }
-        }
-      ],
+      "repository_verified_at": "2026-11-16T22:36:00.000Z",
       "enrichment": {
         "method": "builder-issue",
         "sources": [
-          "https://github.com/satojandro/near-hunt/issues/74",
-          "https://github.com/DGuedz/blvckmindz-near",
-          "https://x.com/dg_doublegreen/status/2121751968498471085"
+          "https://github.com/satojandro/near-hunt/issues/76",
+          "https://github.com/UltravioletaDAO/arras",
+          "https://x.com/UltravioletaDAO/status/2121361507258601615"
         ],
-        "retrieved_at": "2026-11-16T11:26:38.594Z",
-        "fields": [
-          "repository_url",
-          "links"
-        ]
-      }
-    },
-    {
-      "submission_id": "a1184a58-cbc6-4378-a055-eb6c6c43e6fc",
-      "status": "ok",
-      "issue": "https://github.com/satojandro/near-hunt/issues/73",
-      "issue_number": 73,
-      "issue_numbers": [
-        73
-      ],
-      "repository_url": "https://github.com/naz3eh/shelter",
-      "repository_source": "https://github.com/satojandro/near-hunt/issues/73",
-      "repository_basis": [
-        "builder",
-        "readme"
-      ],
-      "repository_verified": true,
-      "repository_verified_at": "2026-11-16T11:26:38.594Z",
-      "enrichment": {
-        "method": "builder-issue",
-        "sources": [
-          "https://github.com/satojandro/near-hunt/issues/73",
-          "https://github.com/naz3eh/shelter",
-          "https://x.com/Viraz04/status/2121672078088863754"
-        ],
-        "retrieved_at": "2026-11-16T11:26:38.594Z",
+        "retrieved_at": "2026-11-16T22:36:00.000Z",
         "fields": [
           "repository_url"
         ]
