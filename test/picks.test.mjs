@@ -41,6 +41,12 @@ test('only projects with a listing, and the track top falls to the best listed o
   assert.equal(selectPicks(rows).length, 3); // no `listed` given: no listing filter
 });
 
+test('the listing name replaces the reviewer name, and sorting follows it', () => {
+  const rows = [R('a', 'T', '4.8', { name: 'near' }), R('b', 'T', '4.7', { name: 'zeta' })];
+  const names = new Map([['a', 'Quiet Treasury'], ['b', '  ']]);
+  assert.deepEqual(selectPicks(rows, { names }).map((p) => p.name), ['Quiet Treasury', 'zeta']);
+});
+
 test('one submission per duplicate cluster, the best scoring', () => {
   const rows = [R('x1', 'DeFi', '4.6'), R('x2', 'DeFi', '4.7'), R('y', 'DeFi', '4.55')];
   const duplicates = { clusters: [{ submissions: [{ submission_id: 'x1' }, { submission_id: 'x2' }] }] };

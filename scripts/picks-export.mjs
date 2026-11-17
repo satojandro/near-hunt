@@ -86,11 +86,18 @@ async function main() {
     entries.filter((e) => e.value !== null && e.value !== undefined).map((e) => String(e.key).replace(/^project\//, '')),
   );
   if (listed.size === 0) throw new Error('Read no project listings from chain; refusing to write an empty list');
+  // Show each pick under its listing's name, the same as its /p/{id} page.
+  const names = new Map(
+    entries
+      .filter((e) => typeof e.value?.name === 'string')
+      .map((e) => [String(e.key).replace(/^project\//, ''), e.value.name]),
+  );
   const unlisted = rows.filter((r) => r.gate_pass && !listed.has(r.project_id)).length;
   const picks = selectPicks(rows, {
     cutoff: args.cutoff,
     perTrackTop: args.perTrackTop,
     listed,
+    names,
     hidden: readJson('data/hidden-projects.json'),
     duplicates: readJson('data/enrichment/duplicates.json'),
   });

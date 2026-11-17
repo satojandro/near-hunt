@@ -19,11 +19,21 @@ export const metadata: Metadata = {
     title: 'NH Picks · NEAR Hunt',
     description: 'Hackathon projects NEAR Hunt recommends. Not official judging, not a ranking.',
     type: 'website',
+    images: [{ url: '/og/picks.png', width: 1200, height: 630, alt: 'NH Picks on NEAR Hunt' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'NH Picks · NEAR Hunt',
+    description: 'Hackathon projects NEAR Hunt recommends. Not official judging, not a ranking.',
+    images: ['/og/picks.png'],
   },
 };
 
 const nf = new Intl.NumberFormat('en-US');
 const METHOD_URL = 'https://github.com/satojandro/near-hunt/blob/main/lib/picks.mjs';
+// A plain issue with a prefilled title: the listing-correction template is about chain records,
+// which a pick's AI-written summary is not.
+const PICK_ISSUE_URL = 'https://github.com/satojandro/near-hunt/issues/new?title=NH%20Picks%3A%20';
 
 /** Pitches use `backticks` for account names and identifiers; render those as code. */
 function Pitch({ text }: { text: string }) {
@@ -57,8 +67,13 @@ export default function PicksPage() {
         <p className={s.disclaimer}>
           <strong>Not official hackathon judging, and not a ranking.</strong> NEAR Hunt is itself a hackathon
           entry and never picks itself. Projects are listed by track, then alphabetically. Picks come from
-          AI reviews of each public repository, {nf.format(DATA.reviewed)} reviewed so far, and grow as more
-          are read. Updated {updated}. <a href={METHOD_URL}>How picks are chosen</a>.
+          AI reviews of the {nf.format(DATA.reviewed)} submissions with a public GitHub repository. Updated{' '}
+          {updated}. <a href={METHOD_URL}>How picks are chosen</a>.
+        </p>
+        <p className={s.note}>
+          Each one-line summary is written by AI from the project&apos;s README and has not been checked by
+          a person. If yours is wrong, or you would rather not be listed,{' '}
+          <a href={PICK_ISSUE_URL}>open an issue</a> and we will fix or remove it.
         </p>
       </header>
 
