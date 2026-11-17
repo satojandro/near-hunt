@@ -12,6 +12,7 @@ import sb from '@/app/components/sidebar/sidebar.module.css';
 import { Suspense } from 'react';
 import ProjectAvatar from '@/app/components/ProjectAvatar';
 import InlineMarks from '@/app/components/InlineMarks';
+import OpenOnHash from './OpenOnHash';
 import UpvoteButton from '@/app/components/vote/UpvoteButton';
 import ds from '@/app/components/discussion/discussion.module.css';
 import PICKS_FILE from '@/data/picks.json';
@@ -152,16 +153,10 @@ export default async function PicksPage() {
           when our AI reviewer read their code. Each one works, and puts NEAR at the centre of its design. Open a
           project to read why we picked it.
         </p>
-        <p className={s.disclaimer}>
-          <strong>Not official hackathon judging.</strong> Scores and notes come from NEAR Hunt&apos;s AI reviewer,
-          which read the {nf.format(DATA.reviewed)} submissions with a public GitHub repository; the notes are
-          written to each team and have not been checked by a person. NEAR Hunt is itself a hackathon entry and
-          never picks itself. Upvotes are the community&apos;s. Updated {updated}.{' '}
-          <a href={METHOD_URL}>How picks are chosen</a>.
-        </p>
         <p className={s.note}>
-          Something wrong about your project, or would you rather not be listed?{' '}
-          <a href={PICK_ISSUE_URL}>Open an issue</a> and we will fix or remove it.
+          These are our picks, not the official hackathon results. Scores and notes come from our AI reviewer (see{' '}
+          <a href="#how-we-picked-title">How we picked</a>); upvotes come from you. Something off about your project?{' '}
+          <a href={PICK_ISSUE_URL}>Let us know</a>. Updated {updated}.
         </p>
       </header>
 
@@ -176,10 +171,21 @@ export default async function PicksPage() {
       <div className="dir-main">
         <div className="dir-list-col">
       {groups.map((g) => (
-        <section key={g.track} id={trackSlug(g.track)} className={s.group} aria-labelledby={`h-${trackSlug(g.track)}`}>
-          <h2 id={`h-${trackSlug(g.track)}`}>
-            {g.track} <span className={s.groupCount}>{g.items.length}</span>
-          </h2>
+        <details key={g.track} id={trackSlug(g.track)} className={s.group} open>
+          <summary className={s.groupHead}>
+            <span className={s.chevron} aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </span>
+            <h2>
+              {g.track} <span className={s.groupCount}>{g.items.length}</span>
+            </h2>
+            <span className={s.foldHint} aria-hidden="true">
+              <span className={s.whenOpen}>Hide</span>
+              <span className={s.whenClosed}>Show</span>
+            </span>
+          </summary>
           <ol className="dir-list">
             {g.items.map((p) => (
               <PickRow
@@ -191,8 +197,9 @@ export default async function PicksPage() {
               />
             ))}
           </ol>
-        </section>
+        </details>
       ))}
+      <OpenOnHash />
 
       {groups.length === 0 ? <p className={s.lede}>No picks yet. The first ones appear once reviews are in.</p> : null}
         </div>

@@ -12,21 +12,34 @@
   text-wrap: balance; overflow-wrap: anywhere;
 }
 .lede { margin: 14px 0 0; font-size: 17px; line-height: 1.55; color: var(--text-muted); max-width: 720px; }
-.disclaimer {
-  margin: 18px 0 0; font-size: 14px; line-height: 1.55; color: var(--warn-text-strong); background: var(--warn-bg-strong);
-  border: 1px solid var(--warn-border-strong); border-radius: var(--radius); padding: 12px 14px; max-width: 720px;
-}
-.disclaimer strong { color: var(--warn-em-strong); }
-.disclaimer a { color: inherit; text-decoration: underline; }
-.note { margin: 10px 0 0; font-size: 14px; line-height: 1.55; color: var(--text-muted); max-width: 720px; }
+.note { margin: 14px 0 0; font-size: 14px; line-height: 1.55; color: var(--text-muted); max-width: 720px; }
 .note a { color: var(--accent); }
 
 .chips { margin-top: 28px; }
 
-.group { margin-top: 36px; scroll-margin-top: 80px; }
-.group h2 {
-  margin: 0 0 12px; font-family: var(--font-display); font-size: 22px; line-height: 1.25; font-weight: var(--display-weight);
+/* Each track is a <details> section that can be folded away (owner request, 17 Nov). The first
+   one has no top margin so its heading lines up with the sidebar's first card. */
+.group { margin-top: 32px; scroll-margin-top: 80px; }
+.group:first-child { margin-top: 0; }
+.groupHead {
+  list-style: none; cursor: pointer; display: flex; align-items: center; gap: 10px; margin: 0 0 12px;
+  border-radius: var(--radius-sm);
 }
+.groupHead::-webkit-details-marker { display: none; }
+.groupHead:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+.groupHead h2 {
+  margin: 0; font-family: var(--font-display); font-size: 22px; line-height: 1.25; font-weight: var(--display-weight);
+}
+.chevron {
+  width: 28px; height: 28px; flex-shrink: 0; border-radius: 999px; border: 1px solid var(--border);
+  display: inline-flex; align-items: center; justify-content: center; color: var(--text-muted);
+}
+.chevron svg { transition: transform 0.15s ease; }
+.group:not([open]) .chevron svg { transform: rotate(-90deg); }
+.groupHead:hover .chevron { border-color: var(--border-strong); color: var(--text); }
+.foldHint { margin-left: auto; font-size: 13px; color: var(--text-muted); }
+.group[open] .foldHint .whenClosed, .group:not([open]) .foldHint .whenOpen { display: none; }
+@media (prefers-reduced-motion: reduce) { .chevron svg { transition: none; } }
 .groupCount { font-family: var(--font-num); font-size: 15px; font-weight: 500; color: var(--text-muted); }
 
 /* Row additions */
