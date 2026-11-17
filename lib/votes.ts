@@ -3,7 +3,7 @@ import { unstable_cache } from 'next/cache';
 import { NETWORK, VOTE_ACCOUNT } from './network.mjs';
 import { readVoteRows, tallyVotes, votersFor, votesFor } from './votes.mjs';
 import { getProjects } from './projects';
-import { loadSnapshotValue, saveSnapshotValue } from './snapshot-store';
+import { loadSnapshotValue, saveSnapshotValueIfChanged, storedFetchedAt } from './snapshot-store';
 import { isFreshnessRecord, snapshotKey } from './snapshot.mjs';
 import { copyIsStale } from './freshness.mjs';
 import type { KvEntry } from '../types/nearhunt';
@@ -64,7 +64,9 @@ const getVoteRows = unstable_cache(
         })),
         fetched_at: new Date().toISOString(),
       };
-      await saveSnapshotValue(VOTES_SNAPSHOT_KEY, copy, 'votes');
+      // NH-125: only when the rows moved. This runs every `VOTES_REVALIDATE_SECONDS` (20 s) and the
+      // copy is 73,704 B, so re-storing it unchanged was 318 MB a day per warm instance.
+      await saveSnapshotValueIfChanged(VOTES_SNAPSHOT_KEY, copy, 'votes');
       return copy;
     } catch (err) {
       state.lastFailedAt = Date.now();
@@ -120,7 +122,10 @@ export async function safeVoteRows(): Promise<VoteRowSet> {
   }
   const stored = await loadSnapshotValue<VoteRowsCopy>(VOTES_SNAPSHOT_KEY, isVoteCopy, 'votes');
   if (stored && stored.rows.length > 0) {
-    return { rows: stored.rows, available: true, stale: true, fetched_at: stored.fetched_at };
+    // NH-125: the copy is rewritten only when its rows change, so its own `fetched_at` dates the last
+    // change; the `:read-at` stamp dates the last successful read of the same rows. Report the later.
+    const fetchedAt = await storedFetchedAt(VOTES_SNAPSHOT_KEY, stored, 'votes');
+    return { rows: stored.rows, available: true, stale: true, fetched_at: fetchedAt };
   }
   return { rows: [], available: false, stale: false, fetched_at: null };
 }
