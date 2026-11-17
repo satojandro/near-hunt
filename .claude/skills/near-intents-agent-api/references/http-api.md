@@ -1,0 +1,356 @@
+# HTTP API reference
+
+Base URL `https://api.agentsonintents.com`. The live contract is `GET /openapi.json`; a compact
+guide is `GET /llms.txt`. If this file and the server disagree, the server wins.
+
+## Conventions
+
+- **JSON, snake_case** everywhere (fields, query, errors). Statuses are UPPER_SNAKE. Exception:
+  `intent.payload` keeps its wallet standard's own field names (`receiverId`, `methodName`,
+  `primaryType`, …) because the wallet consumes it as is.
+- **Headers**
+  | Header | When |
+  |---|---|
+  | `X-API-Key: <partner API key>` | every endpoint except `/v1/network`, `/v1/tokens` |
+  | `X-Grant-Token: ngt_…` or `ngs_…` | swap, limit-orders (place, cancel, cancel-all), withdraw (including `dry: true` previews), transfer, shield, recover, every `native/…` route (not swap quotes or limit-order previews, not limit-order reads, not deposit). `ngt_…` is a grant token; `ngs_…` is a session on a federated grant from `POST …/grants/token` |
+  | `X-Grant-Proof: <JWT>` | the same endpoints, **instead of** `X-Grant-Token`, for a `public_key` grant. Never both (`validation_failed`). See [Signing every request](#signing-every-request-x-grant-proof) |
+  | `Idempotency-Key` | required on executions (a live limit order too), withdrawal previews and deposit (not on swap quotes, limit-order previews or cancels); optional on `generate-intent`. 8–128 chars `[A-Za-z0-9._:-]` |
+  | `Content-Type: application/json` | every body |
+- Responses carry `x-request-id`; errors repeat it as `meta.request_id`. Log it.
+- **Amounts**: atomic integer strings, up to 78 digits. **USD**: decimal strings (`"50"`, `"12.5"`).
+- **Durations**: milliseconds (`timelock_ms`, `wait_ms`, `delay_ms`). **Times**: ISO-8601 UTC.
+- **Ids**: `agent_id`, `grant_id` = 64 hex; `correlation_id` = `op_…` (execution) or
+  `intent_…` (owner intent); `approval_id` = UUID. An `agent_id` looks like an implicit NEAR
+  account but is not one: an agent's address is its `wallet.near_account_id`.
+- **Pagination**: `{ data: [...], next_cursor: string | null }`; pass `cursor=<next_cursor>`
+  until null. Policy history uses an integer cursor. The limit-order list is the exception: `{ data }`
+  only, newest first, paged with `limit` (1–100) and `offset`; a page shorter than `limit` is the last.
+- **Timeouts**: give settlement writes (non-dry swap/limit order/withdraw/transfer/shield) ~150 s,
+  everything else ~65 s (long-poll is 30 s max). Don't retry on client timeout with a new key.
+- **Errors**: JSON:API `{ errors: [{ status, code, layer, title, detail?, source?, meta? }], meta: { request_id } }`.
+  Branch on `errors[0].code`; `layer` (`request|auth|grant|policy|budget|balance|provider|api`)
+  says whose rule refused. `meta.retryable`, `meta.available_at`, `meta.min_amount` (on
+  `amount_too_low`, when the provider states it), `meta.available_amount` (on
+  `insufficient_balance`), and `Retry-After` header on 429/503. See
+  [errors.md](errors.md).
+
+## Endpoint catalogue
+
+### Meta (no side effects)
+
+| Method & path | Auth | Returns |
+|---|---|---|
+| `GET /v1/network` | none | `{ network: "mainnet", contract_id, supported_owner_types, status: { overall, checked_at, components[] } }` |
+| `GET /v1/tokens` | none | `{ data: [{ asset_id, symbol, decimals, blockchain, price, price_updated_at, price_expires_at }] }` |
+| `GET /v1/whoami` | key | `{ api_key_id, tenant_id }` |
+| `GET /v1/quotas` | key | `{ revision, overrides, limits: { daily_agents, requests_per_minute, key_requests_per_minute }, usage: {…}, observed_at }` |
+| `GET /openapi.json`, `GET /llms.txt`, `GET /health` | none | contract, guide, liveness |
+
+`status.components[]`: `{ id: "one_click" | "custody" | "near", status: "operational" | "degraded" | "down" | "unknown", reason, affects[], since, checked_at }`.
+`near` also checks the `intents.near` balance view (`degraded`, `view_failing`); `custody` and `near` list `balances` in `affects`.
+Advisory only; the API never refuses a request because of it.
+
+### Owner intents
+
+| Method & path | Auth | Body | Returns |
+|---|---|---|---|
+| `POST /v1/generate-intent` → 201 | key (+ optional idem) | `{ type, agent_id?, …type fields }` | `GenerateIntentResponse` |
+| `POST /v1/submit-intent` → 202 | key | `{ type, correlation_id, signed_data }` | `StatusResponse` |
+
+Details: [owner-intents.md](owner-intents.md), signing: [signing.md](signing.md).
+
+### Status
+
+| Method & path | Auth | Query | Returns |
+|---|---|---|---|
+| `GET /v1/status` | key | `correlation_id`, `wait_ms` (0–30000), `refresh` (bool) | `StatusResponse` |
+| `GET /v1/agents/{agent_id}/history` | key | `cursor`, `limit` (1–100, default 25), `include_unpaid` (bool, default false) | page of `StatusResponse` |
+| `GET /v1/agents/{agent_id}/operations/{correlation_id}/proof` | key | path `correlation_id` is an `op_…` id; `from_size?` (the size of your trusted checkpoint, decimal string: adds a consistency path; a server behind it answers 409 `transparency_checkpoint_behind`) | `{ correlation_id, origin, checkpoint, consistency, notary, events }`: each audit event of the execution with a `c2sp.org/tlog-proof@v1` (`PROVEN`) and its `evidence` (the recorded result, hashed into the opening), `PENDING` until the next checkpoint, or `UNLOGGED`; `notary` holds the verifier keys and TDX birth attestation. A deployment without a transparency log answers 501 `transparency_log_disabled` |
+
+### Receipts
+
+| Method & path | Auth | Query | Returns |
+|---|---|---|---|
+| `GET /v1/agents/{agent_id}/operations/{correlation_id}/receipt` | key | `op_…` id in the path | `ReceiptItem` |
+| `GET /v1/agents/{agent_id}/receipts` | key | `cursor`, `limit` (1–100, default 25), `type` (`transfer` \| `withdraw` \| `swap` \| `limit_order` \| `deposit`) | `{ data: ReceiptItem[], next_cursor }`, newest first; with `type` a page can be short while `next_cursor` is set |
+
+```ts
+ReceiptItem = {
+  correlation_id, type: "transfer" | "withdraw" | "swap" | "limit_order" | "deposit",
+  status: "PROVEN" | "PENDING" | "UNLOGGED",
+  details: { settled_at, usd_value?, note?, grant_id?, policy_epoch?, …the settled terms… },  // the account's own view
+  receipt: { version: 1, origin, leaf_index, opening, terms } | null,                        // set once PROVEN; safe to hand to a payee
+}
+```
+
+An operation that is unfinished, failed, or of another type (shield, unshield, native signing) is 409
+`receipt_not_available`. 501 `transparency_log_disabled` when the deployment keeps no log. Verify
+a receipt with the SDK ([status-and-recovery.md](status-and-recovery.md#receipts)).
+
+### Agents and reads
+
+| Method & path | Query | Returns |
+|---|---|---|
+| `GET /v1/agents` | `external_user_id`, `cursor` | page of `AgentView` |
+| `GET /v1/agents/{agent_id}` | | `AgentView` |
+| `GET /v1/agents/{agent_id}/wallet` | | `{ wallet_id, near_account_id }` |
+| `GET /v1/agents/{agent_id}/balances` | `source` = `confidential` (default) \| `public` (the legacy balance), `asset` | `{ near_account_id, source, balances: BalanceEntry[] }` |
+| `GET /v1/agents/{agent_id}/addresses/near` | | `{ chain: "near", address }` |
+| `GET /v1/agents/{agent_id}/policy` | | `PolicyView` |
+| `GET /v1/agents/{agent_id}/policy/history` | `cursor` (int), `limit` | page of policy revisions |
+| `GET /v1/agents/{agent_id}/grants` | | `{ data: GrantView[] }` (revoked included) |
+| `POST /v1/agents/{agent_id}/grants/token` | key; `grant_type`, `subject_token`, `subject_token_type`, `grant_id?` | `{ access_token: "ngs_…", issued_token_type, token_type: "N_A", expires_in, expires_at, grant_id, label }`. See [Workload identity](#workload-identity-exchange-and-proofs) |
+| `GET /v1/agents/{agent_id}/executions/scheduled` | `cursor`, `limit` | `{ data: [{ correlation_id, execute_after, state, action }], next_cursor }` |
+| `GET /v1/agents/{agent_id}/approvals` | | `{ data: ApprovalView[], truncated }` (at most 100; `truncated` only when the provider holds approvals the API did not create; 503 `provider_unavailable` if it cannot finish in 20 s) |
+| `GET /v1/agents/{agent_id}/approvals/{approval_id}` | | `ApprovalView` |
+| `GET /v1/agents/{agent_id}/containment` | `grants_cursor`, `operations_cursor` | live grants + unfinished operations ("what is still able to act") |
+| `GET /v1/agents/{agent_id}/limit-orders` | `open` (bool), `limit` (1–100), `offset` | `{ data: LimitOrderView[] }`, newest first, as 1Click lists them (status not refreshed) |
+| `GET /v1/agents/{agent_id}/limit-orders/{order_id}` | | `LimitOrderView`, live: `fill_status`, `partial_fills`, `payouts`, `is_payout_status_final`, `app_fees`, `deadline`; 404 `limit_order_not_found` |
+| `GET /v1/agents/{agent_id}/provider/{kind}` | `kind` = requests \| audit \| deposits \| deposit_history; `limit`, `offset`, `type` | provider's raw records (`{ data }`) |
+
+### Executions (all `POST /v1/agents/{agent_id}/…`, 202)
+
+| Path | Auth | Body |
+|---|---|---|
+| `/swap` | key, grant, idem | `origin_asset`, `destination_asset`, `amount`, `min_amount_out?`, `confidential?`, `note?`, `dry?` |
+| `/limit-orders` | key, grant, idem | `base_asset`, `quote_asset`, `side` (`sell`\|`buy`), `quantity` (atomic base), `price` (decimal string, quote per whole base), `deadline?` (RFC 3339, ≤ 7 days), `confidential?`, `note?`, `dry?` |
+| `/limit-orders/{order_id}/cancel` → 200 | key, grant | none; returns the order (fields optional, `{}` possible) |
+| `/limit-orders/cancel-all` → 200 | key, grant | none; `{ known, cancelled, failed, remaining, complete }`, at most 50 per call |
+| `/withdraw` | key, grant, idem | `asset`, `amount`, `chain`, `recipient`, `memo?`, `reference?`, `confidential?`, `note?`, `async?`, `dry?` |
+| `/transfer` | key, grant, idem | `asset`, `amount`, `recipient` (NEAR Intents account; a named one must exist on NEAR, else `invalid_address`; to pay another agent, its `wallet.near_account_id`, never its `agent_id`: funds sent there are lost), `reference?`, `confidential?`, `note?` |
+| `/shield` | key, grant, idem | `asset`, `amount` (public → confidential) |
+| `/unshield` | key | `asset`, `amount`; refused: every request is `public_balance_exit_only` |
+| `/deposit` | key, idem | `origin_asset`, `destination_asset?`, `amount?`, `confidential?`, `note?` |
+| `/recover` | key, grant, idem (original) | `correlation_id`, `request: { type, …original body }` |
+
+`confidential` defaults to `true` everywhere. `confidential: false` is refused with
+`public_balance_exit_only` (400, layer `request`, not retryable, live and `dry`) on `/swap`,
+`/limit-orders`, `/transfer` and `/deposit`; `/withdraw` accepts it and pays from the legacy public
+balance. `reference` (1–128 printable ASCII, no spaces) and `note` (1–500 characters, one line)
+are described in [executions.md](executions.md#reference-note-and-receipts).
+
+### Native accounts (all `POST /v1/agents/{agent_id}/native/…`, key + grant)
+
+| Path | Policy switch | Body | Reply |
+|---|---|---|---|
+| `near/sign-message` → 200 | `near.sign_message` lists `recipient` | `message`, `encoding?` (`utf8`/`hex`), `recipient`, `nonce` (32 bytes, base64) | `{ correlation_id, near_account_id, public_key, signature (base64), nonce, recipient }` |
+| `near/transfer` → 202, idem | `near.transfer` | `to`, `amount` (yoctoNEAR) | `StatusResponse` |
+| `near/call` → 202, idem | `near.call` lists `receiver_id` | `receiver_id`, `method_name`, `args?` \| `args_base64?`, `gas?`, `deposit?` | `StatusResponse` |
+| `evm/sign-typed-data` → 200 | domain (and `primaryType`, if the entry lists `primary_types`) in `evm.sign_typed_data` | `chain`, `typed_data` (EIP-712 v4; `message` ≤ 65536 bytes as canonical JSON) | `NativeSignature` |
+| `evm/sign-message` → 200 | `evm.sign_message` | `chain`, `message`, `encoding?` | `NativeSignature` |
+| `evm/sign-intent` → 200 | `evm.sign_intent` | `payload` (string: exact canonical JSON text of a NEAR Intents payload, `transfer` intents only), `one_click_quotes?` (up to 2 of 1Click's `POST /v0/quote` answers, unchanged, one per 1Click deposit address the payload pays) | `NativeSignature` + `signed_data` |
+| `evm/sign-transaction` → 200 | `evm.sign_transaction` | `chain`, `unsigned_tx` (`0x` serialized unsigned EIP-2718 or EIP-155 transaction for `chain`) | `NativeSignature` |
+| `solana/sign-in` → 200 | `solana.sign_in` lists `domain` | `domain`, `nonce`, `issued_at`, `expiration_time`, `statement?`, `uri?`, `version?`, `chain_id?` | `NativeSignature` + `signed_message` |
+| `solana/sign-message` → 200 | `solana.sign_message` | `message`, `encoding?` (`utf8`/`hex`/`base64`) | `NativeSignature` |
+| `solana/sign-intent` → 200 | `solana.sign_intent` | `payload`, `one_click_quotes?`, as `evm/sign-intent` | `NativeSignature` + `signed_data` |
+| `solana/sign-transfer` → 200 | `solana.sign_transfer`; `destinations` allows `recipient` | `unsigned_tx` (base64 legacy or v0 message making one SOL/SPL transfer), `recipient` | `NativeSignature` |
+| `solana/sign-transaction` → 200 | `solana.sign_transaction` | `unsigned_tx` (base64 legacy or v0 transaction message) | `NativeSignature` |
+
+EVM `chain`: `ethereum`, `polygon`, `base`, `arbitrum`, `optimism`, `bsc`, `avalanche`,
+`hyperevm`, `hood` (one address on all). `NativeSignature = { correlation_id, chain, account_id,
+signature }` (EVM `0x` 65-byte r‖s‖v; Solana base58). Signing never broadcasts. A NEAR transfer or
+call reads `SUCCESS` only once two RPC operators agree NEAR finalized the transaction in
+`details.tx_hash` and it is exactly the request; until then `PROCESSING`, whatever
+`details.provider_status` says. A finalized failure is `FAILED` (`native_transaction_failed`); a
+transaction that is not the request is `NEEDS_REVIEW` (`native_transaction_mismatch`), and one NEAR
+still does not know 30 minutes after dispatch is `NEEDS_REVIEW` (`native_transaction_unconfirmed`).
+A lost provider answer is resent under the same key for 10 minutes, then reads `NEEDS_REVIEW`
+(`native_request_unconfirmed`). Only the signing call returns a `signature`; status and history
+return `signature: null`, older records too. Rules: [policy.md](policy.md#native-accounts-native);
+the `sign-intent`, `sign-in` and `sign-transfer` routes: [sign-intent.md](sign-intent.md). A freeze
+refuses new native requests but cannot recall a `sign-intent` payload already signed.
+
+`dry: true` on swap/limit-orders/withdraw → 200 `{ dry: true, type, quote, spend, fee, warnings }`. A swap quote
+or limit-order preview needs no grant and no idempotency key (the preview makes no provider call); a withdrawal preview needs both (same key replays it for
+60 s; no API cap, the provider's 1,000 custody operations per rolling 24 h apply). The
+account's rules (action, destination, assets, schedule, USD budget, per-asset limits,
+`max_actions_per_hour`) and `insufficient_balance` never refuse either: each one the live request
+would fail is a `warnings[]` entry whose `code` is that request's error code
+(`policy_schedule_denied` also carries `available_at`, `insufficient_balance` carries
+`available_amount`). An asset `GET /v1/tokens` does not list (`unsupported_token`) or an invalid
+recipient (`invalid_address`) refuses the quote itself with 400, before any provider call and
+without calling the provider. A preview that reaches the provider is one of the wallet's custody
+operations even when it carries a warning; one the provider fails drops its pending row, so the
+same key may try again. An archived, deleted or frozen account gets no quote: a swap quote and a
+withdrawal preview are both refused with 409 `agent_archived`, `agent_deleted` or `wallet_frozen`
+and reach no provider. A warning-free answer is a snapshot, not a reservation. Shape and details: [executions.md](executions.md).
+
+### Workload identity: exchange and proofs
+
+A grant whose `credential` is `{ type: "oidc", … }` or `{ type: "public_key", jwk }` has no token to
+send. Which to use and the platform recipes: [workload-identity.md](workload-identity.md). On the wire:
+
+**Exchange** a workload's JWT (an OIDC identity token, or a key assertion) for a session token. It
+needs `X-API-Key` and takes no `Idempotency-Key`:
+
+```bash
+curl -s -X POST "$API_URL/v1/agents/$AGENT_ID/grants/token" \
+  -H "X-API-Key: $NEAR_INTENTS_AGENT_API_KEY" -H "Content-Type: application/json" \
+  -d '{"grant_type":"urn:ietf:params:oauth:grant-type:token-exchange",
+       "subject_token":"'"$JWT"'",
+       "subject_token_type":"urn:ietf:params:oauth:token-type:jwt"}'
+# -> { "access_token": "ngs_…", "token_type": "N_A", "expires_in": 900, "expires_at": "…", "grant_id": "…", "label": "…" }
+```
+
+- `subject_token_type` is `urn:ietf:params:oauth:token-type:jwt` (or `…:id_token`). `subject_token` is a
+  compact JWT of at most 16,384 characters. A missing or non-string field is `validation_failed`.
+- `grant_id` (optional): send it only when the token matches several live grants (`grant_ambiguous`).
+- `access_token` goes in `X-Grant-Token` beside `X-API-Key`; `token_type: "N_A"` means it is **not** an
+  `Authorization` bearer. Cache it until about 60 s before `expires_at` (15 min default, 60 max,
+  never past the grant); a grant holds at most 100 live sessions. Revoking, expiry or an owner
+  change ends every session at once.
+- **OIDC `subject_token`**: the platform's identity token for audience `{API url}/v1/agents/{agent_id}`
+  (the API url is `servers[0]` of `/openapi.json`; no trailing slash).
+- **Key-assertion `subject_token`** (a `public_key` grant): a JWT the grant's key signs, **single use**,
+  header `alg` `EdDSA` (Ed25519) or `ES256` (P-256), claims `iss` = `sub` = the key's thumbprint URI,
+  `aud` = `{API url}/v1/agents/{agent_id}/grants/token`, `iat`, `exp` (at most 5 minutes after `iat`),
+  `jti` (unique, 16 to 256 characters). Build it as in the proof recipe below.
+- Errors: `subject_token_invalid` 401, `agent_grant_required` 403, `grant_ambiguous` 409,
+  `grant_session_limit_reached` 429, `issuer_unavailable` and `transparency_unavailable` 503. See
+  [errors.md](errors.md#workload-identity).
+
+#### Signing every request: `X-Grant-Proof`
+
+A `public_key` grant may skip the exchange and send, on any endpoint that takes `X-Grant-Token`, a JWT
+its key signs for that one request as `X-Grant-Proof`. `X-API-Key` is still required.
+
+| Claim | Value |
+|---|---|
+| header `alg` | `EdDSA` for an Ed25519 key, `ES256` for P-256 |
+| `iss`, `sub` | The key's RFC 9278 thumbprint URI: `urn:ietf:params:oauth:jwk-thumbprint:sha-256:` + base64url(SHA-256 of the RFC 7638 canonical JWK) |
+| `grant_id` | The `grant_id` of the live `public_key` grant that binds this key. Keep the original id on retries and recovery |
+| `aud` | One string (a list is refused): `{API url}` + the request path, **without query or fragment**, e.g. `https://api.agentsonintents.com/v1/agents/{agent_id}/transfer`. Never the `Host` header |
+| `htm` | The method, uppercase: `POST` |
+| `body_sha256` | Lowercase hex SHA-256 of the **exact body bytes sent**; of zero bytes when there is no body (`e3b0c442…7852b855`) |
+| `idempotency_key` | The `Idempotency-Key` header exactly as sent. **Omit the claim** when the request sends none |
+| `iat`, `exp` | `exp` at most 5 minutes after `iat` (30 s clock skew allowed). Use about 1 minute |
+| `jti` | Unique, 16 to 256 characters (a UUID works). Spent on first use |
+
+By hand, for one request:
+
+1. Serialize the body **once** to bytes and compute `body_sha256` over those bytes; send exactly those bytes. Re-serializing (key order, spacing, escaping) changes the hash.
+2. The thumbprint: for Ed25519 hash `{"crv":"Ed25519","kty":"OKP","x":"…"}`; for P-256
+   `{"crv":"P-256","kty":"EC","x":"…","y":"…"}` (members in that alphabetical order, no whitespace,
+   only the public members). base64url without padding.
+3. Header `{"alg":"EdDSA"}` (or `ES256`) and the claims as JSON, each base64url (no padding), joined
+   with `.`: that string is the **signing input**.
+4. Sign its UTF-8 bytes: Ed25519 signs them directly; P-256 is ECDSA over their SHA-256. The JWS
+   signature is the raw 64 bytes (P-256: `r || s`, each 32 bytes, **not ASN.1 DER**, which many
+   libraries and KMSs return by default). Append `.` + base64url(signature).
+5. Send `X-Grant-Proof: <jwt>` (no `X-Grant-Token`), the same `Idempotency-Key` you hashed and the exact
+   body bytes.
+6. **Retry** (timeout, `5xx`, lost response): sign a **new** proof with a new `jti`, the same
+   `grant_id` and the same `Idempotency-Key`, and resend the same body. The API returns the stored
+   operation. Never reuse a proof.
+
+```json
+{ "iss": "urn:ietf:params:oauth:jwk-thumbprint:sha-256:NzbL…", "sub": "urn:ietf:params:oauth:jwk-thumbprint:sha-256:NzbL…",
+  "grant_id": "<64 hex>", "aud": "https://api.agentsonintents.com/v1/agents/<agent_id>/transfer",
+  "htm": "POST", "body_sha256": "<64 hex>", "idempotency_key": "idem_7c1f…",
+  "iat": 1790000000, "exp": 1790000060, "jti": "0b1c…16-256 chars" }
+```
+
+Every refusal reads `grant_proof_invalid` (401): bad grant id, signature, key, audience, method,
+body hash, idempotency key, lifetime or format, or a spent `jti`. Malformed path, query, body or
+`Idempotency-Key` values are rejected before the proof is spent; an omitted required
+`Idempotency-Key` is rejected after admission. Language examples: [python.md](python.md#workload-identity),
+[rust.md](rust.md#workload-identity), [other-languages.md](other-languages.md#workload-identity); in TypeScript
+`createGrantProof` / `forGrantProof` ([typescript.md](typescript.md#workload-identity)).
+
+## Core shapes
+
+```ts
+StatusResponse = {
+  correlation_id: string,                  // op_… | intent_…
+  agent_id: string | null,
+  type: "agent_create" | "policy_update" | "agent_freeze" | "agent_unfreeze" | "agent_archive"
+      | "agent_restore" | "agent_delete" | "grant_issue" | "grant_revoke" | "execution_cancel"
+      | "approval_vote" | "swap" | "limit_order" | "withdraw" | "transfer" | "shield" | "unshield" | "deposit"
+      | "native",
+  status: "PENDING_SIGNATURE" | "QUEUED" | "PENDING_APPROVAL" | "PENDING_DEPOSIT" | "PROCESSING"
+        | "SUCCESS" | "REFUNDED" | "FAILED" | "UNCERTAIN" | "NEEDS_REVIEW",
+  failure_code: string | null,
+  created_at, updated_at,
+  dispatch_committed_at: string | null,
+  grant: { id, label } | null,
+  details: { … by type … }
+}
+```
+
+`PENDING_DEPOSIT` appears only for deposits. A withdrawal's or swap's bridge leg waiting on 1Click
+reads `PROCESSING`, with `details.provider_status` keeping the provider's own state.
+
+`details` by type:
+
+| type | details |
+|---|---|
+| executions, `deposit`, `agent_delete` | `action`, `request?` (the request as admitted, in the request body's field names: optional `origin_asset`, `destination_asset`, `asset`, `amount`, `min_amount_out`, `chain`, `recipient`, `memo`, `reference`, `note`, `side`, `price`, `quantity`, `deadline` (the last four for limit orders), `confidential`; `confidential` is the balance it spends from, or for a deposit credits), `near_account_id?`, `provider_request_id?`, `chain?`, `execute_after?`, `delay_ms?`, `approval_id?`, `intent_hash?`, `tx_hash?`, `destination_tx_hash?`, `amount_out?`, `order_id?` (limit order: the resting order's id), `usd_value?` (the API's USD valuation at dispatch), `available_amount?` (a FAILED `insufficient_balance` / `custody_native_balance_required`), `deposit_address?`, `memo?`, `min_amount?`, `min_amount_out?`, `expires_at?`, `deposit_seen_at?` (deposit: first sighting of funds), `refund_to?`, `refund_tx_hash?`, `failure_reason?`, `reason?` (NEEDS_REVIEW), `never_executed?`, `never_submitted?`, `settled_late?`, + provider fields |
+| `agent_create` | `agent_id`, `revision`, `policy_hash`, `transaction_hash` |
+| `policy_update`, `agent_freeze`, `agent_unfreeze` | `revision`, `policy_hash`, `transaction_hash` (null when the revision applied without a blockchain transaction) |
+| `grant_issue` | `grant: GrantView \| null` |
+| `grant_revoke` | `grant_id`, `committed_correlation_ids`, `committed_cancellations` (`[{ order_id \| null, committed_at }]`, limit-order cancels that may still reach the provider), `committed_truncated` |
+| `execution_cancel` | `cancelled_correlation_id` |
+| `agent_archive`, `agent_restore` | `archived` |
+| `approval_vote` | `approval_id`, `verdict` |
+| `native` | `method`, `chain`, `account_id`, `target`, `amount`, `method_name`, `primary_type`, `domain`, `message_json`, `request_sha256`, `signature` (always `null` here), `tx_hash`, `provider_request_id`, `provider_status`, `failure_reason`. `domain` (the matched EIP-712 domain, in the policy's spelling) and `message_json` (the signed `message` as canonical JSON, keys sorted, a string) are set for typed data, `null` otherwise |
+
+Narrow on `type` before reading `details`.
+
+```ts
+AgentView = {
+  id, name, external_user_id: string | null,
+  status: "PENDING" | "ACTIVE" | "ARCHIVED" | "DELETED" | "ABANDONED",
+  archived, deleted,
+  owner: OwnerWallet | null,
+  owner_account: { account_id, public_key, authority: "wallet" } | null,
+  wallet: { wallet_id, near_account_id } | null,
+  created_at,
+  cooldowns: { policy_change_available_at: string | null, unfreeze_available_at: string | null }
+}
+
+PolicyView = {
+  wallet_id, revision: int | null, policy_hash, status: "NONE" | "SIGNED" | "APPLIED" | "FAILED",
+  applied_at, transaction_hash,             // null when applied without a blockchain transaction
+  provider_policy_synced: boolean,         // in force only when APPLIED && true
+  cooldowns, policy: Policy | null,
+  usage: {
+    budget: { daily|weekly|monthly: { limit_usd, spent_usd, remaining_usd, resets_at } },  // resets_at = end of the current period; all null when uncapped
+    timelock: { delay_ms, scheduled_count }
+  }
+}
+
+BalanceEntry = { asset_id, symbol, decimals, blockchain, price, …, balance_raw: string, balance: string | null,
+                 available_raw: string, available: string | null }
+// available = balance less queued/timelocked work not yet dispatched (dispatched work leaves the
+// balance a few seconds after dispatch, when the provider's balance reflects it); read it instead
+// of computing it. Deletion previews keep the old shape, without `available`.
+
+GrantView = { grant_id, agent_id, wallet_id, label, issued_at, expires_at,
+              revoked_at, revoked_reason, owner_epoch,
+              credential_type: "token" | "oidc" | "public_key",
+              owner_message }     // owner_message.credential: a token's SHA-256 hex, or the signed oidc / public_key object
+
+ApprovalView = { approval_id, wallet_id, wallet_pubkey, request_hash,
+                 status: "PENDING" | "APPROVED" | "REJECTED" | "EXPIRED",
+                 request_type, request_data, required_approvals, expires_at }
+
+OwnerWallet =
+  | { type: "near", account_id, public_key: "ed25519:…" }
+  | { type: "evm", address: "0x…" (lowercase), chain_id: number, public_key: "0x" + 128 hex }
+  | { type: "passkey", credential_id, public_key (b64url DER SPKI), rp_id, origin }
+```
+
+The `Policy` shape is in [policy.md](policy.md).
+
+## curl cheatsheet
+
+```bash
+H=(-H "X-API-Key: $NEAR_INTENTS_AGENT_API_KEY" -H "Content-Type: application/json")
+curl -s "$NEAR_INTENTS_AGENT_API_URL/v1/agents?external_user_id=user_123" "${H[@]}"
+curl -s "$NEAR_INTENTS_AGENT_API_URL/v1/agents/$AGENT_ID/policy" "${H[@]}"
+curl -s "$NEAR_INTENTS_AGENT_API_URL/v1/agents/$AGENT_ID/balances" "${H[@]}"                  # confidential
+curl -s "$NEAR_INTENTS_AGENT_API_URL/v1/agents/$AGENT_ID/balances?source=public" "${H[@]}"     # legacy public balance
+curl -s "$NEAR_INTENTS_AGENT_API_URL/v1/status?correlation_id=$CID&wait_ms=30000" "${H[@]}"
+curl -s -X POST "$NEAR_INTENTS_AGENT_API_URL/v1/agents/$AGENT_ID/swap" "${H[@]}" -H "X-Grant-Token: $GRANT" \
+  -d '{"origin_asset":"nep141:wrap.near","destination_asset":"'"$USDC"'","amount":"100000000000000000000000","dry":true}'
+```

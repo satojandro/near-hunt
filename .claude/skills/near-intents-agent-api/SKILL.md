@@ -1,0 +1,182 @@
+---
+name: near-intents-agent-api
+description: Build on the NEAR Intents Agent API (api.agentsonintents.com) in any language — TypeScript, Python, Rust, Go or plain HTTP. Use when integrating AI-agent wallets on NEAR Intents into an app or backend, when code mentions partner API keys (`X-API-Key`), `ngt_` grant tokens, `X-Grant-Token`, workload identity federation (`ngs_` sessions, `X-Grant-Proof`, OIDC or key-bound grants for CI and cloud workloads), `generate-intent`/`submit-intent`, `@near-intents-agent-api/sdk`, `sign-intent`/`sign-in`/`sign-transfer` native routes, owner-signed spending policies, agent swaps/limit orders/transfers/withdrawals/deposits, or when someone wants an AI agent to hold and move funds under owner-set limits.
+---
+
+# NEAR Intents Agent API
+
+A backend HTTP API that gives each AI agent its own **agent account on NEAR Intents**. The end
+user (the **owner**) signs the rules once with their own wallet; the agent then swaps, places limit orders, transfers
+and withdraws on its own, inside those rules, with no further signatures. Your backend holds one
+partner API key and never touches anyone's private keys.
+
+| Party | Credential | Does |
+|---|---|---|
+| **Partner** (your backend) | Partner API key (`X-API-Key`) from the [partner portal](https://partners.near-intents.org/) | Calls every endpoint, prepares owner actions, stores grants |
+| **Owner** (end user) | Their wallet: NEAR account, EVM key or passkey | Signs: create account, policy, grants, freeze, approve, delete |
+| **Agent** (assistant, bot, session) | Grant token `ngt_…` (held by your backend), or a federated identity: `ngs_…` session / `X-Grant-Proof` | Moves money inside the owner's policy |
+
+Hosted API: `https://api.agentsonintents.com` (mainnet, real funds), also the TypeScript SDK's
+default `baseUrl`. Machine-readable contract: `/openapi.json`; compact LLM guide: `/llms.txt`.
+
+The Agent API is an experimental, mainnet-only beta. You and your users may lose all assets used
+with it, or lose access to them. It is operated by NEAR Technologies Limited.
+
+## Non-negotiable rules
+
+Follow these in every integration; most bugs and lost-fund incidents come from breaking one.
+
+1. **API key and grant tokens are backend-only.** Never ship the partner API key or `ngt_…`/`ngs_…` tokens to a browser, mobile
+   app, prompt, log or LLM context. Browsers only see `intent.payload` + `preview` and return the
+   wallet's output.
+2. **The owner's wallet signs `intent.payload` exactly as returned.** Pick the method from
+   `intent.standard` (`nep413`, `nep366`, `eip712`, `webauthn`). Never rebuild, re-serialize,
+   hash or reorder it; submit `{...intent, <wallet output fields>}`.
+3. **Amounts are atomic integer strings** (`"1000000"` = 1 USDC at 6 decimals). Get `decimals`
+   and `asset_id` from `GET /v1/tokens`. Never use floats. Amounts that move funds must be > 0.
+4. **Every money-moving call carries an `Idempotency-Key`** (8–128 chars `[A-Za-z0-9._:-]`).
+   Create it, persist it with the request, *then* send. Retry only with the same key and body.
+   A live `placeLimitOrder` carries one; cancelling an order needs the grant only.
+5. **`UNCERTAIN` means the outcome is not yet proven ("maybe executed").** Keep polling the original `correlation_id`. Never
+   resubmit with a new key; `/recover` is only for provably-undispatched operations. An
+   execution the provider may have received answers `202 UNCERTAIN`. A server failure
+   (`internal_error`, `database_busy`, `transaction_unconfirmed`) carries `meta.retryable` and
+   may have taken effect: repeat it under the **same** key. A missing `meta.retryable` is not
+   proof that nothing was sent: use a new key only after a proven refusal (see
+   [errors.md](references/errors.md) retry rules).
+6. **`NEEDS_REVIEW` means stop.** Do not poll or retry; inspect `details.reason`, resolve, then
+   `GET /v1/status?correlation_id=…&refresh=true`.
+7. **Policies are always sent complete**, with `expected_revision` from `GET …/policy`. On
+   `policy_revision_conflict`, re-read and get a fresh signature.
+8. **A policy is in force only when `status: "APPLIED"` and `provider_policy_synced: true`.**
+   Before that, executions fail with `policy_not_ready`.
+9. **Branch on `errors[0].code`**, never on `title`/`detail`, and read `errors[0].layer` (`request`,
+   `auth`, `grant`, `policy`, `budget`, `balance`, `provider`, `api`) to know who acts next: `policy`
+   or `budget` → ask the owner; `balance` → fund or send less; `provider` with `meta.retryable` →
+   same request, same key, later; `request` → fix the request. Only changing the refusing layer lifts
+   it. See [references/errors.md](references/errors.md).
+10. **Funds go only to `details.deposit_address`.** A `correlation_id` (`op_…`/`intent_…`) is a
+    tracking id, never an address.
+11. **One grant per session/assistant/bot.** Grants say *who* may act; the account policy says
+    *what*. Revoke a grant to cut off one agent; `agent_freeze` stops everyone.
+12. **A returned signature cannot be recalled.** `agent_freeze` refuses new `native` requests, but a
+    `sign-intent` payload signed before it stays publishable by anyone who holds it until its own
+    deadline (300 s, or up to 96 h when it pays only 1Click deposits). Treat the payload like cash,
+    sign only what is due soon, and tell the owner. `sign-intent` has its own `receivers` rules; the
+    account's `destinations`, limits and budget do not apply ([references/sign-intent.md](references/sign-intent.md)).
+13. **A resting limit order is not a finished trade.** `SUCCESS` on `placeLimitOrder` means the order is
+    funded and resting (`details.order_id`), not filled: poll `GET …/limit-orders/{order_id}` for
+    `fill_status` and fills, and cancel it with the grant when it should stop. A freeze, or a policy that
+    drops `limit_order`, makes the API cancel the agent's open orders, and an agent with an order not yet
+    payout-final cannot be deleted ([references/limit-orders.md](references/limit-orders.md)).
+14. **Show the owner the required risk notice.** Before the owner signs `agent_create`, show the
+    Owner Terms, OutLayer's terms and the notice, and keep evidence of acceptance. Show the notice
+    again before the owner funds the wallet. For `agent_create`, `preview.summary` ends with it.
+15. **The agent's account is its confidential balance.** Omit `confidential` (or send `true`) on swap,
+    limit order, transfer, withdraw and deposit; balances read confidential unless `source=public`.
+    `confidential: false` is refused with `public_balance_exit_only` (400, never retry) on swap,
+    limit order, transfer and deposit. Only `withdraw` accepts it, to empty a legacy public balance;
+    `shield` moves public funds into the confidential balance; `unshield` is always refused.
+    A new policy must set `confidential: true`.
+
+## Quick start (5 minutes, any language)
+
+1. Create a partner API key in the **[partner portal](https://partners.near-intents.org/)**. The portal shows it once and it
+   expires after 365 days — put it in your backend's secret store as `NEAR_INTENTS_AGENT_API_KEY`. Treat it as an opaque string
+   (no prefix or format checks). Keys created before the portal are retired and answer `401 api_key_retired`.
+2. Smoke-test:
+   ```bash
+   curl -s https://api.agentsonintents.com/v1/network            # public: service health
+   curl -s https://api.agentsonintents.com/v1/whoami -H "X-API-Key: $NEAR_INTENTS_AGENT_API_KEY"
+   curl -s https://api.agentsonintents.com/v1/quotas -H "X-API-Key: $NEAR_INTENTS_AGENT_API_KEY"
+   ```
+   Or run [scripts/check_api.sh](scripts/check_api.sh).
+3. Follow the lifecycle below. Full walkthrough: [references/getting-started.md](references/getting-started.md).
+
+## The lifecycle
+
+```
+owner signs ──► agent_create (policy) ──► grant_issue (token commitment) ──► fund (deposit)
+                                                                      │
+          agent (with X-Grant-Token) ──► swap / transfer / withdraw ──► GET /v1/status
+```
+
+1. **Create the account** — `POST /v1/generate-intent {type:"agent_create", name, owner, policy}`
+   → owner signs → `POST /v1/submit-intent` → poll `GET /v1/status` to `SUCCESS`.
+2. **Issue a grant** — your backend makes a random `ngt_…` token, sends only its SHA-256 hex as
+   `credential` in `grant_issue` with `label` and `expires_at` (≤365 days); owner signs; you store
+   the token encrypted.
+   For a CI job or cloud workload prefer a **federated grant**: `credential` is `{type:"oidc", issuer, claims}`
+   or `{type:"public_key", jwk}`, the workload exchanges its short-lived identity for an `ngs_…` session
+   (`POST …/grants/token`) or signs `X-Grant-Proof` per request, and no long-lived secret exists
+   ([references/workload-identity.md](references/workload-identity.md)).
+3. **Fund** — `POST /v1/agents/{agent_id}/deposit {origin_asset}` (API key + Idempotency-Key, no
+   grant; `amount` optional) returns `details.deposit_address`, `min_amount`, `expires_at`,
+   optional `memo`, and `refund_to` (the agent's own balance). It credits the confidential balance.
+4. **Act** — `POST /v1/agents/{agent_id}/swap|limit-orders|transfer|withdraw|shield` with
+   `X-API-Key`, `X-Grant-Token`, `Idempotency-Key`. Quote first with `dry: true`: a swap or limit-order quote needs only `X-API-Key`; a withdrawal preview needs
+   the grant and a key, like the withdrawal (the API sets no preview cap; the provider's 1,000 custody
+   operations per rolling 24 h apply). The account's rules do not refuse a quote: it
+   returns `spend`, `fee` and `warnings`, and each rule the live call would fail is a warning under
+   that call's error code (`insufficient_balance` adds `available_amount`). An unlisted asset or an
+   invalid recipient refuses the quote itself (`unsupported_token`, `invalid_address`), before any
+   provider call and without using an attempt. Read `warnings`
+   before executing. An archived, deleted or frozen account gets no quote: it is refused with the
+   code the live request gets (`agent_archived`, `agent_deleted`, `wallet_frozen`).
+5. **Observe** — `GET /v1/status?correlation_id=…&wait_ms=30000` until it stops moving. A limit order
+   that reached `SUCCESS` is resting, not filled: follow it with `GET /v1/agents/{agent_id}/limit-orders/{order_id}`.
+   A completed transfer, withdrawal, swap, limit order or deposit also has a receipt:
+   `GET /v1/agents/{agent_id}/operations/{correlation_id}/receipt`, or `GET …/receipts` for the list
+   ([references/executions.md](references/executions.md#reference-note-and-receipts)).
+
+Every owner action (policy edits, freeze, grant revoke, approval votes, cancel, delete) is the
+same generate → sign → submit → status loop.
+
+## Pick your language path
+
+| Stack | Use | Reference |
+|---|---|---|
+| TypeScript / Node 24+ | `npm i @near-intents-agent-api/sdk` (typed, thin, no signers) | [references/typescript.md](references/typescript.md) |
+| Python | Copy [assets/python/near_intents_agent_api.py](assets/python/near_intents_agent_api.py) (client + NEAR/EVM signers) | [references/python.md](references/python.md) |
+| Rust | Copy [assets/rust/](assets/rust/) (async client + signers, `evm` feature) | [references/rust.md](references/rust.md) |
+| Go, Java, Kotlin, C#, Ruby, PHP, … | Plain HTTP + generate types from `/openapi.json` | [references/other-languages.md](references/other-languages.md) |
+
+The Python and Rust signers are verified byte-for-byte against near-api-js and viem using
+[assets/test-vectors.json](assets/test-vectors.json); check any new port against the same file.
+
+## Where to look
+
+| You need to… | Read |
+|---|---|
+| Understand accounts, policy vs grant, who enforces what | [references/concepts.md](references/concepts.md) |
+| Every endpoint, header, shape, pagination | [references/http-api.md](references/http-api.md) |
+| Run owner actions, previews, expiry, cooldowns, BFF split | [references/owner-intents.md](references/owner-intents.md) |
+| Sign `nep413` / `nep366` / `eip712` / `webauthn` correctly | [references/signing.md](references/signing.md) |
+| Write or edit a policy (actions, limits, destinations, USD budget, limit-order price bound, timelock, schedule, approval) | [references/policy.md](references/policy.md) |
+| Issue, use, store, revoke grants; pick a credential kind (`token` / `oidc` / `public_key`) | [references/grants.md](references/grants.md) |
+| Give a CI job, cloud workload or key-holding server a grant with no long-lived secret (GitHub Actions, GitLab, GCP, AWS, Kubernetes, Entra, Vercel, KMS; exchange, `X-Grant-Proof`) | [references/workload-identity.md](references/workload-identity.md) |
+| Swap, transfer, withdraw, deposit, shield, quotes, chains, `reference` / `note`, receipts | [references/executions.md](references/executions.md) |
+| Place, follow and cancel limit orders (resting orders, price bound, containment, delete guard) | [references/limit-orders.md](references/limit-orders.md) |
+| Statuses, polling, idempotency, `UNCERTAIN`, `/recover`, operation proofs, verifying receipts | [references/status-and-recovery.md](references/status-and-recovery.md) |
+| Sign NEAR Intents payloads, Solana logins or transfers with the agent's EVM/Solana key (`sign-intent`, `sign-in`, `sign-transfer`) | [references/sign-intent.md](references/sign-intent.md) |
+| Handle an error code | [references/errors.md](references/errors.md) |
+| Design the integration (data model, AI tools, key ownership models, security) | [references/architecture.md](references/architecture.md) |
+| Find a runnable example for a flow | [references/examples.md](references/examples.md) |
+
+## When writing code for a user
+
+- Read `NEAR_INTENTS_AGENT_API_URL`/`NEAR_INTENTS_AGENT_API_KEY` from env; the base URL is `https://api.agentsonintents.com`
+  unless the user runs a self-hosted or local deployment (then only the base URL changes).
+- Show `preview.summary` (and `preview.policy` / `preview.deletion`) to the owner before signing.
+- Read `GET /v1/network` before acting and after `route_unavailable` or `provider_unavailable`; if a
+  component is `down`, wait rather than change the request. `provider_unavailable` with
+  `meta.retryable`: the same request with the same key after `Retry-After`; without it the refusal
+  is recorded, so send the work again under a new key once `one_click` reports ok.
+- Never compute what the agent can spend yourself: read `available` / `available_raw` on
+  `GET …/balances` (balance less queued or timelocked work not yet dispatched). Read `amount_out`
+  only at `SUCCESS` (or `REFUNDED` after a partial fill); before then the figure is
+  `expected_amount_out`.
+- Writes against mainnet move real money: build in dry-run/quote mode first and gate live
+  execution behind an explicit flag, as the examples do (`AGENT_ALLOW_WRITES`, `AGENT_EXECUTE`).
+- Do not invent endpoints or fields. If unsure, fetch `/openapi.json` or `/llms.txt` from the
+  deployment and use what it says; the server is the source of truth.
