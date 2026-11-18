@@ -13,7 +13,7 @@ import {
   readProjectCommentRows,
 } from './comments.mjs';
 import type { Comment, HideEntry } from './comments.mjs';
-import { loadSnapshotValue, saveSnapshotValue } from './snapshot-store';
+import { loadSnapshotValue, saveSnapshotValueIfChanged, storedFetchedAt } from './snapshot-store';
 import { isFreshnessRecord, snapshotKey } from './snapshot.mjs';
 import { copyIsStale } from './freshness.mjs';
 import hiddenFile from '../data/hidden-comments.json';
@@ -80,7 +80,8 @@ const projectRows = unstable_cache(
     try {
       const rows = await readProjectCommentRows({ projectId, account: COMMENT_ACCOUNT, network: NETWORK, fetchImpl: timedFetch });
       const copy = { rows: rows as Array<Record<string, unknown>>, fetched_at: new Date().toISOString() };
-      await saveSnapshotValue(commentsKey(projectId), copy, `comments ${projectId}`);
+      // NH-125: per-project copies are small but re-read every 15 s per instance; write only on change.
+      await saveSnapshotValueIfChanged(commentsKey(projectId), copy, `comments ${projectId}`);
       return copy;
     } catch (err) {
       state.lastFailedAt = Date.now();
@@ -97,7 +98,8 @@ const allRows = unstable_cache(
     try {
       const rows = await readAllCommentRows({ account: COMMENT_ACCOUNT, network: NETWORK, fetchImpl: timedFetch });
       const copy = { rows: rows as Array<Record<string, unknown>>, fetched_at: new Date().toISOString() };
-      await saveSnapshotValue(ALL_COMMENTS_KEY, copy, 'comment counts');
+      // NH-125: 40,268 B every 60 s per instance, and the rows change only when someone comments.
+      await saveSnapshotValueIfChanged(ALL_COMMENTS_KEY, copy, 'comment counts');
       return copy;
     } catch (err) {
       state.lastFailedAt = Date.now();
@@ -166,7 +168,13 @@ export async function getProjectComments(projectId: string): Promise<ProjectComm
   const own = await loadSnapshotValue<CommentRowsCopy>(commentsKey(projectId), isCommentRowsCopy, `comments ${projectId}`);
   const any = own ?? (await loadSnapshotValue<CommentRowsCopy>(ALL_COMMENTS_KEY, isCommentRowsCopy, 'comment counts'));
   const rows = own ? own.rows : (any?.rows ?? []).filter((row) => String(row.key ?? '').startsWith(`comment/${projectId}/`));
-  const fetchedAt = own?.fetched_at ?? any?.fetched_at ?? null;
+  // NH-125: the copy is rewritten only when its rows change, so its own `fetched_at` dates the last
+  // change and the `:read-at` stamp dates the last read of the same rows. Report the later one.
+  const fetchedAt = own
+    ? await storedFetchedAt(commentsKey(projectId), own, `comments ${projectId}`)
+    : any
+      ? await storedFetchedAt(ALL_COMMENTS_KEY, any, 'comment counts')
+      : null;
   if (rows.length > 0 || fetchedAt) {
     const { items, count } = commentThread(rows as never[], projectId, { hidden: HIDDEN });
     return { items, count, available: true, stale: true, fetched_at: fetchedAt, network: NETWORK, account: COMMENT_ACCOUNT };
@@ -207,7 +215,10 @@ export async function getAllCommentRows(): Promise<CommentRowSet> {
     }
   }
   const stored = await loadSnapshotValue<CommentRowsCopy>(ALL_COMMENTS_KEY, isCommentRowsCopy, 'comment counts');
-  if (stored) return { rows: stored.rows, available: true, stale: true, fetched_at: stored.fetched_at };
+  if (stored) {
+    const fetchedAt = await storedFetchedAt(ALL_COMMENTS_KEY, stored, 'comment counts');
+    return { rows: stored.rows, available: true, stale: true, fetched_at: fetchedAt };
+  }
   return { rows: [], available: false, stale: false, fetched_at: null };
 }
 

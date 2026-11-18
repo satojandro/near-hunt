@@ -3,7 +3,7 @@ import { unstable_cache } from 'next/cache';
 import { readLatest } from './kv.mjs';
 import { NETWORK, VOTE_ACCOUNT } from './network.mjs';
 import { participantsFrom, PARTICIPANT_WINDOW_MS } from './participants.mjs';
-import { loadSnapshotValue, saveSnapshotValue } from './snapshot-store';
+import { loadSnapshotValue, saveSnapshotValueIfChanged, storedFetchedAt } from './snapshot-store';
 import { isFreshnessRecord, snapshotKey } from './snapshot.mjs';
 import { copyIsStale } from './freshness.mjs';
 
@@ -77,7 +77,8 @@ const readParticipants = unstable_cache(
         items: participantsFrom([...votes, ...comments], { sinceMs }),
         fetched_at: new Date().toISOString(),
       };
-      await saveSnapshotValue(PARTICIPANTS_SNAPSHOT_KEY, copy, 'participants');
+      // NH-125: written only when the list changed; it revalidates every 60 s per instance.
+      await saveSnapshotValueIfChanged(PARTICIPANTS_SNAPSHOT_KEY, copy, 'participants');
       return copy;
     } catch (err) {
       state.lastFailedAt = Date.now();
@@ -118,7 +119,9 @@ export async function getParticipants(): Promise<ParticipantList> {
     'participants',
   );
   if (stored && stored.items.length > 0) {
-    return { items: stored.items, available: true, stale: true, fetched_at: stored.fetched_at };
+    // NH-125: a copy rewritten only on change needs its `:read-at` stamp to report an honest age.
+    const fetchedAt = await storedFetchedAt(PARTICIPANTS_SNAPSHOT_KEY, stored, 'participants');
+    return { items: stored.items, available: true, stale: true, fetched_at: fetchedAt };
   }
   return { items: [], available: false, stale: false, fetched_at: null };
 }

@@ -7,8 +7,11 @@ import {
   encodeSnapshot,
   isFreshnessRecord,
   isPlainRecord,
+  laterFetchedAt,
   newestSnapshot,
+  recordDigest,
   snapshotKey,
+  snapshotReadAtKey,
 } from '../lib/snapshot.mjs';
 
 /**
@@ -121,4 +124,45 @@ test('keys are namespaced and versioned, and copies expire', () => {
   assert.throws(() => snapshotKey(''), /bad name/);
   assert.ok(SNAPSHOT_TTL_SECONDS >= 24 * 60 * 60, 'a copy should outlive a day of trouble');
   assert.ok(SNAPSHOT_TTL_SECONDS <= 30 * 24 * 60 * 60, 'and not be kept for a month');
+});
+
+test('recordDigest fingerprints the content, not the time it was read', () => {
+  // NH-125: the whole point is that the same rows read twice must look identical, or the copy is
+  // rewritten on every revalidation (that write is what filled the Upstash plan's bandwidth).
+  const rows = [{ key: 'vote/a', value: '1' }, { key: 'vote/b', value: '1' }];
+  const first = { rows, fetched_at: '2026-11-18T00:00:00.000Z' };
+  const second = { rows, fetched_at: '2026-11-18T03:41:00.000Z' };
+  assert.equal(recordDigest(first), recordDigest(second));
+  assert.match(recordDigest(first), /^sha256:[0-9a-f]{64}$/);
+
+  // A vote landing, a comment being hidden, an account ageing out of the window: any of these must
+  // change the digest, or the copy would never be rewritten and the site would freeze on old rows.
+  assert.notEqual(recordDigest({ rows: [...rows, { key: 'vote/c' }], fetched_at: first.fetched_at }), recordDigest(first));
+  assert.notEqual(recordDigest({ rows: [{ key: 'vote/a', value: '0' }], fetched_at: first.fetched_at }), recordDigest(first));
+  assert.notEqual(recordDigest({ items: [], fetched_at: first.fetched_at }), recordDigest(first));
+
+  // The `items` copy (projects, participants) is digested the same way, and is not confused with a
+  // `rows` copy that happens to hold the same values.
+  assert.equal(recordDigest({ items: rows }), recordDigest({ items: rows, fetched_at: second.fetched_at }));
+  assert.notEqual(recordDigest({ items: rows }), recordDigest({ rows }));
+});
+
+test('the read-at stamp lives beside the copy, and the honest age is the later of the two', () => {
+  const key = snapshotKey('votes');
+  assert.equal(snapshotReadAtKey(key), 'nearhunt:snapshot:votes:v1:read-at');
+  assert.notEqual(snapshotReadAtKey(key), key);
+
+  const changedAt = '2026-11-18T00:00:00.000Z';
+  const readAt = '2026-11-18T04:00:00.000Z';
+  // Rows last changed at midnight, read again at 04:00: the copy is four hours old *as data* is
+  // not true — those rows were read a minute ago. The later time is the honest one.
+  assert.equal(laterFetchedAt(changedAt, readAt), readAt);
+  assert.equal(laterFetchedAt(readAt, changedAt), readAt);
+  // A stamp can be missing (copy written before this change, or the store refused the write).
+  assert.equal(laterFetchedAt(changedAt, null), changedAt);
+  assert.equal(laterFetchedAt(null, readAt), readAt);
+  assert.equal(laterFetchedAt(undefined, ''), null);
+  // Garbage is ignored rather than treated as "now", which would understate a copy's age.
+  assert.equal(laterFetchedAt(changedAt, 'not a date'), changedAt);
+  assert.equal(laterFetchedAt('nonsense', ' '), null);
 });
