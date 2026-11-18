@@ -1,36 +1,67 @@
 {
-  "_note": "Per-batch corrections file, overwritten each run. Batch: issue #88 (Tycoon Ready — Proofgate) — repository_url was null on chain (record updated_at 2026-11-14T22:46:51Z), and the builder supplied https://github.com/ciscojrai/tycoon-ready in both the 'What it should say' and 'Public source' sections. Corroborated: `git ls-remote --heads` resolves (refs/heads/main 4aa3fa1290aa51ad2b9739c4111a520feee12ca6) and the README opens '# Tycoon Ready: who watches the guard?' naming the project, with the live console at https://tycoon-ready.netlify.app. The issue requests no links, so this batch touches repository_url only. Issue #87 (Inti) is not in this batch: the record already carries repository_url https://github.com/JaDi03/inti (updated_at 2026-11-17T11:56:03Z) and https://nearhunt.xyz/p/c2c425be-4452-4c1b-90a2-67892511b7da renders it, so there is nothing to sign; its re-review request is the owner's (NH Picks). Issue #86 (NH Picks scoring memo) is not a listing correction and has no signable field.",
-  "source": "issue #88 — https://github.com/satojandro/near-hunt/issues/88 (repository only; no links requested)",
-  "generated_at": "2026-11-17T20:37:11Z",
+  "_note": "Per-batch corrections file, overwritten each run. Batch 2026-11-18T15:30Z — links only, two records. Issue #87 (Inti) names https://getinti.xyz and https://getinti.xyz/try in the builder's own comment; the listing carries no links array today. Issue #91 (Tycoon Ready — Proofgate) names https://tycoon-ready.netlify.app as what the correct demo post links, and the record has no links array. Both URLs probed live (200) with lib/link-probe.mjs and their pages identify the project (titles 'Inti' and 'Tycoon Ready · Code is cheap. Proof is the product.'). No repository_url in this batch: both records already carry it on chain (Inti https://github.com/JaDi03/inti since 2026-11-17T11:56Z; Tycoon https://github.com/ciscojrai/tycoon-ready since 2026-11-17T20:56Z). Both issues are keep_open: #87's NH Picks re-review request and #91's demo_url replacement are the owner's / the feed's, not a signable field — demo_url is feed-owned and the nearhackathon.com submission still carries the 404 post (verified 2026-11-18T15:2xZ, feed page 270). Issue #86 (Yield AI Agent, NH Picks score + judge memo) is not a listing correction: the record already carries its repository, https://yieldai.app/agent (probed 200), its tracks and its demo post, and no field in it is signable — left for the owner, no comment posted.",
+  "source": "issues #87 (https://github.com/satojandro/near-hunt/issues/87) and #91 (https://github.com/satojandro/near-hunt/issues/91) — links only; no repository change, no prose, no media",
+  "generated_at": "2026-11-18T15:30:05Z",
   "results": [
     {
-      "submission_id": "ebac304e-de4a-435f-a1fe-3ceb9934f9a5",
+      "submission_id": "c2c425be-4452-4c1b-90a2-67892511b7da",
       "status": "ok",
-      "issue": "https://github.com/satojandro/near-hunt/issues/88",
-      "issue_number": 88,
-      "issue_numbers": [
-        88
+      "issue": "https://github.com/satojandro/near-hunt/issues/87",
+      "issue_number": 87,
+      "issue_numbers": [87],
+      "keep_open": [87],
+      "links": [
+        {
+          "url": "https://getinti.xyz",
+          "kind": "website",
+          "label": "Website",
+          "source_post_id": "2121621345314189646",
+          "check": { "verdict": "live", "http_status": 200, "checked_at": "2026-11-18T15:29:40Z" }
+        },
+        {
+          "url": "https://getinti.xyz/try",
+          "kind": "demo",
+          "label": "Demo",
+          "source_post_id": "2121621345314189646",
+          "check": { "verdict": "live", "http_status": 200, "checked_at": "2026-11-18T15:29:41Z" }
+        }
       ],
-      "repository_url": "https://github.com/ciscojrai/tycoon-ready",
-      "repository_source": "https://github.com/satojandro/near-hunt/issues/88",
-      "repository_basis": [
-        "builder",
-        "ls-remote",
-        "readme-names-project"
-      ],
-      "repository_verified": true,
-      "repository_verified_at": "2026-11-17T20:37:11Z",
       "enrichment": {
         "method": "builder-issue",
         "sources": [
-          "https://github.com/satojandro/near-hunt/issues/88",
-          "https://github.com/ciscojrai/tycoon-ready",
-          "https://x.com/addylifeapp/status/2121737521369407584"
+          "https://github.com/satojandro/near-hunt/issues/87",
+          "https://github.com/JaDi03/inti",
+          "https://x.com/_Ja_V1/status/2121621345314189646"
         ],
-        "retrieved_at": "2026-11-17T20:37:11Z",
-        "fields": [
-          "repository_url"
-        ]
+        "retrieved_at": "2026-11-18T15:30:05Z",
+        "fields": ["links"]
+      }
+    },
+    {
+      "submission_id": "ebac304e-de4a-435f-a1fe-3ceb9934f9a5",
+      "status": "ok",
+      "issue": "https://github.com/satojandro/near-hunt/issues/91",
+      "issue_number": 91,
+      "issue_numbers": [91],
+      "keep_open": [91],
+      "links": [
+        {
+          "url": "https://tycoon-ready.netlify.app",
+          "kind": "website",
+          "label": "Website",
+          "source_post_id": "2121736492691439640",
+          "check": { "verdict": "live", "http_status": 200, "checked_at": "2026-11-18T15:29:38Z" }
+        }
+      ],
+      "enrichment": {
+        "method": "builder-issue",
+        "sources": [
+          "https://github.com/satojandro/near-hunt/issues/91",
+          "https://github.com/ciscojrai/tycoon-ready",
+          "https://x.com/addylifeapp/status/2121736492691439640"
+        ],
+        "retrieved_at": "2026-11-18T15:30:05Z",
+        "fields": ["links"]
       }
     }
   ]
